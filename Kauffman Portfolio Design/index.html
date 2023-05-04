@@ -23,7 +23,7 @@
         <h2 class="fade-in">Loading...</h2>
     </div>
     <div class="nav">
-        <a class="aboutBtn" href="index.html">Works</a>
+        <a class="aboutBtn active"  href="index.html">Works</a>
         <a class="workBtn" href="about.html">About</a>
     </div>
     <div class="logo">
@@ -32,6 +32,20 @@
     <main>
         <div class="scrollable">
             <div class="content">
+                <section class="img-section" style="height: 800px;">
+                    <div class="left">
+                        <a href="project.html">
+                            <div class="frame" style="height: 560px; width: 980px;">
+                                <div class="img"></div>
+                            </div>
+                        </a>
+                        <div class="captions">
+                            <h1 class="info-text"><span style="font-weight: 300;">ASL Write TypeFace </span> : A Grilli
+                                Type <br> font system for ASL writing language.</h1>
+                        </div>
+                    </div>
+                </section>
+             
                 <section class="img-section" id="bioSection">
                     <div class="bio">
                         <h1>Hello,</h1>
@@ -70,8 +84,8 @@
                     </div>
                 </section>
                 <section class="img-section" style="height: 800px;">
-                    <div class="left">
-                        <div class="frame" style="height: 560px; width: 980px;">
+                    <div class="left" style="left: 128px; width: 560px;">
+                        <div class="frame" style="height: 560px; width: 560px;">
                             <div class="img"></div>
                         </div>
                         <div class="captions">
@@ -95,36 +109,10 @@
                         </div>
                     </div>
                 </section>
-
-                <section class="img-section" style="height: 800px;">
-                    <div class="left">
-                        <div class="frame" style="height: 560px; width: 980px;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="captions">
-                            <h1 class="info-text"><span style="font-weight: 300;">Color 40+ Page designs </span> : Updating Color site with new design systems. Creating new UX/UI Flows for better interactions.</h1>
-                        </div>
-                    </div>
-                </section>
-                <br>
-                <br>
-                <br>
-                <section class="img-section" style="height: 800px;">
-                    <div class="right">
-                        <div class="frame" style="height: 560px; width: 980px;">
-                            <div class="img"></div>
-                        </div>
-                        <div class="captions">
-                            <h1 class="info-text"><span style="font-weight: 300;">Instacart+ </span> : Not sure what to
-                                make for dinner, lunch or breakfast for the week? This is a reimagine how AI can benefit
-                                us creating better curating shopping list.</h1>
-                        </div>
-                    </div>
-                </section>
                 <section class="img-section" style="height: 800px;">
                     <div class="left">
                         <a href="project.html">
-                            <div class="frame" style="height: 560px; width: 980px;">
+                            <div class="frame" style="height: 560px; width: 780px;">
                                 <div class="img"></div>
                             </div>
                         </a>
@@ -136,15 +124,20 @@
                 </section>
                 <section class="img-section" style="height: 800px;">
                     <div class="right">
-                        <div class="frame" style="height: 560px; width: 980px;">
-                            <div class="img"></div>
-                        </div>
+                        <a href="project.html">
+                            <div class="frame" style="height: 560px; width: 980px;">
+                                <div class="img"></div>
+                            </div>
+                        </a>
                         <div class="captions">
                             <h1 class="info-text"><span style="font-weight: 300;">ASL Write TypeFace </span> : A Grilli
                                 Type <br> font system for ASL writing language.</h1>
                         </div>
                     </div>
                 </section>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
     </main>
@@ -156,7 +149,7 @@
 
         const images = [...document.querySelectorAll('.img')];
         images.forEach((image, idx) => {
-            image.style.backgroundImage = `url(./images/${idx + 1}.gif)`
+            image.style.backgroundImage = `url(./images/${idx + 1}.png)`
         });
 
         if (/(android|bb\d+|meego).+mobile|avantgo|bada\/|blackberry|blazer|compal|elaine|fennec|hiptop|iemobile|ip(hone|od)|ipad|iris|kindle|Android|Silk|lge |maemo|midp|mmp|netfront|opera m(ob|in)i|palm( os)?|phone|p(ixi|re)\/|plucker|pocket|psp|series(4|6)0|symbian|treo|up\.(browser|link)|vodafone|wap|windows (ce|phone)|xda|xiino/i
@@ -208,7 +201,6 @@
                         window.scrollTo(0, target);
                     }
                 }
-                // target++;
                 window.scrollTo(0, target);
                 scrollable.style.transform = `translateY(-${target}px)`;
             }
@@ -222,13 +214,6 @@
             }, 200)
             scroll();
         });
-        // document.addEventListener('mousemove', () => {
-        //     isMoving = true;
-        //     clearTimeout(isMovingTimeout);
-        //     isMovingTimeout = setTimeout(() => {
-        //         isMoving = false;
-        //     }, 1200)
-        // });
     </script>
     <script>
         let text = "xanderkau@gmail.com";
