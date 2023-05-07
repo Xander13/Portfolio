@@ -15,12 +15,250 @@
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
 </head>
+<style>
+    /*https://github.com/taimoorshahzada/Curtain-Effect-Page-Transition-using-GSAP-and-SVG-Morph/blob/main/style.css*/
+    .loaderH1 {
+        overflow: hidden;
+        display: block;
+        position: relative;
+        z-index: 2222;
+        height: 140px;
+        margin: auto;
+    }
+
+    .loaderH1 img {
+        position: absolute;
+        left: 0;
+        right: 0;
+        width: 100px;
+        height: 100px;
+        top: 0px;
+        margin: auto;
+    }
+
+    .loader-wrap {
+        position: fixed;
+        z-index: 99999;
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        overflow: hidden;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+    }
+
+    .loader-wrap svg {
+        position: absolute;
+        top: 0;
+        width: 100vw;
+        height: 110vh;
+    }
+
+    .loader-wrap .loader-wrap-heading h1 {
+        z-index: 20;
+        color: #000000;
+        text-transform: uppercase;
+        font-weight: lighter;
+        font-size: 32px;
+        text-align: center;
+        position: relative;
+        top: 84px;
+    }
+
+    .loader-wrap-heading{
+        overflow: hidden;
+    }
+
+    @media (max-width: 767px) {
+        .loader-wrap svg {
+            width: 200vw;
+            margin-left: -50vw;
+        }
+
+        .loader-wrap .loader-wrap-heading,
+        .container h1 {
+            font-size: 60px;
+        }
+    }
+</style>
 
 <body>
-    <div class="splash">
-        <h2 class="fade-in">Loading...</h2>
+    <div class="loader-wrap">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path id="svg" style="fill: #efefef;" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+
+        <div class="loader-wrap-heading">
+            <div class="loaderH1">
+                <img src="face.svg" width="300px">
+                <h1>Alex Kauffman</h1>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <span>
+            <main>
+                <div class="scrollable">
+                    <div class="content">
+                        <section class="img-section" id="bioSection">
+                            <div class="bio">
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <h1>Hello,</h1>
+                                <h1><span
+                                        style="text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: from-font;">Alex
+                                        Kauffman</span> is a designer at <a class="underline" href="https://byhook.com/"
+                                        target="_blank">Hook</a> with expertise in UX/UI and Ad Designs in mind. He
+                                    strives to
+                                    create products and design to create a more pleasurable experiences for his
+                                    audiences.
+                                    <br>
+                                    <br>
+                                    He has been collaborating with verity of clients such as Color, Google,
+                                    Youtube, Amazon, and Visa. Previously he has interned at Instrument and Punchcut.
+                                    <br>
+                                    <br>
+                                    On his free time, he is a Saber fencer that is working hard to become a national
+                                    ranked
+                                    Fencer. He also is an avid Deaf community advocate in the Design/Tech industry to
+                                    help
+                                    amplify Deaf
+                                    peers.
+                                    If you would like to reach out, send
+                                    me an <span class="underline" onclick="copyContent()" id="myText">email</span>
+                                    .<span id="copy">&#91; Copy &#93;</span>
+                                </h1>
+                                <div class="flex"
+                                    style="justify-content: start; position: relative; margin-left: -16px;">
+                                    <h3><a href="about.html">More about me <img src="arrow.svg" width="14px"></a></h3>
+                                    <h3><a href="works.html">Artifacts <img src="arrow.svg" width="14px"></a></h3>
+                                    <h3><a href="photography.html">Photography <img src="arrow.svg" width="14px"></a>
+                                    </h3>
+                                </div>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <br>
+                                <div class="flexBox" style="justify-content: start;">
+                                    <h1>Select works <span style="color: rgb(97, 97, 97); font-size: 16px;">( 6 )</span>
+                                    </h1>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="img-section">
+                            <div class="flexBox">
+                                <div class="Cards">
+                                    <div class="frame" data-color="red">
+                                        <div class="img"></div>
+                                    </div>
+                                    <div class="captions">
+                                        <h1 class="info-text">Google Bard</h1>
+                                        <div class="flex">
+                                            <h2 class="tags">Ux/UI, Web Design, Display Ads</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Cards">
+                                    <div class="frame" data-color="blue">
+                                        <div class="img"></div>
+                                    </div>
+                                    <div class="captions">
+                                        <h1 class="info-text">Color</h1>
+                                        <div class="flex">
+                                            <h2 class="tags">UI/UX, Ad Designs, Motion</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="img-section">
+                            <div class="flexBox">
+                                <div class="Cards">
+                                    <div class="frame" data-color="green">
+                                        <div class="img"></div>
+                                    </div>
+                                    <div class="captions">
+                                        <h1 class="info-text">ASL TypeFace</h1>
+                                        <div class="flex">
+                                            <h2 class="tags">Typography, Research</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Cards">
+                                    <div class="frame" data-color="orange">
+                                        <div class="img"></div>
+                                    </div>
+                                    <div class="captions">
+                                        <h1 class="info-text">Google for Creators</h1>
+                                        <div class="flex">
+                                            <h2 class="tags">UI/UX, Instrument Intern</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <section class="img-section">
+                            <div class="flexBox">
+                                <div class="Cards">
+                                    <div class="frame" data-color="purple">
+                                        <div class="img"></div>
+                                    </div>
+                                    <div class="captions">
+                                        <h1 class="info-text">Hook Site</h1>
+                                        <div class="flex">
+                                            <h2 class="tags">Ux/UI, Web Design, Brand</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="Cards">
+                                    <div class="frame" data-color="pink">
+                                        <div class="img"></div>
+                                    </div>
+                                    <div class="captions">
+                                        <h1 class="info-text">Wishful</h1>
+                                        <div class="flex">
+                                            <h2 class="tags">UI/UX, Development</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <section class="img-section">
+                            <div class="bio">
+                                <div class="flexBox" style="justify-content: start;">
+                                    <h1>Demo Reel <span style="color: rgb(97, 97, 97); font-size: 16px;">( 15 second
+                                            )</span>
+                                    </h1>
+                                </div>
+                            </div>
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                                    src="https://player.vimeo.com/video/629284887?h=e5dd66c138&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+                                    style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                                    allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                            <script src="https://player.vimeo.com/api/player.js"></script>
+                        </section>
+                    </div>
+                </div>
+            </main>
+        </span>
     </div>
     <div class="logo">AK</div>
     <div class="nav">
@@ -28,152 +266,7 @@
         <a href="about.html">About</a>
         <a href="archives.html">Archive</a>
     </div>
-    <main>
-        <div class="scrollable">
-            <div class="content">
-                <section class="img-section" id="bioSection">
-                    <div class="bio">
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <h1>Hello,</h1>
-                        <h1><span
-                                style="text-decoration: underline; text-underline-offset: 8px; text-decoration-thickness: from-font;">Alex
-                                Kauffman</span> is a designer at <a class="underline" href="https://byhook.com/"
-                                target="_blank">Hook</a> with expertise in UX/UI and Ad Designs in mind. He strives to
-                            create products and design to create a more pleasurable experiences for his
-                            audiences.
-                            <br>
-                            <br>
-                            He has been collaborating with verity of clients such as Color, Google,
-                            Youtube, Amazon, and Visa. Previously he has interned at Instrument and Punchcut.
-                            <br>
-                            <br>
-                            On his free time, he is a Saber fencer that is working hard to become a national ranked
-                            Fencer. He also is an avid Deaf community advocate in the Design/Tech industry to help
-                            amplify Deaf
-                            peers.
-                            If you would like to reach out, send
-                            me an <span class="underline" onclick="copyContent()" id="myText">email</span> .<span
-                                id="copy">&#91; Copy &#93;</span>
-                        </h1>
-                        <div class="flex" style="justify-content: start; position: relative; margin-left: -16px;">
-                            <h3><a href="about.html">More about me <img src="arrow.svg" width="14px"></a></h3>
-                            <h3><a href="works.html">Artifacts <img src="arrow.svg" width="14px"></a></h3>
-                            <h3><a href="photography.html">Photography <img src="arrow.svg" width="14px"></a></h3>
-                        </div>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <div class="flexBox" style="justify-content: start;">
-                            <h1>Select works <span style="color: rgb(97, 97, 97); font-size: 16px;">( 6 )</span></h1>
-                        </div>
-                    </div>
-                </section>
-                <section class="img-section">
-                    <div class="flexBox">
-                        <div class="Cards">
-                            <div class="frame" data-color="red">
-                                <div class="img"></div>
-                            </div>
-                            <div class="captions">
-                                <h1 class="info-text">Google Bard</h1>
-                                <div class="flex">
-                                    <h2 class="tags">Ux/UI, Web Design, Display Ads</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Cards">
-                            <div class="frame" data-color="blue">
-                                <div class="img"></div>
-                            </div>
-                            <div class="captions">
-                                <h1 class="info-text">Color</h1>
-                                <div class="flex">
-                                    <h2 class="tags">UI/UX, Ad Designs, Motion</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
 
-                <section class="img-section">
-                    <div class="flexBox">
-                        <div class="Cards">
-                            <div class="frame" data-color="green">
-                                <div class="img"></div>
-                            </div>
-                            <div class="captions">
-                                <h1 class="info-text">ASL TypeFace</h1>
-                                <div class="flex">
-                                    <h2 class="tags">Typography, Research</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Cards">
-                            <div class="frame" data-color="orange">
-                                <div class="img"></div>
-                            </div>
-                            <div class="captions">
-                                <h1 class="info-text">Google for Creators</h1>
-                                <div class="flex">
-                                    <h2 class="tags">UI/UX, Instrument Intern</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section class="img-section">
-                    <div class="flexBox">
-                        <div class="Cards">
-                            <div class="frame" data-color="purple">
-                                <div class="img"></div>
-                            </div>
-                            <div class="captions">
-                                <h1 class="info-text">Hook Site</h1>
-                                <div class="flex">
-                                    <h2 class="tags">Ux/UI, Web Design, Brand</h2>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="Cards">
-                            <div class="frame" data-color="pink">
-                                <div class="img"></div>
-                            </div>
-                            <div class="captions">
-                                <h1 class="info-text">Wishful</h1>
-                                <div class="flex">
-                                    <h2 class="tags">UI/UX, Development</h2>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <section class="img-section">
-                <div class="bio">
-                    <div class="flexBox" style="justify-content: start;">
-                        <h1>Demo Reel <span style="color: rgb(97, 97, 97); font-size: 16px;">( 15 second )</span></h1>
-                    </div>
-                </div>
-                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/629284887?h=e5dd66c138&autoplay=1&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>   
-            </section>
-            </div>
-        </div>
-    </main>
     <script src="app.js"></script>
     <script>
         const scrollable = document.querySelector('.scrollable');
@@ -263,6 +356,65 @@
                 console.error('Failed to copy: ', err);
             }
         }
+    </script>
+    <script>
+        /** @format */
+        const svg = document.getElementById("svg");
+        const tl = gsap.timeline();
+        const curve = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
+        const flat = "M0 2S175 1 500 1s500 1 500 1V0H0Z";
+
+        // tl.from(".loader-wrap-heading img", {
+        //     delay: 1,
+        //     y: 200,
+        // }).to(".loader-wrap-heading img", {
+        //     delay: 1.5,
+        //     y: -200,
+        // });
+
+        // tl.from(".loader-wrap-heading h1", {
+        //     delay: 1,
+        //     y: 200,
+        // }).to(".loader-wrap-heading h1", {
+        //     delay: 1.5,
+        //     y: -200,
+        // });
+
+        tl.from(".loaderH1", {
+            delay: 1,
+            y: 200,
+        }).to(".loaderH1", {
+            delay: 1.5,
+            y: -200,
+        });
+
+        tl.to(svg, {
+            duration: 0.6,
+            attr: {
+                d: curve
+            },
+            ease: "power2.easeIn",
+        }).to(svg, {
+            duration: 0.6,
+            attr: {
+                d: flat
+            },
+            ease: "power2.easeOut",
+        });
+        tl.to(".loader-wrap", {
+            y: -1500,
+        });
+        tl.to(".loader-wrap", {
+            zIndex: -1,
+            display: "none",
+        });
+        tl.from(
+            ".container h1", {
+                y: 100,
+                opacity: 0,
+            },
+            "-=1.5"
+        );
     </script>
 </body>
 
