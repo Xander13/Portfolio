@@ -13,15 +13,8 @@
 body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    transition: background-color 0.2s ease;
-    background-color: #F2F2F2;
+    transition: background-color 1s cubic-bezier(.17,.67,.83,.67);
 }
-
-.dark-mode {
-    background-color: var(--black);
-    color: var(--white) !important;
-    transition: background-color 0.2s ease;
-  }
 
 ::-webkit-scrollbar {
     display: none;
@@ -103,16 +96,51 @@ body {
     font-weight: 300;
 }
 
-/* .underline{
+.nav{
+    position: fixed;
+    top: 36px;
+    right: 24px;
+    z-index: 22222;
+}
+
+.nav a{
+    text-decoration: none;
+    color: rgb(16, 16, 16);
+    font-size: 18px;
     cursor: pointer;
-    text-decoration: underline;
-    text-decoration-thickness: 3px;
-    text-underline-offset: 12px;
-    c
-} */
+    padding: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 100rem;
+    background-color: rgb(236, 236, 236);
+    transition: 0.3s ease;
+}
+
+.nav a:hover{
+    background-color: rgb(31, 31, 31);
+    color: white;
+    transition: 0.3s ease;
+}
+
+.logo{
+    position: fixed;
+    top: 24px;
+    left: 24px;
+    z-index: 22222;
+    text-decoration: none;
+    background-color: rgb(236, 236, 236);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 100rem;
+    color: rgb(16, 16, 16);
+    transition: 0.3s ease;
+}
 
 .underline {
-    background-color: var(--blue);
+    background-color: var(--black);
     z-index: -4;
     padding-left: 16px;
     padding-right: 16px;
@@ -125,7 +153,7 @@ body {
 
 .underline:hover {
     color: var(--white);
-    background-color: var(--black);
+    background-color: var(--blue);
     transition: 0.1s ease;
     cursor: pointer;
 }
@@ -239,52 +267,6 @@ body {
     animation: fadeIn 1s ease-in forwards;
 }
 
-footer {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    left: 0;
-    box-sizing: border-box;
-    padding-left: 22px;
-    padding-right: 32px;
-    z-index: 4;
-}
-
-footer h2,
-footer a {
-    font-size: 18px;
-}
-
-footer .mid {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 8px;
-    margin: auto;
-    width: 100px;
-    text-align: center;
-}
-
-footer .right {
-    position: fixed;
-    right: 32px;
-    bottom: -12px;
-    width: 264px;
-}
-
-footer a {
-    cursor: pointer;
-    color: var(--black);
-    text-decoration: none;
-}
-
-footer a:hover {
-    color: var(--gray);
-}
-
 .hookLink {
     cursor: pointer;
 }
@@ -311,24 +293,31 @@ footer a:hover {
 
 
 /*Gallary View*/
+.captions {
+    text-align: center;
+}
+
 .captions h1 {
     font-size: 22px;
-    padding-bottom: 12px;
-    max-width: 690px;
     font-weight: 300;
     line-height: 32px;
-    /* text-wrap: balance; */
-    height: 52px;
+    font-weight: 500;
+    margin-inline-end: 0;
+    margin-bottom: 0;
+    padding-top: 12px;
+}
+
+.captions .flex {
+    justify-content: center;
 }
 
 .captions h2 {
-    font-size: 16px;
+    font-size: 12px;
     position: relative;
-    background-color: var(--white);
     padding: 8px;
-    padding-left: 12px;
-    padding-right: 12px;
-    border-radius: 4px;
+    font-weight: 400;
+    margin: 4px;
+    text-transform: uppercase;
 }
 
 main {
@@ -356,10 +345,47 @@ main {
     height: auto;
 }
 
+/*Project Cards*/
 .img-section {
     position: relative;
-    height: 620px;
+    height: auto;
 }
+
+.Cards {
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+}
+
+.Cards:nth-child(even){
+    margin-top: 124px;
+}
+
+.frame {
+    cursor: pointer;
+    transition: all 0.5s ease;
+    overflow: hidden;
+    height: 700px;
+    width: 100%;
+    max-width: 560px;
+}
+
+.frame:hover {
+    transition: all 0.5s ease;
+    transform: rotate(2deg);
+}
+
+.img {
+    transition: all 0.5s ease;
+    scale: 1;
+}
+
+.img:hover {
+    cursor: pointer;
+    transition: all 0.5s ease;
+    scale: 1.05;
+}
+
 
 .bio {
     width: 1100px;
@@ -442,45 +468,6 @@ main {
     width: auto;
 }
 
-.frame {
-    cursor: pointer;
-    transition: all 0.5s ease;
-    overflow: hidden;
-}
-
-.frame:hover {
-    transition: all 0.5s ease;
-    transform: rotate(2deg);
-}
-
-.img {
-    transition: all 0.5s ease;
-    scale: 1;
-}
-
-.img:hover {
-    cursor: pointer;
-    transition: all 0.5s ease;
-    scale: 1.05;
-}
-
-.img-section .right {
-    position: absolute;
-    right: 0;
-}
-
-
-.img-section .left {
-    position: absolute;
-    left: 0;
-}
-
-.img-section .mid {
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-}
 
 .proj-info-2 {
     position: relative;
@@ -523,22 +510,6 @@ main {
     width: 100%;
 }
 
-.projectNav h1 {
-    width: 100%;
-    transition: 0.2s ease;
-    height: 90px;
-    font-weight: 200;
-}
-
-.projectNav h1:hover {
-    padding-left: 36px;
-    transition: 0.2s ease;
-}
-
-.projectNav a {
-    font-size: 130px;
-}
-
 .projectView {
     position: fixed;
     z-index: -1;
@@ -553,76 +524,6 @@ main {
     background-color: gainsboro;
     background-image: url(/images/1.jpeg);
     opacity: 1;
-}
-
-/*Nav stuff*/
-.menu {
-    position: absolute;
-    right: 32px;
-}
-
-ul {
-    list-style-type: none;
-    justify-content: start;
-    display: flex;
-    padding-inline-start: 0px;
-}
-
-li a {
-    text-decoration: none;
-    color: var(--black);
-}
-
-li:not(:first-child) {
-    margin-left: 32px;
-}
-
-.logo{
-    position: fixed;
-    right: 32px;
-    bottom: 28px;
-    z-index: 1111;
-}
-
-.nav {
-    position: fixed;
-    bottom: 28px;
-    right: 110px;
-    width: fit-content;
-    z-index: 1111;
-    height: 36px;
-    transition: 1s ease;
-    margin: auto;
-    background-color: var(--white);
-    padding: 16px;
-    border-radius: 100rem;
-}
-
-.nav a{
-    position: relative;
-    text-decoration: none;
-    color: black;
-    padding: 11px;
-    padding-left: 24px;
-    padding-right: 24px;
-    top: 7px;
-    border-radius: 100rem;
-    transition: 0.2s ease;
-    border: 1px solid transparent;
-}
-
-.nav a:hover{
-    background-color: #F2F2F2;
-    border-radius: 100rem;
-    transition: 0.2s ease;
-}
-
-.nav .active{
-    background-color: black;
-    border-radius: 100rem;
-    color: var(--white);
-    transition: 0.2s ease;
-    border: 1px solid transparent;
 }
 
 /*About Page*/
@@ -672,7 +573,7 @@ li:not(:first-child) {
     position: sticky;
     width: 400px;
     height: 600px;
-    top: 96px;
+    top: 164px;
     margin-left: 30%;
 }
 
