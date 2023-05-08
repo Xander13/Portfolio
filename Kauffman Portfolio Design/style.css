@@ -57,6 +57,12 @@ body {
     padding: 0;
 }
 
+.marquee {
+    opacity: 0.3;
+    display: block;
+    justify-content: space-around;
+}
+
 .cursor {
     position: fixed;
     pointer-events: none;
@@ -136,7 +142,14 @@ body {
     padding-right: 24px;
     border-radius: 100rem;
     color: rgb(16, 16, 16);
-    transition: 0.3s ease;
+    transition: 0.2s ease;
+}
+
+.logo:hover{
+    color: white;
+    background-color: black;
+    transition: 0.2s ease;
+    cursor: pointer;
 }
 
 .underline {
@@ -147,14 +160,14 @@ body {
     border-radius: 8px;
     color: var(--white);
     text-decoration: none;
-    transition: 0.1s ease;
+    transition: 0.2s ease;
     cursor: pointer;
 }
 
 .underline:hover {
-    color: var(--white);
-    background-color: var(--blue);
-    transition: 0.1s ease;
+    color: var(--black);
+    background-color: rgb(236, 236, 236);
+    transition: 0.2s ease;
     cursor: pointer;
 }
 
@@ -261,6 +274,20 @@ body {
         opacity: 1;
     }
 }
+
+/* Prefix Support */
+.ball {
+    -webkit-animation-name: bounce;
+    -webkit-animation-duration: 0.6s;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: cubic-bezier(.5,0.05,1,.5);
+    -webkit-animation-iteration-count: infinite;
+  }
+  
+  @-webkit-keyframes bounce {
+    from { -webkit-transform: translate3d(0, 0, 0); transform: translate3d(0, 0, 0); }
+    to   { -webkit-transform: translate3d(0, 200px, 0); transform: translate3d(0, 200px, 0); }
+  }
 
 .fade-in {
     opacity: 0;
