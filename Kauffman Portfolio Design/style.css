@@ -529,6 +529,40 @@ main {
     /* filter: grayscale(20%) sepia(20%); */
 }
 
+/*404 stuff*/
+.errorPage{
+    width: 800px;
+    margin: auto;
+    text-align: center;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 40%;
+    transform: translate(-50% -50%);
+    user-select: none;
+}
+
+.errorPage a{
+    text-decoration: none;
+    color: black;
+    background-color: var(--black);
+    z-index: -4;
+    padding: 16px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-radius: 100rem;
+    color: var(--white);
+    text-decoration: none;
+    transition: 0.2s ease;
+    cursor: pointer;
+}
+
+.errorPage a:hover{
+    background-color: #F2F2F2;
+    color: black;
+    transition: 0.2s ease;
+}
+
 /*Project Page*/
 .projectNav {
     padding-left: 22px;
