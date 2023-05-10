@@ -587,6 +587,31 @@ main {
     opacity: 1;
 }
 
+/*Archives section*/
+.list{
+    width: 100%;
+    margin: auto;
+    font-size: 22px;
+}
+
+.list .flexBox{
+    justify-content: start !important;
+    align-items: center;
+}
+
+.list h2, .list a h2{
+    font-weight: 400 !important;
+    color: black;
+}
+
+.list a{
+    text-decoration: none;
+}
+
+.list .flexBox{
+    border-top:  1px solid black;
+}
+
 /*About Page*/
 .aboutPage {
     max-width: 80%;
