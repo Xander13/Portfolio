@@ -18,52 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
 </head>
 <style>
-    /*https://github.com/taimoorshahzada/Curtain-Effect-Page-Transition-using-GSAP-and-SVG-Morph/blob/main/style.css*/
-    .loaderH1 {
-        display: block;
-        position: relative;
-        z-index: 2222;
-        height: 140px;
-        margin: auto;
-    }
-
-    .loaderH1 img {
-        position: relative;
-        width: 100px;
-        height: 100px;
-        margin: auto;
-    }
-
-    .loader-wrap {
-        position: fixed;
-        z-index: 99999;
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        overflow: hidden;
-        align-items: center;
-        justify-content: center;
-        background: transparent;
-    }
-
-    .loader-wrap svg {
-        position: absolute;
-        top: 0;
-        width: 100vw;
-        height: 110vh;
-    }
-
-    @media (max-width: 767px) {
-        .loader-wrap svg {
-            width: 200vw;
-            margin-left: -50vw;
-        }
-
-        .loader-wrap .loader-wrap-heading,
-        .container h1 {
-            font-size: 60px;
-        }
-    }
+    
 </style>
 
 <body>
@@ -85,7 +40,6 @@
                     <div class="content">
                         <section class="img-section" id="bioSection">
                             <div class="bio">
-                                <br>
                                 <br>
                                 <br>
                                 <br>
@@ -117,13 +71,7 @@
                                     <h3><a href="photography.html">Photography <img src="arrow.svg" width="14px"></a>
                                     </h3>
                                 </div>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <br>
-                                <div class="flexBox" style="justify-content: start;">
+                                <div class="flexBox" style="justify-content: start; padding-top: 132px;">
                                     <h1>Select works <span style="color: rgb(97, 97, 97); font-size: 16px;">( 6 )</span>
                                     </h1>
                                 </div>
@@ -131,126 +79,131 @@
                         </section>
                         <section class="img-section">
                             <div class="flexBox">
-                                <div class="Cards">
-                                    <div class="frame" data-color="red">
-                                        <div class="img"></div>
+                                <div class="half projectHalf" id="top">
+                                    <div class="Cards">
+                                        <div class="frame" data-color="red">
+                                            <div class="img"></div>
+                                        </div>
+                                        <div class="captions">
+                                            <h1 class="info-text">Google Bard</h1>
+                                            <div class="flex">
+                                                <h2 class="tags">Ux/UI, Web Design, Display Ads</h2>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="captions">
-                                        <h1 class="info-text">Google Bard</h1>
-                                        <div class="flex">
-                                            <h2 class="tags">Ux/UI, Web Design, Display Ads</h2>
+                                    <div class="Cards">
+                                        <div class="frame" data-color="blue">
+                                            <div class="img"></div>
+                                        </div>
+                                        <div class="captions">
+                                            <h1 class="info-text">Color</h1>
+                                            <div class="flex">
+                                                <h2 class="tags">UI/UX, Ad Designs, Motion</h2>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="Cards">
+                                        <div class="frame" data-color="pink">
+                                            <div class="img"></div>
+                                        </div>
+                                        <div class="captions">
+                                            <h1 class="info-text">Wishful</h1>
+                                            <div class="flex">
+                                                <h2 class="tags">UI/UX, Development</h2>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="Cards">
-                                    <div class="frame" data-color="blue">
-                                        <div class="img"></div>
-                                    </div>
-                                    <div class="captions">
-                                        <h1 class="info-text">Color</h1>
-                                        <div class="flex">
-                                            <h2 class="tags">UI/UX, Ad Designs, Motion</h2>
+                                <div class="half projectHalf" id="top">
+                                    <div class="Cards">
+                                        <div class="frame" data-color="green">
+                                            <div class="img"></div>
+                                        </div>
+                                        <div class="captions">
+                                            <h1 class="info-text">.TTF (The Type Factory)</h1>
+                                            <div class="flex">
+                                                <h2 class="tags">Typography, Research</h2>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <section class="img-section">
-                            <div class="flexBox">
-                                <div class="Cards">
-                                    <div class="frame" data-color="green">
-                                        <div class="img"></div>
-                                    </div>
-                                    <div class="captions">
-                                        <h1 class="info-text">ASL Font</h1>
-                                        <div class="flex">
-                                            <h2 class="tags">Typography, Research</h2>
+                                    <div class="Cards">
+                                        <div class="frame" data-color="orange">
+                                            <div class="img"></div>
+                                        </div>
+                                        <div class="captions">
+                                            <h1 class="info-text">Google for Creators</h1>
+                                            <div class="flex">
+                                                <h2 class="tags">UI/UX, Instrument Intern</h2>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="Cards">
-                                    <div class="frame" data-color="orange">
-                                        <div class="img"></div>
-                                    </div>
-                                    <div class="captions">
-                                        <h1 class="info-text">Google for Creators</h1>
-                                        <div class="flex">
-                                            <h2 class="tags">UI/UX, Instrument Intern</h2>
+                                    <div class="Cards">
+                                        <div class="frame" data-color="purple">
+                                            <div class="img"></div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-                        <section class="img-section">
-                            <div class="flexBox">
-                                <div class="Cards">
-                                    <div class="frame" data-color="purple">
-                                        <div class="img"></div>
-                                    </div>
-                                    <div class="captions">
-                                        <h1 class="info-text">Hook Site</h1>
-                                        <div class="flex">
-                                            <h2 class="tags">Ux/UI, Web Design, Brand</h2>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="Cards">
-                                    <div class="frame" data-color="pink">
-                                        <div class="img"></div>
-                                    </div>
-                                    <div class="captions">
-                                        <h1 class="info-text">Wishful</h1>
-                                        <div class="flex">
-                                            <h2 class="tags">UI/UX, Development</h2>
+                                        <div class="captions">
+                                            <h1 class="info-text">Hook Site</h1>
+                                            <div class="flex">
+                                                <h2 class="tags">Ux/UI, Web Design, Brand</h2>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
-                            <br>
                         </section>
                         <section class="img-section">
                             <div class="bio">
                                 <div class="flexBox" style="justify-content: start;">
-                                    <h1>Archives <span style="color: rgb(97, 97, 97); font-size: 16px;">( +6 )</span>
+                                    <h1>Archives <span style="color: rgb(97, 97, 97); font-size: 16px;">( 32 )</span>
                                     </h1>
                                 </div>
                                 <div class="list">
                                     <div class="flexBox">
-                                        <a href="#">
+                                        <a href="#" class="projectTitle">
                                             <h2>Google Braille</h2>
                                         </a>
-                                        <h2>3D Motion, Reimaging, Design Thinking</h2>
+                                        <div class="blox">
+                                            <h4 class="chips" id="chipColor1">3D Motion</h4>
+                                            <h4 class="chips" id="chipColor2">Concepting</h4>
+                                        </div>
                                         <h3><a>See Projects</a></h3>
                                     </div>
                                     <div class="flexBox">
-                                        <a href="#">
-                                            <h2>Starbucks - Illustration</h2>
+                                        <a href="#" class="projectTitle">
+                                            <div class="blox">
+                                                <h2>Starbucks - Illustration</h2>
+                                            </div>
                                         </a>
-                                        <h2>Illustrations</h2>
+                                        <div class="blox">
+                                            <h4 class="chips" id="chipColor5">Illustrations</h4>
+                                            <h4 class="chips" id="chipColor3">UX/UI</h4>
+                                        </div>
                                         <h3><a>See Projects</a></h3>
                                     </div>
                                     <div class="flexBox">
-                                        <a href="#">
+                                        <a href="#" class="projectTitle">
                                             <h2>Vigor</h2>
                                         </a>
-                                        <h2>UX/UI, Research, Design Thinking</h2>
+                                        <div class="blox">
+                                            <h4 class="chips" id="chipColor3">UX/UI</h4>
+                                            <h4 class="chips" id="chipColor2">Concepting</h4>
+                                        </div>
                                         <h3><a>See Projects</a></h3>
                                     </div>
                                     <div class="flexBox">
-                                        <a href="#">
+                                        <a href="#" class="projectTitle">
                                             <h2>3D Designs</h2>
                                         </a>
-                                        <h2>3D, Motion</h2>
+
+                                        <div class="blox">
+                                            <h4 class="chips" id="chipColor1">3D Motion</h4>
+                                        </div>
                                         <h3><a>See Projects</a></h3>
                                     </div>
                                 </div>
-
+                                <div class="flexBox">
+                                    <button class="loadMoreBtn">Load More</button>
+                                </div>
                             </div>
                         </section>
                     </div>
@@ -355,47 +308,7 @@
             }
         }
     </script>
-    <script>
-        /** @format */
-        const svg = document.getElementById("svg");
-        const tl = gsap.timeline();
-        const curve = "M0 502S175 272 500 272s500 230 500 230V0H0Z";
-        const flat = "M0 2S175 1 500 1s500 1 500 1V0H0Z";
-
-        tl.to(".loaderH1", {
-            delay: 1.5,
-            opacity: 0,
-            ease: "power2.easeIn",
-        });
-
-        tl.to(svg, {
-            duration: 0.6,
-            attr: {
-                d: curve
-            },
-            ease: "power2.easeIn",
-        }).to(svg, {
-            duration: 0.6,
-            attr: {
-                d: flat
-            },
-            ease: "power2.easeOut",
-        });
-        tl.to(".loader-wrap", {
-            y: -1500,
-        });
-        tl.to(".loader-wrap", {
-            zIndex: -1,
-            display: "none",
-        });
-        tl.from(
-            ".container h1", {
-                y: 100,
-                opacity: 0,
-            },
-            "-=1.5"
-        );
-    </script>
+    <script src="gallry.js"></script>
 </body>
 
 </html>
