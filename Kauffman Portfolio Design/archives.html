@@ -5,42 +5,148 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Studio Kauffman</title>
+    <title>Alex Kauffman - Design</title>
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;600;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
 </head>
 
 <body>
-    <nav>
-        <div class="logo">
-            <h1><a href="index.html">SK</a></h1>
+    <div class="loader-wrap">
+        <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
+            <path id="svg" style="fill: #efefef;" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
+        </svg>
+
+        <div class="loader-wrap-heading">
+            <div class="loaderH1">
+                <img class="ball" id="face" src="face.svg" width="300px">
+            </div>
         </div>
-        <div class="time">
-            <h1>Visual Designer</h1>
+    </div>
+    <div class="container">
+        <div class="archives">
+            <div class="aboutHero">
+                <h1>Dead but not dead</h1>
+            </div>
+            <div class="list">
+                <div class="flexBox">
+                    <a href="#" class="projectTitle">
+                        <h2>Google Braille</h2>
+                    </a>
+                    <div class="blox">
+                        <h4 class="chips" id="chipColor1">3D Motion</h4>
+                        <h4 class="chips" id="chipColor1">Concepting</h4>
+                    </div>
+                    <div class="year">2023</div>
+                    <h4><a>See Projects</a></h4>
+                </div>
+                <div class="flexBox">
+                    <a href="#" class="projectTitle">
+                        <div class="blox">
+                            <h2>Starbucks - Illustration</h2>
+                        </div>
+                    </a>
+                    <div class="blox">
+                        <h4 class="chips" id="chipColor1">Illustrations</h4>
+                        <h4 class="chips" id="chipColor1">UX/UI</h4>
+                    </div>
+                    <div class="year">2023</div>
+                    <h4><a>See Projects</a></h4>
+                </div>
+                <div class="flexBox">
+                    <a href="#" class="projectTitle">
+                        <h2>Vigor</h2>
+                    </a>
+                    <div class="blox">
+                        <h4 class="chips" id="chipColor1">UX/UI</h4>
+                        <h4 class="chips" id="chipColor1">Concepting</h4>
+                    </div>
+                    <div class="year">2023</div>
+                    <h4><a>See Projects</a></h4>
+                </div>
+                <div class="flexBox">
+                    <a href="#" class="projectTitle">
+                        <h2>3D Designs</h2>
+                    </a>
+                    <div class="blox">
+                        <h4 class="chips" id="chipColor1">3D Motion</h4>
+                    </div>
+                    <div class="year">2023</div>
+                    <h4><a>See Projects</a></h4>
+                </div>
+                <div class="flexBox">
+                    <a href="#" class="projectTitle">
+                        <h2>3D Designs</h2>
+                    </a>
+
+                    <div class="blox">
+                        <h4 class="chips" id="chipColor1">3D Motion</h4>
+                    </div>
+                    <div class="year">2023</div>
+                    <h4><a>See Projects</a></h4>
+                </div>
+                <div class="flexBox">
+                    <a href="#" class="projectTitle">
+                        <h2>3D Designs</h2>
+                    </a>
+                    <div class="blox">
+                        <h4 class="chips" id="chipColor1">3D Motion</h4>
+                    </div>
+                    <div class="year">2023</div>
+                    <h4><a>See Projects</a></h4>
+                </div>
+                <div class="flexBox">
+                    <a href="#" class="projectTitle">
+                        <h2>3D Designs</h2>
+                    </a>
+                    <div class="blox">
+                        <h4 class="chips" id="chipColor1">3D Motion</h4>
+                    </div>
+                    <div class="year">2023</div>
+                    <h4><a>See Projects</a></h4>
+                </div>
+                <div class="flexBox">
+                    <a href="#" class="projectTitle">
+                        <h2>3D Designs</h2>
+                    </a>
+                    <div class="blox">
+                        <h4 class="chips" id="chipColor1">3D Motion</h4>
+                    </div>
+                    <div class="year">2023</div>
+                    <h4><a>See Projects</a></h4>
+                </div>
+                <div class="flexBox">
+                    <a href="#" class="projectTitle">
+                        <h2>3D Designs</h2>
+                    </a>
+                    <div class="blox">
+                        <h4 class="chips" id="chipColor1">3D Motion</h4>
+                    </div>
+                    <div class="year">2023</div>
+                    <h4><a>See Projects</a></h4>
+                </div>
+            </div>
         </div>
-        <div class="status">
-            <h1>Working at <span class="hookLink"><a href="https://byhook.com/" target="_blank">HOOK</a></span></h1>
-        </div>
-        <ul class="right">
-            <li><a href="works.html">Works</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="archives.html">Archives</a></li>
-        </ul>
-    </nav>
-    <footer>
-        <div class="mid">
-            <h2>© 2023</h2>
-        </div>
-        <ul class="right">
-            <li><a>Instagram</a></li>
-            <li><a href="https://read.cv/akauf13" target="_blank">read.cv</a></li>
-            <li><a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">LinkedIn</a></li>
-        </ul>
-    </footer>
-    <div class="splash">
-        <h1 class="fade-in">Loading...</h1>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+    </div>
+    <div class="nav">
+        <a href="index.html">Alex Kauffman</a>
+        <a href="index.html">Projects</a>
+        <a href="about.html">Info</a>
+        <a href="archives.html">Archive</a>
     </div>
     <script src="app.js"></script>
+    <script src="gallry.js"></script>
 </body>
 
 </html>
