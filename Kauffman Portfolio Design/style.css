@@ -63,6 +63,19 @@ body {
     width: 76%;
     margin: auto;
     text-align: center;
+
+}
+
+.hero h1{
+    font-weight: 500;
+}
+
+.demoreel{
+    width: 96%;
+    margin: auto;
+    height: 640px;
+    background-color: gray;
+    margin-bottom: 164px;
 }
 
 .marquee {
@@ -126,11 +139,11 @@ body {
     align-items: center;
 }
 
-.nav a {
+.nav a, .nav h1 {
     text-decoration: none;
     color: rgb(16, 16, 16);
     font-size: 18px;
-    cursor: pointer;
+
     font-size: 32px;
     font-weight: 600;
     text-transform: uppercase;
@@ -140,7 +153,8 @@ body {
 .nav a:hover {
     background-color: rgb(31, 31, 31);
     color: white;
-    transition: 0.3s ease;
+    transition: 0.3s ease;    
+    cursor: pointer;
 }
 
 .logo {
@@ -373,9 +387,6 @@ body {
 
 
 /*Gallary View*/
-.captions {
-    text-align: center;
-}
 
 .captions h1 {
     font-size: 32px;
@@ -384,7 +395,6 @@ body {
     font-weight: 600;
     margin-inline-end: 0;
     margin-bottom: 0;
-    padding-top: 12px;
 }
 
 .captions .flex {
@@ -394,7 +404,7 @@ body {
 .captions h2 {
     font-size: 12px;
     position: relative;
-    padding: 8px;
+    padding-top: 8px;
     font-weight: 500;
     margin: 4px;
     text-transform: uppercase;
@@ -433,6 +443,19 @@ main {
     margin: auto;
 }
 
+.projectsStuff{
+    width: 96%;
+}
+
+.Cards:nth-child(even){
+    padding-left: 16px;
+}
+
+.Cards:nth-child(odd){
+    padding-right: 16px;
+}
+
+
 #top {
     padding-top: 0px;
 }
@@ -455,11 +478,6 @@ main {
 .frame img {
     width: 100%;
     height: 100%;
-}
-
-.frame:hover {
-    transition: all 0.5s ease;
-    transform: rotate(2deg);
 }
 
 .img {
@@ -511,7 +529,8 @@ main {
 
 #bioSection {
     height: auto;
-    padding-top: 64px;
+
+    padding-bottom: 132px;
 }
 
 .bio h3 a {
@@ -736,7 +755,7 @@ main {
 
 /*About Page*/
 .aboutPage {
-    max-width: 80%;
+    max-width: 96%;
     margin: auto;
 }
 
@@ -777,11 +796,11 @@ main {
 }
 
 .aboutHero h1 {
-    padding-top: 124px;
     font-size: 8vw;
     line-height: 8vw;
     font-weight: 400;
     margin-block-end: 56px;
+    padding-top: 124px;
 }
 
 .aboutPage h2 {
