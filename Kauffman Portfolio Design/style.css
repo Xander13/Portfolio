@@ -57,7 +57,7 @@ body {
     padding: 0;
 }
 
-.hero{
+.hero {
     font-size: 2.8vw;
     font-weight: 800;
     width: 76%;
@@ -66,11 +66,11 @@ body {
 
 }
 
-.hero h1{
+.hero h1 {
     font-weight: 500;
 }
 
-.demoreel{
+.demoreel {
     width: 96%;
     margin: auto;
     height: 640px;
@@ -139,7 +139,8 @@ body {
     align-items: center;
 }
 
-.nav a, .nav h1 {
+.nav a,
+.nav h1 {
     text-decoration: none;
     color: rgb(16, 16, 16);
     font-size: 18px;
@@ -153,7 +154,7 @@ body {
 .nav a:hover {
     background-color: rgb(31, 31, 31);
     color: white;
-    transition: 0.3s ease;    
+    transition: 0.3s ease;
     cursor: pointer;
 }
 
@@ -443,15 +444,15 @@ main {
     margin: auto;
 }
 
-.projectsStuff{
+.projectsStuff {
     width: 96%;
 }
 
-.Cards:nth-child(even){
+.Cards:nth-child(even) {
     padding-left: 16px;
 }
 
-.Cards:nth-child(odd){
+.Cards:nth-child(odd) {
     padding-right: 16px;
 }
 
@@ -667,17 +668,65 @@ main {
 
 /*Archives section*/
 
-.archives{
+.archives {
     width: 96%;
     margin: auto;
 }
 
-.archives #years{
+.archives #years {
     justify-content: space-between;
     display: flex;
 }
 
-.year{
+.img-container {
+    width: 75%;
+    height: 75%;
+    position: fixed;
+    z-index: -1;
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    top: 140px;
+    margin: auto;
+    rotate: -4deg;
+    object-fit: cover;
+}
+
+.img-container-bg{
+    width: 75%;
+    height: 75%;
+    position: fixed;
+    z-index: -12;
+    cursor: pointer;
+    left: 0;
+    right: 0;
+    top: 140px;
+    margin: auto;
+    rotate: -4deg;
+    object-fit: cover;
+    background-color: rgb(234, 234, 234);
+}
+
+.imgRow{
+    opacity: 1;
+    cursor: pointer;
+}
+
+.imgRow img:hover,
+.imgRow img:focus {
+    opacity: 0.5;
+}
+
+.imgRow:hover {
+    background-color: rgb(255, 255, 255);
+}
+
+.lighter-opacity {
+    opacity: 0.9;
+    /* Set the desired lighter opacity value */
+}
+
+.year {
     font-size: 22px;
     width: auto;
     margin-right: 32px;
@@ -703,14 +752,14 @@ main {
     font-weight: 500;
 }
 
-.list h4 a{
+.list h4 a {
     font-weight: 500;
     font-size: 16px;
     text-transform: uppercase;
     cursor: pointer;
 }
 
-.list h4 a:hover{
+.list h4 a:hover {
     text-decoration: underline;
     text-underline-offset: 12px;
 }
@@ -721,10 +770,6 @@ main {
 
 .list a {
     text-decoration: none;
-}
-
-.list .flexBox {
-    border-top: 1px solid black;
 }
 
 .list .flexBox:last-child {
@@ -792,7 +837,7 @@ main {
     padding-left: 24px;
     padding-right: 24px;
     border-radius: 100rem;
-    background-color: rgb(241, 241, 241);
+    width: 600px;
 }
 
 .aboutHero h1 {
