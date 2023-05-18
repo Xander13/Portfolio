@@ -32,8 +32,8 @@ body {
 }
 
 .line {
-    width: 80%;
-    margin: auto;
+    text-decoration: underline !important;
+    text-underline-offset: 12px;
 }
 
 .backToTop {
@@ -137,6 +137,8 @@ body {
     padding-top: 16px;
     box-sizing: border-box;
     align-items: center;
+    background-color: white;
+    padding-bottom: 16px;
 }
 
 .nav a,
@@ -679,59 +681,66 @@ main {
 }
 
 .img-container {
-    width: 75%;
-    height: 75%;
+    width: 45%;
+    height: 90%;
     position: fixed;
     z-index: -1;
     cursor: pointer;
-    left: 0;
-    right: 0;
+    right: 2px;
     top: 140px;
     margin: auto;
-    rotate: -4deg;
+    rotate: -6deg;
     object-fit: cover;
 }
 
 .img-container-bg{
-    width: 75%;
-    height: 75%;
+    width: 45%;
+    height: 90%;
     position: fixed;
     z-index: -12;
     cursor: pointer;
-    left: 0;
-    right: 0;
+    right: 2px;
     top: 140px;
-    margin: auto;
-    rotate: -4deg;
+    rotate: -6deg;
     object-fit: cover;
-    background-color: rgb(234, 234, 234);
+    background-color: rgb(244, 244, 244);
 }
 
 .imgRow{
+    position: relative;
     opacity: 1;
     cursor: pointer;
+    height: fit-content;
+    transition: 0.5s ease;
+    padding-left: 0px;
+    width: fit-content;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
-.imgRow img:hover,
-.imgRow img:focus {
-    opacity: 0.5;
+.imgRow h2{
+    margin-block-start: 0;
+    margin-block-end: 0;
+    transition: 0.5s ease;
 }
 
-.imgRow:hover {
-    background-color: rgb(255, 255, 255);
+.imgRow:hover{
+    position: relative;
+    padding-left: 32px;
+    transition: 0.5s ease;
 }
 
-.lighter-opacity {
-    opacity: 0.9;
-    /* Set the desired lighter opacity value */
+.imgRow h2:hover{
+    color:gray;
+    transition: 0.5s ease;
 }
 
-.year {
-    font-size: 22px;
-    width: auto;
-    margin-right: 32px;
-    position: sticky;
-    top: 32px;
+.group{
+    position: relative;
+    height: auto;
+    width: 100%;
+    padding-bottom: 32px;
+    padding-top: 32px;
 }
 
 .list {
@@ -748,8 +757,13 @@ main {
 .list h2,
 .list a h2 {
     color: black;
-    font-size: 22px;
-    font-weight: 500;
+    font-size: 4vw;
+    font-weight: 400;
+}
+
+.list .smalltxt{
+    font-size: 14px;
+    color: rgb(23, 23, 23);
 }
 
 .list h4 a {
@@ -764,16 +778,8 @@ main {
     text-underline-offset: 12px;
 }
 
-.list .projectTitle {
-    width: 300px;
-}
-
 .list a {
     text-decoration: none;
-}
-
-.list .flexBox:last-child {
-    border-bottom: 1px solid black;
 }
 
 .loadMoreBtn {
