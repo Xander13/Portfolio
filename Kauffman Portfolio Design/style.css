@@ -33,7 +33,7 @@ body {
 
 .line {
     text-decoration: underline !important;
-    text-underline-offset: 12px;
+    text-underline-offset: 21px;
 }
 
 .backToTop {
@@ -450,24 +450,9 @@ main {
     width: 96%;
 }
 
-.Cards:nth-child(even) {
-    padding-left: 16px;
-}
-
-.Cards:nth-child(odd) {
-    padding-right: 16px;
-}
-
 
 #top {
     padding-top: 0px;
-}
-
-.Cards {
-    height: auto;
-    width: 100%;
-    margin: auto;
-    padding-bottom: 132px;
 }
 
 .frame {
