@@ -14,6 +14,7 @@ body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
     transition: background-color 1s cubic-bezier(.17, .67, .83, .67);
+    scroll-behavior: smooth;
 }
 
 ::-webkit-scrollbar {
@@ -140,6 +141,7 @@ body {
     box-sizing: border-box;
     align-items: center;
     padding-bottom: 16px;
+    background-color: white;
 }
 
 .nav a,
@@ -341,32 +343,32 @@ body {
 }
 
 /*Scroll effect*/
-.scroll-downs h1{
-  position: fixed;
-  right: 32px;
-  bottom: 16px;
-  z-index: 2222;
-  width: fit-content;
-  font-size: 22px;
-  margin-block-start: 0;
-  margin-block-end: 0;
-  font-weight: 600;
+.scroll-downs h1 {
+    position: fixed;
+    right: 32px;
+    bottom: 16px;
+    z-index: 2222;
+    width: fit-content;
+    font-size: 22px;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    font-weight: 600;
 }
 
-.sm{
+.sm {
     font-size: 22px;
     position: fixed;
     left: 32px;
     bottom: 16px;
 }
 
-.sm a{
+.sm a {
     font-weight: 600;
     margin-right: 32px;
     transition: 0.2s ease;
 }
 
-.sm a:hover{
+.sm a:hover {
     background-color: black;
     color: white;
     transition: 0.2s ease;
@@ -475,10 +477,19 @@ main {
     height: auto;
 }
 
-.backtotop h1{
+.backtotop h1 {
     font-size: 8vw;
     font-weight: 400;
     margin-block-end: 0;
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.4s ease;
+}
+
+.backtotop h1:hover {
+    background-color: black;
+    color: white;
+    transition: 0.4s ease;
 }
 
 /*Project Cards*/
@@ -490,7 +501,7 @@ main {
     padding: 0;
 }
 
-.Cards{
+.Cards {
     padding-bottom: 96px;
     padding-top: 0;
     transition: 0.5s ease;
@@ -498,12 +509,12 @@ main {
     padding: 48px;
 }
 
-.Cards:hover{
+.Cards:hover {
     rotate: 2deg;
     transition: 0.5s ease;
 }
 
-.Cards:nth-child(even){
+.Cards:nth-child(even) {
     padding-top: 500px;
 }
 
@@ -535,7 +546,7 @@ main {
     scale: 1.05;
 }
 
-.boldTxt{
+.boldTxt {
     font-size: 6vw;
     text-align: center;
     width: 80%;
@@ -558,11 +569,11 @@ main {
     top: 0;
 }
 
-.bio .half:nth-child(even){
+.bio .half:nth-child(even) {
     padding-left: 18px;
 }
 
-.bio .half:nth-child(odd){
+.bio .half:nth-child(odd) {
     padding-right: 18px;
 }
 
@@ -723,6 +734,28 @@ main {
     opacity: 1;
 }
 
+/*Indciator*/
+.scroll-indicator {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 6px;
+    background-color: white;
+    z-index: 9999;
+}
+
+#progress-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 100%;
+    background-color: #080808;
+}
+
+
+
 /*Archives section*/
 
 .archives {
@@ -748,7 +781,7 @@ main {
     object-fit: cover;
 }
 
-.img-container-bg{
+.img-container-bg {
     width: 45%;
     height: 90%;
     position: fixed;
@@ -761,7 +794,7 @@ main {
     background-color: rgb(244, 244, 244);
 }
 
-.imgRow{
+.imgRow {
     position: relative;
     opacity: 1;
     cursor: pointer;
@@ -773,24 +806,24 @@ main {
     padding-bottom: 0px;
 }
 
-.imgRow h2{
+.imgRow h2 {
     margin-block-start: 0;
     margin-block-end: 0;
     transition: 0.5s ease;
 }
 
-.imgRow:hover{
+.imgRow:hover {
     position: relative;
     padding-left: 32px;
     transition: 0.5s ease;
 }
 
-.imgRow h2:hover{
-    color:gray;
+.imgRow h2:hover {
+    color: gray;
     transition: 0.5s ease;
 }
 
-.group{
+.group {
     position: relative;
     height: auto;
     width: 100%;
@@ -816,7 +849,7 @@ main {
     font-weight: 400;
 }
 
-.list .smalltxt{
+.list .smalltxt {
     font-size: 14px;
     color: rgb(23, 23, 23);
 }

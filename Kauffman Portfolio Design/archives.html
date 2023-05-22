@@ -29,20 +29,15 @@
             </div>
         </div>
     </div>
-    <img class="img-container" src="" width="100%" alt="">
-    <div class="img-container-bg"></div>
+
     <div class="container">
         <h1 class="boldTxt">I'm a visual designer
             focused on creating things
             for Ads and Experiances.</h1>
     </div>
     <div class="archives">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
+        <img class="img-container" src="" width="100%" alt="">
+        <div class="img-container-bg"></div>
         <div class="list">
             <div class="imgRow"
                 data-image="https://freight.cargo.site/w/1400/q/94/i/f1bff6d023d4d50a6051380f0a4a49452d3fbf40b86937a5a5a6f104a6336f05/05_large-banner.gif">
@@ -165,11 +160,9 @@
                 </a>
             </div>
         </div>
-        <br>
-        <br>
     </div>
     <div class="container">
-        <div class="aboutPage">
+        <div class="aboutPage" id="about">
             <div class="aboutHero">
                 <h1>Visual Designer <br> & Saber Fencer</h1>
             </div>
@@ -246,7 +239,7 @@
                 <div class="flexBox">
                     <div class="cols">
                         <h4>Recent projects</h4>
-                        <h1>Google Bard – Timeline</h1>
+                        <h1>Google Bard</h1>
                         <h1>Google Health</h1>
                         <h1>Youtube Brandcast</h1>
                         <h1>Youtube SupEx</h1>
@@ -276,72 +269,37 @@
                     </div>
                 </div>
             </div>
-            <div class="backtotop">
+            <div class="backtotop" onclick="scrollToTop()">
                 <h1 id="top">Back to top &uarr;</h1>
             </div>
         </div>
     </div>
-    <button id="scrollToTopButton" onclick="scrollToTop()">
-        <span class="arrow">&uarr;</span>
-    </button>
+    <div class="scroll-indicator">
+        <div id="progress-bar"></div>
+    </div>
+
     <div class="nav">
         <a href="#">Alex Kauffman</a>
-        <!-- <a href="about.html">Info</a>
-        <a href="archives.html" class="line">Projects</a> -->
+        <a href="#">Projects</a>
+        <a href="#about">About</a>
     </div>
-    <style>
-       #scrollToTopButton {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #333;
-  border: none;
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.arrow {
-  display: inline-block;
-  width: fit-content;
-  height: fit-content;
-  transform: rotate(180deg);
-  transition: transform 0.3s;
-  font-size: 32px;
-}
-
-.arrow.down {
-  transform: rotate(0deg);
-}
-
-    </style>
     <script src="app.js"></script>
     <script src="gallry.js"></script>
     <script>
-        window.addEventListener('scroll', function () {
-            var scrollToTopButton = document.getElementById('scrollToTopButton');
-            if (window.scrollY > 100) {
-                scrollToTopButton.classList.add('arrow');
-                scrollToTopButton.classList.remove('down');
-                scrollToTopButton.disabled = false;
-            } else {
-                scrollToTopButton.classList.remove('arrow');
-                scrollToTopButton.classList.add('down');
-                scrollToTopButton.disabled = true;
-            }
-        });
-
         function scrollToTop() {
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         }
+    </script>
+    <script>
+        window.addEventListener('scroll', function () {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / windowHeight) * 100;
+            document.getElementById('progress-bar').style.height = progress + '%';
+        });
     </script>
     <script>
         $(document).ready(function () {
