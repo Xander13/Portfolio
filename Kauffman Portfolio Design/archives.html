@@ -278,13 +278,29 @@
         <div id="progress-bar"></div>
     </div>
 
-    <div class="nav">
+    <div class="nav" id="navbar"> 
         <a href="#">Alex Kauffman</a>
         <a href="#">Projects</a>
         <a href="#about">About</a>
     </div>
     <script src="app.js"></script>
     <script src="gallry.js"></script>
+    <script>
+        let prevScrollPos = window.pageYOffset;
+        let navbar = document.getElementById("navbar");
+
+        window.onscroll = function () {
+            let currentScrollPos = window.pageYOffset;
+
+            if (prevScrollPos > currentScrollPos) {
+                navbar.classList.remove("nav-hidden");
+            } else {
+                navbar.classList.add("nav-hidden");
+            }
+
+            prevScrollPos = currentScrollPos;
+        };
+    </script>
     <script>
         function scrollToTop() {
             window.scrollTo({

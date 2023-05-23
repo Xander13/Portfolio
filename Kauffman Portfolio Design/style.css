@@ -142,7 +142,13 @@ body {
     align-items: center;
     padding-bottom: 16px;
     background-color: white;
+    transition: 0.5s ease;
 }
+
+.nav-hidden {
+    top: -60px;
+    transition: 0.5s ease;
+  }
 
 .nav a,
 .nav h1 {
