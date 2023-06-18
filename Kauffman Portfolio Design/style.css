@@ -584,6 +584,13 @@ main {
     padding-bottom: 50vh;
 }
 
+.project h4{
+    font-weight: 400;
+    font-size: 32px;
+    padding-left: 22px;
+    padding-bottom: 12px;
+}
+
 .project .flexBox {
     padding-bottom: 132px;
 }
@@ -602,7 +609,7 @@ main {
 
 .hundred {
     width: 100%;
-    height: 420px;
+    height: 580px;
     width: calc(100% - 32px);
     top: 64px;
 }
@@ -621,7 +628,7 @@ main {
     position: relative;
 }
 
-.chips{
+.chips {
     position: absolute;
     z-index: 3;
     left: 16px;
@@ -630,11 +637,11 @@ main {
     backface-visibility: hidden;
 }
 
-.chips .flexBox{
+.chips .flexBox {
     padding-bottom: 0;
 }
 
-.chips h1{
+.chips h1 {
     position: relative;
     font-size: 24px;
     background-color: rgba(15, 15, 15, 0.882);
@@ -647,7 +654,7 @@ main {
     margin-right: 12px;
 }
 
-.photoBox img{
+.photoBox img {
     background-size: cover;
     padding: 0;
     margin: 0;
@@ -657,7 +664,7 @@ main {
     transition: scale 0.5s ease;
 }
 
-.photoBox img:hover{
+.photoBox img:hover {
     scale: 1.02;
     transition: scale 0.5s ease;
 }
@@ -876,10 +883,7 @@ main {
 }
 
 .year {
-    position: fixed;
-    z-index: 12;
-    right: 2%;
-    bottom: 2%;
+    font-size: 32px;
 }
 
 /*Archives section*/
@@ -1062,20 +1066,22 @@ main {
     perspective: 800px;
 }
 
+
 .cube {
     transform-style: preserve-3d;
-    transform: rotateX(-12deg) rotateY(0deg) ;
+    transform: rotateX(0deg);
+    transform: rotateY(0deg);
     transition: 1s ease;
     position: sticky;
-    width: 400px;
-    height: 600px;
+    width: 500px;
+    height: 620px;
     top: 164px;
     margin-left: 30%;
     transition: transform 0.5s ease;
 }
 
 .cube div {
-    width: 460px;
+    width: 500px;
     height: 620px;
     line-height: 100px;
     text-align: center;
@@ -1088,7 +1094,7 @@ main {
 .cube div.right {
     transform: rotateY(90deg);
     margin-left: 50px;
-    background: url(images/6.png);
+    background: url("https://a-us.storyblok.com/f/1004432/2000x1358/8d06295700/body-detection-with-computer-vision.jpeg/m/1024x1024/");
     background-position: center;
     background-size: contain;
 }
@@ -1096,21 +1102,21 @@ main {
 .cube div.left {
     transform: rotateY(-90deg);
     margin-left: -50px;
-    background: url(images/2.png);
+    background: url("https://a-us.storyblok.com/f/1004432/2000x1125/a67301f518/my-storytime-social.png/m/1024x1024/");
     background-position: center;
     background-size: contain;
 }
 
 .cube div.front {
     transform: translateZ(50px);
-    background: url(images/4.png);
+    background: url("https://a-us.storyblok.com/f/1004432/2048x2048/f71da886ee/008.png/m/1024x1024/");
     background-position: center;
     background-size: contain;
 }
 
 .cube div.back {
     transform: translateZ(-50px) rotateX(180deg);
-    background: url(images/3.png);
+    background: url("https://a-us.storyblok.com/f/1004432/5120x3459/bdd41213d9/are-we-closer-to-the-truth-1.jpeg/m/1024x1024/");
     background-position: center;
     background-size: contain;
 }
@@ -1150,6 +1156,45 @@ main {
     height: 900px;
 }
 
+
+footer{
+    max-width: 90%;
+    padding-top: 32px;
+    padding-bottom: 18px;
+}
+
+fotter .content{
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+}
+
+footer h1{
+    font-size: 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: right;
+    width: fit-content;
+    padding: 0;
+    margin: 0;
+}
+
+footer a{
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+    text-transform: uppercase;
+    margin-right: 12px;
+    transition: 0.3s ease;
+}
+
+footer a:hover{
+    background-color: rgb(31, 31, 31);
+    color: white;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
 
 @media only screen and (max-width: 900px) {
     .status {

@@ -35,6 +35,7 @@
     <!-- <h1 class="boldTxt">Alex, An Ad and Experiance designer
         that crafts with punch of bold.</h1> -->
     <div class="project">
+        <h4>Select works</h4>
         <div class="flexBox">
             <div class="sixty">
                 <div class="photoBox">
@@ -44,7 +45,8 @@
                             <h1>Motion</h1>
                         </div>
                     </div>
-                    <img src="https://wearewouq.com/wp-content/uploads/2022/01/220105_Samsung_NBP2_Portfolio_Thumbnail.jpg">
+                    <img
+                        src="https://wearewouq.com/wp-content/uploads/2022/01/220105_Samsung_NBP2_Portfolio_Thumbnail.jpg">
                 </div>
                 <div class="captions">
                     <h1>Notebook Plus2</h1>
@@ -74,7 +76,7 @@
                             <h1>Motion</h1>
                         </div>
                     </div>
-                <img src="https://wearewouq.com/wp-content/uploads/2022/05/220516_Tylko_Spaces_Thumbnail.jpg">
+                    <img src="https://wearewouq.com/wp-content/uploads/2022/05/220516_Tylko_Spaces_Thumbnail.jpg">
                 </div>
                 <div class="captions">
                     <h1>Another Project</h1>
@@ -90,7 +92,8 @@
                             <h1>Motion</h1>
                         </div>
                     </div>
-                <img src="https://wearewouq.com/wp-content/uploads/2022/02/220201_N26_Pearls_Portfolio_Thumbnail_02.jpg" width="100%">
+                    <img src="https://wearewouq.com/wp-content/uploads/2022/02/220201_N26_Pearls_Portfolio_Thumbnail_02.jpg"
+                        width="100%">
                 </div>
                 <div class="captions">
                     <h1>Pearls</h1>
@@ -104,7 +107,8 @@
                             <h1>Motion</h1>
                         </div>
                     </div>
-                <img src="https://wearewouq.com/wp-content/uploads/2022/01/220105_VanMoof_RTFT_Portfolio_Thumbnail.jpg" width="100%">
+                    <img src="https://wearewouq.com/wp-content/uploads/2022/01/220105_VanMoof_RTFT_Portfolio_Thumbnail.jpg"
+                        width="100%">
                 </div>
                 <div class="captions">
                     <h1>Ride the future together</h1>
@@ -121,7 +125,7 @@
                         </div>
                     </div>
                     <img src="https://wearewouq.com/wp-content/uploads/2022/05/220516_Tylko_Spaces_Thumbnail.jpg">
-                </div>  
+                </div>
                 <div class="captions">
                     <h1>Another Project</h1>
                 </div>
@@ -136,7 +140,8 @@
                             <h1>Motion</h1>
                         </div>
                     </div>
-                    <img src="https://wearewouq.com/wp-content/uploads/2023/03/230321_Tylko_Livingroom_DC_Thumb_A_2.webp">
+                    <img
+                        src="https://wearewouq.com/wp-content/uploads/2023/03/230321_Tylko_Livingroom_DC_Thumb_A_2.webp">
                 </div>
                 <div class="captions">
                     <h1>Spring</h1>
@@ -150,7 +155,8 @@
                             <h1>Motion</h1>
                         </div>
                     </div>
-                <img src="https://freight.cargo.site/w/768/q/94/i/bed0e5a6b4c80e52b626686674d02c3442185c755cc8fa522262357bfd75d965/SebaCuri52.gif">
+                    <img
+                        src="https://freight.cargo.site/w/768/q/94/i/bed0e5a6b4c80e52b626686674d02c3442185c755cc8fa522262357bfd75d965/SebaCuri52.gif">
                 </div>
                 <div class="captions">
                     <h1>Project 1</h1>
@@ -253,8 +259,7 @@
 
                             cubeSections.forEach((section, index) => {
                                 if (isElementInViewport(section)) {
-                                    cube.style.transform = `rotateX(-12deg) rotateY(${index * 90}deg)`;
-                                    isActive = true;
+                                    cube.style.transform = `rotateY(${index * 90}deg)`;
                                 }
                             });
                         }
@@ -296,16 +301,33 @@
             </div>
         </div>
     </div>
+    <footer class="container">
+        <div class="flexBox">
+            <div class="content">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">Instagram</a>
+                <a href="#">Read.cv</a>
+            </div>
+            <div class="content" style="max-width: 500px;">
+                <div class="flexBox" style="justify-content: space-between;">
+                    <h1>Working from Detroit Area</h1>
+                    <h1>&copy; 2023</h1>
+                </div>
+            </div>
+        </div>
+    </footer>
     <div class="scroll-indicator">
         <div id="progress-bar"></div>
     </div>
 
     <div class="nav" id="navbar">
         <a href="#">Alex Kauffman</a>
+        <a href="#">UX/UI + Ad Designer</a>
         <a href="#">Projects<span class="smtxt">( 6 )</span></a>
         <a href="#">Archives<span class="smtxt">( 20 )</span></a>
         <a href="#about">About</a>
-        <a href="#about">.TTF<span class="smtxt"> ( Fonts )</span></a>
+        <!-- <a href="#about">.TTF<span class="smtxt"> ( Fonts )</span></a> -->
     </div>
     <script src="app.js"></script>
     <script src="gallry.js"></script>
