@@ -37,22 +37,6 @@ body {
     text-underline-offset: 21px;
 }
 
-.backToTop {
-    width: 100%;
-    position: relative;
-    height: auto;
-    font-size: 5vw;
-    cursor: pointer;
-}
-
-.backToTop h1 {
-    text-align: center;
-}
-
-.backToTop:hover {
-    color: var(--gray);
-}
-
 body {
     margin: 0;
     padding: 0;
@@ -488,6 +472,10 @@ main {
     height: auto;
 }
 
+.backtotop{
+    width: fit-content;
+}
+
 .backtotop h1 {
     font-size: 8vw;
     font-weight: 400;
@@ -581,7 +569,7 @@ main {
     width: 90%;
     margin: auto;
     padding-top: 80vh;
-    padding-bottom: 50vh;
+    padding-bottom: 232px;
 }
 
 .project h4{
@@ -831,30 +819,6 @@ main {
     transition: 0.2s ease;
 }
 
-/*Project Page*/
-.projectNav {
-    padding-left: 22px;
-    padding-top: 128px;
-    display: block;
-    width: 100%;
-}
-
-.projectView {
-    position: fixed;
-    z-index: -1;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    width: 80%;
-    height: 80%;
-    transform: rotate(2deg);
-    background-color: gainsboro;
-    background-image: url(/images/1.jpeg);
-    opacity: 1;
-}
-
 /*Indciator*/
 .scroll-indicator {
     position: fixed;
@@ -908,7 +872,7 @@ main {
     padding-right: 24px;
     cursor: pointer;
     transition: 0.5s ease;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .row h2:first-child{
@@ -920,19 +884,58 @@ main {
     width: 370px;
 }
 
-.row:hover{
-    background-color: rgb(232, 232, 232);
-    font-size: 18px;
-    transition: 0.5s ease;
-}
-
 .row h2{
     font-weight: 400;
+}
+
+.row a{
+    margin-top: 28px;
+    height: fit-content;
+}
+
+.row a:hover{
+    color: white;
+    background: black;
 }
 
 .row .flexBox{
     padding-bottom: 0;
     justify-content: space-between;
+}
+
+.projectView{
+    padding: 0;
+    margin: 0;
+}
+
+.projectView .heroImg{
+    padding-top: 8px;
+}
+
+.projectView .flexBox, .projectView .heroImg{
+    padding-bottom: 132px;
+}
+
+.heroImg h1{ 
+    font-size: 4vw;
+    line-height: 4vw;
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: center;
+    font-weight: 700;
+}
+
+.heroImg h3{
+    text-align: center;
+    font-weight: 400;
+}
+
+.projectView img{
+    border-radius: 12px;
+}
+
+.copyArea{
+    padding: 124px;
 }
 
 .seemore{
@@ -1136,7 +1139,7 @@ main {
     transform: rotateY(0deg);
     transition: 1s ease;
     position: sticky;
-    width: 500px;
+    width: 550px;
     height: 620px;
     top: 164px;
     margin-left: 30%;
@@ -1144,7 +1147,7 @@ main {
 }
 
 .cube div {
-    width: 500px;
+    width: 550px;
     height: 620px;
     line-height: 100px;
     text-align: center;
@@ -1197,7 +1200,7 @@ main {
 
 .experiences {
     padding-top: 164px;
-    width: 50%;
+    width: 100%;
 }
 
 .experiences .flexBox {
