@@ -131,8 +131,8 @@ body {
     left: 0;
     top: 0;
     width: 100%;
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: calc(5% + 16px);
+    padding-right: calc(5% + 16px);
     display: flex;
     justify-content: space-between;
     z-index: 22;
@@ -148,7 +148,7 @@ body {
 .nav-hidden {
     top: -60px;
     transition: 0.5s ease;
-  }
+}
 
 .nav a,
 .nav h1 {
@@ -167,6 +167,11 @@ body {
     cursor: pointer;
 }
 
+.smtxt {
+    color: gray;
+    padding-left: 12px;
+    font-size: 16px;
+}
 
 .logo {
     z-index: 22222;
@@ -210,7 +215,7 @@ body {
 }
 
 .container {
-    max-width: 1600px;
+    width: 90%;
     margin: auto;
 }
 
@@ -553,7 +558,7 @@ main {
 }
 
 .boldTxt {
-    font-size: 4vw;
+    font-size: 5vw;
     text-align: center;
     justify-content: center;
     align-items: center;
@@ -565,47 +570,65 @@ main {
     justify-content: center;
     align-items: center;
     z-index: -1;
-    width: 920px;
+    width: 1200px;
     left: 0;
     right: 0;
     margin: auto;
     transition: color 0.5s ease;
 }
 
-.project{
-    max-width: 1400px;
-    width: 80%;
+.project {
+    width: 90%;
     margin: auto;
     padding-top: 80vh;
     padding-bottom: 50vh;
 }
 
-.project .flexBox{
+.project .flexBox {
     padding-bottom: 132px;
 }
 
-.fourty, .sixty{
-
-}
-
-.fourty{
+.fourty {
     width: calc(40% - 32px);
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 64px;
+    height: 100%
 }
 
-.sixty{
+.sixty {
     width: calc(60% - 32px);
 }
 
-.fourty .photoBox{
+.hundred {
+    width: 100%;
     height: 420px;
+    width: calc(100% - 32px);
+    top: 64px;
+}
+
+.sixty,
+.fourty,
+.hundred {
+    cursor: pointer;
+}
+
+.photoBox {
+    background-size: cover;
+    width: 100%;
+    height: 100%;
     border-radius: 12px;
+}
+
+.fourty .photoBox {
+    height: 420px;
     background-color: #ecedf1;
 }
 
-.sixty .photoBox{
+.sixty .photoBox {
     height: 680px;
     background-color: #ecedf1;
-    border-radius: 12px;
 }
 
 
@@ -643,6 +666,7 @@ main {
     justify-content: space-around;
     box-sizing: border-box;
     padding: 4px;
+    height: auto;
 }
 
 .flexBox img {
@@ -789,7 +813,7 @@ main {
     top: 0;
     left: 0;
     height: 100vh;
-    width: 6px;
+    width: 12px;
     background-color: white;
     z-index: 9999;
 }
@@ -801,9 +825,21 @@ main {
     height: 0;
     width: 100%;
     background-color: #080808;
+    transition: background-color 0.5s ease;
 }
 
+#progress-bar:hover {
+    background-color: gainsboro;
+    cursor: pointer;
+    transition: background-color 0.5s ease;
+}
 
+.year {
+    position: fixed;
+    z-index: 12;
+    right: 2%;
+    bottom: 2%;
+}
 
 /*Archives section*/
 
@@ -943,15 +979,8 @@ main {
 
 /*About Page*/
 .aboutPage {
-    width: 100%;
-    padding: 2%;
     margin: auto;
-    background-color: rgb(255, 255, 255);
-}
-
-.aboutPage img {
-    max-width: 500px;
-    float: right;
+    background-color: white;
 }
 
 .aboutPage .bio {
@@ -998,26 +1027,31 @@ main {
     font-weight: 200;
 }
 
+.cube-container {
+    perspective: 800px;
+}
+
 .cube {
     transform-style: preserve-3d;
-    animation: spin 3s infinite;
-    transform: rotateX(-12deg) rotateY(45deg);
+    transform: rotateX(-12deg) rotateY(0deg) ;
     transition: 1s ease;
     position: sticky;
     width: 400px;
     height: 600px;
     top: 164px;
     margin-left: 30%;
+    transition: transform 0.5s ease;
 }
 
 .cube div {
-    width: 400px;
-    height: 600px;
+    width: 460px;
+    height: 620px;
     line-height: 100px;
     text-align: center;
     background: var(--black);
     display: block;
     position: absolute;
+    border-radius: 12px
 }
 
 .cube div.right {

@@ -13,12 +13,14 @@
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- jQuery CDN (Google Hosted Library) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery CDN (Microsoft Ajax Content Delivery Network) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
 </head>
 
 <body>
-    <!-- <div class="year">Kauffman &copy; 2023</div> -->
     <div class="loader-wrap">
         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
             <path id="svg" style="fill: #efefef;" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
@@ -30,74 +32,84 @@
             </div>
         </div>
     </div>
-    <h1 class="boldTxt">Alex, An Ad and Experiance designer
-        that crafts with punch of bold.</h1>
+    <!-- <h1 class="boldTxt">Alex, An Ad and Experiance designer
+        that crafts with punch of bold.</h1> -->
     <div class="project">
         <div class="flexBox">
             <div class="sixty">
-                <div class="photoBox">
+                <div class="photoBox"
+                    style="background-image: url('https://wearewouq.com/wp-content/uploads/2022/01/220105_Samsung_NBP2_Portfolio_Thumbnail.jpg');">
 
                 </div>
                 <div class="captions">
-                    <h1>Project 1</h1>
+                    <h1>Notebook Plus2</h1>
                 </div>
             </div>
             <div class="fourty">
-                <div class="photoBox">
+                <div class="photoBox"
+                    style="background-image: url('https://wearewouq.com/wp-content/uploads/2022/05/220516_Tylko_Spaces_Thumbnail.jpg');">
 
                 </div>
                 <div class="captions">
-                    <h1>Project 1</h1>
+                    <h1>Spaces</h1>
+                </div>
+            </div>
+        </div>
+        <div class="flexBox">
+            <div class="hundred">
+                <div class="photoBox"
+                    style="background-image: url('https://wearewouq.com/wp-content/uploads/2022/05/220516_Tylko_Spaces_Thumbnail.jpg');">
+
+                </div>
+                <div class="captions">
+                    <h1>Another Project</h1>
                 </div>
             </div>
         </div>
         <div class="flexBox">
             <div class="fourty">
-                <div class="photoBox">
+                <div class="photoBox"
+                    style="background-image: url('https://wearewouq.com/wp-content/uploads/2022/02/220201_N26_Pearls_Portfolio_Thumbnail_02.jpg');">
 
                 </div>
                 <div class="captions">
-                    <h1>Project 1</h1>
+                    <h1>Pearls</h1>
                 </div>
             </div>
             <div class="sixty">
-                <div class="photoBox">
+                <div class="photoBox"
+                    style="background-image: url('https://wearewouq.com/wp-content/uploads/2022/01/220105_VanMoof_RTFT_Portfolio_Thumbnail.jpg');">
 
                 </div>
                 <div class="captions">
-                    <h1>Project 1</h1>
+                    <h1>Ride the future together</h1>
+                </div>
+            </div>
+        </div>
+        <div class="flexBox">
+            <div class="hundred">
+                <div class="photoBox"
+                    style="background-image: url('https://wearewouq.com/wp-content/uploads/2022/05/220516_Tylko_Spaces_Thumbnail.jpg');">
+
+                </div>
+                <div class="captions">
+                    <h1>Another Project</h1>
                 </div>
             </div>
         </div>
         <div class="flexBox">
             <div class="sixty">
-                <div class="photoBox">
+                <div class="photoBox"
+                    style="background-image: url('https://wearewouq.com/wp-content/uploads/2023/03/230321_Tylko_Livingroom_DC_Thumb_A_2.webp');">
 
                 </div>
                 <div class="captions">
-                    <h1>Project 1</h1>
+                    <h1>Spring</h1>
                 </div>
             </div>
             <div class="fourty">
-                <div class="photoBox">
-
-                </div>
-                <div class="captions">
-                    <h1>Project 1</h1>
-                </div>
-            </div>
-        </div>
-        <div class="flexBox">
-            <div class="fourty">
-                <div class="photoBox">
-
-                </div>
-                <div class="captions">
-                    <h1>Project 1</h1>
-                </div>
-            </div>
-            <div class="sixty">
-                <div class="photoBox">
+                <div class="photoBox"
+                    style="background-image: url('https://freight.cargo.site/w/768/q/94/i/bed0e5a6b4c80e52b626686674d02c3442185c755cc8fa522262357bfd75d965/SebaCuri52.gif');">
 
                 </div>
                 <div class="captions">
@@ -109,7 +121,8 @@
     <script>
         $(window).scroll(function () {
             if ($(this).scrollTop() > 100) {
-                $('.boldTxt').css('color', '#F2F2F2'); // Change the color to red (or any other color you desire)
+                $('.boldTxt').css('color',
+                    '#F2F2F2'); // Change the color to red (or any other color you desire)
             } else {
                 $('.boldTxt').css('color', ''); // Revert the color back to its original state
             }
@@ -121,7 +134,7 @@
                 <div class="half">
                     <!-- <h2>My design meditations <br> I apply into my daily life.</h2> -->
                     <div class="bio">
-                        <section>
+                        <section class="cube-section">
                             <h4>Another quote goes here</h4>
                             <h1>With decades of experience in the biz, I've sharpened my skills in creating mind-blowing
                                 Webflow
@@ -131,7 +144,7 @@
                         </section>
                         <br>
                         <br>
-                        <section>
+                        <section class="cube-section">
                             <h4>Why I design</h4>
                             <h1>
                                 The reason I do design becasue I love to foucs on problem sloving. I like creating
@@ -141,7 +154,7 @@
                         </section>
                         <br>
                         <br>
-                        <section>
+                        <section class="cube-section">
                             <h4>My education path</h4>
                             <h1>
                                 I graduated at RIT in 2021 with BFA in New Meida Design. My T skills is UI/UX design and
@@ -153,7 +166,7 @@
                         </section>
                         <br>
                         <br>
-                        <section>
+                        <section class="cube-section">
                             <h4>My mindset</h4>
                             <h1>
                                 My last mindset is "control your inertia". In fencing, opponents are always a wild card
@@ -183,6 +196,32 @@
                         <div class="side left"></div>
                         <div class="side right"></div>
                     </div>
+                    <script>
+                        function isElementInViewport(el) {
+                            const rect = el.getBoundingClientRect();
+                            return (
+                                rect.top >= 0 &&
+                                rect.left >= 0 &&
+                                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                            );
+                        }
+
+                        function rotateCube() {
+                            const cubeSections = document.querySelectorAll('.cube-section');
+                            const cube = document.querySelector('.cube');
+
+                            cubeSections.forEach((section, index) => {
+                                if (isElementInViewport(section)) {
+                                    cube.style.transform = `rotateX(-12deg) rotateY(${index * 90}deg)`;
+                                    isActive = true;
+                                }
+                            });
+                        }
+
+                        window.addEventListener('scroll', rotateCube);
+                        window.addEventListener('resize', rotateCube);
+                    </script>
                 </div>
             </div>
             <div class="experiences">
@@ -223,9 +262,10 @@
 
     <div class="nav" id="navbar">
         <a href="#">Alex Kauffman</a>
-        <a href="#">Projects</a>
+        <a href="#">Projects<span class="smtxt">( 6 )</span></a>
+        <a href="#">Archives<span class="smtxt">( 20 )</span></a>
         <a href="#about">About</a>
-        <a href="#about">.TTF</a>
+        <a href="#about">.TTF<span class="smtxt"> ( Fonts )</span></a>
     </div>
     <script src="app.js"></script>
     <script src="gallry.js"></script>
