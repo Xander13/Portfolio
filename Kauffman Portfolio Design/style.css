@@ -889,7 +889,7 @@ main {
 /*Archives section*/
 
 .archives {
-    width: 96%;
+    width: 90%;
     margin: auto;
 }
 
@@ -897,6 +897,69 @@ main {
     justify-content: space-between;
     display: flex;
 }
+
+.row{
+    margin-left: 16px;
+    margin-right: 16px;
+    background-color: rgb(247, 247, 247);
+    border-radius: 12px;
+    margin-bottom: 12px;
+    padding-left: 24px;
+    padding-right: 24px;
+    cursor: pointer;
+    transition: 0.5s ease;
+    font-size: 20px;
+}
+
+.row h2:first-child{
+    width: 370px;
+}
+
+.row h2:nth-child(2){
+    text-align: left;
+    width: 370px;
+}
+
+.row:hover{
+    background-color: rgb(232, 232, 232);
+    font-size: 18px;
+    transition: 0.5s ease;
+}
+
+.row h2{
+    font-weight: 400;
+}
+
+.row .flexBox{
+    padding-bottom: 0;
+    justify-content: space-between;
+}
+
+.seemore{
+    text-align: center;
+    width: fit-content;
+    background: #080808;
+    color: white;
+    padding: 16px;
+    font-size: 20;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin: auto;
+    margin-top: 32px;
+    border-radius: 100rem;
+    cursor: pointer;
+    transition: 0.5s ease;
+}
+
+.seemore:hover{
+    background: gray;
+    color: white;
+    transition: 0.5s ease;
+}
+
 
 .img-container {
     width: 45%;
@@ -1105,6 +1168,7 @@ main {
     background: url("https://a-us.storyblok.com/f/1004432/2000x1125/a67301f518/my-storytime-social.png/m/1024x1024/");
     background-position: center;
     background-size: contain;
+    
 }
 
 .cube div.front {
