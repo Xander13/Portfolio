@@ -591,7 +591,6 @@ main {
 .fourty {
     width: calc(40% - 32px);
     position: -webkit-sticky;
-    /* Safari */
     position: sticky;
     top: 64px;
     height: 100%
@@ -615,10 +614,52 @@ main {
 }
 
 .photoBox {
-    background-size: cover;
+    overflow: hidden;
     width: 100%;
     height: 100%;
     border-radius: 12px;
+    position: relative;
+}
+
+.chips{
+    position: absolute;
+    z-index: 3;
+    left: 16px;
+    width: fit-content;
+    height: 56px;
+    backface-visibility: hidden;
+}
+
+.chips .flexBox{
+    padding-bottom: 0;
+}
+
+.chips h1{
+    position: relative;
+    font-size: 24px;
+    background-color: rgba(15, 15, 15, 0.882);
+    color: white;
+    font-weight: 400;
+    border-radius: 100rem;
+    padding: 6px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-right: 12px;
+}
+
+.photoBox img{
+    background-size: cover;
+    padding: 0;
+    margin: 0;
+    scale: 1.09;
+    width: 100%;
+    height: 100%;
+    transition: scale 0.5s ease;
+}
+
+.photoBox img:hover{
+    scale: 1.02;
+    transition: scale 0.5s ease;
 }
 
 .fourty .photoBox {
@@ -1002,16 +1043,6 @@ main {
     display: inline-flex;
     flex-wrap: wrap;
     width: 500px;
-}
-
-.chips {
-    font-size: 16px;
-    font-weight: 400;
-    padding: 12px;
-    padding-left: 24px;
-    padding-right: 24px;
-    border-radius: 100rem;
-    width: 600px;
 }
 
 .aboutHero h1 {
