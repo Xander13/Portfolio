@@ -873,6 +873,7 @@ main {
     cursor: pointer;
     transition: 0.5s ease;
     font-size: 18px;
+    overflow: hidden;
 }
 
 .row h2:first-child{
@@ -888,12 +889,18 @@ main {
     font-weight: 400;
 }
 
-.row a{
+.row button{
     margin-top: 28px;
     height: fit-content;
+    background-color: none;
+    border: none;
+    font-size: 20px;
+    padding-inline-start: 0;
+    background: transparent;
+    cursor: pointer;
 }
 
-.row a:hover{
+.row button:hover{
     color: white;
     background: black;
 }
@@ -906,6 +913,7 @@ main {
 .projectView{
     padding: 0;
     margin: 0;
+    display: none;
 }
 
 .projectView .heroImg{
