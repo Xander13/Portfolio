@@ -110,7 +110,7 @@ body {
 
 .nav {
     position: fixed;
-    top: 36px;
+    top: 0px;
     right: 0;
     left: 0;
     top: 0;
@@ -125,12 +125,13 @@ body {
     box-sizing: border-box;
     align-items: center;
     padding-bottom: 16px;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     transition: 0.5s ease;
+    height: 83px;
 }
 
 .nav-hidden {
-    top: -60px;
+    top: -83px;
     transition: 0.5s ease;
 }
 
@@ -873,7 +874,13 @@ main {
     cursor: pointer;
     transition: 0.5s ease;
     font-size: 18px;
-    overflow: hidden;
+    position: relative;
+}
+
+.rowHero{
+    position: sticky;
+    background-color: rgb(247, 247, 247);
+    top: 0;
 }
 
 .row h2:first-child{
