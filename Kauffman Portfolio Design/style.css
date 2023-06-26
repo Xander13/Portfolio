@@ -569,7 +569,6 @@ main {
 .project {
     width: 90%;
     margin: auto;
-    padding-top: 80vh;
     padding-bottom: 232px;
 }
 
@@ -1143,70 +1142,24 @@ main {
     font-weight: 200;
 }
 
-/*Hero CUbe*/
+/*Hero*/
 
 .hero{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 500px;
+    padding-top: 132px;
     width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: left;
+    text-wrap: balance;
+    font-size: 3vw;
+    line-height: 8vw;
+    text-transform: uppercase;
 }
-
-.cubeTwo {
-    transform-style: preserve-3d;
-    transform: rotateX(0deg);
-    transition: 1s ease;
-    position: sticky;
-    width: 650px;
-    height: 120px;
-    top: 164px;
-    animation: spin 5s ease infinite;
-    text-align: center;
-    scale: 1.5;
-}
-
-@keyframes spin {
-    0%{
-        transform: rotateX(0deg);
-    }
-    100%{
-        transform: rotateX(180deg);
-    }
-}
-
-.cubeTwo div {
-    width: 650px;
-    line-height: 100px;
-    text-align: center;
-    display: block;
-    position: absolute;
-    border-radius: 12px;
-    font-size: 8vw;
-    background-color: white;
-    padding-top: 32px;
-}
-
-.cubeTwo div.two {
-    width: 650px;
-    transform: rotateY(90deg);
-    background-position: center;
-    background-size: contain;
-}
-
-.cubeTwo div.one {
-    width: 650px;
-    transform: translateZ(50px);
-    background-position: center;
-    background-size: contain;
-}
-
 
 /*About cube*/
 .cube-container {
     perspective: 800px;
 }
-
 
 .cube {
     transform-style: preserve-3d;
