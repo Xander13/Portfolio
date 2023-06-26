@@ -1143,6 +1143,66 @@ main {
     font-weight: 200;
 }
 
+/*Hero CUbe*/
+
+.hero{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    width: 100%;
+}
+
+.cubeTwo {
+    transform-style: preserve-3d;
+    transform: rotateX(0deg);
+    transition: 1s ease;
+    position: sticky;
+    width: 650px;
+    height: 120px;
+    top: 164px;
+    animation: spin 5s ease infinite;
+    text-align: center;
+    scale: 1.5;
+}
+
+@keyframes spin {
+    0%{
+        transform: rotateX(0deg);
+    }
+    100%{
+        transform: rotateX(180deg);
+    }
+}
+
+.cubeTwo div {
+    width: 650px;
+    line-height: 100px;
+    text-align: center;
+    display: block;
+    position: absolute;
+    border-radius: 12px;
+    font-size: 8vw;
+    background-color: white;
+    padding-top: 32px;
+}
+
+.cubeTwo div.two {
+    width: 650px;
+    transform: rotateY(90deg);
+    background-position: center;
+    background-size: contain;
+}
+
+.cubeTwo div.one {
+    width: 650px;
+    transform: translateZ(50px);
+    background-position: center;
+    background-size: contain;
+}
+
+
+/*About cube*/
 .cube-container {
     perspective: 800px;
 }
@@ -1186,7 +1246,6 @@ main {
     background: url("https://a-us.storyblok.com/f/1004432/2000x1125/a67301f518/my-storytime-social.png/m/1024x1024/");
     background-position: center;
     background-size: contain;
-    
 }
 
 .cube div.front {
