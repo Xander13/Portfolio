@@ -5,192 +5,215 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Alex Kauffman - Project name</title>
+    <title>Alex Kauffman &#8212; UI/UI Designer</title>
     <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- jQuery CDN (Google Hosted Library) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- jQuery CDN (Microsoft Ajax Content Delivery Network) -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
 </head>
 
 <body>
-    <div class="splash">
-        <h2 class="fade-in">Loading...</h2>
+    <div class="nav" id="navbar">
+        <h1 href="#">Alex Kauffman</h1>
+        <h1 href="#">UX/UI + Ad Designer</h1>
+        <a href="index.html">Projects<span class="smtxt">( 6 )</span></a>
+        <a href="index.html#archives">Archives<span class="smtxt">( 20 )</span></a>
+        <a href="index.html#about">About</a>
     </div>
-    <a href="index.html">
-        <div class="backBtn">
-            <h1>Back</h1>
-        </div>
-    </a>
-    <div class="cursor" id="circle"></div>
-    <main class="projectSections" style="overflow-y: scroll; z-index: 1;">
-        <div class="heroimg">
-            <img draggable="false" src="GoogleForCreators.png" width="100%">
-        </div>
-        <div class="container">
-            <div class="brief">
-                <div class="half">
-                    <h2 class="title">Google for Creators</h2>
-                    <h3>Project Type</h3>
-                    <p>UX/UI Design</p>
-                    <h3>Team</h3>
-                    <p>Sean Klassen (Project Lead) 	✵ Sam Giambalvo <br> (Sr. Designer)  ✵ Makayla Lovrak (Jr Designer) <br> ✵  Myself (intern @ Instrument)</p>
-                </div>
-                <div class="half">
-                    <p>Google for Creators is a platofrom by Google to help push content creators be sucessful with thier creations using Google products. The challange is not to shout out Google products in thier faces but more of a guide how Google products is there to help them sucess thier creations. 
-                        <br>
-                        <br>
-                        In my role, I was an Intern at Intrument and I generated as much ideas to the team to give them. We were the UI designers that created based on the UX flows the other teams have made for us. We would implment and design and pressure test to make sure product will shine.</p>
-                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="imgs">
-                <br>
-                <h2 class="title">The problem <span style="color: gray; font-size: 16px;">( 1 )</span></h2>
-                <br>
-                <br>
-                <br>
-                <br>
-                <img draggable="false" src="images/2.jpeg" width="100%">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="flex" style="max-width: 100%;">
-                    <div class="half">
-                        <img draggable="false" src="images/1.jpeg" width="100%">
-                    </div>
-                    <div class="half">
-                        <p class="midSpace">Bacon ipsum dolor amet alcatra jerky ribeye pork chop fatback turkey, pork
-                            belly landjaeger
-                            short
-                            loin drumstick shank shoulder biltong porchetta. Shank boudin shoulder fatback bacon tongue
-                            sirloin picanha filet mignon landjaeger jerky meatloaf jowl short ribs hamburger.</p>
-                    </div>
-                </div>
-            </div>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <h2 class="title">The Solution <span style="color: gray; font-size: 16px;">( 2 )</span></h2>
-            <br>
+    <div class="fadeInView">
+        <div class="projectHero">
+            <h1 style="margin-block-end: 0; padding-bottom: 0; margin-bottom: 0;">Google Bard</h1>
+            <h2>UI/UX, ETC, ETC, ETC</h2>
+            <img draggable="false" class="balltwo" id="face" src="face.svg" width="100%">
         </div>
         <br>
         <br>
-        <br>
-        <img draggable="false" src="images/3.jpeg" width="100%">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="flex" style="max-width: 100%;">
-                <div class="half">
-                    <p class="midSpace">Bacon ipsum dolor amet alcatra jerky ribeye pork chop fatback turkey, pork
-                        belly landjaeger
-                        short
-                        loin drumstick shank shoulder biltong porchetta. Shank boudin shoulder fatback bacon tongue
-                        sirloin picanha filet mignon landjaeger jerky meatloaf jowl short ribs hamburger.</p>
-                </div>
-                <div class="half" style="padding-right: 0;">
-                    <img draggable="false" src="images/1.jpeg" width="100%">
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="flex" style="max-width: 100%;">
-                <div class="half" style="padding-right: 0;">
-                    <img draggable="false" src="images/7.jpeg" width="100%">
-                </div>
-                <div class="half" style="padding-right: 0;">
-                    <img draggable="false" src="images/7.jpeg" width="100%">
-                </div>
-            </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="container">
-            <div class="flex" style="max-width: 100%;">
-                <div class="half" style="padding-right: 0;">
-                    <img draggable="false" src="images/7.jpeg" width="100%">
-                </div>
-                <div class="half" style="padding-right: 0;"></div>
-            </div>
-            <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h2 class="title">The Process <span style="color: gray; font-size: 16px;">( 3 )</span></h2>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <img draggable="false" src="images/2.jpeg" width="100%">
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <hr class="line">
-        <div class="backToTop" id="toTop">
-            <h1>Back to top</h1>
-        </div>
-    </main>
-    <script src="app.js"></script>
-    <script>
-        document.addEventListener('mousemove', function (e) {
-            let body = document.querySelector('body');
-            let circle = document.getElementById('circle');
-            let left = e.offsetX;
-            let top = e.offsetY;
-            circle.style.left = left + 'px';
-            circle.style.top = top + 'px';
-        });
+        <style>
+            .projectView {
+                display: block;
+            }
 
-        let circle = document.getElementById('circle');
-        const onMouseMove = (e) => {
-            circle.style.left = e.pageX + 'px';
-            circle.style.top = e.pageY + 'px';
-        }
-        document.addEventListener('mousemove', onMouseMove);
-    </script>
-    <script>
-        $("#toTop").click(function () {
-            $("projectSections").animate({scrollTop: 0}, 1000);
-        });
-    </script>
+            .project{
+                padding-bottom: 0;
+            }
+
+            .fadeInView {
+                opacity: 1;
+                animation: fadeIn 1s ease-in;
+            }
+
+            @keyframes fadeIn {
+                0% {
+                    opacity: 0;
+                }
+
+                100% {
+                    opacity: 1;
+                }
+            }
+        </style>
+        <div class="project">
+            <div class="projectView">
+                <div class="heroImg">
+                    <img draggable="false"
+                        src="https://a-us.storyblok.com/f/1004432/3072x1728/dcbf2a5663/instrument-xdr.jpg/m/2560x0/"
+                        width="100%" alt="">
+                </div>
+                <div class="flexBox">
+                    <div class="half">
+                        <div class="copyArea">
+                            <h1>Breif</h1>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                        </div>
+                    </div>
+                    <div class="half">
+                        <img draggable="false"
+                            src="https://a-us.storyblok.com/f/1004432/3640x2378/bc854f20a0/mask-group-4.png/m/2560x0/"
+                            width="100%">
+                    </div>
+                </div>
+                <div class="heroImg">
+                    <img draggable="false"
+                        src="https://a-us.storyblok.com/f/1004432/3072x1728/dcbf2a5663/instrument-xdr.jpg/m/2560x0/"
+                        width="100%" alt="">
+                </div>
+                <div class="flexBox">
+                    <div class="half">
+                        <img draggable="false"
+                            src="https://a-us.storyblok.com/f/1004432/3640x2378/bc854f20a0/mask-group-4.png/m/2560x0/"
+                            width="100%">
+                    </div>
+                    <div class="half">
+                        <div class="copyArea">
+                            <h1>Breif</h1>
+                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
+                                Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="heroImg">
+                    <img draggable="false"
+                        src="https://a-us.storyblok.com/f/1004432/3072x1728/dcbf2a5663/instrument-xdr.jpg/m/2560x0/"
+                        width="100%" alt="">
+                </div>
+                <div class="flexBox">
+                    <div class="cols">
+                        <img draggable="false"
+                            src="https://a-us.storyblok.com/f/1004432/3072x1728/dcbf2a5663/instrument-xdr.jpg/m/2560x0/"
+                            width="100%" alt="">
+                    </div>
+                    <div class="cols">
+                        <img draggable="false"
+                            src="https://a-us.storyblok.com/f/1004432/3072x1728/dcbf2a5663/instrument-xdr.jpg/m/2560x0/"
+                            width="100%" alt="">
+                    </div>
+                    <div class="cols">
+                        <img draggable="false"
+                            src="https://a-us.storyblok.com/f/1004432/3072x1728/dcbf2a5663/instrument-xdr.jpg/m/2560x0/"
+                            width="100%" alt="">
+                    </div>
+                </div>
+                <div class="heroImg">
+                    <img draggable="false"
+                        src="https://a-us.storyblok.com/f/1004432/3072x1728/dcbf2a5663/instrument-xdr.jpg/m/2560x0/"
+                        width="100%" alt="">
+                </div>
+                <div class="heroImg">
+                    <h1>This quite big and amazing such quite goes here!</h1>
+                    <h3>Sub text goes here</h3>
+                </div>
+                <div class="flexBox">
+                    <div class="half">
+                        <img draggable="false"
+                            src="https://a-us.storyblok.com/f/1004432/3640x2378/bc854f20a0/mask-group-4.png/m/2560x0/"
+                            width="100%">
+                    </div>
+                    <div class="half">
+                        <img draggable="false"
+                            src="https://a-us.storyblok.com/f/1004432/3640x2378/bc854f20a0/mask-group-4.png/m/2560x0/"
+                            width="100%">
+                    </div>
+                </div>
+                <div class="heroImg">
+                    <img draggable="false"
+                        src="https://a-us.storyblok.com/f/1004432/3072x1728/dcbf2a5663/instrument-xdr.jpg/m/2560x0/"
+                        width="100%" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="backtotop" onclick="scrollToTop()">
+                <h1 id="top">Back to top &uarr;</h1>
+            </div>
+        </div>
+        <footer class="container">
+            <div class="flexBox">
+                <div class="content">
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Instagram</a>
+                    <a href="#">Read.cv</a>
+                </div>
+                <div class="content" style="max-width: 500px;">
+                    <div class="flexBox" style="justify-content: space-between;">
+                        <h1>Working from Detroit Area</h1>
+                        <h1>&copy; 2023</h1>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <div class="scroll-indicator">
+            <div id="progress-bar"></div>
+        </div>
+        
+        <script>
+            let prevScrollPos = window.pageYOffset;
+            let navbar = document.getElementById("navbar");
+
+            window.onscroll = function () {
+                let currentScrollPos = window.pageYOffset;
+
+                if (prevScrollPos > currentScrollPos) {
+                    navbar.classList.remove("nav-hidden");
+                } else {
+                    navbar.classList.add("nav-hidden");
+                }
+
+                prevScrollPos = currentScrollPos;
+            };
+        </script>
+        <script>
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        </script>
+        <script>
+            window.addEventListener('scroll', function () {
+                const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                const windowHeight = document.documentElement.scrollHeight - document.documentElement
+                    .clientHeight;
+                const progress = (scrollTop / windowHeight) * 100;
+                document.getElementById('progress-bar').style.height = progress + '%';
+            });
+        </script>
+    </div>
 </body>
 
 </html>

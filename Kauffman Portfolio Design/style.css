@@ -1,9 +1,11 @@
 :root {
     --white: white;
-    --black: rgb(9, 9, 9);
+    --black: rgb(15, 15, 15);
     --gray: gray;
     --orange: #f36545;
     --blue: #51B6FF;
+    color: var(--white);
+    background: var(--black);
 }
 
 * {
@@ -13,8 +15,9 @@
 body {
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
-    transition: background-color 1s cubic-bezier(.17, .67, .83, .67);
     scroll-behavior: smooth;
+    color: var(--white);
+    background: var(--black);
 }
 
 ::-webkit-scrollbar {
@@ -23,13 +26,13 @@ body {
 
 ::-moz-selection {
     /* Code for Firefox */
-    color: var(--white);
-    background: var(--black);
+    color: var(--black);
+    background: #51B6FF;
 }
 
 ::selection {
-    color: var(--white);
-    background: var(--black);
+    color: var(--black);
+    background: #51B6FF;
 }
 
 .line {
@@ -43,16 +46,55 @@ body {
 }
 
 .hero {
-    font-size: 2.8vw;
+    font-size: 2vw;
     font-weight: 800;
-    width: 76%;
+    width: fit-content;
     margin: auto;
     text-align: center;
-
 }
 
 .hero h1 {
-    font-weight: 500;
+    font-weight: 100;
+}
+
+.wraper{
+    overflow: hidden;
+    display: flex;
+    box-sizing: content-box;
+    height: 164px;
+    width: fit-content;
+    position: relative;
+}
+
+.rotateWords{
+    padding: 0;
+    display: block;
+    height: fit-content;
+    height: fit-content;
+    animation: spin_words 12s infinite;
+    padding-left: 28px;
+    font-family: 'Unbounded', cursive;
+}
+
+@keyframes spin_words{
+    10%{
+        transform: translateY(-112%);
+    }
+    25%{
+        transform: translateY(-100%);
+    }
+    35%{
+        transform: translateY(-212%);
+    }
+    50%{
+        transform: translateY(-200%);
+    }
+    60%{
+        transform: translateY(-312%);
+    }
+    70%{
+        transform: translateY(-300%);
+    }
 }
 
 .demoreel {
@@ -125,7 +167,7 @@ body {
     box-sizing: border-box;
     align-items: center;
     padding-bottom: 16px;
-    background-color: rgb(255, 255, 255);
+    background: var(--black);
     transition: 0.5s ease;
     height: 83px;
 }
@@ -138,7 +180,7 @@ body {
 .nav a,
 .nav h1 {
     text-decoration: none;
-    color: rgb(16, 16, 16);
+    color: var(--white);
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
@@ -146,8 +188,8 @@ body {
 }
 
 .nav a:hover {
-    background-color: rgb(31, 31, 31);
-    color: white;
+    color: var(--black);
+    background: var(--white);
     transition: 0.3s ease;
     cursor: pointer;
 }
@@ -180,8 +222,8 @@ body {
 }
 
 .underline:hover {
-    color: var(--black);
-    background-color: rgb(236, 236, 236);
+    color: var(--white);
+    background: var(--black);
     transition: 0.2s ease;
     cursor: pointer;
 }
@@ -244,9 +286,9 @@ body {
     right: 0;
     width: 100%;
     height: 100vh;
-    background-color: #F2F2F2;
+    color: var(--white);
+    background: var(--black);
     z-index: 9999999;
-    color: var(--black);
     -webkit-user-select: none;
     -ms-user-select: none;
     user-select: none;
@@ -270,9 +312,9 @@ body {
     right: 0;
     width: 100%;
     height: 100vh;
-    background-color: var(--white);
+    color: var(--white);
+    background: var(--black);
     z-index: -10;
-    color: var(--black);
     text-align: center;
     transition: all 0.5s;
     -webkit-user-select: none;
@@ -365,8 +407,8 @@ body {
 }
 
 .sm a:hover {
-    background-color: black;
-    color: white;
+    color: var(--white);
+    background: var(--black);
     transition: 0.2s ease;
 }
 
@@ -389,6 +431,14 @@ body {
         -webkit-transform: translate3d(0, 200px, 0);
         transform: translate3d(0, 200px, 0);
     }
+}
+
+.balltwo{
+    position: absolute;
+    right: 12px;
+    bottom: 0px;
+    width: 80px;
+    height: 80px;
 }
 
 .fade-in {
@@ -422,30 +472,32 @@ body {
 
 
 /*Gallary View*/
+.captions {
+    height: fit-content;
+}
+
+.project a{
+    color: var(--white);
+    text-decoration: none;
+}
 
 .captions h1 {
     font-size: 28px;
     font-weight: 300;
     line-height: 32px;
-    font-weight: 400;
+    font-weight: 500;
     margin-inline-end: 0;
     margin-bottom: 0;
     text-align: left;
-}
-
-.captions .flex {
-    justify-content: center;
-}
-
-.captions h2 {
-    font-size: 12px;
-    position: relative;
-    padding-top: 8px;
-    font-weight: 500;
-    margin: 4px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    text-align: center;
+    padding-top: 12px;
+}
+
+.captions p {
+    font-size: 22px;
+    line-height: 32px;
+    max-inline-size: 50ch;
+    text-wrap: balance;
 }
 
 main {
@@ -473,8 +525,9 @@ main {
     height: auto;
 }
 
-.backtotop{
+.backtotop {
     width: fit-content;
+    margin-bottom: 132px;
 }
 
 .backtotop h1 {
@@ -487,8 +540,8 @@ main {
 }
 
 .backtotop h1:hover {
-    background-color: black;
-    color: white;
+    color: var(--black);
+    background: var(--white);
     transition: 0.4s ease;
 }
 
@@ -572,7 +625,7 @@ main {
     padding-bottom: 232px;
 }
 
-.project h4{
+.project h4 {
     font-weight: 400;
     font-size: 32px;
     padding-left: 22px;
@@ -580,6 +633,7 @@ main {
 }
 
 .project .flexBox {
+    height: auto;
     padding-bottom: 132px;
 }
 
@@ -597,9 +651,9 @@ main {
 
 .hundred {
     width: 100%;
-    height: 580px;
     width: calc(100% - 32px);
     top: 64px;
+    height: 100%
 }
 
 .sixty,
@@ -623,6 +677,8 @@ main {
     width: fit-content;
     height: 56px;
     backface-visibility: hidden;
+    opacity: 0;
+    transition: 0.5s ease;
 }
 
 .chips .flexBox {
@@ -632,8 +688,8 @@ main {
 .chips h1 {
     position: relative;
     font-size: 24px;
-    background-color: rgba(15, 15, 15, 0.882);
-    color: white;
+    color: var(--white);
+    background: var(--black);
     font-weight: 400;
     border-radius: 100rem;
     padding: 6px;
@@ -644,6 +700,7 @@ main {
 
 .photoBox img {
     background-size: cover;
+    object-fit: cover;
     padding: 0;
     margin: 0;
     scale: 1.09;
@@ -653,18 +710,31 @@ main {
 }
 
 .photoBox img:hover {
-    scale: 1.02;
+    scale: 1.05;
     transition: scale 0.5s ease;
+}
+
+.photoBox:hover .chips {
+    opacity: 1;
+    transition: 0.5s ease;
+}
+
+@keyframe fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
 }
 
 .fourty .photoBox {
     height: 420px;
-    background-color: #ecedf1;
 }
 
 .sixty .photoBox {
     height: 680px;
-    background-color: #ecedf1;
 }
 
 
@@ -713,7 +783,7 @@ main {
 
 .bio h3 a {
     cursor: pointer;
-    color: var(--black);
+    color: var(--white);
     text-decoration: none;
     font-weight: 400;
     border: 1px solid transparent;
@@ -722,7 +792,6 @@ main {
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 8px;
-    color: var(--black);
     text-decoration: none;
     transition: 0.2s ease;
     cursor: pointer;
@@ -800,22 +869,21 @@ main {
 
 .errorPage a {
     text-decoration: none;
-    color: black;
-    background-color: var(--black);
+    color: var(--white);
+    background: var(--black);
     z-index: -4;
     padding: 16px;
     padding-left: 32px;
     padding-right: 32px;
     border-radius: 100rem;
-    color: var(--white);
     text-decoration: none;
     transition: 0.2s ease;
     cursor: pointer;
 }
 
 .errorPage a:hover {
-    background-color: #F2F2F2;
-    color: black;
+    color: var(--white);
+    background: var(--black);
     transition: 0.2s ease;
 }
 
@@ -826,7 +894,7 @@ main {
     left: 0;
     height: 100vh;
     width: 12px;
-    background-color: white;
+    background: var(--black);
     z-index: 9999;
 }
 
@@ -836,7 +904,7 @@ main {
     left: 0;
     height: 0;
     width: 100%;
-    background-color: #080808;
+    background: var(--white);
     transition: background-color 0.5s ease;
 }
 
@@ -862,10 +930,10 @@ main {
     display: flex;
 }
 
-.row{
+.row {
     margin-left: 16px;
     margin-right: 16px;
-    background-color: rgb(247, 247, 247);
+    background-color: var(--black);
     border-radius: 12px;
     margin-bottom: 12px;
     padding-left: 24px;
@@ -874,28 +942,31 @@ main {
     transition: 0.5s ease;
     font-size: 18px;
     position: relative;
+    color: white;
+    border: 1px solid gray;
 }
 
-.rowHero{
+.rowHero {
     position: sticky;
-    background-color: rgb(247, 247, 247);
+    color: var(--white);
     top: 0;
+    background-color: var(--black);
 }
 
-.row h2:first-child{
+.row h2:first-child {
     width: 370px;
 }
 
-.row h2:nth-child(2){
+.row h2:nth-child(2) {
     text-align: left;
     width: 370px;
 }
 
-.row h2{
+.row h2 {
     font-weight: 400;
 }
 
-.row button{
+.row button {
     margin-top: 28px;
     height: fit-content;
     background-color: none;
@@ -904,33 +975,35 @@ main {
     padding-inline-start: 0;
     background: transparent;
     cursor: pointer;
+    color: var(--white);
 }
 
-.row button:hover{
-    color: white;
-    background: black;
+.row button:hover {
+    color: var(--black);
+    background: var(--white);
 }
 
-.row .flexBox{
+.row .flexBox {
     padding-bottom: 0;
     justify-content: space-between;
 }
 
-.projectView{
+.projectView {
     padding: 0;
     margin: 0;
     display: none;
 }
 
-.projectView .heroImg{
+.projectView .heroImg {
     padding-top: 8px;
 }
 
-.projectView .flexBox, .projectView .heroImg{
+.projectView .flexBox,
+.projectView .heroImg {
     padding-bottom: 132px;
 }
 
-.heroImg h1{ 
+.heroImg h1 {
     font-size: 4vw;
     line-height: 4vw;
     padding-left: 10%;
@@ -939,24 +1012,24 @@ main {
     font-weight: 700;
 }
 
-.heroImg h3{
+.heroImg h3 {
     text-align: center;
     font-weight: 400;
 }
 
-.projectView img{
+.projectView img {
     border-radius: 12px;
 }
 
-.copyArea{
+.copyArea {
     padding: 124px;
 }
 
-.seemore{
+.seemore {
     text-align: center;
     width: fit-content;
-    background: #080808;
-    color: white;
+    color: var(--white);
+    background: var(--black);
     padding: 16px;
     font-size: 20;
     text-transform: uppercase;
@@ -971,7 +1044,7 @@ main {
     transition: 0.5s ease;
 }
 
-.seemore:hover{
+.seemore:hover {
     background: gray;
     color: white;
     transition: 0.5s ease;
@@ -1001,7 +1074,7 @@ main {
     top: 140px;
     rotate: -6deg;
     object-fit: cover;
-    background-color: rgb(244, 244, 244);
+    background: var(--black);
 }
 
 .imgRow {
@@ -1054,14 +1127,14 @@ main {
 
 .list h2,
 .list a h2 {
-    color: black;
+    color: var(--white);
     font-size: 4vw;
     font-weight: 400;
 }
 
 .list .smalltxt {
     font-size: 14px;
-    color: rgb(23, 23, 23);
+    color: var(--white);
 }
 
 .list h4 a {
@@ -1105,7 +1178,8 @@ main {
 /*About Page*/
 .aboutPage {
     margin: auto;
-    background-color: white;
+    color: var(--white);
+    background: var(--black);
 }
 
 .aboutPage .bio {
@@ -1144,16 +1218,34 @@ main {
 
 /*Hero*/
 
-.hero{
+.hero {
     padding-top: 132px;
-    width: 100%;
-    padding-left: 5%;
-    padding-right: 5%;
+    width: 90%;
     text-align: left;
     text-wrap: balance;
     font-size: 3vw;
     line-height: 8vw;
     text-transform: uppercase;
+    position: relative;
+}
+
+.projectHero{
+    padding-top: 132px;
+    width: 90%;
+    text-align: left;
+    text-wrap: balance;
+    font-size: 3vw;
+    line-height: 8vw;
+    text-transform: uppercase;
+    position: relative;
+    max-width: 90%;
+    margin: auto;
+}
+.projectHero h2{
+    font-size: 32px;
+    height: fit-content;
+    line-height: 48px;
+    font-weight: 500;
 }
 
 /*About cube*/
@@ -1179,6 +1271,7 @@ main {
     height: 620px;
     line-height: 100px;
     text-align: center;
+    color: var(--white);
     background: var(--black);
     display: block;
     position: absolute;
@@ -1251,19 +1344,19 @@ main {
 }
 
 
-footer{
+footer {
     max-width: 90%;
     padding-top: 32px;
     padding-bottom: 18px;
 }
 
-fotter .content{
+fotter .content {
     display: flex;
     justify-content: space-between;
     width: fit-content;
 }
 
-footer h1{
+footer h1 {
     font-size: 20px;
     font-weight: 600;
     text-transform: uppercase;
@@ -1273,19 +1366,20 @@ footer h1{
     margin: 0;
 }
 
-footer a{
+footer a {
     font-size: 20px;
     font-weight: 600;
     text-decoration: none;
-    color: black;
+    color: var(--white);
+    background: var(--black);
     text-transform: uppercase;
     margin-right: 12px;
     transition: 0.3s ease;
 }
 
-footer a:hover{
-    background-color: rgb(31, 31, 31);
-    color: white;
+footer a:hover {
+    color: var(--black);
+    background: var(--white);
     transition: 0.3s ease;
     cursor: pointer;
 }
@@ -1319,7 +1413,6 @@ footer a:hover{
 
     .proj-info-2 {
         text-align: left;
-        background-color: green;
         width: 100%;
         left: 0;
         padding: 12px;
