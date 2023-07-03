@@ -368,18 +368,6 @@ body {
     height: 110vh;
 }
 
-@media (max-width: 767px) {
-    .loader-wrap svg {
-        width: 200vw;
-        margin-left: -50vw;
-    }
-
-    .loader-wrap .loader-wrap-heading,
-    .container h1 {
-        font-size: 60px;
-    }
-}
-
 /*Scroll effect*/
 .scroll-downs h1 {
     position: fixed;
@@ -1384,96 +1372,68 @@ footer a:hover {
     cursor: pointer;
 }
 
-@media only screen and (max-width: 900px) {
-    .status {
+@media only screen and (max-width: 640px) {
+    .nav{
         display: none;
     }
 
-    .bio {
-        padding: 12px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-}
-
-@media only screen and (max-width: 640px) {
-
-    .scrollable {
-        width: 100%;
-        padding: 0;
-        margin: 0;
+    .project .flexBox{
+        padding-bottom: 0;
     }
 
-    .img-1,
-    .img-2,
-    .img-3 {
+    .fourty, .sixty, .hundred{
         width: 100%;
+        padding-bottom: 32px;
+        position: relative;
+    }
+
+    .sixty .photoBox, .fourty .photoBox, .hundred .photoBox{
         height: auto;
     }
 
-    .proj-info-2 {
-        text-align: left;
-        width: 100%;
-        left: 0;
-        padding: 12px;
-    }
-
-    .proj-info-1 {
-        text-align: left;
-        width: 100%;
-        left: 0;
-        padding: 12px;
-    }
-
-    footer .mid {
-        text-align: left;
-        margin: left;
-        left: 22px;
-        width: auto;
-    }
-
-    .right,
-    .left {
-        width: 100%;
-    }
-
-    .captions {
-        padding-left: 12px;
-    }
-
-    footer .right {
-        right: 22px;
-    }
-
-    .desktopNav {
-        display: none;
-    }
-
-    .bio {
-        padding: 12px;
-        width: 100%;
-        box-sizing: border-box;
-    }
-
-    .bio h1 {
-        font-size: 30px;
-    }
-
-    #bioSection {
-        padding-top: 0;
-    }
-
-    .flex {
-        width: 250px;
+    .flexBox{
         flex-wrap: wrap;
     }
 
-    .flex h3 {
-        margin-top: 12px;
+    .hero .wraper{
+        height: 30px;
     }
 
-    .img {
-        width: 100% !important;
+    .rotateWords{
+        padding-left: 6px;
     }
 
+    .project h4{
+        padding-left: 0;
+    }
+
+    .row{
+        width: auto;
+        margin: 0;
+        margin-bottom: 32px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .row h2{
+        margin-block-start: 0;
+        margin-block-end: 0;
+    }
+
+    #cubeHalf {
+        display: none;
+    }
+
+    .aboutPage .flexBox{
+        width: 100%;
+        display: block;
+    }
+
+    .aboutPage .half, .bio h1{
+        width: 100%;
+    }
+
+    .project{
+        padding-bottom: 48px;
+    }
 }
