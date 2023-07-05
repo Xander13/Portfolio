@@ -808,10 +808,18 @@
                     <br>
                     <br>
                     <div class="cube" data-section-index="0">
-                        <div class="side front"></div>
-                        <div class="side back"></div>
-                        <div class="side left"></div>
-                        <div class="side right"></div>
+                        <div class="side front">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c9/Piata_Mare_din_Sibiu02.JPG/800px-Piata_Mare_din_Sibiu02.JPG" width="100%" alt="picture of ...">
+                        </div>
+                        <div class="side back">
+                            <img src="https://images.unsplash.com/photo-1688377116702-5fb489a7f089?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=986&q=80" width="100%" alt="picture of ...">
+                        </div>
+                        <div class="side left">
+                            <img src="alexfencing.jpeg" width="100%" alt="picture of ...">
+                        </div>
+                        <div class="side right">
+                            <img src="alex.jpg" width="100%" alt="picture of ...">
+                        </div>
                     </div>
                     <script>
                         function isElementInViewport(el) {
@@ -830,7 +838,7 @@
 
                             cubeSections.forEach((section, index) => {
                                 if (isElementInViewport(section)) {
-                                    cube.style.transform = `rotateX(-12deg) rotateY(${index * 90}deg)`;
+                                    cube.style.transform = `rotateX(-12deg) rotateY(${index * 45}deg)`;
                                 }
                             });
                         }

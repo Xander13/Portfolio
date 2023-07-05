@@ -630,7 +630,7 @@ main {
     position: -webkit-sticky;
     position: sticky;
     top: 64px;
-    height: 100%
+    height: 100%;
 }
 
 .sixty {
@@ -1243,8 +1243,8 @@ main {
 
 .cube {
     transform-style: preserve-3d;
-    transform: rotateX(0deg);
-    transform: rotateY(0deg);
+    transform: rotateX(-12deg);
+    transform: rotateY(45deg);
     transition: 1s ease;
     position: sticky;
     width: 550px;
@@ -1259,41 +1259,57 @@ main {
     height: 620px;
     line-height: 100px;
     text-align: center;
-    color: var(--white);
-    background: var(--black);
     display: block;
     position: absolute;
-    border-radius: 12px
+}
+
+.side img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
 }
 
 .cube div.right {
     transform: rotateY(90deg);
     margin-left: 50px;
-    background: url("https://a-us.storyblok.com/f/1004432/2000x1358/8d06295700/body-detection-with-computer-vision.jpeg/m/1024x1024/");
     background-position: center;
-    background-size: contain;
+    background-size:cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
 }
 
 .cube div.left {
     transform: rotateY(-90deg);
     margin-left: -50px;
-    background: url("https://a-us.storyblok.com/f/1004432/2000x1125/a67301f518/my-storytime-social.png/m/1024x1024/");
     background-position: center;
-    background-size: contain;
+    background-size:cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 .cube div.front {
     transform: translateZ(50px);
-    background: url("https://a-us.storyblok.com/f/1004432/2048x2048/f71da886ee/008.png/m/1024x1024/");
     background-position: center;
-    background-size: contain;
+    background-size:cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+.cube div.back img{
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
 }
 
 .cube div.back {
     transform: translateZ(-50px) rotateX(180deg);
-    background: url("https://a-us.storyblok.com/f/1004432/5120x3459/bdd41213d9/are-we-closer-to-the-truth-1.jpeg/m/1024x1024/");
     background-position: center;
-    background-size: contain;
+    background-size:cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 @keyframes spin {
