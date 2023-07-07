@@ -1010,7 +1010,10 @@ main {
 }
 
 .copyArea {
-    padding: 124px;
+    padding-top: 10%;
+    margin: auto;
+    max-inline-size: 50ch;
+    text-wrap: balance;
 }
 
 .seemore {
