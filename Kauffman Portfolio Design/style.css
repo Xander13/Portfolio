@@ -20,7 +20,7 @@ body {
     background: var(--black);
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
@@ -61,7 +61,7 @@ body {
     font-weight: 100;
 }
 
-.wraper{
+.wraper {
     overflow: hidden;
     display: flex;
     box-sizing: content-box;
@@ -70,7 +70,7 @@ body {
     position: relative;
 }
 
-.rotateWords{
+.rotateWords {
     padding: 0;
     display: block;
     height: fit-content;
@@ -81,23 +81,28 @@ body {
     color: var(--white);
 }
 
-@keyframes spin_words{
-    10%{
+@keyframes spin_words {
+    10% {
         transform: translateY(-112%);
     }
-    25%{
+
+    25% {
         transform: translateY(-100%);
     }
-    35%{
+
+    35% {
         transform: translateY(-212%);
     }
-    50%{
+
+    50% {
         transform: translateY(-200%);
     }
-    60%{
+
+    60% {
         transform: translateY(-312%);
     }
-    70%{
+
+    70% {
         transform: translateY(-300%);
     }
 }
@@ -426,7 +431,7 @@ body {
     }
 }
 
-.balltwo{
+.balltwo {
     position: absolute;
     right: 12px;
     bottom: 0px;
@@ -469,7 +474,7 @@ body {
     height: fit-content;
 }
 
-.project a{
+.project a {
     color: var(--white);
     text-decoration: none;
 }
@@ -520,7 +525,7 @@ main {
 
 .backtotop {
     width: fit-content;
-    margin-bottom: 132px;
+    margin-bottom: 92px;
 }
 
 .backtotop h1 {
@@ -620,14 +625,15 @@ main {
     margin-top: -132px;
 }
 
-.project h4, .aboutPage h4 {
+.project h4,
+.aboutPage h4 {
     font-weight: 400;
     font-size: 32px;
     padding-left: 22px;
     padding-bottom: 12px;
 }
 
-.aboutPage h4{
+.aboutPage h4 {
     padding-left: 0;
 }
 
@@ -929,7 +935,7 @@ main {
     display: flex;
 }
 
-.archive{
+.archive {
     padding-top: 96px;
 }
 
@@ -1236,7 +1242,7 @@ main {
     position: relative;
 }
 
-.projectHero{
+.projectHero {
     padding-top: 132px;
     width: 90%;
     text-align: left;
@@ -1248,7 +1254,8 @@ main {
     max-width: 90%;
     margin: auto;
 }
-.projectHero h2{
+
+.projectHero h2 {
     font-size: 32px;
     height: fit-content;
     line-height: 48px;
@@ -1282,7 +1289,7 @@ main {
     position: absolute;
 }
 
-.side img{
+.side img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -1293,7 +1300,7 @@ main {
     transform: rotateY(90deg);
     margin-left: 50px;
     background-position: center;
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
 
@@ -1303,7 +1310,7 @@ main {
     transform: rotateY(-90deg);
     margin-left: -50px;
     background-position: center;
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
 }
@@ -1311,12 +1318,12 @@ main {
 .cube div.front {
     transform: translateZ(50px);
     background-position: center;
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
 }
 
-.cube div.back img{
+.cube div.back img {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
     -webkit-transform: scaleY(-1);
@@ -1326,7 +1333,7 @@ main {
 .cube div.back {
     transform: translateZ(-50px) rotateX(180deg);
     background-position: center;
-    background-size:cover;
+    background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
 }
@@ -1366,6 +1373,15 @@ main {
     height: 900px;
 }
 
+.contact {
+    width: 100%;
+    height: 600px;
+    background-color: rgb(33, 33, 33);
+    width: 90%;
+    margin: auto;
+    border-radius: 24px;
+    margin-bottom: 24px;
+}
 
 footer {
     max-width: 90%;
@@ -1408,41 +1424,45 @@ footer a:hover {
 }
 
 @media only screen and (max-width: 640px) {
-    .nav{
+    .nav {
         display: none;
     }
 
-    .project .flexBox{
+    .project .flexBox {
         padding-bottom: 0;
     }
 
-    .fourty, .sixty, .hundred{
+    .fourty,
+    .sixty,
+    .hundred {
         width: 100%;
         padding-bottom: 32px;
         position: relative;
     }
 
-    .sixty .photoBox, .fourty .photoBox, .hundred .photoBox{
+    .sixty .photoBox,
+    .fourty .photoBox,
+    .hundred .photoBox {
         height: auto;
     }
 
-    .flexBox{
+    .flexBox {
         flex-wrap: wrap;
     }
 
-    .hero .wraper{
+    .hero .wraper {
         height: 30px;
     }
 
-    .rotateWords{
+    .rotateWords {
         padding-left: 6px;
     }
 
-    .project h4{
+    .project h4 {
         padding-left: 0;
     }
 
-    .row{
+    .row {
         width: auto;
         margin: 0;
         margin-bottom: 32px;
@@ -1450,7 +1470,7 @@ footer a:hover {
         padding-bottom: 16px;
     }
 
-    .row h2{
+    .row h2 {
         margin-block-start: 0;
         margin-block-end: 0;
     }
@@ -1459,16 +1479,17 @@ footer a:hover {
         display: none;
     }
 
-    .aboutPage .flexBox{
+    .aboutPage .flexBox {
         width: 100%;
         display: block;
     }
 
-    .aboutPage .half, .bio h1{
+    .aboutPage .half,
+    .bio h1 {
         width: 100%;
     }
 
-    .project{
+    .project {
         padding-bottom: 48px;
     }
 }
