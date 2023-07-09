@@ -56,7 +56,7 @@
             </div>
         </div>
     </div>
-    <div class="hero">
+    <div class="hero" id="heros">
         <h1 style="margin-block-end: 0; padding-bottom: 0; margin-bottom: 0;">A UX/UI thinker <br> with enthusiasm </h1>
         <h1 style="margin-block-start: 0; padding-top: 0; margin-top: 0;">
             <div class="flexBox" style="justify-content: start;">for
@@ -76,8 +76,8 @@
     </div>
     <br>
     <br>
-    <div class="project">
-        <h4>Select works</h4>
+    <div class="project" id="projects">
+        <h4>Select works <span class="smtxt">( 5 )</span></h4>
         <div class="flexBox">
             <div class="sixty">
                 <a href="GoogleBard.html">
@@ -190,7 +190,7 @@
             </div>
         </div>
         <div class="archive" id="archives">
-            <h4>Archives <span class="smtxt">( 20 )</span></h4>
+            <h4>Archives <span class="smtxt">( 12 )</span></h4>
             <div class="row">
                 <div class="rowHero">
                     <div class="flexBox">
@@ -677,7 +677,6 @@
                     </div>
                 </div>
             </div>
-            <div class="seemore">Load more projects</div>
         </div>
     </div>
     <script>
@@ -717,17 +716,9 @@
         <div class="aboutPage" id="about">
             <div class="flexBox">
                 <div class="half">
+                    <h4>About</h4>
                     <h2>My design meditations <br> I apply into my daily life.</h2>
                     <div class="bio">
-                        <section class="cube-section">
-                            <h1>With few years of experience in the field, I've sharpened my hard and soft skills in
-                                creating visual designs
-                                and helping clients transform their sites into delightful contents. I enjoy expressing
-                                my team with workshops on taking two differnt design thinking and bind into new areas of
-                                experimentations.
-                            </h1>
-                            <br>
-                        </section>
                         <section class="cube-section">
                             <h4>My educational path</h4>
                             <h1>
@@ -772,7 +763,6 @@
                         </section>
                         <section class="cube-section">
                             <div class="experiences">
-                                <h1>Experiences</h1>
                                 <div class="flexBox">
                                     <div class="cols">
                                         <h4>Recent projects</h4>
@@ -861,9 +851,10 @@
                 <a href="#">Instagram</a>
                 <a href="#">Read.cv</a>
             </div>
-            <div class="content" style="max-width: 500px;">
+            <div class="content" style="max-width: 800px;">
                 <div class="flexBox" style="justify-content: space-between;">
                     <h1>Working from Detroit Area</h1>
+                    <h1>site is creafted by me</h1>
                     <h1>&copy; 2023</h1>
                 </div>
             </div>
@@ -874,31 +865,15 @@
     </div>
 
     <div class="nav" id="navbar">
-        <a href="index.html">Alex Kauffman</a>
+        <a href="#heros">Alex Kauffman</a>
         <h1>UX/UI + Ad Designer</h1>
-        <a href="#">Projects<span class="smtxt">( 6 )</span></a>
-        <a href="#archives">Archives<span class="smtxt">( 20 )</span></a>
+        <a href="#projects">Works<span class="smtxt">( 5 )</span></a>
+        <a href="#archives">Archives<span class="smtxt">( 12 )</span></a>
         <a href="#about">About</a>
         <!-- <a href="#about">.TTF<span class="smtxt"> ( Fonts )</span></a> -->
     </div>
     <!-- <script src="app.js"></script> -->
     <script src="gallry.js"></script>
-    <script>
-        let prevScrollPos = window.pageYOffset;
-        let navbar = document.getElementById("navbar");
-
-        window.onscroll = function () {
-            let currentScrollPos = window.pageYOffset;
-
-            if (prevScrollPos > currentScrollPos) {
-                navbar.classList.remove("nav-hidden");
-            } else {
-                navbar.classList.add("nav-hidden");
-            }
-
-            prevScrollPos = currentScrollPos;
-        };
-    </script>
     <script>
         function scrollToTop() {
             window.scrollTo({
@@ -938,10 +913,6 @@
                 isHovering = false;
                 clearTimeout(timeoutId);
 
-                // timeoutId = setTimeout(function () {
-
-                // }, 400);
-
                 if (!isHovering) {
                     imgBgView.hide();
                 }
@@ -960,5 +931,4 @@
         });
     </script>
 </body>
-
 </html>

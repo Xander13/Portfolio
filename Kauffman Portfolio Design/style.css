@@ -20,6 +20,10 @@ body {
     background: var(--black);
 }
 
+html{
+    scroll-behavior: smooth;
+}
+
 ::-webkit-scrollbar {
     display: none;
 }
@@ -74,6 +78,7 @@ body {
     animation: spin_words 12s infinite;
     padding-left: 28px;
     font-family: 'Unbounded', cursive;
+    color: var(--white);
 }
 
 @keyframes spin_words{
@@ -610,14 +615,20 @@ main {
 .project {
     width: 90%;
     margin: auto;
-    padding-bottom: 232px;
+    padding-bottom: 132px;
+    padding-top: 132px;
+    margin-top: -132px;
 }
 
-.project h4 {
+.project h4, .aboutPage h4 {
     font-weight: 400;
     font-size: 32px;
     padding-left: 22px;
     padding-bottom: 12px;
+}
+
+.aboutPage h4{
+    padding-left: 0;
 }
 
 .project .flexBox {
@@ -918,6 +929,10 @@ main {
     display: flex;
 }
 
+.archive{
+    padding-top: 96px;
+}
+
 .row {
     margin-left: 16px;
     margin-right: 16px;
@@ -1171,6 +1186,7 @@ main {
     margin: auto;
     color: var(--white);
     background: var(--black);
+    padding-top: 96px;
 }
 
 .aboutPage .bio {
@@ -1326,7 +1342,7 @@ main {
 }
 
 .experiences {
-    padding-top: 164px;
+    padding-top: 64px;
     width: 100%;
 }
 

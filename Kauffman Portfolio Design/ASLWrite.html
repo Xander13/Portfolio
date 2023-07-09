@@ -52,8 +52,8 @@
     <div class="nav" id="navbar">
         <a href="index.html">Alex Kauffman</a>
         <h1 href="#">UX/UI + Ad Designer</h1>
-        <a href="index.html">Projects<span class="smtxt">( 6 )</span></a>
-        <a href="index.html#archives">Archives<span class="smtxt">( 20 )</span></a>
+        <a href="#projects">Works<span class="smtxt">( 5 )</span></a>
+        <a href="#archives">Archives<span class="smtxt">( 12 )</span></a>
         <a href="index.html#about">About</a>
     </div>
     <div class="fadeInView">
@@ -200,23 +200,6 @@
         <div class="scroll-indicator">
             <div id="progress-bar"></div>
         </div>
-
-        <script>
-            let prevScrollPos = window.pageYOffset;
-            let navbar = document.getElementById("navbar");
-
-            window.onscroll = function () {
-                let currentScrollPos = window.pageYOffset;
-
-                if (prevScrollPos > currentScrollPos) {
-                    navbar.classList.remove("nav-hidden");
-                } else {
-                    navbar.classList.add("nav-hidden");
-                }
-
-                prevScrollPos = currentScrollPos;
-            };
-        </script>
         <script>
             function scrollToTop() {
                 window.scrollTo({
