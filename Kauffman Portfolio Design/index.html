@@ -59,12 +59,11 @@
     </div>
     <div class="smoothScroll">
         <div class="hero" id="heros">
-            <h1 style="margin-block-end: 0; padding-bottom: 0; margin-bottom: 0;">A digtial designer <br> with
-                dedication
-            </h1>
-            <h1 style="margin-block-start: 0; padding-top: 0; margin-top: 0;">
-                <div class="flexBox" style="justify-content: start;">for
+            <h1 style="margin-block-end: 0; padding-bottom: 0; margin-bottom: 0;">A digtial designer with <br>
+
+                <div class="flexBox" style="justify-content: start;">
                     <div class="wraper">
+                        dedication for
                         <div class="words">
                             <span class="rotateWords">Figma 🖥️</span>
                             <span class="rotateWords">Fencing 🤺</span>
@@ -75,13 +74,13 @@
                 </div>
             </h1>
 
-            <img draggable="false" class="balltwo" id="face" src="face.svg" width="100%"
-                alt="2D Face Illustration with eyes and little fluf of hair">
+            <!-- <img draggable="false" class="balltwo" id="face" src="face.svg" width="100%"
+                alt="2D Face Illustration with eyes and little fluf of hair"> -->
         </div>
         <br>
         <br>
         <div class="project" id="projects">
-            <h4>Select works <span class="smtxt">( 5 )</span></h4>
+            <!-- <h4>Select works <span class="smtxt">( 5 )</span></h4> -->
             <div class="flexBox">
                 <div class="sixty">
                     <a href="GoogleBard.html">
@@ -98,10 +97,7 @@
                         <div class="captions">
                             <h1>Google Bard</h1>
                             <p>Google Bard is an AI chat box to help users gerate fun conversations to learn and seek
-                                new
-                                informations. Focused on migrating and improving the on UX flows into Motion assets for
-                                Motion designers for
-                                product releases.</p>
+                                new informations.</p>
                         </div>
                     </a>
                 </div>
@@ -118,10 +114,7 @@
                         </div>
                         <div class="captions">
                             <h1>ASL Write</h1>
-                            <p>Imaginging how Deaf ASL signers like myself have a written typeface. ASL write is a Deaf
-                                community developed writting language. My adaptions foucs on Typography and Exploration
-                                on
-                                fingerspelling aspect.</p>
+                            <p>Imaginging how Deaf ASL signers like myself have a written typeface.</p>
                         </div>
                     </a>
                 </div>
@@ -142,9 +135,7 @@
                         </div>
                         <div class="captions">
                             <h1>Color Health</h1>
-                            <p>Templitized 60+ website for creatig more aceessible design in the health care. Worked on
-                                creating
-                                webpage flows to update thier design systems into a new and groovy design.</p>
+                            <p>Templitized 60+ website for creatig more aceessible design in the health care.</p>
                         </div>
                     </a>
                 </div>
@@ -164,9 +155,8 @@
                         </div>
                         <div class="captions">
                             <h1>Google for Creators</h1>
-                            <p>Intered at Instrument working on Google Client team. Google for Creators helps
-                                content
-                                creators promote themsleves using Google services as tool.</p>
+                            <p>Google for Creators helps
+                                content creators promote themsleves with Google services.</p>
                         </div>
                     </a>
                 </div>
@@ -185,9 +175,7 @@
                         </div>
                         <div class="captions">
                             <h1>Color Health</h1>
-                            <p>Templitized 60+ website for creatig more aceessible design in the health care. Worked on
-                                creating
-                                webpage flows to update thier design systems into a new and groovy design.</p>
+                            <p>Templitized 60+ website for creatig more aceessible design in the health care.</p>
                         </div>
                     </a>
                 </div>
@@ -682,7 +670,7 @@
                 </div>
             </div> -->
         </div>
-        
+
         <div class="container">
             <div class="aboutPage" id="about">
                 <div class="flexBox">
@@ -791,13 +779,51 @@
                                 <img src="alex.jpg" width="100%" alt="picture of ...">
                             </div>
                         </div>
-                      
+
                     </div>
                 </div>
             </div>
-            <div class="contact" id="contacts">
-
+            <div class="logoGarden">
+                <h4>Brands I've worked with:</h4>
+                <div class="gridBox">
+                    <img draggable="false" src="yt_logo_mono_dark.png">
+                    <img draggable="false" src="yt_logo_mono_dark.png">
+                    <img draggable="false" src="yt_logo_mono_dark.png">
+                    <img draggable="false" src="yt_logo_mono_dark.png">
+                    <img draggable="false" src="yt_logo_mono_dark.png">
+                    <img draggable="false" src="yt_logo_mono_dark.png">
+                    <img draggable="false" src="yt_logo_mono_dark.png">
+                    <img draggable="false" src="yt_logo_mono_dark.png">
+                    <img draggable="false" src="yt_logo_mono_dark.png">
+                </div>
             </div>
+            <script>
+                var logos = $('mover-1 img');
+                $('.mover-1').append(logos).append(logos);
+            </script>
+            <div class="contact" id="contacts">
+                <div>
+                    <h1>For detailed case studies or questions</h1>
+                    <div class="flexBox" id="hoverTxt">
+                        <h2>Send me an email </h2>
+                        <span class="smalltxt">[Copy]</span>
+                    </div>
+                    <div class="textUnerline"></div>
+                </div>
+            </div>
+            <script>
+                function myFunction() {
+                    // Get the text field
+                    var copyText = document.getElementById("myInput");
+
+                    // Select the text field
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999); // For mobile devices
+
+                    // Copy the text inside the text field
+                    navigator.clipboard.writeText(copyText.value);
+                }
+            </script>
             <div class="backtotop" onclick="scrollToTop()">
                 <h1 id="top">Back to top &uarr;</h1>
             </div>
@@ -825,9 +851,8 @@
     </div>
 
     <div class="nav" id="navbar">
-        <a href="#heros">Alex Kauffman</a>
-        <h1>Digtial Designer</h1>
-        <a href="#projects">Works<span class="smtxt">( 5 )</span></a>
+        <a href="#heros">Alex Kauffman &#8212;&#8212; Digtial Designer at Hook</a>
+        <a href="#projects">Work<span class="smtxt">( 5 )</span></a>
         <a href="#archives">Archives<span class="smtxt">( 12 )</span></a>
         <a href="#about">About</a>
         <!-- <a href="#about">.TTF<span class="smtxt"> ( Fonts )</span></a> -->

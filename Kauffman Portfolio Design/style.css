@@ -1,6 +1,6 @@
 :root {
     --white: white;
-    --black: rgb(15, 15, 15);
+    --black: rgb(0, 0, 0);
     --gray: gray;
     --orange: #f36545;
     --blue: #51B6FF;
@@ -49,22 +49,24 @@ body {
 }
 
 .hero {
-    font-size: 2vw;
     font-weight: 800;
     width: fit-content;
     margin: auto;
     text-align: center;
+    margin-top: 150px;
 }
 
 .hero h1 {
     font-weight: 100;
+    line-height: 80px;
+    font-size: 4vw;
 }
 
 .wraper {
     overflow: hidden;
     display: flex;
     box-sizing: content-box;
-    height: 164px;
+    height: 80px;
     width: fit-content;
     position: relative;
 }
@@ -114,12 +116,6 @@ body {
     margin-bottom: 164px;
 }
 
-.marquee {
-    opacity: 0.3;
-    display: block;
-    justify-content: space-around;
-}
-
 .cursor {
     position: fixed;
     pointer-events: none;
@@ -166,8 +162,8 @@ body {
     left: 0;
     top: 0;
     width: 100%;
-    padding-left: calc(5% + 16px);
-    padding-right: calc(5% + 16px);
+    padding-left: calc(2.5% + 16px);
+    padding-right: calc(2.5% + 16px);
     display: flex;
     justify-content: space-between;
     z-index: 22;
@@ -190,7 +186,7 @@ body {
 .nav h1 {
     text-decoration: none;
     color: var(--white);
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
     text-transform: uppercase;
     transition: 0.3s ease;
@@ -251,7 +247,7 @@ body {
 }
 
 .container {
-    width: 90%;
+    width: 95%;
     margin: auto;
 }
 
@@ -482,7 +478,6 @@ body {
     font-size: 28px;
     font-weight: 300;
     line-height: 32px;
-    font-weight: 500;
     margin-inline-end: 0;
     margin-bottom: 0;
     text-align: left;
@@ -491,8 +486,8 @@ body {
 }
 
 .captions p {
-    font-size: 22px;
-    line-height: 32px;
+    font-size: 20px;
+    line-height: 28px;
     max-inline-size: 50ch;
     text-wrap: balance;
 }
@@ -617,11 +612,11 @@ main {
 }
 
 .project {
-    width: 90%;
+    width: 95%;
     margin: auto;
     padding-bottom: 132px;
-    padding-top: 132px;
-    margin-top: -132px;
+    padding-top: 65px;
+    margin-top: -60px;
 }
 
 .project h4,
@@ -670,7 +665,6 @@ main {
     overflow: hidden;
     width: 100%;
     height: 100%;
-    border-radius: 12px;
     position: relative;
 }
 
@@ -694,7 +688,7 @@ main {
     font-size: 24px;
     color: var(--white);
     background: var(--black);
-    font-weight: 400;
+    font-weight: 300;
     border-radius: 100rem;
     padding: 6px;
     padding-left: 24px;
@@ -789,7 +783,7 @@ main {
     cursor: pointer;
     color: var(--white);
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 300;
     border: 1px solid transparent;
     z-index: -4;
     padding: 6px;
@@ -925,7 +919,7 @@ main {
 /*Archives section*/
 
 .archives {
-    width: 90%;
+    width: 95%;
     margin: auto;
 }
 
@@ -1191,7 +1185,6 @@ main {
     margin: auto;
     color: var(--white);
     background: var(--black);
-    padding-top: 96px;
 }
 
 .aboutPage .bio {
@@ -1199,8 +1192,10 @@ main {
 }
 
 .aboutPage .bio h1 {
-    font-size: 32px;
-    line-height: 38px;
+    font-size: 20px;
+    line-height: 32px;
+    max-inline-size: 56ch;
+    text-wrap: balance;
 }
 
 .aboutPage .bio h4 {
@@ -1231,8 +1226,9 @@ main {
 /*Hero*/
 
 .hero {
-    padding-top: 132px;
-    width: 90%;
+    padding-top: 380px;
+    width: 95%;
+    padding-left: 32px;
     text-align: left;
     text-wrap: balance;
     font-size: 3vw;
@@ -1243,14 +1239,14 @@ main {
 
 .projectHero {
     padding-top: 132px;
-    width: 90%;
+    width: 95%;
     text-align: left;
     text-wrap: balance;
     font-size: 3vw;
     line-height: 8vw;
     text-transform: uppercase;
     position: relative;
-    max-width: 90%;
+    max-width: 95%;
     margin: auto;
 }
 
@@ -1272,16 +1268,16 @@ main {
     transform: rotateY(45deg);
     transition: 1s ease;
     position: sticky;
-    width: 550px;
-    height: 620px;
+    width: 500px;
+    height: 600px;
     top: 164px;
     margin-left: 30%;
     transition: transform 0.5s ease;
 }
 
 .cube div {
-    width: 550px;
-    height: 620px;
+    width: 500px;
+    height: 600px;
     line-height: 100px;
     text-align: center;
     display: block;
@@ -1292,7 +1288,6 @@ main {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 12px;
 }
 
 .cube div.right {
@@ -1367,23 +1362,99 @@ main {
     color: var(gray)
 }
 
-
 .stuff {
     height: 900px;
 }
 
+.gridBox{
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: 3.55vw;
+    grid-row-gap: 3.55vw;
+    width: auto;
+}
+
+.gridBox img{
+    width: 100%;
+}
+
 .contact {
     width: 100%;
-    height: 600px;
-    background-color: rgb(33, 33, 33);
+    height: 90vh;
     width: 100%;
     margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 12px;
-    margin-top: 224px;
+    margin-top: 200px;
+    text-align: center;
+}
+
+.contact h1{
+    font-size: 2vw;
+    text-align: center;
+    font-weight: 500;
+    margin: 0;
+    padding-bottom: 0;
+    margin-block-end: 0;
+    padding-bottom: 32px;
+}
+
+.contact h2{
+    font-size: 5vw;
+    padding-left: 68px;
+    text-transform: uppercase;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    cursor: pointer;
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+.textUnerline{
+    width: calc(100% - 140px);
+    margin: auto;
+    height: 3px;
+    background-color: black;
+}
+
+
+#hoverTxt:hover + .textUnerline{
+    background-color: white;
+}
+
+#hoverTxt:active {
+    color: gray;
+}
+
+.smalltxt{
+    font-size: 22px;
+    color: gray;
+    font-weight: 300;
+    right: 0;
+}
+
+.contact .words{
+    font-size: 9vw;
+    text-transform: uppercase;
+    padding: 0;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    font-family: 'Unbounded', cursive;
+    cursor: pointer;
+}
+
+
+
+.contact #copyTxt{
+    font-size: 32px;
+    color: gray;
 }
 
 footer {
-    max-width: 90%;
+    max-width: 95%;
     padding-top: 32px;
     padding-bottom: 18px;
 }
@@ -1395,7 +1466,7 @@ fotter .content {
 }
 
 footer h1 {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
     text-transform: uppercase;
     text-align: right;
@@ -1405,7 +1476,7 @@ footer h1 {
 }
 
 footer a {
-    font-size: 20px;
+    font-size: 15px;
     font-weight: 600;
     text-decoration: none;
     color: var(--white);
