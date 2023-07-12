@@ -17,10 +17,15 @@ body {
     text-rendering: optimizeLegibility;
     color: var(--white);
     background: var(--black);
+    letter-spacing: -1%;
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+a, h1, h2, h3, h4, h5, h6, p{
+    max-inline-size: 50ch;
 }
 
 ::-webkit-scrollbar {
@@ -64,7 +69,7 @@ body {
 
 .hero h1 {
     font-weight: 100;
-    line-height: 96px;
+    line-height: 5vw;
     font-size: 5vw;
 }
 
@@ -72,9 +77,16 @@ body {
     overflow: hidden;
     display: flex;
     box-sizing: content-box;
-    height: 96px;
+    height: 5.5vw;
+    padding-top: 12px;
     width: fit-content;
     position: relative;
+}
+
+.words{
+    line-height: 5.6vw;
+    position: relative;
+    top: -6px;
 }
 
 .rotateWords {
@@ -83,7 +95,7 @@ body {
     height: fit-content;
     height: fit-content;
     animation: spin_words 12s infinite;
-    padding-left: 28px;
+    padding-left: 18px;
     font-family: 'Unbounded', cursive;
     color: var(--white);
 }
@@ -270,7 +282,7 @@ body {
 .brief p,
 .half p {
     font-size: 20px;
-    line-height: 32px;
+    line-height: calc(20px * 2%);
 }
 
 .midSpace {
@@ -476,8 +488,8 @@ body {
 }
 
 .captions h1 {
-    font-size: 28px;
-    font-weight: 300;
+    font-size: 32px;
+    font-weight: 600;
     line-height: 32px;
     margin-inline-end: 0;
     margin-bottom: 0;
@@ -982,11 +994,15 @@ main {
     padding-right: 10%;
     text-align: center;
     font-weight: 700;
+    color: black;
 }
 
 .heroImg h3 {
     text-align: center;
+    width: 100%;
     font-weight: 400;
+    color: black;
+    margin: auto;
 }
 
 .projectView img {
@@ -998,6 +1014,7 @@ main {
     margin: auto;
     max-inline-size: 50ch;
     text-wrap: balance;
+    color: black;
 }
 
 .seemore {
@@ -1464,12 +1481,13 @@ footer h1 {
 
 footer h2{
     font-size: 4vw;
+    line-height: 4vw;
+    max-width: 15ch;
     color: black;
     margin-block-end: 0;
     margin-block-start: 0;
     padding-bottom: 96px;
     padding-top: 32px;
-    max-width: 700px;
     text-transform: uppercase;
 }
 

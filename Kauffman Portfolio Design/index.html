@@ -110,7 +110,8 @@
                         </div>
                         <div class="captions">
                             <h1>ASL Write</h1>
-                            <p>Imaginging how Deaf ASL signers like myself have a written typeface.</p>
+                            <p>Google Bard is an AI chat box to help users gerate fun conversations to learn and seek
+                                new informations.</p>
                         </div>
                     </a>
                 </div>
@@ -724,7 +725,8 @@
 
         <footer>
             <div class="container">
-                <h2>Let's create exciting things <br><a href="#">send me an email.</a><span class="smalltxt">[copy]</span></h2>
+                <h2>Let's create exciting things <br><a href="mailto:xanderkau13@gmail.com" id="myLink">send me an
+                        email.</a><span class="smalltxt">[copy email to clipboard]</span></h2>
                 <div class="flexBox">
                     <div class="content">
                         <a href="#">LinkedIn</a>
@@ -741,17 +743,58 @@
                 </div>
             </div>
         </footer>
+        <script>
+            // Select the email link and the smalltxt span element
+            const emailLink = document.getElementById("myLink");
+            const smalltxt = document.querySelector(".smalltxt");
+
+            // Add event listener to the email link
+            emailLink.addEventListener("click", copyEmailToClipboard);
+
+            // Function to copy email to clipboard
+            function copyEmailToClipboard(event) {
+                event.preventDefault(); // Prevent the default behavior of the link
+
+                // Create a temporary input element
+                const tempInput = document.createElement("input");
+
+                // Set the value of the temporary input element to the email address
+                tempInput.value = "xanderkau13@gmail.com";
+
+                // Append the temporary input element to the document
+                document.body.appendChild(tempInput);
+
+                // Select the value of the temporary input element
+                tempInput.select();
+                tempInput.setSelectionRange(0, 99999); // For mobile devices
+
+                // Copy the selected value to the clipboard
+                document.execCommand("copy");
+
+                // Remove the temporary input element from the document
+                document.body.removeChild(tempInput);
+
+                // Change the text of the smalltxt span element
+                smalltxt.textContent = "[email copied!]";
+
+                // Revert back to the original text after 5 seconds
+                setTimeout(function () {
+                    smalltxt.textContent = "[copy email to clipboard]";
+                }, 2500);
+            }
+        </script>
     </div>
 
     <div class="nav" id="navbar">
-        <a href="#heros">Alex Kauffman</a>
+        <a href="index.html">Alex Kauffman</a>
         <h1> Digtial Designer at Hook</h1>
         <div>
-            <a href="index.html">Work<span class="smtxt">( 5 )</span></a>
+            <a href="index.html">Work</a>
             <a href="about.html" style="margin-left: 64px;">About</a>
             <a href="#" id="menu" style="margin-left: 64px;">Contact</a>
         </div>
     </div>
+    <script class="app.js"></script>
     <script>
         $(document).ready(function () {
             $(document).on('click', '.projectView, .viewStuff', function () {

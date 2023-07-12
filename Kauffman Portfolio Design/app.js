@@ -40,7 +40,7 @@ function checkCollisions(circle) {
             if (distance < minDistance) {
                 // calculate the amount of overlap
                 const overlap = minDistance - distance;
-                
+
                 // move the circles away from each other
                 const moveX = dx / distance * overlap * 0.5;
                 const moveY = dy / distance * overlap * 0.5;
