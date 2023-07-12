@@ -83,6 +83,7 @@ body {
 .breifstuff h1{
     font-weight: 500;
     font-size: 3.5vw;
+    text-align: center;
 }
 
 .breifstuff a{
@@ -91,6 +92,9 @@ body {
     text-decoration: none;
     color: black;
     text-transform: uppercase;
+    text-align: center;
+    width: fit-content;
+    background-color: green;
 }
 
 .wraper {
@@ -662,7 +666,7 @@ main {
 .project h2, .logoGarden h2, .archive h2{
     font-size: 32px;
     font-weight: 400;
-    border-bottom: 1px solid black;
+    text-align: center;
     width: 100%;
     padding-bottom: 16px;
     max-inline-size: 100%;
