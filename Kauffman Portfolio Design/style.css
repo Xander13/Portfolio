@@ -1,6 +1,6 @@
 :root {
-    --white: white;
-    --black: rgb(0, 0, 0);
+    --white: rgb(0, 0, 0);
+    --black: rgb(255, 255, 255);
     --gray: gray;
     --orange: #f36545;
     --blue: #51B6FF;
@@ -48,25 +48,31 @@ body {
     padding: 0;
 }
 
+/*Hero*/
 .hero {
-    font-weight: 800;
-    width: fit-content;
+    padding-top: 180px;
+    padding-bottom: 80px;
+    width: 94%;
+    text-align: left;
+    text-wrap: balance;
+    font-size: 3vw;
+    line-height: 8vw;
+    text-transform: uppercase;
+    position: relative;
     margin: auto;
-    text-align: center;
-    margin-top: 150px;
 }
 
 .hero h1 {
     font-weight: 100;
-    line-height: 80px;
-    font-size: 4vw;
+    line-height: 96px;
+    font-size: 5vw;
 }
 
 .wraper {
     overflow: hidden;
     display: flex;
     box-sizing: content-box;
-    height: 80px;
+    height: 96px;
     width: fit-content;
     position: relative;
 }
@@ -162,8 +168,8 @@ body {
     left: 0;
     top: 0;
     width: 100%;
-    padding-left: calc(2.5% + 16px);
-    padding-right: calc(2.5% + 16px);
+    padding-left: 3.5%;
+    padding-right: 3.5%;
     display: flex;
     justify-content: space-between;
     z-index: 22;
@@ -172,14 +178,9 @@ body {
     box-sizing: border-box;
     align-items: center;
     padding-bottom: 16px;
-    background: var(--black);
     transition: 0.5s ease;
-    height: 83px;
-}
-
-.nav-hidden {
-    top: -83px;
-    transition: 0.5s ease;
+    background-color: var(--black);
+    height: 80px;
 }
 
 .nav a,
@@ -247,7 +248,7 @@ body {
 }
 
 .container {
-    width: 95%;
+    width: 94%;
     margin: auto;
 }
 
@@ -519,7 +520,8 @@ main {
 
 .backtotop {
     width: fit-content;
-    margin-bottom: 92px;
+    margin-top: 192px;
+    margin-bottom: 24px;
 }
 
 .backtotop h1 {
@@ -612,9 +614,8 @@ main {
 }
 
 .project {
-    width: 95%;
+    width: 94%;
     margin: auto;
-    padding-bottom: 132px;
     padding-top: 65px;
     margin-top: -60px;
 }
@@ -640,7 +641,7 @@ main {
     width: calc(40% - 32px);
     position: -webkit-sticky;
     position: sticky;
-    top: 64px;
+    top: 80px;
     height: 100%;
 }
 
@@ -651,7 +652,7 @@ main {
 .hundred {
     width: 100%;
     width: calc(100% - 32px);
-    top: 64px;
+    top: 80px;
     height: 100%
 }
 
@@ -686,8 +687,8 @@ main {
 .chips h1 {
     position: relative;
     font-size: 24px;
-    color: var(--white);
-    background: var(--black);
+    color: var(--black);
+    background: var(--white);
     font-weight: 300;
     border-radius: 100rem;
     padding: 6px;
@@ -919,7 +920,7 @@ main {
 /*Archives section*/
 
 .archives {
-    width: 95%;
+    width: 94%;
     margin: auto;
 }
 
@@ -1223,30 +1224,15 @@ main {
     font-weight: 200;
 }
 
-/*Hero*/
-
-.hero {
-    padding-top: 380px;
-    width: 95%;
-    padding-left: 32px;
-    text-align: left;
-    text-wrap: balance;
-    font-size: 3vw;
-    line-height: 8vw;
-    text-transform: uppercase;
-    position: relative;
-}
-
 .projectHero {
-    padding-top: 132px;
-    width: 95%;
+    padding-top: 32px;
+    width: 94%;
     text-align: left;
     text-wrap: balance;
     font-size: 3vw;
     line-height: 8vw;
     text-transform: uppercase;
     position: relative;
-    max-width: 95%;
     margin: auto;
 }
 
@@ -1366,21 +1352,59 @@ main {
     height: 900px;
 }
 
-.gridBox{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-column-gap: 3.55vw;
-    grid-row-gap: 3.55vw;
-    width: auto;
+.marquee-container {
+    width: 100%;
+    overflow: hidden;
+    padding-top: 32px;
 }
 
-.gridBox img{
+.marquee {
+    display: flex;
+    animation: marquee 20s linear infinite;
+}
+
+.marquee img {
+    width: 200px;
+    margin-right: 20px;
+    /* Adjust spacing between images */
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.marquee img {
+    width: 160px;
+    padding-left: 36px;
+    padding-right: 36px;
+}
+
+.logoGarden h4 {
+    font-weight: 200;
+    color: #808080;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.logoGarden {
+    width: 94%;
+    margin: auto;
+    padding-bottom: 164px;
+}
+
+.gridBox img {
     width: 100%;
 }
 
 .contact {
     width: 100%;
-    height: 90vh;
+    height: 500px;
     width: 100%;
     margin: auto;
     display: flex;
@@ -1389,9 +1413,10 @@ main {
     border-radius: 12px;
     margin-top: 200px;
     text-align: center;
+    background-color: gainsboro;
 }
 
-.contact h1{
+.contact h1 {
     font-size: 2vw;
     text-align: center;
     font-weight: 500;
@@ -1401,42 +1426,45 @@ main {
     padding-bottom: 32px;
 }
 
-.contact h2{
+.contact h2 {
     font-size: 5vw;
     padding-left: 68px;
     text-transform: uppercase;
     margin-block-end: 0;
     margin-block-start: 0;
     cursor: pointer;
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* IE 10 and IE 11 */
-    user-select: none; /* Standard syntax */
+    -webkit-user-select: none;
+    /* Safari */
+    -ms-user-select: none;
+    /* IE 10 and IE 11 */
+    user-select: none;
+    /* Standard syntax */
 }
 
-.textUnerline{
+.textUnerline {
     width: calc(100% - 140px);
     margin: auto;
     height: 3px;
-    background-color: black;
+    background-color: gainsboro;
 }
 
 
-#hoverTxt:hover + .textUnerline{
-    background-color: white;
+#hoverTxt:hover+.textUnerline {
+    background-color: black;
 }
 
 #hoverTxt:active {
     color: gray;
 }
 
-.smalltxt{
+.smalltxt {
     font-size: 22px;
     color: gray;
     font-weight: 300;
     right: 0;
 }
 
-.contact .words{
+.contact .words {
     font-size: 9vw;
     text-transform: uppercase;
     padding: 0;
@@ -1448,13 +1476,13 @@ main {
 
 
 
-.contact #copyTxt{
+.contact #copyTxt {
     font-size: 32px;
     color: gray;
 }
 
 footer {
-    max-width: 95%;
+    width: 94%;
     padding-top: 32px;
     padding-bottom: 18px;
 }
