@@ -887,33 +887,6 @@ main {
     transition: 0.2s ease;
 }
 
-/*Indciator*/
-.scroll-indicator {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 12px;
-    background: var(--black);
-    z-index: 9999;
-}
-
-#progress-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 0;
-    width: 100%;
-    background: var(--white);
-    transition: background-color 0.5s ease;
-}
-
-#progress-bar:hover {
-    background-color: gainsboro;
-    cursor: pointer;
-    transition: background-color 0.5s ease;
-}
-
 .year {
     font-size: 32px;
 }
@@ -968,7 +941,7 @@ main {
 
 .row h2 {
     font-weight: 400;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .row button {
@@ -1359,7 +1332,6 @@ main {
 .logoGarden {
     width: 94%;
     margin: auto;
-    padding-bottom: 164px;
 }
 
 .gridBox {
@@ -1467,10 +1439,9 @@ main {
 
 footer {
     width: 100%;
-    padding-top: 32px;
+    padding-top: 132px;
     padding-bottom: 18px;
-    background-color: black;
-    height: 300px;
+    background-color: white;
 }
 
 fotter .content {
@@ -1487,22 +1458,40 @@ footer h1 {
     width: fit-content;
     padding: 0;
     margin: 0;
+    padding-bottom: 32px;
+    color: black;
+}
+
+footer h2{
+    font-size: 4vw;
+    color: black;
+    margin-block-end: 0;
+    margin-block-start: 0;
+    padding-bottom: 96px;
+    padding-top: 32px;
+    max-width: 700px;
+    text-transform: uppercase;
+}
+
+footer h2 a{
+    font-size: 32px;
+    color: black;
+    background-color: white;
 }
 
 footer a {
     font-size: 15px;
     font-weight: 600;
     text-decoration: none;
-    color: var(--black);
-    background: var(--white);
+    color: black;
     text-transform: uppercase;
     margin-right: 12px;
     transition: 0.3s ease;
 }
 
 footer a:hover {
-    color: var(--white);
-    background: var(--black);
+    color: var(--black);
+    background: var(--white);
     transition: 0.3s ease;
     cursor: pointer;
 }
