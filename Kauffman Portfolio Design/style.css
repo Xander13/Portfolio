@@ -201,6 +201,7 @@ body {
     padding-bottom: 16px;
     transition: 0.5s ease;
     height: 80px;
+    background-color: white;
 }
 
 .nav a,
@@ -375,14 +376,15 @@ body {
 }
 
 .captions h1 {
-    font-size: 32px;
+    font-size: 22px;
     font-weight: 600;
-    line-height: 32px;
+    line-height: 28px;
     margin-inline-end: 0;
     margin-bottom: 0;
     text-align: left;
     text-transform: uppercase;
     padding-top: 12px;
+    padding-bottom: 0;
 }
 
 .captions p {
@@ -390,6 +392,7 @@ body {
     line-height: 28px;
     max-inline-size: 50ch;
     text-wrap: balance;
+    margin-top: 12px;
 }
 
 main {
