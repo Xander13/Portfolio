@@ -6,16 +6,6 @@
     --blue: #51B6FF;
     color: var(--white);
     background: var(--black);
-
-
-    --color-text: rgb(29, 29, 29);
-    --color-bg: rgb(255, 255, 255);
-    --color-bg-accent: #f2f2f2d9;
-    --size: clamp(10rem, 1rem + 40vmin, 30rem);
-    --gap: calc(var(--size) / 14);
-    --duration: 60s;
-    --scroll-start: 0;
-    --scroll-end: calc(-100% - var(--gap));
 }
 
 * {
@@ -27,12 +17,7 @@ body {
     text-rendering: optimizeLegibility;
     color: var(--white);
     background: var(--black);
-    letter-spacing: -1%;
 }
-
-/* html {
-    scroll-behavior: smooth;
-} */
 
 a,
 h1,
@@ -305,7 +290,7 @@ body {
 .brief p,
 .half p {
     font-size: 20px;
-    line-height: calc(20px * 2%);
+    line-height: 24px;
 }
 
 .midSpace {
@@ -366,102 +351,14 @@ body {
     /* Standard syntax */
 }
 
-@keyframes fadeIn {
-    to {
-        opacity: 1;
-    }
+
+/*Fade In the Project Page*/
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-in forwards;
 }
 
-/*Splashs screen style*/
-/*https://github.com/taimoorshahzada/Curtain-Effect-Page-Transition-using-GSAP-and-SVG-Morph/blob/main/style.css*/
-.loaderH1 {
-    display: block;
-    position: relative;
-    z-index: 2222;
-    height: 140px;
-    margin: auto;
-}
-
-.loaderH1 img {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin: auto;
-}
-
-.loader-wrap {
-    top: 0;
-    position: fixed;
-    z-index: 99999;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    overflow: hidden;
-    align-items: center;
-    justify-content: center;
-    background: transparent;
-}
-
-.loader-wrap svg {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    height: 110vh;
-}
-
-/*Scroll effect*/
-.scroll-downs h1 {
-    position: fixed;
-    right: 32px;
-    bottom: 16px;
-    z-index: 2222;
-    width: fit-content;
-    font-size: 22px;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    font-weight: 600;
-}
-
-.sm {
-    font-size: 22px;
-    position: fixed;
-    left: 32px;
-    bottom: 16px;
-}
-
-.sm a {
-    font-weight: 600;
-    margin-right: 32px;
-    transition: 0.2s ease;
-}
-
-.sm a:hover {
-    color: var(--white);
-    background: var(--black);
-    transition: 0.2s ease;
-}
-
-/* Prefix Support */
-.ball {
-    -webkit-animation-name: bounce;
-    -webkit-animation-duration: 0.6s;
-    -webkit-animation-direction: alternate;
-    -webkit-animation-timing-function: cubic-bezier(.5, 0.05, 1, .5);
-    -webkit-animation-iteration-count: infinite;
-}
-
-@-webkit-keyframes bounce {
-    from {
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
-    }
-
-    to {
-        -webkit-transform: translate3d(0, 200px, 0);
-        transform: translate3d(0, 200px, 0);
-    }
-}
-
+/*Ball On Project Page*/
 .balltwo {
     position: absolute;
     right: 12px;
@@ -470,41 +367,8 @@ body {
     height: 80px;
 }
 
-.fade-in {
-    opacity: 0;
-    animation: fadeIn 1s ease-in forwards;
-}
-
-.hookLink {
-    cursor: pointer;
-}
-
-.hookLink:hover {
-    color: var(--gray);
-}
-
-.status a:hover {
-    color: var(--gray);
-    cursor: pointer;
-}
-
-.selected {
-    position: absolute;
-    background-color: var(--black);
-    height: 100%;
-    width: 138px;
-    border-radius: 100rem;
-    top: 0;
-    left: 0;
-    bottom: 0;
-}
-
 
 /*Gallary View*/
-.captions {
-    height: fit-content;
-}
-
 .project a {
     color: var(--white);
     text-decoration: none;
@@ -553,6 +417,7 @@ main {
     height: auto;
 }
 
+/*Slide Back to top*/
 .backToTop{
     display: none;
     position: fixed;
@@ -575,27 +440,6 @@ main {
     margin: auto;
     max-width: 96%;
     padding: 0;
-}
-
-.Cards {
-    padding-bottom: 96px;
-    padding-top: 0;
-    transition: 0.5s ease;
-    width: 100%;
-    padding: 48px;
-}
-
-.Cards:hover {
-    rotate: 2deg;
-    transition: 0.5s ease;
-}
-
-.Cards:nth-child(even) {
-    padding-top: 500px;
-}
-
-#top {
-    padding-top: 0px;
 }
 
 .frame {
@@ -738,7 +582,7 @@ main {
     transition: 0.5s ease;
 }
 
-@keyframe fadeIn {
+@keyframes fadeIn {
     0% {
         opacity: 0;
     }
@@ -747,15 +591,6 @@ main {
         opacity: 1;
     }
 }
-
-.fourty .photoBox {
-    height: 420px;
-}
-
-.sixty .photoBox {
-    height: 680px;
-}
-
 
 .bio {
     height: auto;
@@ -832,7 +667,6 @@ main {
     cursor: pointer;
 }
 
-
 .proj-info-2 {
     position: relative;
     right: 45px;
@@ -863,7 +697,6 @@ main {
     height: 100%;
     background-size: cover;
     background-position: center;
-    /* filter: grayscale(20%) sepia(20%); */
 }
 
 /*404 stuff*/
@@ -915,7 +748,6 @@ main {
 }
 
 /*Archives section*/
-
 .archives {
     width: 96%;
     margin: auto;
@@ -942,11 +774,7 @@ main {
 }
 
 .row {
-    /* margin-left: 16px;
-    margin-right: 16px; */
     background-color: white;
-    /* padding-left: 24px;
-    padding-right: 24px; */
     cursor: pointer;
     transition: 0.5s ease;
     font-size: 18px;
@@ -1065,7 +893,6 @@ main {
     transition: 0.5s ease;
 }
 
-
 .img-container {
     width: 45%;
     height: 90%;
@@ -1135,7 +962,7 @@ main {
 }
 
 .list .flexBox {
-    justify-content: space-between !important;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
@@ -1248,7 +1075,6 @@ main {
 
 .projectHero h2 {
     font-size: 32px;
-    height: fit-content;
     line-height: 48px;
     font-weight: 500;
 }
@@ -1326,16 +1152,6 @@ main {
     background-size: cover;
     background-repeat: no-repeat;
     overflow: hidden;
-}
-
-@keyframes spin {
-    0% {
-        transform: rotateX(-12deg)
-    }
-
-    100% {
-        transform: rotateX(-12deg) rotateY(360deg);
-    }
 }
 
 .experiences {
