@@ -30,9 +30,9 @@ body {
     letter-spacing: -1%;
 }
 
-html {
+/* html {
     scroll-behavior: smooth;
-}
+} */
 
 a,
 h1,
@@ -62,55 +62,54 @@ body {
 
 /*Hero*/
 .hero {
-    padding-top: 500px;
-    padding-bottom: 120px;
-    width: 94%;
+    width: 96%;
     text-align: left;
     text-wrap: balance;
-    font-size: 3vw;
-    line-height: 8vw;
     text-transform: uppercase;
     position: relative;
     margin: auto;
 }
 
-.hero h1 {
-    font-weight: 100;
-    line-height: 5vw;
-    font-size: 5vw;
+.breifstuff{
+    padding-top: 124px;
+    padding-bottom: 124px;
+    text-align: center;
 }
 
 .breifstuff h1{
+    max-inline-size: 50ch;
+    text-wrap: balance;
     font-weight: 500;
     font-size: 3.5vw;
-    text-align: center;
+    line-height: 3.9vw;
+    text-transform: uppercase;
 }
 
-.breifstuff a{
-    font-size: 32px;
-    font-weight: bold;
-    text-decoration: none;
-    color: black;
-    text-transform: uppercase;
+.hero h1{
     text-align: center;
-    width: fit-content;
-    background-color: green;
+    font-size: 7vw;
+    line-height: 7vw;
+    text-wrap: balance;
+    font-weight: 100;
+    font-family: 'Wix Madefor Display', sans-serif;
+    padding-top: 132px;
 }
 
 .wraper {
     overflow: hidden;
     display: flex;
     box-sizing: content-box;
-    height: 5.5vw;
+    height: 7vw;
     padding-top: 12px;
     width: fit-content;
     position: relative;
 }
 
 .words {
-    line-height: 5.6vw;
+    line-height: 8vw;
     position: relative;
-    top: -6px;
+    top: -14px;
+    font-family: 'Wix Madefor Display', sans-serif;
 }
 
 .rotateWords {
@@ -119,9 +118,10 @@ body {
     height: fit-content;
     height: fit-content;
     animation: spin_words 12s infinite;
-    padding-left: 18px;
+    padding-left: 12px;
     font-family: 'Unbounded', cursive;
     color: var(--white);
+    text-align: center;
 }
 
 @keyframes spin_words {
@@ -204,8 +204,8 @@ body {
     left: 0;
     top: 0;
     width: 100%;
-    padding-left: 3.5%;
-    padding-right: 3.5%;
+    padding-left: 2.3%;
+    padding-right: 2.3%;
     display: flex;
     justify-content: space-between;
     z-index: 22;
@@ -215,7 +215,6 @@ body {
     align-items: center;
     padding-bottom: 16px;
     transition: 0.5s ease;
-    background-color: var(--black);
     height: 80px;
 }
 
@@ -223,7 +222,7 @@ body {
 .nav h1 {
     text-decoration: none;
     color: var(--white);
-    font-size: 15px;
+    font-size: 22px;
     font-weight: 600;
     text-transform: uppercase;
     transition: 0.3s ease;
@@ -284,7 +283,7 @@ body {
 }
 
 .container {
-    width: 94%;
+    width: 96%;
     margin: auto;
 }
 
@@ -554,25 +553,19 @@ main {
     height: auto;
 }
 
-.backtotop {
-    width: fit-content;
-    margin-top: 92px;
-    margin-bottom: 92px;
-}
-
-.backtotop h1 {
-    font-size: 8vw;
-    font-weight: 400;
-    margin-block-end: 0;
+.backToTop{
+    display: none;
+    position: fixed;
+    right: 2.2%;
+    bottom: 120px;
+    width: 120px;
+    height: 120px;
+    padding: 48px;
+    background-color: rgb(239, 239, 239);
+    border-radius: 100rem;
     cursor: pointer;
-    width: fit-content;
-    transition: 0.4s ease;
-}
-
-.backtotop h1:hover {
-    color: var(--black);
-    background: var(--white);
-    transition: 0.4s ease;
+    opacity: 1; /* Modified opacity value */
+    transition: opacity 0.3s;
 }
 
 /*Project Cards*/
@@ -650,7 +643,7 @@ main {
 }
 
 .project {
-    width: 94%;
+    width: 96%;
     margin: auto;
     padding-top: 65px;
 }
@@ -678,39 +671,21 @@ main {
 
 .project .flexBox {
     height: auto;
-    padding-bottom: 132px;
+    padding-bottom: 48px;
 }
 
-.fourty {
+.fifty{
     /* width: calc(40% - 32px); */
-    width: calc(50% - 32px);
+    width: calc(50% - 10px);
     position: -webkit-sticky;
-    position: sticky;
     top: 80px;
     height: 100%;
-}
-
-.sixty {
-    /* width: calc(60% - 32px); */
-    width: calc(50% - 32px);
-}
-
-.hundred {
-    width: 100%;
-    top: 80px;
-    height: 100%
-}
-
-.sixty,
-.fourty,
-.hundred {
     cursor: pointer;
 }
 
 .photoBox {
     overflow: hidden;
     width: 100%;
-    height: 100%;
     position: relative;
 }
 
@@ -857,13 +832,6 @@ main {
     cursor: pointer;
 }
 
-.bio h1 {
-    font-size: 2vw;
-    line-height: 3.6vw;
-    font-weight: 300;
-    width: auto;
-}
-
 
 .proj-info-2 {
     position: relative;
@@ -938,7 +906,7 @@ main {
 /*Archives section*/
 
 .archives {
-    width: 94%;
+    width: 96%;
     margin: auto;
 }
 
@@ -1223,10 +1191,11 @@ main {
 }
 
 .aboutPage .bio h1 {
-    font-size: 20px;
-    line-height: 32px;
-    max-inline-size: 56ch;
+    font-size: 32px;
+    line-height: 42px;
+    max-inline-size: 40ch;
     text-wrap: balance;
+    font-weight: 300;
 }
 
 .aboutPage .bio h4 {
@@ -1256,7 +1225,7 @@ main {
 
 .projectHero {
     padding-top: 32px;
-    width: 94%;
+    width: 96%;
     text-align: left;
     text-wrap: balance;
     font-size: 3vw;
@@ -1395,7 +1364,8 @@ main {
   align-content: center;
   overflow: hidden;
   gap: var(--gap);
-  width: 100%;
+  width: 96%;
+  margin: auto;
   min-height: 100vh;
   font-family: system-ui, sans-serif;
   font-size: 1rem;
@@ -1409,11 +1379,6 @@ main {
     overflow: hidden;
     user-select: none;
     gap: var(--gap);
-    mask-image: linear-gradient(var(--mask-direction, to right),
-            hsl(0 0% 0% / 0),
-            hsl(0 0% 0% / 1) 20%,
-            hsl(0 0% 0% / 1) 80%,
-            hsl(0 0% 0% / 0));
 }
 
 .marquee__group {
@@ -1661,36 +1626,40 @@ footer h1 {
     width: fit-content;
     padding: 0;
     margin: 0;
-    padding-bottom: 32px;
     color: black;
 }
 
 footer h2 {
-    font-size: 4vw;
-    line-height: 4vw;
+    font-size: 8vw;
+    line-height: 8vw;
     max-width: 15ch;
     color: black;
     margin-block-end: 0;
     margin-block-start: 0;
-    padding-bottom: 96px;
+    padding-bottom: 32px;
     padding-top: 32px;
     text-transform: uppercase;
 }
 
-footer h2 a {
+.copyTxt {
+    position: relative;
     font-size: 32px;
     color: black;
     background-color: white;
 }
 
 footer a {
-    font-size: 15px;
+    font-size: 20px;
     font-weight: 600;
     text-decoration: none;
     color: black;
     text-transform: uppercase;
     margin-right: 12px;
     transition: 0.3s ease;
+}
+
+footer h1{
+    font-size: 20px;
 }
 
 footer a:hover {
@@ -1709,17 +1678,13 @@ footer a:hover {
         padding-bottom: 0;
     }
 
-    .fourty,
-    .sixty,
-    .hundred {
+    .fifty{
         width: 100%;
         padding-bottom: 32px;
         position: relative;
     }
 
-    .sixty .photoBox,
-    .fourty .photoBox,
-    .hundred .photoBox {
+    .fifty .photoBox {
         height: auto;
     }
 
