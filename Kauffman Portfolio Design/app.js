@@ -1,7 +1,7 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-canvas.style.backgroundColor = "#151515";
+canvas.style.backgroundColor = "#ffffff";
 
 const svgImage = new Image();
 svgImage.src = "face.svg";

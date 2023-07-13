@@ -881,8 +881,8 @@ main {
 
 .errorPage a {
     text-decoration: none;
-    color: var(--white);
-    background: var(--black);
+    color: var(--black);
+    background: var(--white);
     z-index: -4;
     padding: 16px;
     padding-left: 32px;
@@ -897,6 +897,17 @@ main {
     color: var(--white);
     background: var(--black);
     transition: 0.2s ease;
+}
+
+.errorPage p{
+    margin: auto;
+    font-size: 28px;
+}
+
+#canvas{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
 .year {
