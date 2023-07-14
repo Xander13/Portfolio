@@ -569,15 +569,13 @@ main {
 }
 
 .project .flexBox {
-    height: auto;
-    padding-bottom: 48px;
+    height: 800px;
 }
 
 .fifty {
     /* width: calc(40% - 32px); */
     width: calc(100%/2);
-    top: 80px;
-    height: 100%;
+    height: fit-content;
     cursor: pointer;
     transition: 1s ease-in-out;
     box-sizing: border-box;
@@ -596,8 +594,8 @@ main {
 }
 
 .fifty:hover{
-    width: calc(60% - 18px);
-    transition: 1s ease-in-out;
+    width: calc(64% - 18px);
+    transition: 2s ease-in-out;
     box-sizing: border-box;
 }
 
@@ -616,7 +614,6 @@ main {
 .photoBox {
     overflow: hidden;
     width: 100%;
-    height: 100%;
     position: relative;
 }
 
@@ -626,7 +623,6 @@ main {
     padding: 0;
     margin: 0;
     width: 100%;
-    height: 100%;
     scale: 1.06;
     overflow: hidden;
     transition: scale 0.5s ease;
