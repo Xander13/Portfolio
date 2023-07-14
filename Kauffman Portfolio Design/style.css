@@ -1,6 +1,6 @@
 :root {
     --white: rgb(0, 0, 0);
-    --black: rgb(255, 255, 255);
+    --black: #e3e6f2;
     --gray: gray;
     --orange: #f36545;
     --blue: #51B6FF;
@@ -104,7 +104,8 @@ body {
     height: fit-content;
     animation: spin_words 12s infinite;
     padding-left: 12px;
-    font-family: 'Unbounded', cursive;
+    font-weight: 700;
+    /* font-family: 'Unbounded', cursive; */
     color: var(--white);
     text-align: center;
 }
@@ -201,7 +202,7 @@ body {
     padding-bottom: 16px;
     transition: 0.5s ease;
     height: 80px;
-    background-color: white;
+    background-color: var(--black);
 }
 
 .nav a,
@@ -376,9 +377,9 @@ body {
 }
 
 .captions h1 {
-    font-size: 22px;
+    font-size: 32px;
     font-weight: 600;
-    line-height: 28px;
+    line-height: 40px;
     margin-inline-end: 0;
     margin-bottom: 0;
     text-align: left;
@@ -388,8 +389,8 @@ body {
 }
 
 .captions p {
-    font-size: 20px;
-    line-height: 28px;
+    font-size: 22px;
+    line-height: 30px;
     max-inline-size: 50ch;
     text-wrap: balance;
     margin-top: 12px;
@@ -429,7 +430,7 @@ main {
     width: 120px;
     height: 120px;
     padding: 48px;
-    background-color: rgb(239, 239, 239);
+    background-color: white;
     border-radius: 100rem;
     cursor: pointer;
     opacity: 1; /* Modified opacity value */
@@ -495,12 +496,20 @@ main {
     padding-top: 65px;
 }
 
-.project h4,
-.aboutPage h4 {
+.project h4{
     font-weight: 400;
     font-size: 32px;
     padding-left: 22px;
     padding-bottom: 12px;
+}
+
+.aboutPage h4{
+    font-weight: 600 !important;
+    font-size: 32px;
+    padding-left: 22px;
+    padding-bottom: 12px;
+    color: black !important;
+    text-transform: uppercase;
 }
 
 .project h2, .logoGarden h2, .archive h2{
@@ -523,7 +532,7 @@ main {
 
 .fifty{
     /* width: calc(40% - 32px); */
-    width: calc(50% - 10px);
+    width: calc(50% - 24px);
     position: -webkit-sticky;
     top: 80px;
     height: 100%;
@@ -533,6 +542,7 @@ main {
 .photoBox {
     overflow: hidden;
     width: 100%;
+    height: 100%;
     position: relative;
 }
 
@@ -555,7 +565,7 @@ main {
     position: relative;
     font-size: 24px;
     color: var(--black);
-    background: var(--white);
+    background: #000000e3;
     font-weight: 300;
     border-radius: 100rem;
     padding: 6px;
@@ -569,14 +579,15 @@ main {
     object-fit: cover;
     padding: 0;
     margin: 0;
-    scale: 1.09;
     width: 100%;
     height: 100%;
+    scale: 1.06;
+    overflow: hidden;
     transition: scale 0.5s ease;
 }
 
 .photoBox img:hover {
-    scale: 1.05;
+    scale: 1.08;
     transition: scale 0.5s ease;
 }
 
@@ -1439,7 +1450,7 @@ footer {
     width: 100%;
     padding-top: 132px;
     padding-bottom: 18px;
-    background-color: white;
+    background-color: var(--black);
 }
 
 fotter .content {
@@ -1475,7 +1486,6 @@ footer h2 {
     position: relative;
     font-size: 32px;
     color: black;
-    background-color: white;
 }
 
 footer a {
