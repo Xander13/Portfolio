@@ -36,7 +36,7 @@ p {
 
 /* width */
 ::-webkit-scrollbar {
-    width: 18px;
+    width: 12px;
 }
 
 /* Track */
@@ -64,6 +64,11 @@ body {
     padding: 0;
 }
 
+.videoWall{
+    height: 50vh;
+    overflow: hidden;
+}
+
 /*Hero*/
 .hero {
     width: 96%;
@@ -77,57 +82,63 @@ body {
 .breifstuff {
     padding-top: 124px;
     padding-bottom: 124px;
-    text-align: center;
+    text-align: left;
 }
 
 .breifstuff h1 {
     max-inline-size: 30ch;
-    margin: auto;
     text-wrap: balance;
     font-weight: 500;
-    font-size: 5vw;
-    line-height: 5.7vw;
+    font-size: 2vw;
+    line-height: 3vw;
     text-transform: uppercase;
 }
 
 .hero h1 {
-    text-align: center;
-    font-size: 7vw;
-    line-height: 7vw;
+    text-align: left;
+    font-size: 8vw;
+    line-height: 8vw;
     text-wrap: balance;
+    padding-top: 12vh;
     font-weight: 300;
     font-family: 'Wix Madefor Display', sans-serif;
-    padding-top: 132px;
+    width: fit-content;
+}
+
+.seeProject{
+    font-size: 22px;
+    padding-top: 34px;
+    width: fit-content;
+    color: gray !important;
 }
 
 .wraper {
     overflow: hidden;
     display: flex;
     box-sizing: content-box;
-    height: 7vw;
-    padding-top: 12px;
+    font-size: 2vw;
+    height: 3vw;
+    padding-left: 8px;
     width: fit-content;
     position: relative;
 }
 
 .words {
-    line-height: 8vw;
+    font-size: 2vw;
+    height: 3vw;
     position: relative;
-    top: -14px;
-    font-family: 'Wix Madefor Display', sans-serif;
+    overflow: hidden;
 }
 
 .rotateWords {
     padding: 0;
     display: block;
     height: fit-content;
-    height: fit-content;
     animation: spin_words 12s infinite;
-    padding-left: 12px;
-    font-weight: 700;
-    /* font-family: 'Unbounded', cursive; */
+    font-family: 'Unbounded', cursive;
     color: var(--white);
-    text-align: center;
+    text-align: left;
+    width: fit-content;
     animation-delay: 0.5s;
 }
 
@@ -155,14 +166,6 @@ body {
     70% {
         transform: translateY(-300%);
     }
-}
-
-.demoreel {
-    width: 96%;
-    margin: auto;
-    height: 640px;
-    background-color: gray;
-    margin-bottom: 164px;
 }
 
 .cursor {
@@ -535,6 +538,12 @@ main {
     width: 96%;
     margin: auto;
     padding-top: 65px;
+}
+
+.titleProject{
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 42px;
 }
 
 .project h4 {
