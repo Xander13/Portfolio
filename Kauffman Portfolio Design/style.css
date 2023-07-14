@@ -1,11 +1,9 @@
 :root {
     --white: rgb(0, 0, 0);
-    --black: #e3e6f2;
+    --black: #f5f2ef;
     --gray: gray;
     --orange: #f36545;
     --blue: #51B6FF;
-    color: var(--white);
-    background: var(--black);
 }
 
 * {
@@ -62,11 +60,12 @@ body {
 }
 
 .breifstuff h1{
-    max-inline-size: 50ch;
+    max-inline-size: 30ch;
+    margin: auto;
     text-wrap: balance;
     font-weight: 500;
-    font-size: 3.5vw;
-    line-height: 3.9vw;
+    font-size: 5vw;
+    line-height: 5.7vw;
     text-transform: uppercase;
 }
 
@@ -75,7 +74,7 @@ body {
     font-size: 7vw;
     line-height: 7vw;
     text-wrap: balance;
-    font-weight: 100;
+    font-weight: 300;
     font-family: 'Wix Madefor Display', sans-serif;
     padding-top: 132px;
 }
@@ -108,6 +107,7 @@ body {
     /* font-family: 'Unbounded', cursive; */
     color: var(--white);
     text-align: center;
+    animation-delay: 0.5s;
 }
 
 @keyframes spin_words {
@@ -427,9 +427,9 @@ main {
     position: fixed;
     right: 2.2%;
     bottom: 120px;
-    width: 120px;
-    height: 120px;
-    padding: 48px;
+    width: 64px;
+    height: 64px;
+    padding: 32px;
     background-color: white;
     border-radius: 100rem;
     cursor: pointer;
@@ -1480,6 +1480,11 @@ footer h2 {
     padding-bottom: 32px;
     padding-top: 32px;
     text-transform: uppercase;
+}
+
+footer h3{
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .copyTxt {
