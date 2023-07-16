@@ -602,13 +602,13 @@ main {
     box-sizing: border-box;
 }
 
-.fifty:hover{
+/* .fifty:hover{
     width: calc(64% - 18px);
     transition: 2s ease-in-out;
     box-sizing: border-box;
-}
+} */
 
-.fifty:nth-child(even):hover{
+/* .fifty:nth-child(even):hover{
     margin-left:  24px;
     transition: 0.5s ease-in-out;
     box-sizing: border-box;
@@ -618,7 +618,7 @@ main {
     margin-right:  24px;
     transition: 0.5s ease-in-out;
     box-sizing: border-box;
-}
+} */
 
 .photoBox {
     overflow: hidden;
