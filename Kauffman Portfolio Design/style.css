@@ -89,12 +89,12 @@ body {
     max-inline-size: 30ch;
     text-wrap: balance;
     font-weight: 500;
-    font-size: 2vw;
+    font-size: 3vw;
     line-height: 3vw;
     text-transform: uppercase;
 }
 
-.hero h1 {
+/* .hero h1 {
     text-align: left;
     font-size: 8vw;
     line-height: 8vw;
@@ -103,7 +103,7 @@ body {
     font-weight: 300;
     font-family: 'Wix Madefor Display', sans-serif;
     width: fit-content;
-}
+} */
 
 .seeProject{
     font-size: 22px;
@@ -1566,34 +1566,66 @@ footer a:hover {
 }
 
 @media only screen and (max-width: 640px) {
-    .nav {
+    /* .nav {
         display: none;
+    } */
+
+    .breifstuff h1{
+        font-size: 10vw;
+        line-height: 10vw;
+    }
+
+    .rotateWords{
+        font-size: 10vw !important;
+        line-height: 10vw !important;
+    }
+
+    .wraper{
+        font-size: 10vw !important;
+        line-height: 10vw !important;
+    }
+
+    .words{
+        font-size: 10vw !important;
+        line-height: 10vw !important;
     }
 
     .project .flexBox {
         padding-bottom: 0;
+        height: auto;
     }
+    
 
     .fifty {
         width: 100%;
         padding-bottom: 32px;
         position: relative;
+        height: auto;
     }
 
     .fifty .photoBox {
         height: auto;
     }
 
+    .fifty:nth-child(even){
+        margin-left: 0px;
+        transition: 0.5s ease-in-out;
+        box-sizing: border-box;
+    }
+    
+    .fifty:nth-child(odd){
+        margin-right:  0px;
+        transition: 0.5s ease-in-out;
+        box-sizing: border-box;
+    }
+
     .flexBox {
         flex-wrap: wrap;
     }
 
-    .hero .wraper {
-        height: 30px;
-    }
-
     .rotateWords {
         padding-left: 6px;
+        font-size: 32px;
     }
 
     .project h4 {
