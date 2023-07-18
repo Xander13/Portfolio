@@ -1,6 +1,6 @@
 :root {
-    --white: #040404;
-    --black: #ffffff;
+    --white: #fafafa;
+    --black: #090909;
     --midBlack: rgba(29, 29, 29, 0.898);
     --gray: rgb(153, 153, 153);
     --orange: #f36545;
@@ -54,23 +54,6 @@ body {
     padding: 0;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(14, 1fr);
-    grid-column-gap: 3vw;
-    width: 100%;
-    height: auto;
-    margin-bottom: 48px;
-    box-sizing: border-box;
-    padding-left: 124px;
-    padding-right: 124px;
-}
-
-.box-1, .box-2, .box-3, .box-4, .box-5, .box-6 {
-    grid-column-start: 1;
-    grid-column-end: 16;
-}
-
 .breifstuff {
     padding-top: 256px;
     padding-bottom: 124px;
@@ -87,7 +70,6 @@ body {
     text-align: left;
     text-transform: uppercase;
 }
-
 
 .seeProject {
     font-size: 22px;
@@ -195,16 +177,17 @@ body {
 
 .nav {
     position: -webkit-sticky;
-    position: sticky;
+    position: fixed;
     top: 0px;
-    padding-left: 64px;
-    padding-right: 64px;
+    padding-left: 104px;
+    padding-right: 104px;
     z-index: 50;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    height: 140px;
+    height: 90px;
+    background-color: var(--black);
     width: 100%;
     margin-bottom: 50px;
     -webkit-box-pack: center;
@@ -216,13 +199,14 @@ body {
     -ms-flex-align: space-between;
     align-items: center;
     box-sizing: border-box;
+    transition: 0.5s ease;
 }
 
 .nav a,
 .nav h1 {
     text-decoration: none;
     color: var(--white);
-    font-size: 16px;
+    font-size: 22px;
     font-weight: 500;
     transition: 0.3s ease;
 }
@@ -391,14 +375,13 @@ body {
 }
 
 .captions h1 {
-    font-size: 32px;
+    font-size: 22px;
     font-weight: 600;
     line-height: 40px;
     margin-inline-end: 0;
     margin-bottom: 0;
     text-align: left;
     text-transform: uppercase;
-    padding-top: 12px;
 }
 
 .captions p {
@@ -520,11 +503,12 @@ main {
     transition: color 0.5s ease;
 }
 
-/* .project {
+.project {
     width: 86%;
     margin: auto;
     padding-top: 65px;
-} */
+}
+
 
 .titleProject {
     font-weight: 400;
@@ -572,52 +556,26 @@ main {
 }
 
 .project .flexBox {
-    height: 800px;
+    height: auto;
 }
 
 .fifty {
     /* width: calc(40% - 32px); */
-    width: calc(100%/2);
+    width: calc(100%/2 - 16px);
     height: fit-content;
     cursor: pointer;
     transition: 1s ease-in-out;
     box-sizing: border-box;
 }
 
-.fifty:nth-child(even) {
-    margin-left: 24px;
-    transition: 0.5s ease-in-out;
-    box-sizing: border-box;
-}
-
-.fifty:nth-child(odd) {
-    margin-right: 24px;
-    transition: 0.5s ease-in-out;
-    box-sizing: border-box;
-}
-
-/* .fifty:hover{
-    width: calc(64% - 18px);
-    transition: 2s ease-in-out;
-    box-sizing: border-box;
-} */
-
-/* .fifty:nth-child(even):hover{
-    margin-left:  24px;
-    transition: 0.5s ease-in-out;
-    box-sizing: border-box;
-}
-
-.fifty:nth-child(odd):hover{
-    margin-right:  24px;
-    transition: 0.5s ease-in-out;
-    box-sizing: border-box;
-} */
-
-.photoBox {
+.captions {
     overflow: hidden;
     width: 100%;
     position: relative;
+}
+
+.photoBox{
+    overflow: hidden;
 }
 
 .photoBox img {
@@ -682,7 +640,7 @@ main {
 
 .flexBox {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     box-sizing: border-box;
     padding: 4px;
     height: auto;
@@ -842,6 +800,52 @@ main {
     padding-top: 8px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.349);
 }
+.somethingehere {
+    width: fit-content;
+    display: flex;
+    justify-content: space-between;
+}
+
+.row h1 {
+    font-weight: 400;
+    padding-bottom: 0;
+}
+
+.row h1:first-child {
+    width: 200px;
+    padding-right: 64px;
+}
+
+.row h1:nth-child(2) {
+    width: 400px;
+}
+
+.row h1:nth-child(3) {
+    padding-right: 32px;
+}
+
+.somethingehere h1:nth-child(even) {
+    padding-left: 32px;
+}
+
+.somethingehere h1 {
+    width: fit-content !important;
+    padding-right: 0px !important;
+}
+
+.imgProject {
+    width: 280px !important;
+    height: fit-content;
+    position: absolute;
+    right: 230px;
+    top: -80px;
+    z-index: 12;
+    display: none;
+}
+
+.row:hover .imgProject {
+    display: block;
+}
 
 .row .flexBox {
     padding-top: 0;
@@ -859,6 +863,7 @@ main {
 
 .ArchiveTitle {
     font-size: 8vw;
+    line-height: 8vw;
     margin-block-end: 0;
     margin-block-start: 0;
     margin-top: 164px;
@@ -1467,7 +1472,8 @@ main {
 }
 
 footer {
-    width: 100%;
+    width: 88%;
+    margin: auto;
     padding-top: 132px;
     padding-bottom: 18px;
     background-color: var(--black);

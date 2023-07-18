@@ -50,195 +50,316 @@
 
 <body>
     <div class="nav" id="navbar">
-        <a href="index.html">Digtial Designer </a>
-        <a href="index.html">
-            <img class="logo" src="face.svg" width="100%" alt="face icon">
-        </a>
-        <!-- <h1> Digtial Designer</h1> -->
+        <a href="index.html">A.K &nbsp; &#8212; &nbsp; Digtial Designer </a>
         <div class="navRight">
             <a href="index.html">Work</a>
             <a href="about.html" style="margin-left: 16px;">About</a>
             <a href="archive.html" id="menu" style="margin-left: 16px;">Archive</a>
         </div>
     </div>
+    <script>
+        var lastScrollTop;
+        navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            scrollTop > lastScrollTop ? navbar.style.top = '-90px' : navbar.style.top = '0';
+            lastScrollTop = scrollTop;
+        });
+    </script>
     <div class="smoothScroll">
         <div class="breifstuff" id="abouts">
             <div class="container">
-                <h1>I'm Alex Kauffman, an Digtial Design at Hook working on a team dedicated to building UX/UI, Ads and product <br> projects for Google.
-                    <br>
-                    <br>
-                    Over the past few years I've helped to redesign an iconic blue button, defined <br> the motion system for Google TV and made plenty of websites.
-                    <br>
-                    <br>
-                    My goal is to create work that is equal parts accessible and experimental. For detailed case studies or questions, <br> send me an email.</h1>
-                <!-- <h1 style="margin-block-end: 0; padding-bottom: 0; margin-bottom: 0;">Alex is a mid level digtial designer with dedication
-                    <div class="flexBox" style="justify-content: start; width: fit-content;">
-                        for
-                        <div class="wraper">
-                            <div class="words">
-                                <span class="rotateWords">Savvy Figma 🖥️</span>
-                               
-                                <span class="rotateWords">Serif Fonts ⌨️</span>
-                               
-                                <span class="rotateWords"> Fencing 🤺</span>
-                    
-                                <span class="rotateWords">Serious Focus 🔍</span>
-                         
-                            </div>
-                        </div>
-                    </div>
-                </h1> -->
+                <h1>I'm Alex, an Digtial Designer at Hook working on creating exicting UX/UI, Ads, and
+                    product projects for Google, Color, Youtube and more.
             </div>
         </div>
         <div class="project">
-            <h1 class="titleProject">Selected Works</h1>
-            <section class="grid">
-                <div class="box-1">
-                    <div class="photos">
-                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w" alt="" width="100%">
+            <h1 class="ArchiveTitle" style="padding-top: 0; margin-block-start: 0;">Selected <br> Works</h1>
+            <section class="flexBox">
+                <div class="fifty">
+                    <div class="photoBox">
+                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w"
+                            alt="" width="100%">
                     </div>
                     <div class="captions">
-                        <h1>Project 1</h1>
+                        <h1>Google Bard</h1>
+                    </div>
+                </div>
+                <div class="fifty">
+                    <div class="photoBox">
+                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w"
+                            alt="" width="100%">
+                    </div>
+                    <div class="captions">
+                        <h1>Color health</h1>
                     </div>
                 </div>
             </section>
-            <section class="grid">
-                <div class="box-2">
-                    <div class="photos">
-                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w" alt="" width="100%">
+            <section class="flexBox">
+                <div class="fifty">
+                    <div class="photoBox">
+                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w"
+                            alt="" width="100%">
                     </div>
                     <div class="captions">
-                        <h1>Project 2</h1>
+                        <h1>ASL Write</h1>
+                    </div>
+                </div>
+                <div class="fifty">
+                    <div class="photoBox">
+                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w"
+                            alt="" width="100%">
+                    </div>
+                    <div class="captions">
+                        <h1>Google For Creators</h1>
                     </div>
                 </div>
             </section>
-            <section class="grid">
-                <div class="box-3">
-                    <div class="photos">
-                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w" alt="" width="100%">
+            <section class="flexBox">
+                <div class="fifty">
+                    <div class="photoBox">
+                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w"
+                            alt="" width="100%">
                     </div>
                     <div class="captions">
-                        <h1>Project 3</h1>
+                        <h1>Wishful</h1>
+                    </div>
+                </div>
+                <div class="fifty">
+                    <div class="photoBox">
+                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w"
+                            alt="" width="100%">
+                    </div>
+                    <div class="captions">
+                        <h1>Google Health</h1>
                     </div>
                 </div>
             </section>
-            <section class="grid">
-                <div class="box-4">
-                    <div class="photos">
-                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w" alt="" width="100%">
+            <h1 class="ArchiveTitle">Archives</h1>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
                     </div>
-                    <div class="captions">
-                        <h1>Project 4</h1>
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section class="grid">
-                <div class="box-5">
-                    <div class="photos">
-                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w" alt="" width="100%">
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
                     </div>
-                    <div class="captions">
-                        <h1>Project 5</h1>
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </section>
-            <section class="grid">
-                <div class="box-6">
-                    <div class="photos">
-                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1611071914545-N8LZ669KN085TKSP4YSZ/Olipop_Cover.jpg?format=2500w" alt="" width="100%">
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
                     </div>
-                    <div class="captions">
-                        <h1>Project 6</h1>
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </section>
-        </div>
-        <div class="project" id="projects">    
-            <h2>Design artifacts of all previous work I've played, worked, and experimented with.</h2>
-            <div class="button">
-                <a href="archive.html">See artifacts</a>
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="row">
+                <a href="#">
+                    <div class="flexBox">
+                        <div class="flexBox">
+                            <h1>Wishful</h1>
+                            <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
+                        </div>
+
+                        <img class="imgProject"
+                            src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
+                            width="100%">
+                        <div class="somethingehere">
+                            <div class="flexBox">
+                                <h1>UX/UI</h1>
+                                <h1>2023</h1>
+                            </div>
+                        </div>
+                    </div>
+                </a>
             </div>
         </div>
-        <style>
-            .somethingehere {
-                width: fit-content;
-                display: flex;
-                justify-content: space-between;
-            }
-    
-            .row h1{
-                font-weight: 400;
-            }
-    
-            .row h1:first-child {
-                width: 200px;
-                padding-right: 64px;
-            }
-    
-            .row h1:nth-child(2) {
-                width: 400px;
-            }
-    
-            .row h1:nth-child(3) {
-                padding-right: 32px;
-            }
-    
-            .somethingehere h1:nth-child(even) {
-                padding-left: 32px;
-            }
-    
-            .somethingehere h1 {
-                width: fit-content !important;
-                padding-right: 0px !important;
-            }
-    
-            .imgProject {
-                width: 280px !important;
-                height: fit-content;
-                position: absolute;
-                right: 320px;
-                top: -80px;
-                z-index: 12;
-                display: none;
-            }
-    
-            .row:hover .imgProject {
-                display: block;
-            }
-
-            .button a{
-                padding: 32px;
-                border-radius: 100rem;
-                background-color: white;
-                color: black;
-                font-size: 22px;
-                font-weight: 500;
-            }
-        </style>
-        <!-- <footer id="contacts">
-            <div class="container"> -->
-                <!-- <div class="backToTop">
-                    <img src="https://em-content.zobj.net/source/microsoft-teams/363/index-pointing-up_261d-fe0f.png"
-                        width="100%" alt="Up Arrow">
-                </div>
-                <script>
-                    $(document).ready(function () {
-                        $(window).scroll(function () {
-                            if ($(this).scrollTop() > $(document).height() - $(window).height() - 10) {
-                                $('.backToTop').fadeIn(100);
-                            } else {
-                                $('.backToTop').fadeOut(10);
-                            }
-                        });
-
-                        $('.backToTop').click(function () {
-                            $('html, body').animate({
-                                scrollTop: 0
-                            }, 1500);
-                        });
-                    });
-                </script> -->
-                <!-- <h2>Let's make <br> awesome sh💩t</h2>
+        <footer>
+            <div class="container">
+                <h2>Let's make <br> cool sh💩t</h2>
                 <a class="copyTxt" href="mailto:xanderkau13@gmail.com" id="myLink">send me an
                     email.</a><span class="smalltxt">[ Copy email to clipboard ]</span>
                 <br>
@@ -246,8 +367,8 @@
                 <br>
                 <br>
                 <br>
-                <br> -->
-                <!-- <div class="flexBox">
+                <br>
+                <div class="flexBox">
                     <div class="content">
                         <a href="#">LinkedIn</a>
                         <a href="#">Instagram</a>
@@ -255,34 +376,12 @@
                     </div>
                     <div class="content" style="max-width: 460px;">
                         <div class="flexBox" style="justify-content: end; text-align: right;">
-                            <h3>Working from Detroit Area. Design & Coded with ❤️️</h3>
+                            <h3> Design + Coded w/ &nbsp; ❤️ &nbsp; &#8212; &nbsp; Detroit Area</h3>
                         </div>
                     </div>
-                </div> -->
-            <!-- </div>
+                </div>
+            </div>
         </footer>
-    </div> -->
-    <!-- <script>
-        //email thing
-        const emailLink = document.getElementById("myLink");
-        const smalltxt = document.querySelector(".smalltxt");
-        emailLink.addEventListener("click", copyEmailToClipboard);
-
-        function copyEmailToClipboard(event) {
-            event.preventDefault();
-            const tempInput = document.createElement("input");
-            tempInput.value = "xanderkau13@gmail.com";
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            tempInput.setSelectionRange(0, 99999);
-            document.execCommand("copy");
-            document.body.removeChild(tempInput);
-            smalltxt.textContent = "[ Email copied! ]";
-            setTimeout(function () {
-                smalltxt.textContent = "[copy email to clipboard]";
-            }, 2500);
-        }
-    </script> -->
     </div>
 </body>
 

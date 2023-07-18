@@ -50,17 +50,34 @@
 
 <body>
     <div class="nav" id="navbar">
-        <a href="index.html" style="padding-left: 32px;">A.K &nbsp; &#8212; &nbsp; Digtial Designer </a>
-        <a href="index.html">
-            <img class="logo" src="face.svg" width="100%" alt="face icon">
-        </a>
-        <!-- <h1> Digtial Designer</h1> -->
+        <a href="index.html">A.K &nbsp; &#8212; &nbsp; Digtial Designer </a>
         <div class="navRight">
             <a href="index.html">Work</a>
             <a href="about.html" style="margin-left: 16px;">About</a>
-            <a href="archive.html" id="menu" style="margin-left: 16px;">archive</a>
+            <a href="archive.html" id="menu" style="margin-left: 16px;">Archive</a>
         </div>
     </div>
+    <script>
+        var lastScrollTop; // This Varibale will store the top position
+
+        navbar = document.getElementById('navbar'); // Get The NavBar
+
+        window.addEventListener('scroll', function () {
+            //on every scroll this funtion will be called
+
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            //This line will get the location on scroll
+
+            if (scrollTop > lastScrollTop) { //if it will be greater than the previous
+                navbar.style.top = '-90px';
+                //set the value to the negetive of height of navbar 
+            } else {
+                navbar.style.top = '0';
+            }
+
+            lastScrollTop = scrollTop; //New Position Stored
+        });
+    </script>
     <style>
         .somethingehere {
             width: fit-content;
@@ -373,28 +390,6 @@
     </div>
     <footer>
         <div class="container">
-            <div class="backToTop">
-                <img src="https://em-content.zobj.net/source/microsoft-teams/363/index-pointing-up_261d-fe0f.png"
-                    width="100%" alt="Up Arrow">
-            </div>
-            <script>
-                $(document).ready(function () {
-                    $(window).scroll(function () {
-                        if ($(this).scrollTop() > $(document).height() - $(window).height() -
-                            10) {
-                            $('.backToTop').fadeIn(100);
-                        } else {
-                            $('.backToTop').fadeOut(10);
-                        }
-                    });
-
-                    $('.backToTop').click(function () {
-                        $('html, body').animate({
-                            scrollTop: 0
-                        }, 1500);
-                    });
-                });
-            </script>
             <!-- <h2>Let's make <br> awesome sh💩t</h2>
             <a class="copyTxt" href="mailto:xanderkau13@gmail.com" id="myLink">send me an
                 email.</a><span class="smalltxt">[ Copy email to clipboard ]</span>
