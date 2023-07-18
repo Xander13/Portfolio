@@ -1,6 +1,6 @@
 :root {
-    --white: #f7f7f7;
-    --black: #060606;
+    --white: #040404;
+    --black: #ffffff;
     --midBlack: rgba(29, 29, 29, 0.898);
     --gray: rgb(153, 153, 153);
     --orange: #f36545;
@@ -34,12 +34,12 @@ p {
     background: var(--black);
 }
 
-#style-3::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
     background-color: transparent;
 }
 
-#style-3::-webkit-scrollbar {
+::-webkit-scrollbar {
     width: 6px;
     background-color: transparent;
 }
@@ -62,33 +62,13 @@ body {
     height: auto;
     margin-bottom: 48px;
     box-sizing: border-box;
-    padding: 32px;
+    padding-left: 124px;
+    padding-right: 124px;
 }
 
-.box-1 {
+.box-1, .box-2, .box-3, .box-4, .box-5, .box-6 {
     grid-column-start: 1;
-    grid-column-end: 9;
-}
-
-.box-2{
-    grid-column-start: 6;
-    grid-column-end: 15;
-}
-
-.box-3{
-    grid-column-start:2;
-    grid-column-end: 8;
-
-}
-
-.box-4{
-    grid-column-start: 3;
-    grid-column-end: 14;
-}
-
-.box-5{
-    grid-column-start: 6;
-    grid-column-end: 15;
+    grid-column-end: 16;
 }
 
 .breifstuff {
@@ -214,38 +194,36 @@ body {
 }
 
 .nav {
-    position: fixed;
+    position: -webkit-sticky;
+    position: sticky;
     top: 0px;
-    right: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
+    padding-left: 64px;
+    padding-right: 64px;
+    z-index: 50;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
     display: flex;
+    height: 140px;
+    width: 100%;
+    margin-bottom: 50px;
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
     justify-content: space-between;
-    z-index: 22;
-    margin: auto;
-    padding-top: 16px;
-    box-sizing: border-box;
+    -webkit-box-align: space-between;
+    -webkit-align-items: space-between;
+    -ms-flex-align: space-between;
     align-items: center;
-    padding-bottom: 16px;
-    transition: 0.5s ease;
-    height: 80px;
-}
-
-.navRight {
-    padding: 12px;
-    padding-left: 36px;
-    padding-right: 36px;
-    padding-bottom: 14px;
+    box-sizing: border-box;
 }
 
 .nav a,
 .nav h1 {
     text-decoration: none;
     color: var(--white);
-    font-size: 15px;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 500;
     transition: 0.3s ease;
 }
 
@@ -262,8 +240,6 @@ body {
 .logo {
     -webkit-transform: scaleX(-1);
     transform: scaleX(-1);
-    margin-left: 32px;
-    margin-top: 32px;
     width: 50px;
 }
 
@@ -423,7 +399,6 @@ body {
     text-align: left;
     text-transform: uppercase;
     padding-top: 12px;
-    padding-bottom: 8px;
 }
 
 .captions p {
@@ -431,7 +406,7 @@ body {
     line-height: 24px;
     max-inline-size: 50ch;
     text-wrap: balance;
-    margin-top: 4px;
+    margin-top: 0px;
     margin-block-end: 0;
     text-transform: uppercase;
 }
@@ -545,16 +520,24 @@ main {
     transition: color 0.5s ease;
 }
 
-.project {
+/* .project {
     width: 86%;
     margin: auto;
     padding-top: 65px;
-}
+} */
 
 .titleProject {
     font-weight: 400;
-    font-size: 32px;
-    line-height: 42px;
+    font-size: 3vw;
+    margin: auto;
+    width: fit-content;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+.project h1{
+    font-weight: 400;
+    padding-bottom: 32px;
 }
 
 .project h4 {
@@ -868,6 +851,10 @@ main {
     font-size: 16px;
     text-transform: none;
     color: var(--white);
+}
+
+.row a{
+    text-decoration: none;
 }
 
 .ArchiveTitle {
