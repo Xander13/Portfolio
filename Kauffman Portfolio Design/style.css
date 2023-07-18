@@ -1,6 +1,6 @@
 :root {
-    --white: rgb(255, 255, 255);
-    --black: #020202;
+    --white: #f7f7f7;
+    --black: #060606;
     --midBlack: rgba(29, 29, 29, 0.898);
     --gray: rgb(153, 153, 153);
     --orange: #f36545;
@@ -34,24 +34,14 @@ p {
     background: var(--black);
 }
 
-/* width */
-::-webkit-scrollbar {
-    width: 8px;
+#style-3::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-    background: #000000;
-}
-
-/* Handle */
-::-webkit-scrollbar-thumb {
-    background: #ffffff;
-}
-
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: var(--midBlack);
+#style-3::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
 }
 
 .line {
@@ -102,17 +92,19 @@ body {
 }
 
 .breifstuff {
-    padding-top: 124px;
+    padding-top: 256px;
     padding-bottom: 124px;
     text-align: left;
 }
 
 .breifstuff h1 {
-    max-inline-size: 30ch;
+    margin: auto;
+    max-inline-size: 38ch;
     text-wrap: balance;
     font-weight: 500;
-    font-size: 3vw;
-    line-height: 3vw;
+    font-size: 3.5vw;
+    line-height: 5vw;
+    text-align: left;
     text-transform: uppercase;
 }
 
@@ -128,21 +120,23 @@ body {
     overflow: hidden;
     display: flex;
     box-sizing: content-box;
-    font-size: 2vw;
-    height: 3vw;
+    font-size: 3vw;
+    height: 3.4vw;
     padding-left: 8px;
     width: fit-content;
     position: relative;
 }
 
 .words {
-    font-size: 2vw;
-    height: 3vw;
+    font-size: 3vw;
+    height: 3.4vw;
     position: relative;
     overflow: hidden;
 }
 
 .rotateWords {
+    font-size: 3vw;
+    height: 3.4vw;
     padding: 0;
     display: block;
     height: fit-content;
@@ -552,7 +546,7 @@ main {
 }
 
 .project {
-    width: 96%;
+    width: 86%;
     margin: auto;
     padding-top: 65px;
 }
@@ -860,7 +854,7 @@ main {
     transition: 0.5s ease;
     font-size: 18px;
     position: relative;
-    color: white;
+    color: var(--white);
     padding-bottom: 8px;
     padding-top: 8px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.349);
@@ -873,7 +867,7 @@ main {
 .row h1 {
     font-size: 16px;
     text-transform: none;
-    color: white;
+    color: var(--white);
 }
 
 .ArchiveTitle {
@@ -965,7 +959,7 @@ main {
 
 .seemore:hover {
     background: gray;
-    color: white;
+    color: var(--white);
     transition: 0.5s ease;
 }
 
@@ -1075,10 +1069,10 @@ main {
     padding: 16px;
     border-radius: 100rem;
     border: none;
-    background-color: black;
-    color: white;
+    background-color: var(--black);
+    color: var(--white);
     transition: 0.5s ease;
-    border: 1px solid black;
+    border: 1px solid var(--black);
     margin: auto;
     width: 180px;
     z-index: 1;
@@ -1087,9 +1081,9 @@ main {
 }
 
 .loadMoreBtn:hover {
-    background-color: white;
-    border: 1px solid black;
-    color: black;
+    background-color: var(--white);
+    border: 1px solid var(--black);
+    color: var(--black);
     transition: 0.5s ease;
 }
 
