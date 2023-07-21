@@ -1,0 +1,50 @@
+:root{
+    
+}
+
+body{
+    background-color: black;
+    color: white;
+    font-family: sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+}
+
+.flexBox{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav{
+    position: fixed;
+    width: 100%;
+    padding-left: 4%;
+    padding-right: 4%;
+    padding-top: 2.4%;
+    mix-blend-mode: difference;
+}
+
+.nav a{
+    font-size: 22px;
+    margin-left: 32px;
+}
+
+.nav a:hover{
+    color: gray;
+}
+
+.hero{
+    margin-left: 4%;
+    margin-right: 4%;
+}
+
+.hero h1{
+    font-size: 8vw;
+    max-width: 20ch; 
+    line-height: 8vw;
+    padding-top: 40vh;
+}
