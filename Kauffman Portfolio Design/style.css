@@ -24,13 +24,13 @@ a{
     width: 100%;
     padding-left: 4%;
     padding-right: 4%;
-    padding-top: 2.4%;
     mix-blend-mode: difference;
+    padding-top: 32px;
 }
 
 .nav a{
     font-size: 22px;
-    margin-left: 32px;
+    text-transform: uppercase;
 }
 
 .nav a:hover{
@@ -38,13 +38,52 @@ a{
 }
 
 .hero{
-    margin-left: 4%;
-    margin-right: 4%;
+    height: 900px;
 }
 
 .hero h1{
-    font-size: 8vw;
+    font-size: 12vw;
     max-width: 20ch; 
-    line-height: 8vw;
+    line-height: 12vw;
     padding-top: 40vh;
+    text-align: center;
+    mix-blend-mode: difference;
+}
+
+.hero img{
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 400px;
+    background-color: green;
+    height: auto;
+    z-index: -1;
+    top: 30vh;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+/* Apply the animation to the text */
+.marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-text {
+    animation: marquee 30s linear infinite;
+    display: inline-block;
+    position: relative;
+}
+
+.marquee-text h1{
+    line-height: 14vw;
+   
 }
