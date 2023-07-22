@@ -23,10 +23,63 @@ a{
 .nav{
     position: fixed;
     width: 100%;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 32px;
+    padding-right: 32px;
     mix-blend-mode: difference;
     padding-top: 32px;
+}
+
+
+.sm{
+    position: fixed;
+    bottom: 32px;
+    left: 32px;
+    background-color: rgb(255, 255, 255);
+    width: 22px;
+    height: 22px;
+    font-size: 56px;
+    border-radius: 100rem;
+    justify-content: center;
+    vertical-align: center;
+    display: flex;
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+
+.sm:hover{
+    width: 248px;
+    height: 86px;
+    transition: 0.4s ease;
+}
+
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48;
+}
+
+.upArrow{
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background-color: rgba(255, 255, 255, 0.508);
+    width: 64px;
+    height: 64px;
+    color: black;
+    font-size: 36px;
+    border-radius: 100rem;
+    justify-content: center;
+    vertical-align: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.upArrow:hover{
+    background-color: rgb(255, 255, 255);
+    width: 86px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 .nav a{
@@ -52,7 +105,7 @@ a{
     padding-top: 332px;
 }
 
-.bio, .projects{
+.bio, .projects, .things, .articles, .contacts, footer{
     width: 100%;
     padding-left: 10%;
     padding-right: 10%;
@@ -119,7 +172,7 @@ a{
     padding-bottom: 132px;
 }
 
-.box{
+.box, .serviceBox{
     width: calc(50% - 32px);
 }
 
@@ -150,10 +203,23 @@ a{
     padding-top: 0px;
 }
 
+.things{
+    padding-top: 132px;
+}
+
+.serviceBox{
+    border: 1px solid white;
+    padding: 12px;
+    font-size: 2vw;
+    line-height: 2vw;
+    font-weight: 400;
+    height: 400px;
+    position: relative;
+    margin-bottom: 64px;
+}
+
 footer .lgTxt{
     font-size: 12vw;
-    padding-left: 10%;
-    padding-right: 10%;
     margin-bottom: 0;
     line-height: 12vw;
     padding-top: 132px;
