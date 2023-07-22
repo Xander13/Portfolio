@@ -10,7 +10,10 @@ a {
     color: black;
 }
 
-
+::selection {
+    background: #856cff;
+    color: #ffffff;
+  }
 
 h1,
 h2,
@@ -80,10 +83,9 @@ p {
     position: fixed;
     bottom: 32px;
     right: 32px;
-    background-color: rgba(255, 255, 255);
+    background-color: white;
     width: 64px;
     height: 64px;
-    color: black;
     font-size: 36px;
     border-radius: 100rem;
     justify-content: center;
@@ -91,6 +93,7 @@ p {
     display: flex;
     cursor: pointer;
     z-index: 11111;
+    mix-blend-mode: difference;
 }
 
 .nav a {
@@ -118,7 +121,7 @@ p {
 .bio,
 .things,
 .articles,
-.contacts,
+.contact,
 footer {
     width: 100%;
     padding-left: 32px;
@@ -156,8 +159,8 @@ footer {
 
 .logoReel {
     display: flex;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .logoReel img {
@@ -167,14 +170,15 @@ footer {
 
 
 .projects {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .projects h1 {
     font-size: 3vw;
-    padding-bottom: 12px;
+    padding-bottom: 112px;
     padding-top: 12px;
+    text-align: center;
 }
 
 .projects .flexBox {
@@ -230,6 +234,21 @@ footer {
 
 .articles{
     padding-bottom: 64px;
+    overflow-x: hidden; 
+    min-width: 100%;
+    margin-right: 32px;
+    z-index: 12;
+}
+
+.storyCards{
+    min-width: 420px;
+    margin-right: 132px;
+}
+
+.storyCards img{
+    width: 420px;
+    height: 500px;
+    object-fit: cover;
 }
 
 .articles .rows {
@@ -258,10 +277,35 @@ footer {
     border-bottom: 1px solid gray;
 }
 
-.contacts {
-    font-size: 12vw;
+.contact {
     text-align: center;
+    padding-bottom: 132px;
 }
+
+.contact h1{
+    font-size: 9.4vw;
+    line-height: 8vw;
+    text-transform: uppercase;
+    padding-top: 132px;
+    font-weight: 900 !important;
+}
+
+.contact p{
+    font-size: 22px;
+    padding-top: 32px;
+    padding-bottom: 16px;
+    width: 570px;
+    margin: auto;
+    line-height: 24px;
+    color: gray;
+    text-transform: uppercase;
+}
+
+.contact a{
+    font-size: 22px;
+    text-transform: up;
+}
+
 
 footer {
     height: auto;
@@ -272,6 +316,8 @@ footer {
 
 #colsStuff{
     align-items: start;
+    padding-left: 10%;
+    padding-right: 10%;
 }
 
 .cols{
@@ -295,6 +341,11 @@ footer {
     overflow: hidden;
     user-select: none;
     gap: var(--gap);
+}
+
+.marquee .logo{
+    width: 100%;
+    background-color: green;
 }
 
 .marquee__content {
