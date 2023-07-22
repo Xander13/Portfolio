@@ -27,6 +27,7 @@ a{
     padding-right: 32px;
     mix-blend-mode: difference;
     padding-top: 32px;
+    z-index: 11111;
 }
 
 
@@ -44,6 +45,7 @@ a{
     display: flex;
     cursor: pointer;
     transition: 0.4s ease;
+    z-index: 11111;
 }
 
 .sm:hover{
@@ -74,6 +76,7 @@ a{
     vertical-align: center;
     display: flex;
     cursor: pointer;
+    z-index: 11111;
 }
 
 .upArrow:hover{
@@ -216,6 +219,13 @@ a{
     height: 400px;
     position: relative;
     margin-bottom: 64px;
+}
+
+footer{
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    padding-top: 132px;
 }
 
 footer .lgTxt{
