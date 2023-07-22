@@ -6,6 +6,7 @@ body{
     background-color: black;
     color: white;
     font-family: sans-serif;
+    overflow-x: hidden;
 }
 
 a{
@@ -16,14 +17,14 @@ a{
 .flexBox{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .nav{
     position: fixed;
     width: 100%;
-    padding-left: 4%;
-    padding-right: 4%;
+    padding-left: 10%;
+    padding-right: 10%;
     mix-blend-mode: difference;
     padding-top: 32px;
 }
@@ -42,48 +43,118 @@ a{
 }
 
 .hero h1{
-    font-size: 12vw;
-    max-width: 20ch; 
-    line-height: 12vw;
-    padding-top: 40vh;
-    text-align: center;
-    mix-blend-mode: difference;
+    font-size: 5vw;
+    line-height: 5.2vw;
+    font-weight: 400;
+    max-width: 25ch;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 332px;
 }
 
-.hero img{
-    position: absolute;
-    left: 0;
-    right: 0;
+.bio, .projects{
+    width: 100%;
+    padding-left: 10%;
+    padding-right: 10%;
     margin: auto;
-    width: 400px;
-    background-color: green;
-    height: auto;
-    z-index: -1;
-    top: 30vh;
 }
 
-@keyframes marquee {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+.bio{
+    padding-bottom: 132px;
 }
 
-/* Apply the animation to the text */
-.marquee-container {
-    overflow: hidden;
-    white-space: nowrap;
+.bio h4{
+    text-transform: uppercase;
+    font-size: 18px;
+    font-weight: 400;
+    padding-bottom: 32px;
 }
 
-.marquee-text {
-    animation: marquee 30s linear infinite;
-    display: inline-block;
-    position: relative;
+.bio h2{
+    font-size: 3vw;
+    line-height: 3vw;
+    letter-spacing: -1%;
+    max-width: 35ch;
+    padding-bottom: 32px;
 }
 
-.marquee-text h1{
-    line-height: 14vw;
-   
+.bio h5{
+    border: 1px solid white;
+    width: fit-content;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 16px;
+    border-radius: 100rem;
+}
+
+.logoReel{
+    display: flex;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.logoReel img{
+    width: 200px;
+    margin-right: 132px;
+}
+
+
+.projects{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.projects h1{
+    font-size: 5vw;
+    padding-bottom: 12px;
+}
+
+.projects p{
+    font-size: 16px;
+    max-width: 50ch;
+    padding-bottom: 56px;
+}
+
+.projects .flexBox{
+    padding-bottom: 132px;
+}
+
+.box{
+    width: calc(50% - 32px);
+}
+
+.box img{
+    transition: scale 0.2s ease-out;
+}
+
+.box img:hover{
+    scale: 0.98;
+    transition: scale 0.2s ease-out;
+}
+
+.capations h2{
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    width: 100%;
+    font-weight: 400;
+    padding-top: 32px;
+}
+
+.capations h4{
+    font-size: 18px;
+    color: rgb(87, 87, 87);
+    text-align: center;
+    width: 100%;
+    font-weight: 400;
+    padding-top: 0px;
+}
+
+footer .lgTxt{
+    font-size: 12vw;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-bottom: 0;
+    line-height: 12vw;
+    padding-top: 132px;
 }
