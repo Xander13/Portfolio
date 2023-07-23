@@ -58,6 +58,7 @@ p {
     list-style-type: none;
     font-size: 22px;
     text-transform: uppercase;
+    color: green;
 }
 
 .nav a{
