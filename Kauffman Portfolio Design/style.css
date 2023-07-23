@@ -53,22 +53,53 @@ p {
     left: 32px;
     background-color: white;
     mix-blend-mode: difference;
-    width: 22px;
-    height: 22px;
+    width: 56px;
+    height: 56px;
     font-size: 56px;
+    padding: 16px;
     border-radius: 100rem;
     justify-content: center;
     vertical-align: center;
     display: flex;
     cursor: pointer;
-    transition: 0.4s ease;
     z-index: 11111;
+    border: 1px solid transparent;
 }
 
-.sm:hover {
-    width: 248px;
-    height: 86px;
-    transition: 0.4s ease;
+.upArrow {
+    position: fixed;
+    bottom: 32px;
+    right: 32px;
+    background-color: white;
+    mix-blend-mode: difference;
+    width: 56px;
+    height: 56px;
+    font-size: 56px;
+    padding: 16px;
+    border-radius: 100rem;
+    justify-content: center;
+    vertical-align: center;
+    display: flex;
+    cursor: pointer;
+    z-index: 11111;
+    user-select: none;
+    border: 1px solid transparent;
+}
+
+.sm .material-symbols-outlined, .photoCard .material-symbols-outlined{
+    rotate: 45deg;
+    user-select: none;
+}
+
+.sm:hover, .upArrow:hover{
+    color: white;
+    background-color: black;
+    border: 1px solid white;
+}
+
+.sm:active, .upArrow:active{
+    color: black;
+    background-color: white;
 }
 
 .material-symbols-outlined {
@@ -77,23 +108,6 @@ p {
         'wght'400,
         'GRAD'0,
         'opsz'48;
-}
-
-.upArrow {
-    position: fixed;
-    bottom: 32px;
-    right: 32px;
-    background-color: white;
-    width: 64px;
-    height: 64px;
-    font-size: 36px;
-    border-radius: 100rem;
-    justify-content: center;
-    vertical-align: center;
-    display: flex;
-    cursor: pointer;
-    z-index: 11111;
-    mix-blend-mode: difference;
 }
 
 .nav a {
@@ -178,7 +192,6 @@ footer {
     font-size: 3vw;
     padding-bottom: 112px;
     padding-top: 12px;
-    text-align: center;
 }
 
 .projects .flexBox {
@@ -190,31 +203,83 @@ footer {
     width: calc(50% - 24px);
 }
 
-.box img {
-    transition: scale 0.2s ease-out;
+.full{
+    width: 100%;
+    margin-bottom: 132px;
 }
 
-.box img:hover {
-    scale: 0.98;
-    transition: scale 0.2s ease-out;
+.capations .flexBox{
+    padding-bottom: 0;
+    padding-top: 16px;
 }
 
 .capations h2 {
     font-size: 22px;
     color: black;
-    text-align: center;
     width: 100%;
     font-weight: 400;
-    padding-top: 32px;
 }
 
 .capations h4 {
     font-size: 18px;
-    color: rgb(87, 87, 87);
-    text-align: center;
+        color: rgb(52, 52, 52);
     width: 100%;
     font-weight: 400;
     padding-top: 0px;
+}
+
+.arrow{
+    width: 48px;
+    height: 48px;
+    padding: 12px;
+    color: rgb(52, 52, 52);
+    border-radius: 100rem;
+    position: absolute;
+    background-color: transparent;
+    position: absolute;
+    right: 16px;
+    bottom: 16px;
+    transition: 0.2s ease-out;
+}
+
+.photoCard:hover{
+    cursor: pointer;
+}
+
+.photoCard:hover .arrow{
+    background-color: rgb(0, 0, 0);
+    color: white;
+    transition: 0.2s ease-out;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.photoCard img{
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.photoCard{
+    position: relative;
+    padding: 76px;
+    background-color: rgb(248, 248, 248);
+    transition: background-color 0.2s ease;
+}
+
+.photoCard h2{
+    font-size: 18px;
+    font-weight: 400;
+    color: rgb(108, 108, 108);
+    position: absolute;
+    left: 16px;
+    top: 16px;
+}
+
+.photoCard h3{
+    font-size: 18px;
+    font-weight: 400;
+    color: rgb(108, 108, 108);
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
 }
 
 .things {

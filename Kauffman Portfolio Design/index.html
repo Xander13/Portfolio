@@ -23,10 +23,38 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             </div>
         </div>
     </div>
-    <div class="upArrow">
-    
+    <div class="upArrow" id="myBtn">
+        <span class="material-symbols-outlined">
+            arrow_upward
+        </span>
     </div>
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () {
+            scrollFunction()
+        };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
     <div class="sm">
+        <span class="material-symbols-outlined">
+            link
+        </span>
     </div>
     <div data-scroll-container>
         <section class="hero">
@@ -42,70 +70,113 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             </a>
         </section> -->
         <section class="projects">
-            <h1>Selected Work</h1>
             <div class="flexBox">
                 <div class="box">
                     <div class="photoCard">
-                        <img src="https://ueno.co/static/5038419186136bcececcf44c09df777a/8fc1f/fa4cfb00-b4bc-497c-8691-b6187f3affce_lonelyplanet_hero.webp"
+                        <h2>UX/UI, Web, Motion Design</h2>
+                        <a href="#" class="arrow">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                        </a>
+                        <img src="https://refikanadol.com/wp-content/uploads/2021/12/MH-Nature-Dreams-Ch-3-CU-ProRes0-1-1440x810.jpg"
                             alt="img" width="100%" draggable="false">
-                    </div>
-                    <div class="capations">
-                        <h2>Project Name</h2>
-                        <h4>Type of project</h4>
+                        <h3>Google Bard</h3>
                     </div>
                 </div>
                 <div class="box">
                     <div class="photoCard">
-                        <img src="https://ueno.co/static/5038419186136bcececcf44c09df777a/8fc1f/fa4cfb00-b4bc-497c-8691-b6187f3affce_lonelyplanet_hero.webp"
+                        <h2>UX/UI, Web, Motion Design</h2>
+                        <a href="#" class="arrow">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                        </a>
+                        <img src="https://freight.cargo.site/w/2000/q/75/i/a1026fdec43b357e99bce2dbf443f2faea0ea4401a13d63be801d878cb5ac983/Obos_Magazine_FullPage_D.jpg"
                             alt="img" width="100%" draggable="false">
+                        <h3>Google Bard</h3>
                     </div>
-                    <div class="capations">
-                        <h2>Project Name</h2>
-                        <h4>Type of project</h4>
-                    </div>
+                </div>
+            </div>
+            <div class="full">
+                <div class="photoCard">
+                    <h2>UX/UI, Web, Motion Design</h2>
+                    <a href="#" class="arrow">
+                        <span class="material-symbols-outlined">
+                            arrow_upward
+                        </span>
+                    </a>
+                    <img src="https://freight.cargo.site/w/2400/q/94/i/94e3c5b257626196a0e0b0c083ece4637f0e0332130e764656c99119b0004262/OhWake_Cover_SebastianCuri_Layered.jpg"
+                        alt="img" width="100%" draggable="false">
+                    <h3>Google Bard</h3>
                 </div>
             </div>
             <div class="flexBox">
                 <div class="box">
                     <div class="photoCard">
-                        <img src="https://ueno.co/static/5038419186136bcececcf44c09df777a/8fc1f/fa4cfb00-b4bc-497c-8691-b6187f3affce_lonelyplanet_hero.webp"
+                        <h2>UX/UI, Web, Motion Design</h2>
+                        <a href="#" class="arrow">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                        </a>
+                        <img src="https://images.squarespace-cdn.com/content/v1/6000775641e64f18218eabe6/1610644918495-SKVUBO6F05VDZHGLF3E2/Made_4.gif?format=1000w"
                             alt="img" width="100%" draggable="false">
-                    </div>
-                    <div class="capations">
-                        <h2>Project Name</h2>
-                        <h4>Type of project</h4>
+                        <h3>Google Bard</h3>
                     </div>
                 </div>
                 <div class="box">
                     <div class="photoCard">
-                        <img src="https://ueno.co/static/5038419186136bcececcf44c09df777a/8fc1f/fa4cfb00-b4bc-497c-8691-b6187f3affce_lonelyplanet_hero.webp"
-                            alt="img" width="100%" draggable="false">
+                        <h2>UX/UI, Web, Motion Design</h2>
+                        <a href="#" class="arrow">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                        </a>
+                        <img src="https://refikanadol.com/wp-content/uploads/2021/07/MA-Thumb2-1440x810.jpg" alt="img"
+                            width="100%" draggable="false">
+                        <h3>Google Bard</h3>
                     </div>
-                    <div class="capations">
-                        <h2>Project Name</h2>
-                        <h4>Type of project</h4>
-                    </div>
+                </div>
+            </div>
+            <div class="full">
+                <div class="photoCard">
+                    <h2>UX/UI, Web, Motion Design</h2>
+                    <a href="#" class="arrow">
+                        <span class="material-symbols-outlined">
+                            arrow_upward
+                        </span>
+                    </a>
+                    <img src="https://freight.cargo.site/w/2400/q/94/i/94e3c5b257626196a0e0b0c083ece4637f0e0332130e764656c99119b0004262/OhWake_Cover_SebastianCuri_Layered.jpg"
+                        alt="img" width="100%" draggable="false">
+                    <h3>Google Bard</h3>
                 </div>
             </div>
             <div class="flexBox">
                 <div class="box">
                     <div class="photoCard">
+                        <h2>UX/UI, Web, Motion Design</h2>
+                        <a href="#" class="arrow">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                        </a>
                         <img src="https://ueno.co/static/5038419186136bcececcf44c09df777a/8fc1f/fa4cfb00-b4bc-497c-8691-b6187f3affce_lonelyplanet_hero.webp"
                             alt="img" width="100%" draggable="false">
-                    </div>
-                    <div class="capations">
-                        <h2>Project Name</h2>
-                        <h4>Type of project</h4>
+                        <h3>Google Bard</h3>
                     </div>
                 </div>
                 <div class="box">
                     <div class="photoCard">
-                        <img src="https://ueno.co/static/5038419186136bcececcf44c09df777a/8fc1f/fa4cfb00-b4bc-497c-8691-b6187f3affce_lonelyplanet_hero.webp"
+                        <h2>UX/UI, Web, Motion Design</h2>
+                        <a href="#" class="arrow">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                        </a>
+                        <img src="https://freight.cargo.site/w/1080/q/94/i/16250367b241ea20b3e80d8c438ae49b15c3784b9168291a715365cf3f77e2a0/Etsy_03.jpg"
                             alt="img" width="100%" draggable="false">
-                    </div>
-                    <div class="capations">
-                        <h2>Project Name</h2>
-                        <h4>Type of project</h4>
+                        <h3>Google Bard</h3>
                     </div>
                 </div>
             </div>
