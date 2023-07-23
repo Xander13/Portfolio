@@ -36,6 +36,32 @@ p {
     align-items: center;
 }
 
+.logo{
+    position: fixed;
+    left: 32px;
+    top: 32px;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: white;
+    mix-blend-mode: difference;
+    z-index: 222222;
+}
+
+.menuBtn{
+    position: fixed;
+    right: 32px;
+    top: 32px;
+    font-size: 22px;
+    text-transform: uppercase;
+    z-index: 222222;
+    mix-blend-mode: difference;
+}
+
+.menuBtn a{
+    color: white;
+    cursor: pointer;
+}
+
 .nav {
     position: fixed;
     width: 100%;
@@ -55,7 +81,7 @@ p {
     display: flex;
     color: white;
     justify-content: space-between;
-    z-index: 2222222;
+    z-index: 222;
     mix-blend-mode: difference;
 }
 
@@ -84,7 +110,7 @@ p {
 }
 
 #listContainer a{
-    color: white;
+    color: black;
 }
 
 #listContainer a:hover{
@@ -109,13 +135,29 @@ p {
     color: gray;
 }
 
+.topMenu{
+    font-size: 4vw;
+    text-align: center;
+    padding-top: 132px;
+    user-select: none;
+}
+
+.topMenu a{
+    color: white;
+    cursor: pointer;
+}
+
+.topMenu a:hover{
+    color: gray;
+}
+
 #navMenu {
     position: fixed;
     top: -100vh;
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #0b0b0b;
+    background-color: #000000;
     transition: top 0.3s ease;
     z-index: 22222;
 }
@@ -124,7 +166,7 @@ p {
     position: fixed;
     bottom: 32px;
     left: 32px;
-    background-color: black;
+    background-color: white;
     width: 56px;
     height: 56px;
     font-size: 56px;
@@ -135,7 +177,8 @@ p {
     display: flex;
     cursor: pointer;
     z-index: 22222;
-    color: white;
+    color: black;
+    mix-blend-mode: difference;
 }
 
 .sm .material-symbols-outlined{
