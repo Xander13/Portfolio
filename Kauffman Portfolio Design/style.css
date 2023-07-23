@@ -39,13 +39,49 @@ p {
     padding-right: 32px;
     mix-blend-mode: difference;
     padding-top: 32px;
-    z-index: 11111;
+    z-index: 2211111;
 }
 
-.nav a {
+.navList{
+    position: absolute;
+    padding-top: 32px;
+    z-index: 11111;   
+    width: 200px;
+    right: 132px;
+    display: flex;
+    color: black;
+    justify-content: space-between;
+    z-index: 2222;
+}
+
+.navList li{
+    list-style-type: none;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.nav a{
     color: white;
+    font-size: 22px;
+    text-transform: uppercase;
+    mix-blend-mode: difference;
+    cursor: pointer;
 }
 
+.nav a:hover, .navList a:hover {
+    color: gray;
+}
+
+#navMenu{
+    position: fixed;
+    top: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #0b0b0b;
+    transition: top 0.3s ease;
+    z-index: 22222;
+}
 
 .sm {
     position: fixed;
@@ -86,6 +122,11 @@ p {
     border: 1px solid transparent;
 }
 
+#myBtn{
+    rotate: 0deg;
+    transition: rotate 0.5s ease;
+}
+
 .sm .material-symbols-outlined, .photoCard .material-symbols-outlined{
     rotate: 45deg;
     user-select: none;
@@ -97,10 +138,10 @@ p {
     border: 1px solid white;
 }
 
-.sm:active, .upArrow:active{
+/* .sm:active, .upArrow:active{
     color: black;
     background-color: white;
-}
+} */
 
 .material-symbols-outlined {
     font-variation-settings:
@@ -110,14 +151,6 @@ p {
         'opsz'48;
 }
 
-.nav a {
-    font-size: 22px;
-    text-transform: uppercase;
-}
-
-.nav a:hover {
-    color: gray;
-}
 
 .hero h1 {
     font-size: 4.2vw;

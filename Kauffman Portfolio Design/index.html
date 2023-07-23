@@ -9,17 +9,35 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
-    <script src="
+    <!-- <script src="
 https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js
-"></script>
+"></script> -->
 </head>
 
 <body>
+    <div class="topMenu" id="navMenu">
+
+    </div>
+    <script>
+        function toggleNav() {
+          var navMenu = document.getElementById("navMenu");
+          
+          // Check if the navigation menu is currently off-screen
+          var isOffScreen = navMenu.style.top === "-100vh";
+          
+          // Toggle the navigation menu on and off the screen
+          if (isOffScreen) {
+            navMenu.style.top = "0";
+          } else {
+            navMenu.style.top = "-100vh";
+          }
+        }
+        </script>
     <div class="nav">
         <div class="flexBox">
-            <a>Alex Kauffman</a>
+            <a href="index.html">Alex Kauffman</a>
             <div>
-                <a href="#">Menu</a>
+                <a onclick="toggleNav()">Menu</a>
             </div>
         </div>
     </div>
@@ -39,9 +57,9 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
 
         function scrollFunction() {
             if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.display = "block";
+                mybutton.style.rotate = "0deg";
             } else {
-                mybutton.style.display = "none";
+                mybutton.style.rotate = "180deg";
             }
         }
 
@@ -57,6 +75,10 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
         </span>
     </div>
     <div data-scroll-container>
+        <div class="navList">
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </div>
         <section class="hero">
             <h1>Hey! I am Alex, a Digital Product Designer with years of experience. I create websites, mobile
                 experiences, ads, motion story boards for projects for Google, Color, Youtube, and more!</h1>
@@ -249,12 +271,12 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             </div>
         </footer>
     </div>
-    <script>
+    <!-- <script>
         const scroll = new LocomotiveScroll({
             el: document.querySelector('[data-scroll-container]'),
             smooth: true
         });
-    </script>
+    </script> -->
 </body>
 
 </html>
