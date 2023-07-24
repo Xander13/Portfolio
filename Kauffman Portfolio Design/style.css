@@ -436,6 +436,15 @@ p {
     transition: background-color 0.2s ease;
 }
 
+.photoCard h2, .photoCard h3, .rows h4{
+    transition: color 0.2s ease;
+}
+
+.photoCard:hover h2, .photoCard:hover h3, .rows:hover h4{
+    color: black;
+    transition: 0.2s ease;
+}
+
 .photoCard h2 {
     font-size: 18px;
     font-weight: 400;
@@ -491,8 +500,6 @@ p {
 .rows {
     position: relative;
     width: 100%;
-    font-size: 18px;
-    font-weight: 400;
     padding: 24px;
     margin-bottom: 18px;
     border-radius: 4px;
@@ -512,16 +519,16 @@ p {
     right: 0;
 }
 
+.rows h4{
+    font-size: 18px;
+    font-weight: 400;
+}
+
 .rows:hover .arrow {
     background-color: rgb(0, 0, 0);
     color: white;
     transition: 0.2s ease-out;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-}
-
-.rows h4 {
-    font-size: 22px;
-    font-weight: 400;
 }
 
 .rows h4:first-child {
@@ -646,6 +653,12 @@ p {
     padding-right: 10%;
 }
 
+.archive h1{
+    padding-bottom: 32px;
+    font-size: 4vw;
+    font-weight: 400;
+}
+
 .rights {
     text-align: center;
     position: relative;
@@ -657,4 +670,8 @@ p {
     margin: auto;
     z-index: 111;
     font-weight: 300;
+}
+
+.rights h1{
+    font-weight: 400;
 }
