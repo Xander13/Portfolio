@@ -9,6 +9,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- <script src="
 https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js
 "></script> -->
@@ -16,9 +17,15 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
 
 <body>
     <div class="topMenu" id="navMenu">
-        <a href="#"><h1>Index</h1></a>
-        <a href="#"><h1>About</h1></a>
-        <a href="#"><h1>Contact</h1></a>
+        <a href="#">
+            <h1>Index</h1>
+        </a>
+        <a href="#">
+            <h1>About</h1>
+        </a>
+        <a href="#">
+            <h1>Contact</h1>
+        </a>
     </div>
     <script>
         function toggleNav() {
@@ -39,32 +46,14 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
     <div class="menuBtn">
         <a onclick="toggleNav()">Menu</a>
     </div>
-    <div class="upArrow" id="myBtn">
+    <div class="upArrow" id="myBtn" onclick="scrollToTop()">
         <span class="material-symbols-outlined">
             arrow_upward
         </span>
     </div>
     <script>
-        // Get the button
-        let mybutton = document.getElementById("myBtn");
-
-        // When the user scrolls down 20px from the top of the document, show the button
-        window.onscroll = function () {
-            scrollFunction()
-        };
-
-        function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-                mybutton.style.rotate = "0deg";
-            } else {
-                mybutton.style.rotate = "540deg";
-            }
-        }
-
-        // When the user clicks on the button, scroll to the top of the document
-        function topFunction() {
-            document.body.scrollTop = 0;
-            document.documentElement.scrollTop = 0;
+        function scrollToTop() {
+            $('#main-container').scrollTop(0);
         }
     </script>
     <div class="sm" id="toggleButton">
@@ -93,7 +82,7 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                 toggleButton.style.width = '56px';
                 toggleButton.style.height = '56px';
                 toggleButton.style.borderRadius = '12px';
-         
+
             } else {
                 // If the list is currently hidden, show it
                 listContainer.style.display = 'block';
@@ -106,14 +95,14 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             isListVisible = !isListVisible;
         });
     </script>
-    <div data-scroll-container>
+    <div data-scroll-container id="main-container">
         <div class="navList">
             <li><a href="#">About</a></li>
             <li><a href="#">Contact</a></li>
         </div>
         <section class="hero">
-            <h1>Hey! I am Alex, a Digital Product Designer with years of experience. I create websites, mobile
-                experiences, ads, motion story boards for projects for Google, Color, Youtube, and more!</h1>
+            <h1>An award-winning studio based out of St. Petersburg, Florida specializing in brand identity and
+                packaging design. </h1>
         </section>
         <!-- <section class="bio">
             <h4>About Me</h4>
@@ -253,7 +242,6 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             </script>
             <a href="#">
                 <div class="marquee">
-
                     <ul class="marquee__content">
                         <li>About Me &nbsp; ✷ &nbsp;</li>
                         <li>About Me &nbsp; ✷ &nbsp;</li>
@@ -264,6 +252,81 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </ul>
                 </div>
             </a>
+        </div>
+        <div class="archive">
+            <h1>Archives</h1>
+            <div class="rows">
+                <div class="flexBox">
+                    <h4>Project Name</h4>
+                    <h4>Year</h4>
+                    <h4>Type</h4>
+                    <a href="#" class="arrow">
+                        <span class="material-symbols-outlined">
+                            arrow_upward
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="rows">
+                <div class="flexBox">
+                    <h4>Project Name</h4>
+                    <h4>Year</h4>
+                    <h4>Type</h4>
+                    <a href="#" class="arrow">
+                        <span class="material-symbols-outlined">
+                            arrow_upward
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="rows">
+                <div class="flexBox">
+                    <h4>Project Name</h4>
+                    <h4>Year</h4>
+                    <h4>Type</h4>
+                    <a href="#" class="arrow">
+                        <span class="material-symbols-outlined">
+                            arrow_upward
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="rows">
+                <div class="flexBox">
+                    <h4>Project Name</h4>
+                    <h4>Year</h4>
+                    <h4>Type</h4>
+                    <a href="#" class="arrow">
+                        <span class="material-symbols-outlined">
+                            arrow_upward
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="rows">
+                <div class="flexBox">
+                    <h4>Project Name</h4>
+                    <h4>Year</h4>
+                    <h4>Type</h4>
+                    <a href="#" class="arrow">
+                        <span class="material-symbols-outlined">
+                            arrow_upward
+                        </span>
+                    </a>
+                </div>
+            </div>
+            <div class="rows">
+                <div class="flexBox">
+                    <h4>Project Name</h4>
+                    <h4>Year</h4>
+                    <h4>Type</h4>
+                    <a href="#" class="arrow">
+                        <span class="material-symbols-outlined">
+                            arrow_upward
+                        </span>
+                    </a>
+                </div>
+            </div>
         </div>
         <div class="rights">
             <h1>Kauffman &copy; 2023</h1>
