@@ -101,17 +101,9 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             <li><a href="#">Contact</a></li>
         </div>
         <section class="hero">
-            <h1>An award-winning studio based out of St. Petersburg, Florida specializing in brand identity and
-                packaging design. </h1>
+            <h1>An award-winning studio based out of Detroit Area, Michgian specializing in brand identity and
+                UX/UI & AD design. </h1>
         </section>
-        <!-- <section class="bio">
-            <h4>About Me</h4>
-            <h2>Alex - Visual & Experiance Designer based in Detroit, MI. I have a passion for creating unique and
-                impactful designs that help businesses stand out.</h2>
-            <a href="#">
-                <h5>More about me</h5>
-            </a>
-        </section> -->
         <section class="projects">
             <div class="flexBox">
                 <div class="box">
@@ -232,6 +224,7 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             </div>
             <script>
                 const cursorRounded = document.querySelector('#arrow');
+    
                 const moveCursor = (e) => {
                     const mouseY = e.clientY;
                     const mouseX = e.clientX;
@@ -256,6 +249,9 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
         <div class="archive">
             <h1>Archives</h1>
             <div class="rows">
+                <div class="cursorPics" id="projectPics">
+                    <img src="https://freight.cargo.site/w/2400/q/94/i/97f21253e17a4d2b3d608a4fbeff1e74e13f95391cbfb1364d29dd63f106df68/D3_Meraas_OOH_Layered.jpg" width="100%" height="100%" alt="Shirt Image">
+                </div>
                 <div class="flexBox">
                     <h4>Project Name</h4>
                     <h4>Year</h4>
@@ -327,6 +323,20 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
+            <script>
+                const projectPic = document.querySelector('#projectPics');
+                
+                const moveCursor2 = (e) => {
+                    const newMouseY = e.clientY;
+                    const newMouseX = e.clientX;
+                    projectPic.style.transform = `translate3d(${newMouseX - 160}px, ${newMouseY - 110}px, 0)`;
+                }
+
+                window.addEventListener('mousemove', moveCursor2)
+            </script>
+        </div>
+        <div class="archive">
+            <h1>Experiance</h1>
         </div>
         <div class="rights">
             <h1>Kauffman &copy; 2023</h1>
