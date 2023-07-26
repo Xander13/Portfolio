@@ -153,15 +153,24 @@ p {
 }
 
 .topMenu{
-    font-size: 4vw;
-    text-align: center;
-    padding-top: 132px;
+    position: relative;
+    font-size: 5vw;
+    text-align: right;
     user-select: none;
+    padding-right: 32px;
+}
+
+.list{
+    position: absolute;
+    bottom: 32px;
+    right: 32px;
 }
 
 .topMenu a{
     color: white;
     cursor: pointer;
+    line-height: 12vw;
+    text-transform: uppercase;
 }
 
 .topMenu a:hover{
@@ -703,6 +712,17 @@ p {
 
 .experiance .flexBox{
     align-items: start;
+}
+
+.experiance .cols img{
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.experiance .cols:nth-child(3){
+    position: relative;
+    left: -64px;
+    padding: 32px;
+    background-color: rgb(248, 248, 248);
 }
 
 .rights {
