@@ -595,7 +595,7 @@ p {
 }
 
 .cols {
-    width: calc(100% / 3 - 16px);
+    width: calc(100% / 4 - 16px);
     margin-top: 64px;
     display: inline-block;
 }
@@ -607,6 +607,18 @@ p {
 
 .cols h4 {
     padding-bottom: 32px;
+}
+
+.cols h2, .experiance h2{
+    font-size: 22px;
+    font-weight: 400;
+    padding-bottom: 24px;
+}
+
+.cols p{
+    font-size: 22px;
+    padding-bottom: 12px;
+    color: rgb(108, 108, 108);
 }
 
 .marquee {
@@ -673,10 +685,24 @@ p {
     padding-right: 10%;
 }
 
-.archive h1{
+.archive h1, .experiance h1{
     padding-bottom: 32px;
     font-size: 4vw;
     font-weight: 400;
+}
+
+.experiance{
+    padding-bottom: 132px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.experiance h2{
+    max-width: 60ch;
+}
+
+.experiance .flexBox{
+    align-items: start;
 }
 
 .rights {
