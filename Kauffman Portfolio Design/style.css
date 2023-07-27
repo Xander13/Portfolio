@@ -297,6 +297,15 @@ p {
         'opsz'48;
 }
 
+.underline a{
+    text-decoration: underline;
+    text-underline-offset: 12px;
+    cursor: pointer;
+}
+
+.underline a:hover{
+    color: gray;
+}
 
 .hero h1 {
     font-size: 4.2vw;
@@ -508,23 +517,23 @@ p {
     overflow: hidden;
     width: 320px;
     height: 220px;
-    position: fixed;
+    position: absolute;
     left: 0;
-    top: 0;
+    right: 0;
+    margin: auto;
     z-index: 22;
-    backface-visibility: hidden;
-    pointer-events: none;
-    opacity: 1;
-    user-select: none;
     z-index: 1000;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    transition: 0.5s ease;
     display: none;
     opacity: 0;
 }
 
 .cursorPics img{
     object-fit: cover;
+    height: 100%;
+    width: 100%;
 }
 
 .rows {
@@ -536,13 +545,25 @@ p {
     background-color: rgb(248, 248, 248);
     cursor: pointer;
     color: rgb(108, 108, 108);
+    transition: 0.5s ease;
 }
 
 .rows:hover .cursorPics{
+    transition: 1s ease;
+    width: 320px;
+    height: 220px;
     display: block;
     opacity: 1;
-    transition: 0.1s ease-out;
-    cursor: none;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0%;
+    }
+    100%{
+        opacity: 100%;
+    }
 }
 
 .rows .flexBox{

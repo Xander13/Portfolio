@@ -267,12 +267,10 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
         </div>
         <div class="archive">
             <h1>Archives</h1>
-            <div class="rows" onmouseover="changeImage(0)" onmousemove="moveCursor2(event)">
-                <div class="cursorPics">
-                    <img src="" width="100%" height="100%" alt="Shirt Image">
-                </div>
+            <div class="rows">
                 <div class="flexBox">
                     <h4>Project Name 1</h4>
+                    <img class="cursorPics" src="https://thisispam.com/_ipx/f_webp&s_1000x653/featured/gm.jpg" width="100%" height="100%" alt="Shirt Image">
                     <h4>Year 1</h4>
                     <h4>Type 1</h4>
                     <a href="#" class="arrow">
@@ -282,12 +280,10 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
-            <div class="rows" onmouseover="changeImage(2)" onmousemove="moveCursor2(event)">
-                <div class="cursorPics">
-                    <img src="" width="100%" height="100%" alt="Shirt Image">
-                </div>
+            <div class="rows">
                 <div class="flexBox">
                     <h4>Project Name 1</h4>
+                    <img class="cursorPics" src="https://thisispam.com/_ipx/f_webp&s_1000x653/featured/gm.jpg" width="100%" height="100%" alt="Shirt Image">
                     <h4>Year 1</h4>
                     <h4>Type 1</h4>
                     <a href="#" class="arrow">
@@ -297,12 +293,10 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
-            <div class="rows" onmouseover="changeImage(2)" onmousemove="moveCursor2(event)">
-                <div class="cursorPics">
-                    <img src="" width="100%" height="100%" alt="Shirt Image">
-                </div>
+            <div class="rows">
                 <div class="flexBox">
                     <h4>Project Name 1</h4>
+                    <img class="cursorPics" src="https://thisispam.com/_ipx/f_webp&s_1000x653/featured/gm.jpg" width="100%" height="100%" alt="Shirt Image">
                     <h4>Year 1</h4>
                     <h4>Type 1</h4>
                     <a href="#" class="arrow">
@@ -312,12 +306,10 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
-            <div class="rows" onmouseover="changeImage(3)" onmousemove="moveCursor2(event)">
-                <div class="cursorPics">
-                    <img src="" width="100%" height="100%" alt="Shirt Image">
-                </div>
+            <div class="rows">
                 <div class="flexBox">
                     <h4>Project Name 1</h4>
+                    <img class="cursorPics" src="https://thisispam.com/_ipx/f_webp&s_1000x653/featured/gm.jpg" width="100%" height="100%" alt="Shirt Image">
                     <h4>Year 1</h4>
                     <h4>Type 1</h4>
                     <a href="#" class="arrow">
@@ -327,12 +319,10 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
-            <div class="rows" onmouseover="changeImage(4)" onmousemove="moveCursor2(event)">
-                <div class="cursorPics">
-                    <img src="" width="100%" height="100%" alt="Shirt Image">
-                </div>
+            <div class="rows">
                 <div class="flexBox">
                     <h4>Project Name 1</h4>
+                    <img class="cursorPics" src="https://thisispam.com/_ipx/f_webp&s_1000x653/featured/gm.jpg" width="100%" height="100%" alt="Shirt Image">
                     <h4>Year 1</h4>
                     <h4>Type 1</h4>
                     <a href="#" class="arrow">
@@ -342,37 +332,6 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
-            <script>
-                const rows = document.querySelectorAll('.rows');
-                const images = [
-                    "https://refikanadol.com/wp-content/uploads/2023/01/coral-tb-900x900.jpg",
-                    "https://refikanadol.com/wp-content/uploads/2023/03/CB-900x900.jpg",
-                    "https://refikanadol.com/wp-content/uploads/2022/12/MoMA_Thumb-900x900.jpg",
-                    "https://refikanadol.com/wp-content/uploads/2023/01/coral-tb-900x900.jpg",
-                    "https://refikanadol.com/wp-content/uploads/2023/03/CB-900x900.jpg"
-                ];
-
-                function changeImage(index, row) {
-                    row.querySelector('.cursorPics img').src = images[index];
-                }
-
-                // Attach hover event listeners to each .rows
-                rows.forEach((row, index) => {
-                    row.addEventListener('mouseover', (event) => changeImage(index, event.currentTarget));
-                });
-
-                const moveCursor2 = (e) => {
-                    const row = e.target.closest('.rows');
-                    if (row) {
-                        const projectPic = row.querySelector('.cursorPics');
-                        const newMouseY = e.clientY;
-                        const newMouseX = e.clientX;
-                        projectPic.style.transform = `translate3d(${newMouseX - 160}px, ${newMouseY - 110}px, 0)`;
-                    }
-                }
-
-                window.addEventListener('mousemove', moveCursor2);
-            </script>
         </div>
         <div class="experiance">
             <h1>Experiance</h1>
@@ -419,16 +378,12 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
 
             </div>
         </div>
+        <section class="hero" style="padding-bottom: 128px;">
+            <h1 style="padding-top: 88px;">If you'd like to learn more, <span class="underline"><a href="#">Let's chat.</a></span></h1>
+        </section>
         <div class="rights">
             <h1>Kauffman &copy; 2023</h1>
         </div>
     </div>
-    <!-- <script>
-        const scroll = new LocomotiveScroll({
-            el: document.querySelector('[data-scroll-container]'),
-            smooth: true
-        });
-    </script> -->
 </body>
-
 </html>
