@@ -48,15 +48,32 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
     <div class="menuBtn">
         <a onclick="toggleNav()">Menu</a>
     </div>
-    <div class="upArrow" id="myBtn" onclick="scrollToTop()">
+    <div class="upArrow" id="myBtn">
         <span class="material-symbols-outlined">
             arrow_upward
         </span>
     </div>
     <script>
-        function scrollToTop() {
-            $('#main-container').scrollTop(0);
-        }
+        $(document).ready(function () {
+            // Add a scroll event listener to detect when the user scrolls
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() > 100) {
+                    $('#myBtn').css("transform", "rotate(0deg)");
+                } else {
+                    $('#myBtn').css("transform", "rotate(540deg)");
+                }
+            });
+
+            // Add a click event listener to scroll back to the top when the arrow is clicked
+            $('.upArrow').on('click', function () {
+                scrollToTop();
+            });
+
+            // Function to scroll to the top
+            function scrollToTop() {
+                $('#main-container').scrollTop(0);
+            }
+        });
     </script>
     <div class="sm" id="toggleButton">
         <span class="material-symbols-outlined">
@@ -226,7 +243,7 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             </div>
             <script>
                 const cursorRounded = document.querySelector('#arrow');
-    
+
                 const moveCursor = (e) => {
                     const mouseY = e.clientY;
                     const mouseX = e.clientX;
@@ -252,7 +269,8 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             <h1>Archives</h1>
             <div class="rows">
                 <div class="cursorPics" id="projectPics">
-                    <img src="https://freight.cargo.site/w/2400/q/94/i/97f21253e17a4d2b3d608a4fbeff1e74e13f95391cbfb1364d29dd63f106df68/D3_Meraas_OOH_Layered.jpg" width="100%" height="100%" alt="Shirt Image">
+                    <img src="https://freight.cargo.site/w/2400/q/94/i/97f21253e17a4d2b3d608a4fbeff1e74e13f95391cbfb1364d29dd63f106df68/D3_Meraas_OOH_Layered.jpg"
+                        width="100%" height="100%" alt="Shirt Image">
                 </div>
                 <div class="flexBox">
                     <h4>Project Name</h4>
@@ -327,7 +345,7 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
             </div>
             <script>
                 const projectPic = document.querySelector('#projectPics');
-                
+
                 const moveCursor2 = (e) => {
                     const newMouseY = e.clientY;
                     const newMouseX = e.clientX;
@@ -339,10 +357,11 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
         </div>
         <div class="experiance">
             <h1>Experiance</h1>
-            <h2 style="color: rgb(108, 108, 108);">Over the past few years I've helped to redesign an iconic blue button, defined the motion system for Google TV and made plenty of websites.
+            <h2 style="color: rgb(108, 108, 108);">Over the past few years I've helped to redesign an iconic blue
+                button, defined the motion system for Google TV and made plenty of websites.
             </h2>
             <div class="flexBox">
-                
+
                 <div class="cols">
                     <h2>Skills</h2>
                     <p>UX/UI Design</p>
@@ -366,7 +385,8 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     <p>Amazon AMP</p>
                 </div>
                 <div class="cols">
-                    <img src="https://uploads-ssl.webflow.com/6181afee0256207014c78120/637003a54679d869833cd756_5G5A0148-4-lowres-p-3200.jpg" width="100%">
+                    <img src="https://uploads-ssl.webflow.com/6181afee0256207014c78120/637003a54679d869833cd756_5G5A0148-4-lowres-p-3200.jpg"
+                        width="100%">
                 </div>
                 <div class="cols">
                     <h2>Education</h2>
@@ -376,8 +396,8 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     <p>Honors - Magna Cum Laude</p>
                     <p>Sports - Foil & Saber Fencer</p>
                 </div>
-               
-               
+
+
             </div>
         </div>
         <div class="rights">
