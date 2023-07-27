@@ -267,15 +267,14 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
         </div>
         <div class="archive">
             <h1>Archives</h1>
-            <div class="rows">
-                <div class="cursorPics" id="projectPics">
-                    <img src="https://freight.cargo.site/w/2400/q/94/i/97f21253e17a4d2b3d608a4fbeff1e74e13f95391cbfb1364d29dd63f106df68/D3_Meraas_OOH_Layered.jpg"
-                        width="100%" height="100%" alt="Shirt Image">
+            <div class="rows" onmouseover="changeImage(0)" onmousemove="moveCursor2(event)">
+                <div class="cursorPics">
+                    <img src="" width="100%" height="100%" alt="Shirt Image">
                 </div>
                 <div class="flexBox">
-                    <h4>Project Name</h4>
-                    <h4>Year</h4>
-                    <h4>Type</h4>
+                    <h4>Project Name 1</h4>
+                    <h4>Year 1</h4>
+                    <h4>Type 1</h4>
                     <a href="#" class="arrow">
                         <span class="material-symbols-outlined">
                             arrow_upward
@@ -283,11 +282,14 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
-            <div class="rows">
+            <div class="rows" onmouseover="changeImage(2)" onmousemove="moveCursor2(event)">
+                <div class="cursorPics">
+                    <img src="" width="100%" height="100%" alt="Shirt Image">
+                </div>
                 <div class="flexBox">
-                    <h4>Project Name</h4>
-                    <h4>Year</h4>
-                    <h4>Type</h4>
+                    <h4>Project Name 1</h4>
+                    <h4>Year 1</h4>
+                    <h4>Type 1</h4>
                     <a href="#" class="arrow">
                         <span class="material-symbols-outlined">
                             arrow_upward
@@ -295,11 +297,14 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
-            <div class="rows">
+            <div class="rows" onmouseover="changeImage(2)" onmousemove="moveCursor2(event)">
+                <div class="cursorPics">
+                    <img src="" width="100%" height="100%" alt="Shirt Image">
+                </div>
                 <div class="flexBox">
-                    <h4>Project Name</h4>
-                    <h4>Year</h4>
-                    <h4>Type</h4>
+                    <h4>Project Name 1</h4>
+                    <h4>Year 1</h4>
+                    <h4>Type 1</h4>
                     <a href="#" class="arrow">
                         <span class="material-symbols-outlined">
                             arrow_upward
@@ -307,11 +312,14 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
-            <div class="rows">
-                <div class="flexBox" style="justify-content: space-between;">
-                    <h4>Project Name</h4>
-                    <h4>Year</h4>
-                    <h4>Type</h4>
+            <div class="rows" onmouseover="changeImage(3)" onmousemove="moveCursor2(event)">
+                <div class="cursorPics">
+                    <img src="" width="100%" height="100%" alt="Shirt Image">
+                </div>
+                <div class="flexBox">
+                    <h4>Project Name 1</h4>
+                    <h4>Year 1</h4>
+                    <h4>Type 1</h4>
                     <a href="#" class="arrow">
                         <span class="material-symbols-outlined">
                             arrow_upward
@@ -319,23 +327,14 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                     </a>
                 </div>
             </div>
-            <div class="rows">
-                <div class="flexBox">
-                    <h4>Project Name</h4>
-                    <h4>Year</h4>
-                    <h4>Type</h4>
-                    <a href="#" class="arrow">
-                        <span class="material-symbols-outlined">
-                            arrow_upward
-                        </span>
-                    </a>
+            <div class="rows" onmouseover="changeImage(4)" onmousemove="moveCursor2(event)">
+                <div class="cursorPics">
+                    <img src="" width="100%" height="100%" alt="Shirt Image">
                 </div>
-            </div>
-            <div class="rows">
                 <div class="flexBox">
-                    <h4>Project Name</h4>
-                    <h4>Year</h4>
-                    <h4>Type</h4>
+                    <h4>Project Name 1</h4>
+                    <h4>Year 1</h4>
+                    <h4>Type 1</h4>
                     <a href="#" class="arrow">
                         <span class="material-symbols-outlined">
                             arrow_upward
@@ -344,15 +343,35 @@ https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.
                 </div>
             </div>
             <script>
-                const projectPic = document.querySelector('#projectPics');
+                const rows = document.querySelectorAll('.rows');
+                const images = [
+                    "https://refikanadol.com/wp-content/uploads/2023/01/coral-tb-900x900.jpg",
+                    "https://refikanadol.com/wp-content/uploads/2023/03/CB-900x900.jpg",
+                    "https://refikanadol.com/wp-content/uploads/2022/12/MoMA_Thumb-900x900.jpg",
+                    "https://refikanadol.com/wp-content/uploads/2023/01/coral-tb-900x900.jpg",
+                    "https://refikanadol.com/wp-content/uploads/2023/03/CB-900x900.jpg"
+                ];
 
-                const moveCursor2 = (e) => {
-                    const newMouseY = e.clientY;
-                    const newMouseX = e.clientX;
-                    projectPic.style.transform = `translate3d(${newMouseX - 160}px, ${newMouseY - 110}px, 0)`;
+                function changeImage(index, row) {
+                    row.querySelector('.cursorPics img').src = images[index];
                 }
 
-                window.addEventListener('mousemove', moveCursor2)
+                // Attach hover event listeners to each .rows
+                rows.forEach((row, index) => {
+                    row.addEventListener('mouseover', (event) => changeImage(index, event.currentTarget));
+                });
+
+                const moveCursor2 = (e) => {
+                    const row = e.target.closest('.rows');
+                    if (row) {
+                        const projectPic = row.querySelector('.cursorPics');
+                        const newMouseY = e.clientY;
+                        const newMouseX = e.clientX;
+                        projectPic.style.transform = `translate3d(${newMouseX - 160}px, ${newMouseY - 110}px, 0)`;
+                    }
+                }
+
+                window.addEventListener('mousemove', moveCursor2);
             </script>
         </div>
         <div class="experiance">
