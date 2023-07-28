@@ -5,7 +5,13 @@ body {
     overflow-x: hidden;
 }
 
-/* html{ scroll-behavior: smooth;} */
+:focus {
+    outline: 3px solid orange !important; 
+}
+
+ul{
+    list-style-type: none;
+}
 
 html, body {
     height: 100%;
@@ -78,7 +84,7 @@ p {
     position: fixed;
     padding-top: 32px;
     z-index: 2211111;
-    width: 200px;
+    width: 220px;
     right: 32px;
     display: flex;
     color: white;
@@ -87,7 +93,7 @@ p {
     mix-blend-mode: difference;
 }
 
-.navList li, #listContainer {
+.navList, #listContainer {
     list-style-type: none;
     font-size: 22px;
     text-transform: uppercase;
@@ -112,7 +118,7 @@ p {
 }
 
 #listContainer a{
-    color: black;
+    color: white;
 }
 
 #listContainer a:hover{
@@ -169,7 +175,7 @@ p {
     position: fixed;
     bottom: 32px;
     left: 32px;
-    background-color: white;
+    background-color: black;
     width: 56px;
     height: 56px;
     font-size: 56px;
@@ -180,8 +186,8 @@ p {
     display: flex;
     cursor: pointer;
     z-index: 22222;
-    color: black;
-    mix-blend-mode: difference;
+    color: white;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 .sm .material-symbols-outlined{
@@ -244,6 +250,7 @@ p {
     cursor: pointer;
     z-index: 11111;
     user-select: none;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
 #myBtn{
