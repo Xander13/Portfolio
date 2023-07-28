@@ -64,21 +64,6 @@ p {
     z-index: 222222;
 }
 
-.menuBtn{
-    position: fixed;
-    right: 32px;
-    top: 32px;
-    font-size: 22px;
-    text-transform: uppercase;
-    z-index: 222222;
-    mix-blend-mode: difference;
-}
-
-.menuBtn a{
-    color: white;
-    cursor: pointer;
-}
-
 .nav {
     position: fixed;
     width: 100%;
@@ -90,11 +75,11 @@ p {
 }
 
 .navList {
-    position: absolute;
+    position: fixed;
     padding-top: 32px;
-    z-index: 11111;
+    z-index: 2211111;
     width: 200px;
-    right: 132px;
+    right: 32px;
     display: flex;
     color: white;
     justify-content: space-between;
@@ -150,14 +135,6 @@ p {
 .nav a:hover,
 .navList a:hover {
     color: gray;
-}
-
-.topMenu{
-    position: relative;
-    font-size: 5vw;
-    text-align: right;
-    user-select: none;
-    padding-right: 32px;
 }
 
 .list{
@@ -515,25 +492,23 @@ p {
 
 .cursorPics{
     overflow: hidden;
-    width: 320px;
-    height: 220px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    z-index: 22;
+    width: 420px;
+    height: 86px;
+    position: relative;
+    object-fit: cover;
+    margin: 0;
     z-index: 1000;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    transition: 0.5s ease;
-    display: none;
-    opacity: 0;
+    /* display: none;
+    opacity: 0; */
+    display: block;
+    transition: height 0.5s ease;
 }
 
-.cursorPics img{
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
+.rows:hover .cursorPics{
+    height: 260px;
+    transition: height 0.5s ease;
 }
 
 .rows {
@@ -546,24 +521,6 @@ p {
     cursor: pointer;
     color: rgb(108, 108, 108);
     transition: 0.5s ease;
-}
-
-.rows:hover .cursorPics{
-    transition: 1s ease;
-    width: 320px;
-    height: 220px;
-    display: block;
-    opacity: 1;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    0%{
-        opacity: 0%;
-    }
-    100%{
-        opacity: 100%;
-    }
 }
 
 .rows .flexBox{
@@ -580,6 +537,16 @@ p {
 .rows h4{
     font-size: 18px;
     font-weight: 400;
+}
+
+.rows h4:nth-child(4){
+    width: 160px;
+    text-align: center;
+}
+
+.rows h4:nth-child(1){
+    width: 160px;
+    text-align: left;
 }
 
 .rows:hover .arrow {
