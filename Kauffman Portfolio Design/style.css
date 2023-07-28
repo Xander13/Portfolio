@@ -445,6 +445,15 @@ p {
     transition: 0.2s ease;
 }
 
+.photoCard img{
+    transition: scale 0.5s ease;
+}
+
+.photoCard:hover img{
+    scale: 1.01;
+    transition: scale 0.5s ease;
+}
+
 .photoCard h2 {
     font-size: 18px;
     font-weight: 400;
@@ -710,7 +719,16 @@ p {
 }
 
 .experiance .cols img{
+    object-fit: cover;
+    width: 300px;
+    height: 370px;
+    transition: scale 0.5s ease;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.experiance .cols:hover img{
+    scale: 1.01;
+    transition: scale 0.5s ease;
 }
 
 .experiance .cols:nth-child(3){
@@ -731,6 +749,19 @@ p {
     margin: auto;
     z-index: 111;
     font-weight: 300;
+}
+
+.errorPage{
+    position: fixed;
+    top: 232px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: fit-content;
+}
+
+.errorPage h1{
+    font-size: 5vw;
 }
 
 .rights h1{
