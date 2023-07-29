@@ -323,6 +323,34 @@ p {
     margin: auto;
 }
 
+.projectHero .half{
+    width: calc(100% / 2 - 16px);
+}
+
+.projectHero img{
+    margin-bottom: 32px;
+}
+
+.wideTitle{
+    text-align: center;
+    padding-top: 132px;
+    padding-bottom: 132px;
+}
+
+.wideTitle h1{
+    padding: 16px;
+    font-size: 48px;
+    line-height: 48px;
+    color: gray;
+}
+
+.wideTitle p{
+    font-size: 48px;
+    line-height: 48px;
+    max-width: 40ch;
+    margin: auto;
+}
+
 .bio,
 .things,
 .articles,
