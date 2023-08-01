@@ -302,9 +302,17 @@ p {
     padding-right: 10%;
 }
 
+.rols{
+    padding-bottom: 64px;
+}
+
 
 .projectHero .cols{
-    padding-bottom: 132px;
+    align-items: flex-start;
+}
+
+.projectHero .half{
+    color: rgb(108, 108, 108)
 }
 
 .projectHero .cols p{
@@ -342,6 +350,7 @@ p {
     text-align: left;
     padding-left: 0;
     margin-left: 0;
+    padding-bottom: 0px;
 }
 
 .block {
@@ -720,7 +729,6 @@ p {
 
 .cols {
     width: calc(100% / 4 - 16px);
-    margin-top: 64px;
     display: inline-block;
 }
 
@@ -734,14 +742,10 @@ p {
 }
 
 .cols h2,
-.experiance h2, .rols .half h2 {
+.experiance h2{
     font-size: 22px;
     font-weight: 400;
     padding-bottom: 24px;
-}
-
-.half p{
-    padding-bottom: 132px;
 }
 
 .cols p {
