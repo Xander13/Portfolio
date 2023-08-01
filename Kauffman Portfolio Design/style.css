@@ -6,14 +6,15 @@ body {
 }
 
 :focus {
-    outline: 3px solid orange !important; 
+    outline: 3px solid orange !important;
 }
 
-ul{
+ul {
     list-style-type: none;
 }
 
-html, body {
+html,
+body {
     height: 100%;
     overflow: hidden;
 }
@@ -51,7 +52,7 @@ p {
 
 ::-webkit-scrollbar {
     width: 0px;
-  }
+}
 
 .flexBox {
     display: flex;
@@ -59,7 +60,7 @@ p {
     align-items: center;
 }
 
-.logo{
+.logo {
     position: fixed;
     left: 32px;
     top: 32px;
@@ -93,18 +94,19 @@ p {
     mix-blend-mode: difference;
 }
 
-.navList, #listContainer {
+.navList,
+#listContainer {
     list-style-type: none;
     font-size: 22px;
     text-transform: uppercase;
 }
 
-#listContainer{
+#listContainer {
     display: none;
     float: right;
 }
 
-#listContainer li{
+#listContainer li {
     height: fit-content;
     padding-bottom: 0;
     padding-top: 32px;
@@ -113,15 +115,15 @@ p {
     padding-right: 8px;
 }
 
-#listContainer li:first-child{
+#listContainer li:first-child {
     padding-top: 0;
 }
 
-#listContainer a{
+#listContainer a {
     color: white;
 }
 
-#listContainer a:hover{
+#listContainer a:hover {
     color: gray;
 }
 
@@ -143,20 +145,20 @@ p {
     color: gray;
 }
 
-.list{
+.list {
     position: absolute;
     bottom: 32px;
     right: 32px;
 }
 
-.topMenu a{
+.topMenu a {
     color: white;
     cursor: pointer;
     line-height: 12vw;
     text-transform: uppercase;
 }
 
-.topMenu a:hover{
+.topMenu a:hover {
     color: gray;
 }
 
@@ -190,7 +192,7 @@ p {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.sm .material-symbols-outlined{
+.sm .material-symbols-outlined {
     position: absolute;
     left: 15px;
     bottom: 15px;
@@ -226,7 +228,7 @@ p {
     cursor: none;
 }
 
-.aboutMe:hover .aboutArrow{
+.aboutMe:hover .aboutArrow {
     display: block;
     opacity: 1;
     transition: 0.1s ease-out;
@@ -253,7 +255,7 @@ p {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-#myBtn{
+#myBtn {
     transition: 0.2s ease;
 }
 
@@ -281,36 +283,37 @@ p {
         'opsz'48;
 }
 
-.underline a{
+.underline a {
     text-decoration: underline;
     text-underline-offset: 12px;
     cursor: pointer;
 }
 
-.underline a:hover{
+.underline a:hover {
     color: gray;
 }
 
-.projectHero{
+.projectHero {
     padding-left: 32px;
     padding-right: 32px;
     padding-top: 332px;
 }
 
-.projectTitles{
+.projectTitles {
     padding-bottom: 32px;
 }
 
-.projectTitles h4{
+.projectTitles h4 {
     font-weight: 400;
 }
 
-.imgCard{
+.imgCard {
     padding: 10%;
     background-color: rgb(248, 248, 248);
 }
 
-.hero h1, .projectHero h1 {
+.hero h1,
+.projectHero h1 {
     font-size: 4.2vw;
     line-height: 4.4vw;
     font-weight: 400;
@@ -323,28 +326,67 @@ p {
     margin: auto;
 }
 
-.projectHero .half{
+.block {
+    height: 120px;
+    /* background: url(https://static.boredpanda.com/blog/wp-content/uploads/2020/05/B_u1hYOpG4T-png__880.jpg); */
+    background: url(closeeyes.png);
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+    user-select: none;
+    overflow: hidden;
+    position: relative;
+    animation: fadeIn 1s ease;
+    top: 0px;
+}
+
+.hero h1{
+    overflow: hidden;
+}
+
+@keyframes wave{
+    0%{
+        transform: translateX(0%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+
+@keyframes fadeIn {
+    0%{
+        opacity: 0;
+        top: -32px;
+    }
+
+    100%{
+        opacity: 1;
+        top: 0px;
+    }
+}
+
+.projectHero .half {
     width: calc(100% / 2 - 16px);
 }
 
-.projectHero img{
+.projectHero img {
     margin-bottom: 32px;
 }
 
-.wideTitle{
+.wideTitle {
     text-align: center;
     padding-top: 132px;
     padding-bottom: 132px;
 }
 
-.wideTitle h1{
+.wideTitle h1 {
     padding: 16px;
     font-size: 48px;
     line-height: 48px;
     color: gray;
 }
 
-.wideTitle p{
+.wideTitle p {
     font-size: 48px;
     line-height: 48px;
     max-width: 40ch;
@@ -483,20 +525,24 @@ p {
     transition: background-color 0.2s ease;
 }
 
-.photoCard h2, .photoCard h3, .rows h4{
+.photoCard h2,
+.photoCard h3,
+.rows h4 {
     transition: color 0.2s ease;
 }
 
-.photoCard:hover h2, .photoCard:hover h3, .rows:hover h4{
+.photoCard:hover h2,
+.photoCard:hover h3,
+.rows:hover h4 {
     color: black;
     transition: 0.2s ease;
 }
 
-.photoCard img{
+.photoCard img {
     transition: scale 0.5s ease;
 }
 
-.photoCard:hover img{
+.photoCard:hover img {
     scale: 1.01;
     transition: scale 0.5s ease;
 }
@@ -553,7 +599,7 @@ p {
     object-fit: cover;
 }
 
-.cursorPics{
+.cursorPics {
     overflow: hidden;
     width: 420px;
     height: 86px;
@@ -569,7 +615,7 @@ p {
     transition: height 0.5s ease;
 }
 
-.rows:hover .cursorPics{
+.rows:hover .cursorPics {
     height: 260px;
     transition: height 0.5s ease;
 }
@@ -586,28 +632,28 @@ p {
     transition: 0.5s ease;
 }
 
-.rows .flexBox{
+.rows .flexBox {
     padding-bottom: 0;
 }
 
-.rows .arrow{
+.rows .arrow {
     position: relative;
     top: 0px;
     rotate: 45deg;
     right: 0;
 }
 
-.rows h4{
+.rows h4 {
     font-size: 18px;
     font-weight: 400;
 }
 
-.rows h4:nth-child(4){
+.rows h4:nth-child(4) {
     width: 160px;
     text-align: center;
 }
 
-.rows h4:nth-child(1){
+.rows h4:nth-child(1) {
     width: 160px;
     text-align: left;
 }
@@ -669,13 +715,14 @@ p {
     padding-bottom: 32px;
 }
 
-.cols h2, .experiance h2{
+.cols h2,
+.experiance h2 {
     font-size: 22px;
     font-weight: 400;
     padding-bottom: 24px;
 }
 
-.cols p{
+.cols p {
     font-size: 22px;
     padding-bottom: 12px;
     color: rgb(108, 108, 108);
@@ -713,13 +760,13 @@ p {
     animation: scroll 30s linear infinite;
 }
 
-.spin{
+.spin {
     position: absolute;
     rotate: 0deg;
     animation: spinning 15s linear infinite;
 }
 
-@keyframes spinning{
+@keyframes spinning {
     from {
         rotate: 0deg;
     }
@@ -739,33 +786,34 @@ p {
     }
 }
 
-.archive{
+.archive {
     padding-bottom: 132px;
     padding-left: 10%;
     padding-right: 10%;
 }
 
-.archive h1, .experiance h1{
+.archive h1,
+.experiance h1 {
     padding-bottom: 32px;
     font-size: 4vw;
     font-weight: 400;
 }
 
-.experiance{
+.experiance {
     padding-bottom: 132px;
     padding-left: 10%;
     padding-right: 10%;
 }
 
-.experiance h2{
+.experiance h2 {
     max-width: 60ch;
 }
 
-.experiance .flexBox{
+.experiance .flexBox {
     align-items: start;
 }
 
-.experiance .cols img{
+.experiance .cols img {
     object-fit: cover;
     width: 300px;
     height: 370px;
@@ -773,12 +821,12 @@ p {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-.experiance .cols:hover img{
+.experiance .cols:hover img {
     scale: 1.01;
     transition: scale 0.5s ease;
 }
 
-.experiance .cols:nth-child(3){
+.experiance .cols:nth-child(3) {
     position: relative;
     left: -64px;
     padding: 32px;
@@ -798,7 +846,7 @@ p {
     font-weight: 300;
 }
 
-.errorPage{
+.errorPage {
     position: fixed;
     top: 232px;
     left: 0;
@@ -807,10 +855,10 @@ p {
     width: fit-content;
 }
 
-.errorPage h1{
+.errorPage h1 {
     font-size: 5vw;
 }
 
-.rights h1{
+.rights h1 {
     font-weight: 400;
 }
