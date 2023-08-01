@@ -39,7 +39,7 @@ a {
 }
 
 ::selection {
-    background: #856cff;
+    background: #000000;
     color: #ffffff;
 }
 
@@ -298,9 +298,17 @@ p {
 }
 
 .projectHero {
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 332px;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+
+.projectHero .cols{
+    padding-bottom: 132px;
+}
+
+.projectHero .cols p{
+    font-size: 18px;
 }
 
 .projectTitles {
@@ -328,6 +336,12 @@ p {
     padding-bottom: 132px;
     text-align: center;
     margin: auto;
+}
+
+.projectHero h1{
+    text-align: left;
+    padding-left: 0;
+    margin-left: 0;
 }
 
 .block {
@@ -720,10 +734,14 @@ p {
 }
 
 .cols h2,
-.experiance h2 {
+.experiance h2, .rols .half h2 {
     font-size: 22px;
     font-weight: 400;
     padding-bottom: 24px;
+}
+
+.half p{
+    padding-bottom: 132px;
 }
 
 .cols p {
