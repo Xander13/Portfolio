@@ -28,7 +28,25 @@
         <a href="#">About</a>
         <a href="#">Contact</a>
     </div>
+   
     <div class="errorPage">
+        <a href="index.html">
+        <p><span style="font-weight: 700; font-size: 45px; line-height: 48px;">We couldn't find the page <br> you were looking for. </span>
+            <br>
+            <br>
+            <br>
+            ○ &nbsp; Possible: This webpage was deleted or moved to archive.
+            <br>
+            <br>
+            ○ &nbsp; Possible: A page was redirected incorrectly.
+            <br>
+            <br>
+            ○ &nbsp; Possible: The URL path is wrong.
+            <br>
+            <br>
+            <br>
+            You can simply return to my homepage by clicking here.</p>
+        </a>
         <a href="index.html">
             <div class="marquee">
                 <ul class="marquee__content">
@@ -41,22 +59,22 @@
                 </ul>
             </div>
         </a>
-            <div class="errorArrow" id="arrow">
-                <span class="material-symbols-outlined">
-                    arrow_upward
-                </span>
-            </div>
-            <script>
-                const cursorRounded = document.querySelector('#arrow');
+        <div class="errorArrow" id="arrow">
+            <span class="material-symbols-outlined">
+                arrow_upward
+            </span>
+        </div>
+        <script>
+            const cursorRounded = document.querySelector('#arrow');
 
-                const moveCursor = (e) => {
-                    const mouseY = e.clientY;
-                    const mouseX = e.clientX;
-                    cursorRounded.style.transform = `translate3d(${mouseX - 210}px, ${mouseY - 210}px, 0)`;
-                }
+            const moveCursor = (e) => {
+                const mouseY = e.clientY;
+                const mouseX = e.clientX;
+                cursorRounded.style.transform = `translate3d(${mouseX - 210}px, ${mouseY - 210}px, 0)`;
+            }
 
-                window.addEventListener('mousemove', moveCursor)
-            </script>
+            window.addEventListener('mousemove', moveCursor)
+        </script>
     </div>
 </body>
 

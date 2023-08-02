@@ -13,7 +13,7 @@ ul {
     list-style-type: none;
 }
 
-br{
+br {
     user-select: none;
 }
 
@@ -298,20 +298,20 @@ p {
     padding-right: 10%;
 }
 
-.rols{
+.rols {
     padding-bottom: 64px;
 }
 
 
-.projectHero .cols{
+.projectHero .cols {
     align-items: flex-start;
 }
 
-.projectHero .half{
+.projectHero .half {
     color: rgb(108, 108, 108)
 }
 
-.projectHero .cols p{
+.projectHero .cols p {
     font-size: 18px;
 }
 
@@ -342,7 +342,51 @@ p {
     margin: auto;
 }
 
-.projectHero h1{
+.loader {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1111222;
+    background-color: white;
+}
+
+@keyframes moveUP {
+    0% {
+        padding-top: 522px;
+        opacity: 0;
+    }
+
+    100% {
+        padding-top: 222px;
+        opacity: 1;
+    }
+}
+
+.moveBlock {
+    position: relative;
+    font-size: 4.2vw;
+    line-height: 4.4vw;
+    font-weight: 400;
+    max-width: 34ch;
+    padding-left: 32px;
+    padding-right: 32px;
+    padding-top: 222px;
+    padding-bottom: 132px;
+    text-align: center;
+    margin: auto;
+    opacity: 1;
+    animation: moveUP 1s cubic-bezier(0.37, 0, 0.63, 1);
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+.projectHero h1 {
     text-align: left;
     padding-left: 0;
     margin-left: 0;
@@ -363,26 +407,27 @@ p {
     top: 0px;
 }
 
-.hero h1{
+.hero h1 {
     overflow: hidden;
 }
 
-@keyframes wave{
-    0%{
+@keyframes wave {
+    0% {
         transform: translateX(0%);
     }
-    100%{
+
+    100% {
         transform: translateX(100%);
     }
 }
 
 @keyframes fadeIn {
-    0%{
+    0% {
         opacity: 0;
         top: -32px;
     }
 
-    100%{
+    100% {
         opacity: 1;
         top: 0px;
     }
@@ -738,7 +783,7 @@ p {
 }
 
 .cols h2,
-.experiance h2{
+.experiance h2 {
     font-size: 22px;
     font-weight: 400;
     padding-bottom: 24px;
@@ -885,14 +930,27 @@ p {
     font-weight: 400;
 }
 
-.errorPage{
+.errorPage p{
+    position: fixed;
+    margin: auto;
+    font-size: 22px;
+    line-height: 22px;
+    background-color: rgb(248, 248, 248);
+    width: fit-content;
+    padding: 64px;
+    top: 10%;
+    left: 0;
+    right: 0;
+}
+
+.errorPage {
     position: fixed;
     bottom: 0;
     left: 0;
     height: fit-content;
 }
 
-.errorPage .marquee{
+.errorPage .marquee {
     margin-bottom: 0;
     line-height: 17vw;
 }

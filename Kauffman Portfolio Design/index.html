@@ -90,13 +90,31 @@
             isListVisible = !isListVisible;
         });
     </script>
+    <div class="loader">
+        <h1 class="moveBlock">Alex Kauffman <span class="block">the eye</span> Digital Designer at Hook making websites,
+            ads, storyboards and more. — Detroit Area.</h1>
+    </div>
+    <script>
+        // Function to fade out an element over time and then set display to "none"
+        function fadeOutAndHide(element, duration) {
+            $(element).fadeOut(duration, function () {
+                $(element).css('display', 'none');
+                $('#main-container').removeClass('no-scroll');
+            });
+        }
+        var elementToFadeOut = ".loader";
+        setTimeout(function () {
+            fadeOutAndHide(elementToFadeOut, 1000);
+        }, 1000);
+    </script>
     <div data-scroll-container id="main-container">
         <div class="navList">
             <a href="#abouts">About</a>
             <a href="#contacts">Contact</a>
         </div>
         <section class="hero">
-            <h1>Alex Kauffman <span class="block">the eye</span> Digital Designer at Hook making websites, ads, storyboards and more. — Detroit Area.</h1>
+            <h1>Alex Kauffman <span class="block">the eye</span> Digital Designer at Hook making websites, ads,
+                storyboards and more. — Detroit Area.</h1>
         </section>
         <section class="projects">
             <div class="flexBox">
@@ -318,7 +336,7 @@
             </div>
             <div id="abouts"></div>
         </div>
-        <div class="experiance" >
+        <div class="experiance">
             <h1>Experiance</h1>
             <h2 style="color: rgb(108, 108, 108);">Over the past few years I've helped to redesign an iconic blue
                 button, defined the motion system for Google TV and made plenty of websites.
