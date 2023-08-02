@@ -259,10 +259,6 @@ p {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
-#myBtn {
-    transition: 0.2s ease;
-}
-
 .sm .material-symbols-outlined,
 .photoCard .material-symbols-outlined {
     rotate: 45deg;
@@ -873,17 +869,58 @@ p {
 }
 
 .errorPage {
-    position: fixed;
-    top: 232px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: fit-content;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
 }
 
 .errorPage h1 {
-    font-size: 5vw;
+    position: absolute;
+    left: 32px;
+    bottom: 32px;
+    font-size: 8vw;
+    line-height: 8vw;
+    margin: auto;
+    font-weight: 400;
 }
+
+.errorPage{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: fit-content;
+}
+
+.errorPage .marquee{
+    margin-bottom: 0;
+    line-height: 17vw;
+}
+
+.errorArrow {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 22;
+    backface-visibility: hidden;
+    pointer-events: none;
+    opacity: 1;
+    user-select: none;
+    z-index: 1000;
+    transition: 0.1s ease-out;
+}
+
+.errorArrow .material-symbols-outlined {
+    font-size: 420px;
+    font-weight: 900;
+    rotate: -45deg;
+    color: #856cff;
+    backface-visibility: hidden;
+    pointer-events: none;
+    z-index: 1000;
+    cursor: none;
+}
+
 
 .rights h1 {
     font-weight: 400;

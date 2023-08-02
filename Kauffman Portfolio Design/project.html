@@ -31,15 +31,6 @@
     </div>
     <script>
         $(document).ready(function () {
-            // Add a scroll event listener to detect when the user scrolls
-            $(window).on('scroll', function () {
-                if ($(window).scrollTop() > 100) {
-                    $('#myBtn').css("transform", "rotate(0deg)");
-                } else {
-                    $('#myBtn').css("transform", "rotate(540deg)");
-                }
-            });
-
             // Add a click event listener to scroll back to the top when the arrow is clicked
             $('.upArrow').on('click', function () {
                 scrollToTop();
@@ -94,8 +85,8 @@
     </script>
     <div data-scroll-container id="main-container">
         <div class="navList">
-            <a href="#">About</a>
-            <a href="#">Contact</a>
+            <a href="index.html#abouts">About</a>
+            <a href="#contacts">Contact</a>
         </div>
         <div class="projectHero">
             <h1>Name of the Project</h1>
@@ -177,7 +168,7 @@
             <img src="https://freight.cargo.site/t/original/i/b75f668afe7aeb59c7736699cd46ead74ed26708a91fe78a256d9e22f3660739/TheNewYorker_Editorial_SebaCuri46.jpg"
                 width="100%" alt="img">
         </div>
-        <section class="hero" style="padding-bottom: 128px;">
+        <section class="hero" style="padding-bottom: 128px;" id="contacts">
             <h1 style="padding-top: 88px;">If you'd like to learn more, <span class="underline"><a href="#">Let's
                         chat.</a></span></h1>
         </section>

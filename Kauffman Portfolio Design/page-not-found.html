@@ -1,14 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Alex Kauffman - 404</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alex K - Page Not Found</title>
+    <meta name="description"
+        content="Alex Kauffman, UX/UI Designer with foucs on creating website, ads, and more. Based in Detroit Michigan.">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index,follow"><!-- All Search Engines -->
+    <meta name="googlebot" content="index,follow"><!-- Google Specific -->
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="generator" content="program">
+    <meta name="format-detection" content="telephone=no">
     <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="stylesheet" href="cssReset.css">
+    <link rel="stylesheet" href="loco.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
+
 <body>
     <a class="logo" href="index.html">Alex Kauffman</a>
     <div class="navList">
@@ -16,10 +29,34 @@
         <a href="#">Contact</a>
     </div>
     <div class="errorPage">
-        <h1>Ope!</h1>
-        <p>You landed a page you are trying to find is not found. <br> 404 error page. Please go back or click Back to
-            Home button</p>
-        <a href="index.html">Back to Home</a>
+        <a href="index.html">
+            <div class="marquee">
+                <ul class="marquee__content">
+                    <li>404 &nbsp; ✷ &nbsp;</li>
+                    <li>Not Found &nbsp; ✷ &nbsp;</li>
+                </ul>
+                <ul class="marquee__content" aria-hidden="true">
+                    <li>404 &nbsp; ✷ &nbsp;</li>
+                    <li>Not Found &nbsp; ✷ &nbsp;</li>
+                </ul>
+            </div>
+        </a>
+            <div class="errorArrow" id="arrow">
+                <span class="material-symbols-outlined">
+                    arrow_upward
+                </span>
+            </div>
+            <script>
+                const cursorRounded = document.querySelector('#arrow');
+
+                const moveCursor = (e) => {
+                    const mouseY = e.clientY;
+                    const mouseX = e.clientX;
+                    cursorRounded.style.transform = `translate3d(${mouseX - 210}px, ${mouseY - 210}px, 0)`;
+                }
+
+                window.addEventListener('mousemove', moveCursor)
+            </script>
     </div>
 </body>
 
