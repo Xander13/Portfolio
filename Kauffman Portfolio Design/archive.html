@@ -2,418 +2,114 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Web Page Color Theme -->
-    <meta name="theme-color" content="#0f0f0f">
-    <!-- iOS Safari -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#0f0f0f">
-    <title>A.C.K &#8212; Digtial Designer</title>
-    <meta name="description" content="Alex Kauffman &#8212; UX/UI designer portfolio 2023.">
-    <link rel="canonical" href="http://alex-kauffman.com/" />
-    <!-- OG -->
-    <meta property="og:type" content="Protfolio" />
-    <meta property="og:title" content="Alex Kauffman &#8212; Protfolio" />
-    <meta property="og:description" content="Alex Kauffman &#8212; UX/UI designer portfolio 2023." />
-    <meta property="og:image" content="LINK TO THE IMAGE FILE" />
-    <meta property="og:url" content="http://alex-kauffman.com/" />
-    <meta property="og:site_name" content="Alex Kauffman" />
-    <!-- Twitter OG -->
-    <meta name="twitter:title" content="Alex Kauffman &#8212; Protfolio">
-    <meta name="twitter:description" content="Alex Kauffman &#8212; UX/UI designer portfolio 2023.">
-    <meta name="twitter:image" content="LINK TO IMAGE">
-    <meta name="twitter:site" content="@@akooof13">
-    <meta name="twitter:creator" content="@akooof13">
-    <!-- Fav Icons & App Icons -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alex K - UX/UI Designer</title>
+    <meta name="description"
+        content="Alex Kauffman, UX/UI Designer with foucs on creating website, ads, and more. Based in Detroit Michigan.">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index,follow"><!-- All Search Engines -->
+    <meta name="googlebot" content="index,follow"><!-- Google Specific -->
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="generator" content="program">
+    <meta name="format-detection" content="telephone=no">
     <link rel="icon" type="image/x-icon" href="icon.png">
-    <link rel="apple-touch-icon" href="ak_app_icon.png" />
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;600;800&display=swap"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;700&display=swap"
-        rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cssReset.css">
+    <link rel="stylesheet" href="loco.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
-    <!-- jQuery CDN (Google Hosted Library) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
-    <div class="nav" id="navbar">
-        <a href="index.html">A.K &nbsp; &#8212; &nbsp; Digtial Designer </a>
-        <div class="navRight">
-            <a href="index.html">Work</a>
-            <a href="about.html" style="margin-left: 16px;">About</a>
-            <a href="archive.html" id="menu" style="margin-left: 16px;">Archive</a>
+    <a class="logo" href="index.html">Alex Kauffman</a>
+    <div class="upArrow" id="myBtn">
+        <span class="material-symbols-outlined">
+            arrow_upward
+        </span>
+    </div>
+    <style>
+        .rights{
+            position: fixed;
+            bottom: 32px;
+            left: 0;
+            right: 0;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            // Add a scroll event listener to detect when the user scrolls
+            $(window).on('scroll', function () {
+                if ($(window).scrollTop() > 100) {
+                    $('#myBtn').css("transform", "rotate(0deg)");
+                } else {
+                    $('#myBtn').css("transform", "rotate(540deg)");
+                }
+            });
+
+            // Add a click event listener to scroll back to the top when the arrow is clicked
+            $('.upArrow').on('click', function () {
+                scrollToTop();
+            });
+
+            // Function to scroll to the top
+            function scrollToTop() {
+                $('#main-container').scrollTop(0);
+            }
+        });
+    </script>
+    <div class="sm" id="toggleButton">
+        <span class="material-symbols-outlined">
+            link
+        </span>
+        <div id="listContainer">
+            <ul>
+                <li><a>Vimeo</a></li>
+                <li><a>Meidum</a></li>
+                <li><a>LinkedIn</a></li>
+                <li><a>Resume</a></li>
+            </ul>
         </div>
     </div>
     <script>
-        var lastScrollTop; // This Varibale will store the top position
+        const toggleButton = document.getElementById('toggleButton');
+        const listContainer = document.getElementById('listContainer');
 
-        navbar = document.getElementById('navbar'); // Get The NavBar
+        let isListVisible = false;
 
-        window.addEventListener('scroll', function () {
-            //on every scroll this funtion will be called
+        toggleButton.addEventListener('click', () => {
+            if (isListVisible) {
+                // If the list is currently visible, hide it
+                listContainer.style.display = 'none';
+                toggleButton.style.width = '56px';
+                toggleButton.style.height = '56px';
+                toggleButton.style.borderRadius = '12px';
 
-            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            //This line will get the location on scroll
-
-            if (scrollTop > lastScrollTop) { //if it will be greater than the previous
-                navbar.style.top = '-90px';
-                //set the value to the negetive of height of navbar 
             } else {
-                navbar.style.top = '0';
+                // If the list is currently hidden, show it
+                listContainer.style.display = 'block';
+                toggleButton.style.width = '198px';
+                toggleButton.style.height = 'fit-content';
+                toggleButton.style.borderRadius = '12px';
             }
 
-            lastScrollTop = scrollTop; //New Position Stored
+            // Toggle the state of isListVisible variable
+            isListVisible = !isListVisible;
         });
     </script>
-    <style>
-        .somethingehere {
-            width: fit-content;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .row h1 {
-            font-weight: 400;
-        }
-
-        .row h1:first-child {
-            width: 200px;
-            padding-right: 64px;
-        }
-
-        .row h1:nth-child(2) {
-            width: 400px;
-        }
-
-        .row h1:nth-child(3) {
-            padding-right: 32px;
-        }
-
-        .somethingehere h1:nth-child(even) {
-            padding-left: 32px;
-        }
-
-        .somethingehere h1 {
-            width: fit-content !important;
-            padding-right: 0px !important;
-        }
-
-        .imgProject {
-            width: 280px !important;
-            height: fit-content;
-            position: absolute;
-            right: 320px;
-            top: -80px;
-            z-index: 12;
-            display: none;
-        }
-
-        .row:hover .imgProject {
-            display: block;
-        }
-    </style>
-    <div class="container">
-        <h1 class="ArchiveTitle">Archives</h1>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
+    <div data-scroll-container id="main-container">
+        <div class="navList">
+            <a href="index.html">About</a>
+            <a href="#contacts">Contact</a>
         </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
+        <div class="archive">
+            <h1>Archives</h1>
         </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <a href="#">
-                <div class="flexBox">
-                    <div class="flexBox">
-                        <h1>Wishful</h1>
-                        <h1>RIT NMD Capstone brining wish into a vetial space.</h1>
-                    </div>
-
-                    <img class="imgProject"
-                        src="https://cdn.dribbble.com/userupload/5222792/file/original-204bc5a842161e7e974d1764ab540973.png?resize=400x0"
-                        width="100%">
-                    <div class="somethingehere">
-                        <div class="flexBox">
-                            <h1>UX/UI</h1>
-                            <h1>2023</h1>
-                        </div>
-                    </div>
-                </div>
-            </a>
+        <div class="rights">
+            <h1>Kauffman &copy; 2023</h1>
         </div>
     </div>
-    <footer>
-        <div class="container">
-            <!-- <h2>Let's make <br> awesome sh💩t</h2>
-            <a class="copyTxt" href="mailto:xanderkau13@gmail.com" id="myLink">send me an
-                email.</a><span class="smalltxt">[ Copy email to clipboard ]</span>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br> -->
-            <div class="flexBox">
-                <div class="content">
-                    <a href="#">LinkedIn</a>
-                    <a href="#">Instagram</a>
-                    <a href="#">Read.cv</a>
-                </div>
-                <div class="content" style="max-width: 460px;">
-                    <div class="flexBox" style="justify-content: end; text-align: right;">
-                        <h3> Design + Coded w/ &nbsp; ❤️ &nbsp; &#8212; &nbsp; Detroit Area</h3>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
-
 </body>
 
 </html>
