@@ -536,6 +536,15 @@ p {
     width: calc(50% - 24px);
 }
 
+.archive .box{
+    width: 100%;
+}
+
+.archive .photoCard{
+    height: 40px;
+    overflow: hidden;
+}
+
 .full {
     width: 100%;
     margin-bottom: 132px;
@@ -864,8 +873,8 @@ p {
 
 .archive {
     padding-bottom: 132px;
-    padding-left: 10%;
-    padding-right: 10%;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .archive h1,
