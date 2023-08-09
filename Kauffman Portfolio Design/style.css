@@ -876,12 +876,101 @@ p {
     padding-left: 32px;
     padding-right: 32px;
 }
-
-.archive h1,
 .experiance h1 {
     padding-bottom: 32px;
     font-size: 4vw;
     font-weight: 400;
+}
+
+#gallery{
+    height: 75vmax;
+    width: 95vmax;
+    position: relative;
+}
+
+.blocks{
+    position: absolute;
+    padding: 32px;
+    width: fit-content;
+    z-index: 1;
+    background-color: transparent;
+    transition: 0.4s ease;
+}
+
+.blocks:hover{
+    z-index: 12;
+    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 24px 24px 64px rgba(0, 0, 0, 0.23); */
+    transition: 0.4s ease;
+    scale: 1.08;
+    cursor: pointer;
+}
+
+.blocks:nth-child(1){
+    height: 380px;
+    top: -10%;
+    left: 20%;
+    background-size: cover;
+}
+
+.blocks:nth-child(2){
+    height: 500px;
+    top: 5%;
+    left: 0%;
+    background-size: cover;
+}
+
+.blocks:nth-child(3){
+    top: 90%;
+    left: 11%;
+    height: 670px;
+    background-size: cover;
+}
+
+.blocks:nth-child(4){
+    top: -20%;
+    right: 10%;
+    height: 380px;
+    background-size: cover;
+}
+
+.blocks:nth-child(5){
+    bottom: 0%;
+    left: 50%;
+    background-size: cover;
+}
+
+.blocks:nth-child(6){
+    top: 40%;
+    height: 580px;
+    left: 0%;
+    background-size: cover;
+}
+
+.blocks:nth-child(7){
+    top: 120%;
+    height: 780px;
+    right: 0%;
+    background-size: cover;
+}
+
+.blocks:nth-child(8){
+    top: 170%;
+    height: 280px;
+    left: 0%;
+    background-size: cover;
+}
+
+.archive h1{
+    position: fixed;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    margin: auto;
+    height: 56px;
+    font-size: 4vw;
+    line-height: 3.4vw;
+    top: calc(100%/2);
+    z-index: -1;
 }
 
 .experiance {
