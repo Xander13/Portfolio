@@ -5,11 +5,14 @@ body {
     overflow-x: hidden;
 }
 
-:focus {
-    outline: 3px solid orange !important;
-}
+/* :focus {
+    outline: none;
+    transform: scale(1.08);
+    border: 3px solid #856cff;
+    border-radius: 100rem;
+  } */
 
-ul {
+ul {    
     list-style-type: none;
 }
 
@@ -600,9 +603,9 @@ p {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
-.photoCard img {
+/* .photoCard img {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
+} */
 
 .photoCard {
     position: relative;
@@ -1011,7 +1014,7 @@ p {
     width: 300px;
     height: 370px;
     transition: scale 0.5s ease;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
 }
 
 .experiance .cols:hover img {
@@ -1108,4 +1111,41 @@ p {
 
 .rights h1 {
     font-weight: 400;
+}
+
+@media screen and (max-width: 640px){
+    .experiance .flexBox{
+        display: block;
+    }
+
+    .cols{
+        width: 100%;
+        padding-bottom: 32px;
+        padding-top: 32px;
+    }
+    .experiance .cols:nth-child(3){
+        left: 0;
+    }
+
+    .experiance{
+        padding-bottom: 0;
+    }
+    
+    .hero h1{
+        font-size: 4vw;
+    }
+
+    .marquee li{
+        font-size: 43vw !important;
+    }
+
+    .hero h1{
+        font-size: 48px;
+        line-height: 48px;
+    }
+
+    #contacts h1{
+        font-size: 10vw;
+        line-height: 14vw;
+    }
 }
