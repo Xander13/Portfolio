@@ -202,6 +202,10 @@ p {
     bottom: 15px;
 }
 
+#abouts{
+    height: 132px;
+}
+
 .aboutMe {
     position: relative;
 }
@@ -820,7 +824,6 @@ p {
     overflow: hidden;
     user-select: none;
     gap: var(--gap);
-    margin-bottom: 132px;
 }
 
 .marquee .logo {
@@ -844,6 +847,7 @@ p {
 
 .marquee__content {
     animation: scroll 30s linear infinite;
+    padding-bottom: 0;
 }
 
 .spin {
@@ -873,7 +877,6 @@ p {
 }
 
 .archive {
-    padding-bottom: 132px;
     padding-left: 32px;
     padding-right: 32px;
 }
