@@ -229,13 +229,16 @@
                 </div>
             </div> -->
         </section>
+        <div class="experiance">
+            <h1>To create a better experiences of the highest caliber, Alex take a multi-disciplinary approach to his work by taking it appart and seeing the problem in a different approch to create unexpecting solutions.</h1>
+        </div>
         <div class="aboutMe">
-            <!-- <div class="aboutArrow" id="arrow">
+            <div class="aboutArrow" id="arrow">
                 <span class="material-symbols-outlined">
                     arrow_upward
                 </span>
-            </div> -->
-            <!-- <script>
+            </div>
+            <script>
                 const cursorRounded = document.querySelector('#arrow');
 
                 const moveCursor = (e) => {
@@ -245,110 +248,10 @@
                 }
 
                 window.addEventListener('mousemove', moveCursor)
-            </script> -->
-            <div class="experiance">
-                <h1>The Things I do</h1>
-                <div class="flexBox">
-                    <div class="half">
-                        <h2 style="color: rgb(108, 108, 108);">Over the past few years I've helped to redesign an iconic
-                            blue
-                            button, defined the motion system for Google TV and made plenty of websites.
-                        </h2>
-                    </div>
-                    <div class="half">
-                        <h2 style="color: rgb(108, 108, 108);">Over the past few years I've helped to redesign an iconic
-                            blue
-                            button, defined the motion system for Google TV and made plenty of websites.
-                        </h2>
-                    </div>
-                </div>
-            </div>
-            <script>
-                const displayDistance = 50 // distance in px to display another photo
-                const nDisplay = 3 // number of pictures to display at once
-
-                const images = document.getElementsByClassName("image")
-
-                let globalIndex = 0 // used to count up the images
-                let lastMousePosition = {
-                    x: 0,
-                    y: 0
-                } // used to get the last mouse position
-
-                // function to activate photos
-                function activatePic(img, x, y) {
-                    img.dataset.status = "active"
-                    img.style.left = `${x}px`
-                    img.style.top = `${y}px`
-                    img.style.zIndex = globalIndex // otherwise the last pic will always be at the top
-                    lastMousePosition = {
-                        x: x,
-                        y: y
-                    } // update the last mouse position
-                }
-
-                // compute mouse distance 
-                function mouseDistance(x, y) {
-                    return Math.hypot(x - lastMousePosition.x, y - lastMousePosition.y)
-                }
-
-                // onmousemove 
-                window.onmousemove = e => {
-                    if (mouseDistance(e.clientX, e.clientY) > displayDistance) {
-                        let activePic = images[globalIndex % images.length]
-                        let inactivePic = images[(globalIndex - nDisplay) % images.length]
-
-                        activatePic(activePic, e.clientX, e.clientY)
-                        if (inactivePic) {
-                            inactivePic.dataset.status = "inactive"
-                        }
-
-                        globalIndex++
-                    }
-                }
             </script>
-            <style>
-                .image {
-                    width: 30vmin;
-                    position: absolute;
-                    transform: translate(-50%, -50%);
-                    z-index: -12;
-                    display: none;
-                }
-
-                .archives .image{
-                    display: none !important;
-                }
-
-                .archives:hover .image {
-                    display: block !important;
-                }
-
-                .image[data-status="inactive"] {
-                    display: none;
-                }
-
-                .image[data-status="active"] {
-                    display: block;
-                    z-index: -12;
-                }
-            </style>
+            
             <div class="archives">
                 <a href="archive.html">
-                    <img src="https://cdn.sanity.io/images/0wi4u8fy/production/1bbc9fa24aaf8ab84414200c4aba38b2494faa1a-960x960.gif?w=800&auto=format"
-                        data-index="0" data-status="inactive" class="image">
-                    <img src="https://cdn.sanity.io/images/0wi4u8fy/production/8de3a1f42700324f4db3fc777a3b09a298793844-960x1504.gif?w=800&auto=format"
-                        data-index="1" data-status="inactive" class="image">
-                    <img src="https://cdn.sanity.io/images/0wi4u8fy/production/6fbdb5683b2c0963508f6c41d3fe92b615d46773-1181x1500.jpg?w=800&auto=format"
-                        data-index="2" data-status="inactive" class="image">
-                    <img src="https://cdn.sanity.io/images/0wi4u8fy/production/45f52b635f555f88a4a743547cb59676d9f1242d-1500x1038.jpg?w=800&auto=format"
-                        data-index="3" data-status="inactive" class="image">
-                    <img src="https://cdn.sanity.io/images/0wi4u8fy/production/d8066bc8298dbdddd8f4c32b524c987096856bce-1500x1500.jpg?w=800&auto=format"
-                        data-index="4" data-status="inactive" class="image">
-                    <img src="https://cdn.sanity.io/images/0wi4u8fy/production/b546041851ae6ed3c10c28d77597ca9d313bea1a-1500x1500.jpg?w=800&auto=format"
-                        data-index="5" data-status="inactive" class="image">
-                    <img src="https://cdn.sanity.io/images/0wi4u8fy/production/613f7484c9526c218f126d8b0663fd820bd15184-946x1500.jpg?w=800&auto=format"
-                        data-index="6" data-status="inactive" class="image">
                     <div class="marquee">
                         <ul class="marquee__content">
                             <li>Archive &nbsp; ✷ &nbsp;</li>
