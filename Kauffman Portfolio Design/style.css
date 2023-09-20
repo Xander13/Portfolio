@@ -92,7 +92,7 @@ p {
     position: fixed;
     padding-top: 32px;
     z-index: 2211111;
-    width: 220px;
+    width: 340px;
     right: 32px;
     display: flex;
     color: white;
@@ -635,13 +635,15 @@ p {
     transition: scale 0.5s ease;
 }
 
-.photoCard h2 {
+.photoCard .left {
     font-size: 18px;
     font-weight: 400;
-    color: rgb(108, 108, 108);
+    color: rgb(0, 0, 0);
     position: absolute;
-    left: 16px;
-    top: 16px;
+    left: 32px;
+    top: 24px;
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .photoCard h3 {
@@ -649,8 +651,8 @@ p {
     font-weight: 400;
     color: rgb(108, 108, 108);
     position: absolute;
-    left: 16px;
-    bottom: 16px;
+    left: 32px;
+    bottom: 24px;
 }
 
 .things {
