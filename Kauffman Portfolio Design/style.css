@@ -882,21 +882,19 @@ p {
 }
 
 .archive {
+    position: relative;
     padding-left: 32px;
     padding-right: 32px;
+    animation: fadeIn 1s ease;
+    height: 100%;
+    width: 100%;
 }
+
 .experiance h1 {
     padding-bottom: 32px;
     font-size: 4vw;
     line-height: 4.5vw;
     font-weight: 400;
-}
-
-#gallery{
-    height: 75vmax;
-    width: 95vmax;
-    position: relative;
-    animation: fadeIn 1s ease;
 }
 
 .blocks{
@@ -931,57 +929,64 @@ p {
 }
 
 .blocks:nth-child(1){
-    height: 380px;
-    top: -10%;
+    height: 480px;
+    top: 0;
     left: 20%;
     background-size: cover;
 }
 
 .blocks:nth-child(2){
     height: 500px;
-    top: 5%;
+    top: 356px;
     left: 0%;
     background-size: cover;
 }
 
 .blocks:nth-child(3){
-    top: 90%;
-    left: 11%;
+    top: 1990px;
+    left: 0;
     height: 670px;
     background-size: cover;
 }
 
 .blocks:nth-child(4){
-    top: -20%;
-    right: 10%;
-    height: 380px;
+    top: 220px;
+    right: 0;
+    height: 480px;
     background-size: cover;
 }
 
 .blocks:nth-child(5){
-    bottom: 0%;
+    top: 845px;
     left: 50%;
     background-size: cover;
 }
 
 .blocks:nth-child(6){
-    top: 45%;
+    top: 999px;
     height: 580px;
-    left: 0%;
+    left: 10%;
     background-size: cover;
 }
 
 .blocks:nth-child(7){
-    top: 120%;
-    height: 780px;
+    top: 2700px;
+    height: 980px;
     right: 0%;
     background-size: cover;
 }
 
 .blocks:nth-child(8){
-    top: 170%;
-    height: 280px;
-    left: 0%;
+    top: 2900px;
+    height: 620px;
+    left: 4%;
+    background-size: cover;
+}
+
+.blocks:nth-child(9){
+    top: 2100px;
+    height: 420px;
+    right: 4%;
     background-size: cover;
 }
 
