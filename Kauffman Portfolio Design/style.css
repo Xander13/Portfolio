@@ -930,7 +930,7 @@ p {
 
 .blocks:nth-child(1){
     height: 480px;
-    top: 0;
+    top: -180px;
     left: 20%;
     background-size: cover;
 }
