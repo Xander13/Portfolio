@@ -886,7 +886,7 @@ p {
     padding-left: 32px;
     padding-right: 32px;
     animation: fadeIn 1s ease;
-    height: 100%;
+    height: 3780px;
     width: 100%;
 }
 
@@ -931,13 +931,13 @@ p {
 .blocks:nth-child(1){
     height: 480px;
     top: -180px;
-    left: 20%;
+    left: 8%;
     background-size: cover;
 }
 
 .blocks:nth-child(2){
     height: 500px;
-    top: 356px;
+    top: 556px;
     left: 0%;
     background-size: cover;
 }
@@ -958,32 +958,25 @@ p {
 
 .blocks:nth-child(5){
     top: 845px;
-    left: 50%;
+    left: 30%;
     background-size: cover;
 }
 
 .blocks:nth-child(6){
-    top: 999px;
-    height: 580px;
-    left: 10%;
-    background-size: cover;
-}
-
-.blocks:nth-child(7){
     top: 2700px;
     height: 980px;
     right: 0%;
     background-size: cover;
 }
 
-.blocks:nth-child(8){
+.blocks:nth-child(7){
     top: 2900px;
     height: 620px;
     left: 4%;
     background-size: cover;
 }
 
-.blocks:nth-child(9){
+.blocks:nth-child(8){
     top: 2100px;
     height: 420px;
     right: 4%;
