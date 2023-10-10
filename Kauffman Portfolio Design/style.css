@@ -936,7 +936,7 @@ p {
 }
 
 .blocks:nth-child(2){
-    height: 500px;
+    height: 680px;
     top: 556px;
     left: 0%;
     background-size: cover;
@@ -945,7 +945,7 @@ p {
 .blocks:nth-child(3){
     top: 1990px;
     left: 0;
-    height: 670px;
+    height: 570px;
     background-size: cover;
 }
 
@@ -978,8 +978,8 @@ p {
 }
 
 .blocks:nth-child(8){
-    top: 2100px;
-    height: 420px;
+    top: 2000px;
+    width: 520px;
     right: 4%;
     background-size: cover;
 }
