@@ -187,6 +187,24 @@ p {
     z-index: 22222;
 }
 
+.smalltxt{
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.smalltxt a{
+    color: rgb(108, 108, 108);
+    transition: 0.5s ease;
+}
+
+.smalltxt a:hover{
+    letter-spacing: 1px;
+    transform-origin: center;
+    transition: 0.5s ease;
+    cursor: pointer;
+    color: #9177e0;
+}
+
 .sm {
     position: fixed;
     bottom: 32px;
@@ -239,7 +257,7 @@ p {
     font-size: 420px;
     font-weight: 900;
     rotate: 45deg;
-    color: #856cff;
+    color: #9177e0;    
     backface-visibility: hidden;
     pointer-events: none;
     z-index: 1000;
