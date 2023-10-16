@@ -1191,6 +1191,58 @@ p {
     font-weight: 400;
 }
 
+.moreProjects{
+    border-top: 1px solid rgb(196, 196, 196);
+    width: 80%;
+    margin: auto;
+    height: auto;
+    margin-top: 156px;
+}
+
+.moreProjects img{
+    width: 100% !important;
+}
+
+.moreProjects .flexBox{
+    justify-content: space-between;
+    gap: 32px;
+}
+
+.moreProjects a{
+    width: auto;
+    transition: 0.2s ease;
+}
+
+.moreProjects a:hover{
+    cursor: pointer;
+    scale: 0.95;
+    transition: 0.2s ease;
+}
+
+.moreProjects h1{
+    padding-top: 56px;
+    padding-bottom: 32px;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 18px;
+}
+
+.moreProjects h2{
+    padding-top: 18px;
+    font-size: 22px;
+    padding-bottom: 4px;
+}
+
+.moreProjects h3{
+    color: gray;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.moreProjects .cols{
+    width: 100%;
+}
+
 @media screen and (max-width: 640px){
     .experiance .flexBox{
         display: block;
