@@ -326,6 +326,11 @@ p {
     color: gray;
 }
 
+.fullImgView{
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
 .projectHero {
     padding-left: 10%;
     padding-right: 10%;
@@ -340,8 +345,42 @@ p {
     align-items: flex-start;
 }
 
-.projectHero .half {
-    color: rgb(108, 108, 108)
+.projectHero .cols{
+    position: relative;
+    height: auto;
+}
+
+.projectHero .flexBox{
+    align-items: normal;
+}
+
+.projectHero .seeSiteBtn{
+    background-color: black;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    padding: 12px;
+    padding-left: 32px;
+    padding-right: 32px;
+    border-radius: 100rem;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.projectHero .seeSiteBtn:hover{
+    opacity: 0.7;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+}
+
+.projectHero .cols a{
+    padding-right: 0;
+}
+
+.projectHero .seeSiteBtn a{
+    color: white;
+    font-size: 22px;
+    text-align: center;
 }
 
 .projectHero .cols p {
@@ -359,6 +398,21 @@ p {
 .imgCard {
     padding: 10%;
     background-color: rgb(248, 248, 248);
+    margin-bottom: 32px;
+    transition: scale 0.5s ease;
+}
+
+.imgCard img:hover{
+    scale: 1.01;
+    transition: scale 0.5s ease;
+}
+
+.imgCard:nth-child(even){
+    margin-left: 32px;
+}
+
+.imgCard:nth-child(odd){
+    margin-left: 32px;
 }
 
 .hero h1,
