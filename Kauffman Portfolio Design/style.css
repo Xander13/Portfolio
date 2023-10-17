@@ -532,18 +532,20 @@ p {
     padding: 16px;
     font-size: 32px;
     line-height: 48px;
-    color: gray;
+    color: rgb(0, 0, 0);
     margin: auto;
-    max-width: 500px;
+    max-width: 800px;
     padding-left: 0;
+    padding-bottom: 36px;
 }
 
 .wideTitle p {
     font-size: 22px;
-    line-height: 24px;
-    max-width: 500px;
+    line-height: 36px !important;
+    max-width: 800px;
     margin: auto;
     text-align: left;
+    color: gray;
 }
 
 .bio,
@@ -1198,7 +1200,7 @@ p {
     width: 80%;
     margin: auto;
     height: auto;
-    margin-top: 156px;
+    margin-top: 56px;
 }
 
 .moreProjects img{
