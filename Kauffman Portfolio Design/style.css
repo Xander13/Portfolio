@@ -530,16 +530,20 @@ p {
 
 .wideTitle h1 {
     padding: 16px;
-    font-size: 48px;
+    font-size: 32px;
     line-height: 48px;
     color: gray;
+    margin: auto;
+    max-width: 500px;
+    padding-left: 0;
 }
 
 .wideTitle p {
-    font-size: 48px;
-    line-height: 48px;
-    max-width: 40ch;
+    font-size: 22px;
+    line-height: 24px;
+    max-width: 500px;
     margin: auto;
+    text-align: left;
 }
 
 .bio,
