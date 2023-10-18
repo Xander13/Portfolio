@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alex K - Bard by Google</title>
+    <meta name="description"
+        content="Alex Kauffman, UX/UI Designer with foucs on creating website, ads, and more. Based in Detroit Michigan.">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index,follow"><!-- All Search Engines -->
+    <meta name="googlebot" content="index,follow"><!-- Google Specific -->
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="generator" content="program">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="stylesheet" href="cssReset.css">
+    <link rel="stylesheet" href="loco.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+<style>
+    .box {
+        margin: 16px;
+    }
+</style>
+
+<body>
+    <a class="logo" href="index.html">Alex Kauffman</a>
+    <div class="upArrow" id="myBtn">
+        <span class="material-symbols-outlined">
+            arrow_upward
+        </span>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // Add a click event listener to scroll back to the top when the arrow is clicked
+            $('.upArrow').on('click', function () {
+                scrollToTop();
+            });
+
+            // Function to scroll to the top
+            function scrollToTop() {
+                $('#main-container').scrollTop(0);
+            }
+        });
+    </script>
+    <div class="sm" id="toggleButton">
+        <span class="material-symbols-outlined">
+            link
+        </span>
+        <div id="listContainer">
+            <ul>
+                <li><a>Twitter</a></li>
+                <li><a>LinkedIn</a></li>
+                <li><a>Read.cv</a></li>
+                <li><a>Email</a></li>
+                <li><a>dribbble</a></li>
+                <li><a>Meidum</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const listContainer = document.getElementById('listContainer');
+
+        let isListVisible = false;
+
+        toggleButton.addEventListener('click', () => {
+            if (isListVisible) {
+                // If the list is currently visible, hide it
+                listContainer.style.display = 'none';
+                toggleButton.style.width = '56px';
+                toggleButton.style.height = '56px';
+                toggleButton.style.borderRadius = '12px';
+
+            } else {
+                // If the list is currently hidden, show it
+                listContainer.style.display = 'block';
+                toggleButton.style.width = '198px';
+                toggleButton.style.height = 'fit-content';
+                toggleButton.style.borderRadius = '12px';
+            }
+
+            // Toggle the state of isListVisible variable
+            isListVisible = !isListVisible;
+        });
+    </script>
+    <div data-scroll-container id="main-container">
+        <div class="navList">
+            <a href="index.html">Work</a>
+            <a href="#abouts">About</a>
+            <a href="#contacts">Contact</a>
+            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+        </div>
+        <div class="projectHero">
+            <h1>Bard by Google</h1>
+            <br>
+            <br>
+            <br>
+            <div class="rols">
+                <div class="flexBox">
+                    <div class="cols">
+                        <h2>Brief</h2>
+                        <p>Recreating Bard new coming product features UI assets for motion.</p>
+                    </div>
+                    <div class="cols">
+                        <h2>Role</h2>
+                        <p>Production Design
+                            <br>
+                            UX Design
+                            <br>
+                            Client - Google
+                        </p>
+                    </div>
+                    <div class="cols">
+                        <h2>Details</h2>
+                        <p>2021-2023
+                            <br>
+                            Client - Color
+                            <br>
+                            Hook Agency
+                        </p>
+                    </div>
+                    <div class="cols">
+                        <h2>Team</h2>
+                        <p>Micheal Watts - CEO
+                            <br>
+                            Aaron Schwartz - Head of Creative
+                            <br>
+                            Alex Kauffman (Me) - UX + Production Designer
+                            <br>
+                            Patrick + David - Motion Designer
+                            <br>
+                            Addison Born - P.M
+                        </p>
+                    </div>
+                    <div class="cols">
+                        <div class="seeSiteBtn">
+                            <a href="https://bard.google.com/chat" target="_blank">See Site</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="fullImgView">
+            <div class="imgCard" style="padding: 0;">
+                <img src="Plan_a_trip_to_the_Grand_Canyon_1.gif" width="100%" alt="img">
+            </div>
+        </div>
+        <div class="projectHero">
+            <div class="fillbg" style="position: sticky; background-color: white; top: 32px; z-index: -1;">
+                <div class="wideTitle">
+                    <br>
+                    <h1>Creating a safer reading space</h1>
+                    <p>Medical jargon can create uneven tensions for users to read as they are trying to understand
+                        helth complications. Color takes thier medical info in more softer approch to help users
+                        to read and understand. They have revamped thier design brand language and thier webpages needed
+                        to be
+                        updated.
+                    </p>
+                    <br>
+                    <p>
+                        As my role, I help update thier old existing Color webpages that had out of date visuals which
+                        were hard
+                        to read and unconsistant contents. I also created many new elements to help support thier brand
+                        and thier contents to help users enjoy the reading. I have worked on spot illustrations,
+                        researched icongraphy explorations, and creating fresh updated information graphs. I also help
+                        clean up thier page layout to make the contents flow better.
+                    </p>
+                </div>
+            </div>
+            <div class="fillbg" style="width: 100%; height: auto; background-color: white;">
+                <br>
+                <br>
+                <br>
+                <br>
+                <div class="flexBox">
+                    <div class="half">
+                        <div class="imgCard" style="padding: 0;">
+                            <img src="Color_Mobile_Phone_Webpage_1.png" width="100%" alt="img">
+                        </div>
+                    </div>
+                    <div class="half">
+                        <div class="imgCard" style="background-color: #EEF4FE;">
+                            <img src="color-stomach-hero.webp" width="100%" alt="img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="projectHero">
+            <div class="imgCard" style="padding: 0;">
+                <img src="Color_Mobile_Tablet_Webpage_1.png" width="100%" alt="img">
+            </div>
+            <div class="imgCard" style="padding: 0;">
+                <img src="Color_Mobile_Tablet_Webpage_1.png" width="100%" alt="img">
+            </div>
+        </div>
+        <div class="projectHero">
+            <div class="fillbg" style="width: 100%; height: auto; background-color: rgb(255, 255, 255); z-index: 12;">
+                <div class="flexBox">
+                    <div class="half">
+                        <div class="imgCard" style="padding: 0;">
+                            <img src="Color_Mobile_Phone_Webpage_2.png" width="100%" alt="img">
+                        </div>
+                    </div>
+                    <div class="half">
+                        <div class="imgCard" style="padding: 0;">
+                            <img src="Color_Icongraphy.svg" width="100%" alt="img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fillbg" style="position: sticky; background-color: white; top: 32px;">
+                <div class="wideTitle">
+                    <br>
+                    <h1>Bridging thier new design language and pushing new contents to bring new exicting visuals</h1>
+                    <p>Researching differnt treaments on how we can improve our visual styles with Color's new visual
+                        langue to help expand thier starting point and expand the brand in new areas.
+                    </p>
+                    <br>
+                    <p>
+                        I also worked on new fresh contents to help fill the missing infromation that users may
+                        questions about.
+                    </p>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+            <div class="imgCard" style="background-color: #EEF4FE;">
+                <img src="Color_Styles_Webpage.png" width="100%" alt="img">
+            </div>
+        </div>
+        <div class="projectHero">
+            <div class="fillbg" style="width: 100%; height: auto; background-color: rgb(255, 255, 255); z-index: 12;">
+                <div class="flexBox">
+                    <div class="half">
+                        <div class="imgCard" style="padding: 0;">
+                            <img src="Color_Icongraphy.svg" width="100%" alt="img">
+                        </div>
+                    </div>
+                    <div class="half">
+                        <div class="imgCard" style="padding: 0;">
+                            <img src="Color_Mobile_Phone_Webpage_2.png" width="100%" alt="img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="fillbg" style="position: sticky; background-color: white; top: 32px; z-index: -1;">
+                <div class="wideTitle">
+                    <h1>Things I learned</h1>
+                    <p>As working with my design Director and client, I have learned to create story with in the
+                        contents of the existing page and levrage Color's style guidlines to help push create new
+                        contents.</p>
+                </div>
+            </div>
+        </div>
+        <div class="moreProjects">
+            <h1>More work</h1>
+            <div class="flexBox">
+                <a href="#">
+                    <div class="cols">
+                        <img src="Frame19.svg" width="100%" alt="Image">
+                        <h2>Halo Lighting</h2>
+                        <h3>Ux/UI, Motion</h3>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="cols">
+                        <img src="Frame19.svg" width="100%" alt="Image">
+                        <h2>Bard by Google</h2>
+                        <h3>Ux/UI, Motion</h3>
+                    </div>
+                </a>
+
+                <a href="#">
+                    <div class="cols">
+                        <img src="Frame19.svg" width="100%" alt="Image">
+                        <h2>Google for Creators</h2>
+                        <h3>Ux/UI, Motion</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <section class="hero" style="padding-bottom: 128px;" id="contacts">
+            <h1 style="padding-top: 88px;">If you'd like to learn more,
+                <span class="underline">
+                    <a href="#">Let's chat.</a>
+                </span>
+            </h1>
+        </section>
+        <div class="rights">
+            <h1>Kauffman &copy; 2023</h1>
+        </div>
+    </div>
+</body>
+
+</html>
