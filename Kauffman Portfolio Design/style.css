@@ -409,6 +409,13 @@ p {
     top: 32px;
 }
 
+.imgCard h3{
+    font-weight: 400;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 0;
+}
+
 .hero h1,
 .projectHero h1 {
     font-size: 4.2vw;
