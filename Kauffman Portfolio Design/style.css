@@ -1260,6 +1260,28 @@ p {
     width: 100%;
 }
 
+footer{
+    width: 100%;
+    height: 200px;
+    position: relative;
+    height: auto;
+}
+
+footer .flexBox{
+    padding-left: 10%;
+    padding-right: 10%;
+    align-items: end;
+}
+
+footer h1{
+    text-transform: uppercase;
+    font-size: 14.5vw;
+    text-align: center;
+    margin-block-end: 0px;
+    line-height: 14.4vw;
+    height: auto;
+}
+
 @media screen and (max-width: 640px){
     .experiance .flexBox{
         display: block;
