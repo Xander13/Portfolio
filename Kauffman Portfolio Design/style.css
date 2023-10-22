@@ -69,7 +69,7 @@ p {
 
 .logo {
     position: fixed;
-    left: 10%;
+    left: 32px;
     top: 32px;
     font-size: 22px;
     text-transform: uppercase;
@@ -95,7 +95,7 @@ p {
     padding-top: 24px;
     z-index: 2211111;
     width: 560px;
-    right: 10%;
+    right: 32px;
     display: flex;
     color: white;
     justify-content: space-between;
