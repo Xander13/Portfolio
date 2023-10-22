@@ -69,7 +69,7 @@ p {
 
 .logo {
     position: fixed;
-    left: 32px;
+    left: 10%;
     top: 32px;
     font-size: 22px;
     text-transform: uppercase;
@@ -81,22 +81,21 @@ p {
     border-radius: 100rem;
 }
 
-.nav {
+/* .nav {
     position: fixed;
-    width: 100%;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 10%;
+    padding-right: 10%;
     mix-blend-mode: difference;
     padding-top: 32px;
     z-index: 2211111;
-}
+} */
 
 .navList {
     position: fixed;
     padding-top: 24px;
     z-index: 2211111;
     width: 560px;
-    right: 32px;
+    right: 10%;
     display: flex;
     color: white;
     justify-content: space-between;
@@ -417,7 +416,6 @@ p {
     margin-top: 0;
 }
 
-.hero h1,
 .projectHero h1 {
     font-size: 4.2vw;
     line-height: 4.4vw;
@@ -445,12 +443,12 @@ p {
 
 @keyframes moveUP {
     0% {
-        padding-top: 522px;
+        padding-top: 40%;
         opacity: 0;
     }
 
     100% {
-        padding-top: 222px;
+        padding-top: 30%;
         opacity: 1;
     }
 }
@@ -463,9 +461,9 @@ p {
     max-width: 34ch;
     padding-left: 32px;
     padding-right: 32px;
-    padding-top: 222px;
+    padding-top: 30%;
     padding-bottom: 132px;
-    text-align: center;
+    text-align: left;
     margin: auto;
     opacity: 1;
     animation: moveUP 1s cubic-bezier(0.37, 0, 0.63, 1);
@@ -1280,7 +1278,7 @@ footer{
     height: 200px;
     position: relative;
     height: auto;
-    background-color: rgb(248, 248, 248);
+    /* background-color: rgb(248, 248, 248); */
     border-radius: 24px;
     padding-top: 56px;
     margin-left: 32px;
