@@ -484,8 +484,6 @@ p {
     line-height: 4.4vw;
     font-weight: 400;
     max-width: 34ch;
-    padding-left: 32px;
-    padding-right: 32px;
     padding-top: 30%;
     padding-bottom: 132px;
     text-align: left;
@@ -640,8 +638,10 @@ p {
 }
 
 .projects h1 {
-    font-size: 3vw;
+    font-size: 4vw;
+    line-height: 4.5vw;
     padding-bottom: 112px;
+    font-weight: 400;
     padding-top: 12px;
 }
 
@@ -724,9 +724,24 @@ p {
     border-radius: 12px;
 }
 
+.clipping{
+    overflow: hidden;
+    width: 100%;
+}
+
+.photoCard img{
+    transform: scale(1);
+    transition: 0.5s ease;
+}
+
+.photoCard:hover img{
+    transform: scale(1.04);
+    transition: 0.5s ease;
+}
+
 .photoCard h2{
     font-size: 3vw;
-    font-weight: 300;
+    font-weight: 400;
     padding-top: 32px;
 }
 
