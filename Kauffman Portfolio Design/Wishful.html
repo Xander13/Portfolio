@@ -266,16 +266,66 @@
                 </a>
             </div>
         </div>
-        <section class="hero" style="padding-bottom: 128px;" id="contacts">
-            <h1 style="padding-top: 88px;">If you'd like to learn more,
+        <footer id="contacts">
+            <h2 class="cta">If you'd like to learn more,
                 <span class="underline">
                     <a href="#">Let's chat.</a>
-                </span>
-            </h1>
-        </section>
-        <div class="rights">
-            <h1>Kauffman &copy; 2023</h1>
-        </div>
+                </span></h2>
+            <div class="flexBox">
+                <div class="cols">
+                    <p>Follow <br>[ LinkedIn ] &nbsp; [ Twitter ]</p>
+                </div>
+                <div class="cols">
+                    <p>Time <br> <span id="clock"></span>in Detroit</p>
+                </div>
+                <div class="cols">
+                    <p>Role <br> UX/UI Designer</p>
+                </div>
+                <div class="cols">
+                    <p>Made by love <br> Alex Kauffman — 2023</p>
+                </div>
+            </div>
+            <br>
+            <h1>Kauffman</h1>
+        </footer>
+        <script>
+            // Calling showTime function at every second
+            setInterval(showTime, 1000);
+
+            // Defining showTime funcion
+            function showTime() {
+                // Getting current time and date
+                let time = new Date();
+                let hour = time.getHours();
+                let min = time.getMinutes();
+                am_pm = " AM ";
+
+                // Setting time for 12 Hrs format
+                if (hour >= 12) {
+                    if (hour > 12) hour -= 12;
+                    am_pm = " PM ";
+                } else if (hour == 0) {
+                    hr = 12;
+                    am_pm = " AM ";
+                }
+
+                hour = hour < 10 ? "0" + hour : hour;
+                min = min < 10 ? "0" + min : min;
+
+                let currentTime =
+                    hour +
+                    ":" +
+                    min +
+                    am_pm;
+
+                // Displaying the time
+                document.getElementById(
+                    "clock"
+                ).innerHTML = currentTime;
+            }
+
+            showTime();
+        </script>
     </div>
 </body>
 
