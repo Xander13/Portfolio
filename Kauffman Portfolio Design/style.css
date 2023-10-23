@@ -478,12 +478,12 @@ p {
 
 @keyframes moveUP {
     0% {
-        padding-top: 40%;
+        padding-top: 20%;
         opacity: 0;
     }
 
     100% {
-        padding-top: 30%;
+        padding-top: 15%;
         opacity: 1;
     }
 }
@@ -494,7 +494,7 @@ p {
     line-height: 4.4vw;
     font-weight: 400;
     max-width: 34ch;
-    padding-top: 30%;
+    padding-top: 15%;
     padding-bottom: 132px;
     text-align: left;
     margin: auto;
