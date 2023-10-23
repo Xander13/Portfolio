@@ -12,7 +12,7 @@ body {
     border-radius: 100rem;
   } */
 
-ul {    
+ul {
     list-style-type: none;
 }
 
@@ -60,6 +60,7 @@ p {
 ::-webkit-scrollbar {
     width: 0px;
 }
+
 
 .flexBox {
     display: flex;
@@ -185,17 +186,17 @@ p {
     z-index: 22222;
 }
 
-.smalltxt{
+.smalltxt {
     font-size: 22px;
     cursor: pointer;
 }
 
-.smalltxt a{
+.smalltxt a {
     color: rgb(108, 108, 108);
     transition: 0.5s ease;
 }
 
-.smalltxt a:hover{
+.smalltxt a:hover {
     letter-spacing: 1px;
     transform-origin: center;
     transition: 0.5s ease;
@@ -228,7 +229,7 @@ p {
     bottom: 15px;
 }
 
-#abouts{
+#abouts {
     height: 132px;
 }
 
@@ -255,7 +256,7 @@ p {
     font-size: 420px;
     font-weight: 900;
     rotate: 45deg;
-    color: #9177e0;    
+    color: #9177e0;
     backface-visibility: hidden;
     pointer-events: none;
     z-index: 1000;
@@ -273,8 +274,8 @@ p {
     position: fixed;
     bottom: 36px;
     right: 36px;
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    background-color: black;
+    color: rgb(255, 255, 255);
     width: 56px;
     height: 56px;
     font-size: 56px;
@@ -283,12 +284,25 @@ p {
     justify-content: center;
     vertical-align: center;
     mix-blend-mode: difference;
+    transform: rotate(0deg);
     display: flex;
     cursor: pointer;
     z-index: 11111;
     user-select: none;
     rotate: 0deg;
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+    border: 1px solid white;
+    transition: 0.5s ease;
+}
+
+#myBtn{
+    transform: rotate(0deg);
+    transition: 0.5s ease;
+}
+
+.upArrow:hover {
+    color: black;
+    background-color: rgb(248, 248, 248);
+    transition: 0.5s ease;
 }
 
 .resume {
@@ -312,7 +326,7 @@ p {
     transition: rotate 0.5s ease;
 }
 
-.resume:hover{
+.resume:hover {
     rotate: 20deg;
     transition: rotate 0.5s ease;
 }
@@ -321,11 +335,6 @@ p {
 .photoCard .material-symbols-outlined {
     rotate: 45deg;
     user-select: none;
-}
-
-.upArrow:hover {
-    color: black;
-    background-color: rgb(248, 248, 248);
 }
 
 /* .sm:active, .upArrow:active{
@@ -351,13 +360,13 @@ p {
     color: gray;
 }
 
-.fullImgView{
+.fullImgView {
     padding-left: 10%;
     padding-right: 10%;
     width: 100%;
 }
 
-.fullImgView .imgCard{
+.fullImgView .imgCard {
     margin-left: 0 !important;
     margin-bottom: 0 !important;
 }
@@ -376,16 +385,16 @@ p {
     align-items: flex-start;
 }
 
-.projectHero .cols{
+.projectHero .cols {
     position: relative;
     height: auto;
 }
 
-.projectHero .flexBox{
+.projectHero .flexBox {
     align-items: normal;
 }
 
-.projectHero .seeSiteBtn{
+.projectHero .seeSiteBtn {
     background-color: black;
     position: absolute;
     right: 0;
@@ -398,17 +407,17 @@ p {
     cursor: pointer;
 }
 
-.projectHero .seeSiteBtn:hover{
+.projectHero .seeSiteBtn:hover {
     opacity: 0.7;
     transition: opacity 0.2s ease;
     cursor: pointer;
 }
 
-.projectHero .cols a{
+.projectHero .cols a {
     padding-right: 0;
 }
 
-.projectHero .seeSiteBtn a{
+.projectHero .seeSiteBtn a {
     color: white;
     font-size: 22px;
     text-align: center;
@@ -434,7 +443,7 @@ p {
     top: 32px;
 }
 
-.imgCard h3{
+.imgCard h3 {
     font-weight: 400;
     font-size: 18px;
     text-align: center;
@@ -463,6 +472,7 @@ p {
     width: 100%;
     height: 100%;
     z-index: 1111222;
+    padding: 0;
     background-color: white;
 }
 
@@ -588,7 +598,7 @@ p {
     margin: auto;
 }
 
-.archive{
+.archive {
     padding-top: 230px;
 }
 
@@ -654,11 +664,11 @@ p {
     width: calc(50% - 24px);
 }
 
-.archive .box{
+.archive .box {
     width: 100%;
 }
 
-.archive .photoCard{
+.archive .photoCard {
     height: 40px;
     overflow: hidden;
 }
@@ -700,6 +710,7 @@ p {
     right: 16px;
     bottom: 16px;
     transition: 0.2s ease-out;
+    border: 1px solid black;
 }
 
 .photoCard:hover {
@@ -724,22 +735,22 @@ p {
     border-radius: 12px;
 }
 
-.clipping{
+.clipping {
     overflow: hidden;
     width: 100%;
 }
 
-.photoCard img{
+.photoCard img {
     transform: scale(1);
     transition: 0.5s ease;
 }
 
-.photoCard:hover img{
+.photoCard:hover img {
     transform: scale(1.04);
     transition: 0.5s ease;
 }
 
-.photoCard h2{
+.photoCard h2 {
     font-size: 3vw;
     font-weight: 400;
     padding-top: 32px;
@@ -867,7 +878,7 @@ p {
     text-align: left;
 }
 
-.rows:hover h4{
+.rows:hover h4 {
     color: black;
     transition: 0.2s ease-out;
 }
@@ -1015,7 +1026,7 @@ p {
     font-weight: 400;
 }
 
-.blocks{
+.blocks {
     position: absolute;
     padding: 32px;
     width: fit-content;
@@ -1024,13 +1035,13 @@ p {
     transition: 0.4s ease;
 }
 
-.blocks h3{
+.blocks h3 {
     font-weight: 400;
     padding-top: 12px;
     font-size: 18px;
 }
 
-.blocks h4{
+.blocks h4 {
     font-weight: 400;
     color: gray;
     font-size: 16px;
@@ -1038,77 +1049,77 @@ p {
     letter-spacing: 1px;
 }
 
-.blocks:nth-child(1){
+.blocks:nth-child(1) {
     height: 480px;
     top: -120px;
     left: 8%;
     background-size: cover;
 }
 
-.blocks:nth-child(2){
+.blocks:nth-child(2) {
     height: 1080px;
     top: 596px;
     left: 0%;
     background-size: cover;
 }
 
-.blocks:nth-child(3){
+.blocks:nth-child(3) {
     top: 1990px;
     left: 0;
     height: 570px;
     background-size: cover;
 }
 
-.blocks:nth-child(4){
+.blocks:nth-child(4) {
     top: 220px;
     right: 0;
     height: 480px;
     background-size: cover;
 }
 
-.blocks:nth-child(5){
+.blocks:nth-child(5) {
     top: 845px;
     right: 5%;
     height: 760px;
     background-size: cover;
 }
 
-.blocks:nth-child(6){
+.blocks:nth-child(6) {
     top: 2700px;
     height: 980px;
     right: 0%;
     background-size: cover;
 }
 
-.blocks:nth-child(7){
+.blocks:nth-child(7) {
     top: 2900px;
     height: 620px;
     left: 4%;
     background-size: cover;
 }
 
-.blocks:nth-child(8){
+.blocks:nth-child(8) {
     top: 2000px;
     width: 520px;
     right: 4%;
     background-size: cover;
 }
 
-.blocks:nth-child(9){
+.blocks:nth-child(9) {
     top: 3800px;
     width: 520px;
     left: 4%;
     background-size: cover;
 }
 
-.blocks:nth-child(10){
+.blocks:nth-child(10) {
     top: 3920px;
     width: 820px;
     right: 124px;
     background-size: cover;
 }
 
-.archive h1{
+.archive h1 {
     position: fixed;
     left: 0;
     right: 0;
@@ -1186,7 +1197,7 @@ p {
     font-weight: 400;
 }
 
-.errorPage p{
+.errorPage p {
     position: fixed;
     margin: auto;
     font-size: 22px;
@@ -1240,7 +1251,7 @@ p {
     font-weight: 400;
 }
 
-.moreProjects{
+.moreProjects {
     border-top: 1px solid rgb(196, 196, 196);
     width: 80%;
     margin: auto;
@@ -1248,27 +1259,27 @@ p {
     margin-top: 56px;
 }
 
-.moreProjects img{
+.moreProjects img {
     width: 100% !important;
 }
 
-.moreProjects .flexBox{
+.moreProjects .flexBox {
     justify-content: space-between;
     gap: 32px;
 }
 
-.moreProjects a{
+.moreProjects a {
     width: auto;
     transition: 0.2s ease;
 }
 
-.moreProjects a:hover{
+.moreProjects a:hover {
     cursor: pointer;
     scale: 0.95;
     transition: 0.2s ease;
 }
 
-.moreProjects h1{
+.moreProjects h1 {
     padding-top: 56px;
     padding-bottom: 32px;
     font-weight: 400;
@@ -1276,23 +1287,23 @@ p {
     font-size: 18px;
 }
 
-.moreProjects h2{
+.moreProjects h2 {
     padding-top: 18px;
     font-size: 22px;
     padding-bottom: 4px;
 }
 
-.moreProjects h3{
+.moreProjects h3 {
     color: gray;
     font-weight: 500;
     font-size: 18px;
 }
 
-.moreProjects .cols{
+.moreProjects .cols {
     width: 100%;
 }
 
-.dot{
+.dot {
     background-color: white;
     content: '';
     width: 24px;
@@ -1306,7 +1317,7 @@ p {
     cursor: pointer;
 }
 
-footer{
+footer {
     height: 200px;
     position: relative;
     height: auto;
@@ -1319,13 +1330,13 @@ footer{
     background-color: white;
 }
 
-footer .flexBox{
+footer .flexBox {
     padding-left: calc(10% - 26px);
     padding-right: calc(10% - 26px);
     align-items: end;
 }
 
-footer h1{
+footer h1 {
     text-transform: uppercase;
     font-size: 14.5vw;
     text-align: center;
@@ -1336,7 +1347,7 @@ footer h1{
     user-select: none;
 }
 
-footer .cta{
+footer .cta {
     font-size: 64px;
     margin-left: calc(10% - 26px);
     font-weight: 300;
@@ -1346,50 +1357,53 @@ footer .cta{
     user-select: none;
 }
 
-footer .cta a, footer .cols a{
+footer .cta a,
+footer .cols a {
     color: rgb(0, 0, 0);
 }
 
-footer .cols a:hover{
+footer .cols a:hover {
     color: gray;
 }
 
-footer p, footer h2{
+footer p,
+footer h2 {
     color: rgb(0, 0, 0) !important;
 }
 
-@media screen and (max-width: 640px){
-    .experiance .flexBox{
+@media screen and (max-width: 640px) {
+    .experiance .flexBox {
         display: block;
     }
 
-    .cols{
+    .cols {
         width: 100%;
         padding-bottom: 32px;
         padding-top: 32px;
     }
-    .experiance .cols:nth-child(3){
+
+    .experiance .cols:nth-child(3) {
         left: 0;
     }
 
-    .experiance{
+    .experiance {
         padding-bottom: 0;
     }
-    
-    .hero h1{
+
+    .hero h1 {
         font-size: 4vw;
     }
 
-    .marquee li{
+    .marquee li {
         font-size: 43vw !important;
     }
 
-    .hero h1{
+    .hero h1 {
         font-size: 48px;
         line-height: 48px;
     }
 
-    #contacts h1{
+    #contacts h1 {
         font-size: 10vw;
         line-height: 14vw;
     }

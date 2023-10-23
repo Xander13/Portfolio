@@ -26,11 +26,8 @@
     <a class="logo" href="index.html">
         <img src="face.svg" alt="logo">
     </a>
-    <!-- <a class="resume" target="_blank" href="Alex_Kauffman_Resume.pdf">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
-    </a> -->
     <a target="_blank" href="Alex_Kauffman_Resume.pdf">
-        <div class="resume" id="myBtn">
+        <div class="resume">
             <span class="material-symbols-outlined">
                 article
             </span>
@@ -44,8 +41,8 @@
     <script>
         $(document).ready(function () {
             // Add a scroll event listener to detect when the user scrolls
-            $(window).on('scroll', function () {
-                if ($(window).scrollTop() > 100) {
+            $('#main-container').on('scroll', function () {
+                if ($('#main-container').scrollTop() >= 200) {
                     $('#myBtn').css("transform", "rotate(0deg)");
                 } else {
                     $('#myBtn').css("transform", "rotate(540deg)");
