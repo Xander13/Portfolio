@@ -38,54 +38,7 @@
             arrow_upward
         </span>
     </div>
-    <script>
-        $(document).ready(function () {
-            // Add a scroll event listener to detect when the user scrolls
-            $('#main-container').on('scroll', function () {
-                if ($('#main-container').scrollTop() >= 200) {
-                    $('#myBtn').css("transform", "rotate(0deg)");
-                } else {
-                    $('#myBtn').css("transform", "rotate(540deg)");
-                }
-            });
-
-            // Add a click event listener to scroll back to the top when the arrow is clicked
-            $('.upArrow').on('click', function () {
-                scrollToTop();
-            });
-
-            // Function to scroll to the top
-            function scrollToTop() {
-                $('#main-container').scrollTop(0);
-            }
-        });
-    </script>
-    <script>
-        const toggleButton = document.getElementById('toggleButton');
-        const listContainer = document.getElementById('listContainer');
-
-        let isListVisible = false;
-
-        toggleButton.addEventListener('click', () => {
-            if (isListVisible) {
-                // If the list is currently visible, hide it
-                listContainer.style.display = 'none';
-                toggleButton.style.width = '56px';
-                toggleButton.style.height = '56px';
-                toggleButton.style.borderRadius = '12px';
-
-            } else {
-                // If the list is currently hidden, show it
-                listContainer.style.display = 'block';
-                toggleButton.style.width = '198px';
-                toggleButton.style.height = 'fit-content';
-                toggleButton.style.borderRadius = '12px';
-            }
-
-            // Toggle the state of isListVisible variable
-            isListVisible = !isListVisible;
-        });
-    </script>
+    <script src="app.js"></script>
     <div class="loader">
         <h1 class="moveBlock">Alex is a <span class="block">the eye</span> UX/UI designer crafting
             websites, apps, experiance and more. — Detroit Area.</h1>
