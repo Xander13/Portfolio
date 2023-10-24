@@ -639,7 +639,7 @@ p {
     text-transform: uppercase;
 }
 
-.articles img:hover{
+.articles .cols:hover img{
     transform: scale(1.04);
     cursor: pointer;
     transition: 0.5s ease;
