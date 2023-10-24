@@ -203,7 +203,6 @@ p {
 }
 
 .smalltxt a:hover {
-    letter-spacing: 1px;
     transform-origin: center;
     transition: 0.5s ease;
     cursor: pointer;
