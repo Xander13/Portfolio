@@ -593,13 +593,56 @@ p {
 
 .bio,
 .things,
-.articles,
 .contact,
 .archive {
     width: 100%;
     padding-left: 32px;
     padding-right: 32px;
     margin: auto;
+}
+
+.articles{
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.articles .cols{
+    position: relative;
+    transition: 0.3s ease;
+    top: 0px;
+}
+
+.articles .cols:hover{
+    top: -12px;
+    transition: 0.3s ease;
+}
+
+.articles .copyrights{
+    background-color: rgb(248, 248, 248);
+    position: absolute;
+    top: 0;
+    color: rgb(0, 0, 0);
+    padding: 4px;
+    padding-left: 24px;
+    padding-right: 24px;
+    border-radius: 100rem;
+    margin: 12px;
+    z-index: 99999;
+}
+
+.articles img{
+    transition: 0.5s ease;
+}
+
+.articles h2{
+    padding-top: 32px;
+    text-transform: uppercase;
+}
+
+.articles img:hover{
+    transform: scale(1.04);
+    cursor: pointer;
+    transition: 0.5s ease;
 }
 
 .archive {
@@ -651,7 +694,7 @@ p {
     padding-right: 10%;
 }
 
-.projects h1 {
+.projects h1, .articles h1 {
     font-size: 4vw;
     line-height: 4.5vw;
     padding-bottom: 112px;
@@ -803,13 +846,13 @@ p {
     margin-bottom: 64px;
 }
 
-.articles {
+/* .articles {
     padding-bottom: 64px;
     overflow-x: hidden;
     min-width: 100%;
     margin-right: 32px;
     z-index: 12;
-}
+} */
 
 .storyCards {
     min-width: 420px;
@@ -932,11 +975,6 @@ p {
 .cols {
     width: calc(100% / 4 - 16px);
     display: inline-block;
-}
-
-.cols a {
-    color: white;
-    padding-right: 32px;
 }
 
 .cols h4 {
@@ -1352,10 +1390,10 @@ footer h1 {
 }
 
 footer .cta {
-    font-size: 64px;
+    font-size: 4vw;
     margin-left: calc(10% - 26px);
-    font-weight: 300;
-    line-height: 148px;
+    font-weight: 400;
+    line-height: 4.25vw;
     text-align: left;
     padding-bottom: 132px;
     user-select: none;
