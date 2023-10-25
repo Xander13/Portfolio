@@ -1001,10 +1001,10 @@ p {
     gap: var(--gap);
 }
 
-.marquee .logo {
+/* .marquee .logo {
     width: 100%;
     background-color: green;
-}
+} */
 
 .marquee__content {
     flex-shrink: 0;
