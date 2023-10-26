@@ -327,7 +327,7 @@ p {
     z-index: 11111;
     user-select: none;
     rotate: 0deg;
-    transition: rotate 0.5s ease;
+    transition: 0.5s ease;
 }
 
 .resume:hover {
@@ -1428,6 +1428,12 @@ footer h2 {
         color: black;
     }
 
+    .resume{
+        left: 16px;
+        bottom: 16px;
+        transition: 0.5s ease;
+    }
+
     .upArrow{
         right: 16px;
         bottom: 16px;
@@ -1438,8 +1444,20 @@ footer h2 {
         padding-top: 132px;
     }
 
-    .hero h1{
+    .moveBlock{
+        font-size: 36px;
+    }
+
+    .projects h2{
+        width: 250px;
         font-size: 36px !important;
+        line-height: 42px;
+        padding-bottom: 12px;
+    }
+
+    .projects h3{
+        font-size: 16px;
+        width: 250px;
     }
 
     .projects{
@@ -1452,7 +1470,24 @@ footer h2 {
     }
 
     .experiance .flexBox {
-        display: block;
+        display: block !important;
+    }
+
+    .projects .flexBox{
+        flex-wrap: wrap;
+        padding-bottom: 0;
+        justify-content: start;
+    }
+
+    .box{
+        width: 100%;
+        position: relative !important;
+        padding-bottom: 92px;
+        top: 0 !important;
+    }
+
+    .full{
+        padding-bottom: 92px;
     }
 
     .cols {
