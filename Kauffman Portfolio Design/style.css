@@ -82,7 +82,7 @@ p {
     mix-blend-mode: difference;
 }
 
-.logo:hover{
+.logo:hover {
     rotate: -20deg;
     transition: 0.2s ease;
 }
@@ -298,7 +298,7 @@ p {
     transition: 0.5s ease;
 }
 
-#myBtn{
+#myBtn {
     transform: rotate(180deg);
     transition: 0.5s ease;
 }
@@ -492,6 +492,18 @@ p {
     }
 }
 
+@keyframes moveUPmobile {
+    0% {
+        padding-top: 20%;
+        opacity: 0;
+    }
+
+    100% {
+        padding-top: 15%;
+        opacity: 1;
+    }
+}
+
 .moveBlock {
     position: relative;
     font-size: 4.2vw;
@@ -601,23 +613,23 @@ p {
     margin: auto;
 }
 
-.articles{
+.articles {
     padding-left: 10%;
     padding-right: 10%;
 }
 
-.articles .cols{
+.articles .cols {
     position: relative;
     transition: 0.3s ease;
     top: 0px;
 }
 
-.articles .cols:hover{
+.articles .cols:hover {
     top: -12px;
     transition: 0.3s ease;
 }
 
-.articles .chips{
+.articles .chips {
     background-color: rgba(0, 0, 0, 0.724);
     position: absolute;
     top: 0;
@@ -630,16 +642,16 @@ p {
     z-index: 99999;
 }
 
-.articles img{
+.articles img {
     transition: 0.5s ease;
 }
 
-.articles h2{
+.articles h2 {
     padding-top: 32px;
     text-transform: uppercase;
 }
 
-.articles .cols:hover img{
+.articles .cols:hover img {
     transform: scale(1.04);
     cursor: pointer;
     transition: 0.5s ease;
@@ -694,7 +706,8 @@ p {
     padding-right: 10%;
 }
 
-.projects h1, .articles h1 {
+.projects h1,
+.articles h1 {
     font-size: 4vw;
     line-height: 4.5vw;
     padding-bottom: 112px;
@@ -1411,83 +1424,89 @@ footer h2 {
     color: rgb(0, 0, 0) !important;
 }
 
-@media screen and (max-width: 640px) {
-    .navList{
-        display: none;
-    }
-
-    .logo{
+@media screen and (max-width: 720px) {
+    .logo {
         left: 16px;
         top: 16px;
+        transition: 0.5s ease;
     }
 
-    .upArrow, .resume{
+    .upArrow,
+    .resume {
         background-color: white;
         mix-blend-mode: normal;
         border: 2px solid black;
         color: black;
     }
 
-    .resume{
+    .resume {
         left: 16px;
         bottom: 16px;
         transition: 0.5s ease;
     }
 
-    .upArrow{
+    .upArrow {
         right: 16px;
         bottom: 16px;
     }
 
-    .hero{
+    .hero, .loader {
         padding: 16px;
         padding-top: 132px;
     }
 
-    .moveBlock{
-        font-size: 36px;
+    .moveBlock {
+        position: relative;
+        font-size: 4vw;
+        line-height: 4.2vw;
+        font-weight: 400;
+        max-width: 34ch;
+        text-align: left;
+        margin: auto;
+        opacity: 1;
+        animation: moveUP 1s cubic-bezier(0.37, 0, 0.63, 1);
     }
 
-    .projects h2{
+    .projects h2 {
         width: 250px;
         font-size: 36px !important;
         line-height: 42px;
         padding-bottom: 12px;
     }
 
-    .projects h3{
+    .projects h3 {
         font-size: 16px;
-        width: 250px;
+        width: 150px;
     }
 
-    .projects{
+    .projects {
         padding: 16px;
     }
 
-    .projects h1{
+    .projects h1 {
         font-size: 36px !important;
         padding-left: 0px;
     }
 
-    .experiance .flexBox {
+    /* .experiance .flexBox {
         display: block !important;
-    }
+    } */
 
-    .projects .flexBox{
+    /* .projects .flexBox {
         flex-wrap: wrap;
         padding-bottom: 0;
         justify-content: start;
-    }
+    } */
 
-    .box{
+    /* .box {
         width: 100%;
         position: relative !important;
         padding-bottom: 92px;
         top: 0 !important;
-    }
+    } */
 
-    .full{
-        padding-bottom: 92px;
+    .full {
+        padding-bottom: 0px;
     }
 
     .cols {
@@ -1515,6 +1534,262 @@ footer h2 {
     .hero h1 {
         font-size: 48px;
         line-height: 48px;
+    }
+
+    #contacts h1 {
+        font-size: 10vw;
+        line-height: 14vw;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .navList {
+        display: none;
+    }
+
+    .logo {
+        left: 16px;
+        top: 16px;
+        transition: 0.5s ease;
+    }
+
+    .upArrow,
+    .resume {
+        background-color: white;
+        mix-blend-mode: normal;
+        border: 2px solid black;
+        color: black;
+    }
+
+    .resume {
+        left: 16px;
+        bottom: 16px;
+        transition: 0.5s ease;
+    }
+
+    .upArrow {
+        right: 16px;
+        bottom: 16px;
+    }
+
+    .hero, .loader {
+        padding: 16px;
+        padding-top: 132px;
+    }
+
+    .moveBlock {
+        position: relative;
+        font-size: 42px !important;
+        line-height: 48px !important;
+        font-weight: 400;
+        max-width: 34ch;
+        text-align: left;
+        margin: auto;
+        opacity: 1;
+        animation: moveUP 1s cubic-bezier(0.37, 0, 0.63, 1);
+    }
+
+    .projects h2 {
+        width: 250px;
+        font-size: 36px !important;
+        line-height: 42px;
+        padding-bottom: 12px;
+    }
+
+    .projects h3 {
+        font-size: 16px;
+        width: 250px;
+    }
+
+    .projects {
+        padding: 16px;
+    }
+
+    .projects h1 {
+        font-size: 36px !important;
+        padding-left: 0px;
+    }
+
+    .experiance .flexBox {
+        display: block !important;
+    }
+
+    .projects .flexBox {
+        flex-wrap: wrap;
+        padding-bottom: 0;
+        justify-content: start;
+    }
+
+    .box {
+        width: 100%;
+        position: relative !important;
+        padding-bottom: 92px;
+        top: 0 !important;
+    }
+
+    .full {
+        padding-bottom: 0px;
+    }
+
+    .cols {
+        width: 100%;
+        padding-bottom: 32px;
+        padding-top: 32px;
+    }
+
+    .experiance .cols:nth-child(3) {
+        left: 0;
+    }
+
+    .experiance {
+        padding-bottom: 0;
+    }
+
+    .hero h1 {
+        font-size: 4vw;
+    }
+
+    .marquee li {
+        font-size: 43vw !important;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        line-height: 48px;
+    }
+
+    #contacts h1 {
+        font-size: 10vw;
+        line-height: 14vw;
+    }
+}
+
+@media screen and (max-width: 280px) {
+    .navList {
+        display: none;
+    }
+
+    .logo {
+        left: 12px;
+        top: 12px;
+        transition: 0.5s ease;
+    }
+
+    .upArrow,
+    .resume {
+        background-color: white;
+        mix-blend-mode: normal;
+        border: 2px solid black;
+        color: black;
+    }
+
+    .resume {
+        left: 12px;
+        bottom: 12px;
+        transition: 0.5s ease;
+    }
+
+    .upArrow {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    .hero, .loader {
+        padding: 12px;
+        padding-top: 132px;
+    }
+
+    .moveBlock {
+        position: relative;
+        font-size: 32px !important;
+        line-height: 40px !important;
+        font-weight: 400;
+        text-align: left;
+        margin: auto;
+        padding-bottom: 56px;
+        opacity: 1;
+        animation: moveUP 1s cubic-bezier(0.37, 0, 0.63, 1);
+    }
+
+    .projects h2 {
+        width: 100%;
+        font-size: 36px !important;
+        line-height: 42px;
+        padding-bottom: 12px;
+    }
+
+    .projects h3 {
+        font-size: 16px;
+        width: 100%;
+    }
+
+    .projects {
+        padding: 12px;
+    }
+
+    .projects h1 {
+        font-size: 36px !important;
+        padding-left: 0px;
+    }
+
+    .photoCard .arrow{
+        display: none;
+    }
+
+    .experiance .flexBox {
+        display: block !important;
+    }
+
+    .projects .flexBox {
+        flex-wrap: wrap;
+        padding-bottom: 0;
+        justify-content: start;
+    }
+
+    .box {
+        width: 100%;
+        position: relative !important;
+        padding-bottom: 92px;
+        top: 0 !important;
+    }
+
+    .box:last-child{
+        padding-bottom: 56px;
+    }
+
+    .full {
+        padding-bottom: 0px;
+    }
+
+    .cols {
+        width: 100%;
+        padding-bottom: 32px;
+        padding-top: 32px;
+    }
+
+    .experiance .cols:nth-child(3) {
+        left: 0;
+    }
+
+    .experiance {
+        padding-bottom: 0;
+    }
+
+    .hero h1 {
+        font-size: 4vw;
+    }
+
+    .marquee li {
+        font-size: 43vw !important;
+    }
+
+    .hero h1 {
+        font-size: 48px;
+        line-height: 48px;
+    }
+
+    #abouts{
+        height: 64px;
     }
 
     #contacts h1 {
