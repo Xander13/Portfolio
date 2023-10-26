@@ -1421,6 +1421,18 @@ footer h2 {
         top: 16px;
     }
 
+    .upArrow, .resume{
+        background-color: white;
+        mix-blend-mode: normal;
+        border: 2px solid black;
+        color: black;
+    }
+
+    .upArrow{
+        right: 16px;
+        bottom: 16px;
+    }
+
     .hero{
         padding: 16px;
         padding-top: 132px;
