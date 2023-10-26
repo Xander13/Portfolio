@@ -1412,6 +1412,33 @@ footer h2 {
 }
 
 @media screen and (max-width: 640px) {
+    .navList{
+        display: none;
+    }
+
+    .logo{
+        left: 16px;
+        top: 16px;
+    }
+
+    .hero{
+        padding: 16px;
+        padding-top: 132px;
+    }
+
+    .hero h1{
+        font-size: 36px !important;
+    }
+
+    .projects{
+        padding: 16px;
+    }
+
+    .projects h1{
+        font-size: 36px !important;
+        padding-left: 0px;
+    }
+
     .experiance .flexBox {
         display: block;
     }
