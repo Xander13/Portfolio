@@ -77,9 +77,9 @@ p {
     color: black;
     z-index: 222222;
     border-radius: 100rem;
-    -webkit-transform: scaleX(-1);
-    transform: scaleX(-1);
+    width: 56px;
     transition: 0.2s ease;
+    mix-blend-mode: difference;
 }
 
 .logo:hover{
@@ -284,7 +284,7 @@ p {
     width: 56px;
     height: 56px;
     font-size: 56px;
-    padding: 16px;
+    padding: 14px;
     border-radius: 100rem;
     justify-content: center;
     vertical-align: center;
@@ -294,7 +294,7 @@ p {
     cursor: pointer;
     z-index: 11111;
     user-select: none;
-    border: 1px solid white;
+    border: 2px solid white;
     transition: 0.5s ease;
 }
 
@@ -313,12 +313,12 @@ p {
     position: fixed;
     left: 36px;
     bottom: 36px;
-    background-color: rgb(238, 238, 238);
+    border: 2px solid black;
     color: rgb(0, 0, 0);
     width: 56px;
     height: 56px;
     font-size: 56px;
-    padding: 16px;
+    padding: 14px;
     border-radius: 100rem;
     justify-content: center;
     vertical-align: center;
