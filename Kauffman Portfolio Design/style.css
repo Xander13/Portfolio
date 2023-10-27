@@ -492,18 +492,6 @@ p {
     }
 }
 
-@keyframes moveUPmobile {
-    0% {
-        padding-top: 20%;
-        opacity: 0;
-    }
-
-    100% {
-        padding-top: 15%;
-        opacity: 1;
-    }
-}
-
 .moveBlock {
     position: relative;
     font-size: 4.2vw;
@@ -616,6 +604,7 @@ p {
 .articles {
     padding-left: 10%;
     padding-right: 10%;
+    padding-bottom: 132px;
 }
 
 .articles .cols {
@@ -1214,9 +1203,6 @@ p {
 }
 
 .experiance .cols:nth-child(3) {
-    padding: 32px;
-    margin-right: 96px;
-    background-color: rgb(248, 248, 248);
     display: block !important;
 }
 
@@ -1451,13 +1437,20 @@ footer h2 {
 
     .hero, .loader {
         padding: 16px;
-        padding-top: 132px;
+        padding-top: 64px;
+    }
+
+    .loader h1{
+        font-size: 48px;
+        line-height: 54px;
+        font-weight: 400;
+        max-width: 34ch;
     }
 
     .moveBlock {
         position: relative;
-        font-size: 4vw;
-        line-height: 4.2vw;
+        font-size: 48px;
+        line-height: 54px;
         font-weight: 400;
         max-width: 34ch;
         text-align: left;
@@ -1487,10 +1480,6 @@ footer h2 {
         padding-left: 0px;
     }
 
-    .experiance .cols{
-        position: relative !important;
-    }
-
     /* .projects .flexBox {
         flex-wrap: wrap;
         padding-bottom: 0;
@@ -1514,9 +1503,9 @@ footer h2 {
         padding-top: 32px;
     }
 
-    .experiance .cols{
+    /* .experiance .cols{
         position: relative !important;
-    }
+    } */
 
     .experiance {
         padding-bottom: 0;
@@ -1537,6 +1526,14 @@ footer h2 {
 
     .experiance, .articles{
         padding: 16px;
+    }
+
+    .experiance .flexBox{
+        flex-wrap: wrap;
+    }
+
+    .experiance .cols{
+        width: calc(50% - 48px);
     }
 
     .articles h1{
@@ -1639,7 +1636,7 @@ footer h2 {
 
     .projects h2 {
         width: 250px;
-        font-size: 36px !important;
+        font-size: 42px !important;
         line-height: 42px;
         padding-bottom: 12px;
     }
@@ -1654,7 +1651,7 @@ footer h2 {
     }
 
     .projects h1 {
-        font-size: 36px !important;
+        font-size: 42px !important;
         padding-left: 0px;
     }
 
@@ -1681,6 +1678,12 @@ footer h2 {
 
     .experiance .cols{
         position: relative !important;
+        width: 100%;
+    }
+
+    .experiance .cols img{
+        width: 100%;
+        height: auto;
     }
 
     .experiance, .articles {
@@ -1726,8 +1729,16 @@ footer h2 {
         line-height: 14vw;
     }
 
-    .contact{
-        margin: 16px;
+    footer .flexBox{
+        flex-wrap: wrap;
+    }
+
+    #abouts{
+        height: 56px;
+    }
+
+    footer .cols{
+        width: 100%;
     }
 }
 
