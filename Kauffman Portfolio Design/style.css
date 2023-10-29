@@ -441,10 +441,14 @@ p {
 
 .imgCard {
     padding: 10%;
-    background-color: rgb(248, 248, 248);
     margin-bottom: 32px;
     position: sticky;
     top: 32px;
+    border-radius: 24px;
+}
+
+.imgCard img{
+    border-radius: 24px;
 }
 
 .imgCard h3 {
@@ -1300,10 +1304,12 @@ p {
 
 .moreProjects {
     border-top: 1px solid rgb(196, 196, 196);
+    border-bottom: 1px solid rgb(196, 196, 196);
     width: 80%;
     margin: auto;
     height: auto;
-    margin-top: 56px;
+    padding-top: 56px;
+    padding-bottom: 132px;
 }
 
 .moreProjects img {
