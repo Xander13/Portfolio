@@ -617,11 +617,6 @@ p {
     top: 0px;
 }
 
-.articles .cols:hover {
-    top: -12px;
-    transition: 0.3s ease;
-}
-
 .articles .chips {
     background-color: rgba(0, 0, 0, 0.724);
     position: absolute;
@@ -633,6 +628,10 @@ p {
     border-radius: 100rem;
     margin: 12px;
     z-index: 99999;
+}
+
+.chips a{
+    color: white;
 }
 
 .articles img {
