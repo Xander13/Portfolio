@@ -786,6 +786,15 @@ p {
 .clipping {
     overflow: hidden;
     width: 100%;
+    border-radius: 24px;
+}
+
+.cols img, .blocks img{
+    border-radius: 24px;
+}
+
+.block{
+    border-radius: 100rem;
 }
 
 .photoCard img {
@@ -1496,6 +1505,8 @@ footer h2 {
     .full {
         padding-bottom: 0px;
     }
+
+    
 
     .cols {
         width: 100%;
