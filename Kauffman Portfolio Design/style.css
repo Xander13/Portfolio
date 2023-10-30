@@ -116,7 +116,7 @@ p {
     position: fixed;
     padding-top: 24px;
     z-index: 2211111;
-    width: 420px;
+    width: 620px;
     right: 32px;
     display: flex;
     color: white;
@@ -621,6 +621,7 @@ p {
     padding-left: 10%;
     padding-right: 10%;
     padding-bottom: 132px;
+    padding-top: 24px;
 }
 
 .articles .cols {
@@ -809,7 +810,7 @@ p {
 }
 
 .block{
-    border-radius: 100rem;
+    border-radius: 24px;
 }
 
 .photoCard img {
@@ -1087,7 +1088,7 @@ p {
 }
 
 .experiance h1 {
-    padding-bottom: 32px;
+    padding-bottom: 112px;
     font-size: 4vw;
     line-height: 4.5vw;
     font-weight: 400;
