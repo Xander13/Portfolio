@@ -471,6 +471,12 @@ p {
     margin-top: 0;
 }
 
+.UFOSearchBar{
+    position: absolute;
+    top: 0;
+    border-radius: 31px;
+}
+
 .projectHero h1 {
     font-size: 4.2vw;
     line-height: 4.4vw;
