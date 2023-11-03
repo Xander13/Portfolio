@@ -473,8 +473,16 @@ p {
 
 .UFOSearchBar{
     position: absolute;
-    top: 0;
-    border-radius: 31px;
+    top: 48px;
+    width: 610px;
+    margin: auto;
+    left: 0;
+    right: 0;
+    border-radius: 32px;
+}
+
+.UFOSearchBar video{
+    border-radius: 32px;
 }
 
 .projectHero h1 {
@@ -583,14 +591,14 @@ p {
     width: calc(100% / 2 - 16px);
 }
 
-.projectHero img {
+/* .projectHero img {
     margin-bottom: 32px;
-}
+} */
 
 .wideTitle {
     text-align: center;
     padding-top: 132px;
-    padding-bottom: 164px;
+    padding-bottom: 132px;
 }
 
 .wideTitle h1 {
