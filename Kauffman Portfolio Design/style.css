@@ -251,7 +251,7 @@ p {
 }
 
 #abouts {
-    height: 132px;
+    height: 164px;
 }
 
 .aboutMe {
@@ -485,7 +485,7 @@ p {
     padding-left: 32px;
     padding-right: 32px;
     padding-top: 222px;
-    padding-bottom: 132px;
+    padding-bottom: 164px;
     text-align: center;
     margin: auto;
 }
@@ -521,7 +521,7 @@ p {
     font-weight: 400;
     max-width: 34ch;
     padding-top: 15%;
-    padding-bottom: 132px;
+    padding-bottom: 164px;
     text-align: left;
     margin: auto;
     opacity: 1;
@@ -590,7 +590,7 @@ p {
 .wideTitle {
     text-align: center;
     padding-top: 132px;
-    padding-bottom: 132px;
+    padding-bottom: 164px;
 }
 
 .wideTitle h1 {
@@ -626,7 +626,7 @@ p {
 .articles {
     padding-left: 10%;
     padding-right: 10%;
-    padding-bottom: 132px;
+    padding-bottom: 232px;
     padding-top: 24px;
 }
 
@@ -673,7 +673,7 @@ p {
 }
 
 .bio {
-    padding-bottom: 132px;
+    padding-bottom: 164px;
 }
 
 .bio h4 {
@@ -727,7 +727,7 @@ p {
 }
 
 .projects .flexBox {
-    padding-bottom: 132px;
+    padding-bottom: 164px;
 }
 
 .box,
@@ -746,7 +746,7 @@ p {
 
 .full {
     width: 100%;
-    margin-bottom: 132px;
+    margin-bottom: 164px;
 }
 
 .capations .flexBox {
@@ -796,10 +796,11 @@ p {
 
 .funGallary{
     height: 664px;
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(242, 242, 242);
     margin-left: 10%;
     margin-right: 10%;
-    margin-bottom: 132px;
+    margin-bottom: 164px;
+    margin-top: 32px;
     border-radius: 32px;
 }
 
@@ -873,7 +874,7 @@ p {
 } */
 
 .things {
-    padding-top: 132px;
+    padding-top: 164px;
 }
 
 .serviceBox {
@@ -897,7 +898,7 @@ p {
 
 .storyCards {
     min-width: 420px;
-    margin-right: 132px;
+    margin-right: 164px;
 }
 
 .storyCards img {
@@ -980,14 +981,14 @@ p {
 
 .contact {
     text-align: center;
-    padding-bottom: 132px;
+    padding-bottom: 164px;
 }
 
 .contact h1 {
     font-size: 9.4vw;
     line-height: 8vw;
     text-transform: uppercase;
-    padding-top: 132px;
+    padding-top: 164px;
     font-weight: 900 !important;
 }
 
@@ -1216,7 +1217,7 @@ p {
 }
 
 .experiance {
-    padding-bottom: 132px;
+    padding-bottom: 164px;
     padding-left: 10%;
     padding-right: 10%;
 }
