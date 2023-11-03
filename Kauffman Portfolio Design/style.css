@@ -277,7 +277,7 @@ p {
     font-size: 420px;
     font-weight: 900;
     rotate: 45deg;
-    color: #0174DF;
+    color: #b97dee;
     backface-visibility: hidden;
     pointer-events: none;
     z-index: 1000;
@@ -792,6 +792,15 @@ p {
     background-color: rgb(0, 0, 0);
     color: rgb(255, 255, 255);
     transition: 0.2s ease-out;
+}
+
+.funGallary{
+    height: 664px;
+    background-color: rgb(228, 228, 228);
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 132px;
+    border-radius: 32px;
 }
 
 /* .photoCard img {
@@ -1398,7 +1407,6 @@ footer {
     height: auto;
     /* background-color: rgb(248, 248, 248); */
     border-radius: 24px;
-    padding-top: 56px;
     margin-left: 32px;
     margin-right: 32px;
     box-sizing: border-box;
