@@ -517,7 +517,7 @@ p {
 .moveBlock {
     position: relative;
     font-size: 4.2vw;
-    line-height: 4.4vw;
+    line-height: 5vw;
     font-weight: 400;
     max-width: 34ch;
     padding-top: 15%;
