@@ -794,13 +794,13 @@ p {
     transition: 0.2s ease-out;
 }
 
-.funGallary{
-    height: 664px;
-    background-color: rgb(242, 242, 242);
+.bento{
     margin-left: 10%;
     margin-right: 10%;
     margin-bottom: 164px;
     margin-top: 32px;
+    height: 664px;
+    background-color: rgb(242, 242, 242);
     border-radius: 32px;
 }
 
@@ -1109,6 +1109,7 @@ p {
     line-height: 4.5vw;
     font-weight: 400;
 }
+
 
 .blocks {
     position: absolute;
