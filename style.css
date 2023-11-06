@@ -1798,6 +1798,52 @@ footer h2 {
     footer .cols{
         width: 100%;
     }
+
+    .gallery{
+        padding: 16px;
+        width: 100%;
+    }
+
+    .blocks{
+        position: relative;
+        width: 100%;
+        padding: 16px;
+        height: auto;
+    }
+
+    .blocks img{
+        height: auto;
+        width: 100%;
+        border-radius: 12px;
+    }
+
+    .archive{
+        padding: 0;
+        height: auto;
+        padding-top: 232px;
+    }
+
+    .archive h1{
+        position: relative;
+        top: 16px;
+        width: 200px;
+        text-align: left;
+        left: 0;
+        font-size: 42px;
+        line-height: 56px;
+        font-weight: 400;
+        padding: 0;
+        margin-left: 16px;
+        padding-bottom: 112px;
+    }
+
+    .blocks:nth-child(1), .blocks:nth-child(2), .blocks:nth-child(3), .blocks:nth-child(4), .blocks:nth-child(5), .blocks:nth-child(6), .blocks:nth-child(7), .blocks:nth-child(8), .blocks:nth-child(9), .blocks:nth-child(10){
+        width: 100%;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: auto;
+    }
 }
 
 @media screen and (max-width: 280px) {
