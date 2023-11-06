@@ -1608,7 +1608,7 @@ footer h2 {
         padding-top: 0;
     }
 
-    .articles .cols:nth-child(3), .articles .cols:nth-child(4){
+    .articles .cols:nth-child(4){
         display: none;
     }
 
@@ -1765,7 +1765,7 @@ footer h2 {
         padding-top: 0;
     }
 
-    .articles .cols:nth-child(2),  .articles .cols:nth-child(3),  .articles .cols:nth-child(4){
+    .articles .cols:nth-child(4){
         display: none;
     }
 
