@@ -222,7 +222,7 @@ p {
     transform-origin: center;
     transition: 0.5s ease;
     cursor: pointer;
-    color: #0174DF;
+    color: #FFD541;
 }
 
 .sm {
@@ -277,7 +277,7 @@ p {
     font-size: 420px;
     font-weight: 900;
     rotate: 45deg;
-    color: #b97dee;
+    color: #FFD541;
     backface-visibility: hidden;
     pointer-events: none;
     z-index: 1000;
@@ -1326,7 +1326,7 @@ p {
     font-size: 420px;
     font-weight: 900;
     rotate: -45deg;
-    color: #0174DF;
+    color: #FFD541;
     backface-visibility: hidden;
     pointer-events: none;
     z-index: 1000;
