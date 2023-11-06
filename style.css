@@ -549,8 +549,7 @@ p {
 
 .block {
     height: 120px;
-    /* background: url(https://static.boredpanda.com/blog/wp-content/uploads/2020/05/B_u1hYOpG4T-png__880.jpg); */
-    background: rgb(228, 228, 228);
+    background: url(DemoGIF.gif);
     background-size: cover;
     background-position: center;
     color: transparent;
