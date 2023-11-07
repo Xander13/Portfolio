@@ -1504,6 +1504,40 @@ footer h2 {
         padding-left: 0;
     }
 
+    .projectHero h1{
+        font-size: 48px;
+        line-height: 54px;
+        font-weight: 400;
+    }
+
+    .projectHero{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .rols .flexBox{
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .rols .cols:nth-child(5){
+        height: 120px;
+    }
+
+    .seeSiteBtn{
+        left: 0;
+        text-align: center;
+    }
+
+    .rols .cols{
+        padding-bottom: 0;
+    }
+
+    .fullImgView{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
     .moveBlock {
         position: relative;
         font-size: 48px;
