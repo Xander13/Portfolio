@@ -1541,6 +1541,12 @@ footer h2 {
         width: 100%;
         padding: 0;
         margin-left: 0;
+        padding-right: 16px;
+    }
+
+    .imgCard{
+        padding: 0 !important;
+        overflow: hidden;
     }
 
     .moreProjects .flexBox{
