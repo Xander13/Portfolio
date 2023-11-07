@@ -1464,6 +1464,10 @@ footer h2 {
 }
 
 @media screen and (max-width: 720px) {
+    #main-container{
+        overflow-x: hidden;
+    }
+
     .logo {
         left: 16px;
         top: 16px;
@@ -1522,6 +1526,40 @@ footer h2 {
 
     .rols .cols:nth-child(5){
         height: 120px;
+    }
+
+    .wideTitle{
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .fillbg .flexBox{
+        flex-wrap: wrap;
+    }
+
+    .moreProjects{
+        width: 100%;
+        padding: 0;
+        margin-left: 0;
+    }
+
+    .moreProjects .flexBox{
+        flex-wrap: wrap;
+        width: 100%;
+        padding-right: 16px;
+    }
+
+    .moreProjects .cols{
+        width: 100%;
+    }
+
+    .moreProjects{
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .fillbg  .half{
+        width: 100%;
     }
 
     .seeSiteBtn{
