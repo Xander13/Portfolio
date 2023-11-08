@@ -1363,7 +1363,6 @@ p {
 }
 
 .moreProjects h1 {
-    padding-top: 56px;
     padding-bottom: 32px;
     font-weight: 400;
     text-transform: uppercase;
@@ -1410,6 +1409,7 @@ footer {
     margin-right: 32px;
     box-sizing: border-box;
     background-color: white;
+    padding-top: 0;
 }
 
 
@@ -1438,7 +1438,6 @@ footer .cta {
     text-align: left;
     padding-bottom: 132px;
     user-select: none;
-    padding-top: 132px;
 }
 
 footer .cta a,
@@ -1639,6 +1638,16 @@ footer h2 {
         padding: 0;
         margin-left: 0;
         padding-right: 16px;
+        padding-bottom: 132px;
+    }
+
+    .moreProjects{
+        padding-top: 132px;
+    }
+
+    #thingsIlearned{
+        padding-bottom: 132px;
+        padding-top: 112px;
     }
 
     .imgCard{
