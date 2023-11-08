@@ -116,13 +116,18 @@ p {
     position: fixed;
     padding-top: 24px;
     z-index: 2211111;
-    width: 620px;
+    width: 480px;
     right: 32px;
     display: flex;
     color: white;
     justify-content: space-between;
     z-index: 222;
     top: 8px;
+}
+
+.navList a:nth-child(3){
+    background-color: #FFD541;
+    color: black;
 }
 
 .navList,
@@ -577,7 +582,7 @@ p {
 
 .block {
     height: 120px;
-    background: url(DemoGIF.gif);
+    background: gainsboro;
     background-size: cover;
     background-position: center;
     color: transparent;
@@ -586,6 +591,7 @@ p {
     position: relative;
     animation: fadeIn 1s ease;
     top: 0px;
+    border-radius: 12px !important;
 }
 
 .hero h1 {
@@ -1438,6 +1444,7 @@ footer {
     box-sizing: border-box;
     background-color: white;
     padding-top: 0;
+    padding-top: 132px;
 }
 
 
@@ -1480,79 +1487,6 @@ footer .cols a:hover {
 footer p,
 footer h2 {
     color: rgb(0, 0, 0) !important;
-}
-
-/*Fun Section*/
-.bento{
-    margin-left: 10%;
-    margin-right: 10%;
-    margin-bottom: 164px;
-    margin-top: 32px;
-    height: 664px;
-    background-color: rgb(242, 242, 242);
-    border-radius: 32px;
-}
-
-.bento img{
-    opacity: 0.5;
-}
-
-.bento .flexBox{
-    flex-wrap: wrap;
-    height: 100%;
-}
-
-.switch{
-    height: auto;
-    width: 100%;
-    height: 50%;
-}
-
-.bento .wordPlay{
-    background-color: #FFD541;
-    width: 100%;
-    height: calc(50% - 16px);
-    border-radius: 24px;
-}
-
-.bento .half{
-    width: calc(50% - 32px);
-    margin: 16px;
-    height: 100%;
-}
-
-.bento .half .flexBox{
-    border-radius: 24px;
-    width: 100%;
-}
-
-.bento .switch .half{
-    width: calc(50% - 8px);
-    margin: 0;
-    height: 100%;
-}
-
-.bento .idk{
-    background-color: #ffffff;
-    height: 100%;
-    border-radius: 24px;
-}
-
-.bento .darkMode{
-    background-color: #111111;
-    height: 100%;
-    border-radius: 24px;
-}
-
-.bento .draw{
-    position: relative;
-    background-color: white;
-    border-radius: 24px;
-    height: calc(100% - 32px);
-    padding: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .shelf{
@@ -1621,6 +1555,7 @@ footer h2 {
         display: block;
         right: 16px;
         top: 16px;
+        user-select: none;
     }
 
     .hero, .loader {
