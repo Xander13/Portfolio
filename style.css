@@ -1412,6 +1412,7 @@ footer {
     background-color: white;
 }
 
+
 footer .flexBox {
     padding-left: calc(10% - 26px);
     padding-right: calc(10% - 26px);
@@ -1437,6 +1438,7 @@ footer .cta {
     text-align: left;
     padding-bottom: 132px;
     user-select: none;
+    padding-top: 132px;
 }
 
 footer .cta a,
