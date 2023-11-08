@@ -314,6 +314,34 @@ p {
     transition: 0.5s ease;
 }
 
+.exit{
+    display: none;
+    position: fixed;
+    bottom: 36px;
+    right: 36px;
+    background-color: black;
+    color: rgb(255, 255, 255);
+    width: 56px;
+    height: 56px;
+    font-size: 56px;
+    padding: 14px;
+    border-radius: 100rem;
+    justify-content: center;
+    vertical-align: center;
+    mix-blend-mode: difference;
+    display: flex;
+    cursor: pointer;
+    z-index: 11111;
+    user-select: none;
+    border: 2px solid white;
+    transition: 0.5s ease;
+}
+
+.exit a{
+    position: absolute;
+    top: -22px;
+}
+
 #myBtn {
     transform: rotate(180deg);
     transition: 0.5s ease;
@@ -1589,6 +1617,12 @@ footer h2 {
         bottom: 16px;
     }
 
+    .exit{
+        display: block;
+        right: 16px;
+        top: 16px;
+    }
+
     .hero, .loader {
         padding: 16px;
         padding-top: 64px;
@@ -1841,7 +1875,8 @@ footer h2 {
     }
 
     .upArrow,
-    .resume {
+    .resume,
+    .exit {
         background-color: white;
         mix-blend-mode: normal;
         border: 2px solid black;
