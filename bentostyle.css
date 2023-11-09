@@ -212,7 +212,7 @@ img{
 }
 
 .manual-btn{
-    border: 2px solid rgb(255, 255, 255);
+    border: 2px solid #FFD541;
     padding: 5px;
     border-radius: 100rem;
     transition: 1s;
@@ -259,19 +259,19 @@ img{
 }
 
 #radio1:checked ~ .navigation-auto .auto-btn1{
-    background-color: rgb(0, 0, 0);
+    background-color: #FFD541;
 }
 
 #radio2:checked ~ .navigation-auto .auto-btn2{
-    background-color: rgb(255, 255, 255);
+    background-color: #FFD541;
 }
 
 #radio3:checked ~ .navigation-auto .auto-btn3{
-    background-color: rgb(0, 0, 0);
+    background-color: #FFD541;
 }
 
 #radio4:checked ~ .navigation-auto .auto-btn4{
-    background-color: rgb(0, 0, 0);
+    background-color: #FFD541;
 }
 
 .largeBento{
