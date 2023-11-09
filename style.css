@@ -96,7 +96,10 @@ p {
 
 .navList {
     position: fixed;
-    padding-top: 24px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-right: 16px;
+    padding-left: 16px;
     z-index: 2211111;
     width: 580px;
     right: 32px;
@@ -104,7 +107,9 @@ p {
     color: white;
     justify-content: space-between;
     z-index: 222;
-    top: 8px;
+    top: 32px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 100rem;
 }
 
 .navList,
