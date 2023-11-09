@@ -101,7 +101,7 @@ p {
     padding-right: 16px;
     padding-left: 16px;
     z-index: 2211111;
-    width: 580px;
+    width: 680px;
     right: 32px;
     display: flex;
     color: white;
@@ -548,7 +548,7 @@ p {
 
 .block {
     height: 120px;
-    background: gainsboro;
+    background: url(see.svg);
     background-size: cover;
     background-position: center;
     color: transparent;
