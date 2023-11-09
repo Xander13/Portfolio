@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alex Kauffman - UX/UI Designer</title>
+    <meta name="description"
+        content="Alex Kauffman, UX/UI Designer with foucs on creating website, ads, and more. Based in Detroit Michigan.">
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="robots" content="index,follow"><!-- All Search Engines -->
+    <meta name="googlebot" content="index,follow"><!-- Google Specific -->
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="generator" content="program">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/x-icon" href="alex_web_icon.png">
+    <!--Apple Icon Set-->
+    <link rel="apple-touch-icon" href="AlexIconApp.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="A.K Design">
+    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <!-- Facebook Open Graph Image -->
+    <meta property="og:image" content="Alex-Kauffman-OG.png" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:title" content="Alex Kauffman. A UX/UI designer crafting websites, apps, experiance and more." />
+    <meta name="og:description"
+        content="A UX/UI designer enjoys creating small things that makes big impact. Works with with large brands to create solutions that benefit the community at scale.">
+    <meta property="og:type" content="Web Portfolio" />
+    <meta property="og:url" content="https://www.studio.kauffman" />
+    <meta property="og:image" content="Alex-Kauffman-OG.png" />
+    <!-- Twitter Card Image -->
+    <meta property="twitter:image" content="Alex-Kauffman-OG.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image:alt" content="Alex Kauffman's Bento Thumbnail cover." />
+    <meta name="twitter:creator" content="@akooof13" />
+    <meta name="twitter:description"
+        content="Alex Kauffman. A UX/UI designer that is crafting UI contents for websites, apps, experiance and more.">
+    <!--Other Links and resources-->
+    <link rel="stylesheet" href="cssReset.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+</head>
+
+<body>
+    <a class="logo" href="index.html">
+        <img src="face.svg" alt="logo">
+    </a>
+    <div class="upArrow" id="myBtn">
+        <span class="material-symbols-outlined">
+            arrow_upward
+        </span>
+    </div>
+    <script src="app.js"></script>
+    <div class="loader">
+        <h1 class="moveBlock">Alex is a <span class="block">the eye</span> UX/UI designer that is crafting UI contents
+            for
+            websites, apps, experience, and more. — Detroit Area.</h1>
+    </div>
+    <script>
+        // Function to fade out an element over time and then set display to "none"
+        function fadeOutAndHide(element, duration) {
+            $(element).fadeOut(duration, function () {
+                $(element).css('display', 'none');
+                $('#main-container').removeClass('no-scroll');
+            });
+        }
+        var elementToFadeOut = ".loader";
+        setTimeout(function () {
+            fadeOutAndHide(elementToFadeOut, 1000);
+        }, 1000);
+    </script>
+    <div data-scroll-container id="main-container">
+        <div class="navList">
+            <a href="#works">Work</a>
+            <a href="#abouts">About</a>
+            <a href="#thoughts">Thoughts</a>
+            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            <a href="bento.html">Bento</a>
+        </div>
+        <section class="hero" id="works">
+            <h1 class="moveBlock">Alex is a <span class="block">the eye</span> UX/UI designer that is crafting UI
+                contents for
+                websites, apps, experience, and more. — Detroit Area.</h1>
+        </section>
+        <section class="projects">
+            <h1>Select works</h1>
+            <div class="flexBox">
+                <div class="box" style="position: sticky; top: 32px;">
+                    <a href="#">
+                        <div class="photoCard">
+                            <div class="arrow">
+                                <span class="material-symbols-outlined">
+                                    arrow_upward
+                                </span>
+                            </div>
+                            <div class="clipping">
+                                <img src="BardCover.svg" alt="img" width="100%" draggable="false">
+                            </div>
+                            <h2>Bard by Google</h2>
+                            <h3>Motion Assets, Ux, Website, Client</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="box">
+                    <a href="#">
+                        <div class="photoCard">
+                            <div class="arrow">
+                                <span class="material-symbols-outlined">
+                                    arrow_upward
+                                </span>
+                            </div>
+                            <div class="clipping">
+                                <img src="Halo_Project.png" alt="img" width="100%" draggable="false">
+                            </div>
+                            <h2>Halo Drone Lighting</h2>
+                            <h3>Industrial Design, Prototyping, Personal Project</h3>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="full">
+                <a href="Color_Health.html">
+                    <div class="photoCard">
+                        <div class="arrow">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                        </div>
+                        <div class="clipping">
+                            <img src="4.gif" alt="img" width="100%" draggable="false">
+                        </div>
+                        <h2>Color - Health</h2>
+                        <h3>Web & Brand Design, Client</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="flexBox">
+                <div class="box">
+                    <a href="Google_for_Creator.html">
+                        <div class="photoCard">
+                            <div class="arrow">
+                                <span class="material-symbols-outlined">
+                                    arrow_upward
+                                </span>
+                            </div>
+                            <div class="clipping">
+                                <img src="GoogleforCreators_Image.png" alt="img" width="100%" alt="img"
+                                    draggable="false">
+                            </div>
+                            <h2>Google for Creators</h2>
+                            <h3>UX/UI, Instrument Intern, Client</h3>
+                        </div>
+                    </a>
+                </div>
+                <div class="box" style="position: sticky; top: 32px;">
+                    <a href="Wishful.html">
+                        <div class="photoCard">
+                            <div class="arrow">
+                                <span class="material-symbols-outlined">
+                                    arrow_upward
+                                </span>
+                            </div>
+                            <div class="clipping">
+                                <img src="Wishful_Project_Hero.png" alt="img" width="100%" draggable="false">
+                            </div>
+                            <h2>Wishful</h2>
+                            <h3>UX/UI, Coding, AR, RIT Capstone</h3>
+                        </div>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+        <div class="aboutMe">
+            <div class="aboutArrow" id="arrow">
+                <span class="material-symbols-outlined">
+                    arrow_upward
+                </span>
+            </div>
+            <script>
+                const cursorRounded = document.querySelector('#arrow');
+
+                const moveCursor = (e) => {
+                    const mouseY = e.clientY;
+                    const mouseX = e.clientX;
+                    cursorRounded.style.transform = `translate3d(${mouseX - 210}px, ${mouseY - 210}px, 0)`;
+                }
+
+                window.addEventListener('mousemove', moveCursor)
+            </script>
+
+            <div class="archives">
+                <a href="archive.html">
+                    <div class="marquee">
+                        <ul class="marquee__content">
+                            <li>Archive &nbsp; ✷ &nbsp;</li>
+                            <li>Archive &nbsp; ✷ &nbsp;</li>
+                        </ul>
+                        <ul class="marquee__content" aria-hidden="true">
+                            <li>Archive &nbsp; ✷ &nbsp;</li>
+                            <li>Archive &nbsp; ✷ &nbsp;</li>
+                        </ul>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div id="abouts"></div>
+        <div class="experiance">
+            <h1>As a UX/UI designer, he enjoys creating small things that make a big impact.
+                He collaborates with large brand companies at <a href="https://byhook.com/" target="_blank">Hook</a> to
+                create solutions that benefit the community at scale.
+                <br>
+                <br>
+                In Alexs' spare time, he fences saber around the US, prototyping things with 3D printers, and also
+                advocates for the Deaf community to empower their abilities in the workplace.</h1>
+        </div>
+        <div class="articles" id="thoughts">
+            <h1>Thoughts in progress</h1>
+            <div class="flexBox">
+                <div class="cols">
+                    <a href="https://adage.com/article/opinion/deaf-creatives-6-ways-agencies-can-create-accessible-and-inclusive-environments/2522961"
+                        target="_blank">
+                        <div class="clipping">
+                            <div class="chips">
+                                Getty
+                            </div>
+                            <img draggable="false" src="AdAge_Cover.png" alt="img" style="user-select: none;"
+                                width="100%">
+                        </div>
+                        <h2>DEAF CREATIVES—6 WAYS AGENCIES CAN CREATE ACCESSIBLE AND INCLUSIVE ENVIRONMENTS<br><br></h2>
+                        <p>AdAge - 3 min read</p>
+                    </a>
+                </div>
+                <div class="cols">
+                    <a href="https://www.linkedin.com/posts/alex-kauffman_new-figma-features-from-config2023-activity-7079514392333074433-I4WV?utm_source=share&utm_medium=member_desktop"
+                        target="blank">
+                        <div class="clipping">
+                            <div class="chips" style="color:black; background-color: rgba(255, 255, 255, 0.899);">Alex
+                                Kauffman</div>
+                            <img draggable="false" src="ConFig2023.png" alt="img" style="user-select: none;"
+                                width="100%">
+                        </div>
+                        <h2>Thinking new ways using Figma's variable feature for Display ads to help cutback production
+                            time.<br><br></h2>
+                        <p>LinkedIn - 1 min read</p>
+                    </a>
+                </div>
+                <div class="cols">
+                    <div class="clipping">
+                        <div class="chips">Alex Kauffman</div>
+                        <img draggable="false" src="Alex_Fencing.png" alt="img" style="user-select: none;" width="100%">
+                    </div>
+                    <h2>Doing Saber fencing around the U.S.A helps shape my design thinking process.<br><br></h2>
+                    <p>Coming Soon...</p>
+                </div>
+                <div class="cols">
+                    <div class="clipping">
+                        <img draggable="false" src="blanks.svg" alt="img" style="user-select: none;" width="100%">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="experiance">
+            <h1>Experience</h1>
+            <div class="flexBox">
+                <div class="cols">
+                    <h2>Skills</h2>
+                    <p>UI Design</p>
+                    <p>Figma</p>
+                    <p>Workshops</p>
+                    <p>Adobe Suite</p>
+                    <p>HTML/CSS/JS</p>
+                    <p>Visual Design</p>
+                    <p>Ad Campaigning</p>
+                    <p>Rapid Prototyping</p>
+                    <p>Research</p>
+                    <p>Storytelling</p>
+                </div>
+                <div class="cols">
+                    <h2>Recent projects</h2>
+                    <p>Google Bard</p>
+                    <p>Google Assistant</p>
+                    <p>Color Health</p>
+                    <p>Youtube Supervised</p>
+                    <p>Youtube Brandcast</p>
+                    <p>Amazon AMP</p>
+                    <p>Google for Creators</p>
+                    <p>Google Sustainability</p>
+                    <p>Amazon AWS</p>
+                    <p>Visa</p>
+                </div>
+                <div class="cols" style="  top: 32px; position: sticky;">
+                    <img src="Alex_Pic.png" alt="img" style="user-select: none;" width="100%">
+                </div>
+                <div class="cols">
+                    <h2>Alma Mater</h2>
+                    <p>Rochester Institute of Technology ( R.I.T )</p>
+                    <p>BFA : New Media Design</p>
+                    <p>Minor - Advertising & PR</p>
+                    <p>Honors - Magna Cum Laude, GPA: 3.67 / 4, Dean's List</p>
+                    <br>
+                    <h2>Other than Design</h2>
+                    <p>Competitive Saber Fencer</p>
+                    <p>Deaf Advocator</p>
+                    <p>Armchair Engineer</p>
+                </div>
+            </div>
+        </div>
+        <footer id="contacts">
+            <h2 class="cta">If you'd like to learn more,
+                <span class="underline">
+                    <a href="mailto:xanderkau13@gmail.com">Let's chat.</a>
+                </span></h2>
+            <div class="flexBox">
+                <div class="cols">
+                    <p>Follow <br><a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">[ LinkedIn ] </a>
+                        &nbsp; <a href="https://twitter.com/akooof13" target="_blank"> [ Twitter ] </a></p>
+                </div>
+                <div class="cols">
+                    <p>Time <br> <span id="clock"></span>in Detroit</p>
+                </div>
+                <div class="cols">
+                    <p>Role <br> UX/UI Designer</p>
+                </div>
+                <div class="cols">
+                    <p>Made with love <br> Alex Kauffman — 2023</p>
+                </div>
+            </div>
+            <br>
+            <h1>Kauffman</h1>
+        </footer>
+        <script>
+            // Calling showTime function at every second
+            setInterval(showTime, 1000);
+
+            // Defining showTime function
+            function showTime() {
+                // Getting current time and date
+                let time = new Date();
+                let hour = time.getHours();
+                let min = time.getMinutes();
+                am_pm = " AM ";
+
+                // Setting time for 12 Hrs format
+                if (hour >= 12) {
+                    if (hour > 12) hour -= 12;
+                    am_pm = " PM ";
+                } else if (hour == 0) {
+                    hr = 12;
+                    am_pm = " AM ";
+                }
+
+                hour = hour < 10 ? "0" + hour : hour;
+                min = min < 10 ? "0" + min : min;
+
+                let currentTime =
+                    hour +
+                    ":" +
+                    min +
+                    am_pm;
+
+                // Displaying the time
+                document.getElementById(
+                    "clock"
+                ).innerHTML = currentTime;
+            }
+
+            showTime();
+        </script>
+    </div>
+</body>
+
+</html>

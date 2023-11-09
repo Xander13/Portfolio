@@ -1,0 +1,8 @@
+# mod_rewrite starts here
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+
+# Add 404 into the server
+ErrorDocument 404 /not-found-page.html
