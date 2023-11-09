@@ -2,6 +2,23 @@ h1, h2, h3, h4, h5, h6, p, a{
     font-family: sans-serif;
 }
 
+.logo{
+    position: fixed;
+    left: 32px;
+    top: 32px;
+    font-size: 22px;
+    text-transform: uppercase;
+    z-index: 222222;
+    border-radius: 100rem;
+    width: 56px;
+    transition: 0.2s ease;
+}
+
+.logo:hover {
+    rotate: -20deg;
+    transition: 0.2s ease;
+}
+
 a{
     color: black;
     text-decoration: none;
