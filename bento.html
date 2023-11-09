@@ -71,7 +71,7 @@
                 <!-- <img src="4.gif" width="100%" height="100%" alt="img"> -->
                 <div class="slider">
                     <div class="slides">
-                        <input type="radio" name="radio-btn" id="radio1">
+                        <input type="radio" name="radio-btn" id="radio1" checked>
                         <input type="radio" name="radio-btn" id="radio2">
                         <input type="radio" name="radio-btn" id="radio3">
                         <input type="radio" name="radio-btn" id="radio4">
@@ -86,8 +86,8 @@
                             </a>
                         </div>
                         <div class="slide">
-                            <a href="Bard_by_Google.html">
-                                <img src="Bento_Bard.png" alt="img">
+                            <a href="Google_for_Creator.html">
+                                <img src="Bento_Creators.png" alt="img">
                             </a>
                         </div>
                         <div class="slide">
@@ -97,13 +97,11 @@
                             <div class="auto-btn1"></div>
                             <div class="auto-btn2"></div>
                             <div class="auto-btn3"></div>
-                            <div class="auto-btn4"></div>
                         </div>
                         <div class="navigation-manual">
                             <label for="radio1" class="manual-btn"></label>
                             <label for="radio2" class="manual-btn"></label>
                             <label for="radio3" class="manual-btn"></label>
-                            <label for="radio4" class="manual-btn"></label>
                         </div>
                     </div>
                 </div>
@@ -113,14 +111,14 @@
                 setInterval(function () {
                     document.getElementById('radio' + counter).checked = true;
                     counter++;
-                    if (counter > 4) {
+                    if (counter > 3) {
                         counter = 1;
                     }
-                }, 5000);
+                }, 4000);
             </script>
             <div class="smallBento" id="bottomRight">
                 <div class="box">
-
+                    <img src="Bento_detroit.svg" width="100%" height="100%" alt="detroit">
                 </div>
                 <div class="box">
                     <a href="index.html">
