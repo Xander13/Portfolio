@@ -62,10 +62,59 @@
             <div class="mediumBento">
                 <img src="otto2022.gif" id="bottomLeft" width="100%" height="100%" alt="Pic of Alex">
             </div>
-            <div class="largeBento" id="bottomMid" style="margin-left: 16px; margin-right: 16px;">
+            <div class="largeBento" id="bottomMid"
+                style="margin-left: 16px; margin-right: 16px; border-radius: 32px; overflow: hidden;">
                 <div class="chip">Select works</div>
-                <img src="4.gif" width="100%" height="100%" alt="img">
+                <!-- <img src="4.gif" width="100%" height="100%" alt="img"> -->
+                <div class="slider">
+                    <div class="slides">
+                        <input type="radio" name="radio-btn" id="radio1">
+                        <input type="radio" name="radio-btn" id="radio2">
+                        <input type="radio" name="radio-btn" id="radio3">
+                        <input type="radio" name="radio-btn" id="radio4">
+                        <div class="slide first">
+                            <a href="Color_Health.html">
+                                <img src="4.gif" alt="img">
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <a href="Wishful.html">
+                                <img src="Bento_Wishful.png" alt="img">
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <a href="Bard_by_Google.html">
+                                <img src="Bento_Bard.png" alt="img">
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <img src="Bento_Halo.png" alt="img">
+                        </div>
+                        <div class="navigation-auto">
+                            <div class="auto-btn1"></div>
+                            <div class="auto-btn2"></div>
+                            <div class="auto-btn3"></div>
+                            <div class="auto-btn4"></div>
+                        </div>
+                        <div class="navigation-manual">
+                            <label for="radio1" class="manual-btn"></label>
+                            <label for="radio2" class="manual-btn"></label>
+                            <label for="radio3" class="manual-btn"></label>
+                            <label for="radio4" class="manual-btn"></label>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <script>
+                var counter = 1;
+                setInterval(function () {
+                    document.getElementById('radio' + counter).checked = true;
+                    counter++;
+                    if (counter > 4) {
+                        counter = 1;
+                    }
+                }, 5000);
+            </script>
             <div class="smallBento" id="bottomRight">
                 <div class="box">
 
