@@ -322,5 +322,12 @@ img{
     margin-top: 16px;
     height: 40%;
     padding: 32px;
+    color: black;
     background-color: #51B6FF;
+}
+
+.smallBento .box:nth-child(2):hover{
+    background-color: black;
+    color: white;
+    transition: 0.2s ease;
 }
