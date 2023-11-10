@@ -55,7 +55,39 @@
             </div>
             <div class="mediumBento" id="topMid" style="margin-left: 16px; margin-right: 16px;">
                 <div class="chip">News & Story</div>
-                <img src="Alex_Fencing.png" width="100%" height="100%" alt="Pic of Alex">
+                <!-- <img src="Alex_Fencing.png" width="100%" height="100%" alt="Pic of Alex"> -->
+                <div class="slider">
+                    <div class="slides">
+                        <input type="radio" name="radio-btn" id="anotherradio7" checked>
+                        <input type="radio" name="radio-btn" id="anotherradio8">
+                        <input type="radio" name="radio-btn" id="anotherradio9">
+                        <div class="slide first">
+                            <a target="_blank"
+                                href="https://adage.com/article/opinion/deaf-creatives-6-ways-agencies-can-create-accessible-and-inclusive-environments/2522961">
+                                <img src="AdAge_Cover.png" alt="img">
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <a target="_blank"
+                                href="https://www.linkedin.com/posts/alex-kauffman_new-figma-features-from-config2023-activity-7079514392333074433-I4WV/?utm_source=share&utm_medium=member_desktop">
+                                <img src="ConFig2023.png" alt="img">
+                            </a>
+                        </div>
+                        <div class="slide">
+                            <img src="Alex_Fencing.png" alt="img">
+                        </div>
+                        <div class="navigation-auto">
+                            <div class="auto-btn7"></div>
+                            <div class="auto-btn8"></div>
+                            <div class="auto-btn9"></div>
+                        </div>
+                        <div class="navigation-manual">
+                            <label for="radio7" class="manual-btn"></label>
+                            <label for="radio8" class="manual-btn"></label>
+                            <label for="radio9" class="manual-btn"></label>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="largeBento" id="topRight">
                 <img src="BentoBio.svg" width="100%" height="100%" alt="Pic of Alex">
@@ -74,7 +106,6 @@
                         <input type="radio" name="radio-btn" id="radio1" checked>
                         <input type="radio" name="radio-btn" id="radio2">
                         <input type="radio" name="radio-btn" id="radio3">
-                        <input type="radio" name="radio-btn" id="radio4">
                         <div class="slide first">
                             <a href="Color_Health.html">
                                 <img src="4.gif" alt="img">
@@ -89,9 +120,6 @@
                             <a href="Google_for_Creator.html">
                                 <img src="Bento_Creators.png" alt="img">
                             </a>
-                        </div>
-                        <div class="slide">
-                            <img src="Bento_Halo.png" alt="img">
                         </div>
                         <div class="navigation-auto">
                             <div class="auto-btn1"></div>
@@ -108,11 +136,18 @@
             </div>
             <script>
                 var counter = 1;
+                var otherCounter = 7;
                 setInterval(function () {
                     document.getElementById('radio' + counter).checked = true;
                     counter++;
                     if (counter > 3) {
                         counter = 1;
+                    }
+
+                    document.getElementById('anotherradio' + otherCounter).checked = true;
+                    otherCounter = otherCounter + 1;
+                    if(otherCounter > 9) {
+                        otherCounter = 7;
                     }
                 }, 4000);
             </script>

@@ -237,6 +237,20 @@ img{
     margin-left: -40%;
 }
 
+/*News and story radio*/
+#radio7:checked ~ .first{
+    margin-left: 0;
+}
+
+#radio8:checked ~ .first{
+    margin-left: -20%;
+}
+
+#radio9:checked ~ .first{
+    margin-left: -40%;
+}
+
+
 .navigation-auto{
     position: absolute;
     display: flex;
@@ -270,6 +284,22 @@ img{
 
 #radio3:checked ~ .navigation-auto .auto-btn3{
     background-color: black;
+}
+
+/*News and story radios*/
+#radio7:checked ~ .navigation-auto .auto-btn7{
+    background-color: black;
+    z-index: 12;
+}
+
+#radio8:checked ~ .navigation-auto .auto-btn8{
+    background-color: black;
+    z-index: 12;
+}
+
+#radio9:checked ~ .navigation-auto .auto-btn9{
+    background-color: black;
+    z-index: 12;
 }
 
 .largeBento{
