@@ -109,8 +109,6 @@ p {
     justify-content: space-between;
     z-index: 222;
     top: 24px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 100rem;
     font-weight: 500;
 }
 
@@ -178,7 +176,7 @@ p {
     transition: 0.2s ease;
 }
 
-.navlist a:hover{
+.navList a:hover{
     color: #51B6FF;
     transition: 0.2s ease;
 }
@@ -320,10 +318,10 @@ p {
 .exit{
     display: none;
     position: fixed;
-    bottom: 36px;
+    top: 36px;
     right: 36px;
     background-color: black;
-    color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     width: 56px;
     height: 56px;
     font-size: 56px;
@@ -338,11 +336,6 @@ p {
     user-select: none;
     border: 2px solid white;
     transition: 0.5s ease;
-}
-
-.exit a{
-    position: absolute;
-    top: -22px;
 }
 
 #myBtn {
@@ -483,11 +476,11 @@ p {
     margin-bottom: 32px;
     /* position: sticky;
     top: 32px; */
-    border-radius: 24px;
+    border-radius: 4px;
 }
 
 .imgCard img{
-    border-radius: 24px;
+    border-radius: 4px;
 }
 
 .imgCard h3 {
@@ -504,11 +497,11 @@ p {
     margin: auto;
     left: 0;
     right: 0;
-    border-radius: 32px;
+    border-radius: 4px;
 }
 
 .UFOSearchBar video{
-    border-radius: 32px;
+    border-radius: 4px;
 }
 
 .projectHero h1 {
@@ -584,7 +577,7 @@ p {
     position: relative;
     animation: fadeIn 1s ease;
     top: 0px;
-    border-radius: 12px !important;
+    border-radius: 4px;
 }
 
 .hero h1 {
@@ -836,21 +829,21 @@ p {
     position: relative;
     /* padding: 76px; */
     transition: background-color 0.2s ease;
-    border-radius: 12px;
+    border-radius: 4px;
 }
 
 .clipping {
     overflow: hidden;
     width: 100%;
-    border-radius: 24px;
+    border-radius: 4px;
 }
 
 .cols img, .blocks img{
-    border-radius: 24px;
+    border-radius: 4px;
 }
 
 .block{
-    border-radius: 24px;
+    border-radius: 4px;
 }
 
 .photoCard img {
@@ -1379,14 +1372,18 @@ p {
     transition: 0.2s ease;
 }
 
-.moreProjects .cols img{
+.moreProjects .half img{
     transform: scale(1);
     transition: 0.5s ease;
 }
 
-.moreProjects .cols img:hover{
+.moreProjects .half img:hover{
     transform: scale(1.04);
     transition: 0.5s ease;
+}
+
+.moreProjects{
+    padding-top: 112px;
 }
 
 .moreProjects h1 {
@@ -1394,6 +1391,7 @@ p {
     font-weight: 400;
     text-transform: uppercase;
     font-size: 18px;
+    padding-top: 0;
 }
 
 .moreProjects h2 {
