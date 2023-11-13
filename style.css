@@ -526,6 +526,7 @@ p {
     height: 100%;
     z-index: 1111222;
     padding: 0;
+    padding-right: 12px;
     background-color: white;
 }
 
@@ -1517,6 +1518,10 @@ footer h2 {
         overflow-x: hidden;
     }
 
+    .navList {
+        display: none;
+    }
+
     .bentoTxt{
         left: 16px;
         bottom: 16px;
@@ -1796,10 +1801,6 @@ footer h2 {
 }
 
 @media screen and (max-width: 540px) {
-    .navList {
-        display: none;
-    }
-
     .logo {
         left: 16px;
         top: 16px;
