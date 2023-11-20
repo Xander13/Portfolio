@@ -91,7 +91,7 @@
             </div>
         </div>
     </section>
-    <section class="project" data-color="#F2F2F2">
+    <section class="project">
         <h1>Select works</h1>
         <div class="flexBox" style="padding-top: 80px;">
             <div class="lg" style="margin-right: 40px;">
@@ -171,7 +171,7 @@
         </div>
         <h1>See Archive <Span class="small">( 12 )</Span></h1>
     </section>
-    <div class=" background-overlay">
+    <div class="blanket background-overlay">
         <section class="about" id="about">
             <h1>About</h1>
             <h2>As a Product designer, he enjoys creating small things that make a big impact. He collaborates with
@@ -205,7 +205,7 @@
             alt="Company Logo Such as Color Health, Youtube, Google, Bard, and Amazon Amp">
         <section class="insights">
             <div class="flexBox">
-                <div class="md" style="margin-right: 40px;">
+                <div class="md stickyStuff" style="margin-right: 40px;">
                     <h1>Insights</h1>
                     <p>I also enjoy expressing my thoughts and what I have learned from the process. These thoughts hope
                         to aim more insights to others as they are learning their design process.</p>
@@ -216,7 +216,7 @@
                             <h2>DEAF CREATIVES—6 WAYS AGENCIES CAN CREATE ACCESSIBLE AND INCLUSIVE ENVIRONMENTS</h2>
                             <h4>3 min read – AdAge</h4>
                         </div>
-                        <div class="half">
+                        <div class="half" style="margin-bottom: 128px;">
                             <img src="Deaf_Creative_Hook.png" width="100%" alt="img">
                         </div>
                     </div>
@@ -226,7 +226,7 @@
                                 PRODUCTION TIME.</h2>
                             <h4>1 min read – LinkedIn</h4>
                         </div>
-                        <div class="half">
+                        <div class="half" style="margin-bottom: 128px;">
                             <img src="Config_Figma_Insights.png" width="100%" alt="img">
                         </div>
                     </div>
@@ -254,7 +254,29 @@
         }
     </script>
     <footer>
-
+        <div class="flexBox">
+            <div>
+                <h2>Social</h2>
+                <h2>[ LinkedIn ] &nbsp; [ Read.CV ]</h2>
+            </div>
+            <div>
+                <h2>Time</h2>
+                <h2>It's <span id="clock"></span>in Detroit</h2>
+            </div>
+            <div>
+                <h2>Role</h2>
+                <h2>Product Designer</h2>
+            </div>
+            <div>
+                <h2>Design + Code</h2>
+                <h2>Alex Kauffman</h2>
+            </div>
+        </div>
+        <h1>Kauffman</h1>
+        <div class="flexBox" style="padding-bottom: 32px;">
+            <h2 style="font-weight: 400;">2023</h2>
+            <h2><a href="#">Back to Top</a></h2>
+        </div>
     </footer>
     <script>
         // Calling showTime function at every second
@@ -299,12 +321,15 @@
             $(window).scroll(function () {
                 var scroll = $(window).scrollTop();
                 var $divBlack = $('.background-overlay');
+                var $navBlack = $('#navbar');
 
                 if (scroll >= $divBlack.offset().top - 520) { // check the offset top
                     $divBlack.addClass("black");
+                    $navBlack.addClass("black");
 
                 } else if (scroll <= $divBlack.offset().top - 520) { // check the scrollHeight
                     $divBlack.removeClass("black");
+                    $navBlack.removeClass("black");
                 }
             });
         });

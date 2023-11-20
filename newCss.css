@@ -12,7 +12,7 @@ html {
 }
 
 body {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     transition: background-color .2s ease;
 }
 
@@ -157,7 +157,8 @@ a {
     top: calc(100% / 2 - 16vw);
     --gap: 1rem;
     display: flex;
-    overflow: hidden;
+    overflow-x: hidden;
+    width: 100%;
     user-select: none;
     gap: var(--gap);
     font-family: var(--koho);
@@ -266,6 +267,10 @@ a {
     background-color: #E0E0E0;
 }
 
+.project, .blanket{
+    background-color: var(--light);
+}
+
 .project h2{
     padding-top: 48px;
     padding-bottom: 24px;
@@ -355,6 +360,44 @@ a {
     max-width: 400px;
 }
 
+.insights{
+    padding-top: 160px;
+}
+
+.stickyStuff{
+    position: sticky;
+    top: 48px;
+    height: 200px;
+}
+
+.stickyStuff h1, .insights .flexBox{
+    padding-top: 0;
+}
+
 footer{
-    height: 700px;
+  padding-top: 160px;
+}
+
+footer .flexBox{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 48px;
+    padding-right: 48px;
+}
+
+footer h2{
+    text-transform: uppercase;
+}
+
+footer h2:first-child{
+    font-weight: 600;
+}
+
+footer h1{
+    font-size: 22.6vw;
+    line-height: 21vw;
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    padding-bottom: 64px;
 }
