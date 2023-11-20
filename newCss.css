@@ -157,6 +157,10 @@ a {
     border-radius: 100rem;
 }
 
+.profile:hover{
+    box-shadow: 0 16px 28px rgba(0,0,0,0.25), 0 12px 12px rgba(0,0,0,0.22);
+}
+
 .marquee {
     position: absolute;
     top: calc(100% / 2 - 16vw);
@@ -268,7 +272,7 @@ a {
 }
 
 .sm img, .md img, .lg img{
-    height: 400px;
+    height: 500px;
     background-color: #E0E0E0;
 }
 
@@ -362,7 +366,7 @@ a {
 
 .insights p{
     text-wrap: balance;
-    max-width: 400px;
+    max-width: 320px;
 }
 
 .insights{
@@ -394,6 +398,10 @@ footer h2{
     text-transform: uppercase;
 }
 
+footer h2 a{
+    text-decoration: none;
+}
+
 footer h2:first-child{
     font-weight: 600;
 }
@@ -405,4 +413,7 @@ footer h1{
     text-align: center;
     width: 100%;
     padding-bottom: 64px;
+    user-select: none;
+    position: relative;
+    z-index: -1;
 }
