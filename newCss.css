@@ -1,419 +1,93 @@
-/*font-family: 'Inter', sans-serif;
-font-family: 'KoHo', sans-serif;*/
-:root {
-    --inter: 'Inter', sans-serif;
-    --koho: 'KoHo', sans-serif;
-    --light: #F2F2F2;
-    --dark: #000000;
+a, h1, h2, h3, h4, h5, h6{
+    font-family: 'KoHo', sans-serif;
 }
 
-html {
-    background-color: var(--light);
-    scroll-behavior: smooth;
+::-webkit-scrollbar {
+    width: 0px;
 }
 
-body {
-    /* overflow-x: hidden; */
-    transition: background-color .2s ease;
-}
-
-section{
-    transition: 1s ease;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-a {
-    font-family: var(--koho);
-    font-weight: 400;
-}
-
-p {
-    font-family: var(--inter);
-}
-
-.mainNav {
-    width: 380px;
-    height: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+.nav{
     position: fixed;
-    bottom: 24px;
-    z-index: 333;
+    top: 0;
     left: 0;
     right: 0;
-    margin: auto;
-    border-radius: 100rem;
-}
-
-.activeMarker {
-    position: absolute;
-    background-color: var(--dark);
-    height: 64px;
-    width: 116px;
-    left: 12px;
-    box-sizing: border-box;
-    border-radius: 100rem;
-    z-index: 1;
-}
-
-.mainNav a {
-    position: relative;
-    padding: 24px;
-    text-decoration: none;
-    font-size: 22px;
+    width: 100%;
+    background-color: white;
     z-index: 2;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    padding-left: 32px;
+    padding-right: 32px;
+    font-size: 24px;
 }
 
-.active {
-    color: white !important;
+.nav a{
+    text-decoration: none;
+    color: black;
+    padding-top: 16px;
+    padding-bottom: 16px;
 }
 
-.bgBlur {
-    position: absolute;
+.nav div{
+    padding-top: 16px;
+}
+
+.projectGally{
+    position: fixed;
+    width: 100%;
     left: 0;
     right: 0;
     top: 0;
     bottom: 0;
-    background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(32px);
-    border-radius: 100rem;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-}
-
-#navbar {
-    position: fixed;
-    top: 0px;
-    transition: 0.5s ease;
-    z-index: 12;
-}
-
-nav {
-    width: 100%;
-    height: 64px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-left: 48px;
-    padding-right: 48px;
-    background-color: var(--light);
-}
-
-nav h1 {
-    font-size: 16px;
-    color: white;
-    mix-blend-mode: difference;
-}
-
-a {
-    color: black;
-}
-
-.letsChatCta {
-    padding: 12px;
-    background-color: white;
-    border-radius: 100rem;
-    color: black;
-    mix-blend-mode: difference;
-    text-decoration: none;
-    padding-left: 20px;
-    padding-right: 20px;
-}
-
-.hero {
-    height: 100vh;
-    position: relative;
-    background-color: var(--light);
-    z-index: 1;
-}
-
-.profile {
-    width: 400px;
-    height: 640px;
-    background-color: #D9D9D9;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: calc(100% / 2 - 320px);
-    border-radius: 100rem;
-    transform-style: preserve-3d;
-    border-radius: 100rem;
     overflow: hidden;
-}
-
-.profile img {
-    position: absolute;
-    bottom: 0;
-    border-radius: 100rem;
-}
-
-.profile:hover{
-    box-shadow: 0 16px 28px rgba(0,0,0,0.25), 0 12px 12px rgba(0,0,0,0.22);
-}
-
-.marquee {
-    position: absolute;
-    top: calc(100% / 2 - 16vw);
-    --gap: 1rem;
     display: flex;
-    overflow-x: hidden;
+    gap: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+    overflow: auto;
+}
+
+.halfCols{
     width: 100%;
-    user-select: none;
-    gap: var(--gap);
-    font-family: var(--koho);
-    font-weight: 700;
-}
-
-/* .marquee .logo {
-    width: 100%;
-    background-color: green;
-} */
-
-.marquee__content {
-    flex-shrink: 0;
-    display: flex;
-    justify-content: space-around;
-    min-width: 100%;
-    gap: var(--gap);
-}
-
-.marquee li {
-    text-decoration: none;
-    list-style-type: none;
-    font-size: 17vw;
-}
-
-.marquee__content {
-    animation: scroll 30s linear infinite;
-    padding-bottom: 0;
-}
-
-@keyframes scroll {
-    from {
-        transform: translateX(0);
-    }
-
-    to {
-        transform: translateX(calc(-100% - var(--gap)));
-    }
-}
-
-.actions {
-    position: absolute;
-    bottom: 48px;
-    width: 100%;
-    left: 0;
-    right: 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-left: 48px;
-    padding-right: 48px;
-}
-
-.scrollDown,
-.smLinks {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-}
-
-.smLinks {
-    width: 180px;
-}
-
-.smLinks h1,
-.scrollDown h1 {
-    font-size: 16px;
-}
-
-.project, .about, .insights {
-    padding-left: 48px;
-    padding-right: 48px;
-    padding-bottom: 160px;
-}
-
-.project h1, .about h1, .insights h1{
-    font-size: 64px;
-    padding-top: 164px;
-    text-transform: uppercase;
-}
-
-.project .flexBox, .about .flexBox, .insights .flexBox{
-    display: flex;
-    justify-content: space-between;
-    padding-top: 160px;
-}
-
-.md{
-    width: calc(100% / 2.5 - 40px);
-    cursor: pointer;
-}
-
-.lg{
-    width: calc(100% / 1.2 - 40px);
-    cursor: pointer;
-}
-
-.sm{
-    width: calc(100% / 3 - 40px);
-    cursor: pointer;
-}
-
-.sm img, .md img, .lg img{
-    height: 500px;
-    background-color: #E0E0E0;
-}
-
-.project, .blanket{
-    background-color: var(--light);
-}
-
-.project h2{
-    padding-top: 48px;
-    padding-bottom: 24px;
-    font-family: var(--koho);
-    font-weight: 400;
-    font-size: 32px;
-}
-
-.project p{
-    font-family: var(--inter);
-    font-size: 24px;
-    line-height: 28px;
-    text-wrap: balance;
-    padding-bottom: 24px;
-}
-
-.chips a{
-    border: 1px solid var(--dark);
-    background-color: var(--light);
-    padding-left: 16px;
-    padding-right: 16px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    border-radius: 100rem;
-    color: gray;
-}
-
-.chips a:hover{
-    background-color: var(--dark);
-    color: var(--light);
-}
-
-.about h1, .insights h1, .insights h3, .insights p, .insights h4{
-    color: white;
-    mix-blend-mode: difference;
-}
-
-.about h2{
-    padding-top: 80px;
-    font-size: 64px;
-    max-width: 80%;
-    color: white;
-    mix-blend-mode: difference;
-    text-transform: uppercase;
-}
-
-.about h3{
-    color: white;
-    mix-blend-mode: difference;
-    text-transform: uppercase;
-    font-size: 32px;
-}
-
-.black {
-  background: #000000;
-}
-
-.background-overlay {
-  transition: background-color 0.5s ease;
-}
-
-.logoGarden{
-    background-color: var(--light);
-}
-
-.insights .half{
-    width: calc(50% - 32px);
-    color: white
-}
-
-.insights h2{
-    font-size: 32px;
-    text-transform: uppercase;
-}
-
-.insights h4{
-    font-size: 24px;
-    padding-top: 48px;
-}
-
-.insights img{
     height: auto;
 }
 
-.insights p{
+.cards{
+    position: relative;
+    padding-bottom: 18px;
+    padding-top: 18px;
+}
+
+.cards img{
+    height: auto;
+    width: 100%;
+    background-color: white;
+    user-select: none;
+}
+
+.title{
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    font-weight: 400;
+    text-transform: uppercase;
     text-wrap: balance;
-    max-width: 320px;
+    max-inline-size: 32ch;
 }
 
-.insights{
-    padding-top: 160px;
+.bottomTxt{
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+    right: 32px;
 }
 
-.stickyStuff{
-    position: sticky;
-    top: 48px;
-    height: 200px;
-}
-
-.stickyStuff h1, .insights .flexBox{
-    padding-top: 0;
-}
-
-footer{
-  padding-top: 160px;
-}
-
-footer .flexBox{
-    display: flex;
-    justify-content: space-between;
-    padding-left: 48px;
-    padding-right: 48px;
-}
-
-footer h2{
+.bottomTxt h2{
+    font-weight: 400;
     text-transform: uppercase;
 }
 
-footer h2 a{
-    text-decoration: none;
-}
-
-footer h2:first-child{
-    font-weight: 600;
-}
-
-footer h1{
-    font-size: 22.6vw;
-    line-height: 21vw;
-    font-weight: 700;
-    text-align: center;
-    width: 100%;
-    padding-bottom: 64px;
-    user-select: none;
-    position: relative;
-    z-index: -1;
+.flexBox{
+    display: flex;
+    justify-content: space-between;
 }
