@@ -44,7 +44,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="newCss.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll/dist/locomotive-scroll.min.js"></script>
 </head>
 
 <body>
@@ -65,14 +65,10 @@
     <h1 class="right">UX/UI Designer</h1>
     <nav class="middleNav">
         <a class="active" href="newPage.html">Works</a>
-        <a href="insights.html">Insights</a>
         <a href="about.html">About</a>
         <a href="photography.html">Photography</a>
     </nav>
     <div class="darkModeDot"></div>
-    <div class="container">
-        
-    </div>
     <script>
         function fadeInImages() {
             const images = document.querySelectorAll('.carousel-image');
@@ -121,223 +117,143 @@
 
         fadeOutLoader();
     </script>
-    <!-- <div class="projectGally">
-        <div class="halfCols">
-            <div class="cards">
-                <div class="hover"></div>
-                <div class="clipping">
-                    <img src="https://images.unsplash.com/photo-1682687220742-aba13b6e50ba?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxzZWFyY2h8OHx8bmF0dXJlfGVufDB8fDB8fHww"
-                        width="100%" draggable="false" alt="img">
-                </div>
-                <h1 class="title">
-                    An ecological exploration in coral and polythene.
-                </h1>
-                <div class="bottomTxt">
+    <style>
+        .gallery {
+            display: flex;
+            height: 100vh;
+            /* Set your desired height */
+            overflow-y: scroll;
+            padding-left: 48px;
+            padding-right: 48px;
+            /* Enable vertical scrolling */
+        }
+
+        .row {
+            display: flex;
+            width: calc(100% - 48px);
+            gap: 48px;
+            /* Set width to 100% */
+        }
+
+        .column {
+            flex: 0 0 50%;
+            /* Each column occupies 50% of the width */
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            /* Two rows */
+            gap: 48px;
+        }
+
+        .content {
+            width: 100%;
+            /* Set your desired width */
+            height: auto;
+            background-color: #F5F5F5;
+            padding: 24px;
+        }
+
+        .content h1:first-child{
+            padding-bottom: 32px;
+        }
+
+        .content .flexBox{
+            padding-top: 32px;
+        }
+
+        .content img {
+            width: 80%;
+            height: auto;
+            margin: auto;
+        }
+    </style>
+    <div class="gallery">
+        <div class="row">
+            <div class="column">
+                <div class="content">
+                    <h1>Title</h1>
+                    <img src="4.gif" alt="Image 1">
                     <div class="flexBox">
-                        <h2>Client</h2>
-                        <h2>Type</h2>
+                        <h1>Company</h1>
+                        <h1>Type</h1>
+                    </div>
+                </div>
+                <div class="content">
+                    <h1>Title</h1>
+                    <img src="4.gif" alt="Image 1">
+                    <div class="flexBox">
+                        <h1>Company</h1>
+                        <h1>Type</h1>
+                    </div>
+                </div>
+                <div class="content">
+                    <h1>Title</h1>
+                    <img src="4.gif" alt="Image 1">
+                    <div class="flexBox">
+                        <h1>Company</h1>
+                        <h1>Type</h1>
+                    </div>
+                </div>
+                <div class="content">
+                    <h1>Title</h1>
+                    <img src="4.gif" alt="Image 1">
+                    <div class="flexBox">
+                        <h1>Company</h1>
+                        <h1>Type</h1>
                     </div>
                 </div>
             </div>
-            <div class="cards" id="AboutCard">
-                <div class="hover"></div>
-                <div class="clipping">
-                    <div class="AboutPart">
-                        <img class="alexPic" src="Alex_Corner_Img.png" width="100%" alt="Alex Picture">
+            <div class="column">
+                <div class="content">
+                    <h1>Title</h1>
+                    <img src="4.gif" alt="Image 1">
+                    <div class="flexBox">
+                        <h1>Company</h1>
+                        <h1>Type</h1>
                     </div>
                 </div>
-                <h1 class="title">
-                    A UX/UI Designer with passion for creating vibrant designs for the public
-                </h1>
-                <div class="bottomTxt">
+                <div class="content">
+                    <h1>Title</h1>
+                    <img src="4.gif" alt="Image 1">
                     <div class="flexBox">
-                        <h2>About Me</h2>
+                        <h1>Company</h1>
+                        <h1>Type</h1>
                     </div>
                 </div>
-            </div>
-            <div class="cards">
-                <div class="hover"></div>
-                <div class="clipping">
-                    <img src="https://images.unsplash.com/photo-1690228254548-31ef53e40cd1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fHV4fGVufDB8fDB8fHww"
-                        width="100%" draggable="false" alt="img">
-                </div>
-                <h1 class="title">
-                    An ecological exploration in coral and polythene.
-                </h1>
-                <div class="bottomTxt">
+                <div class="content">
+                    <h1>Title</h1>
+                    <img src="4.gif" alt="Image 1">
                     <div class="flexBox">
-                        <h2>Client</h2>
-                        <h2>Type</h2>
+                        <h1>Company</h1>
+                        <h1>Type</h1>
                     </div>
                 </div>
-            </div>
-            <div class="cards">
-                <div class="hover"></div>
-                <div class="clipping">
-                    <img src="https://images.unsplash.com/photo-1523800378286-dae1f0dae656?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGFkJTIwYmFubmVyfGVufDB8fDB8fHww"
-                        width="100%" draggable="false" alt="img">
-                </div>
-                <h1 class="title">
-                    An ecological exploration in coral and polythene.
-                </h1>
-                <div class="bottomTxt">
+                <div class="content">
+                    <h1>Title</h1>
+                    <img src="4.gif" alt="Image 1">
                     <div class="flexBox">
-                        <h2>Client</h2>
-                        <h2>Type</h2>
+                        <h1>Company</h1>
+                        <h1>Type</h1>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="halfCols">
-            <div class="cards">
-                <div class="hover"></div>
-                <div class="clipping">
-                    <img src="https://images.unsplash.com/photo-1565849904461-04a58ad377e0?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        width="100%" draggable="false" alt="img">
-                </div>
-                <h1 class="title">
-                    An ecological exploration in coral and polythene.
-                </h1>
-                <div class="bottomTxt">
-                    <div class="flexBox">
-                        <h2>Client</h2>
-                        <h2>Type</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="cards">
-                <div class="hover"></div>
-                <div class="clipping">
-                    <img src="https://images.unsplash.com/photo-1700833533652-2ebae7f13f47?q=80&w=2130&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        width="100%" draggable="false" alt="img">
-                </div>
-                <h1 class="title">
-                    An ecological exploration in coral and polythene.
-                </h1>
-                <div class="bottomTxt">
-                    <div class="flexBox">
-                        <h2>Client</h2>
-                        <h2>Type</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="cards">
-                <div class="hover"></div>
-                <div class="clipping">
-                    <img src="https://images.unsplash.com/photo-1700864208310-0849428c612f?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        width="100%" draggable="false" alt="img">
-                </div>
-                <h1 class="title">
-                    An ecological exploration in coral and polythene.
-                </h1>
-                <div class="bottomTxt">
-                    <div class="flexBox">
-                        <h2>Client</h2>
-                        <h2>Type</h2>
-                    </div>
-                </div>
+    </div>
+    <script>
+        const locoScroll = new LocomotiveScroll({
+            el: document.querySelector('.gallery'),
+            smooth: true
+        });
 
-            </div>
-        </div>
-    </div> -->
-    <!-- <div class="dual-container">
-        <div class="image-container left-container">
-        </div>
-        <div class="image-container right-container">
-        </div>
-    </div> -->
-    <!-- <script>
-        $(document).ready(function () {
+        // Get the gallery element
+        const gallery = document.querySelector('.gallery');
 
-            function preloadImages(imageArray) {
-                return Promise.all(imageArray.map((imageSrc) => {
-                    return new Promise((resolve, reject) => {
-                        const img = new Image();
-                        img.onload = resolve;
-                        img.onerror = reject;
-                        img.src = imageSrc;
-                    });
-                }));
-            }
-
-            function loadImages(container, imageArray) {
-                for (let i = 0; i < imageArray.length; i++) {
-                    const img = $('<img class="image" src="' + imageArray[i] + '">');
-                    container.append(img);
-                }
-            }
-
-            function syncScrollContainers(scrollTop) {
-                scrolling = true;
-                $('.image-container').scrollTop(scrollTop);
-                scrolling = false;
-            }
-
-            const leftContainer = $('.left-container');
-            const rightContainer = $('.right-container');
-
-            const leftImages = [
-                'TwinIDBanner.png',
-                'Wishful_Project.png',
-                'GoogleforCreators_Image1.png',
-                'gbraille.svg',
-                'G_BACK_GRID.svg'
-            ];
-
-            const rightImages = [
-                'Config_Figma_Insights.png',
-                '4.gif',
-                'otto.png',
-                'instrument.png',
-                'HookMenuUpdate.gif'
-            ];
-
-            preloadImages(leftImages.concat(rightImages)).then(() => {
-                loadImages(leftContainer, leftImages.slice()); // Create a copy for leftContainer
-                loadImages(rightContainer, rightImages.slice()); // Create a copy for rightContainer
-            });
-
-            $('.image-container').on('scroll', function () {
-                if (!scrolling) {
-                    const scrollTop = $(this).scrollTop();
-                    syncScrollContainers(scrollTop);
-                }
-            });
-
-            $('.image-container').scroll(debounce(function () {
-                const container = $(this);
-                const oppositeContainer = container.hasClass('left-container') ? rightContainer :
-                    leftContainer;
-
-                if (container.scrollTop() + container.innerHeight() >= container[0].scrollHeight) {
-                    const recycledImage = container.find('.image').first().detach();
-                    oppositeContainer.append(recycledImage);
-                } else if (container.scrollTop() === 0) {
-                    const recycledImage = container.find('.image').last().detach();
-                    oppositeContainer.prepend(recycledImage);
-                    container.scrollTop(recycledImage.height());
-                }
-            }, 50)); // Adjust the debounce time as needed
-
-            let scrolling = false;
-
-            function debounce(func, wait, immediate) {
-                let timeout;
-                return function () {
-                    const context = this;
-                    const args = arguments;
-                    const later = function () {
-                        timeout = null;
-                        if (!immediate) func.apply(context, args);
-                    };
-                    const callNow = immediate && !timeout;
-                    clearTimeout(timeout);
-                    timeout = setTimeout(later, wait);
-                    if (callNow) func.apply(context, args);
-                };
+        // Scroll to top when reaching the bottom of the gallery
+        gallery.addEventListener('scroll', function () {
+            if (gallery.scrollTop + gallery.clientHeight >= gallery.scrollHeight) {
+                gallery.scrollTop = 0;
             }
         });
-    </script> -->
+    </script>
 </body>
 
 </html>

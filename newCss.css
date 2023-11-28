@@ -9,6 +9,18 @@ h6 {
     font-weight: 400;
 }
 
+h1{
+    font-size: 38px;
+    letter-spacing: -0.15px;
+    line-height: 50px;
+    text-transform: none !important;
+}
+
+.flexBox {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* html, body {
     height: 100%;
     overflow: hidden;
@@ -23,9 +35,9 @@ h6 {
     overflow: auto;
 } */
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
     width: 0px;
-}
+} */
 
 .cursor {
     display: none;
@@ -50,14 +62,6 @@ h6 {
     z-index: 6;
 }
 
-.middleNav a {
-    text-decoration: none;
-    color: black;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    font-weight: 400;
-}
-
 .left{
     text-decoration: none;
     color: black;
@@ -69,7 +73,7 @@ h6 {
     left: 24px;
     z-index: 12;
     font-size: 16px;
-    text-transform: uppercase;
+    text-transform: uppercase !important;
 }
 
 .right{
@@ -83,36 +87,48 @@ h6 {
     right: 24px;
     z-index: 12;
     font-size: 16px;
-    text-transform: uppercase;
+       text-transform: uppercase !important;
 }
 
 .middleNav .active {
     font-style: italic;
-    color: white;
-    background-color: black;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
     padding-left: 24px;
     padding-right: 24px;
     text-align: center;
-    padding-top: 5px;
-    margin-top: 12px;
+    padding-top: 6px;
+    margin-top: 10px;
     border-radius: 100rem;
     height: 36px;
 }
 
 .middleNav{
     position: fixed;
-    top: 0;
+    top: 13px;
     left: 0;
     right: 0;
-    width: 460px;
+    width: fit-content;
     margin: auto;
     z-index: 2;
     display: flex;
     justify-content: space-between;
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 16px;
+    padding-right: 16px;
     font-size: 16px;
     text-transform: uppercase;
+    background-color: rgb(0, 0, 0);
+    border-radius: 100rem;
+}
+
+.middleNav a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-weight: 400;
+    padding-left: 16px;
+    padding-right: 16px;
 }
 
 .selector{
@@ -165,6 +181,7 @@ h6 {
     background-color: white;
     padding-left: 36px;
     padding-right: 36px;
+    display: none;
 }
 
 .halfBlock{
@@ -241,50 +258,6 @@ h6 {
     transition: 0.5s ease;
 }
 
-.AboutPart {
-    height: 620px;
-    background-color: black;
-}
-
-.alexPic {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 400px !important;
-    background-color: transparent !important;
-}
-
-.title {
-    position: absolute;
-    top: 36px;
-    left: 36px;
-    right: 36px;
-    font-weight: 400;
-    text-transform: uppercase;
-    text-wrap: balance;
-    max-inline-size: 32ch;
-    z-index: 2;
-    color: white;
-}
-
-.bottomTxt {
-    position: absolute;
-    bottom: 36px;
-    left: 36px;
-    right: 36px;
-    color: white;
-    z-index: 2;
-}
-
-.bottomTxt h2 {
-    font-weight: 400;
-    text-transform: uppercase;
-}
-
-.flexBox {
-    display: flex;
-    justify-content: space-between;
-}
 
 /*Testing Code area*/
 .dual-container {
@@ -313,44 +286,33 @@ h6 {
     padding-top: 238px;
 }
 
-.insightHero h1{
-    font-size: 32px;
-    text-wrap: balance;
-    max-inline-size: 50ch;
+.insightHero .half:nth-child(1){
+    width: 40%;
+}
+
+.insightHero .half:nth-child(2){
+    width: 60%;
 }
 
 .tableHeader{
-    padding-bottom: 32px;
     padding-top: 132px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid rgb(198, 198, 198);
+    color: gray;
+}
+
+.rows:hover{
+    border-bottom: 1px solid black;
+    transition: 0.5s ease;
 }
 
 .rows{
-    background-color: #F5F5F5;
     margin-bottom: 36px;
-    padding: 12px;
+    padding-bottom: 36px;
+    padding-top: 36px;
+    border-bottom: 1px solid rgb(198, 198, 198);
     position: relative;
-}
-
-.insightHero .half:nth-child(1), .rows h1:nth-child(1), .tableHeader h1:nth-child(1){
-    width: 600px;
-}
-
-.rows h1:nth-child(2), .tableHeader h1:nth-child(2){
-    width: 200px;
-}
-
-.rows h1:nth-child(3), .tableHeader h1:nth-child(3){
-    width: 200px;
-}
-
-.rows .imgHover, .tableHeader h1:nth-child(4){
-    width: 500px;
-}
-
-.rows h1{
-    text-transform: uppercase;
+    transition: 0.5s ease;
 }
 
 .rows:hover img{
@@ -360,9 +322,42 @@ h6 {
 .rows img{
     height: 320px;
     position: absolute;
-    top: -160px;
+    top:-90px;
     opacity: 0;
     width: auto;
     margin: auto;
     z-index: 3;
+}
+
+.table .flexBox{
+    justify-content: start;
+}
+
+.rows h1:nth-child(1), .tableHeader h1:nth-child(1){
+    width: 20%;
+}
+
+.tableHeader h1:nth-child(2), .rows .imgHover{
+    width: 20%;
+}
+
+.imgHover img{
+    position: absolute;
+    left: 14%;
+}
+
+.rows h1:nth-child(3), .tableHeader h1:nth-child(3){
+    width: 50%;
+}
+
+.rows h1:nth-child(4), .tableHeader h1:nth-child(4){
+    width: 10%;
+}
+
+.skills{
+    padding-left: 132px;
+}
+
+.shortCopy h1{
+    width: 30ch;
 }
