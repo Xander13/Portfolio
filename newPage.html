@@ -51,87 +51,77 @@
     <div class="logo">
         <img src="face.svg" width="100%" alt="Logo Face">
     </div>
-    <div class="darkModeDot"></div>
+    <div class="loader" id="loader">
+        <div class="halfBlock"></div>
+        <div class="image-carousel">
+            <img src="full_flipper1.png" height="100%" class="carousel-image" />
+            <img src="full_flipper2.png" height="300px" class="carousel-image" />
+            <img src="full_flipper3.png" height="100%" class="carousel-image" />
+            <img src="full_flipper4.png" height="300px" class="carousel-image" />
+            <img src="full_flipper5.png" height="300px" class="carousel-image" />
+        </div>
+    </div>
     <h1 class="left">Alex Kauffman</h1>
-    <h1 class="right">UX/UI Designer<h1>
-            <nav class="middleNav">
-                <a class="active" href="#">Works</a>
-                <a href="#">Insights</a>
-                <a href="#">About</a>
-                <a href="#">Photography</a>
-            </nav>
-            <div class="loader" id="loader">
-                <div class="halfBlock"></div>
-                <div class="image-carousel">
-                    <img src="flipper1.png" height="100%" class="carousel-image" />
-                    <img src="flipper2.png" height="100%" class="carousel-image" />
-                    <img src="flipper3.png" height="300px" class="carousel-image" />
-                </div>
-            </div>
-            <style>
-                .image-carousel {
-                    display: flex;
-                    justify-content: center;
-                    align-items: center;
-                    width: 100%;
-                    height: 100%;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    overflow: hidden;
-                    position: absolute;
-                }
+    <h1 class="right">UX/UI Designer</h1>
+    <nav class="middleNav">
+        <a class="active" href="newPage.html">Works</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="photography.html">Photography</a>
+    </nav>
+    <div class="darkModeDot"></div>
+    <div class="container">
+        
+    </div>
+    <script>
+        function fadeInImages() {
+            const images = document.querySelectorAll('.carousel-image');
+            let index = 0;
 
-                .carousel-image {
-                    height: 100%;
-                    width: auto;
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    margin: auto;
-                    display: none;
-                    /* Hide all images initially */
-                }
-            </style>
-            <script>
-                function fadeInImages() {
-                    const images = document.querySelectorAll('.carousel-image');
-                    let index = 0;
-
-                    function showNextImage() {
-                        images.forEach((image, i) => {
-                            if (i === index) {
-                                image.style.display = 'block'; // Show the next image
-                            } else {
-                                image.style.display = 'none'; // Hide other images
-                            }
-                        });
-
-                        index = (index + 1) % images.length;
-
-                        setTimeout(showNextImage, 360); // Switch to the next image after 1000ms
+            function showNextImage() {
+                images.forEach((image, i) => {
+                    if (i === index) {
+                        image.style.display = 'block'; // Show the next image
+                    } else {
+                        image.style.display = 'none'; // Hide other images
                     }
+                });
 
-                    showNextImage();
-                }
+                index = (index + 1) % images.length;
 
-                fadeInImages();
+                setTimeout(showNextImage, 220); // Switch to the next image after 1000ms
+            }
 
-                function fadeOutLoader() {
+            showNextImage();
+        }
+
+        fadeInImages();
+
+        function fadeOutLoader() {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.transition = 'opacity 1s ease-in-out';
+                loader.style.opacity = '0';
+                setTimeout(() => {
+                    loader.style.display = 'none';
+
+                    // Create and fade in the .fadeIn div after loader fades out
+                    const fadeInDiv = document.createElement('div');
+                    fadeInDiv.className = 'fadeIn';
+                    document.body.appendChild(fadeInDiv); // Append to body or target container
+
+                    // Apply fade-in animation to .fadeIn div after 500ms delay
                     setTimeout(() => {
-                        const loader = document.getElementById('loader');
-                        loader.style.transition = 'opacity 1s ease-in-out'; // Set the transition
-                        loader.style.opacity = '0'; // Fade out the loader
-                        setTimeout(() => {
-                            loader.style.display = 'none';
-                        }, 1500); // Set a delay to hide the loader after it fades out
-                    }, 3000); // 3 seconds timeout before fading out the loader
-                }
+                        fadeInDiv.style.transition = 'opacity 1s ease-in-out';
+                        fadeInDiv.style.opacity = '1';
+                    }, 500);
+                }, 1500);
+            }, 3000);
+        }
 
-                fadeOutLoader();
-            </script>
-            <!-- <div class="projectGally">
+        fadeOutLoader();
+    </script>
+    <!-- <div class="projectGally">
         <div class="halfCols">
             <div class="cards">
                 <div class="hover"></div>
@@ -250,13 +240,13 @@
             </div>
         </div>
     </div> -->
-            <!-- <div class="dual-container">
+    <!-- <div class="dual-container">
         <div class="image-container left-container">
         </div>
         <div class="image-container right-container">
         </div>
     </div> -->
-            <!-- <script>
+    <!-- <script>
         $(document).ready(function () {
 
             function preloadImages(imageArray) {
