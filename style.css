@@ -177,7 +177,7 @@ p {
 }
 
 .navList a:hover{
-    color: #51B6FF;
+    color: #FDCA6A;
     transition: 0.2s ease;
 }
 
@@ -223,7 +223,7 @@ p {
     transform-origin: center;
     transition: 0.5s ease;
     cursor: pointer;
-    color: #FFD541;
+    color: #FDCA6A;
 }
 
 .sm {
@@ -259,6 +259,65 @@ p {
     position: relative;
 }
 
+.box{
+    padding-top: 128px;
+    padding-bottom: 128px;
+    display: flex;
+    align-items: center;
+}
+
+.alex{
+    width: 22vw;
+    position: relative;
+    user-select: none;
+}
+
+.hook{
+    color: white;
+    background-color: black;
+    padding: 24px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 100rem;
+    transition: 0.5s ease;
+}
+
+.hook:hover{
+    background-color: #FDCA6A;
+    color: black;
+    transition: 0.5s ease;
+}
+
+.box .eye{
+    position: relative;
+    width: 12vw;
+    height: 12vw;
+    display: block;
+    background-color: #FDCA6A;
+    border-radius: 100rem;
+    flex-shrink: 0;
+}
+
+.speck{
+    background-color: #D9D9D9;
+    width: 4vw;
+    height: 4vw;
+    flex-shrink: 0;
+    border-radius: 100rem;
+}
+
+.box .eye:before{
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 5vw;
+    height: 5vw;
+    background: black;
+    border-radius: 100rem;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
 .aboutArrow {
     position: fixed;
     left: 0;
@@ -278,7 +337,7 @@ p {
     font-size: 420px;
     font-weight: 900;
     rotate: 45deg;
-    color: #FFD541;
+    color: #FDCA6A;
     backface-visibility: hidden;
     pointer-events: none;
     z-index: 1000;
@@ -476,11 +535,6 @@ p {
     margin-bottom: 32px;
     /* position: sticky;
     top: 32px; */
-    border-radius: 4px;
-}
-
-.imgCard img{
-    border-radius: 4px;
 }
 
 .imgCard h3 {
@@ -497,12 +551,8 @@ p {
     margin: auto;
     left: 0;
     right: 0;
-    border-radius: 4px;
 }
 
-.UFOSearchBar video{
-    border-radius: 4px;
-}
 
 .projectHero h1 {
     font-size: 4.2vw;
@@ -577,7 +627,6 @@ p {
     position: relative;
     animation: fadeIn 1s ease;
     top: 0px;
-    border-radius: 4px;
 }
 
 .hero h1 {
@@ -744,6 +793,10 @@ p {
     padding-right: 10%;
 }
 
+.projects .half{
+    width: 50%;
+}
+
 .projects h1,
 .articles h1 {
     font-size: 4vw;
@@ -755,6 +808,7 @@ p {
 
 .projects .flexBox {
     padding-bottom: 164px;
+    gap: 64px;
 }
 
 .box,
@@ -827,20 +881,17 @@ p {
 
 .photoCard {
     position: relative;
-    /* padding: 76px; */
     transition: background-color 0.2s ease;
-    border-radius: 24px;
 }
 
 .clipping {
     overflow: hidden;
     width: 100%;
-    border-radius: 24px;
 }
 
-.cols img, .blocks img{
+/* .cols img, .blocks img{
     border-radius: 24px;
-}
+} */
 
 .block{
     border-radius: 12px;
@@ -1494,7 +1545,7 @@ footer h2 {
 }
 
 .shelf .yellow{
-    background-color: #FFD541;
+    background-color: #FDCA6A;
     cursor: pointer;
 }
 
@@ -1669,6 +1720,10 @@ footer h2 {
         animation: moveUP 1s cubic-bezier(0.37, 0, 0.63, 1);
     }
 
+    .projects .half{
+        width: 100%;
+    }
+
     .projects h2 {
         width: 250px;
         font-size: 36px !important;
@@ -1690,18 +1745,20 @@ footer h2 {
         padding-left: 0px;
     }
 
-    /* .projects .flexBox {
-        flex-wrap: wrap;
-        padding-bottom: 0;
-        justify-content: start;
-    } */
+    .eye{
+        width: 130px !important;
+        height: 130px !important;
+    }
 
-    /* .box {
-        width: 100%;
-        position: relative !important;
-        padding-bottom: 92px;
-        top: 0 !important;
-    } */
+    .eye::before{
+        width: 50px !important;
+        height: 50px !important;
+    }
+
+    .speck{
+        width: 40px !important;
+        height: 40px !important;
+    }
 
     .full {
         padding-bottom: 0px;
