@@ -66,7 +66,7 @@ p {
 .logo {
     position: fixed;
     left: 32px;
-    top: 32px;
+    bottom: 32px;
     font-size: 22px;
     text-transform: uppercase;
     color: black;
@@ -98,17 +98,19 @@ p {
     position: fixed;
     padding-top: 8px;
     padding-bottom: 8px;
-    right: 32px;
-    padding-left: 16px;
-    padding-right: 16px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding-left: 10%;
+    padding-right: 10%;
     z-index: 2211111;
-    width: 580px;
-    right: 32px;
+    width: 100%;
     display: flex;
-    color: white;
+    background-color: rgb(255, 255, 255);
     justify-content: space-between;
     z-index: 222;
-    top: 24px;
+    margin-right: 16px;
+    top: 0px;
     font-weight: 500;
 }
 
@@ -290,8 +292,8 @@ p {
 
 .box .eye{
     position: relative;
-    width: 12vw;
-    height: 12vw;
+    width: 20vw;
+    height: 20vw;
     display: block;
     background-color: #FDCA6A;
     border-radius: 100rem;
@@ -300,8 +302,8 @@ p {
 
 .speck{
     background-color: #D9D9D9;
-    width: 4vw;
-    height: 4vw;
+    width: 7vw;
+    height: 7vw;
     flex-shrink: 0;
     border-radius: 100rem;
 }
@@ -310,8 +312,8 @@ p {
     content: '';
     position: absolute;
     top: 50%;
-    width: 5vw;
-    height: 5vw;
+    width: 8vw;
+    height: 8vw;
     background: black;
     border-radius: 100rem;
     left: 30%;
@@ -908,13 +910,16 @@ p {
 }
 
 .photoCard h2 {
-    font-size: 3vw;
+    font-size: 2vw;
+    line-height: 2vw;
+    text-transform: uppercase;
     font-weight: 400;
-    padding-top: 32px;
+    padding-top: 16px;
 }
 
 .photoCard h3 {
     font-size: 22px;
+    padding-top: 16px;
     font-weight: 400;
     color: rgb(108, 108, 108);
 }
@@ -1091,16 +1096,21 @@ p {
     padding-bottom: 32px;
 }
 
-.cols h2,
 .experiance h2 {
     font-size: 22px;
     font-weight: 400;
     padding-bottom: 24px;
 }
 
+.cols h2{
+    font-size: 22px;
+    font-weight: 400;
+    padding-bottom: 16px;
+}
+
 .cols p {
     font-size: 22px;
-    padding-bottom: 12px;
+    padding-top: 26px;
     color: rgb(108, 108, 108);
 }
 
@@ -1289,6 +1299,7 @@ p {
     padding-bottom: 164px;
     padding-left: 10%;
     padding-right: 10%;
+    padding-top: 112px;
 }
 
 .experiance h2 {
@@ -1569,7 +1580,8 @@ footer h2 {
     }
 
     .navList {
-        display: none;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .bentoTxt{
