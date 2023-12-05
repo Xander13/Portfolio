@@ -48,75 +48,14 @@
 </head>
 
 <body>
-    <div class="logo">
-        <img src="face.svg" width="100%" alt="Logo Face">
-    </div>
-    <div class="loader" id="loader">
-        <div class="halfBlock"></div>
-        <div class="image-carousel">
-            <img src="full_flipper1.png" height="100%" class="carousel-image" />
-            <img src="full_flipper2.png" height="300px" class="carousel-image" />
-            <img src="full_flipper3.png" height="100%" class="carousel-image" />
-            <img src="full_flipper4.png" height="300px" class="carousel-image" />
-            <img src="full_flipper5.png" height="300px" class="carousel-image" />
-        </div>
-    </div>
-    <h1 class="left">Alex Kauffman</h1>
-    <h1 class="right">UX/UI Designer</h1>
-    <nav class="middleNav">
+    <nav>
+        <h1 class="left">Alex Kauffman</h1>
+        <div>
         <a class="active" href="newPage.html">Works</a>
         <a href="about.html">About</a>
-        <a href="photography.html">Photography</a>
+        <a href="#">resume</a>
+    </div>
     </nav>
-    <div class="darkModeDot"></div>
-    <script>
-        function fadeInImages() {
-            const images = document.querySelectorAll('.carousel-image');
-            let index = 0;
-
-            function showNextImage() {
-                images.forEach((image, i) => {
-                    if (i === index) {
-                        image.style.display = 'block'; // Show the next image
-                    } else {
-                        image.style.display = 'none'; // Hide other images
-                    }
-                });
-
-                index = (index + 1) % images.length;
-
-                setTimeout(showNextImage, 220); // Switch to the next image after 1000ms
-            }
-
-            showNextImage();
-        }
-
-        fadeInImages();
-
-        function fadeOutLoader() {
-            setTimeout(() => {
-                const loader = document.getElementById('loader');
-                loader.style.transition = 'opacity 1s ease-in-out';
-                loader.style.opacity = '0';
-                setTimeout(() => {
-                    loader.style.display = 'none';
-
-                    // Create and fade in the .fadeIn div after loader fades out
-                    const fadeInDiv = document.createElement('div');
-                    fadeInDiv.className = 'fadeIn';
-                    document.body.appendChild(fadeInDiv); // Append to body or target container
-
-                    // Apply fade-in animation to .fadeIn div after 500ms delay
-                    setTimeout(() => {
-                        fadeInDiv.style.transition = 'opacity 1s ease-in-out';
-                        fadeInDiv.style.opacity = '1';
-                    }, 500);
-                }, 1500);
-            }, 3000);
-        }
-
-        fadeOutLoader();
-    </script>
 </body>
 
 </html>

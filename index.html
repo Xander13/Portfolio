@@ -45,71 +45,48 @@
 </head>
 
 <body>
-    <!-- <a class="logo" href="index.html">
-        <img src="face.svg" alt="logo">
-    </a> -->
     <script src="app.js"></script>
-    <!-- <div class="loader">
-        <h1 class="moveBlock">Alex is a UX/UI designer that is crafting UI contents
-            for
-            websites, apps, experience, and more. — Detroit Area.</h1>
-    </div> -->
-    <script>
-        // Function to fade out an element over time and then set display to "none"
-        function fadeOutAndHide(element, duration) {
-            $(element).fadeOut(duration, function () {
-                $(element).css('display', 'none');
-                $('#main-container').removeClass('no-scroll');
-            });
-        }
-        var elementToFadeOut = ".loader";
-        setTimeout(function () {
-            fadeOutAndHide(elementToFadeOut, 1000);
-        }, 1000);
-    </script>
+    <input type="checkbox" id="checkbox_toggle">
+    <ul class="fullNav">
+        <div class="gutters">
+            <div class="navProject">
+                <div class="mobileList">
+                    <li><a href="index.html">Work</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
+                </div>
+            </div>
+        </div>
+    </ul>
     <div class="navList">
-        <a href="index.html#abouts">About</a>
-        <a href="#works">Work</a>
-        <a href="index.html#thoughts">Thoughts</a>
-        <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+        <a id="logo" href="index.html">Alex Kauffman</a>
+        <p><span id="clock"></span>in Detroit</p>
+        <div class="right">
+            <a href="#works">Work</a>
+            <a href="index.html#abouts">About</a>
+            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            <label for="checkbox_toggle" class="hamburger">
+                <h1>Menu</h1>
+            </label>
+        </div>
     </div>
     <div data-scroll-container id="main-container">
-        <!-- <a class="bentoTxt" href="bento.html">Bento</a> -->
-        <!-- <section class="hero" id="works">
-            <h1 class="moveBlock">Alex is a UX/UI designer that is crafting UI
-                contents for
-                websites, apps, experience, and more. — Detroit Area.</h1>
-        </section> -->
-        <div id="abouts"></div>
+        <section class="hero" id="works">
+            <h2>Hi, I'm Alex</h2>
+            <h1>UX/UI designer crafting contents for <span id="rotateWords"></span></h1>
+            <div class="box">
+                <div class="speck"></div>
+                <div class="eye"></div>
+                <img class="alex" src="alexRound.png" width="100%" alt="Alex">
+                <div class="eye"></div>
+                <div class="speck"></div>
+            </div>
+        </section>
         <div class="experiance">
-            <h1>As a UX/UI designer, he enjoys creating small things that make a big impact.
+            <h1>Alex enjoys creating small things that make a big impact.
                 He collaborates with large brand companies at <a class="hook" href="https://byhook.com/"
                     target="_blank">Hook</a> to
                 create contents that benefit the community at scale.
-                <div class="box">
-                    <div class="speck"></div>
-                    <div class="eye"></div>
-                    <img class="alex" src="alexRound.png" width="100%" alt="Alex">
-                    <div class="eye"></div>
-                    <div class="speck"></div>
-                </div>
-                <script>
-                    document.querySelector('body').addEventListener('mousemove', eyeball);
-
-                    function eyeball(event) {
-                        const eye = document.querySelectorAll('.eye');
-                        eye.forEach(function (eye) {
-                            let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
-                            let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
-
-                            let radian = Math.atan2(event.pageX - x, event.pageY - y);
-                            let rotation = (radian * 180 / Math.PI) * -1 + 270;
-                            eye.style.transform = "rotate(" + rotation + "deg)";
-                        });
-                    }
-                </script>
-                In Alexs' spare time, he fences saber around the USA, prototyping things with 3D printers, and also
-                advocates for the Deaf community to empower their abilities in the workplace.
             </h1>
         </div>
         <section class="projects" id="works">
@@ -140,7 +117,7 @@
                                     arrow_upward
                                 </span>
                             </div>
-                            <div class="clipping" style="border: 2px solid #AECBFA;">
+                            <div class="clipping">
                                 <img src="Creators_Long.png" alt="img" width="100%" draggable="false">
                             </div>
                             <h3>UX/UI, Intern at Instrument</h3>
@@ -203,18 +180,6 @@
                     arrow_upward
                 </span>
             </div>
-            <script>
-                const cursorRounded = document.querySelector('#arrow');
-
-                const moveCursor = (e) => {
-                    const mouseY = e.clientY;
-                    const mouseX = e.clientX;
-                    cursorRounded.style.transform = `translate3d(${mouseX - 210}px, ${mouseY - 210}px, 0)`;
-                }
-
-                window.addEventListener('mousemove', moveCursor)
-            </script>
-
             <div class="archives">
                 <a href="archive.html">
                     <div class="marquee">
@@ -230,7 +195,13 @@
                 </a>
             </div>
         </div>
-
+        <div id="abouts"></div>
+        <div class="experiance" style="padding-top: 0; padding-bottom: 0;">
+            <h1>
+                In Alexs' spare time, he fences saber around the USA, prototyping things with 3D printers, and also
+                advocates for the Deaf community to empower their abilities in the workplace.
+            </h1>
+        </div>
 
         <div class="experiance">
             <h1>Experience</h1>
@@ -261,20 +232,20 @@
                     <p>Amazon AWS</p>
                     <p>Visa</p>
                 </div>
-                <!-- <div class="cols" style="  top: 32px; position: sticky;">
-                    <img src="Alex_Pic.png" draggable="false" alt="img" style="user-select: none;" width="100%">
-                </div> -->
                 <div class="cols">
                     <h2>Education</h2>
                     <p>Rochester Institute of Technology ( R.I.T )</p>
                     <p>BFA - New Media Design</p>
                     <p>Minor - Advertising & PR</p>
                     <p>Honors - Magna Cum Laude, GPA: 3.67 / 4, Dean's List</p>
-                    <br>
-                    <h2>Other than Design</h2>
+                </div>
+                <div class="cols">
+                    <h2>Activities</h2>
                     <p>Competitive Saber Fencer</p>
                     <p>Deaf Advocator</p>
                     <p>Armchair Engineer</p>
+                    <p>Config Attendees ( Figma )</p>
+                    <p>Mentor for New Media Club</p>
                 </div>
             </div>
         </div>
@@ -323,23 +294,20 @@
                     <h2>Doing Saber fencing around the U.S.A helps shape my design thinking process.<br><br></h2>
                 </div>
                 <div class="cols">
-                   
+
                 </div>
             </div>
         </div>
         <footer id="contacts" style="padding-top:0;">
             <h2 class="cta">If you'd like to learn more,
                 <span class="underline">
-                    <a href="mailto:xanderkau13@gmail.com">Let's chat.</a>
+                    <a href="mailto:xanderkau13@gmail.com">Let's talk.</a>
                 </span></h2>
-            <div class="flexBox">
+            <div class="flexBox" style="max-width: 1000px;">
                 <div class="cols">
                     <p>Follow <br><a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">[ LinkedIn ]
                         </a>
                         &nbsp; <a href="https://twitter.com/akooof13" target="_blank"> [ Twitter ] </a></p>
-                </div>
-                <div class="cols">
-                    <p>Time <br> <span id="clock"></span>in Detroit</p>
                 </div>
                 <div class="cols">
                     <p>Role <br> UX/UI Designer</p>
@@ -351,6 +319,50 @@
             <br>
             <h1>Kauffman</h1>
         </footer>
+        <script>
+            const cursorRounded = document.querySelector('#arrow');
+
+            const moveCursor = (e) => {
+                const mouseY = e.clientY;
+                const mouseX = e.clientX;
+                cursorRounded.style.transform = `translate3d(${mouseX - 210}px, ${mouseY - 210}px, 0)`;
+            }
+
+            window.addEventListener('mousemove', moveCursor)
+        </script>
+        <script>
+            document.querySelector('body').addEventListener('mousemove', eyeball);
+
+            function eyeball(event) {
+                const eye = document.querySelectorAll('.eye');
+                eye.forEach(function (eye) {
+                    let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+                    let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+
+                    let radian = Math.atan2(event.pageX - x, event.pageY - y);
+                    let rotation = (radian * 180 / Math.PI) * -1 + 270;
+                    eye.style.transform = "rotate(" + rotation + "deg)";
+                });
+            }
+        </script>
+        <script>
+            const words = ['Website', 'UI Designs', 'Advertising']; // Add your words here
+            let index = 0;
+            const rotateWords = $('#rotateWords');
+
+            function animateWords() {
+                rotateWords.fadeOut('fast', function () {
+                    $(this).text(words[index]).fadeIn('fast');
+                    index = (index + 1) % words.length;
+                });
+            }
+
+            // Initial call
+            animateWords();
+
+            // Rotate words every 2 seconds
+            setInterval(animateWords, 2000);
+        </script>
         <script>
             // Calling showTime function at every second
             setInterval(showTime, 1000);

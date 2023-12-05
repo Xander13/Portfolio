@@ -38,21 +38,33 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
-<style>
-    .box {
-        margin: 16px;
-    }
-</style>
-
 <body>
     <script src="app.js"></script>
-    <div data-scroll-container id="main-container">
-        <div class="navList">
-            <a href="index.html#abouts">About</a>
-            <a href="index.html#works">Work</a>
-            <a href="index.html#thoughts">Thoughts</a>
-            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+    <input type="checkbox" id="checkbox_toggle">
+    <ul class="fullNav">
+        <div class="gutters">
+            <div class="navProject">
+                <div class="mobileList">
+                    <li><a href="index.html#works">Work</a></li>
+                    <li><a href="about.html#abouts">About</a></li>
+                    <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
+                </div>
+            </div>
         </div>
+    </ul>
+    <div class="navList">
+        <a id="logo" href="index.html">Alex Kauffman</a>
+        <p><span id="clock"></span>in Detroit</p>
+        <div class="right">
+            <a href="index.html#works">Work</a>
+            <a href="index.html#abouts">About</a>
+            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            <label for="checkbox_toggle" class="hamburger">
+                <h1>Menu </h1>
+            </label>
+        </div>
+    </div>
+    <div data-scroll-container id="main-container">
         <div class="projectHero">
             <h1>Color Health</h1>
             <br>
@@ -125,7 +137,7 @@
                     </p>
                 </div>
             </div>
-            <div class="fillbg" style="width: 100%; height: auto; background-color: white;">
+            <div class="fillbg">
                 <br>
                 <br>
                 <br>
@@ -170,7 +182,7 @@
             </div>
         </div>
         <div class="projectHero">
-            <div class="fillbg" style="width: 100%; height: auto; background-color: rgb(255, 255, 255); z-index: 12;">
+            <div>
                 <div class="flexBox">
                     <div class="half">
                         <div class="imgCard" style="padding: 0; position: sticky; top: 32px;">
@@ -196,6 +208,7 @@
             </div>
         </div>
         <div class="moreProjects">
+            <hr>
             <h1>More work</h1>
             <div class="flexBox">
                 <a href="Wishful.html">
@@ -217,6 +230,11 @@
                     </div>
                 </a>
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <hr>
         </div>
         <footer id="contacts">
             <h2 class="cta">If you'd like to learn more,

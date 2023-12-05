@@ -38,21 +38,33 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
-<style>
-    .box {
-        margin: 16px;
-    }
-</style>
-
 <body>
     <script src="app.js"></script>
-    <div data-scroll-container id="main-container">
-        <div class="navList">
-            <a href="index.html#abouts">About</a>
-            <a href="index.html#works">Work</a>
-            <a href="index.html#thoughts">Thoughts</a>
-            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+    <input type="checkbox" id="checkbox_toggle">
+    <ul class="fullNav">
+        <div class="gutters">
+            <div class="navProject">
+                <div class="mobileList">
+                    <li><a href="index.html#works">Work</a></li>
+                    <li><a href="about.html#abouts">About</a></li>
+                    <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
+                </div>
+            </div>
         </div>
+    </ul>
+    <div class="navList">
+        <a id="logo" href="index.html">Alex Kauffman</a>
+        <p><span id="clock"></span>in Detroit</p>
+        <div class="right">
+            <a href="index.html#works">Work</a>
+            <a href="index.html#abouts">About</a>
+            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            <label for="checkbox_toggle" class="hamburger">
+                <h1>Menu</h1>
+            </label>
+        </div>
+    </div>
+    <div data-scroll-container id="main-container">
         <div class="projectHero">
             <h1>Wishful</h1>
             <br>
@@ -117,13 +129,16 @@
                 <div class="wideTitle">
                     <br>
                     <h1>Creating a space where people can share their wishes</h1>
-                    <p>Covid-19 was hard for people to be motivated due to being stuck at home all the time. Wishful aims to
+                    <p>Covid-19 was hard for people to be motivated due to being stuck at home all the time. Wishful
+                        aims to
                         bring a space to reflect and share a wish in a digital wishing well. Users can see others'
                         wishes that they were inspired to be.
                     </p>
                     <br>
                     <p>
-                        As my role, I helped imagine, design, and coded the the UI element. I have also designed and coded an AR experience into Wishful to create a tangible product that people can play around with their own devices.
+                        As my role, I helped imagine, design, and coded the the UI element. I have also designed and
+                        coded an AR experience into Wishful to create a tangible product that people can play around
+                        with their own devices.
                     </p>
                 </div>
             </div>
@@ -184,15 +199,22 @@
                 <div class="wideTitle">
                     <br>
                     <h1>Finding the right color and type to creating a visual story</h1>
-                    <p>Our team wanted to make Wishful a Wonderlust space that feels like you're in a story book for dreams
-                        and aspirations to grow. We carefully choose hues of deep ocean blues and purple tones with serif
-                        fonts to help create an immersive deep ocean to the deep sky. The depths corresponds to openness that
+                    <p>Our team wanted to make Wishful a Wonderlust space that feels like you're in a story book for
+                        dreams
+                        and aspirations to grow. We carefully choose hues of deep ocean blues and purple tones with
+                        serif
+                        fonts to help create an immersive deep ocean to the deep sky. The depths corresponds to openness
+                        that
                         are limitless possibilities.
                     </p>
                     <br>
                     <br>
                     <h1>Being a hybrid Designer and Developer bridges gaps and communication barriers.</h1>
-                    <p>We only had two developers on the team, so Will and I helped them code out different areas of developments. I focused on coding out a lot of the front-end aspect of the website and how the motions will work. I have learned a lot of Javascript and using libraries to help deploy our ideas into reality. My favorite aspect of coding is getting comfortable using advance CSS, jQuery and web performances.
+                    <p>We only had two developers on the team, so Will and I helped them code out different areas of
+                        developments. I focused on coding out a lot of the front-end aspect of the website and how the
+                        motions will work. I have learned a lot of Javascript and using libraries to help deploy our
+                        ideas into reality. My favorite aspect of coding is getting comfortable using advance CSS,
+                        jQuery and web performances.
                     </p>
                     <br>
                 </div>
@@ -220,22 +242,26 @@
             <div class="fillbg">
                 <div class="wideTitle" id="thingsIlearned">
                     <h1>Things I learned</h1>
-                    <p>While working with the team, I enjoyed sharing and learning with the different skillsets at hand. We
+                    <p>While working with the team, I enjoyed sharing and learning with the different skillsets at hand.
+                        We
                         really had a great team and we all contributed well into the project. Goooo team Prism!</p>
                 </div>
             </div>
         </div>
         <div class="moreProjects">
+            <hr>
             <h1>More work</h1>
             <div class="flexBox">
-                
+
                 <a href="Google_for_Creator.html">
                     <div class="half">
                         <div class="clipping">
                             <img src="Bento_Creators.png" width="100%" alt="Image">
                         </div>
-                        <h2 style="padding-top: 18px; font-size: 22px; font-weight: 400; padding-bottom: 4px;">Google for Creator</h2>
-                        <h3 style="color: gray; font-weight: 500; font-size: 18px;">UX/UI, Instrument Intern, Client</h3>
+                        <h2 style="padding-top: 18px; font-size: 22px; font-weight: 400; padding-bottom: 4px;">Google
+                            for Creator</h2>
+                        <h3 style="color: gray; font-weight: 500; font-size: 18px;">UX/UI, Instrument Intern, Client
+                        </h3>
                     </div>
                 </a>
                 <a href="Color_Health.html">
@@ -243,11 +269,17 @@
                         <div class="clipping">
                             <img src="Bento_Color.png" width="100%" alt="Image">
                         </div>
-                        <h2 style="padding-top: 18px; font-size: 22px; font-weight: 400; padding-bottom: 4px;">Color - Health</h2>
+                        <h2 style="padding-top: 18px; font-size: 22px; font-weight: 400; padding-bottom: 4px;">Color -
+                            Health</h2>
                         <h3 style="color: gray; font-weight: 500; font-size: 18px;">Web & Brand Design, Client</h3>
                     </div>
                 </a>
             </div>
+            <br>
+            <br>
+            <br>
+            <br>
+            <hr>
         </div>
         <footer id="contacts">
             <h2 class="cta">If you'd like to learn more,

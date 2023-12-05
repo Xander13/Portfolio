@@ -1,16 +1,14 @@
 body {
-    background-color: white;
-    color: black;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     font-family: sans-serif;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
-/* :focus {
-    outline: none;
-    transform: scale(1.08);
-    border: 3px solid #856cff;
-    border-radius: 100rem;
-  } */
+html{
+    scroll-behavior: smooth;
+}
 
 ul {
     list-style-type: none;
@@ -20,30 +18,14 @@ br {
     user-select: none;
 }
 
-html,
-body {
-    height: 100%;
-    overflow: hidden;
-}
-
-#main-container {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    overflow: auto;
-    scroll-behavior: smooth;
-}
-
 a {
     text-decoration: none;
     color: black;
 }
 
 ::selection {
-    background: #000000;
-    color: #ffffff;
+    background: #FDCA6A;
+    color: #000000;
 }
 
 h1,
@@ -63,17 +45,8 @@ p {
     align-items: start;
 }
 
-.logo {
-    position: fixed;
-    left: 32px;
-    bottom: 32px;
-    font-size: 22px;
-    text-transform: uppercase;
-    color: black;
-    z-index: 222222;
-    border-radius: 100rem;
-    width: 48px;
-    transition: 0.2s ease;
+.navList a:first-child{
+    padding-left: 0;
 }
 
 .bentoLogo{
@@ -85,62 +58,51 @@ p {
     transition: 0.2s ease;
 }
 
-/* .nav {
-    position: fixed;
-    padding-left: 10%;
-    padding-right: 10%;
-    mix-blend-mode: difference;
-    padding-top: 32px;
-    z-index: 2211111;
-} */
-
 .navList {
     position: fixed;
     padding-top: 8px;
     padding-bottom: 8px;
     left: 0;
     right: 0;
+    top: 24px;
+    max-width: 1632px;
     margin: auto;
-    padding-left: 10%;
-    padding-right: 10%;
-    z-index: 2211111;
+    padding-left: 32px;
+    padding-right: 32px;
+    z-index: 99999999999999;
     width: 100%;
     display: flex;
-    background-color: rgb(255, 255, 255);
     justify-content: space-between;
     z-index: 222;
-    margin-right: 16px;
-    top: 0px;
     font-weight: 500;
 }
 
-.bentoTxt{
-    position: fixed;
-    left: 32px;
-    bottom: 32px;
-    color: black;
-    font-size: 22px;
-    padding-top: 8px;
-    padding-bottom: 8px;
+.menu{
+    display: flex;
+    width: fit-content;
     padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 100rem;
-    background-color: #ffffff;
-    border: 2px solid black;
-    z-index: 222;
-    transition: 0.5s ease;
-    font-weight: 500;
 }
 
-.bentoTxt:hover{
-    background-color: black;
-    color: white;
-    transition: color 0.4s ease;
+.xMark{
+    position: relative;
+    top: -4px;
+}
+
+.right{
+    display: flex;
+    width: fit-content;
+}
+
+.navList p{
+    color: rgb(255, 255, 255);
+    mix-blend-mode: difference;
 }
 
 .navList,
 #listContainer {
     list-style-type: none;
+    color: rgb(255, 255, 255);
+    mix-blend-mode: difference;
     font-size: 22px;
     text-transform: uppercase;
 }
@@ -164,15 +126,17 @@ p {
 }
 
 #listContainer a {
-    color: white;
+    color: rgb(255, 255, 255);
+    mix-blend-mode: difference;
 }
 
 #listContainer a:hover {
-    color: gray;
+    color: #4f4f4f;
 }
 
 .navList a {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    mix-blend-mode: difference;
     padding-left: 20px;
     padding-right: 20px;
     transition: 0.2s ease;
@@ -183,21 +147,128 @@ p {
     transition: 0.2s ease;
 }
 
-.list {
-    position: absolute;
-    bottom: 32px;
-    right: 32px;
+#main-container {
+    position: fixed;
+    overflow-y: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 17;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    transition: 1s cubic-bezier(.5, 1, .22, 1);
+    scroll-behavior: smooth;
 }
 
-.topMenu a {
-    color: white;
+input[type=checkbox]:checked~#main-container {
+    top: 50%;
+    transition: 1s cubic-bezier(.5, 1, .22, 1);
+}
+
+.hamburger {
+    display: block;
+    position: relative;
+    display: flex;
+    height: 27px;
+    width: fit-content;
     cursor: pointer;
-    line-height: 12vw;
-    text-transform: uppercase;
+    padding-left: 24px;
+    transition: all 1s cubic-bezier(.19, 1, .22, 1);
+    display: none;
 }
 
-.topMenu a:hover {
-    color: gray;
+.hamburger p{
+    padding-right: 16px;
+}
+
+.hamburger span{
+    position: relative;
+    top: 4.4px;
+    transform: scale(1.2);
+}
+
+.hamburger p:hover{
+    color: #FDCA6A;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+.fullNav{
+    position: fixed;
+    z-index: 1;
+    background-color: rgb(0, 0, 0);
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    padding-left: 0;
+    transition: all 1s cubic-bezier(.19, 1, .22, 1);
+}
+
+.navProject{
+    padding-top: 186px;
+}
+
+.navProject h2{
+    color: rgb(255, 255, 255);
+    padding-top: 16px !important;
+    padding-bottom: 0 !important;
+}
+
+.navProject h3{
+    font-weight: 400;
+    color: #4f4f4f;
+    font-size: 16px;
+}
+
+.mobileList{
+    display: none;
+}
+
+.gutters{
+    position: relative;
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.fullNav li{
+    padding-bottom: 32px;
+}
+
+.fullNav a{
+    color: rgb(255, 255, 255);
+    font-size: 32px;
+    line-height: 32px;
+    transition: 0.5s ease;
+    font-weight: 400;
+}
+
+.navStuff{
+    padding-top: 232px;
+}
+
+.fullNav .half{
+    width: 50%;
+}
+
+.fullNav .box{
+    transform: scale(0.5);
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0;
+}
+
+.fullNav a:hover{
+    color: #FDCA6A;
+    transition: 0.5s ease;
 }
 
 #navMenu {
@@ -206,7 +277,8 @@ p {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #000000;
+    background-color: #ffffff;
+    mix-blend-mode: difference;
     transition: top 0.3s ease;
     z-index: 22222;
 }
@@ -217,7 +289,7 @@ p {
 }
 
 .smalltxt a {
-    color: rgb(108, 108, 108);
+    color: #4f4f4f;
     transition: 0.5s ease;
 }
 
@@ -243,7 +315,7 @@ p {
     display: flex;
     cursor: pointer;
     z-index: 22222;
-    color: white;
+    color: rgb(0, 0, 0);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 
@@ -263,7 +335,7 @@ p {
 
 .box{
     padding-top: 128px;
-    padding-bottom: 128px;
+    padding-bottom: 16px;
     display: flex;
     align-items: center;
 }
@@ -275,8 +347,8 @@ p {
 }
 
 .hook{
-    color: white;
-    background-color: black;
+    color: black;
+    background-color: #FDCA6A;
     padding: 24px;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -292,8 +364,8 @@ p {
 
 .box .eye{
     position: relative;
-    width: 20vw;
-    height: 20vw;
+    width: 24vw;
+    height: 24vw;
     display: block;
     background-color: #FDCA6A;
     border-radius: 100rem;
@@ -302,8 +374,8 @@ p {
 
 .speck{
     background-color: #D9D9D9;
-    width: 7vw;
-    height: 7vw;
+    width: 9vw;
+    height: 9vw;
     flex-shrink: 0;
     border-radius: 100rem;
 }
@@ -312,8 +384,8 @@ p {
     content: '';
     position: absolute;
     top: 50%;
-    width: 8vw;
-    height: 8vw;
+    width: 9vw;
+    height: 9vw;
     background: black;
     border-radius: 100rem;
     left: 30%;
@@ -353,94 +425,11 @@ p {
     cursor: none;
 }
 
-.upArrow {
-    position: fixed;
-    bottom: 36px;
-    right: 36px;
-    background-color: black;
-    color: rgb(255, 255, 255);
-    width: 56px;
-    height: 56px;
-    font-size: 56px;
-    padding: 14px;
-    border-radius: 100rem;
-    justify-content: center;
-    vertical-align: center;
-    mix-blend-mode: difference;
-    transform: rotate(180deg);
-    display: flex;
-    cursor: pointer;
-    z-index: 11111;
-    user-select: none;
-    border: 2px solid white;
-    transition: 0.5s ease;
-}
-
-.exit{
-    display: none;
-    position: fixed;
-    top: 36px;
-    right: 36px;
-    background-color: black;
-    color: rgb(0, 0, 0);
-    width: 56px;
-    height: 56px;
-    font-size: 56px;
-    padding: 14px;
-    border-radius: 100rem;
-    justify-content: center;
-    vertical-align: center;
-    mix-blend-mode: difference;
-    display: flex;
-    cursor: pointer;
-    z-index: 11111;
-    user-select: none;
-    border: 2px solid white;
-    transition: 0.5s ease;
-}
-
-#myBtn {
-    transform: rotate(180deg);
-    transition: 0.5s ease;
-}
-
-.upArrow:hover {
-    color: black;
-    background-color: rgb(248, 248, 248);
-    transition: 0.5s ease;
-}
-
-.resume {
-    position: fixed;
-    left: 24px;
-    bottom: 36px;
-    color: rgb(0, 0, 0);
-    background-color: #FFD541;
-    font-size: 32px;
-    padding: 24px;
-    border-radius: 100rem;
-    cursor: pointer;
-    z-index: 11111;
-    user-select: none;
-    rotate: 0deg;
-    transition: 0.5s ease;
-}
-
-.resume:hover {
-    rotate: -20deg;
-    transition: rotate 0.5s ease;
-}
-
 .sm .material-symbols-outlined,
 .photoCard .material-symbols-outlined {
     rotate: 45deg;
     user-select: none;
 }
-
-/* .sm:active, .upArrow:active{
-    color: black;
-    background-color: white;
-} */
 
 .material-symbols-outlined {
     font-variation-settings:
@@ -457,12 +446,14 @@ p {
 }
 
 .underline a:hover {
-    color: gray;
+    color: #4f4f4f;
 }
 
 .fullImgView {
-    padding-left: 10%;
-    padding-right: 10%;
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
     width: 100%;
 }
 
@@ -472,8 +463,10 @@ p {
 }
 
 .projectHero {
-    padding-left: 10%;
-    padding-right: 10%;
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .rols {
@@ -492,7 +485,7 @@ p {
 }
 
 .projectHero .seeSiteBtn {
-    background-color: black;
+    background-color: rgb(255, 255, 255);
     position: absolute;
     right: 0;
     bottom: 0;
@@ -515,7 +508,7 @@ p {
 }
 
 .projectHero .seeSiteBtn a {
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: 22px;
     text-align: center;
 }
@@ -535,8 +528,6 @@ p {
 .imgCard {
     padding: 10%;
     margin-bottom: 32px;
-    /* position: sticky;
-    top: 32px; */
 }
 
 .imgCard h3 {
@@ -544,6 +535,7 @@ p {
     font-size: 18px;
     text-align: center;
     margin-top: 0;
+    color: #4f4f4f;
 }
 
 .UFOSearchBar{
@@ -618,52 +610,55 @@ p {
     padding-bottom: 0px;
 }
 
-.block {
-    height: 120px;
-    background: url(see.svg);
-    background-size: cover;
-    background-position: center;
-    color: transparent;
-    user-select: none;
-    overflow: hidden;
-    position: relative;
-    animation: fadeIn 1s ease;
-    top: 0px;
-}
-
 .hero h1 {
-    overflow: hidden;
+    font-weight: 400;
+    font-size: 7vw;
+    line-height: 7vw;
+    text-wrap: blance;
+    max-width: 20ch;
+    color: rgb(0, 0, 0);
 }
 
-@keyframes wave {
-    0% {
-        transform: translateX(0%);
-    }
-
-    100% {
-        transform: translateX(100%);
-    }
+.hero h2 {
+    padding-top: 16%;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 42px;
+    text-wrap: blance;
+    max-width: 30ch;
+    padding-bottom: 16px;
+    color: #000000;
 }
 
-@keyframes fadeIn {
-    0% {
-        opacity: 0;
-        top: -32px;
-    }
+#rotateWords{
+    color: #4f4f4f;
+}
 
-    100% {
-        opacity: 1;
-        top: 0px;
-    }
+.hero a{
+    color: rgb(0, 0, 0);
+    transition: 0.5s ease;
+    letter-spacing: 2px;
+}
+
+.hero p{
+    padding-top: 32px;
+}
+
+.hero{
+    max-width: 1632px;
+    margin: auto;
+    padding: 32px;
+    height: auto;
+}
+
+.hero a:hover{
+    color: #FDCA6A;
+    transition: 0.5s ease;
 }
 
 .projectHero .half {
     width: calc(100% / 2 - 16px);
 }
-
-/* .projectHero img {
-    margin-bottom: 32px;
-} */
 
 .wideTitle {
     text-align: center;
@@ -688,7 +683,7 @@ p {
     max-width: 800px;
     margin: auto;
     text-align: left;
-    color: gray;
+    color: #4f4f4f;
 }
 
 .bio,
@@ -702,10 +697,11 @@ p {
 }
 
 .articles {
-    padding-left: 10%;
-    padding-right: 10%;
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
     padding-bottom: 232px;
-    padding-top: 24px;
 }
 
 .articles .cols {
@@ -728,7 +724,7 @@ p {
 }
 
 .chips a{
-    color: white;
+    color: rgb(0, 0, 0);
 }
 
 .articles img {
@@ -738,6 +734,7 @@ p {
 .articles h2 {
     padding-top: 32px;
     text-transform: uppercase;
+    color: rgb(0, 0, 0);
 }
 
 .articles .cols:hover img {
@@ -791,8 +788,11 @@ p {
 
 
 .projects {
-    padding-left: 10%;
-    padding-right: 10%;
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+    background-color: rgb(255, 255, 255);
 }
 
 .projects .half{
@@ -839,7 +839,7 @@ p {
 
 .capations h2 {
     font-size: 22px;
-    color: black;
+    color: rgb(0, 0, 0);
     width: 100%;
     font-weight: 400;
 }
@@ -856,7 +856,7 @@ p {
     width: 48px;
     height: 48px;
     padding: 12px;
-    color: rgb(52, 52, 52);
+    color: #4f4f4f;
     border-radius: 100rem;
     position: absolute;
     background-color: transparent;
@@ -864,7 +864,7 @@ p {
     right: 16px;
     bottom: 16px;
     transition: 0.2s ease-out;
-    border: 1px solid black;
+    border: 1px solid rgb(0, 0, 0);
 }
 
 .photoCard:hover {
@@ -872,14 +872,10 @@ p {
 }
 
 .photoCard:hover .arrow {
-    background-color: rgb(0, 0, 0);
-    color: rgb(255, 255, 255);
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
     transition: 0.2s ease-out;
 }
-
-/* .photoCard img {
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-} */
 
 .photoCard {
     position: relative;
@@ -890,10 +886,6 @@ p {
     overflow: hidden;
     width: 100%;
 }
-
-/* .cols img, .blocks img{
-    border-radius: 24px;
-} */
 
 .block{
     border-radius: 12px;
@@ -915,15 +907,15 @@ p {
     text-transform: uppercase;
     font-weight: 400;
     padding-top: 16px;
+    color: rgb(0, 0, 0);
 }
 
 .photoCard h3 {
     font-size: 22px;
     padding-top: 16px;
     font-weight: 400;
-    color: rgb(108, 108, 108);
+    color: #4f4f4f;
 }
-
 
 .photoCard h2,
 .photoCard h3,
@@ -931,27 +923,18 @@ p {
     transition: color 0.2s ease;
 }
 
-.photoCard:hover h2,
-.photoCard:hover h3 {
-    color: black;
+.photoCard:hover h2 
+{
+    color: #4f4f4f;
     transition: 0.2s ease;
 }
-
-/* .photoCard img {
-    transition: scale 0.5s ease;
-}
-
-.photoCard:hover img {
-    scale: 1.01;
-    transition: scale 0.5s ease;
-} */
 
 .things {
     padding-top: 164px;
 }
 
 .serviceBox {
-    border: 1px solid white;
+    border: 1px solid rgb(0, 0, 0);
     padding: 12px;
     font-size: 2vw;
     line-height: 2vw;
@@ -960,14 +943,6 @@ p {
     position: relative;
     margin-bottom: 64px;
 }
-
-/* .articles {
-    padding-bottom: 64px;
-    overflow-x: hidden;
-    min-width: 100%;
-    margin-right: 32px;
-    z-index: 12;
-} */
 
 .storyCards {
     min-width: 420px;
@@ -978,78 +953,6 @@ p {
     width: 420px;
     height: 500px;
     object-fit: cover;
-}
-
-.cursorPics {
-    overflow: hidden;
-    width: 420px;
-    height: 86px;
-    position: relative;
-    object-fit: cover;
-    margin: 0;
-    z-index: 1000;
-    background-color: rgb(255, 255, 255);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-    /* display: none;
-    opacity: 0; */
-    display: block;
-    transition: height 0.5s ease;
-}
-
-.rows:hover .cursorPics {
-    height: 260px;
-    transition: height 0.5s ease;
-}
-
-.rows {
-    position: relative;
-    width: 100%;
-    padding: 24px;
-    margin-bottom: 18px;
-    border-radius: 4px;
-    background-color: rgb(248, 248, 248);
-    cursor: pointer;
-    color: rgb(108, 108, 108);
-    transition: 0.5s ease;
-}
-
-.rows .flexBox {
-    padding-bottom: 0;
-}
-
-.rows .arrow {
-    position: relative;
-    top: 0px;
-    rotate: 45deg;
-    right: 0;
-}
-
-.rows h4 {
-    font-size: 18px;
-    font-weight: 400;
-    color: gray;
-}
-
-.rows h4:nth-child(4) {
-    width: 160px;
-    text-align: center;
-}
-
-.rows h4:nth-child(1) {
-    width: 160px;
-    text-align: left;
-}
-
-.rows:hover h4 {
-    color: black;
-    transition: 0.2s ease-out;
-}
-
-.rows:hover .arrow {
-    background-color: black;
-    color: white;
-    transition: 0.2s ease-out;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
 }
 
 .contact {
@@ -1072,7 +975,7 @@ p {
     width: 570px;
     margin: auto;
     line-height: 24px;
-    color: gray;
+    color: #4f4f4f;
     text-transform: uppercase;
 }
 
@@ -1083,8 +986,10 @@ p {
 
 #colsStuff {
     align-items: start;
-    padding-left: 10%;
-    padding-right: 10%;
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .cols {
@@ -1111,7 +1016,7 @@ p {
 .cols p {
     font-size: 22px;
     padding-top: 26px;
-    color: rgb(108, 108, 108);
+    color: #4f4f4f;
 }
 
 .marquee {
@@ -1120,12 +1025,8 @@ p {
     overflow: hidden;
     user-select: none;
     gap: var(--gap);
+    color: rgb(0, 0, 0);
 }
-
-/* .marquee .logo {
-    width: 100%;
-    background-color: green;
-} */
 
 .marquee__content {
     flex-shrink: 0;
@@ -1206,7 +1107,7 @@ p {
 
 .blocks h4 {
     font-weight: 400;
-    color: gray;
+    color: #4f4f4f;
     font-size: 16px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -1297,8 +1198,10 @@ p {
 
 .experiance {
     padding-bottom: 164px;
-    padding-left: 10%;
-    padding-right: 10%;
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
     padding-top: 112px;
 }
 
@@ -1325,19 +1228,6 @@ p {
 
 .experiance .cols:nth-child(3) {
     display: block !important;
-}
-
-.rights {
-    text-align: center;
-    position: relative;
-    left: 0;
-    right: 0;
-    color: black;
-    bottom: 32px;
-    width: 400px;
-    margin: auto;
-    z-index: 111;
-    font-weight: 300;
 }
 
 .errorPage {
@@ -1411,11 +1301,10 @@ p {
 }
 
 .moreProjects {
-    border-top: 1px solid rgb(196, 196, 196);
-    border-bottom: 1px solid rgb(196, 196, 196);
-    width: 80%;
+    max-width: 1632px;
     margin: auto;
     height: auto;
+    padding: 32px;
     padding-top: 56px;
     padding-bottom: 132px;
 }
@@ -1453,7 +1342,8 @@ p {
     font-weight: 400;
     text-transform: uppercase;
     font-size: 18px;
-    padding-top: 0;
+    padding-top: 32px;
+    padding-bottom: 64px;
 }
 
 .moreProjects h2 {
@@ -1463,7 +1353,7 @@ p {
 }
 
 .moreProjects h3 {
-    color: gray;
+    color: #4f4f4f;
     font-weight: 500;
     font-size: 18px;
 }
@@ -1472,38 +1362,21 @@ p {
     width: 100%;
 }
 
-.dot {
-    background-color: white;
-    content: '';
-    width: 24px;
-    height: 24px;
-    mix-blend-mode: difference;
-    position: fixed;
-    bottom: 32px;
-    left: 42px;
-    z-index: 111;
-    border-radius: 100rem;
-    cursor: pointer;
-}
-
 footer {
     height: 200px;
     position: relative;
     height: auto;
-    /* background-color: rgb(248, 248, 248); */
     border-radius: 24px;
-    margin-left: 32px;
-    margin-right: 32px;
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
     box-sizing: border-box;
-    background-color: white;
     padding-top: 0;
-    padding-top: 132px;
 }
 
 
 footer .flexBox {
-    padding-left: calc(10% - 26px);
-    padding-right: calc(10% - 26px);
     align-items: end;
 }
 
@@ -1513,6 +1386,8 @@ footer h1 {
     text-align: center;
     margin-block-end: 0px;
     line-height: 14.5vw;
+    position: relative;
+    left: -64px;
     height: auto;
     color: rgb(0, 0, 0);
     user-select: none;
@@ -1520,21 +1395,23 @@ footer h1 {
 
 footer .cta {
     font-size: 4vw;
-    margin-left: calc(10% - 26px);
     font-weight: 400;
     line-height: 4.25vw;
     text-align: left;
     padding-bottom: 132px;
     user-select: none;
+    padding-top: 64px;
 }
 
 footer .cta a,
 footer .cols a {
     color: rgb(0, 0, 0);
+    transition: 0.15s ease;
 }
 
-footer .cols a:hover {
-    color: gray;
+footer .cols a:hover, footer .cta a:hover {
+    color: rgb(0, 0, 0);
+    transition: 0.15s ease;
 }
 
 footer p,
@@ -1561,7 +1438,7 @@ footer h2 {
 }
 
 .shelf .black{
-    background-color: #111111;
+    background-color: black;
     cursor: pointer;
 }
 
@@ -1577,6 +1454,31 @@ footer h2 {
 @media screen and (max-width: 720px) {
     #main-container{
         overflow-x: hidden;
+    }
+
+    .hamburger{
+        display: block;
+        position: fixed;
+        right: 16px;
+        top: 16px;
+    }
+
+    .navList #logo{
+        position:fixed;
+        left: 16px;
+        top: 32px;
+    }
+
+    .mobileProject{
+        display: none;
+    }
+
+    .right a, .navList p{
+        display: none;
+    }
+    
+    .mobileList{
+        display: block;
     }
 
     .navList {
