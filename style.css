@@ -887,8 +887,8 @@ input[type=checkbox] {
 }
 
 .photoCard h2 {
-    font-size: 2vw;
-    line-height: 2vw;
+    font-size: 32px;
+    line-height: 32px;
     text-transform: uppercase;
     font-weight: 400;
     padding-top: 16px;
@@ -896,10 +896,11 @@ input[type=checkbox] {
 }
 
 .photoCard h3 {
-    font-size: 22px;
+    font-size: 16px;
     padding-top: 16px;
     font-weight: 400;
     color: #4f4f4f;
+    text-transform: uppercase;
 }
 
 .photoCard h2,
@@ -1395,7 +1396,7 @@ footer .cols a {
 }
 
 footer .cols a:hover, footer .cta a:hover {
-    color: rgb(0, 0, 0);
+    color: #FDCA6A;
     transition: 0.15s ease;
 }
 
@@ -1581,6 +1582,7 @@ footer h2 {
 
     .projects .half{
         width: 100%;
+        padding-bottom: 86px;
     }
 
     .projects h2 {
