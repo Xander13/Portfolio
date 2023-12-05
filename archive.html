@@ -44,10 +44,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 <style>
-    footer{
+    footer {
         background-color: white;
     }
 </style>
+
 <body>
     <a class="logo" href="index.html">
         <img src="face.svg" alt="logo">
@@ -74,7 +75,7 @@
         <a id="logo" href="index.html">Alex Kauffman</a>
         <p><span id="clock"></span>in Detroit</p>
         <div class="right">
-            <a href="#works">Work</a>
+            <a href="index.html">Work</a>
             <a href="index.html#abouts">About</a>
             <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
             <label for="checkbox_toggle" class="hamburger">
@@ -83,61 +84,115 @@
         </div>
     </div>
     <div data-scroll-container id="main-container">
-        <div class="archive">
-            <h1>Archive</h1>
-            <div id="gallery">
-                <div class="blocks">
-                    <img src="Googelbraillebanner.svg" height="100%" alt="image">
-                    <h3>Google Braille Motion Exploration w/ Nick Delago</h3>
-                    <h4>Google Lab - J.R Schmidt Design Exercise</h4>
+        <section class="projects" style="padding-top: 230px;">
+            <h1>Archives</h1>
+            <div class="flexBox">
+                <div class="half">
+                    <div class="photoCard">
+                        <a href="https://vimeo.com/628782320" target="_blank">
+                            <div class="arrow">
+                                <span class="material-symbols-outlined">
+                                    arrow_upward
+                                </span>
+                            </div>
+                            <div class="clipping">
+                                <img src="Bento_Braille.svg" alt="img" width="100%" draggable="false">
+                            </div>
+                            <h3>Google Lab - J.R Schmidt Design Exercise co-with Nik</h3>
+                            <h2>Google Braille</h2>
+                        </a>
+                    </div>
                 </div>
-                <div class="blocks">
-                    <img style="border: 1px solid rgb(229, 229, 229);" src="sbPage.png" height="100%" alt="image">
-                    <h3>Starbucks spot illustrations</h3>
-                    <h4>ILLUSTRATION</h4>
-                </div>
-                <div class="blocks">
-                    <img src="germscreen.png" height="100%" alt="image">
-                    <h3>Germist</h3>
-                    <h4>UX/UI, Visual Design</h4>
-                </div>
-                <div class="blocks">
-                    <img src="HookMenuUpdate.gif" height="100%" alt="image">
-                    <h3>Hook Menu Redesign</h3>
-                    <h4>UX/UI</h4>
-                </div>
-                <div class="blocks">
-                    <img src="otto.png" height="100%" alt="image">
-                    <h3>Otto illustration</h3>
-                    <h4>Illustration</h4>
-                </div>
-                <div class="blocks">
-                    <img src="mobiledmv.png" height="100%" alt="img">
-                    <h3>DMV Redesign</h3>
-                    <h4>UX/UI</h4>
-                </div>
-                <div class="blocks">
-                    <img src="instrument.png" height="100%" alt="img">
-                    <h3>Instrument Intern Webpage</h3>
-                    <h4>UX/UI</h4>
-                </div>
-                <div class="blocks">
-                    <img src="otto2022.gif" height="100%" alt="img">
-                    <h3>Otto illustration series</h3>
-                    <h4>illustration</h4>
-                </div>
-                <div class="blocks">
-                    <img src="TwinIDBanner.png" height="100%" alt="img">
-                    <h3>Digtial ID Exploration</h3>
-                    <h4>UX/UI</h4>
-                </div>
-                <div class="blocks">
-                    <img src="ritunews.png" width="100%" alt="img">
-                    <h3>RIT News Page</h3>
-                    <h4>UX/UI</h4>
+                <div class="half">
+                    <a href="https://vimeo.com/454212622" target="blank">
+                        <div class="photoCard">
+                            <div class="arrow">
+                                <span class="material-symbols-outlined">
+                                    arrow_upward
+                                </span>
+                            </div>
+                            <div class="clipping">
+                                <img src="Bento_Pawn.png" alt="img" width="100%" draggable="false">
+                            </div>
+                            <h3>Title Sequence</h3>
+                            <h2>Pawn</h2>
+                        </div>
+                    </a>
                 </div>
             </div>
-        </div>
+            <div class="flexBox">
+                <div class="half">
+                    <a href="https://vimeo.com/629277985" target="_blank">
+                        <div class="photoCard">
+                            <div class="arrow">
+                                <span class="material-symbols-outlined">
+                                    arrow_upward
+                                </span>
+                            </div>
+                            <div class="clipping">
+                                <img src="Bento_Starbucks.svg" alt="img" width="100%" draggable="false">
+                            </div>
+                            <h3>Spot and Hero Illustrations</h3>
+                            <h2>Starbucks spot illustrations</h2>
+                        </div>
+                    </a>
+                </div>
+                <div class="half">
+                    <a target="_blank" href="https://vimeo.com/391396341">
+                        <div class="photoCard">
+                            <div class="arrow">
+                                <span class="material-symbols-outlined">
+                                    arrow_upward
+                                </span>
+                            </div>
+                            <div class="clipping">
+                                <img src="Bento_TwinID.png" alt="img" width="100%" draggable="false">
+                            </div>
+                            <h3>UX/UI Design</h3>
+                            <h2>Digital ID</h2>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="flexBox">
+                <div class="half">
+                    <div class="photoCard">
+                        <a href="https://byhook.com/" target="_blank">
+                            <div class="arrow">
+                                <span class="material-symbols-outlined">
+                                    arrow_upward
+                                </span>
+                            </div>
+                            <div class="clipping">
+                                <img src="HookMenuUpdate.gif" alt="img" width="100%" draggable="false">
+                            </div>
+                            <h3>UX/UI Design</h3>
+                            <h2>Hook Menu Redesign</h2>
+                        </a>
+                    </div>
+                </div>
+                <div class="half">
+                    <div class="photoCard">
+                        <div class="clipping">
+                            <img src="instrument.png" alt="img" width="100%" draggable="false">
+                        </div>
+                        <h3>UX/UI Design</h3>
+                        <h2>Instrument Intern Page</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="flexBox">
+                <div class="half">
+                    <div class="photoCard">
+                        <div class="clipping">
+                            <img src="otto.png" alt="img" width="100%" draggable="false">
+                        </div>
+                        <h3>Illustration</h3>
+                        <h2>Otto</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
         <footer id="contacts">
             <h2 class="cta">If you'd like to learn more,
                 <span class="underline">

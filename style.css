@@ -606,23 +606,13 @@ input[type=checkbox] {
 }
 
 .hero h1 {
+    padding-top: 16%;
     font-weight: 400;
     font-size: 7vw;
     line-height: 7vw;
     text-wrap: blance;
     max-width: 20ch;
     color: rgb(0, 0, 0);
-}
-
-.hero h2 {
-    padding-top: 16%;
-    font-weight: 400;
-    font-size: 32px;
-    line-height: 42px;
-    text-wrap: blance;
-    max-width: 30ch;
-    padding-bottom: 16px;
-    color: #000000;
 }
 
 #rotateWords{
@@ -805,7 +795,7 @@ input[type=checkbox] {
 
 .projects .flexBox {
     padding-bottom: 164px;
-    gap: 64px;
+    gap: 32px;
 }
 
 .box,
