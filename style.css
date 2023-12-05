@@ -587,6 +587,44 @@ input[type=checkbox] {
     width: calc(100% / 2 - 16px);
 }
 
+.vigor .half h1{
+    color: #5166E5;
+    max-width: 30ch;
+    font-size: 56px;
+    line-height: 56px;
+    padding-bottom: 64px;
+    padding-top: 0;
+}
+
+.vigor .half{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 132px;
+}
+
+.credits{
+    font-size: 16px;
+    color: #8d8d8d;
+}
+
+.vigor h2, .vigor h3{
+    color: #8d8d8d;
+    font-weight: 400;
+    text-align: left;
+    margin: auto;
+    max-width: 800px;
+}
+
+.vigor h3{
+    padding-bottom: 64px;
+}
+
+.vigor .half p{
+    font-size: 24px;
+    max-width: 42ch;
+}
+
 .wideTitle {
     text-align: center;
     padding-top: 132px;
