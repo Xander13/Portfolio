@@ -485,7 +485,7 @@ input[type=checkbox] {
 }
 
 .projectHero .seeSiteBtn {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
     position: absolute;
     right: 0;
     bottom: 0;
@@ -508,7 +508,7 @@ input[type=checkbox] {
 }
 
 .projectHero .seeSiteBtn a {
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     font-size: 22px;
     text-align: center;
 }
@@ -1456,6 +1456,10 @@ footer h2 {
         overflow-x: hidden;
     }
 
+    .full{
+        padding-top: 132px;
+    }
+
     .hamburger{
         display: block;
         position: fixed;
@@ -1678,17 +1682,11 @@ footer h2 {
         padding-bottom: 0px;
     }
 
-    
-
     .cols {
         width: 100%;
         padding-bottom: 32px;
         padding-top: 32px;
     }
-
-    /* .experiance .cols{
-        position: relative !important;
-    } */
 
     .experiance {
         padding-bottom: 0;
@@ -1750,12 +1748,22 @@ footer h2 {
 
     footer{
         margin: 16px;
+        padding: 0;
     }
 
     footer .flexBox{
         padding-left: 0px;
         padding-right: 0px;
         align-items: start;
+    }
+
+    #thingsIlearned {
+        padding-bottom: 0 !important;
+    }
+
+    .moreProjects{
+        padding-top: 0;
+        padding-bottom: 0;
     }
 
     footer .cols{
