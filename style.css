@@ -49,10 +49,6 @@ p {
     padding-left: 0;
 }
 
-.bentoLogo{
-    width: 32px;
-}
-
 .navList {
     position: fixed;
     padding-top: 8px;
@@ -72,17 +68,6 @@ p {
     font-weight: 500;
 }
 
-.menu{
-    display: flex;
-    width: fit-content;
-    padding-left: 16px;
-}
-
-.xMark{
-    position: relative;
-    top: -4px;
-}
-
 .right{
     display: flex;
     width: fit-content;
@@ -93,8 +78,7 @@ p {
     mix-blend-mode: difference;
 }
 
-.navList,
-#listContainer {
+.navList {
     list-style-type: none;
     color: rgb(255, 255, 255);
     mix-blend-mode: difference;
@@ -102,43 +86,12 @@ p {
     text-transform: uppercase;
 }
 
-#listContainer {
-    display: none;
-    float: right;
-}
-
-#listContainer li {
-    height: fit-content;
-    padding-bottom: 0;
-    padding-top: 32px;
-    font-size: 22px;
-    line-height: 22px;
-    padding-right: 8px;
-}
-
-#listContainer li:first-child {
-    padding-top: 0;
-}
-
-#listContainer a {
-    color: rgb(255, 255, 255);
-    mix-blend-mode: difference;
-}
-
-#listContainer a:hover {
-    color: #4f4f4f;
-}
 
 .navList a {
     color: rgb(255, 255, 255);
     mix-blend-mode: difference;
     padding-left: 20px;
     padding-right: 20px;
-    transition: 0.2s ease;
-}
-
-.navList a:hover{
-    color: #FDCA6A;
     transition: 0.2s ease;
 }
 
@@ -167,19 +120,16 @@ input[type=checkbox]:checked~#main-container {
     height: 27px;
     width: fit-content;
     cursor: pointer;
-    padding-left: 24px;
     transition: all 1s cubic-bezier(.19, 1, .22, 1);
     display: none;
 }
 
-.hamburger p{
-    padding-right: 16px;
+.hamburger h1{
+    font-size: 22px;
 }
 
-.hamburger span{
-    position: relative;
-    top: 4.4px;
-    transform: scale(1.2);
+.hamburger p{
+    padding-right: 16px;
 }
 
 .hamburger p:hover{
@@ -352,8 +302,8 @@ input[type=checkbox] {
 }
 
 .hook:hover{
-    background-color: #FDCA6A;
-    color: black;
+    background-color: #000000;
+    color: #FDCA6A;
     transition: 0.5s ease;
 }
 
@@ -523,14 +473,6 @@ input[type=checkbox] {
 .imgCard {
     padding: 10%;
     margin-bottom: 32px;
-}
-
-.imgCard h3 {
-    font-weight: 400;
-    font-size: 18px;
-    text-align: center;
-    margin-top: 0;
-    color: #4f4f4f;
 }
 
 .UFOSearchBar{
@@ -898,6 +840,8 @@ input[type=checkbox] {
 .photoCard h3 {
     font-size: 16px;
     padding-top: 16px;
+    text-wrap: balance;
+    max-width: 30ch;
     font-weight: 400;
     color: #4f4f4f;
     text-transform: uppercase;
@@ -1444,6 +1388,11 @@ footer h2 {
 
     .experiance{
         padding-top: 132px !important;
+        padding-bottom: 132px !important;
+    }
+
+    .projects .flexBox:nth-child(3){
+        padding-bottom: 132px !important;
     }
 
     .gutters{
@@ -1459,7 +1408,7 @@ footer h2 {
         display: block;
         position: fixed;
         right: 16px;
-        top: 0px;
+        top: 16px;
     }
 
     .navList #logo{
