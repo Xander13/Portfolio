@@ -60,12 +60,17 @@ p {
     margin: auto;
     padding-left: 32px;
     padding-right: 32px;
-    z-index: 99999999999999;
+    z-index: 999999;
     width: 100%;
     display: flex;
     justify-content: space-between;
     z-index: 222;
     font-weight: 500;
+    list-style-type: none;
+    color: rgb(255, 255, 255);
+    mix-blend-mode: difference;
+    font-size: 22px;
+    text-transform: uppercase;
 }
 
 .right{
@@ -77,15 +82,6 @@ p {
     color: rgb(255, 255, 255);
     mix-blend-mode: difference;
 }
-
-.navList {
-    list-style-type: none;
-    color: rgb(255, 255, 255);
-    mix-blend-mode: difference;
-    font-size: 22px;
-    text-transform: uppercase;
-}
-
 
 .navList a {
     color: rgb(255, 255, 255);
@@ -610,6 +606,28 @@ input[type=checkbox] {
 
 .vigor h2, .vigor h3{
     color: #8d8d8d;
+    font-weight: 400;
+    text-align: left;
+    margin: auto;
+    max-width: 800px;
+}
+
+.vigor .center{
+    text-align: center;
+    margin: auto;
+}
+
+.vigor .center h1{
+    color: #5166E5;
+    max-width: 30ch;
+    font-size: 56px;
+    line-height: 56px;
+    padding-bottom: 64px;
+    padding-top: 0;
+    max-width: 800px;
+}
+
+.vigor .center p{
     font-weight: 400;
     text-align: left;
     margin: auto;
