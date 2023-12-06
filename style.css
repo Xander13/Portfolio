@@ -433,9 +433,11 @@ input[type=checkbox] {
     padding: 12px;
     padding-left: 32px;
     padding-right: 32px;
-    border-radius: 100rem;
+    border-radius: 24px;
+    line-height: 24px;
     transition: opacity 0.2s ease;
     cursor: pointer;
+    text-align: center;
 }
 
 .projectHero .seeSiteBtn:hover {
