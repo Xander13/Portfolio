@@ -1,20 +1,34 @@
-$(document).ready(function () {
-    // Add a scroll event listener to detect when the user scrolls
-    $('#main-container').on('scroll', function () {
-        if ($('#main-container').scrollTop() >= 200) {
-            $('#myBtn').css("transform", "rotate(0deg)");
-        } else {
-            $('#myBtn').css("transform", "rotate(540deg)");
-        }
-    });
+ //Clock function
+ setInterval(showTime, 1000);
+ // Defining showTime funcion
+ function showTime() {
+     // Getting current time and date
+     let time = new Date();
+     let hour = time.getHours();
+     let min = time.getMinutes();
+     am_pm = " AM ";
 
-    // Add a click event listener to scroll back to the top when the arrow is clicked
-    $('.upArrow').on('click', function () {
-        scrollToTop();
-    });
+     // Setting time for 12 Hrs format
+     if (hour >= 12) {
+         if (hour > 12) hour -= 12;
+         am_pm = " PM ";
+     } else if (hour == 0) {
+         hr = 12;
+         am_pm = " AM ";
+     }
 
-    // Function to scroll to the top
-    function scrollToTop() {
-        $('#main-container').scrollTop(0);
-    }
-});
+     hour = hour < 10 ? "0" + hour : hour;
+     min = min < 10 ? "0" + min : min;
+
+     let currentTime =
+         hour +
+         ":" +
+         min +
+         am_pm;
+
+     // Displaying the time
+     document.getElementById(
+         "clock"
+     ).innerHTML = currentTime;
+ }
+ showTime();

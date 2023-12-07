@@ -50,12 +50,12 @@ p {
 }
 
 .navList {
-    position: relative;
+    position: fixed;
     padding-top: 8px;
     padding-bottom: 8px;
     left: 0;
     right: 0;
-    top: 24px;
+    top: 16px;
     max-width: 1632px;
     margin: auto;
     padding-left: 32px;
@@ -72,6 +72,7 @@ p {
     font-size: 22px;
     text-transform: uppercase;
 }
+
 
 .right{
     display: flex;

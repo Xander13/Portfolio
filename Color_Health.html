@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
+
 <body>
     <script src="app.js"></script>
     <input type="checkbox" id="checkbox_toggle">
@@ -53,20 +54,21 @@
             </div>
         </div>
     </ul>
-    <div data-scroll-container id="main-container">
-        <div class="navList">
-            <a id="logo" href="index.html">Alex Kauffman</a>
-            <p><span id="clock"></span>in Detroit</p>
-            <div class="right">
-                <a href="index.html">Work</a>
-                <a href="index.html#abouts">About</a>
-                <a href="archive.html">Archive</a>
-                <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-                <label for="checkbox_toggle" class="hamburger">
-                    <h1>Menu </h1>
-                </label>
-            </div>
+    <div class="navList">
+        <a id="logo" href="index.html">Alex Kauffman</a>
+        <p><span id="clock"></span>in Detroit</p>
+        <div class="right">
+            <a href="index.html">Work</a>
+            <a href="index.html#abouts">About</a>
+            <a href="archive.html">Archive</a>
+            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            <label for="checkbox_toggle" class="hamburger">
+                <h1>Menu </h1>
+            </label>
         </div>
+    </div>
+    <div data-scroll-container id="main-container">
+     
         <div class="projectHero">
             <h1>Color Health</h1>
             <br>
@@ -127,14 +129,17 @@
                     <br>
                     <h1>Creating a safer reading space</h1>
                     <p>Medical jargon can create uneven tensions for users to read as they are trying to understand
-                        health complications. Color created a new design system that brings more lightness to the readers to enjoy the website.
+                        health complications. Color created a new design system that brings more lightness to the
+                        readers to enjoy the website.
                     </p>
                     <br>
                     <p>
                         As my role, I helped update their old existing Color webpages that had out of date visuals which
-                        were hard to read and inconsistent contents. I also created many new elements to help support their brand
+                        were hard to read and inconsistent contents. I also created many new elements to help support
+                        their brand
                         and their contents to help users enjoy the reading. I have worked on spot illustrations,
-                        researched iconography explorations, and creating fresh updated information graphs. I also helped
+                        researched iconography explorations, and creating fresh updated information graphs. I also
+                        helped
                         clean up their page layout to make the contents flow better.
                     </p>
                 </div>
@@ -218,7 +223,8 @@
                         <div class="clipping">
                             <img src="Bento_Wishful.png" width="100%" alt="Image">
                         </div>
-                        <h2 style="padding-top: 18px; font-size: 22px; font-weight: 400; padding-bottom: 4px;">Wishful</h2>
+                        <h2 style="padding-top: 18px; font-size: 22px; font-weight: 400; padding-bottom: 4px;">Wishful
+                        </h2>
                         <h3 style="color: gray; font-weight: 500; font-size: 18px;">UX/UI, Coding, AR, RIT Capstone</h3>
                     </div>
                 </a>
@@ -227,8 +233,10 @@
                         <div class="clipping">
                             <img src="Bento_Creators.png" width="100%" alt="Image">
                         </div>
-                        <h2 style="padding-top: 18px; font-size: 22px; font-weight: 400; padding-bottom: 4px;">Google for Creator</h2>
-                        <h3 style="color: gray; font-weight: 500; font-size: 18px;">UX/UI, Instrument Intern, Client</h3>
+                        <h2 style="padding-top: 18px; font-size: 22px; font-weight: 400; padding-bottom: 4px;">Google
+                            for Creator</h2>
+                        <h3 style="color: gray; font-weight: 500; font-size: 18px;">UX/UI, Instrument Intern, Client
+                        </h3>
                     </div>
                 </a>
             </div>
@@ -260,44 +268,6 @@
             <br>
             <h1>Kauffman</h1>
         </footer>
-        <script>
-            // Calling showTime function at every second
-            setInterval(showTime, 1000);
-
-            // Defining showTime funcion
-            function showTime() {
-                // Getting current time and date
-                let time = new Date();
-                let hour = time.getHours();
-                let min = time.getMinutes();
-                am_pm = " AM ";
-
-                // Setting time for 12 Hrs format
-                if (hour >= 12) {
-                    if (hour > 12) hour -= 12;
-                    am_pm = " PM ";
-                } else if (hour == 0) {
-                    hr = 12;
-                    am_pm = " AM ";
-                }
-
-                hour = hour < 10 ? "0" + hour : hour;
-                min = min < 10 ? "0" + min : min;
-
-                let currentTime =
-                    hour +
-                    ":" +
-                    min +
-                    am_pm;
-
-                // Displaying the time
-                document.getElementById(
-                    "clock"
-                ).innerHTML = currentTime;
-            }
-
-            showTime();
-        </script>
     </div>
 </body>
 
