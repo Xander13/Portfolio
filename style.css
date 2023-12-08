@@ -261,31 +261,6 @@ input[type=checkbox] {
     color: #FDCA6A;
 }
 
-.sm {
-    position: fixed;
-    bottom: 32px;
-    left: 32px;
-    background-color: black;
-    width: 56px;
-    height: 56px;
-    font-size: 56px;
-    padding: 16px;
-    border-radius: 12px;
-    justify-content: end;
-    vertical-align: center;
-    display: flex;
-    cursor: pointer;
-    z-index: 22222;
-    color: rgb(0, 0, 0);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-}
-
-.sm .material-symbols-outlined {
-    position: absolute;
-    left: 15px;
-    bottom: 15px;
-}
-
 #abouts {
     height: 164px;
 }
@@ -334,7 +309,7 @@ input[type=checkbox] {
 }
 
 .speck{
-    background-color: #D9D9D9;
+    background-color: #f5f5f5;
     width: 9vw;
     height: 9vw;
     flex-shrink: 0;
@@ -737,9 +712,20 @@ input[type=checkbox] {
 }
 
 .articles h2 {
-    padding-top: 32px;
+    padding-top: 16px;
+    font-size: 18px !important;
     text-transform: uppercase;
-    color: rgb(0, 0, 0);
+    color: rgb(28, 28, 28);
+}
+
+.articles p{
+    color: rgb(100, 100, 100);
+    font-size: 18px !important;
+    padding-bottom: 16px;
+}
+
+.articles .cols .clipping{
+    margin-bottom: 16px;
 }
 
 .articles .cols:hover img {
@@ -805,17 +791,17 @@ input[type=checkbox] {
 }
 
 .projects h1,
-.articles h1 {
+.articles h1, 
+.experiance h1 {
     font-size: 4vw;
     line-height: 4.5vw;
-    padding-bottom: 112px;
+    margin-bottom: 112px;
     font-weight: 400;
-    padding-top: 12px;
 }
 
 .projects .flexBox {
-    padding-bottom: 164px;
-    gap: 32px;
+    padding-bottom: 132px;
+    gap: 1vw;
 }
 
 .box,
@@ -869,7 +855,6 @@ input[type=checkbox] {
     right: 16px;
     bottom: 16px;
     transition: 0.2s ease-out;
-    border: 1px solid rgb(0, 0, 0);
 }
 
 .photoCard:hover {
@@ -877,7 +862,7 @@ input[type=checkbox] {
 }
 
 .photoCard:hover .arrow {
-    background-color: rgb(255, 255, 255);
+    background-color: #f5f5f5;
     color: rgb(0, 0, 0);
     transition: 0.2s ease-out;
 }
@@ -892,10 +877,6 @@ input[type=checkbox] {
     width: 100%;
 }
 
-.block{
-    border-radius: 12px;
-}
-
 .photoCard img {
     transform: scale(1);
     transition: 0.5s ease;
@@ -907,20 +888,20 @@ input[type=checkbox] {
 }
 
 .photoCard h2 {
-    font-size: 32px;
-    line-height: 32px;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: 400;
-    padding-top: 16px;
+    padding-top: 24px;
     color: rgb(0, 0, 0);
 }
 
 .photoCard h3 {
     font-size: 16px;
-    padding-top: 16px;
+    padding-top: 2px;
     text-wrap: balance;
-    max-width: 30ch;
+    max-width: 50ch;
     font-weight: 400;
+    font-size: 18px;
     color: #4f4f4f;
     text-transform: uppercase;
 }
@@ -1009,12 +990,6 @@ input[type=checkbox] {
     padding-bottom: 32px;
 }
 
-.experiance h2 {
-    font-size: 22px;
-    font-weight: 400;
-    padding-bottom: 24px;
-}
-
 .cols h2{
     font-size: 22px;
     font-weight: 400;
@@ -1023,8 +998,7 @@ input[type=checkbox] {
 
 .cols p {
     font-size: 22px;
-    padding-top: 26px;
-    color: #4f4f4f;
+    line-height: 28px;
 }
 
 .marquee {
@@ -1089,14 +1063,6 @@ input[type=checkbox] {
     height: 4780px;
     width: 100%;
 }
-
-.experiance h1 {
-    padding-bottom: 112px;
-    font-size: 4vw;
-    line-height: 4.5vw;
-    font-weight: 400;
-}
-
 
 .blocks {
     position: absolute;
@@ -1213,96 +1179,76 @@ input[type=checkbox] {
     padding-top: 112px;
 }
 
+.bullets{
+    position: relative;
+    z-index: 1;
+    width: 12px;
+    height: 12px;
+    border-radius: 100rem;
+    background-color: rgb(182, 182, 182);
+}
+
 .experiance h2 {
+    font-size: 22px;
+    font-weight: 400;
+    padding-bottom: 24px;
     max-width: 60ch;
+    color: rgb(104, 104, 104);
+}
+
+.experiance .cols{
+    background-color: rgb(245, 245, 245);
+    padding: 32px;
+}
+
+.experiance .group{
+    position: relative;
+    margin-top: 20px;
+    display: flex;
+    flex: 0 0 auto;
+    flex-flow: row;
+    gap: 12px;
+    height: min-content;
+    align-items: center;
+    overflow: hidden;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgb(182, 182, 182);
+}
+
+/* .experiance .cols h2, .experiance .cols p{
+    
+} */
+
+.cols h2{
+    font-size: 22px;
+    font-weight: 400;
+    padding-bottom: 16px;
+}
+
+.cols p {
+    font-size: 22px;
+    line-height: 28px;
+}
+
+.experiance .flex{
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 1;
+}
+
+.experiance p{
+    position: relative;
+    z-index: 1;
+    font-size: 18px;
+    line-height: 22px;
+    padding-top: 12px;
+    padding-bottom: 8px;
+    color: rgb(104, 104, 104);
 }
 
 .experiance .flexBox {
     align-items: start;
 }
-
-.experiance .cols img {
-    object-fit: cover;
-    width: 300px;
-    height: auto;
-    transition: scale 0.5s ease;
-    /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
-}
-
-.experiance .cols:hover img {
-    scale: 1.01;
-    transition: scale 0.5s ease;
-}
-
-.experiance .cols:nth-child(3) {
-    display: block !important;
-}
-
-.errorPage {
-    position: relative;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-}
-
-.errorPage h1 {
-    position: absolute;
-    left: 32px;
-    bottom: 32px;
-    font-size: 8vw;
-    line-height: 8vw;
-    margin: auto;
-    font-weight: 400;
-}
-
-.errorPage p {
-    position: fixed;
-    margin: auto;
-    font-size: 22px;
-    line-height: 22px;
-    width: fit-content;
-    padding: 64px;
-    top: 10%;
-    left: 0;
-    right: 0;
-}
-
-.errorPage {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    height: fit-content;
-}
-
-.errorPage .marquee {
-    margin-bottom: 0;
-    line-height: 17vw;
-}
-
-.errorArrow {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 22;
-    backface-visibility: hidden;
-    pointer-events: none;
-    opacity: 1;
-    user-select: none;
-    z-index: 1000;
-    transition: 0.1s ease-out;
-}
-
-.errorArrow .material-symbols-outlined {
-    font-size: 420px;
-    font-weight: 900;
-    rotate: -45deg;
-    color: #FFD541;
-    backface-visibility: hidden;
-    pointer-events: none;
-    z-index: 1000;
-    cursor: none;
-}
-
 
 .rights h1 {
     font-weight: 400;
@@ -1323,7 +1269,7 @@ input[type=checkbox] {
 
 .moreProjects .flexBox {
     justify-content: space-between;
-    gap: 32px;
+    gap: 16px
 }
 
 .moreProjects a {
@@ -1470,16 +1416,7 @@ footer h2 {
         overflow-x: hidden;
     }
 
-    .experiance{
-        padding-top: 132px !important;
-        padding-bottom: 132px !important;
-    }
-
-    .projects .flexBox:nth-child(3){
-        padding-bottom: 132px !important;
-    }
-
-    .gutters{
+    .gutters, .experiance{
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -1604,56 +1541,31 @@ footer h2 {
         padding-right: 16px;
     }
 
-    .moveBlock {
-        position: relative;
-        font-size: 48px;
-        line-height: 54px;
-        font-weight: 400;
-        max-width: 34ch;
-        text-align: left;
-        opacity: 1;
-        animation: moveUP 1s cubic-bezier(0.37, 0, 0.63, 1);
-    }
-
     .projects .half{
         width: 100%;
         padding-bottom: 86px;
-    }
-
-    .projects h2 {
-        width: 250px;
-        font-size: 36px !important;
-        line-height: 42px;
-        padding-bottom: 12px;
-    }
-
-    .projects h3 {
-        font-size: 16px;
-        width: 150px;
     }
 
     .projects {
         padding: 16px;
     }
 
-    .projects h1 {
-        font-size: 36px !important;
-        padding-left: 0px;
-    }
-
     .eye{
-        width: 130px !important;
-        height: 130px !important;
+        width: 28vw !important;
+        height: 28vw !important;
     }
 
     .eye::before{
-        width: 50px !important;
-        height: 50px !important;
+        width: 12vw !important;
+        height: 12vw !important;
+    }
+
+    .alex{
+        width: 38vw;
     }
 
     .speck{
-        width: 40px !important;
-        height: 40px !important;
+        display: none;
     }
 
     .full {
@@ -1664,10 +1576,6 @@ footer h2 {
         width: 100%;
         padding-bottom: 32px;
         padding-top: 32px;
-    }
-
-    .experiance {
-        padding-bottom: 0;
     }
 
     .hero h1 {
@@ -1683,40 +1591,12 @@ footer h2 {
         line-height: 48px;
     }
 
-    .experiance, .articles{
-        padding: 16px;
-    }
-
     .experiance .flexBox{
         flex-wrap: wrap;
     }
 
     .experiance .cols{
         width: calc(50% - 48px);
-    }
-
-    .articles h1{
-        padding-bottom: 64px !important;
-        padding-top: 64px !important;
-    }
-
-    .articles .cols:nth-child(2){
-        padding-left: 8px;
-        padding-top: 0;
-    }
-    .articles .cols:nth-child(1){
-        padding-right: 8px;
-        padding-top: 0;
-    }
-
-    .articles .cols:nth-child(4){
-        display: none;
-    }
-
-    .articles h1, .experiance h1{
-        padding-bottom: 48px;
-        font-size: 48px;
-        line-height: 56px;
     }
 
     #contacts h1 {
@@ -1773,61 +1653,18 @@ footer h2 {
         transition: 0.5s ease;
     }
 
-    .upArrow,
-    .resume,
-    .exit {
-        background-color: white;
-        mix-blend-mode: normal;
-        border: 2px solid black;
-        color: black;
-    }
-
-    .resume {
-        left: 16px;
-        bottom: 16px;
-        transition: 0.5s ease;
-    }
-
-    .upArrow {
-        right: 16px;
-        bottom: 16px;
-    }
-
-    .hero, .loader {
+    .hero{
         padding: 16px;
         padding-top: 132px;
-    }
-
-    .moveBlock {
-        position: relative;
-        font-size: 42px !important;
-        line-height: 48px !important;
-        font-weight: 400;
-        max-width: 34ch;
-        text-align: left;
-        margin: auto;
-        opacity: 1;
-        animation: moveUP 1s cubic-bezier(0.37, 0, 0.63, 1);
-    }
-
-    .projects h2 {
-        width: 250px;
-        font-size: 42px !important;
-        line-height: 42px;
-        padding-bottom: 12px;
-    }
-
-    .projects h3 {
-        font-size: 16px;
-        width: 250px;
     }
 
     .projects {
         padding: 16px;
     }
 
-    .projects h1 {
+    .projects h1, .experiance h1 {
         font-size: 42px !important;
+        line-height: 56px;
         padding-left: 0px;
     }
 
@@ -1862,15 +1699,9 @@ footer h2 {
         height: auto;
     }
 
-    .experiance, .articles {
+    .articles {
         padding-bottom: 0;
         padding: 12px;
-    }
-
-    .experiance h1{
-        font-size: 36px;
-        line-height: 48px;
-        padding-bottom: 0;
     }
 
     .articles h1{
@@ -1881,10 +1712,6 @@ footer h2 {
 
     .articles .cols{
         padding-top: 0;
-    }
-
-    .articles .cols:nth-child(4){
-        display: none;
     }
 
     .hero h1 {
