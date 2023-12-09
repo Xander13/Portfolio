@@ -1494,7 +1494,7 @@ footer h2 {
         position: relative;
     }
 
-    .projects .cols:nth-child(3){
+    .projects .homeCols:nth-child(3){
         display: none;
     }
 
@@ -1735,7 +1735,7 @@ footer h2 {
         transition: 0.5s ease;
     }
 
-    .projects .cols:nth-child(2), .projects .cols:nth-child(3){
+    .projects .homeCols:nth-child(2), .projects .homeCols:nth-child(3){
         display: none;
     }
 
