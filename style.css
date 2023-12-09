@@ -67,9 +67,18 @@ p {
     font-weight: 500;
     list-style-type: none;
     color: black;
+    background-color: white;
     font-size: 22px;
     text-transform: uppercase;
 }
+
+#navbar {
+    background-color: #ffffff; /* Black background color */
+    position: fixed; /* Make it stick/fixed */
+    top: 0; /* Stay on top */
+    width: 100%; /* Full width */
+    transition: top 0.3s; /* Transition effect when sliding down (and up) */
+  }
 
 
 .right{
@@ -86,19 +95,6 @@ p {
     padding-left: 20px;
     padding-right: 20px;
     transition: 0.2s ease;
-}
-
-#main-container {
-    position: fixed;
-    overflow-y: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 17;
-    height: 100%;
-    background-color: rgb(255, 255, 255);
-    transition: 1s cubic-bezier(.5, 1, .22, 1);
-    scroll-behavior: smooth;
 }
 
 input[type=checkbox]:checked~.fullNav {
