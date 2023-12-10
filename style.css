@@ -1,6 +1,11 @@
+:root{
+    --dark: #000000;
+    --light: #ffffff;
+}
+
 body {
-    background-color: rgb(255, 255, 255);
-    color: rgb(0, 0, 0);
+    background-color: var(--light);
+    color: var(--dark);
     font-family: sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
@@ -20,12 +25,12 @@ br {
 
 a {
     text-decoration: none;
-    color: black;
+    color: var(--dark);
 }
 
 ::selection {
     background: #FDCA6A;
-    color: #000000;
+    color: var(--dark);
 }
 
 h1,
@@ -69,17 +74,17 @@ p {
     justify-content: space-between;
     font-weight: 500;
     list-style-type: none;
-    color: black;
-    background-color: white;
+    color: var(--dark);
+    background-color: var(--light);
     font-size: 22px;
 }
 
 #navbar {
-    background-color: #ffffff; /* Black background color */
-    position: fixed; /* Make it stick/fixed */
-    top: 0; /* Stay on top */
-    width: 100%; /* Full width */
-    transition: top 0.3s; /* Transition effect when sliding down (and up) */
+    background-color: var(--light);
+    position: fixed; 
+    top: 0;
+    width: 100%; 
+    transition: top 0.3s; 
   }
 
 
@@ -89,11 +94,11 @@ p {
 }
 
 .navList p{
-    color: black;
+    color: var(--dark);
 }
 
 .navList a {
-    color: black;
+    color: var(--dark);
     padding-left: 20px;
     padding-right: 20px;
     transition: 0.2s ease;
@@ -135,7 +140,7 @@ input[type=checkbox] {
 .fullNav{
     position: fixed;
     z-index: 1;
-    background-color: white;
+    background-color: var(--light);
     left: 0;
     right: 0;
     top: -100%;
@@ -148,7 +153,7 @@ input[type=checkbox] {
 }
 
 .fullNav .gutters{
-    background-color: white;
+    background-color: var(--light);
     height: 100%;
 }
 
@@ -173,7 +178,7 @@ input[type=checkbox] {
 }
 
 .navProject h2{
-    color: rgb(255, 255, 255);
+    color: var(--light);
     padding-top: 16px !important;
     padding-bottom: 0 !important;
 }
@@ -236,7 +241,7 @@ input[type=checkbox] {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-color: #ffffff;
+    background-color: var(--light);
     mix-blend-mode: difference;
     transition: top 0.3s ease;
     z-index: 22222;
@@ -291,7 +296,7 @@ input[type=checkbox] {
 }
 
 .hook:hover{
-    background-color: #000000;
+    background-color: var(--dark);
     color: #FDCA6A;
     transition: 0.5s ease;
 }
@@ -424,7 +429,7 @@ input[type=checkbox] {
 }
 
 .projectHero .seeSiteBtn {
-    background-color: rgb(0, 0, 0);
+    background-color: var(--dark);
     position: absolute;
     right: 0;
     bottom: 0;
@@ -449,7 +454,7 @@ input[type=checkbox] {
 }
 
 .projectHero .seeSiteBtn a {
-    color: rgb(255, 255, 255);
+    color: var(--light);
     font-size: 22px;
     text-align: center;
 }
@@ -571,7 +576,7 @@ input[type=checkbox] {
     line-height: 6vw;
     margin: auto;
     text-wrap: blance;
-    color: rgb(0, 0, 0);
+    color: var(--dark);
 }
 
 #rotateWords{
@@ -579,7 +584,7 @@ input[type=checkbox] {
 }
 
 .hero a{
-    color: rgb(0, 0, 0);
+    color: var(--dark);
     transition: 0.5s ease;
     letter-spacing: 2px;
 }
@@ -675,7 +680,7 @@ input[type=checkbox] {
     padding: 16px;
     font-size: 32px;
     line-height: 48px;
-    color: rgb(0, 0, 0);
+    color: var(--dark);
     margin: auto;
     max-width: 800px;
     padding-left: 0;
@@ -686,7 +691,7 @@ input[type=checkbox] {
     padding: 16px;
     font-size: 24px;
     line-height: 48px;
-    color: rgb(0, 0, 0);
+    color: var(--dark);
     margin: auto;
     max-width: 800px;
     padding-left: 0;
@@ -737,10 +742,10 @@ input[type=checkbox] {
 }
 
 .articles .chips {
-    background-color: rgba(0, 0, 0, 0.724);
+    background-color: var(--dark);
     position: absolute;
     top: 0;
-    color: rgb(248, 248, 248);
+    color: var(--light);
     padding: 4px;
     padding-left: 24px;
     padding-right: 24px;
@@ -750,7 +755,7 @@ input[type=checkbox] {
 }
 
 .chips a{
-    color: rgb(0, 0, 0);
+    color: var(--dark);
 }
 
 .articles img {
@@ -761,7 +766,7 @@ input[type=checkbox] {
     padding-top: 16px;
     font-size: 18px !important;
     text-transform: uppercase;
-    color: rgb(28, 28, 28);
+    color: var(--dark);
 }
 
 .articles p{
@@ -804,7 +809,7 @@ input[type=checkbox] {
 }
 
 .bio h5 {
-    border: 1px solid white;
+    border: 1px solid var(--light);
     width: fit-content;
     font-size: 22px;
     font-weight: 400;
@@ -829,7 +834,7 @@ input[type=checkbox] {
     margin: auto;
     padding-left: 32px;
     padding-right: 32px;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--light);
     padding-bottom: 132px;
 }
 
@@ -895,7 +900,7 @@ input[type=checkbox] {
     bottom: 0;
     height: 0%;
     width: 100%;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--light);
     animation: slideUP 1s cubic-bezier(.17,.67,.31,1);
 }
 
@@ -953,7 +958,7 @@ input[type=checkbox] {
 
 .capations h2 {
     font-size: 22px;
-    color: rgb(0, 0, 0);
+    color: var(--dark);
     width: 100%;
     font-weight: 400;
 }
@@ -985,8 +990,8 @@ input[type=checkbox] {
 }
 
 .photoCard:hover .arrow {
-    background-color: #f5f5f5;
-    color: rgb(0, 0, 0);
+    background-color: var(--light);
+    color: var(--dark);
     transition: 0.2s ease-out;
 }
 
@@ -1015,7 +1020,7 @@ input[type=checkbox] {
     text-transform: uppercase;
     font-weight: 400;
     padding-top: 24px;
-    color: rgb(0, 0, 0);
+    color: var(--dark);
 }
 
 .photoCard h3 {
@@ -1046,7 +1051,7 @@ input[type=checkbox] {
 }
 
 .serviceBox {
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid var(--dark);
     padding: 12px;
     font-size: 2vw;
     line-height: 2vw;
@@ -1130,7 +1135,7 @@ input[type=checkbox] {
     overflow: hidden;
     user-select: none;
     gap: var(--gap);
-    color: rgb(0, 0, 0);
+    color: var(--dark);
 }
 
 .marquee__content {
@@ -1302,26 +1307,18 @@ input[type=checkbox] {
     padding-top: 112px;
 }
 
-.bullets{
-    position: relative;
-    z-index: 1;
-    width: 12px;
-    height: 12px;
-    border-radius: 100rem;
-    background-color: rgb(182, 182, 182);
-}
-
 .experiance h2 {
     font-size: 22px;
     font-weight: 400;
     padding-bottom: 24px;
     max-width: 60ch;
-    color: rgb(104, 104, 104);
+    color: rgb(0, 0, 0);
 }
 
 .experiance .cols{
-    background-color: rgb(245, 245, 245);
+    background-color: #f5f5f5;
     padding: 32px;
+    border-radius: 16px;
 }
 
 .experiance .group{
@@ -1335,12 +1332,8 @@ input[type=checkbox] {
     align-items: center;
     overflow: hidden;
     padding-bottom: 12px;
-    border-bottom: 1px solid rgb(182, 182, 182);
+    border-bottom: 1px solid rgb(98, 98, 98);
 }
-
-/* .experiance .cols h2, .experiance .cols p{
-    
-} */
 
 .cols h2{
     font-size: 22px;
@@ -1350,7 +1343,7 @@ input[type=checkbox] {
 
 .cols p {
     font-size: 22px;
-    line-height: 28px;
+    line-height: 1.4em;
 }
 
 .experiance .flex{
@@ -1363,10 +1356,10 @@ input[type=checkbox] {
     position: relative;
     z-index: 1;
     font-size: 18px;
-    line-height: 22px;
+    line-height: 1.4em;
     padding-top: 12px;
     padding-bottom: 8px;
-    color: rgb(104, 104, 104);
+    color: rgb(98, 98, 98);
 }
 
 .experiance .flexBox {
@@ -1397,7 +1390,7 @@ input[type=checkbox] {
 
 .forMoment{
     width: 100%;
-    background-color: #f5f5f5;
+    background-color: var(--light);
     max-width: 1200px; 
     border-radius: 16px;
     padding-top: 32px;
@@ -1412,7 +1405,7 @@ input[type=checkbox] {
 
 .projectHeader .cols h1{
     font-size: 48px;
-    line-height: 56px;
+    line-height: 1.4em;
 }
 
 .projectHeader .flexBox{
@@ -1422,7 +1415,7 @@ input[type=checkbox] {
 .forMoment h1{
     padding-top: 32px;
     font-size: 56px;
-    line-height: 64px;
+    line-height: 1.4em;
 }
 
 .forMoment h1:first-child{
@@ -1430,7 +1423,7 @@ input[type=checkbox] {
 }
 
 .forMoment p{
-    line-height: 32px;
+    line-height: 1.4em;
     padding-top: 0;
 }
 
@@ -1482,13 +1475,14 @@ footer {
     height: 200px;
     position: relative;
     height: auto;
-    border-radius: 24px;
+    border-radius: 16px;
     max-width: 1632px;
     margin: auto;
     padding-left: 32px;
     padding-right: 32px;
     box-sizing: border-box;
     padding-top: 0;
+    background-color: #f5f5f5;
 }
 
 
@@ -1505,7 +1499,7 @@ footer h1 {
     position: relative;
     left: -64px;
     height: auto;
-    color: rgb(0, 0, 0);
+    color: var(--dark);
     user-select: none;
 }
 
@@ -1514,14 +1508,14 @@ footer .cta {
     font-weight: 400;
     line-height: 4.25vw;
     text-align: left;
-    padding-bottom: 132px;
+    padding-bottom: 64px;
     user-select: none;
     padding-top: 64px;
 }
 
 footer .cta a,
 footer .cols a {
-    color: rgb(0, 0, 0);
+    color: var(--dark);
     transition: 0.15s ease;
 }
 
@@ -1532,7 +1526,7 @@ footer .cols a:hover, footer .cta a:hover {
 
 footer p,
 footer h2 {
-    color: rgb(0, 0, 0) !important;
+    color: var(--dark);
 }
 
 .shelf{
@@ -1554,7 +1548,7 @@ footer h2 {
 }
 
 .shelf .black{
-    background-color: black;
+    background-color: var(--light);
     cursor: pointer;
 }
 
