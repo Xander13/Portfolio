@@ -61,7 +61,10 @@ p {
     padding-left: 32px;
     padding-right: 32px;
     z-index: 999999;
-    width: 100%;
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
     display: flex;
     justify-content: space-between;
     font-weight: 500;
@@ -538,10 +541,8 @@ input[type=checkbox] {
     font-weight: 400;
     font-size: 5vw;
     line-height: 6vw;
-    text-align: center;
     margin: auto;
     text-wrap: blance;
-    max-width: 20ch;
     color: rgb(0, 0, 0);
 }
 
