@@ -37,6 +37,7 @@ h6,
 a,
 p {
     text-wrap: balance;
+    letter-spacing: -0.8px !important;
 }
 
 .flexBox {
@@ -56,7 +57,6 @@ p {
     left: 0;
     right: 0;
     top: 0;
-    max-width: 1632px;
     margin: auto;
     padding-left: 32px;
     padding-right: 32px;
@@ -69,7 +69,6 @@ p {
     color: black;
     background-color: white;
     font-size: 22px;
-    text-transform: uppercase;
 }
 
 #navbar {
@@ -305,7 +304,7 @@ input[type=checkbox] {
 }
 
 .speck{
-    background-color: #f5f5f5;
+    background-color: rgb(217, 217, 217);
     width: 9vw;
     height: 9vw;
     flex-shrink: 0;
@@ -447,10 +446,6 @@ input[type=checkbox] {
     text-align: center;
 }
 
-.projectHero .cols p {
-    font-size: 18px;
-}
-
 .projectTitles {
     padding-bottom: 32px;
 }
@@ -487,18 +482,6 @@ input[type=checkbox] {
     margin: auto;
 }
 
-.loader {
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    height: 100%;
-    z-index: 1111222;
-    padding: 0;
-    background-color: white;
-}
-
 @keyframes moveUP {
     0% {
         padding-top: 20%;
@@ -509,20 +492,6 @@ input[type=checkbox] {
         padding-top: 15%;
         opacity: 1;
     }
-}
-
-.moveBlock {
-    position: relative;
-    font-size: 4.2vw;
-    line-height: 5vw;
-    font-weight: 400;
-    max-width: 34ch;
-    padding-top: 15%;
-    padding-bottom: 164px;
-    text-align: left;
-    margin: auto;
-    opacity: 1;
-    animation: moveUP 1s cubic-bezier(0.37, 0, 0.63, 1);
 }
 
 .no-scroll {
@@ -536,18 +505,48 @@ input[type=checkbox] {
     padding-bottom: 0px;
 }
 
+
+.projectHero p{
+    padding-top: 32px;
+    font-size: 24px;
+    color: gray;
+    line-height: 36px;
+}
+
+.projectHeader{
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.projectHeader h2{
+    font-size: 32px;
+    padding-top: 32px;
+    font-weight: 500;
+}
+
+.projectHeader p{
+    max-width: 80ch;
+    line-height: 36px;
+}
+
+.projectHeader .cols h1{
+    padding-top: 0;
+}
+
 .hero h1 {
     padding-top: 16%;
     font-weight: 400;
-    font-size: 7vw;
-    line-height: 7vw;
+    font-size: 5vw;
+    line-height: 6vw;
+    text-align: center;
+    margin: auto;
     text-wrap: blance;
     max-width: 20ch;
     color: rgb(0, 0, 0);
 }
 
 #rotateWords{
-    color: #4f4f4f;
+    color: #FDCA6A;
 }
 
 .hero a{
@@ -640,6 +639,8 @@ input[type=checkbox] {
     text-align: center;
     padding-top: 132px;
     padding-bottom: 132px;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .wideTitle h1 {
@@ -653,9 +654,30 @@ input[type=checkbox] {
     padding-bottom: 36px;
 }
 
+.wideTitle h2{
+    padding: 16px;
+    font-size: 24px;
+    line-height: 48px;
+    color: rgb(0, 0, 0);
+    margin: auto;
+    max-width: 800px;
+    padding-left: 0;
+    padding-bottom: 36px;
+    text-align: left;
+    font-weight: 600;
+}
+
+.wideTitle video{
+    margin: auto;
+    width: 100%;
+    height: auto;
+    padding-top: 64px;
+    border-radius: 100rem;
+    overflow: hidden;
+}
+
 .wideTitle p {
     font-size: 22px;
-    line-height: 36px !important;
     max-width: 800px;
     margin: auto;
     text-align: left;
@@ -871,6 +893,10 @@ input[type=checkbox] {
     font-size: 32px;
     font-weight: 400;
     padding-top: 12px;
+}
+
+.projects .row:hover h2{
+    text-decoration: underline;
 }
 
 .box,
@@ -1341,6 +1367,45 @@ input[type=checkbox] {
     gap: 16px
 }
 
+.forMoment{
+    width: 100%;
+    background-color: #f5f5f5;
+    max-width: 1200px; 
+    border-radius: 16px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.projectHeader .cols{
+    height: fit-content;
+}
+
+.projectHeader .cols h1{
+    font-size: 48px;
+    line-height: 56px;
+}
+
+.projectHeader .flexBox{
+    align-content: flex-start;
+}
+
+.forMoment h1{
+    padding-top: 32px;
+    font-size: 56px;
+    line-height: 64px;
+}
+
+.forMoment h1:first-child{
+    padding-top: 0;
+}
+
+.forMoment p{
+    line-height: 32px;
+    padding-top: 0;
+}
+
 .moreProjects a {
     width: auto;
     transition: 0.2s ease;
@@ -1539,11 +1604,9 @@ footer h2 {
         font-size: 48px;
         line-height: 54px;
         font-weight: 400;
-    }
-
-    .projectHero{
-        padding-left: 16px;
-        padding-right: 16px;
+        padding: 0;
+        padding-top: 64px;
+       
     }
 
     .rols .flexBox{
@@ -1574,6 +1637,12 @@ footer h2 {
 
     .moreProjects{
         padding-top: 132px;
+    }
+
+    .projectHeader .flexBox, .wideTitle .flexBox{
+        flex-wrap: wrap;
+        width: 100%;
+        
     }
 
     #thingsIlearned{
