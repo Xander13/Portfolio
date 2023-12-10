@@ -404,7 +404,12 @@ input[type=checkbox] {
 }
 
 .rols {
-    padding-bottom: 64px;
+    padding-bottom: 16px;
+}
+
+.rols .cols h2, .rols .cols p, .rols .half h2, .rols .half p{
+    font-size: 18px !important;
+    padding-bottom: 16px !important;
 }
 
 
@@ -471,18 +476,33 @@ input[type=checkbox] {
     right: 0;
 }
 
+.projectHero{
+    margin: auto;
+}
+
 
 .projectHero h1 {
     font-size: 4.2vw;
     line-height: 4.4vw;
     font-weight: 400;
-    max-width: 34ch;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 222px;
-    padding-bottom: 164px;
-    text-align: center;
+    max-width: 860px;
+    padding-bottom: 20px;
     margin: auto;
+    text-wrap: balance;
+}
+
+.projectHero h2{
+    font-size: 22px !important;
+    line-height: 1.4em;
+} 
+
+.HeroTitle{
+    padding-top: 20%;
+    margin-left: 0 !important;
+}
+
+.half h2{
+    font-weight: 400;
 }
 
 @keyframes moveUP {
@@ -501,19 +521,14 @@ input[type=checkbox] {
     overflow: hidden;
 }
 
-.projectHero h1 {
-    text-align: left;
-    padding-left: 0;
-    margin-left: 0;
-    padding-bottom: 0px;
-}
-
-
 .projectHero p{
     padding-top: 32px;
-    font-size: 24px;
+    font-size: 22px;
+    line-height: 1.4em;
+    max-width: 860px;
     color: gray;
-    line-height: 36px;
+    margin: auto;
+    text-wrap: balance;
 }
 
 .projectHeader{
@@ -525,15 +540,28 @@ input[type=checkbox] {
     font-size: 32px;
     padding-top: 32px;
     font-weight: 500;
+    max-width: 860px;
+    margin: auto;
+    text-wrap: balance;
 }
 
-.projectHeader p{
-    max-width: 80ch;
-    line-height: 36px;
+.projectHeader h4{
+    font-size: 20px;
+    line-height: 1.4em;
+    max-width: 860px;
+    margin: auto;
+    text-wrap: balance;
+    font-weight: 400;
+    padding-top: 132px;
+    text-transform: uppercase;
+    padding-bottom: 32px;
 }
 
 .projectHeader .cols h1{
     padding-top: 0;
+    margin-left: 0 !important;
+    text-align: left !important;
+    width: fit-content !important;
 }
 
 .hero h1 {
@@ -637,7 +665,6 @@ input[type=checkbox] {
 }
 
 .wideTitle {
-    text-align: center;
     padding-top: 132px;
     padding-bottom: 132px;
     padding-left: 32px;
@@ -1607,16 +1634,11 @@ footer h2 {
         font-weight: 400;
         padding: 0;
         padding-top: 64px;
-       
     }
 
     .rols .flexBox{
         width: 100%;
         flex-wrap: wrap;
-    }
-
-    .rols .cols:nth-child(5){
-        height: 120px;
     }
 
     .wideTitle{
