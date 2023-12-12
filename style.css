@@ -822,8 +822,14 @@ input[type=checkbox] {
 .articles h2 {
     padding-top: 16px;
     font-size: 18px !important;
+    line-height: 1.4em;
     text-transform: uppercase;
     color: var(--dark);
+    font-weight: 600;
+}
+
+.articles .cols:hover h2{
+    text-decoration: underline;
 }
 
 .articles p {
@@ -1599,7 +1605,7 @@ footer .cta {
     text-align: left;
     padding-bottom: 64px;
     user-select: none;
-    padding-top: 64px;
+    padding-top: 112px;
     color: var(--light);
 }
 
