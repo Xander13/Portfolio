@@ -1,4 +1,4 @@
-:root{
+:root {
     --dark: #000000;
     --light: #ffffff;
 }
@@ -11,7 +11,7 @@ body {
     scroll-behavior: smooth;
 }
 
-html{
+html {
     scroll-behavior: smooth;
 }
 
@@ -51,17 +51,13 @@ p {
     align-items: start;
 }
 
-.navList a:first-child{
-    padding-left: 0;
-}
-
 .navList {
     position: fixed;
     padding-top: 16px;
     padding-bottom: 16px;
     left: 0;
     right: 0;
-    top: 0;
+    top: 24px;
     margin: auto;
     padding-left: 32px;
     padding-right: 32px;
@@ -75,26 +71,23 @@ p {
     font-weight: 500;
     list-style-type: none;
     color: var(--dark);
-    background-color: var(--light);
-    font-size: 22px;
+    font-size: 18px;
+}
+
+.logo{
+    font-size: 32px !important;
 }
 
 #navbar {
-    background-color: var(--light);
-    position: fixed; 
-    top: 0;
-    width: 100%; 
-    transition: top 0.3s; 
-  }
-
-
-.right{
-    display: flex;
-    width: fit-content;
+    position: fixed;
+    top: 24px;
+    width: 100%;
+    transition: top 0.3s;
 }
 
-.navList p{
+.navList p {
     color: var(--dark);
+    text-align: center !important;
 }
 
 .navList a {
@@ -102,6 +95,24 @@ p {
     padding-left: 20px;
     padding-right: 20px;
     transition: 0.2s ease;
+    background-color: white;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 18px;
+    border-radius: 100rem;
+    text-align: center;
+    transition: 0.5s ease;
+}
+
+#active{
+    background-color: #000000;
+    color: white;
+}
+
+.navList a:hover{
+    background-color: #000000;
+    color: white;
+    transition: 0.5s ease;
 }
 
 input[type=checkbox]:checked~.fullNav {
@@ -109,9 +120,18 @@ input[type=checkbox]:checked~.fullNav {
     transition: 1s cubic-bezier(.5, 1, .22, 1);
 }
 
+.logo{
+    background-color: transparent;
+    font-size: 32px !important;
+    font-weight: bold;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 .hamburger {
     display: block;
-    position: relative;
+    position: absolute;
+    z-index: 999999;
     display: flex;
     height: 27px;
     width: fit-content;
@@ -120,16 +140,16 @@ input[type=checkbox]:checked~.fullNav {
     display: none;
 }
 
-.hamburger h1{
+.hamburger h1 {
     font-size: 22px;
     font-weight: 400;
 }
 
-.hamburger p{
+.hamburger p {
     padding-right: 16px;
 }
 
-.hamburger p:hover{
+.hamburger p:hover {
     color: #FDCA6A;
 }
 
@@ -137,7 +157,7 @@ input[type=checkbox] {
     display: none;
 }
 
-.fullNav{
+.fullNav {
     position: fixed;
     z-index: 1;
     background-color: var(--light);
@@ -152,14 +172,14 @@ input[type=checkbox] {
     z-index: 122;
 }
 
-.fullNav .gutters{
+.fullNav .gutters {
     background-color: var(--light);
     height: 100%;
 }
 
-.fullNav .bottomSpecks{
+.fullNav .bottomSpecks {
     position: absolute;
-    bottom: 6px;
+    bottom: 32px;
     padding-left: 16px;
     padding-right: 16px;
     left: 0;
@@ -168,32 +188,39 @@ input[type=checkbox] {
     justify-content: space-between;
 }
 
-.fullNav p, .fullNav h1{
+.fullNav p,
+.fullNav h1 {
     font-size: 18px;
     font-weight: 400;
 }
 
-.navProject{
+.navProject {
     padding-top: 40%;
 }
 
-.navProject h2{
+.navProject h2 {
     color: var(--light);
     padding-top: 16px !important;
     padding-bottom: 0 !important;
 }
 
-.navProject h3{
+.navProject h3 {
     font-weight: 400;
     color: #4f4f4f;
     font-size: 16px;
 }
 
-.mobileList{
+.mobileList {
     display: none;
 }
 
-.gutters{
+.mobileList #active{
+    border-radius: 100rem;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.gutters {
     position: relative;
     max-width: 1632px;
     margin: auto;
@@ -201,27 +228,28 @@ input[type=checkbox] {
     padding-right: 32px;
 }
 
-.fullNav li{
-    padding-bottom: 32px;
+.fullNav li {
+    padding-bottom: 64px;
 }
 
-.fullNav a{
+.fullNav a {
     color: rgb(0, 0, 0);
-    font-size: 64px;
+    font-size: 16vw;
     line-height: 64px;
     transition: 0.5s ease;
     font-weight: 400;
+    border-bottom: 2px solid rgb(208, 208, 208);
 }
 
-.navStuff{
+.navStuff {
     padding-top: 232px;
 }
 
-.fullNav .half{
+.fullNav .half {
     width: 50%;
 }
 
-.fullNav .box{
+.fullNav .box {
     transform: scale(0.5);
     position: absolute;
     left: 0;
@@ -230,7 +258,7 @@ input[type=checkbox] {
     top: 0;
 }
 
-.fullNav a:hover{
+.fullNav a:hover {
     color: #FDCA6A;
     transition: 0.5s ease;
 }
@@ -272,20 +300,20 @@ input[type=checkbox] {
     position: relative;
 }
 
-.box{
+.box {
     padding-top: 128px;
     padding-bottom: 16px;
     display: flex;
     align-items: center;
 }
 
-.alex{
+.alex {
     width: 22vw;
     position: relative;
     user-select: none;
 }
 
-.hook{
+.hook {
     color: black;
     background-color: #FDCA6A;
     padding: 24px;
@@ -295,13 +323,13 @@ input[type=checkbox] {
     transition: 0.5s ease;
 }
 
-.hook:hover{
+.hook:hover {
     background-color: var(--dark);
     color: #FDCA6A;
     transition: 0.5s ease;
 }
 
-.box .eye{
+.box .eye {
     position: relative;
     width: 24vw;
     height: 24vw;
@@ -311,7 +339,17 @@ input[type=checkbox] {
     flex-shrink: 0;
 }
 
-.speck{
+.box .eyeTwo{
+    position: relative;
+    width: 24vw;
+    height: 24vw;
+    display: block;
+    background-color: #FDCA6A;
+    border-radius: 100rem;
+    flex-shrink: 0;
+}
+
+.speck {
     background-color: rgb(217, 217, 217);
     width: 9vw;
     height: 9vw;
@@ -319,7 +357,19 @@ input[type=checkbox] {
     border-radius: 100rem;
 }
 
-.box .eye:before{
+.box .eye:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 9vw;
+    height: 9vw;
+    background: black;
+    border-radius: 100rem;
+    left: 30%;
+    transform: translate(-50%, -50%);
+}
+
+.box .eyeTwo:before{
     content: '';
     position: absolute;
     top: 50%;
@@ -406,22 +456,22 @@ input[type=checkbox] {
     margin: auto;
     padding-left: 32px;
     padding-right: 32px;
+    padding-bottom: 32px;
 }
 
-.rols {
-    padding-bottom: 16px;
-}
-
-.rols .cols h2, .rols .cols p, .rols .half h2, .rols .half p{
-    font-size: 18px !important;
+.rols .cols h2,
+.rols .cols p,
+.rols .half h2,
+.rols .half p {
+    font-size: 22px !important;
     padding-bottom: 16px !important;
 }
-
 
 .projectHero .cols {
     align-items: flex-start;
     position: relative;
-    height: auto;
+    height: fit-content;
+    padding: 0;
 }
 
 .projectHero .flexBox {
@@ -441,6 +491,12 @@ input[type=checkbox] {
     transition: opacity 0.2s ease;
     cursor: pointer;
     text-align: center;
+    width: fit-content;
+    height: fit-content;
+}
+
+.projectHero .seeLinks{
+    height: 100px;
 }
 
 .projectHero .seeSiteBtn:hover {
@@ -472,7 +528,7 @@ input[type=checkbox] {
     margin-bottom: 32px;
 }
 
-.UFOSearchBar{
+.UFOSearchBar {
     position: absolute;
     top: 48px;
     width: 610px;
@@ -481,7 +537,7 @@ input[type=checkbox] {
     right: 0;
 }
 
-.projectHero{
+.projectHero {
     margin: auto;
 }
 
@@ -496,17 +552,17 @@ input[type=checkbox] {
     text-wrap: balance;
 }
 
-.projectHero h2{
+.projectHero h2 {
     font-size: 22px !important;
     line-height: 1.4em;
-} 
+}
 
-.HeroTitle{
+.HeroTitle {
     padding-top: 20%;
     margin-left: 0 !important;
 }
 
-.half h2{
+.half h2 {
     font-weight: 400;
 }
 
@@ -526,7 +582,7 @@ input[type=checkbox] {
     overflow: hidden;
 }
 
-.projectHero p{
+.projectHero p {
     padding-top: 32px;
     font-size: 22px;
     line-height: 1.4em;
@@ -536,12 +592,12 @@ input[type=checkbox] {
     text-wrap: balance;
 }
 
-.projectHeader{
+.projectHeader {
     padding-left: 0;
     padding-right: 0;
 }
 
-.projectHeader h2{
+.projectHeader h2 {
     font-size: 32px;
     padding-top: 32px;
     font-weight: 500;
@@ -550,7 +606,7 @@ input[type=checkbox] {
     text-wrap: balance;
 }
 
-.projectHeader h4{
+.projectHeader h4 {
     font-size: 20px;
     line-height: 1.4em;
     max-width: 860px;
@@ -562,7 +618,7 @@ input[type=checkbox] {
     padding-bottom: 32px;
 }
 
-.projectHeader .cols h1{
+.projectHeader .cols h1 {
     padding-top: 0;
     margin-left: 0 !important;
     text-align: left !important;
@@ -579,28 +635,28 @@ input[type=checkbox] {
     color: var(--dark);
 }
 
-#rotateWords{
+#rotateWords, #rotateWordsTwo {
     color: #FDCA6A;
 }
 
-.hero a{
+.hero a {
     color: var(--dark);
     transition: 0.5s ease;
     letter-spacing: 2px;
 }
 
-.hero p{
+.hero p {
     padding-top: 32px;
 }
 
-.hero{
+.hero {
     max-width: 1632px;
     margin: auto;
     padding: 32px;
     height: auto;
 }
 
-.hero a:hover{
+.hero a:hover {
     color: #FDCA6A;
     transition: 0.5s ease;
 }
@@ -609,7 +665,7 @@ input[type=checkbox] {
     width: calc(100% / 2 - 16px);
 }
 
-.vigor .half h1{
+.vigor .half h1 {
     color: #5166E5;
     max-width: 30ch;
     font-size: 56px;
@@ -618,19 +674,20 @@ input[type=checkbox] {
     padding-top: 0;
 }
 
-.vigor .half{
+.vigor .half {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     margin-bottom: 132px;
 }
 
-.credits{
+.credits {
     font-size: 16px;
     color: #8d8d8d;
 }
 
-.vigor h2, .vigor h3{
+.vigor h2,
+.vigor h3 {
     color: #8d8d8d;
     font-weight: 400;
     text-align: left;
@@ -638,12 +695,12 @@ input[type=checkbox] {
     max-width: 800px;
 }
 
-.vigor .center{
+.vigor .center {
     text-align: center;
     margin: auto;
 }
 
-.vigor .center h1{
+.vigor .center h1 {
     color: #5166E5;
     max-width: 30ch;
     font-size: 56px;
@@ -653,18 +710,18 @@ input[type=checkbox] {
     max-width: 800px;
 }
 
-.vigor .center p{
+.vigor .center p {
     font-weight: 400;
     text-align: left;
     margin: auto;
     max-width: 800px;
 }
 
-.vigor h3{
+.vigor h3 {
     padding-bottom: 64px;
 }
 
-.vigor .half p{
+.vigor .half p {
     font-size: 24px;
     max-width: 42ch;
 }
@@ -687,7 +744,7 @@ input[type=checkbox] {
     padding-bottom: 36px;
 }
 
-.wideTitle h2{
+.wideTitle h2 {
     padding: 16px;
     font-size: 24px;
     line-height: 48px;
@@ -700,7 +757,7 @@ input[type=checkbox] {
     font-weight: 600;
 }
 
-.wideTitle video{
+.wideTitle video {
     margin: auto;
     width: 100%;
     height: auto;
@@ -754,7 +811,7 @@ input[type=checkbox] {
     z-index: 12;
 }
 
-.chips a{
+.chips a {
     color: var(--dark);
 }
 
@@ -769,13 +826,13 @@ input[type=checkbox] {
     color: var(--dark);
 }
 
-.articles p{
+.articles p {
     color: rgb(100, 100, 100);
     font-size: 18px !important;
     padding-bottom: 16px;
 }
 
-.articles .cols .clipping{
+.articles .cols .clipping {
     margin-bottom: 16px;
 }
 
@@ -835,15 +892,14 @@ input[type=checkbox] {
     padding-left: 32px;
     padding-right: 32px;
     background-color: var(--light);
-    padding-bottom: 132px;
 }
 
-.projects .half{
+.projects .half {
     width: 50%;
 }
 
 .projects h1,
-.articles h1, 
+.articles h1,
 .experiance h1 {
     font-size: 4vw;
     line-height: 4.5vw;
@@ -852,35 +908,38 @@ input[type=checkbox] {
 }
 
 .projects .flexBox {
-    padding-bottom: 132px;
     gap: 1vw;
 }
 
-.projects .row{
+.moreWork, .archiveWork{
+    margin-bottom: 112px;
+}
+
+.projects .row {
     margin-bottom: 132px;
     transition: 0.5s ease;
 }
 
-.projects .row:hover{
+.projects .row:hover {
     cursor: crosshair;
 }
 
-.projects .cols{
+.projects .cols {
     width: calc(100% / 3);
     position: relative;
 }
 
-.projects .cols .clipping{
+.projects .cols .clipping {
     overflow: hidden;
     transform: scale(1);
 }
 
-.projects .cols img{
+.projects .cols img {
     transition: 0.5s ease;
     height: 100%;
 }
 
-.projects .chip{
+.projects .chip {
     border: 1px solid gray;
     border-radius: 100rem;
     padding: 4px;
@@ -892,7 +951,7 @@ input[type=checkbox] {
     margin-top: 22px;
 }
 
-.projects .cover{
+.projects .cover {
     position: absolute;
     left: 0;
     right: 0;
@@ -901,34 +960,31 @@ input[type=checkbox] {
     height: 0%;
     width: 100%;
     background-color: var(--light);
-    animation: slideUP 1s cubic-bezier(.17,.67,.31,1);
+    animation: slideUP 1s cubic-bezier(.17, .67, .31, 1);
 }
 
 @keyframes slideUP {
-    0%{
+    0% {
         height: 100%;
     }
-    100%{
+
+    100% {
         height: 0%;
     }
 }
 
-.projects .row:hover img{
+.projects .row:hover img {
     transform: scale(1.03);
     transition: 0.8s ease;
 }
 
-.projects .flexBox{
-    padding-bottom: 0;
-}
-
-.projects h2{
+.projects h2 {
     font-size: 32px;
     font-weight: 400;
     padding-top: 12px;
 }
 
-.projects .row:hover h2{
+.projects .row:hover h2 {
     text-decoration: underline;
 }
 
@@ -1040,8 +1096,7 @@ input[type=checkbox] {
     transition: color 0.2s ease;
 }
 
-.photoCard:hover h2 
-{
+.photoCard:hover h2 {
     color: #4f4f4f;
     transition: 0.2s ease;
 }
@@ -1118,7 +1173,7 @@ input[type=checkbox] {
     padding-bottom: 32px;
 }
 
-.cols h2{
+.cols h2 {
     font-size: 22px;
     font-weight: 400;
     padding-bottom: 16px;
@@ -1315,13 +1370,13 @@ input[type=checkbox] {
     color: rgb(0, 0, 0);
 }
 
-.experiance .cols{
+.experiance .cols {
     background-color: #f5f5f5;
     padding: 32px;
     border-radius: 16px;
 }
 
-.experiance .group{
+.experiance .group {
     position: relative;
     margin-top: 20px;
     display: flex;
@@ -1335,7 +1390,7 @@ input[type=checkbox] {
     border-bottom: 1px solid rgb(98, 98, 98);
 }
 
-.cols h2{
+.cols h2 {
     font-size: 22px;
     font-weight: 400;
     padding-bottom: 16px;
@@ -1346,13 +1401,13 @@ input[type=checkbox] {
     line-height: 1.4em;
 }
 
-.experiance .flex{
+.experiance .flex {
     display: flex;
     flex-direction: column;
     flex-shrink: 1;
 }
 
-.experiance p{
+.experiance p {
     position: relative;
     z-index: 1;
     font-size: 18px;
@@ -1388,10 +1443,10 @@ input[type=checkbox] {
     gap: 16px
 }
 
-.forMoment{
+.forMoment {
     width: 100%;
     background-color: var(--light);
-    max-width: 1200px; 
+    max-width: 1200px;
     border-radius: 16px;
     padding-top: 32px;
     padding-bottom: 32px;
@@ -1399,30 +1454,30 @@ input[type=checkbox] {
     padding-right: 32px;
 }
 
-.projectHeader .cols{
+.projectHeader .cols {
     height: fit-content;
 }
 
-.projectHeader .cols h1{
+.projectHeader .cols h1 {
     font-size: 48px;
     line-height: 1.4em;
 }
 
-.projectHeader .flexBox{
+.projectHeader .flexBox {
     align-content: flex-start;
 }
 
-.forMoment h1{
+.forMoment h1 {
     padding-top: 32px;
     font-size: 56px;
     line-height: 1.4em;
 }
 
-.forMoment h1:first-child{
+.forMoment h1:first-child {
     padding-top: 0;
 }
 
-.forMoment p{
+.forMoment p {
     line-height: 1.4em;
     padding-top: 0;
 }
@@ -1432,17 +1487,17 @@ input[type=checkbox] {
     transition: 0.2s ease;
 }
 
-.moreProjects .half img{
+.moreProjects .half img {
     transform: scale(1);
     transition: 0.5s ease;
 }
 
-.moreProjects .half img:hover{
+.moreProjects .half img:hover {
     transform: scale(1.04);
     transition: 0.5s ease;
 }
 
-.moreProjects{
+.moreProjects {
     padding-top: 112px;
 }
 
@@ -1472,34 +1527,68 @@ input[type=checkbox] {
 }
 
 footer {
-    height: 200px;
     position: relative;
-    height: auto;
-    border-radius: 16px;
-    max-width: 1632px;
-    margin: auto;
-    padding-left: 32px;
-    padding-right: 32px;
+    height: fit-content;
+    width: 100%;
     box-sizing: border-box;
     padding-top: 0;
-    background-color: #f5f5f5;
+    background-color: #121212;
 }
 
+footer .gutters{
+    height: 100%;
+}
 
 footer .flexBox {
     align-items: end;
 }
 
+footer .bottomContents{
+    position: relative;
+    width: 100%;
+    height: 300px;
+}
+
+.backToTop{
+    position: absolute;
+    right: 32px;
+    bottom: 48px;
+    z-index: 2222;
+    cursor: pointer;
+    padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-radius: 100rem;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.backToTop:hover{
+    background-color: var(--light);
+    color: var(--dark);
+    transition: 0.2s ease;
+}
+
+footer .rotatingWrods{
+    background-color: #000000;
+    height: 100%;
+    width: 30ch;
+    font-size: 32px;
+    line-height: 1.8em;
+    padding: 32px;
+    border-radius: 24px;
+}
+
 footer h1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     text-transform: uppercase;
-    font-size: 14.5vw;
-    text-align: center;
+    font-size: 12vw;
     margin-block-end: 0px;
     line-height: 14.5vw;
-    position: relative;
-    left: -64px;
-    height: auto;
-    color: var(--dark);
+    color: var(--light);
     user-select: none;
 }
 
@@ -1511,108 +1600,166 @@ footer .cta {
     padding-bottom: 64px;
     user-select: none;
     padding-top: 64px;
+    color: var(--light);
+}
+
+footer .cols{
+    background-color: #000000;
+    height: 100%;
+    width: 24ch;
+    font-size: 32px;
+    line-height: 1.8em;
+    padding: 32px;
+    border-radius: 24px;
 }
 
 footer .cta a,
-footer .cols a {
-    color: var(--dark);
+footer .cols a, 
+footer a {
+    color: var(--light);
     transition: 0.15s ease;
 }
 
-footer .cols a:hover, footer .cta a:hover {
+footer .socialLinks{
+    border: 1px solid var(--light);
+    padding-left: 20px;
+    padding-right: 20px;
+    transition: 0.2s ease;
+    background-color: var(--dark);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-size: 18px;
+    border-radius: 100rem;
+}
+
+footer .socialLinks:hover{
+    transition: 0.2s ease;
+    border: 1px solid var(--light);
+    background-color: var(--light);
+    color: var(--dark);
+}
+
+footer .cols a:hover,
+footer .cta a:hover {
     color: #FDCA6A;
     transition: 0.15s ease;
 }
 
 footer p,
 footer h2 {
-    color: var(--dark);
+    color: var(--light);
 }
 
-.shelf{
+.shelf {
     position: absolute;
     left: 16px;
     top: 16px;
 }
 
-.shelf .color{
+.shelf .color {
     border-radius: 100rem;
     height: 30px;
     width: 30px;
     margin-bottom: 12px;
 }
 
-.shelf .yellow{
+.shelf .yellow {
     background-color: #FDCA6A;
     cursor: pointer;
 }
 
-.shelf .black{
+.shelf .black {
     background-color: var(--light);
     cursor: pointer;
 }
 
-.shelf .blue{
+.shelf .blue {
     background-color: #51B6FF;
     cursor: pointer;
 }
 
-.bento img{
+.bento img {
     height: 100%;
 }
 
-@media screen and (max-width: 920px){
-    .navList p{
+@media screen and (max-width: 920px) {
+    .navList p {
         display: none;
     }
 }
 
 @media screen and (max-width: 760px) {
-    #main-container{
+    #main-container {
         overflow-x: hidden;
     }
 
-    .projects .cols{
+    .archiveWork{
+        margin-bottom: 0 !important;
+    }
+
+    .HeroTitle {
+        padding-top: 232px !important;
+        margin-left: 0 !important;
+    }
+
+    .backToTop{
+        position: fixed;
+        bottom: 32px;
+        right: 16px;
+        font-size: 22px;
+        background-color: black;
+    }
+
+    .projects .cols {
         width: calc(100% / 1);
         position: relative;
     }
 
-    .projects .homeCols:nth-child(3){
+    .projects .homeCols:nth-child(3) {
         display: none;
     }
 
-    .gutters, .experiance{
+    .gutters,
+    .experiance {
         padding-left: 16px;
         padding-right: 16px;
     }
 
-    .full{
+    .full {
         padding-top: 132px;
     }
 
-    .hamburger{
+    .hamburger {
         display: block;
         position: fixed;
         right: 16px;
         top: 16px;
     }
 
-    .navList #logo{
-        position:fixed;
+    .navContent{
+        display: none;
+    }
+
+    .navList #logo {
+        display: block;
+        position: fixed;
         left: 16px;
         top: 16px;
     }
 
-    .mobileProject{
+    .mobileProject {
         display: none;
     }
 
-    .right a, .navList p{
+    .right a,
+    .navList p {
         display: none;
     }
-    
-    .mobileList{
+
+    .mobileList {
         display: block;
+        text-align: center;
+        margin: auto;
     }
 
     .navList {
@@ -1622,7 +1769,12 @@ footer h2 {
         height: 64px;
     }
 
-    .projectHero h1{
+    .projectHero{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .projectHero h1 {
         font-size: 48px;
         line-height: 54px;
         font-weight: 400;
@@ -1630,21 +1782,27 @@ footer h2 {
         padding-top: 64px;
     }
 
-    .rols .flexBox{
+    .rols .flexBox {
         width: 100%;
         flex-wrap: wrap;
     }
 
-    .wideTitle{
-        padding-top: 0;
+    .wideTitle {
+        padding: 0 !important;
+    }
+
+    .vigor .center h1{
+        text-align: left;
+        margin-left: 0;
         padding-bottom: 0;
     }
 
-    .fillbg .flexBox{
+    .fillbg .flexBox {
         flex-wrap: wrap;
+        padding-bottom: 0 !important;
     }
 
-    .moreProjects{
+    .moreProjects {
         width: 100%;
         padding: 0;
         margin-left: 0;
@@ -1652,83 +1810,88 @@ footer h2 {
         padding-bottom: 132px;
     }
 
-    .moreProjects{
+    .moreProjects {
         padding-top: 132px;
     }
 
-    .projectHeader .flexBox, .wideTitle .flexBox{
+    .projectHeader .flexBox,
+    .wideTitle .flexBox {
         flex-wrap: wrap;
         width: 100%;
-        
     }
 
-    #thingsIlearned{
+    #thingsIlearned {
         padding-bottom: 132px;
         padding-top: 112px;
     }
 
-    .imgCard{
+    .imgCard {
         padding: 0 !important;
         overflow: hidden;
     }
 
-    .moreProjects .flexBox{
+    .moreProjects .flexBox {
         flex-wrap: wrap;
         width: 100%;
         padding-right: 16px;
     }
 
-    .moreProjects .cols{
+    .moreProjects .cols {
         width: 100%;
     }
 
-    .moreProjects{
+    .moreProjects {
         margin-left: 16px;
         margin-right: 16px;
     }
 
-    .fillbg  .half{
+    .fillbg .half {
         width: 100%;
     }
 
-    .seeSiteBtn{
+    .seeSiteBtn {
         left: 0;
         text-align: center;
     }
 
-    .rols .cols{
+    .rols .cols {
         padding-bottom: 0;
     }
 
-    .fullImgView{
+    .fullImgView {
         padding-left: 16px;
         padding-right: 16px;
     }
 
-    .projects .half{
+    .projects .half {
         width: 100%;
         padding-bottom: 86px;
     }
 
     .projects {
         padding: 16px;
+        padding-bottom: 0 !important;
     }
 
-    .eye{
+    .projects .flexBox{
+        padding-bottom: 0 !important;
+    }
+
+    .eye {
         width: 28vw !important;
         height: 28vw !important;
     }
 
-    .eye::before{
+    .eye::before {
         width: 12vw !important;
         height: 12vw !important;
     }
 
-    .alex{
+    .alex {
         width: 38vw;
     }
 
-    .speck{
+    .speck {
         display: none;
     }
 
@@ -1755,11 +1918,11 @@ footer h2 {
         line-height: 48px;
     }
 
-    .experiance .flexBox{
+    .experiance .flexBox {
         flex-wrap: wrap;
     }
 
-    .experiance .cols{
+    .experiance .cols {
         width: calc(50% - 48px);
     }
 
@@ -1768,12 +1931,7 @@ footer h2 {
         line-height: 14vw;
     }
 
-    footer{
-        margin: 16px;
-        padding: 0;
-    }
-
-    footer .flexBox{
+    footer .flexBox {
         padding-left: 0px;
         padding-right: 0px;
         align-items: start;
@@ -1783,27 +1941,27 @@ footer h2 {
         padding-bottom: 0 !important;
     }
 
-    .moreProjects{
+    .moreProjects {
         padding-top: 0;
         padding-bottom: 0;
     }
 
-    footer .cols{
+    footer .cols {
         width: 130px;
         padding: 0;
     }
 
-    footer h1{
+    footer h1 {
         font-size: 64px !important;
         left: -4px !important;
         width: fit-content;
     }
 
-    .projects{
+    .projects {
         padding-bottom: 156px !important;
     }
 
-    .cta{
+    .cta {
         font-size: 48px !important;
         margin-left: 0 !important;
         line-height: 64px !important;
@@ -1817,11 +1975,12 @@ footer h2 {
         transition: 0.5s ease;
     }
 
-    .projects .homeCols:nth-child(2), .projects .homeCols:nth-child(3){
+    .projects .homeCols:nth-child(2),
+    .projects .homeCols:nth-child(3) {
         display: none;
     }
 
-    .hero{
+    .hero {
         padding: 16px;
         padding-top: 132px;
     }
@@ -1830,13 +1989,15 @@ footer h2 {
         padding: 16px;
     }
 
-    .projects h1, .experiance h1 {
+    .projects h1,
+    .experiance h1 {
         font-size: 42px !important;
         line-height: 56px;
         padding-left: 0px;
     }
 
-    .projects .flexBox, .articles .flexBox {
+    .projects .flexBox,
+    .articles .flexBox {
         flex-wrap: wrap;
         padding-bottom: 0;
         justify-content: start;
@@ -1857,12 +2018,12 @@ footer h2 {
         width: 100%;
     }
 
-    .experiance .cols{
+    .experiance .cols {
         position: relative !important;
         width: 100%;
     }
 
-    .experiance .cols img{
+    .experiance .cols img {
         width: 100%;
         height: auto;
     }
@@ -1872,13 +2033,13 @@ footer h2 {
         padding: 12px;
     }
 
-    .articles h1{
+    .articles h1 {
         font-size: 36px;
         line-height: 42px;
         padding-bottom: 23px;
     }
 
-    .articles .cols{
+    .articles .cols {
         padding-top: 0;
     }
 
@@ -1900,43 +2061,43 @@ footer h2 {
         line-height: 14vw;
     }
 
-    footer .flexBox{
+    footer .flexBox {
         flex-wrap: wrap;
     }
 
-    #abouts{
+    #abouts {
         height: 56px;
     }
 
-    footer .cols{
+    footer .cols {
         width: 100%;
     }
 
-    .gallery{
+    .gallery {
         padding: 16px;
         width: 100%;
     }
 
-    .blocks{
+    .blocks {
         position: relative;
         width: 100%;
         padding: 16px;
         height: auto;
     }
 
-    .blocks img{
+    .blocks img {
         height: auto;
         width: 100%;
         border-radius: 12px;
     }
 
-    .archive{
+    .archive {
         padding: 0;
         height: auto;
         padding-top: 232px;
     }
 
-    .archive h1{
+    .archive h1 {
         position: relative;
         top: 16px;
         width: 200px;
@@ -1950,7 +2111,16 @@ footer h2 {
         padding-bottom: 112px;
     }
 
-    .blocks:nth-child(1), .blocks:nth-child(2), .blocks:nth-child(3), .blocks:nth-child(4), .blocks:nth-child(5), .blocks:nth-child(6), .blocks:nth-child(7), .blocks:nth-child(8), .blocks:nth-child(9), .blocks:nth-child(10){
+    .blocks:nth-child(1),
+    .blocks:nth-child(2),
+    .blocks:nth-child(3),
+    .blocks:nth-child(4),
+    .blocks:nth-child(5),
+    .blocks:nth-child(6),
+    .blocks:nth-child(7),
+    .blocks:nth-child(8),
+    .blocks:nth-child(9),
+    .blocks:nth-child(10) {
         width: 100%;
         top: 0;
         left: 0;
@@ -1989,7 +2159,8 @@ footer h2 {
         bottom: 12px;
     }
 
-    .hero, .loader {
+    .hero,
+    .loader {
         padding: 12px;
         padding-top: 132px;
     }
@@ -2016,7 +2187,7 @@ footer h2 {
         padding-left: 0px;
     }
 
-    .photoCard .arrow{
+    .photoCard .arrow {
         display: none;
     }
 
@@ -2024,7 +2195,8 @@ footer h2 {
         display: block !important;
     }
 
-    .projects .flexBox, footer .flexBox {
+    .projects .flexBox,
+    footer .flexBox {
         flex-wrap: wrap;
         padding-bottom: 0;
         justify-content: start;
@@ -2037,7 +2209,7 @@ footer h2 {
         top: 0 !important;
     }
 
-    .box:last-child{
+    .box:last-child {
         padding-bottom: 56px;
     }
 
@@ -2051,11 +2223,11 @@ footer h2 {
         padding-top: 32px;
     }
 
-    .experiance .cols{
+    .experiance .cols {
         position: relative !important;
     }
 
-    .experiance .cols:nth-child(3){
+    .experiance .cols:nth-child(3) {
         margin-bottom: 64px;
     }
 
@@ -2076,31 +2248,31 @@ footer h2 {
         line-height: 48px;
     }
 
-    footer{
+    footer {
         margin: 12px;
     }
 
-    footer .cols{
+    footer .cols {
         padding-bottom: 32px;
         width: 100%;
     }
 
-    footer h1{
+    footer h1 {
         padding-bottom: 64px;
         font-size: 45.1px !important;
     }
 
-    .contact{
+    .contact {
         margin-left: 0px;
     }
 
-    .cta{
+    .cta {
         font-size: 36px !important;
         line-height: 48px !important;
         padding-bottom: 64px !important;
     }
 
-    #abouts{
+    #abouts {
         height: 64px;
     }
 }

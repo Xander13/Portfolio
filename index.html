@@ -50,30 +50,32 @@
         <div class="gutters">
             <div class="navProject">
                 <div class="mobileList">
-                    <li><a href="index.html">Work</a></li>
+                    <li><a id="active" href="index.html">Work</a></li>
                     <li><a href="index.html#abouts">About</a></li>
                     <li><a href="archive.html">Archive</a></li>
                     <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
                 </div>
             </div>
             <div class="bottomSpecks">
-                <p><span id="clock"></span>in Detroit</p>
+                <p>Located in Detroit Area</p>
                 <h1>2023</h1>
             </div>
         </div>
     </ul>
     <div class="navList" id="navbar">
-        <a id="logo" href="index.html">Alex Kauffman</a>
-        <div class="right">
-            <a href="index.html">Work</a>
+        <div class="navContent">
+            <a id="active" href="index.html">Work</a>
             <a href="index.html#abouts">About</a>
+        </div>
+        <h2 id="logo" href="index.html">KAUFFMAN</h2>
+        <div class="navContent">
             <a href="archive.html">Archive</a>
             <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-            <label for="checkbox_toggle" class="hamburger">
-                <h1>Menu</h1>
-            </label>
         </div>
     </div>
+    <label for="checkbox_toggle" class="hamburger">
+        <h1>Menu</h1>
+    </label>
     <div data-scroll-container>
         <section class="hero" id="works">
             <h1>UX/UI designer crafting contents for <span id="rotateWords"></span></h1>
@@ -116,7 +118,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flexBox" style="align-items: start;">
+                    <div class="flexBox" style="justify-content: space-between;">
                         <h2>Vigor</h2>
                         <div class="flexBox">
                             <div class="chip">UX/UI Design</div>
@@ -402,28 +404,16 @@
             </div>
         </div>
         <footer id="contacts">
-            <h2 class="cta">If you'd like to learn more,
-                <span class="underline">
-                    <a href="mailto:xanderkau13@gmail.com">Let's chat.</a>
-                </span></h2>
-            <div class="flexBox">
-                <div class="cols">
-                    <p>Social <br>  <a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">[ LinkedIn ]</a>
-                    &nbsp; <a href="https://vimeo.com/user91337385">[ Vimeo ]</a></p>
-                   
-                </div>
-                <div class="cols">
-                    <p>Role <br> UX/UI Designer</p>
-                </div>
-                <div class="cols">
-                    <p>Made by <br> Alex Kauffman — 2023</p>
-                </div>
-                <div class="cols">
-
+            <div class="gutters">
+                <h2 class="cta">If you'd like to learn more,
+                    <span class="underline">
+                        <a href="mailto:xanderkau13@gmail.com">Let's chat.</a>
+                    </span></h2>
+                <div class="bottomContents">
+                    <h1>Kauffman</h1>
+                    <h2 class="backToTop" onclick="topFunction()" id="toTop">Back to top</h2>
                 </div>
             </div>
-            <br>
-            <h1>Kauffman</h1>
         </footer>
         <script>
             const cursorRounded = document.querySelector('#arrow');
@@ -455,9 +445,15 @@
             const words = ['Website', 'UI Designs', 'Advertising']; // Add your words here
             let index = 0;
             const rotateWords = $('#rotateWords');
+            const rotateWordsTwo = $('#rotateWordsTwo')
 
             function animateWords() {
                 rotateWords.fadeOut('fast', function () {
+                    $(this).text(words[index]).fadeIn('fast');
+                    index = (index + 1) % words.length;
+                });
+
+                rotateWordsTwo.fadeOut('fast', function () {
                     $(this).text(words[index]).fadeIn('fast');
                     index = (index + 1) % words.length;
                 });

@@ -45,30 +45,32 @@
         <div class="gutters">
             <div class="navProject">
                 <div class="mobileList">
-                    <li><a href="index.html">Work</a></li>
+                    <li><a id="active" href="index.html">Work</a></li>
                     <li><a href="index.html#abouts">About</a></li>
                     <li><a href="archive.html">Archive</a></li>
                     <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
                 </div>
             </div>
             <div class="bottomSpecks">
-                    <p><span id="clock"></span>in Detroit</p>
-                    <h1>2023</h1>
+                <p>Located in Detroit Area</p>
+                <h1>2023</h1>
             </div>
         </div>
     </ul>
     <div class="navList" id="navbar">
-        <a id="logo" href="index.html">Alex Kauffman</a>
-        <div class="right">
-            <a href="index.html">Work</a>
+        <div class="navContent">
+            <a id="active" href="index.html">Work</a>
             <a href="index.html#abouts">About</a>
+        </div>
+        <h2 id="logo" href="index.html">KAUFFMAN</h2>
+        <div class="navContent">
             <a href="archive.html">Archive</a>
             <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-            <label for="checkbox_toggle" class="hamburger">
-                <h1>Menu</h1>
-            </label>
         </div>
     </div>
+    <label for="checkbox_toggle" class="hamburger">
+        <h1>Menu</h1>
+    </label>
     <div data-scroll-container>
         <div class="projectHero">
             <h1 class="HeroTitle">Vigor</h1>
@@ -95,9 +97,11 @@
                             RIT : NMD GUI
                         </p>
                     </div>
-                    <div class="cols">
-                        <h2>Prototype Link</h2>
-                        <p><a href="https://vimeo.com/593428186" target="_blank">See motion <br> prototype on Vimeo</a></p>
+                    <div class="cols seeLinks">
+                        <h2>See motion prototype</h2>
+                        <div class="seeSiteBtn">
+                            <a href="https://vimeo.com/593428186" target="_blank">See Site</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -300,7 +304,7 @@
                 </div>
             </div>
         </div>
-        <div class="projects">
+        <div class="projects moreWork">
             <hr>
             <br>
             <br>
@@ -339,32 +343,18 @@
                     </a>
                 </div>
             </div>
-            <br>
-            <br>
-            <hr>
         </div>
         <footer id="contacts">
-            <h2 class="cta">If you'd like to learn more,
-                <span class="underline">
-                    <a href="mailto:xanderkau13@gmail.com">Let's chat.</a>
-                </span></h2>
-            <div class="flexBox">
-                <div class="cols">
-                    <p>Social <br><a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">[ LinkedIn ]</a>
-                        &nbsp; <a href="https://vimeo.com/user91337385">[ Vimeo ]</a></p>
-                </div>
-                <div class="cols">
-                    <p>Role <br> UX/UI Designer</p>
-                </div>
-                <div class="cols">
-                    <p>Made by <br> Alex Kauffman — 2023</p>
-                </div>
-                <div class="cols">
-
+            <div class="gutters">
+                <h2 class="cta">If you'd like to learn more,
+                    <span class="underline">
+                        <a href="mailto:xanderkau13@gmail.com">Let's chat.</a>
+                    </span></h2>
+                <div class="bottomContents">
+                    <h1>Kauffman</h1>
+                    <h2 class="backToTop" onclick="topFunction()" id="toTop">Back to top</h2>
                 </div>
             </div>
-            <br>
-            <h1>Kauffman</h1>
         </footer>
     </div>
 </body>
