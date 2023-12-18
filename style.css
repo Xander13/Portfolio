@@ -324,6 +324,7 @@ input[type=checkbox] {
     padding-bottom: 2px;
     border-radius: 100rem;
     transition: 0.5s ease;
+    text-decoration: none !important;
 }
 
 .hook:hover {
@@ -431,13 +432,13 @@ input[type=checkbox] {
         'opsz'48;
 }
 
-.underline a {
+.underline {
     text-decoration: underline;
     text-underline-offset: 12px;
     cursor: pointer;
 }
 
-.underline a:hover {
+.underline:hover {
     color: #4f4f4f;
 }
 
@@ -808,6 +809,10 @@ input[type=checkbox] {
     position: relative;
     transition: 0.3s ease;
     top: 0px;
+}
+
+.articles .flexBox{
+    gap: 32px;
 }
 
 .articles .chips {
@@ -1184,7 +1189,7 @@ input[type=checkbox] {
 }
 
 .cols {
-    width: calc(100% / 4 - 16px);
+    width: calc(100% / 4);
     display: inline-block;
 }
 
@@ -1399,6 +1404,7 @@ input[type=checkbox] {
     display: flex;
     flex-direction: column;
     flex-shrink: 1;
+    gap: 32px;
 }
 
 .experiance h1 {
@@ -1422,6 +1428,7 @@ input[type=checkbox] {
 
 .experiance .flexBox {
     align-items: start;
+    gap: 32px;
 }
 
 .gallery .marquee {
@@ -1632,7 +1639,7 @@ footer .cols {
     border-radius: 24px;
 }
 
-footer .cta a,
+footer .cta h2,
 footer .cols a,
 footer a {
     color: var(--dark);
@@ -1659,7 +1666,7 @@ footer .socialLinks:hover {
 }
 
 footer .cols a:hover,
-footer .cta a:hover {
+footer .cta h2:hover {
     color: #FDCA6A;
     transition: 0.15s ease;
 }
@@ -1710,6 +1717,15 @@ footer h2 {
 @media screen and (max-width: 760px) {
     #main-container {
         overflow-x: hidden;
+    }
+
+    footer .bottomContents{
+        height: 200px;
+    }
+    
+    .gallery{
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .archiveWork {
@@ -2079,22 +2095,12 @@ footer h2 {
         font-size: 10vw;
         line-height: 14vw;
     }
-
-    footer .flexBox {
-        flex-wrap: wrap;
-    }
-
     #abouts {
         height: 56px;
     }
 
-    footer .cols {
-        width: 100%;
-    }
-
-    .gallery {
-        padding: 16px;
-        width: 100%;
+    footer .bottomContents{
+        height: 100px;
     }
 
     .blocks {
@@ -2128,23 +2134,6 @@ footer h2 {
         padding: 0;
         margin-left: 16px;
         padding-bottom: 112px;
-    }
-
-    .blocks:nth-child(1),
-    .blocks:nth-child(2),
-    .blocks:nth-child(3),
-    .blocks:nth-child(4),
-    .blocks:nth-child(5),
-    .blocks:nth-child(6),
-    .blocks:nth-child(7),
-    .blocks:nth-child(8),
-    .blocks:nth-child(9),
-    .blocks:nth-child(10) {
-        width: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: auto;
     }
 }
 

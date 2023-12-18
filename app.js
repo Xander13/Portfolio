@@ -10,6 +10,17 @@
 //   prevScrollpos = currentScrollPos;
 // }
 
+//copy text to clipboard
+let text = 'xanderkau13@gmail.com';
+const copyContent = async () => {
+  try {
+    await navigator.clipboard.writeText(text);
+    console.log('Content copied to clipboard');
+  } catch (err) {
+    console.error('Failed to copy: ', err);
+  }
+}
+
 // Get the button:
 var mybutton = $("#toTop");
 
