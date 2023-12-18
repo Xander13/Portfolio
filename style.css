@@ -809,6 +809,7 @@ input[type=checkbox] {
     position: relative;
     transition: 0.3s ease;
     top: 0px;
+    width: calc(100% / 3);
 }
 
 .articles .flexBox{
@@ -1411,6 +1412,33 @@ input[type=checkbox] {
     margin-bottom: 32px;
 }
 
+.skillsets{
+    max-width: 1220px;
+    padding-top: 64px;
+    flex-wrap: wrap;
+    justify-content: left;
+    gap: 0 !important;
+}
+
+.skillsets h1{
+    border: 2px solid black;
+    font-weight: 400;
+    width: fit-content;
+    border-radius: 100rem;
+    padding-left: 32px;
+    padding-right: 32px;
+    text-wrap: nowrap;
+    font-size: 32px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 12px;
+    margin-right: 12px;
+}
+
+.experiance .cols h2:nth-child(1){
+    font-weight: 600;
+}
+
 .experiance a {
     text-decoration: underline;
 }
@@ -1429,6 +1457,13 @@ input[type=checkbox] {
 .experiance .flexBox {
     align-items: start;
     gap: 32px;
+}
+
+.experiance .cols{
+    width: calc(100% / 3);
+    background-color: #f5f5f5;
+    padding: 32px;
+    border-radius: 16px;
 }
 
 .gallery .marquee {
@@ -1708,9 +1743,41 @@ footer h2 {
     height: 100%;
 }
 
+.bookshelf{
+    background-color: #f5f5f5;
+    overflow-x: scroll; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent images from wrapping to the next line */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+}
+
+.bookshelf img{
+    height: 200px;
+    width: auto;
+}
+
+.bookshelf .flexBox{
+    display: flex;
+    flex-direction: row; /* Ensure images are laid out horizontally */
+    gap: 10px; /* Adjust the gap between images as needed */
+}
+
 @media screen and (max-width: 920px) {
     .navList p {
         display: none;
+    }
+
+    .articles{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .articles .flexBox{
+        flex-wrap: wrap;
+    }
+
+    .articles .cols{
+        width: calc(100% / 1);
+        padding-top: 0;
     }
 }
 
@@ -1737,6 +1804,10 @@ footer h2 {
         margin-left: 0 !important;
     }
 
+    .bookshelf .flexBox{
+        flex-wrap: nowrap !important;
+    }
+
     .backToTop {
         position: fixed;
         bottom: 32px;
@@ -1745,13 +1816,29 @@ footer h2 {
         background-color: black;
     }
 
-    .projects .cols {
-        width: calc(100% / 1);
+    .projects .cols, .experiance .cols {
+        width: calc(100% / 1) !important;
         position: relative;
+    }
+
+    .experiance .skillsets{
+        padding-top: 32px;
+    }
+
+    .experiance .skillsets h1{
+        padding-left: 32px;
+        padding-right: 32px;
+        margin-bottom: 12px;
+        margin-right: 12px;
+        font-size: 16px !important;
     }
 
     .projects .homeCols:nth-child(3) {
         display: none;
+    }
+
+    .projects h1{
+        margin-bottom: 32px;
     }
 
     .gutters,
@@ -1900,13 +1987,18 @@ footer h2 {
 
     .projects .half {
         width: 100%;
-        padding-bottom: 86px;
+        padding-bottom: 64px;
+    }
+
+    .projects .half:nth-child(2){
+        padding-bottom: 0;
     }
 
     .projects {
         padding: 16px;
         padding-bottom: 0 !important;
     }
+    
 
     .projects .flexBox {
         padding-bottom: 0 !important;
@@ -1992,14 +2084,15 @@ footer h2 {
         width: fit-content;
     }
 
-    .projects {
-        padding-bottom: 156px !important;
-    }
-
     .cta {
         font-size: 48px !important;
         margin-left: 0 !important;
         line-height: 64px !important;
+    }
+
+    .archives{
+        padding-top: 0;
+        margin-top: 0;
     }
 }
 
@@ -2037,6 +2130,7 @@ footer h2 {
         padding-bottom: 0;
         justify-content: start;
     }
+
 
     .box {
         width: 100%;
