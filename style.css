@@ -9,6 +9,11 @@ body {
     font-family: sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    background-color: #f5f5f5;
+}
+
+.whiteBG {
+    background-color: white;
 }
 
 html {
@@ -74,15 +79,19 @@ p {
     font-size: 18px;
 }
 
-.logo{
+.logo {
     font-size: 32px !important;
 }
 
 #navbar {
     position: fixed;
-    top: 24px;
+    top: 0px;
     width: 100%;
     transition: top 0.3s;
+}
+
+#navbar h2 {
+    font-weight: 600;
 }
 
 .navList p {
@@ -104,12 +113,12 @@ p {
     transition: 0.5s ease;
 }
 
-#active{
+#active {
     background-color: #000000;
     color: white;
 }
 
-.navList a:hover{
+.navList a:hover {
     background-color: #000000;
     color: white;
     transition: 0.5s ease;
@@ -118,14 +127,6 @@ p {
 input[type=checkbox]:checked~.fullNav {
     top: 0;
     transition: 1s cubic-bezier(.5, 1, .22, 1);
-}
-
-.logo{
-    background-color: transparent;
-    font-size: 32px !important;
-    font-weight: bold;
-    letter-spacing: 2px;
-    text-transform: uppercase;
 }
 
 .hamburger {
@@ -214,7 +215,7 @@ input[type=checkbox] {
     display: none;
 }
 
-.mobileList #active{
+.mobileList #active {
     border-radius: 100rem;
     padding-left: 32px;
     padding-right: 32px;
@@ -315,7 +316,9 @@ input[type=checkbox] {
 
 .hook {
     color: black;
-    background-color: #FDCA6A;
+    background-color: var(--dark);
+    color: var(--light);
+    border: 3px solid var(--dark);
     padding: 24px;
     padding-top: 2px;
     padding-bottom: 2px;
@@ -324,8 +327,8 @@ input[type=checkbox] {
 }
 
 .hook:hover {
-    background-color: var(--dark);
-    color: #FDCA6A;
+    background-color: var(--light);
+    color: var(--dark);
     transition: 0.5s ease;
 }
 
@@ -339,7 +342,7 @@ input[type=checkbox] {
     flex-shrink: 0;
 }
 
-.box .eyeTwo{
+.box .eyeTwo {
     position: relative;
     width: 24vw;
     height: 24vw;
@@ -369,7 +372,7 @@ input[type=checkbox] {
     transform: translate(-50%, -50%);
 }
 
-.box .eyeTwo:before{
+.box .eyeTwo:before {
     content: '';
     position: absolute;
     top: 50%;
@@ -495,7 +498,7 @@ input[type=checkbox] {
     height: fit-content;
 }
 
-.projectHero .seeLinks{
+.projectHero .seeLinks {
     height: 100px;
 }
 
@@ -626,7 +629,7 @@ input[type=checkbox] {
 }
 
 .hero h1 {
-    padding-top: 16%;
+    padding-top: 22%;
     font-weight: 400;
     font-size: 5vw;
     line-height: 6vw;
@@ -635,7 +638,15 @@ input[type=checkbox] {
     color: var(--dark);
 }
 
-#rotateWords, #rotateWordsTwo {
+.links {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background-color: green;
+}
+
+#rotateWords,
+#rotateWordsTwo {
     color: #FDCA6A;
 }
 
@@ -789,7 +800,8 @@ input[type=checkbox] {
     margin: auto;
     padding-left: 32px;
     padding-right: 32px;
-    padding-bottom: 232px;
+    padding-bottom: 132px;
+    padding-top: 132px;
 }
 
 .articles .cols {
@@ -828,7 +840,7 @@ input[type=checkbox] {
     font-weight: 600;
 }
 
-.articles .cols:hover h2{
+.articles .cols:hover h2 {
     text-decoration: underline;
 }
 
@@ -917,7 +929,8 @@ input[type=checkbox] {
     gap: 1vw;
 }
 
-.moreWork, .archiveWork{
+.moreWork,
+.archiveWork {
     margin-bottom: 112px;
 }
 
@@ -1365,35 +1378,10 @@ input[type=checkbox] {
     margin: auto;
     padding-left: 32px;
     padding-right: 32px;
-    padding-top: 112px;
 }
 
-.experiance h2 {
-    font-size: 22px;
-    font-weight: 400;
-    padding-bottom: 24px;
-    max-width: 60ch;
-    color: rgb(0, 0, 0);
-}
-
-.experiance .cols {
-    background-color: #f5f5f5;
-    padding: 32px;
-    border-radius: 16px;
-}
-
-.experiance .group {
-    position: relative;
-    margin-top: 20px;
-    display: flex;
-    flex: 0 0 auto;
-    flex-flow: row;
-    gap: 12px;
-    height: min-content;
-    align-items: center;
-    overflow: hidden;
-    padding-bottom: 12px;
-    border-bottom: 1px solid rgb(98, 98, 98);
+.archives {
+    margin-top: 112px;
 }
 
 .cols h2 {
@@ -1413,6 +1401,15 @@ input[type=checkbox] {
     flex-shrink: 1;
 }
 
+.experiance h1 {
+    margin-bottom: 32px;
+}
+
+.experiance a {
+    text-decoration: underline;
+}
+
+
 .experiance p {
     position: relative;
     z-index: 1;
@@ -1425,6 +1422,32 @@ input[type=checkbox] {
 
 .experiance .flexBox {
     align-items: start;
+}
+
+.gallery .marquee {
+    padding-top: 64px;
+    --gap: 112px;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+    color: var(--dark);
+}
+
+.gallery .marquee__content {
+    flex-shrink: 0;
+    height: auto;
+    align-items: center;
+}
+
+.gallery .marquee img {
+    max-width: 400px !important;
+    height: auto !important;
+    filter: saturate(0);
+}
+
+.gallery ul {
+    padding: 0;
 }
 
 .rights h1 {
@@ -1538,10 +1561,9 @@ footer {
     width: 100%;
     box-sizing: border-box;
     padding-top: 0;
-    background-color: #121212;
 }
 
-footer .gutters{
+footer .gutters {
     height: 100%;
 }
 
@@ -1549,13 +1571,13 @@ footer .flexBox {
     align-items: end;
 }
 
-footer .bottomContents{
+footer .bottomContents {
     position: relative;
     width: 100%;
     height: 300px;
 }
 
-.backToTop{
+.backToTop {
     position: absolute;
     right: 32px;
     bottom: 48px;
@@ -1568,22 +1590,14 @@ footer .bottomContents{
     border-radius: 100rem;
     font-weight: 400;
     font-size: 18px;
+    background-color: var(--dark);
+    color: var(--light);
 }
 
-.backToTop:hover{
+.backToTop:hover {
     background-color: var(--light);
     color: var(--dark);
     transition: 0.2s ease;
-}
-
-footer .rotatingWrods{
-    background-color: #000000;
-    height: 100%;
-    width: 30ch;
-    font-size: 32px;
-    line-height: 1.8em;
-    padding: 32px;
-    border-radius: 24px;
 }
 
 footer h1 {
@@ -1594,7 +1608,7 @@ footer h1 {
     font-size: 12vw;
     margin-block-end: 0px;
     line-height: 14.5vw;
-    color: var(--light);
+    color: var(--dark);
     user-select: none;
 }
 
@@ -1605,12 +1619,11 @@ footer .cta {
     text-align: left;
     padding-bottom: 64px;
     user-select: none;
-    padding-top: 112px;
-    color: var(--light);
+    color: var(--dark);
 }
 
-footer .cols{
-    background-color: #000000;
+footer .cols {
+    background-color: var(--dark);
     height: 100%;
     width: 24ch;
     font-size: 32px;
@@ -1620,14 +1633,14 @@ footer .cols{
 }
 
 footer .cta a,
-footer .cols a, 
+footer .cols a,
 footer a {
-    color: var(--light);
+    color: var(--dark);
     transition: 0.15s ease;
 }
 
-footer .socialLinks{
-    border: 1px solid var(--light);
+footer .socialLinks {
+    border: 1px solid var(--dark);
     padding-left: 20px;
     padding-right: 20px;
     transition: 0.2s ease;
@@ -1638,11 +1651,11 @@ footer .socialLinks{
     border-radius: 100rem;
 }
 
-footer .socialLinks:hover{
+footer .socialLinks:hover {
     transition: 0.2s ease;
-    border: 1px solid var(--light);
-    background-color: var(--light);
-    color: var(--dark);
+    border: 1px solid var(--dark);
+    background-color: var(--dark);
+    color: var(--light);
 }
 
 footer .cols a:hover,
@@ -1653,7 +1666,7 @@ footer .cta a:hover {
 
 footer p,
 footer h2 {
-    color: var(--light);
+    color: var(--dark);
 }
 
 .shelf {
@@ -1699,7 +1712,7 @@ footer h2 {
         overflow-x: hidden;
     }
 
-    .archiveWork{
+    .archiveWork {
         margin-bottom: 0 !important;
     }
 
@@ -1708,7 +1721,7 @@ footer h2 {
         margin-left: 0 !important;
     }
 
-    .backToTop{
+    .backToTop {
         position: fixed;
         bottom: 32px;
         right: 16px;
@@ -1742,7 +1755,7 @@ footer h2 {
         top: 16px;
     }
 
-    .navContent{
+    .navContent {
         display: none;
     }
 
@@ -1775,7 +1788,7 @@ footer h2 {
         height: 64px;
     }
 
-    .projectHero{
+    .projectHero {
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -1797,7 +1810,7 @@ footer h2 {
         padding: 0 !important;
     }
 
-    .vigor .center h1{
+    .vigor .center h1 {
         text-align: left;
         margin-left: 0;
         padding-bottom: 0;
@@ -1879,7 +1892,7 @@ footer h2 {
         padding-bottom: 0 !important;
     }
 
-    .projects .flexBox{
+    .projects .flexBox {
         padding-bottom: 0 !important;
     }
 
