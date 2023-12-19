@@ -812,7 +812,7 @@ input[type=checkbox] {
     width: calc(100% / 3);
 }
 
-.articles .flexBox{
+.articles .flexBox {
     gap: 32px;
 }
 
@@ -1412,7 +1412,7 @@ input[type=checkbox] {
     margin-bottom: 32px;
 }
 
-.skillsets{
+.skillsets {
     max-width: 1220px;
     padding-top: 64px;
     flex-wrap: wrap;
@@ -1420,7 +1420,7 @@ input[type=checkbox] {
     gap: 0 !important;
 }
 
-.skillsets h1{
+.skillsets h1 {
     border: 2px solid black;
     font-weight: 400;
     width: fit-content;
@@ -1435,7 +1435,7 @@ input[type=checkbox] {
     margin-right: 12px;
 }
 
-.experiance .cols h2:nth-child(1){
+.experiance .cols h2:nth-child(1) {
     font-weight: 600;
 }
 
@@ -1459,7 +1459,7 @@ input[type=checkbox] {
     gap: 32px;
 }
 
-.experiance .cols{
+.experiance .cols {
     width: calc(100% / 3);
     background-color: #f5f5f5;
     padding: 32px;
@@ -1743,22 +1743,83 @@ footer h2 {
     height: 100%;
 }
 
-.bookshelf{
+.bookshelf {
     background-color: #f5f5f5;
-    overflow-x: scroll; /* Enable horizontal scrolling */
-    white-space: nowrap; /* Prevent images from wrapping to the next line */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling for iOS */
+    overflow-x: scroll;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
 }
 
-.bookshelf img{
+.bookshelf::-webkit-scrollbar {
+    height: 12px;
+}
+
+.bookshelf::-webkit-scrollbar-thumb {
+    height: 2px;
+    background-color: #161616;
+    border-radius: 100rem;
+}
+
+.books{
+    max-width: 1632px;
+    margin: auto;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.books .flexBox{
+    gap: 16px;
+    padding-bottom: 16px;
+}
+
+.books h1{
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-bottom: 16px;
+}
+
+.books img{
+    height: 400px;
+    width: auto;
+    transition: 0.5s ease;
+}
+
+.books img:hover{
+    transition: 0.5s ease;
+    rotate: -4deg;
+}
+
+.books h1{
+    position: absolute;
+    top: 32px;
+    left: 32px;
+}
+
+.books h2{
+    position: absolute;
+    bottom: 32px;
+    left: 32px;
+}
+
+.books .half{
+    background-color: #f5f5f5;
+    width: 50%;
+    height: 50%;
+    padding: 10svw;
+    position: relative;
+}
+
+.bookshelf img {
     height: 200px !important;
     width: auto;
 }
 
-.bookshelf .flexBox{
+.bookshelf .flexBox {
     display: flex;
-    flex-direction: row; /* Ensure images are laid out horizontally */
-    gap: 10px; /* Adjust the gap between images as needed */
+    flex-direction: row;
+    /* Ensure images are laid out horizontally */
+    gap: 10px;
+    /* Adjust the gap between images as needed */
 }
 
 @media screen and (max-width: 920px) {
@@ -1766,16 +1827,40 @@ footer h2 {
         display: none;
     }
 
-    .articles{
+    .books{
+        padding: 16px;
+    }
+
+    .books .flexBox{
+        flex-wrap: wrap;
+    }
+
+    .books h1{
+        line-height: 1.2em;
+    }
+
+    .books .half{
+        width: 100%;
+        padding: 32px;
+        height: fit-content;
+        padding-top: 96px;
+        padding-bottom: 96px;
+    }
+
+    .books img{
+        margin: auto;
+    }
+
+    .articles {
         padding-left: 16px;
         padding-right: 16px;
     }
 
-    .articles .flexBox{
+    .articles .flexBox {
         flex-wrap: wrap;
     }
 
-    .articles .cols{
+    .articles .cols {
         width: calc(100% / 1);
         padding-top: 0;
     }
@@ -1786,11 +1871,11 @@ footer h2 {
         overflow-x: hidden;
     }
 
-    footer .bottomContents{
+    footer .bottomContents {
         height: 200px;
     }
-    
-    .gallery{
+
+    .gallery {
         padding-left: 0;
         padding-right: 0;
     }
@@ -1804,7 +1889,7 @@ footer h2 {
         margin-left: 0 !important;
     }
 
-    .bookshelf .flexBox{
+    .bookshelf .flexBox {
         flex-wrap: nowrap !important;
     }
 
@@ -1816,16 +1901,17 @@ footer h2 {
         background-color: black;
     }
 
-    .projects .cols, .experiance .cols {
+    .projects .cols,
+    .experiance .cols {
         width: calc(100% / 1) !important;
         position: relative;
     }
 
-    .experiance .skillsets{
+    .experiance .skillsets {
         padding-top: 32px;
     }
 
-    .experiance .skillsets h1{
+    .experiance .skillsets h1 {
         padding-left: 32px;
         padding-right: 32px;
         margin-bottom: 12px;
@@ -1837,7 +1923,7 @@ footer h2 {
         display: none;
     }
 
-    .projects h1{
+    .projects h1 {
         margin-bottom: 32px;
     }
 
@@ -1990,7 +2076,7 @@ footer h2 {
         padding-bottom: 64px;
     }
 
-    .projects .half:nth-child(2){
+    .projects .half:nth-child(2) {
         padding-bottom: 0;
     }
 
@@ -1998,7 +2084,7 @@ footer h2 {
         padding: 16px;
         padding-bottom: 0 !important;
     }
-    
+
 
     .projects .flexBox {
         padding-bottom: 0 !important;
@@ -2090,7 +2176,7 @@ footer h2 {
         line-height: 64px !important;
     }
 
-    .archives{
+    .archives {
         padding-top: 0;
         margin-top: 0;
     }
@@ -2189,11 +2275,12 @@ footer h2 {
         font-size: 10vw;
         line-height: 14vw;
     }
+
     #abouts {
         height: 56px;
     }
 
-    footer .bottomContents{
+    footer .bottomContents {
         height: 100px;
     }
 
