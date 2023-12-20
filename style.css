@@ -543,22 +543,153 @@ input[type=checkbox] {
 
 .projectHero {
     margin: auto;
+    padding-top: 264px;
+    padding-bottom: 64px;
 }
 
+.projectHero h2{
+    font-weight: 400;
+}
 
-.projectHero h1 {
+.projectHero .flexBox{
+    align-items: end;
+}
+
+.projectHero h1, .projectSections h1 {
     font-size: 4.2vw;
     line-height: 4.4vw;
     font-weight: 400;
-    max-width: 860px;
-    padding-bottom: 20px;
-    margin: auto;
     text-wrap: balance;
 }
 
-.projectHero h2 {
-    font-size: 22px !important;
+.projectSections h1{
+    text-align: center;
+    padding-top: 232px;
+    padding-bottom: 64px;
+}
+
+.projectSections img{
+    border-radius: 24px;
+}
+
+.projectSections h3{
+    font-weight: 400;
+    text-align: center;
+    text-wrap: balance;
+    max-width: 40ch;
+    font-size: 24px;
     line-height: 1.4em;
+    padding-top: 24px;
+    margin: auto;
+    margin-bottom: 64px;
+}
+
+.marqueeProjects{
+    height: fit-content;
+    padding-top: 56px;
+    background-color: #EEF4FE;
+    border-radius: 24px;
+}
+
+.marqueeProjects .marquee__content{
+    height: 600px;
+    padding: 0;
+}
+
+.projectWriting{
+    max-width: 1632px;
+    margin: auto;
+    padding: 32px;
+    height: auto;
+    padding-top: 124px;
+}
+
+.projectWriting img{
+    border-radius: 24px;
+}
+
+.painpoints{
+    max-width: 1200px;
+    margin: auto;
+    background-color: #211D4F;
+    border-top-right-radius: 24px;
+    border-top-left-radius: 24px;
+    padding: 132px;
+    padding-bottom: 32px;
+    padding-top: 64px;
+    color: white;
+}
+
+.painpoints h1{
+    padding-bottom: 32px;
+}
+
+.painpoints img{
+    margin-bottom: 32px;
+}
+
+.darkbg{
+    background-color: black;
+    color: white;
+    position: relative;
+}
+
+.sideWedge{
+    position: absolute;
+    left: 0;
+    width: 300px;
+    top: -178px;
+}
+
+.lgSpacing{
+    padding-top: 132px;
+}
+
+.forty{
+    width: 40%;
+}
+
+.forty h1{
+    font-size: 4.2vw;
+    line-height: 4.4vw;
+    font-weight: 400;
+    text-wrap: balance;
+}
+
+.sixty{
+    width: 60%;
+}
+
+.sixty p{
+    font-size: 32px;
+    line-height: 1.4em;
+    padding-bottom: 96px;
+    padding-top: 96px;
+}
+
+.imageGrid{
+    max-width: 1400px;
+    box-sizing: border-box;
+    margin: auto;
+}
+
+.imageGrid .flexBox{
+    gap: 32px;
+}
+
+.projectHero h2 {
+    font-size: 32px;
+    line-height: 1.3em;
+}
+
+.projectHero h3 {
+    font-size: 18px;
+    color: #161616;
+    line-height: 1.3em;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 16px;
+    text-transform: uppercase;
 }
 
 .HeroTitle {
