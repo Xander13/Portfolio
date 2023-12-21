@@ -85,7 +85,7 @@ p {
 
 #navbar {
     position: fixed;
-    top: 0px;
+    top: 16px;
     width: 100%;
     transition: top 0.3s;
 }
