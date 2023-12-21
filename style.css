@@ -568,9 +568,9 @@ input[type=checkbox] {
     padding-bottom: 64px;
 }
 
-.projectSections img{
+/* .projectSections img{
     border-radius: 24px;
-}
+} */
 
 .projectSections h3{
     font-weight: 400;
@@ -588,7 +588,6 @@ input[type=checkbox] {
     height: fit-content;
     padding-top: 56px;
     background-color: #EEF4FE;
-    border-radius: 24px;
 }
 
 .marqueeProjects .marquee__content{
@@ -604,9 +603,9 @@ input[type=checkbox] {
     padding-top: 124px;
 }
 
-.projectWriting img{
+/* .projectWriting img{
     border-radius: 24px;
-}
+} */
 
 .painpoints{
     max-width: 1200px;
