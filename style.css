@@ -543,7 +543,7 @@ input[type=checkbox] {
 
 .projectHero {
     margin: auto;
-    padding-top: 264px;
+    padding-top: 64px;
     padding-bottom: 64px;
 }
 
@@ -567,10 +567,6 @@ input[type=checkbox] {
     padding-top: 232px;
     padding-bottom: 64px;
 }
-
-/* .projectSections img{
-    border-radius: 24px;
-} */
 
 .projectSections h3{
     font-weight: 400;
@@ -667,9 +663,10 @@ input[type=checkbox] {
 }
 
 .imageGrid{
-    max-width: 1400px;
-    box-sizing: border-box;
+    max-width: 1632px;
     margin: auto;
+    padding: 32px;
+    height: auto;
 }
 
 .imageGrid .flexBox{
