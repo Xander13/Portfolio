@@ -1750,7 +1750,7 @@ footer .bottomContents {
     position: absolute;
     right: 32px;
     bottom: 48px;
-    z-index: 2222;
+    z-index: 22;
     cursor: pointer;
     padding-right: 20px;
     padding-left: 20px;
@@ -1878,12 +1878,12 @@ footer h2 {
 }
 
 .bookshelf::-webkit-scrollbar {
-    height: 12px;
+    height: 4px;
 }
 
 .bookshelf::-webkit-scrollbar-thumb {
     height: 2px;
-    background-color: #161616;
+    background-color: #00000075;
     border-radius: 100rem;
 }
 
@@ -1953,6 +1953,47 @@ footer h2 {
     .navList p {
         display: none;
     }
+
+    .projectSections .flexBox, .projectWriting .flexBox, .painpoints .flexBox{
+        flex-wrap: wrap;
+    }
+
+    .projectSections .half, .forty, .sixty{
+        width: 100%;
+    }
+
+    .projectWriting{
+        padding-top: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .imageGrid{
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 0;
+    }
+
+    .painpoints{
+        padding: 64px;
+    }
+
+    #painpointsImg{
+        border-top-right-radius: 0  !important;
+        border-top-left-radius: 0 !important;
+    }
+
+    .projectHero{
+        padding-top: 0;
+        height: auto;
+    }
+
+    .projectWriting h1{
+        font-size: 32px;
+        line-height: 36px;
+        padding-bottom: 32px;
+    }
+
 
     .books{
         padding: 16px;
