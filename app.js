@@ -3,7 +3,7 @@ var prevScrollpos = window.pageYOffset;
 window.onscroll = function () {
   var currentScrollPos = window.pageYOffset;
   if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navbar").style.top = "16px";
+    document.getElementById("navbar").style.top = "24px";
   } else {
     document.getElementById("navbar").style.top = "-96px";
   }
