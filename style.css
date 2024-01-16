@@ -133,6 +133,10 @@ p {
     transition: 0.5s ease;
 }
 
+.navList #logo{
+    margin-block-start: 0;
+}
+
 #active {
     background-color: #FDCA6A;
     color: var(--dark)
