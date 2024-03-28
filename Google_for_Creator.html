@@ -38,6 +38,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
+
 <body>
     <script src="app.js"></script>
     <input type="checkbox" id="checkbox_toggle">
@@ -57,30 +58,30 @@
             </div>
         </div>
     </ul>
-    <div class="navList" id="navbar">
-        <div class="navContent">
-            <a id="active" href="index.html">Work</a>
-            <a href="index.html#abouts">About</a>
-            <a href="archive.html">Archive</a>
+    <div class="navList">
+        <div class="flexBox" style="align-items: center;">
+            <a href="index.html">Work</a>
+            <a href="about.html">About</a>
         </div>
-        <h2 id="logo" href="index.html">ALEX KAUFFMAN</h2>
-        <div class="navContent">
-            <a target="_blank" href="https://www.linkedin.com/in/alex-kauffman/">LinkedIn</a>
-            <a target="_blank" href="https://vimeo.com/user91337385">Vimeo</a>
+        <h2>UX/UI Designer</h2>
+        <div class="flexBox" style="align-items: center;">
             <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            <div id="toggle-button" class="toggle">
+                <div class="dot"></div>
+            </div>
         </div>
     </div>
     <label for="checkbox_toggle" class="hamburger">
         <h1>Menu</h1>
     </label>
-    <div class="whiteBG" data-scroll-container>
+    <div style="padding: 32px;">
         <div class="projectHero">
             <h1 class="HeroTitle">Google for Creator</h1>
             <br>
             <br>
             <br>
             <div class="rols">
-                <div class="flexBox">
+                <div class="flexBox" style="align-items: start;">
                     <div class="cols">
                         <h2>Brief</h2>
                         <p>As an intern at Instrument, I was part of a Google project that wanted to promote their own
@@ -127,14 +128,13 @@
             </div>
         </div>
         <div class="fullImgView">
-            <div class="imgCard" style="padding: 0; border: 2px solid #AECBFA;">
+            <div class="imgCard" style="padding: 0;">
                 <img src="GoogleforCreators_Hero.png" draggable="false" width="100%" alt="img">
             </div>
         </div>
         <div class="projectHero">
             <div class="fillbg">
                 <div class="wideTitle">
-                    <br>
                     <h1>Create a web space to showcase how creators can create amazing things with Google products</h1>
                     <p>Google for Creators aim to create a learning space to showcase their products as guide tips on
                         how
@@ -150,51 +150,46 @@
                     </p>
                 </div>
             </div>
-            <div class="fillbg" style="width: 100%; height: auto; background-color: white;">
+            <div class="fillbg" style="width: 100%; height: auto;">
                 <br>
                 <br>
                 <br>
                 <br>
                 <div class="flexBox">
                     <div class="half">
-                        <div class="imgCard" style="padding: 0; border: 2px solid #AECBFA;">
+                        <div class="imgCard" style="padding: 0;">
                             <img src="GoogleforCreators_Image1.png" draggable="false" width="100%" alt="img">
                         </div>
                     </div>
                     <div class="half">
-                        <div class="imgCard"
-                            style="background-color: #ffffff; padding: 0px; border: 2px solid #AECBFA; position: sticky; top: 32px;">
+                        <div class="imgCard">
                             <img src="GoogleforCreators_Image2.svg" draggable="false" width="100%" alt="img">
-                            <video class="UFOSearchBar" autoplay controls loop playsinline width="100%;">
-                                <source src="Are_There_UFO_Google.mp4" type="video/mp4">
-                            </video>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="projectHero">
-            <div class="imgCard" style="padding: 0; border: 2px solid #AECBFA;">
+            <div class="imgCard" style="padding: 0;">
                 <img src="GoogleforCreators_Image4.png" draggable="false" width="100%" alt="img">
             </div>
-            <div class="imgCard" style="padding: 0; border: 2px solid #AECBFA;">
+            <div class="imgCard" style="padding: 0;">
                 <img src="GoogleforCreators_Image5.svg" draggable="false" width="100%" alt="img">
             </div>
-            <div class="imgCard" style="padding: 0; border: 2px solid #AECBFA;">
+            <div class="imgCard" style="padding: 0;">
                 <img src="GoogleforCreators_Image6.png" draggable="false" width="100%" alt="img">
             </div>
         </div>
         <div class="projectHero">
-            <div class="fillbg" style="width: 100%; height: auto; background-color: rgb(255, 255, 255); z-index: 12;">
+            <div class="fillbg" style="width: 100%; height: auto; z-index: 12;">
                 <div class="flexBox">
                     <div class="half">
-                        <div class="imgCard"
-                            style="padding: 0; border: 2px solid #AECBFA; position: sticky; top: 32px;">
+                        <div class="imgCard" style="padding: 0; position: sticky; top: 32px;">
                             <img src="GoogleforCreators_Image7.png" width="100%" alt="img">
                         </div>
                     </div>
                     <div class="half">
-                        <div class="imgCard" style="padding: 0; border: 2px solid #AECBFA;">
+                        <div class="imgCard" style="padding: 0;">
                             <img src="GoogleforCreators_Image8.png" width="100%" draggable="false" alt="img">
                         </div>
                     </div>
@@ -216,59 +211,53 @@
                 <br>
             </div>
         </div>
-        <div class="projects moreWork">
-            <hr>
-            <br>
-            <br>
-            <h1>More work</h1>
+        <div class="projects">
+            <h1 style="font-size: 4.2vw; line-height: 4.4vw;  margin-bottom: 64px;">More works</h1>
             <div class="flexBox">
-                <div class="half">
-                    <a href="Color_Health.html">
-                        <div class="photoCard">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_Color.png" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h2>Color - Health</h2>
-                            <h3>Web & Brand Design, Client</h3>
+                <div class="half" style="padding: 32px; padding-left: 16px;">
+                    <a href="vigor.html">
+                        <div class="clipping">
+                            <div class="cover"></div>
+                            <img draggable="false" src="vigorwide.png" width="100%" alt="img">
                         </div>
+                        <h1 style="padding-left: 0; padding-top: 32px;">Vigor Fitness</h1>
+                        <h2>UX/UI Design, Research, App</h2>
                     </a>
                 </div>
-                <div class="half">
+                <div class="half" style="padding: 32px; padding-left: 16px;">
                     <a href="vigor.html">
-                        <div class="photoCard">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_Vigor.png" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h2>Vigor</h2>
-                            <h3>UX/UI, Concept</h3>
+                        <div class="clipping">
+                            <div class="cover"></div>
+                            <img draggable="false" src="vigorwide.png" width="100%" alt="img">
                         </div>
+                        <h1 style="padding-left: 0; padding-top: 32px;">Vigor Fitness</h1>
+                        <h2>UX/UI Design, Research, App</h2>
                     </a>
                 </div>
             </div>
         </div>
         <footer id="contacts">
             <div class="gutters">
-                <h2 class="cta">If you'd like to learn more,
-                    <span class="underline">
-                        <a href="mailto:xanderkau13@gmail.com">Let's chat.</a>
-                    </span></h2>
                 <div class="bottomContents">
-                    <h1>Kauffman</h1>
-                    <h2 class="backToTop" onclick="topFunction()" id="toTop">Back to top</h2>
+                    <div class="flexBox" style="align-items: end;">
+                        <div class="cta">
+                            <h2 onclick="copyContent()">If you'd like to learn more, Lets Talk!</h2>
+                            <span class="underline" id="change-text">Click to copy email to clipboard</span>
+                        </div>
+                        <h2 class="backToTop" onclick="topFunction()" id="toTop">
+                            <span class="material-symbols-outlined">straight</span>
+                        </h2>
+                    </div>
                 </div>
+                <div class="flexBox footerbottom">
+                    <h2>&copy; 2024 Alex Kauffman</h2>
+                    <h2>Designed + Coded &nbsp; &mdash; &nbsp; Alex</h2>
+                </div>
+                <h1 id="varType">Kauffman</h1>
             </div>
         </footer>
     </div>
+    <script src="app.js"></script>
 </body>
 
 </html>

@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Alex K - Archive</title>
     <meta name="description"
-        content="Alex Kauffman, UX/UI Designer with foucs on creating website, ads, and more. Based in Detroit Michigan.">
+        content="Alex Kauffman, UX/UI Designer with foucs on creating display ads, website, storyboards, and more. Based in Detroit Michigan.">
     <meta name="theme-color" content="#ffffff" />
     <meta name="robots" content="index,follow"><!-- All Search Engines -->
     <meta name="googlebot" content="index,follow"><!-- Google Specific -->
@@ -37,22 +37,195 @@
     <meta name="twitter:description"
         content="Alex Kauffman. A UX/UI designer that is crafting UI contents for websites, apps, experiance and more.">
     <link rel="stylesheet" href="cssReset.css">
-    <link rel="stylesheet" href="loco.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
-<body>
-    <script src="app.js"></script>
+<body class="lightMode">
+    <style>
+        body {
+            scroll-behavior: smooth;
+        }
+
+        .archiveGallery {
+            /* padding-left: 54px;
+            padding-right: 54px; */
+            /* padding-top: 16px; */
+            padding: 64px;
+            padding-top: 0;
+        }
+
+        .archiveGallery h1 {
+            font-size: 4.4vw;
+            line-height: 4.8vw;
+            /* margin-bottom: 32px; */
+            font-weight: 500 !important;
+            padding-top: 32px;
+            /* padding-left: 54px; */
+        }
+
+        .cover {
+            overflow: hidden;
+        }
+
+        .archiveGallery h2 {
+            padding-top: 16px;
+        }
+
+        .cols {
+            width: 100%;
+        }
+
+        .imgBG .cover {
+            overflow: hidden;
+            /* border-radius: 16px; */
+        }
+
+        .imgBG {
+            padding-bottom: 32px;
+        }
+
+        .cols h2 {
+            font-size: 32px;
+            padding-top: 16px;
+            padding-bottom: 0;
+        }
+
+        .cols h3 {
+            color: gray;
+            margin-bottom: 64px;
+        }
+
+        .experiance {
+            padding-top: 264px;
+        }
+
+
+        .newcta .marquee {
+            height: fit-content;
+            align-items: center;
+            margin-bottom: 32px;
+        }
+
+        .newcta .marquee li {
+            color: var(--dark);
+            font-size: 32px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .newcta {
+            border-bottom: 1px solid var(--dark);
+            margin: 0;
+            margin: auto;
+            height: fit-content;
+            padding-top: 132px;
+        }
+
+        .newcta h2 {
+            font-size: 8vw;
+            text-align: center;
+            line-height: 8vw;
+            width: fit-content;
+            cursor: pointer;
+            margin-bottom: 64px;
+            margin-top: 0;
+        }
+
+        .newcta h3 {
+            font-size: 32px;
+            width: fit-content;
+            margin: auto;
+            padding-bottom: 232px;
+        }
+
+        .newcta .flexBox {
+            margin-bottom: 0;
+        }
+
+        .progress-container {
+            width: 8px;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 999999999;
+        }
+
+        .progress-bar {
+            width: 8px;
+            background: var(--dark);
+            height: 0%;
+        }
+
+        .archiveGallery a {
+            padding: 8px;
+            padding-left: 16px;
+            padding-right: 16px;
+            border-radius: 100rem;
+            background-color: var(--dark);
+            color: var(--light);
+            font-weight: 500;
+            text-transform: uppercase;
+            transition: color 0.5s ease, background-color 0.5s ease;
+        }
+
+        .archiveGallery a:hover {
+            background-color: var(--light);
+            color: var(--dark);
+            transition: color 0.5s ease, background-color 0.5s ease;
+        }
+
+        .bottomNav {
+            background-color: var(--light);
+            position: fixed;
+            bottom: 0px;
+            left: 0;
+            right: 0;
+            padding: 16px;
+            padding-left: 64px;
+            padding-right: 64px;
+            z-index: 99;
+        }
+
+        .bottomNav .flexBox {
+            align-items: center;
+        }
+
+        .bottomNav a {
+            transition: 0.5s ease;
+            padding: 8px;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .bottomNav .active {
+            background-color: var(--dark);
+            color: var(--light);
+            border-radius: 100rem;
+        }
+
+        .bottomNav a:hover {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 8px;
+            padding-left: 16px;
+            padding-right: 16px;
+            border-radius: 100rem;
+            transition: 0.5s ease;
+        }
+    </style>
     <input type="checkbox" id="checkbox_toggle">
     <ul class="fullNav">
         <div class="gutters">
             <div class="navProject">
                 <div class="mobileList">
                     <li><a href="index.html">Work</a></li>
-                    <li><a href="index.html#abouts">About</a></li>
                     <li><a id="active" href="archive.html">Archive</a></li>
                     <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
                 </div>
@@ -63,194 +236,375 @@
             </div>
         </div>
     </ul>
-    <div class="navList" id="navbar">
-        <div class="navContent">
-            <a href="index.html">Work</a>
-            <a href="index.html#abouts">About</a>
-            <a id="active" href="archive.html">Archive</a>
+    <div class="navList">
+        <div class="half">
+            <h2>UX/UI Designer</h2>
         </div>
-        <h2 id="logo" href="index.html">ALEX KAUFFMAN</h2>
-        <div class="navContent">
-            <a target="_blank" href="https://www.linkedin.com/in/alex-kauffman/">LinkedIn</a>
-            <a target="_blank" href="https://vimeo.com/user91337385">Vimeo</a>
-            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+        <div class="half" style=" display: flex; justify-content: space-between;">
+            <div class="flexBox">
+                <a href="experment.html">Work</a>
+                <a id="active" href="archive.html">Archive</a>
+                <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            </div>
+            <div id="toggle-button" class="toggle">
+                <div class="dot"></div>
+            </div>
         </div>
+    </div>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
     </div>
     <label for="checkbox_toggle" class="hamburger">
         <h1>Menu</h1>
     </label>
-    <div class="whiteBG" data-scroll-container>
-        <section class="projects" style="padding-top: 230px;">
-            <h1>Archives</h1>
-            <div class="flexBox archiveWork">
-                <div class="half">
-                    <div class="photoCard">
-                        <a href="https://vimeo.com/628782320" target="_blank">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_Braille.svg" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h2>Google Braille</h2>
-                            <h3>Google Lab - Design Exercise</h3>
-                        </a>
-                    </div>
+    <h1
+        style="margin-top: 426px; padding-left: 52px; font-size: 12vw; text-transform: uppercase; line-height: 11vw; font-weight: 600;">
+        Archives <span style="font-size: 4.4vw; color: gray; font-weight: 500;">( 6 )</span></h1>
+    <div class="archiveGallery">
+        <br>
+        <br>
+        <div class="imgBG" style="background-color: #EBEBEB;">
+            <h1 style="padding-left: 64px; padding-top: 132px;">Hook Menu</h1>
+            <img style="padding: 64px;" src="HookMenuUpdate.gif" width="100%">
+            <h1 style="text-align: center; padding-bottom: 64px; padding-top: 132px; margin: auto;">Hook menu resigned
+                in ways to improve users traffic in the menu sections.</h1>
+            <div class="flexBox" style="align-items: center;">
+                <div class="half" style="padding: 64px; padding-top: 64px;">
+                    <h2>The old Hook website had no universal navigation. Users had to click the hamburger nav to reveal
+                        only 4 menu items which caused reduction of web traffic.</h2>
+                    <br>
+                    <h2>With new improved nav with universal access, users can go to the hamburger menu to see more
+                        things about Hook without needing to go back to landing pages.</h2>
+                    <br>
+                    <br>
+                    <a href="https://byhook.com/" target="_blank">See Site</a>
                 </div>
-                <div class="half">
-                    <a href="https://vimeo.com/454212622" target="blank">
-                        <div class="photoCard">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_Pawn.png" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h2>Pawn</h2>
-                            <h3>Title Sequence</h3>
-                        </div>
-                    </a>
-                </div>
-                <div class="half">
-                    <a href="https://vimeo.com/629277985" target="_blank">
-                        <div class="photoCard">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_Starbucks.svg" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h2>Starbucks Illustration</h2>
-                            <h3>Illustrations</h3>
-                        </div>
-                    </a>
+                <div class="half" style="padding: 64px; padding-top: 64px;">
+                    <img src="OLDHOOKMENU.gif" width="100%">
                 </div>
             </div>
-            <div class="flexBox archiveWork">
-                <div class="half">
-                    <a target="_blank" href="https://vimeo.com/391396341">
-                        <div class="photoCard">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_TwinID.png" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h2>Digital ID</h2>
-                            <h3>UX/UI Design, Prototype</h3>
-                        </div>
-                    </a>
+            <img style="padding: 64px;" src="HookMenuReads.gif" width="100%">
+            <h1 style="text-align: center; padding-bottom: 64px; padding-top: 32px;">As working on the new menu design,
+                I also had an opportunity to work on their articles page ( Arts & Craft ).</h1>
+            <div class="flexBox" style="align-items: center;">
+                <div class="half" style="padding: 64px; padding-top: 64px;  padding-right: 32px;">
+                    <img src="HookFilters.png" width="100%">
                 </div>
-                <div class="half">
-                    <div class="photoCard">
-                        <a href="https://byhook.com/" target="_blank">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="HookMenuUpdate.gif" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h2>Hook Menu Redesign</h2>
-                            <h3>UX/UI Design</h3>
-                        </a>
-                    </div>
+                <div class="half" style="padding: 64px; padding-top: 64px;  padding-left: 32px;">
+                    <h2>We included filters to help people find the right articles they wishes to read. With exploration
+                        and figuring out our needs we went with chips approach instead of doing search bar</h2>
+                    <h2>I also proposed to add more visuals weight to the content to make articles more enjoying to
+                        gloss through. The previous generations, the news page was more writing focus which seeing 20
+                        articles with large text all way down the page will get readers fatigue before they even get to
+                        deep read.</h2>
                 </div>
             </div>
-            <div class="flexBox archiveWork">
-                <div class="half">
-                    <div class="photoCard">
-                        <div class="clipping">
-                            <img src="Bento_Instrument.png" alt="img" width="100%" draggable="false">
-                        </div>
-                        <h2>Instrument Intern Page</h2>
-                        <h3>UX/UI Design</h3>
-                    </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="imgBG" style="background-color: #F2F0EB;">
+            <h1 style="padding-left: 64px; padding-top: 132px; padding-bottom: 64px;">Starbucks Illustrations</h1>
+            <img src="ottobanner.svg" width="100%">
+            <img src="Bento_Starbucks.svg" width="100%">
+            <div class="flexBox">
+                <div class="half"
+                    style="padding: 64px; padding-right: 32px; padding-top: 132px; padding-bottom: 132px;">
+                    <p style="text-align: center; line-height: 24px; padding-bottom: 16px;">Existing Designs</p>
+                    <img src="starbucksold.png" width="100%" style="border: 1px solid rgb(213, 213, 213);">
+                    <p style="text-align: center; line-height: 24px; padding-top: 16px;">Existing Starbucks landing page
+                        has no hero section which leads a boring product page.</p>
                 </div>
-                <div class="half">
-                    <div class="photoCard">
-                        <div class="clipping">
-                            <img src="Bento_Otto.png" alt="img" width="100%" draggable="false">
-                        </div>
-                        <h3>Illustration</h3>
-                        <h2>Otto</h2>
-                    </div>
-                </div>
-                <div class="half">
-                    <a href="https://vimeo.com/414909153" target="blank">
-                        <div class="photoCard">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_Germiest.png" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h3>UX/UI Design, Prototype</h3>
-                            <h2>Germiest</h2>
-                        </div>
-                    </a>
+                <div class="half"
+                    style="padding: 64px; padding-left: 32px; padding-top: 132px; padding-bottom: 132px; background-color: #F2F0EB;">
+                    <p style="text-align: center; line-height: 24px; padding-bottom: 16px;">Proposed Designs</p>
+                    <img src="sbFullNew.png" width="100%" style="border: 1px solid rgb(213, 213, 213);">
+                    <p style="text-align: center; line-height: 24px; padding-top: 16px;">Embracing hero section to
+                        Starbucks page help land users to a more enjoying experience.</p>
                 </div>
             </div>
-            <div class="flexBox archiveWork">
-                <div class="half">
-                    <a target="_blank" href="https://vimeo.com/361906980">
-                        <div class="photoCard">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_Sxsw.gif" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h3>Motion Design</h3>
-                            <h2>SXSW Motion Bumper</h2>
-                        </div>
-                    </a>
+            <h1 style="text-align: center; padding-bottom: 132px;">As working on the new hero design, I also had an
+                worked on to work on spot illustration to show case the visuals can work many ares of site.</h1>
+            <div class="flexBox">
+                <div class="cols">
+                    <img src="sb1.svg" width="100%">
                 </div>
-                <div class="half">
-                    <div class="photoCard">
-                        <a href="https://vimeo.com/363054311" target="_blank">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_Darkhood.gif" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h3>Motion Design</h3>
-                            <h2>Darkhood</h2>
-                        </a>
-                    </div>
+                <div class="cols">
+                    <img src="sb2.svg" width="100%">
+                </div>
+                <div class="cols">
+                    <img src="sb3.svg" width="100%">
                 </div>
             </div>
-        </section>
-        <footer id="contacts">
-            <div class="gutters">
-                <h2 class="cta">If you'd like to learn more,
-                    <span class="underline">
-                        <a href="mailto:xanderkau13@gmail.com">Let's chat.</a>
-                    </span></h2>
-                <div class="bottomContents">
-                    <h1>Kauffman</h1>
-                    <h2 class="backToTop" onclick="topFunction()" id="toTop">Back to top</h2>
+            <img src="sbSketch.svg" width="100%">
+            <div class="flexBox">
+                <div class="half"
+                    style="padding: 64px; padding-right: 32px; padding-top: 132px; padding-bottom: 132px;">
+                    <p style="text-align: center; line-height: 24px; padding-bottom: 16px;">Existing Designs</p>
+                    <img src="SBGettingStartedOld.png" width="100%" style="border: 1px solid rgb(213, 213, 213);">
+                    <p style="text-align: center; line-height: 24px; padding-top: 16px;">This part of getting users
+                        attention to get them to use the reward point is crucial to Starbucks profiting. I scrolled
+                        right passed the 1,2,3 step because it was so boarding to even try to catch my attention.</p>
+                </div>
+                <div class="half"
+                    style="padding: 64px; padding-top: 132px; padding-left: 32px; padding-bottom: 132px; background-color: #F2F0EB;">
+                    <p style="text-align: center; line-height: 24px; padding-bottom: 16px;">Proposed Designs</p>
+                    <img src="sbottoPay.png" width="100%" style="border: 1px solid rgb(213, 213, 213);">
+                    <p style="text-align: center; line-height: 24px; padding-top: 16px;">Starbucks uses Illustrations in
+                        paper products, cards and all over their interior stores. They are missing opportunities to
+                        connect artist and designers to create illustrations for their webpages to make it feel less
+                        corporate bland site and more focus servicing the goods to the users.</p>
                 </div>
             </div>
-        </footer>
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <img src="SBFullPG.png" width="100%" style="padding: 64px;">
+            <div class="flexBox" style="align-items: center;">
+                <div class="half"
+                    style="padding: 64px; padding-right: 32px; padding-top: 132px; padding-bottom: 132px;">
+                    <img src="SbFooter.gif" width="100%" style="border: 1px solid rgb(213, 213, 213);">
+                </div>
+                <div class="half" style="padding: 64px;">
+                    <h2>As for footer, adding a full illustration on the bottom also help carry the users to end of the
+                        website.</h2>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="imgBG" style="background-color: black; color: white;">
+            <h1 style="padding-left: 64px; padding-top: 132px;">Instrument page</h1>
+            <div class="cover">
+                <img style="padding: 64px;" src="Bento_Instrument.png" width="100%">
+            </div>
+            <div class="flexBox">
+                <div class="cols" style="padding: 64px; padding-top: 132px; padding-bottom: 132px;">
+                    <h2>As being a Instrument agency intern, we had a side project creating a intern web page that helps
+                        new comers read about what like being a intern at instrument. They can also apply to open any
+                        open roles. The careers page felt to intimidating for new comers to read and apply.</h2>
+                </div>
+                <div class="cols" style="padding: 64px; padding-top: 132px; padding-bottom: 132px;">
+                    <h2>As being a Instrument agency intern, we had a side project creating a intern web page that helps
+                        new comers read about what like being a intern at instrument. They can also apply to open any
+                        open roles. The careers page felt to intimidating for new comers to read and apply.</h2>
+                </div>
+                <div class="cols" style="padding: 64px; padding-top: 132px; padding-bottom: 132px;">
+                    <h2>As being a Instrument agency intern, we had a side project creating a intern web page that helps
+                        new comers read about what like being a intern at instrument. They can also apply to open any
+                        open roles. The careers page felt to intimidating for new comers to read and apply.</h2>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div class="imgBG" style="background-color: #0039e5; color: white;">
+            <h1 style="padding-left: 64px; padding-top: 132px;">Otto</h1>
+            <div class="flexBox" style="align-items: start !important;">
+                <div class="half" style="padding: 64px; padding-right: 32px;">
+                    <img src="otto2022.gif" width="100%">
+                    <h2>Proposed Designs</h2>
+                    <br>
+                    <br>
+                    <img src="Otto_Run.svg" width="100%">
+                    <h2>Proposed Designs</h2>
+                </div>
+                <div class="half" style="padding: 64px; padding-left: 32px;">
+                    <img src="Otto_poster.svg" width="100%">
+                    <h2>Proposed Designs</h2>
+                </div>
+            </div>
+            <img style="padding: 132px;" src="otto_round.png" width="100%">
+            <div class="flexBox" style="gap: 32px; padding-left: 64px; padding-right: 64px;">
+                <div class="forty">
+                    <img src="Otto_o.svg" alt="o" width="100%">
+                    <h2>OTTO O</h2>
+                </div>
+                <div class="forty">
+                    <img src="Otto_t.svg" alt="t" width="100%">
+                    <h2>OTTO T</h2>
+                </div>
+                <div class="forty">
+                    <img src="Otto_t.svg" alt="t" width="100%">
+                    <h2>OTTO T</h2>
+                </div>
+                <div class="forty">
+                    <img src="Otto_o.svg" alt="o" width="100%">
+                    <h2>OTTO O</h2>
+                </div>
+            </div>
+            
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="imgBG" style="background-color: #e0e0e5;">
+            <div class="flexBox" style="align-items: end;">
+                <h1 style="padding-left: 64px; padding-top: 132px;">Google Braille</h1>
+                <h2 style="padding-right: 64px;">Buddy with <a href="#">Nik Delgado</a></h2>
+            </div>
+            <img style="padding: 64px;" src="Bento_Braille.svg" width="100%">
+            <h1 style="text-align: center;">" Seeing the Google logo in Braille already tells me instantly what I
+                am going to be observing. Nice work!
+            </h1>
+            <h2 style="text-align: center; padding-top: 32px; padding-bottom: 32px;">– JR Schmidt</h2>
+            <div style="padding: 64px;">
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                        src="https://player.vimeo.com/video/628782320?h=ddb33b7741&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+                <h2>Our Final results composed as how we are doing a Google Tv ads showcasing using existing Google
+                    Pixel product in screenless format for braille use.</h2>
+            </div>
+            <div class="flexBox">
+                <div class="half" style="padding: 64px; padding-right: 32px; filter: grayscale(1);">
+                    <img src="Braiile.gif" width="100%">
+                    <p style="text-align: center; line-height: 24px; padding-top: 16px;">Old Existing Starbucks page
+                        with no hero section which leads to not fun experiance and just product</p>
+                </div>
+                <div class="half" style="padding: 64px; padding-left: 32px; filter: grayscale(1);">
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                            src="https://player.vimeo.com/video/629266265?h=10b3b20138&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                    <script src="https://player.vimeo.com/api/player.js"></script>
+                    <p style="text-align: center; line-height: 24px; padding-top: 16px;">We learned that setting the
+                        tablet on the speaker dock would be arm sore for visual blind users. We went back and just focus
+                        on the tablet design.</p>
+                </div>
+            </div>
+            <h1 style="text-align: center;">Create a rapid prototype that achieve the random topics we proposed to you
+            </h1>
+            <div style="padding: 64px;">
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                        src="https://player.vimeo.com/video/629264936?h=19dcb14c9f&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+                <h2>My motion trial revealing the product I wanted to deeply play with effectors with the braille keys
+                </h2>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="imgBG" style="background-color: #7800E0; color: white;">
+            <div class="flexBox" style="align-items: end;">
+                <h1 style="padding-left: 64px; padding-top: 132px;">Motion Explorations</h1>
+            </div>
+            <div class="flexBox">
+                <div class="half" style="padding: 64px; padding-right: 32px;">
+                    <div style="padding:100% 0 0 0;position:relative;"><iframe
+                            src="https://player.vimeo.com/video/454215489?h=a470a62383&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                    <script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+                <div class="half" style="padding: 64px; padding-left: 32px;">
+                    <div style="padding:100% 0 0 0;position:relative;"><iframe
+                            src="https://player.vimeo.com/video/454212293?h=56ed790fae&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                    <script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+            </div>
+            <h1 style="text-align: center; padding-top: 132px; padding-bottom: 132px;">I enjoy working in Blender, After
+                effects and C4D to create my ideas into motions</h1>
+            <div style="padding: 64px;">
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                        src="https://player.vimeo.com/video/363055221?h=2affa4fbaf&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            <div style="padding: 64px;">
+                <div style="padding:73.33% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/363054311?h=1741f6d4fc&autoplay=1&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            <div class="flexBox">
+                <div class="half" style="padding: 64px; padding-right: 32px;">
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                        src="https://player.vimeo.com/video/361906980?h=d1a8b6beb5&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+                <div class="half" style="padding: 64px; padding-left: 32px;">
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/454213773?h=59aa3c56c2&autoplay=1&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+            </div>
+            <div style="padding: 64px;">
+                <div style="padding:37.5% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/454212622?h=2bd7c8e70f&autoplay=1&loop=1&title=0&byline=0&portrait=0" style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            <div style="padding: 64px;">
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                        src="https://player.vimeo.com/video/536446817?h=ae19460624&autoplay=1&loop=1&title=0&byline=0&portrait=0"
+                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+        </div>
     </div>
+    <div class="newcta">
+        <h2 onclick="copyContent()">If you'd like to learn more, Lets Talk!</h2>
+        <h3><span class="underline" id="change-text">Click to copy email to clipboard</span></h3>
+        <div class="marquee">
+            <ul class="hero_marquee__content">
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+            </ul>
+            <ul class="hero_marquee__content" aria-hidden="true">
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        let text = 'xanderkau13@gmail.com';
+        const changeText = document.querySelector("#change-text");
+        // Initial message
+        changeText.textContent = "Click to copy email to clipboard";
+        const copyContent = async () => {
+            try {
+                await navigator.clipboard.writeText(text);
+                console.log('Content copied to clipboard');
+                changeText.textContent = "Copied!";
+                // Timeout to change the message
+                setTimeout(() => {
+                    changeText.textContent = "Click to copy email to clipboard";
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                changeText.textContent = "Failed to copy. Please try manually.";
+            }
+        };
+
+        changeText.addEventListener("click", copyContent);
+
+        const toggleButton = document.getElementById('toggle-button');
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('lightMode');
+        });
+
+
+        //scroll bar progress bar 
+        window.onscroll = function () {
+            myFunction()
+        };
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.height = scrolled + "%";
+        }
+    </script>
 </body>
 
 </html>

@@ -32,14 +32,15 @@
         content="We are a multidisciplinary creative company that redefines brands and experiences.">
     <!--Other Links and resources-->
     <link rel="stylesheet" href="cssReset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
-<body onload="getPics()">
-    <script src="app.js"></script>
+<body class="lightMode">
     <input type="checkbox" id="checkbox_toggle">
     <ul class="fullNav">
         <div class="gutters">
@@ -57,47 +58,33 @@
             </div>
         </div>
     </ul>
-    <div class="navList" id="navbar">
-        <div class="navContent">
-            <a id="active" href="index.html">Work</a>
-            <a href="index.html#abouts">About</a>
-            <a href="archive.html">Archive</a>
-        </div>
-        <h2 id="logo" href="index.html">ALEX KAUFFMAN</h2>
-        <div class="navContent">
-            <a target="_blank" href="https://www.linkedin.com/in/alex-kauffman/">LinkedIn</a>
-            <a target="_blank" href="https://vimeo.com/user91337385">Vimeo</a>
-            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-        </div>
+    <div class="navList">
+        <a id="active" href="index.html">Work</a>
+        <a href="archive.html">Archive</a>
+        <a target="_blank" href="https://www.linkedin.com/in/alex-kauffman/">LinkedIn</a>
+        <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
     </div>
     <label for="checkbox_toggle" class="hamburger">
         <h1>Menu</h1>
     </label>
-    <div class="whiteBG" data-scroll-container>
+    <div class="project">
         <img src="vigorwide.png" width="100%">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <div class="projectWriting">
             <div class="flexBox">
                 <div class="forty" style="color: #211D4F;">
-                    <h1>Vigor</h1>
+                    <h1>(01) <br>
+                        Project <br>
+                        Overview</h1>
                 </div>
                 <div class="sixty">
-                    <p style="padding-top: 0px; color: #211D4F; padding-bottom: 32px;"> Creating a fitness app to help busy Americans.</p>
-                    <a style="font-size: 28px; text-transform: uppercase; color: #0070F0;" href="https://vimeo.com/593428186" target="_blank">See mobile motion prototype on Vimeo</a> <br> <a style="font-size: 28px; text-transform: uppercase; color: #0070F0;" href="https://vimeo.com/593423253" target="_blank">See apple tv motion prototype on Vimeo</a> 
-                    <br>
-                    <br>
-                    <br>
-                    <hr>
+                    <h1 style="padding-top: 0; color: #211D4F;">Vigor Fitness</h1>
+                    <p>Vigor is the world’s first AI-powered digital paper company and learning ecosystem, with over 21 million monthly users worldwide. Gearing up to launch the much anticipated Goodnotes 6, our work focused on aligning business strategy with brand strategy and creating a brand voice, visual identity, and launch campaign that celebrates the joy and journey of life-long learning.</p>
                     <h1 style="padding-top: 32px; color: #211D4F;">Role</h1>
                     <p style="padding-top: 32px; color: #211D4F; padding-bottom: 64px;">UX/UI Design, Research</p>
                     <hr>
                     <h1 style="padding-top: 32px; color: #211D4F;">Challenges</h1>
-                    <p style="padding-top: 32px; color: #211D4F; padding-bottom: 64px;">Create a fitness app to your own interpretations on how you want to accomplished it.</p>
+                    <p style="padding-top: 32px; color: #211D4F; padding-bottom: 64px;">Create a fitness app to your own
+                        interpretations on how you want to accomplished it.</p>
                     <hr>
                     <h1 style="padding-top: 32px; color: #211D4F;">Duration</h1>
                     <p style="padding-top: 32px; color: #211D4F; padding-bottom: 64px;">One semester</p>
@@ -145,13 +132,17 @@
         </div>
         <div class="projectWriting">
             <div class="flexBox">
-                <div class="forty">
+                <div class="half">
                     <h1>Napkin <br> Brief</h1>
                 </div>
-                <div class="sixty">
-                    <p style="padding-top: 0;">This project was an open interpreted project. I had to figure out what my motives were and what I wanted to accomplished. The project ask was to create a fitness app. We had to design them for iPhone as mobile first design and along with either Apple Tv or Apple Watch.</p>
+                <div class="half">
+                    <p style="padding-top: 0;">This project was an open interpreted project. I had to figure out what my
+                        motives were and what I wanted to accomplished. The project ask was to create a fitness app. We
+                        had to design them for iPhone as mobile first design and along with either Apple Tv or Apple
+                        Watch.</p>
                     <img src="vigorProjectPipeline.svg" width="100%">
-                    <p>Starting this project, I explored how people from different cultures/countries are more fit than Americans.</p>
+                    <p>Starting this project, I explored how people from different cultures/countries are more fit than
+                        Americans.</p>
                 </div>
             </div>
             <iframe width="100%" height="900px" src="https://www.youtube.com/embed/mQHdn9guvow?si=niM64MyrgQMF1gmG"
@@ -159,19 +150,21 @@
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowfullscreen></iframe>
             <div class="projectSections">
-                <h3 style="max-width: 80ch !important;">Observing many videos and online readings, I was amazed that 
+                <h3 style="max-width: 80ch !important;">Observing many videos and online readings, I was amazed that
                     the Chinese fitness culture really
-                    believe in exercising in late phase of age. Wheres America tend to stop exercising when their lives get busy.</h3>
+                    believe in exercising in late phase of age. Wheres America tend to stop exercising when their lives
+                    get busy.</h3>
             </div>
             <div class="flexBox lgSpacing">
-                <div class="forty">
+                <div class="half">
                     <h1>Observation<br>
                         process</h1>
                 </div>
-                <div class="sixty">
+                <div class="half">
                     <p style="padding-top: 0;  padding-bottom: 32px;">Research</p>
                     <p style="padding-top: 0;  padding-bottom: 32px;">After formulating my key areas I want to research
-                        and explore for my project, I conducted 20+ people to understand their busy day to day lives.</p>
+                        and explore for my project, I conducted 20+ people to understand their busy day to day lives.
+                    </p>
                     <p style="padding-top: 0;  padding-bottom: 32px;">Some key points from different interviewers:
                     </p>
                     <p style="padding-top: 0;  color: gray; font-style: italic; padding-bottom: 32px;">"I don't feel
@@ -183,10 +176,17 @@
                     <p style="padding-top: 0;  color: gray; font-style: italic; padding-bottom: 64px;">"If I can't
                         schedule my workout time in my calendar, I will forget to do it. So I must put down my workout
                         time into my calendar."</p>
-                        <p style="padding-top: 0; padding-bottom: 32px;">These insights helped me understand why <a style="color: #5166E5;" href="https://www.tfah.org/report-details/state-of-obesity-2022/#:~:text=Nationally%2C%2041.9%20percent%20of%20adults,obesity%20rate%20of%2041.4%20percent." target="_blank">Nationally, 41.9 percent of adults have obesity.</a> ( 1 ) are struggling to maintain a healthy lifestyle. American working culture is busy hustle lifestyle to keep up with the living standers.</p>
-                        <p style="padding-top: 0;  padding-bottom: 32px;">Also, American have unhealthy diets. With a busy lifestyle, more people are grabbing unhealthy fast foods. They aren't making time to cook or go the gym.</p>
-                        <p style="padding-top: 0;  padding-bottom: 0;"> So let improve that.</p>
-                    </div>
+                    <p style="padding-top: 0; padding-bottom: 32px;">These insights helped me understand why <a
+                            style="color: #5166E5;"
+                            href="https://www.tfah.org/report-details/state-of-obesity-2022/#:~:text=Nationally%2C%2041.9%20percent%20of%20adults,obesity%20rate%20of%2041.4%20percent."
+                            target="_blank">Nationally, 41.9 percent of adults have obesity.</a> ( 1 ) are struggling to
+                        maintain a healthy lifestyle. American working culture is busy hustle lifestyle to keep up with
+                        the living standers.</p>
+                    <p style="padding-top: 0;  padding-bottom: 32px;">Also, American have unhealthy diets. With a busy
+                        lifestyle, more people are grabbing unhealthy fast foods. They aren't making time to cook or go
+                        the gym.</p>
+                    <p style="padding-top: 0;  padding-bottom: 0;"> So let improve that.</p>
+                </div>
             </div>
         </div>
         <div class="projectWriting">
@@ -195,16 +195,17 @@
         <div class="darkbg lgSpacing">
             <div class="projectWriting">
                 <div class="flexBox">
-                    <div class="forty">
+                    <div class="half">
                         <h1>The <br> Flows</h1>
                     </div>
-                    <div class="sixty">
-                        <p style="padding-top: 0;">When I was formulating my goals, based on research and interviewers, I had a few key objectives I wanted to stress on:</p>
+                    <div class="half">
+                        <p style="padding-top: 0;">When I was formulating my goals, based on research and interviewers,
+                            I had a few key objectives I wanted to stress on:</p>
                         <img draggable="false" src="VigorGoals.svg" width="100%">
                         <p style="padding-bottom: 32px;">Working out</p>
-                        <img draggable="false" src="Vigor_FullFlow1.png" width="100%"
-                            alt="Img">
-                        <p style="padding-top: 32px;">This flows focus on creating auto populated workouts which helps save time for the users. We want them to workout not discourage them.</p>
+                        <img draggable="false" src="Vigor_FullFlow1.png" width="100%" alt="Img">
+                        <p style="padding-top: 32px;">This flows focus on creating auto populated workouts which helps
+                            save time for the users. We want them to workout not discourage them.</p>
                     </div>
                 </div>
                 <img src="Vigor_Workout_Flow.png" width="100%" alt="img">
@@ -213,27 +214,31 @@
                 <br>
                 <br>
                 <div class="flexBox">
-                    <div class="forty">
-                       
+                    <div class="half">
+
                     </div>
-                    <div class="sixty">
+                    <div class="half">
                         <p style="padding-bottom: 32px;">Onboarding</p>
                         <img draggable="false" src="Vigor_FullFlow3.png" width="100%" alt="Img">
-                            <p style="padding-top: 32px;">When singing up on the Vigor app, it's important to understand users health and workout needs so it can populate an appropriate workout to avoid burn outs.</p>
+                        <p style="padding-top: 32px;">When singing up on the Vigor app, it's important to understand
+                            users health and workout needs so it can populate an appropriate workout to avoid burn outs.
+                        </p>
                     </div>
                 </div>
                 <img src="Vigor_SignUp_Flow.png" width="100%" alt="img">
                 <div class="flexBox">
-                    <div class="forty">
+                    <div class="half">
                         <h1></h1>
                     </div>
-                    <div class="sixty">
+                    <div class="half">
                         <br>
                         <br>
                         <br>
                         <p style="padding-bottom: 32px;">Singing In</p>
                         <img draggable="false" src="Vigor_FullFlow4.png" width="100%" alt="Img">
-                        <p style="padding-top: 32px;">When singing into the Vigor app, I wanted users to read facts so they are reminded why they are doing the workouts. Having self notes helps users keep aligns to their goals whey are not signed into the platform.</p>
+                        <p style="padding-top: 32px;">When singing into the Vigor app, I wanted users to read facts so
+                            they are reminded why they are doing the workouts. Having self notes helps users keep aligns
+                            to their goals whey are not signed into the platform.</p>
                     </div>
                 </div>
                 <img src="Vigor_SignIn_Flow.png" width="100%" alt="img">
@@ -246,85 +251,107 @@
             <br>
         </div>
         <div class="wideImg" style="background-color: #f5f5f5;">
-            <img style="max-width: 1632px; margin: auto; padding-left: 32px; padding-right: 32px;" src="Vigor_All_Frames_export.png" width="100%" alt="img">
+            <img style="max-width: 1632px; margin: auto; padding-left: 32px; padding-right: 32px;"
+                src="Vigor_All_Frames_export.png" width="100%" alt="img">
         </div>
         <div class="projectWriting">
             <div class="flexBox">
-                <div class="forty">
+                <div class="half">
                     <h1>The <br> Design</h1>
                 </div>
-                <div class="sixty">
-                    <p style="padding-top: 0; padding-bottom: 64px;">I started with creating a moodboard that expresses how we feel when going to a gym.</p>
-                    <img src="vigor_moodboard.png" width="100%" alt="Color new illustration with young girl and younger boy">
-                    <p style="padding-top: 64px;">The moodboard imaged was ice cold water getting ready to start the work out. I added warmer color to add friction when they are exiting a workout.</p>
+                <div class="half">
+                    <p style="padding-top: 0; padding-bottom: 64px;">I started with creating a moodboard that expresses
+                        how we feel when going to a gym.</p>
+                    <img src="vigor_moodboard.png" width="100%"
+                        alt="Color new illustration with young girl and younger boy">
+                    <p style="padding-top: 64px;">The moodboard imaged was ice cold water getting ready to start the
+                        work out. I added warmer color to add friction when they are exiting a workout.</p>
                 </div>
             </div>
             <img src="Vigor_color.svg" width="100%" alt="img">
         </div>
         <div class="projectWriting">
             <div class="flexBox">
-                <div class="forty">
+                <div class="half">
                     <h1> What I <br> learned</h1>
                 </div>
-                <div class="sixty">
-                    <p style="padding-top: 0; padding-bottom: 32px;">I found this project really enjoying to work with. I had to do define a problem and solution. With self driven and thinking how we can improve the busy Americans with possible solutions. <br><br> If I could go back into this project, I would have explored more how I would work on the point system to make sure users are comprehending the tracking units.</p>
-                    <p style="padding-top: 0;">Apple Fitness+ just came out a few months after I have explore and created my concept. I find that really cool that people are creating solutions to help Americans have a healthy lifestyles.</p>
+                <div class="half">
+                    <p style="padding-top: 0; padding-bottom: 32px;">I found this project really enjoying to work with.
+                        I had to do define a problem and solution. With self driven and thinking how we can improve the
+                        busy Americans with possible solutions. <br><br> If I could go back into this project, I would
+                        have explored more how I would work on the point system to make sure users are comprehending the
+                        tracking units.</p>
+                    <p style="padding-top: 0;">Apple Fitness+ just came out a few months after I have explore and
+                        created my concept. I find that really cool that people are creating solutions to help Americans
+                        have a healthy lifestyles.</p>
                 </div>
             </div>
         </div>
-        <div class="projects moreWork">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div class="projects">
             <hr>
-            <br>
-            <br>
-            <h1>More work</h1>
-            <div class="flexBox">
-                <div class="half">
-                    <a href="Wishful.html">
-                        <div class="photoCard">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping">
-                                <img src="Bento_Wishful.png" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h2>Wishful</h2>
-                            <h3>UX/UI, Development, RIT Capstone</h3>
+            <h1
+                style="font-size: 4.2vw; line-height: 4.4vw;  margin-bottom: 64px; text-align: left; padding-left: 32px;">
+                See other projects</h1>
+            <div class="flexBox" style="padding-left: 16px; padding-right: 16px;">
+                <div class="half" style="padding: 32px; padding-left: 16px;">
+                    <a href="vigor.html">
+                        <div class="clipping">
+                            <div class="cover"></div>
+                            <img draggable="false" src="DMV.svg" width="100%" alt="img">
                         </div>
+                        <h1 style="padding-left: 0; padding-top: 32px;">Vigor Fitness</h1>
+                        <h2>UX/UI Design, Research, App</h2>
                     </a>
                 </div>
-                <div class="half">
-                    <a href="Google_for_Creator.html">
-                        <div class="photoCard">
-                            <div class="arrow">
-                                <span class="material-symbols-outlined">
-                                    arrow_upward
-                                </span>
-                            </div>
-                            <div class="clipping" style="border: 2px solid #AECBFA;">
-                                <img src="Bento_Creators.png" alt="img" width="100%" draggable="false">
-                            </div>
-                            <h2>Google for Creators</h2>
-                            <h3>UX/UI, Intern at Instrument</h3>
+                <div class="half" style="padding: 32px; padding-left: 16px;">
+                    <a href="vigor.html">
+                        <div class="clipping">
+                            <div class="cover"></div>
+                            <img draggable="false" src="DMV.svg" width="100%" alt="img">
                         </div>
+                        <h1 style="padding-left: 0; padding-top: 32px;">Vigor Fitness</h1>
+                        <h2>UX/UI Design, Research, App</h2>
                     </a>
                 </div>
             </div>
+        </div>
+        <div id="toggle-button" class="toggle">
+            <div class="dot"></div>
         </div>
         <footer id="contacts">
             <div class="gutters">
-                <h2 class="cta">If you'd like to learn more,
-                    <span class="underline">
-                        <a href="mailto:xanderkau13@gmail.com">Let's chat.</a>
-                    </span></h2>
+                <!-- <h1>Kauffman</h1>
                 <div class="bottomContents">
-                    <h1>Kauffman</h1>
-                    <h2 class="backToTop" onclick="topFunction()" id="toTop">Back to top</h2>
+                    <div class="flexBox" style="align-items: end;">
+                        <div class="cta">
+                            <h2 onclick="copyContent()">If you'd like to learn more, Lets Talk!</h2>
+                            <span class="underline" id="change-text">Click to copy email to clipboard</span>
+                        </div>
+                        <h2 class="backToTop" onclick="topFunction()" id="toTop">
+                            <span class="material-symbols-outlined">straight</span>
+                        </h2>
+                    </div>
+                </div> -->
+                <div class="flexBox footerbottom">
+                    <h2>&copy; 2024 Alex Kauffman</h2>
+                    <h2>Designed + Coded &nbsp; &mdash; &nbsp; Alex</h2>
                 </div>
             </div>
         </footer>
     </div>
+    <script>
+        const toggleButton = document.getElementById('toggle-button');
+
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('lightMode');
+        });
+    </script>
 </body>
 
 </html>

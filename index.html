@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Alex Kauffman</title>
+    <title>Alex Kauffman - UX/UI Portfolio</title>
     <meta name="description"
         content="Alex Kauffman, UX/UI Designer with foucs on creating website, ads, and more. Based in Detroit Michigan.">
     <meta name="theme-color" content="#ffffff" />
@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" href="AlexIconApp.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="A.K Design">
-    <meta name="apple-mobile-web-app-status-bar-style" content="white">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
     <!-- Facebook Open Graph Image -->
     <meta property="og:image" content="Alex-Kauffman-OG.png" />
     <meta property="og:image:height" content="630" />
@@ -41,10 +41,14 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
-<body>
+<body class="lightMode">
     <input type="checkbox" id="checkbox_toggle">
     <ul class="fullNav">
         <div class="gutters">
@@ -62,418 +66,202 @@
             </div>
         </div>
     </ul>
-    <div class="navList" id="navbar">
-        <div class="navContent">
-            <a id="active" href="index.html">Work</a>
-            <a href="index.html#abouts">About</a>
-            <a href="archive.html">Archive</a>
-        </div>
-        <h2 id="logo" href="index.html">ALEX KAUFFMAN</h2>
-        <div class="navContent">
-            <a target="_blank" href="https://www.linkedin.com/in/alex-kauffman/">LinkedIn</a>
-            <a target="_blank" href="https://vimeo.com/user91337385">Vimeo</a>
-            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-        </div>
-    </div>
     <label for="checkbox_toggle" class="hamburger">
         <h1>Menu</h1>
     </label>
-    <div class="whiteBG" data-scroll-container>
-        <section class="hero" id="works">
-            <h1>UX/UI designer crafting <br> things for <span id="rotateWords"></span></h1>
-            <div class="box">
-                <div class="speck"></div>
-                <div class="eye"></div>
-                <img class="alex" src="alexRound.png" width="100%" alt="Alex">
-                <div class="eye"></div>
-                <div class="speck"></div>
-            </div>
-        </section>
-        <div class="experiance" style="padding-top: 112px;">
-            <h1>Alex thrives on refining the design process. He extract insights from research and craft them into
-                user-friendly designs by bringing smiles to faces with every pixel. <br> <br> At <a class="hook"
-                    target="_blank" href="https://byhook.com/">Hook</a>, Alex designs are more than just aesthetics;
-                they're tangible expressions of a better user experience. Alex also conducts occasional workshops to
-                help
-                elevates team process by fostering creativity and experimentation with new tools such as Figma, Design
-                Thinking, and more.
-            </h1>
+    <div class="navList">
+        <div class="flexBox" style="align-items: center;">
+            <a href="index.html">Work</a>
+            <a href="about.html">About</a>
         </div>
-        <section class="projects" id="works">
-            <h1>Select works</h1>
-            <div class="row">
-                <a href="Color_Health.html">
-                    <div class="flexBox">
-                        <div class="cols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="Color_Main_image1.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                        <div class="cols homeCols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="Color_Main_image2.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                        <div class="cols homeCols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="Color_Main_image3.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flexBox" style="align-items: start;">
-                        <h2>Color Health</h2>
-                        <div class="flexBox">
-                            <div class="chip">Web Design</div>
-                            <div class="chip">Research</div>
-                            <div class="chip">Client</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="row">
-                <a href="vigor.html">
-                    <div class="flexBox">
-                        <div class="cols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="Vigor_Main_image1.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                        <div class="cols homeCols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="Vigor_Main_image2.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                        <div class="cols homeCols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="Vigor_Main_image3.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flexBox" style="justify-content: space-between;">
-                        <h2>Vigor</h2>
-                        <div class="flexBox">
-                            <div class="chip">UX/UI Design</div>
-                            <div class="chip">Concept</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="row">
-                <a href="Wishful.html">
-                    <div class="flexBox">
-                        <div class="cols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="Wishful_Main_image1.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                        <div class="cols homeCols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="Wishful_Main_image2.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                        <div class="cols homeCols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="Wishful_Main_image3.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flexBox" style="align-items: start;">
-                        <h2>Wishful</h2>
-                        <div class="flexBox">
-                            <div class="chip">UX/UI Design</div>
-                            <div class="chip">Development</div>
-                            <div class="chip">RIT Capstone</div>
-                            <div class="chip">AR</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            <div class="row">
-                <a href="Google_for_Creator.html">
-                    <div class="flexBox">
-                        <div class="cols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="GoogleforCreator_Main_image1.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                        <div class="cols homeCols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="GoogleforCreator_Main_image2.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                        <div class="cols homeCols">
-                            <div class="clipping">
-                                <div class="cover"></div>
-                                <img draggable="false" src="GoogleforCreator_Main_image3.png" width="100%" alt="img">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="flexBox" style="align-items: start;">
-                        <h2>Google for Creator</h2>
-                        <div class="flexBox">
-                            <div class="chip">UX/UI Design</div>
-                            <div class="chip">Client</div>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </section>
-        <section class="projects">
-            <h1>Coming Soon...</h1>
-            <div class="flexBox">
-                <div class="half">
-                    <div class="photoCard" style="cursor: wait;">
-                        <div class="clipping">
-                            <img src="Bento_Bard.png" alt="img" width="100%" draggable="false">
-                        </div>
-                        <h2>Bard by Google</h2>
-                        <h3>Coming Soon...</h3>
-                    </div>
-                </div>
-                <div class="half">
-                    <div class="photoCard" style="cursor: wait;">
-                        <div class="clipping">
-                            <img src="ASL_WRITE.svg" alt="img" width="100%" draggable="false">
-                        </div>
-                        <h2>ASL TypeFace</h2>
-                        <h3>Coming Soon...</h3>
-                    </div>
-                </div>
-        </section>
-        <div class="aboutMe">
-            <div class="aboutArrow" id="arrow">
-                <span class="material-symbols-outlined">
-                    arrow_upward
-                </span>
-            </div>
-            <div class="archives">
-                <a href="archive.html">
-                    <div class="marquee">
-                        <ul class="marquee__content">
-                            <li>Archive &nbsp; ✷ &nbsp;</li>
-                            <li>Archive &nbsp; ✷ &nbsp;</li>
-                        </ul>
-                        <ul class="marquee__content" aria-hidden="true">
-                            <li>Archive &nbsp; ✷ &nbsp;</li>
-                            <li>Archive &nbsp; ✷ &nbsp;</li>
-                        </ul>
-                    </div>
-                </a>
+        <h2>UX/UI Designer</h2>
+        <div class="flexBox" style="align-items: center;">
+            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            <div id="toggle-button" class="toggle">
+                <div class="dot"></div>
             </div>
         </div>
-        <div id="abouts"></div>
-        <div class="experiance" style="padding-top: 0; padding-bottom: 0;">
-            <h1>
-                In Alex's' spare time, he fences saber around the USA, prototyping things with 3D printers, and also
-                advocates for the Deaf community to empower their abilities in the workplace.
-                <br>
-                <br>
-                These external hobbies and passions helps aid in my love for designing. I have express articles about
-                how I take non-traditional learning space how they apply into my day to day actions.
-            </h1>
+    </div>
+    <div class="hero">
+        <div class="marquee">
+            <ul class="hero_marquee__content">
+                <li>Ideas into Matter &nbsp; ✷ &nbsp;</li>
+                <li>Ideas into Matter &nbsp; ✷ &nbsp;</li>
+            </ul>
+            <ul class="hero_marquee__content" aria-hidden="true">
+                <li>Ideas into Matter &nbsp; ✷ &nbsp;</li>
+                <li>Ideas into Matter &nbsp; ✷ &nbsp;</li>
+            </ul>
         </div>
-        <div class="articles" id="thoughts">
-            <h1>Thoughts in progress</h1>
-            <div class="flexBox">
-                <div class="cols">
-                    <a href="https://adage.com/article/opinion/deaf-creatives-6-ways-agencies-can-create-accessible-and-inclusive-environments/2522961"
-                        target="_blank">
+    </div>
+    <div class="experiance">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <h1>Hey there! I am a UX/UI Designer and Illustrator
+            based out of Detroit Area,
+            MI. I specialize in Visual designs, research and teaching others about Figma.</h1>
+    </div>
+    <section class="projects" id="works">
+        <h6>Select projects</h6>
+
+        <div class="row" style="padding-bottom: 64px;">
+            <div class="flexBox" style="gap: 64px; align-items: center;">
+                <div class="half" style="padding: 32px; padding-right: 16px;">
+                    <a href="Color_Health.html">
                         <div class="clipping">
-                            <div class="chips">
-                                Getty
-                            </div>
-                            <img draggable="false" src="AdAge_Cover.png" alt="img" style="user-select: none;"
-                                width="100%">
+                            <div class="cover"></div>
+                            <img draggable="false" src="color_health_phone.png" width="100%" alt="img">
                         </div>
-                        <h2>DEAF CREATIVES—6 WAYS AGENCIES CAN CREATE ACCESSIBLE AND INCLUSIVE ENVIRONMENTS</h2>
-                        <p>AdAge - 3 min read</p>
+                        <h1 style="padding-left: 0; padding-top: 32px;">Color health</h1>
+                        <h2>Web Design, Illustration</h2>
                     </a>
                 </div>
-                <div class="cols">
-                    <a href="https://www.linkedin.com/posts/alex-kauffman_new-figma-features-from-config2023-activity-7079514392333074433-I4WV?utm_source=share&utm_medium=member_desktop"
-                        target="blank">
+                <div class="half" style="padding: 32px; padding-left: 16px;">
+                    <a href="vigor.html">
                         <div class="clipping">
-                            <div class="chips" style="color:black; background-color: rgba(255, 255, 255, 0.899);">
-                                Alex Kauffman</div>
-                            <img draggable="false" src="ConFig2023.png" alt="img" style="user-select: none;"
-                                width="100%">
+                            <div class="cover"></div>
+                            <img draggable="false" src="Vigor_Main_image1.svg" width="100%" alt="img">
                         </div>
-                        <h2>Thinking of new ways using Figma's variable feature for Display ads to help cutback
-                            production time.</h2>
-                        <p>LinkedIn - 1 min read</p>
+                        <h1 style="padding-left: 0; padding-top: 32px;">Vigor Fitness</h1>
+                        <h2>UX/UI Design, Research, App</h2>
                     </a>
                 </div>
-                <div class="cols">
+            </div>
+        </div>
+        <div class="row">
+            <div class="md">
+                <a href="#">
                     <div class="clipping">
-                        <div class="chips">Alex Kauffman</div>
-                        <img draggable="false" src="Alex_Fencing.png" alt="img" style="user-select: none;" width="100%">
+                        <div class="cover"></div>
+                        <img draggable="false" src="DMV.svg" width="100%" alt="img">
                     </div>
-                    <h2>Doing Saber fencing around the U.S.A helps shape my design thinking process.<br></h2>
-                    <p>Coming Soon...</p>
+                    <h1 style="padding-left: 0; padding-top: 32px;">DMV Case Study</h1>
+                    <h2>UI Design, Concept, Systems</h2>
+                </a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="flexBox" style="gap: 64px;  align-items: center;">
+                <div class="half" style="padding: 32px; padding-right: 16px;">
+                    <a href="Google_for_Creator.html">
+                        <div class="clipping">
+                            <div class="cover"></div>
+                            <img draggable="false" src="GoogleforCreator_Main_image1.png" width="100%" alt="img">
+                        </div>
+                        <h1 style="padding-left: 0; padding-top: 32px;">Google for Creator</h1>
+                        <h2>UX/UI Design, Intern at Instrument, Web</h2>
+                    </a>
+                </div>
+                <div class="half" style="padding: 32px; padding-left: 16px;">
+                    <a href="Wishful.html">
+                        <div class="clipping">
+                            <div class="cover"></div>
+                            <img draggable="false" src="Wishful.png" width="100%" alt="img">
+                        </div>
+                        <h1 style="padding-left: 0; padding-top: 32px;">Wishful</h1>
+                        <h2>UX/UI Design, Development, RIT Capstone</h2>
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="experiance">
-            <h1>Skills</h1>
-            <div class="flexBox skillsets">
-                <h1>UI Design</h1>
-                <h1>Figma</h1>
-                <h1>Prototyping</h1>
-                <h1>Visual Design</h1>
-                <h1>Workshop</h1>
-                <h1>Design Research</h1>
-                <h1>HTML/CSS/JS</h1>
-                <h1>3D Modeling</h1>
-                <h1>Motion Design</h1>
-                <h1>Wireframes</h1>
-                <h1>SQL</h1>
-                <h1>Font End Development</h1>
-            </div>
-            <br>
-            <br>
-            <div class="flexBox">
-                <div class="cols">
-                    <h1>Education</h1>
-                    <h2>Rochester Institute of Technology</h2>
-                    <h2>Major: BFA - New Media Design</h2>
-                    <h2>Honors: Magna Cum Laude</h2>
-                    <h2>GPA: 3.67/4</h2>
-                    <br>
-                    <h1>Passions</h1>
-                    <h2>UI Design</h2>
-                    <h2>System Designs</h2>
-                    <h2>Products</h2>
-                    <h2>Accessibility</h2>
-                </div>
-                <div class="cols">
-                    <h1>Hobbies</h1>
-                    <h2>Saber Fencing</h2>
-                    <h2>Traveling to different cities</h2>
-                    <h2>Deaf Advocacy</h2>
-                    <br>
-                    <div class="flexBox" style="align-items: center;">
-                        <h1>Reads</h1>
-                        <a href="read.html">See all reads</a>
-                    </div>
-                    <div class="bookshelf">
-                        <div class="flexBox">
-                            <img src="lawsofpower.jpg">
-                            <img src="donNorman.jpg">
-                            <img src="creativeAct.jpg">
-                            <img src="radicalcandor.jpg">
-                        </div>
-                        <br>
-                    </div>
-                </div>
-                <div class="cols">
-                    <h1>Recognized <br> Projects</h1>
-                    <h2>Wishful - Digital wishing well to help inspire people during Covid-19 time.</h2>
-                    <br>
-                    <p>Featured on Spectrum News:</p>
-                    <a target="_blank"
-                        href="https://spectrumlocalnews.com/nys/rochester/things-to-do/2021/04/27/imagine-rit-festival-goes-virtual-saturday#"
-                        target="_blank">Imagine RIT Festival goes virtual Saturday</a>
-                    <br>
-                    <p>Featured on RIT design competition webpage:</p>
-                    <a target="_blank"
-                        href="https://www.rit.edu/artdesign/news/students-alumni-honored-motion-design-competition">Students-alumni-honored-motion-design-competition</a>
-                </div>
-            </div>
-            <div class="archives gallery">
+    </section>
+    <div class="aboutMe">
+        <div class="aboutArrow" id="arrow">
+            <span class="material-symbols-outlined">
+                arrow_upward
+            </span>
+        </div>
+        <div class="archives">
+            <a href="archive.html">
                 <div class="marquee">
                     <ul class="marquee__content">
-                        <img draggable="false" src="Kauffman_NYC_TRIP_2.png" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_SF_TRIP.jpg" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_NYC_TRIP.png" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_SF.jpg" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_NYC.jpg" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_Harvard.jpg" width="100%" alt="img">
+                        <li>Archive &nbsp; ✷ &nbsp;</li>
+                        <li>Archive &nbsp; ✷ &nbsp;</li>
                     </ul>
                     <ul class="marquee__content" aria-hidden="true">
-                        <img draggable="false" src="Kauffman_NYC_TRIP_2.png" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_SF_TRIP.jpg" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_NYC_TRIP.png" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_SF.jpg" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_NYC.jpg" width="100%" alt="img">
-                        <img draggable="false" src="Kauffman_Harvard.jpg" width="100%" alt="img">
+                        <li>Archive &nbsp; ✷ &nbsp;</li>
+                        <li>Archive &nbsp; ✷ &nbsp;</li>
                     </ul>
                 </div>
+            </a>
+        </div>
+    </div>
+    <div class="articles" id="thoughts">
+        <h1>Thought in progress</h1>
+        <div class="flexBox">
+            <div class="cols">
+                <a href="https://byhook.com/activity/ad-age-deaf-in-design" target="_blank">
+                    <div class="clipping">
+                        <img draggable="false" src="Deaf_Creative_Alex.webp" alt="img" style="user-select: none;"
+                            width="100%">
+                    </div>
+                    <h2>DEAF CREATIVES—6 WAYS AGENCIES CAN CREATE ACCESSIBLE AND INCLUSIVE ENVIRONMENTS</h2>
+                    <p>AdAge - 3 min read</p>
+                </a>
+            </div>
+            <div class="cols">
+                <a href="https://www.linkedin.com/posts/alex-kauffman_new-figma-features-from-config2023-activity-7079514392333074433-I4WV?utm_source=share&utm_medium=member_desktop"
+                    target="blank">
+                    <div class="clipping">
+                        <img draggable="false" src="ConFig2023.png" alt="img" style="user-select: none;" width="100%">
+                    </div>
+                    <h2>Thinking of new ways using Figma's variable feature for Display ads to help cutback
+                        production time.</h2>
+                    <p>LinkedIn - 1 min read</p>
+                </a>
+            </div>
+            <div class="cols">
+                <div class="clipping">
+                    <img draggable="false" src="Alex_Fencing.png" alt="img" style="user-select: none;" width="100%">
+                </div>
+                <h2>Doing Saber fencing around the U.S.A helps shape my design thinking process.<br></h2>
+                <p>Coming Soon...</p>
             </div>
         </div>
-        <footer id="contacts">
-            <div class="gutters">
-                <h2 class="cta" onclick="copyContent()">If you'd like to learn more, <span class="underline">Let's
-                        chat</span>
-                </h2>
-                <div class="bottomContents">
-                    <h1>Kauffman</h1>
-                    <h2 class="backToTop" onclick="topFunction()" id="toTop">Back to top</h2>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
+    <footer id="contacts">
+        <div class="gutters">
+            <div class="bottomContents">
+                <div class="flexBox" style="align-items: end;">
+                    <div class="cta">
+                        <h2 onclick="copyContent()">If you'd like to learn more, Lets Talk!</h2>
+                        <span class="underline" id="change-text">Click to copy email to clipboard</span>
+                    </div>
+                    <h2 class="backToTop" onclick="topFunction()" id="toTop">
+                        <span class="material-symbols-outlined">straight</span>
+                    </h2>
+                    <!-- <img class="pointer" src="Point.svg" width="100%" alt="Hand with index finger pointing Left"> -->
                 </div>
             </div>
-        </footer>
-        <script>
-            const cursorRounded = document.querySelector('#arrow');
+            <div class="flexBox footerbottom">
+                <h2>&copy; 2024 Alex Kauffman</h2>
+                <h2>Designed + Coded &nbsp; &mdash; &nbsp; Alex</h2>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const cursorRounded = document.querySelector('#arrow');
 
-            const moveCursor = (e) => {
-                const mouseY = e.clientY;
-                const mouseX = e.clientX;
-                cursorRounded.style.transform = `translate3d(${mouseX - 210}px, ${mouseY - 210}px, 0)`;
-            }
+        const moveCursor = (e) => {
+            const mouseY = e.clientY;
+            const mouseX = e.clientX;
+            cursorRounded.style.transform = `translate3d(${mouseX - 210}px, ${mouseY - 210}px, 0)`;
+        }
 
-            window.addEventListener('mousemove', moveCursor)
-        </script>
-        <script>
-            document.querySelector('body').addEventListener('mousemove', eyeball);
-
-            function eyeball(event) {
-                const eye = document.querySelectorAll('.eye');
-                eye.forEach(function (eye) {
-                    let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
-                    let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
-
-                    let radian = Math.atan2(event.pageX - x, event.pageY - y);
-                    let rotation = (radian * 180 / Math.PI) * -1 + 270;
-                    eye.style.transform = "rotate(" + rotation + "deg)";
-                });
-            }
-        </script>
-        <script>
-            const words = ['Websites', 'UI Designs', 'Wireframes', 'Prototypes']; // Add your words here
-            let index = 0;
-            const rotateWords = $('#rotateWords');
-            const rotateWordsTwo = $('#rotateWordsTwo')
-
-            function animateWords() {
-                rotateWords.fadeOut('fast', function () {
-                    $(this).text(words[index]).fadeIn('fast');
-                    index = (index + 1) % words.length;
-                });
-
-                rotateWordsTwo.fadeOut('fast', function () {
-                    $(this).text(words[index]).fadeIn('fast');
-                    index = (index + 1) % words.length;
-                });
-            }
-
-            // Initial call
-            animateWords();
-
-            // Rotate words every 2 seconds
-            setInterval(animateWords, 2000);
-        </script>
-        <script src="app.js"></script>
-    </div>
+        window.addEventListener('mousemove', moveCursor)
+    </script>
+    <script src="app.js"></script>
 </body>
 
 </html>
