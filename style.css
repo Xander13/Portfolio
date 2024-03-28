@@ -34,13 +34,14 @@ body {
     border-radius: 100rem;
     display: flex;
     width: fit-content;
+    align-items: center;
     z-index: 9999;
 }
 
 .dot {
     border-radius: 100rem;
-    height: 28px;
-    width: 28px;
+    height: 32px;
+    width: 32px;
     background-color: var(--dark);
     cursor: pointer;
 }
@@ -2231,7 +2232,7 @@ footer h2 {
         padding-right: 16px;
     }
 
-    .navList a:last-child, .toggle{
+    .navList a:nth-child(3), .dot{
         display: none;
     }
 
