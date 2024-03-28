@@ -2,181 +2,587 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Alex Kauffman - UX/UI Portfolio</title>
-    <meta name="description"
-        content="Alex Kauffman, UX/UI Designer with foucs on creating website, ads, and more. Based in Detroit Michigan.">
-    <meta name="theme-color" content="#ffffff" />
-    <meta name="robots" content="index,follow"><!-- All Search Engines -->
-    <meta name="googlebot" content="index,follow"><!-- Google Specific -->
-    <meta name="google" content="nositelinkssearchbox">
-    <meta name="generator" content="program">
-    <meta name="format-detection" content="telephone=no">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Kauffman - UX/UI Designer</title>
     <link rel="icon" type="image/x-icon" href="alex_web_icon.png">
-    <!--Apple Icon Set-->
-    <link rel="apple-touch-icon" href="AlexIconApp.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-title" content="A.K Design">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <!-- Facebook Open Graph Image -->
-    <meta property="og:image" content="Alex-Kauffman-OG.png" />
-    <meta property="og:image:height" content="630" />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:title" content="Alex Kauffman. A UX/UI designer crafting websites, apps, experiance and more." />
-    <meta name="og:description"
-        content="A UX/UI designer enjoys creating small things that makes big impact. Works with with large brands to create solutions that benefit the community at scale.">
-    <meta property="og:type" content="Web Portfolio" />
-    <meta property="og:url" content="https://www.studio.kauffman" />
-    <meta property="og:image" content="Alex-Kauffman-OG.png" />
-    <!-- Twitter Card Image -->
-    <meta property="twitter:image" content="Alex-Kauffman-OG.png" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:image:alt" content="Alex Kauffman's Bento Thumbnail cover." />
-    <meta name="twitter:creator" content="@akooof13" />
-    <meta name="twitter:description"
-        content="Alex Kauffman. A UX/UI designer that is crafting UI contents for websites, apps, experiance and more.">
-    <!--Other Links and resources-->
-    <link rel="stylesheet" href="cssReset.css">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
-        rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            background-color: var(--light);
+            overscroll-behavior: none;
+            touch-action: pan-down;
+        }
+
+        .logo {
+            position: absolute;
+            right: 32px;
+            bottom: 32px;
+        }
+
+        .content {
+            position: relative;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        html::before {
+            font-size: 1rem;
+            word-spacing: 0.0625rem;
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--light);
+        }
+
+        img {
+            width: 100%;
+            height: fit-content;
+        }
+
+        .flexBox {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 164px;
+        }
+
+        .half {
+            width: 50%;
+            display: flex;
+            align-items: center;
+        }
+
+        .half h1 {
+            padding-top: 16px !important;
+            margin-top: 0;
+            padding-bottom: 0 !important;
+        }
+
+        .project,
+        .skills {
+            position: relative;
+            padding: 64px;
+            margin: auto;
+            background-color: var(--light);
+            transition: color 0.5s ease, background-color 0.5s ease;
+        }
+
+        .project .half .flexBox {
+            margin-bottom: 0;
+        }
+
+        .project .flexBox:last-child {
+            margin-bottom: 0;
+        }
+
+
+        .project h1,
+        .skills h1 {
+            font-size: 4.2vw;
+            color: var(--dark);
+        }
+
+        .project h1 {
+            margin-block-end: 0;
+        }
+
+
+        .project .flexBox {
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+
+        .project h2 {
+            font-size: 18px;
+            margin-bottom: 0;
+            margin-top: 16px;
+            color: white;
+        }
+
+        .project p {
+            font-size: 18px;
+            color: white;
+            text-transform: uppercase;
+            margin-top: 8px;
+            padding-top: 0;
+            margin-bottom: 0;
+        }
+
+        .half {
+            display: flex;
+            width: 50%;
+            justify-content: start;
+        }
+
+        .hero {
+            width: 100%;
+            margin-top: 0;
+            height: fit-content;
+            background-color: var(--light);
+        }
+
+        .hero .flexBox {
+            align-items: center;
+            margin-top: 432px;
+            margin-bottom: 64px;
+            padding-left: 64px;
+            padding-right: 64px;
+        }
+
+        .hero h1 {
+            font-size: 8vw;
+            line-height: 8vw;
+            padding: 0;
+            margin-block-start: 0;
+            margin-block-end: 0;
+            text-transform: uppercase;
+            text-align: left;
+            padding-left: 64px;
+        }
+
+        .hero .textContainer {
+            position: relative;
+            top: 200px;
+        }
+
+        .reel {
+            height: 900px;
+        }
+
+        .hero .blox {
+            background-color: var(--dark);
+            width: 100%;
+            height: 8vw;
+            overflow: hidden;
+            margin-left: 64px;
+            margin-right: 64px;
+            border-radius: 100rem;
+        }
+
+        .hero .blox img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .newcta .marquee {
+            height: fit-content;
+            align-items: center;
+            background-color: #d7ddfa;
+        }
+
+        .newcta .marquee li {
+            color: var(--light);
+            font-size: 32px;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .aboutMe {
+            height: fit-content;
+            margin-top: 132px;
+            margin-bottom: 132px;
+            padding-bottom: 0;
+        }
+
+        .aboutMe .marquee {
+            padding-bottom: 0;
+        }
+
+        .flexBox {
+            align-items: center;
+        }
+
+        .full {
+            margin-bottom: 32px;
+            box-sizing: border-box;
+        }
+
+        .experiance {
+            padding: 0;
+            padding-bottom: 132px;
+        }
+
+        .experiance h1 {
+            color: var(--dark);
+            font-size: 4.4vw;
+            line-height: 4.8vw;
+            padding-left: 0;
+            font-weight: 400 !important;
+        }
+
+        .thirty {
+            width: 30%;
+        }
+
+        .seventy {
+            width: 70%;
+        }
+
+        .footerbottom {
+            position: fixed;
+            bottom: 4px;
+            height: fit-content;
+            z-index: 4;
+            left: 32px;
+            right: 32px;
+            margin-bottom: 0 !important;
+            padding-bottom: 0;
+            color: var(--dark);
+            mix-blend-mode: difference;
+        }
+
+        #toggle-button {
+            padding: 0;
+            margin: 0;
+        }
+
+        .gaps {
+            height: 60vh;
+        }
+
+        .skills .flexBox {
+            gap: 64px;
+            align-items: start;
+            margin-bottom: 0;
+        }
+
+        .skills h2 {
+            font-size: 7vw;
+            line-height: 7vw;
+            margin: 0;
+            padding-bottom: 32px;
+        }
+
+        .skills .fifty {
+            width: 50%;
+        }
+
+        .drawer {
+            margin-bottom: 16px;
+            overflow: hidden;
+            transition: 0.3s ease;
+            padding-top: 16px;
+            padding-bottom: 16px;
+            padding-left: 16px;
+            padding-right: 16px;
+            cursor: pointer;
+            color: black;
+            background-color: #d7ddfa;
+        }
+
+        .drawer p {
+            display: none;
+            opacity: 0;
+            line-height: 40px !important;
+            margin-bottom: 0;
+            padding-bottom: 32px;
+            border-top: 2px solid black;
+        }
+
+        .drawer h2 {
+            padding-bottom: 16px;
+            padding-top: 4px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .drawer h3::after {
+            content: '+';
+        }
+
+        .drawer.opened h3::after {
+            content: '×';
+        }
+
+        .drawer:hover {
+            transition: 0.3s ease;
+            background-color: rgba(236, 236, 236, 0.073);
+            color: var(--dark);
+        }
+
+        .drawer:hover h3 {
+            transition: 0.3s ease;
+            color: var(--dark);
+        }
+
+        .drawer:hover p {
+            border-top: 2px solid var(--dark);
+        }
+
+        .drawer.opened {
+            height: auto;
+        }
+
+        .drawer.opened p {
+            display: block;
+            opacity: 1;
+            transition: opacity 0.8s ease;
+        }
+
+        .drawer h3 {
+            font-size: 7vw;
+            line-height: 7vw;
+            margin: 0;
+            border-radius: 100rem;
+            display: flex;
+            align-items: center;
+            color: black;
+            justify-content: center;
+        }
+
+        .skills p {
+            font-size: 32px;
+            line-height: 32px;
+            padding-top: 32px;
+        }
+
+        .skills .copyGap {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .articles {
+            margin: 0;
+            padding-left: 64px;
+            padding-right: 64px;
+        }
+
+        .articles .flexBox {
+            margin-bottom: 0;
+        }
+
+        .progress-container {
+            width: 8px;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            z-index: 999999999;
+        }
+
+        .progress-bar {
+            width: 8px;
+            background: var(--dark);
+            height: 0%;
+        }
+
+        .newcta {
+            border-bottom: 1px solid var(--dark);
+            margin: 0;
+            margin: auto;
+            height: fit-content;
+        }
+
+        .newcta h2 {
+            font-size: 8vw;
+            text-align: center;
+            line-height: 8vw;
+            width: fit-content;
+            cursor: pointer;
+            margin-bottom: 64px;
+            margin-top: 0;
+        }
+
+        .newcta h3 {
+            font-size: 32px;
+            width: fit-content;
+            margin: auto;
+            padding-bottom: 232px;
+        }
+
+        .newcta .flexBox {
+            margin-bottom: 0;
+        }
+
+
+        .textContainer {
+            width: 100%;
+            height: 16vw;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .line {
+            opacity: 0;
+            animation: slideIn 1.2s forwards;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(100%);
+                opacity: 0;
+                rotate: -4deg;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+                rotate: 0deg;
+            }
+        }
+
+        .project .half,
+        .project .full {
+            position: relative;
+        }
+
+        .project .half .flexBox,
+        .project .full .flexBox {
+            position: absolute;
+            bottom: 0;
+            padding: 32px;
+            width: 100%;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
+        .project .half img,
+        .project .full img {
+            object-fit: cover;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
 </head>
 
-<body class="lightMode">
-    <input type="checkbox" id="checkbox_toggle">
-    <ul class="fullNav">
-        <div class="gutters">
-            <div class="navProject">
-                <div class="mobileList">
-                    <li><a id="active" href="index.html">Work</a></li>
-                    <li><a href="index.html#abouts">About</a></li>
-                    <li><a href="archive.html">Archive</a></li>
-                    <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
-                </div>
-            </div>
-            <div class="bottomSpecks">
-                <p>Located in Detroit Area</p>
-                <h1>2023</h1>
-            </div>
-        </div>
-    </ul>
-    <label for="checkbox_toggle" class="hamburger">
-        <h1>Menu</h1>
-    </label>
+<body>
     <div class="navList">
-        <div class="flexBox" style="align-items: center;">
-            <a href="index.html">Work</a>
-            <a href="about.html">About</a>
+        <div class="half">
+            <h2>UX/UI Designer</h2>
         </div>
-        <h2>UX/UI Designer</h2>
-        <div class="flexBox" style="align-items: center;">
-            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+        <div class="half" style="justify-content: space-between;">
+            <div class="flexBox">
+                <a id="active" href="index.html">Work</a>
+                <a href="archive.html">Archive</a>
+                <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            </div>
             <div id="toggle-button" class="toggle">
                 <div class="dot"></div>
             </div>
         </div>
     </div>
-    <div class="hero">
-        <div class="marquee">
-            <ul class="hero_marquee__content">
-                <li>Ideas into Matter &nbsp; ✷ &nbsp;</li>
-                <li>Ideas into Matter &nbsp; ✷ &nbsp;</li>
-            </ul>
-            <ul class="hero_marquee__content" aria-hidden="true">
-                <li>Ideas into Matter &nbsp; ✷ &nbsp;</li>
-                <li>Ideas into Matter &nbsp; ✷ &nbsp;</li>
-            </ul>
+    <label for="checkbox_toggle" class="hamburger">
+        <h1>Menu</h1>
+    </label>
+    <div class="content">
+        <div class="hero">
+            <div class="textContainer">
+                <div class="text">
+                    <h1 class="line">Creating ideas</h1>
+                    <h1 class="line">into matter</h1>
+                </div>
+            </div>
+            <div class="flexBox">
+                <h2>Aspiring Full stack designer</h2>
+                <h2>( &nbsp; Scroll &nbsp; )</h2>
+            </div>
+            <div class="reel" id="video-container">
+                <img src="Color.gif" width="100%">
+            </div>
         </div>
-    </div>
-    <div class="experiance">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h1>Hey there! I am a UX/UI Designer and Illustrator
-            based out of Detroit Area,
-            MI. I specialize in Visual designs, research and teaching others about Figma.</h1>
-    </div>
-    <section class="projects" id="works">
-        <h6>Select projects</h6>
-
-        <div class="row" style="padding-bottom: 64px;">
-            <div class="flexBox" style="gap: 64px; align-items: center;">
-                <div class="half" style="padding: 32px; padding-right: 16px;">
-                    <a href="Color_Health.html">
+        <div class="project">
+            <div class="experiance">
+                <h1>Alex is an aspiring full-stack designer that strives in problem solving. He believes that designs
+                    are not just
+                    for
+                    aesthetics; they're expressions of a better user experience.
+                </h1>
+            </div>
+            <h1 style="font-size: 12vw; text-transform: uppercase; line-height: 11vw; font-weight: 600;">
+                Projects <span style="font-size: 4.4vw; color: gray; font-weight: 500;">( 05 )</span></h1>
+            <br>
+            <br>
+            <div class="flexBox">
+                <div class="half">
+                    <a href="#">
                         <div class="clipping">
-                            <div class="cover"></div>
-                            <img draggable="false" src="color_health_phone.png" width="100%" alt="img">
+                            <h3>Coming Soon</h3>
+                            <img draggable="false" src="Halo_Project.png" width="100%" alt="img" style="filter: blur(48px);">
+                            <div class="flexBox">
+                                <h2>Halo Light</h2>
+                                <p>Concept, Design, Web</p>
+                            </div>
                         </div>
-                        <h1 style="padding-left: 0; padding-top: 32px;">Color health</h1>
-                        <h2>Web Design, Illustration</h2>
                     </a>
                 </div>
-                <div class="half" style="padding: 32px; padding-left: 16px;">
-                    <a href="vigor.html">
+                <div class="half">
+                    <a href="#">
                         <div class="clipping">
-                            <div class="cover"></div>
-                            <img draggable="false" src="Vigor_Main_image1.svg" width="100%" alt="img">
+                            <h3>Coming Soon</h3>
+                            <img draggable="false" src="GoogleforCreator_Main_image1.png" width="100%" alt="img">
+                            <div class="flexBox">
+                                <h2>Project Name</h2>
+                                <p>Concept, Design, UX/UI</p>
+                            </div>
                         </div>
-                        <h1 style="padding-left: 0; padding-top: 32px;">Vigor Fitness</h1>
-                        <h2>UX/UI Design, Research, App</h2>
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="md">
+            <div class="full">
                 <a href="#">
                     <div class="clipping">
-                        <div class="cover"></div>
-                        <img draggable="false" src="DMV.svg" width="100%" alt="img">
+                        <h3>Coming Soon</h3>
+                        <img draggable="false" src="Color.gif" width="100%" alt="img">
+                        <div class="flexBox">
+                            <h2>Project Name</h2>
+                            <p>Concept, Design, UX/UI</p>
+                        </div>
                     </div>
-                    <h1 style="padding-left: 0; padding-top: 32px;">DMV Case Study</h1>
-                    <h2>UI Design, Concept, Systems</h2>
                 </a>
             </div>
-        </div>
-        <div class="row">
-            <div class="flexBox" style="gap: 64px;  align-items: center;">
-                <div class="half" style="padding: 32px; padding-right: 16px;">
-                    <a href="Google_for_Creator.html">
+            <div class="flexBox">
+                <div class="half">
+                    <a href="#">
                         <div class="clipping">
-                            <div class="cover"></div>
-                            <img draggable="false" src="GoogleforCreator_Main_image1.png" width="100%" alt="img">
+                            <h3>Coming Soon</h3>
+                            <img draggable="false" src="Vigor_Main_image1.svg" width="100%" alt="img">
+                            <div class="flexBox">
+                                <h2>Project Name</h2>
+                                <p>Concept, Design, UX/UI</p>
+                            </div>
                         </div>
-                        <h1 style="padding-left: 0; padding-top: 32px;">Google for Creator</h1>
-                        <h2>UX/UI Design, Intern at Instrument, Web</h2>
                     </a>
                 </div>
-                <div class="half" style="padding: 32px; padding-left: 16px;">
-                    <a href="Wishful.html">
+                <div class="half">
+                    <a href="#">
                         <div class="clipping">
-                            <div class="cover"></div>
-                            <img draggable="false" src="Wishful.png" width="100%" alt="img">
+                            <h3>Coming Soon</h3>
+                            <img draggable="false" src="Wishful_Main_image1.png" width="100%" alt="img">
+                            <div class="flexBox">
+                                <h2>Project Name</h2>
+                                <p>Concept, Design, UX/UI</p>
+                            </div>
                         </div>
-                        <h1 style="padding-left: 0; padding-top: 32px;">Wishful</h1>
-                        <h2>UX/UI Design, Development, RIT Capstone</h2>
                     </a>
                 </div>
             </div>
         </div>
-    </section>
-    <div class="aboutMe">
-        <div class="aboutArrow" id="arrow">
-            <span class="material-symbols-outlined">
-                arrow_upward
-            </span>
-        </div>
-        <div class="archives">
+        <div class="aboutMe">
+            <div class="aboutArrow" id="arrow">
+                <img src="otto_round.png" width="100%" alt="img">
+            </div>
             <a href="archive.html">
                 <div class="marquee">
                     <ul class="marquee__content">
@@ -190,13 +596,81 @@
                 </div>
             </a>
         </div>
+        <div class="skills">
+            <h1>Being a designer at <a class="hook" target="_blank" href="https://byhook.com/">Hook</a>, Alex is
+                creating display
+                ads, website, storyboards, and more. He also helps team explore new design tools and thinking to improve
+                productivity.</h1>
+            <div class="drawer">
+                <div class="copyGap">
+                    <h2>UI Design</h2>
+                    <h3></h3>
+                </div>
+                <p>
+                    Alex enjoys crafting concepts into ideas for tangible spaces. He enjoys taking abstract things and
+                    creating into something physical.
+                </p>
+            </div>
+            <div class="drawer">
+                <div class="copyGap">
+                    <h2>Research</h2>
+                    <h3></h3>
+                </div>
+                <p>
+                    Alex loves researching and understanding users needs to help improve new ways to for a better
+                    experience. Data is a key things that Alex that strives his creative motives.
+                </p>
+            </div>
+            <div class="drawer">
+                <div class="copyGap">
+                    <h2>Illustration</h2>
+                    <h3></h3>
+                </div>
+                <p>
+                    Illustration is a passion that Alex enjoy creating into his UX/UI day to day work.
+                </p>
+            </div>
+            <div class="drawer">
+                <div class="copyGap">
+                    <h2>Workshop</h2>
+                    <h3></h3>
+                </div>
+                <p>
+                    Teach others new design skills or exercising new design principles to others is Alex favorite things
+                    he likes to do.
+                </p>
+            </div>
+            <div class="drawer">
+                <div class="copyGap">
+                    <h2>Figma</h2>
+                    <h3></h3>
+                </div>
+                <p>
+                    Alex loves FIGMA and utilizes as much as he can. He loves bringing Figma into the creative space in
+                    non-ux space which is trilling matter to him. He also advocates Figma for better more
+                    inclusive space.
+                </p>
+            </div>
+            <div class="drawer">
+                <div class="copyGap">
+                    <h2>Thinker</h2>
+                    <h3></h3>
+                </div>
+                <p>
+                    Alex always enjoy thinking on problems like P vs NP or just figuring out what to wear the
+                    next day. He is seeking on master degree in more of philosophy oriented focus to improve design +
+                    business for a more exciting future.
+                </p>
+            </div>
+        </div>
     </div>
-    <div class="articles" id="thoughts">
-        <h1>Thought in progress</h1>
-        <div class="flexBox">
+    <div class="articles">
+        <h1>Thoughts in progress</h1>
+        <div class="flexBox" style="align-items: start;">
             <div class="cols">
                 <a href="https://byhook.com/activity/ad-age-deaf-in-design" target="_blank">
                     <div class="clipping">
+                        <h3>Read Article</h3>
                         <img draggable="false" src="Deaf_Creative_Alex.webp" alt="img" style="user-select: none;"
                             width="100%">
                     </div>
@@ -208,6 +682,7 @@
                 <a href="https://www.linkedin.com/posts/alex-kauffman_new-figma-features-from-config2023-activity-7079514392333074433-I4WV?utm_source=share&utm_medium=member_desktop"
                     target="blank">
                     <div class="clipping">
+                        <h3>See Post</h3>
                         <img draggable="false" src="ConFig2023.png" alt="img" style="user-select: none;" width="100%">
                     </div>
                     <h2>Thinking of new ways using Figma's variable feature for Display ads to help cutback
@@ -217,51 +692,169 @@
             </div>
             <div class="cols">
                 <div class="clipping">
+                    <h3>Coming Soon</h3>
                     <img draggable="false" src="Alex_Fencing.png" alt="img" style="user-select: none;" width="100%">
                 </div>
                 <h2>Doing Saber fencing around the U.S.A helps shape my design thinking process.<br></h2>
                 <p>Coming Soon...</p>
             </div>
         </div>
-        <br>
-        <br>
+    </div>
+    <div class="project">
+        <div class="experiance">
+            <h1>In Alex's' spare time, he fences 🤺 saber around the USA, prototyping things with 3D printers, and also
+                advocates for the Deaf community to empower their abilities in the workplace.</h1>
+            <h1>Down the road as Alex continues working in the creative industry, he wants to go continue study grad
+                school to help bring design + business + engineering to more sustainable future.</h1>
+        </div>
+    </div>
+    <div class="archives gallery">
+        <div class="marquee">
+            <ul class="marquee__content">
+                <img draggable="false" src="Kauffman_NYC_TRIP_2.png" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_SF_TRIP.jpg" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_NYC_TRIP.png" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_SF.jpg" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_NYC.jpg" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_Harvard.jpg" width="100%" alt="img">
+            </ul>
+            <ul class="marquee__content" aria-hidden="true">
+                <img draggable="false" src="Kauffman_NYC_TRIP_2.png" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_SF_TRIP.jpg" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_NYC_TRIP.png" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_SF.jpg" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_NYC.jpg" width="100%" alt="img">
+                <img draggable="false" src="Kauffman_Harvard.jpg" width="100%" alt="img">
+            </ul>
+        </div>
         <br>
         <br>
         <br>
         <br>
     </div>
-    <footer id="contacts">
-        <div class="gutters">
-            <div class="bottomContents">
-                <div class="flexBox" style="align-items: end;">
-                    <div class="cta">
-                        <h2 onclick="copyContent()">If you'd like to learn more, Lets Talk!</h2>
-                        <span class="underline" id="change-text">Click to copy email to clipboard</span>
-                    </div>
-                    <h2 class="backToTop" onclick="topFunction()" id="toTop">
-                        <span class="material-symbols-outlined">straight</span>
-                    </h2>
-                    <!-- <img class="pointer" src="Point.svg" width="100%" alt="Hand with index finger pointing Left"> -->
-                </div>
-            </div>
-            <div class="flexBox footerbottom">
-                <h2>&copy; 2024 Alex Kauffman</h2>
-                <h2>Designed + Coded &nbsp; &mdash; &nbsp; Alex</h2>
+    <div class="newcta">
+        <h2 onclick="copyContent()">If you'd like to learn more, Lets Talk!</h2>
+        <h3><span class="underline" id="change-text">Click to copy email to clipboard</span></h3>
+        <div class="marquee">
+            <ul class="hero_marquee__content">
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+            </ul>
+            <ul class="hero_marquee__content" aria-hidden="true">
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+            </ul>
+        </div>
+    </div>
+    <div class="hero" style="height: 100vh; overflow: hidden;">
+        <br>
+        <br>
+        <br>
+        <div class="textContainer">
+            <div class="text">
+                <h1 class="line">Creating ideas</h1>
+                <h1 class="line">into matter</h1>
             </div>
         </div>
-    </footer>
+        <div class="flexBox">
+            <h2>Inspiring Full stack designer</h2>
+            <h2>( &nbsp; Scroll &nbsp; )</h2>
+        </div>
+        <div class="reel" id="video-container">
+            <img src="Color.gif" width="100%">
+        </div>
+    </div>
+    <div class="progress-container">
+        <div class="progress-bar" id="myBar"></div>
+    </div>
     <script>
-        const cursorRounded = document.querySelector('#arrow');
+        document.addEventListener('DOMContentLoaded', function () {
+            //motion text
+            const textLines = document.querySelectorAll('.line');
+            let delay = 0;
 
-        const moveCursor = (e) => {
-            const mouseY = e.clientY;
-            const mouseX = e.clientX;
-            cursorRounded.style.transform = `translate3d(${mouseX - 210}px, ${mouseY - 210}px, 0)`;
+            textLines.forEach(function (line) {
+                line.style.animationDelay = delay + 's';
+                delay += 0.5; // Increase delay for each line
+            });
+
+            //cursor
+            const cursorRounded = document.querySelector('#arrow');
+
+            const moveCursor = (e) => {
+                const mouseY = e.clientY;
+                const mouseX = e.clientX;
+                cursorRounded.style.transform = `translate3d(${mouseX - 160}px, ${mouseY - 160}px, 0)`;
+            }
+
+            window.addEventListener('mousemove', moveCursor);
+
+            //Clickable drop down
+            const drawers = document.querySelectorAll('.drawer');
+
+            drawers.forEach(drawer => {
+                drawer.addEventListener('click', function () {
+                    this.classList.toggle('opened');
+                });
+            });
+        });
+    </script>
+    <script>
+        let text = 'xanderkau13@gmail.com';
+        const changeText = document.querySelector("#change-text");
+        // Initial message
+        changeText.textContent = "Click to copy email to clipboard";
+        const copyContent = async () => {
+            try {
+                await navigator.clipboard.writeText(text);
+                console.log('Content copied to clipboard');
+                changeText.textContent = "Copied!";
+                // Timeout to change the message
+                setTimeout(() => {
+                    changeText.textContent = "Click to copy email to clipboard";
+                }, 2000);
+            } catch (err) {
+                console.error('Failed to copy: ', err);
+                changeText.textContent = "Failed to copy. Please try manually.";
+            }
+        };
+
+        changeText.addEventListener("click", copyContent);
+
+        //toogle light and dark mode
+        const toggleButton = document.getElementById('toggle-button');
+        toggleButton.addEventListener('click', () => {
+            document.body.classList.toggle('lightMode');
+        });
+
+        // Function to reset the scroll position to the top
+        function resetScroll() {
+            window.scrollTo(0, 0);
         }
 
-        window.addEventListener('mousemove', moveCursor)
+        // Event listener for scrolling
+        window.addEventListener('scroll', function () {
+            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
+                resetScroll();
+            }
+        });
+
+        //scroll bar progress bar 
+        window.onscroll = function () {
+            myFunction()
+        };
+
+        function myFunction() {
+            var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            var scrolled = (winScroll / height) * 100;
+            document.getElementById("myBar").style.height = scrolled + "%";
+        }
     </script>
-    <script src="app.js"></script>
 </body>
 
 </html>
