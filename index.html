@@ -464,6 +464,18 @@
             width: 100%;
             height: 100%;
         }
+
+        .image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            object-fit: cover;
+        }
+
+        .image.active {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -499,9 +511,32 @@
                 <h2>( &nbsp; Scroll &nbsp; )</h2>
             </div>
             <div class="reel" id="video-container">
-                <img src="Color.gif" width="100%">
+                <img class="image" src="HookMenuUpdate.gif" width="100%">
+                <img class="image" src="Apple Tv.png" width="100%">
+                <img class="image" src="Color.gif" width="100%">
+                <img class="image" src="Bento_Instrument.png" width="100%">
+                <img class="image" src="Bento_Sxsw.gif" width="100%">
+                <img class="image" src="Googelbraillebanner.svg" width="100%">
+                <img class="image" src="Bento_Wishful_HD.png" width="100%">
             </div>
         </div>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const images = document.querySelectorAll("#video-container .image");
+                let index = 0;
+
+                function showImage() {
+                    images.forEach(image => {
+                        image.classList.remove("active");
+                    });
+                    images[index].classList.add("active");
+                    index = (index + 1) % images.length;
+                    setTimeout(showImage, 1200);
+                }
+
+                showImage();
+            });
+        </script>
         <div class="project">
             <div class="experiance">
                 <h1>Alex is an aspiring full-stack designer that strives in problem solving. He believes that designs
