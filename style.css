@@ -1887,6 +1887,7 @@ input[type=checkbox] {
     gap: var(--gap);
     color: var(--dark);
     padding-bottom: 164px;
+    padding-top: 164px;
 }
 
 .gallery .marquee__content {
@@ -2203,5 +2204,42 @@ footer h2 {
 
     .hero h1{
         padding-left: 16px;
+    }
+
+    .aboutMe{
+        margin-bottom: 0;
+    }
+
+    .skills h1{
+        padding-bottom: 32px;
+    }
+
+    #arrow{
+        display: none;
+    }
+
+    .articles .flexBox{
+        flex-wrap: wrap;
+    }
+
+    .articles .cols{
+        width: 100%;
+    }
+
+    .navList{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .navList a:last-child, .toggle{
+        display: none;
+    }
+
+    .project .half{
+        width: 100%;
+    }
+
+    .project .flexBox{
+        flex-wrap: wrap;
     }
 }
