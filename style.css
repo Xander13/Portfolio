@@ -2421,9 +2421,114 @@ footer h1 {
 }
 
 
+/*Archive*/
+.archiveGallery {
+    padding: 64px;
+    padding-top: 0;
+}
+
+.archiveGallery .flexBox{
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.imgBG{
+    margin-bottom: 132px;
+    padding: 64px;
+}
+
+.archiveGallery h1 {
+    font-size: 4.4vw;
+    line-height: 4.8vw;
+    font-weight: 500 !important;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+.archiveGallery .half{
+    padding: 64px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.archiveGallery .half:nth-child(even){
+    padding: 64px;
+    padding-left: 32px;
+}
+
+.archiveGallery .half:nth-child(odd){
+    padding: 64px;
+    padding-right: 32px;
+}
+
+.archiveGallery h2 {
+    padding-top: 16px;
+}
+
+.imgBG {
+    padding-bottom: 32px;
+}
+
+.cols h2 {
+    font-size: 32px;
+    padding-top: 16px;
+    padding-bottom: 0;
+}
+
+.cols h3 {
+    color: gray;
+    margin-bottom: 64px;
+}
+
+.experiance {
+    padding-top: 264px;
+}
+
+.newcta h2 {
+    font-size: 8vw;
+    text-align: center;
+    line-height: 8vw;
+    width: fit-content;
+    cursor: pointer;
+    margin-bottom: 64px;
+    margin-top: 0;
+}
+
+.newcta h3 {
+    font-size: 32px;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: 232px;
+}
+
+.newcta .flexBox {
+    margin-bottom: 0;
+}
+
+.archiveGallery a {
+    padding: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 100rem;
+    background-color: var(--dark);
+    color: var(--light);
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.archiveGallery a:hover {
+    background-color: var(--light);
+    color: var(--dark);
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+/**************/
+
+
 
 @media screen and (max-width: 930px) {
-    .project, .skills, .articles, .experiance, .hero .flexBox{
+    .project, .skills, .articles, .experiance, .hero .flexBox, .archiveGallery{
         padding: 16px;
     }
 
@@ -2452,12 +2557,16 @@ footer h1 {
         display: none;
     }
 
-    .articles .flexBox{
+    .articles .flexBox, .archiveGallery .flexBox{
         flex-wrap: wrap;
     }
 
-    .articles .cols{
+    .articles .cols, .articles .cols, .archiveGallery .half{
         width: 100%;
+    }
+
+    .archiveGallery .half{
+        padding: 0;
     }
 
     .navList{
