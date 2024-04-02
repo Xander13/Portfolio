@@ -1219,7 +1219,6 @@ img {
 
 .projectWriting .half{
     width: calc(50% - 32px);
-    background-color: green;
 }
 
 .painpoints {
@@ -1393,7 +1392,6 @@ img {
 .TextBox{
     height: 200px;
     width: 600px;
-    background-color: green;
     border-radius: 100rem;
     color: transparent;
     user-select: none;

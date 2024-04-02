@@ -41,32 +41,15 @@
 </head>
 
 <body class="lightMode">
-    <input type="checkbox" id="checkbox_toggle">
-    <ul class="fullNav">
-        <div class="gutters">
-            <div class="navProject">
-                <div class="mobileList">
-                    <li><a id="active" href="index.html">Work</a></li>
-                    <li><a href="index.html#abouts">About</a></li>
-                    <li><a href="archive.html">Archive</a></li>
-                    <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
-                </div>
-            </div>
-            <div class="bottomSpecks">
-                <p>Located in Detroit Area</p>
-                <h1>2023</h1>
-            </div>
-        </div>
-    </ul>
     <div class="navList">
-        <a id="active" href="index.html">Work</a>
-        <a href="archive.html">Archive</a>
-        <a target="_blank" href="https://www.linkedin.com/in/alex-kauffman/">LinkedIn</a>
-        <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+        <h2>Alex Kauffman</h2>
+        <div class="flexBox">
+            <a id="active" href="index.html">Work</a>
+            <a href="archive.html">Archive</a>
+            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            <div id="toggle-button" class="dot"></div>
+        </div>
     </div>
-    <label for="checkbox_toggle" class="hamburger">
-        <h1>Menu</h1>
-    </label>
     <div class="project">
         <img src="vigorwide.png" width="100%">
         <div class="projectWriting">
@@ -189,9 +172,6 @@
                 </div>
             </div>
         </div>
-        <div class="projectWriting">
-
-        </div>
         <div class="darkbg lgSpacing">
             <div class="projectWriting">
                 <div class="flexBox">
@@ -293,65 +273,66 @@
         <br>
         <br>
         <br>
-        <div class="projects">
-            <hr>
-            <h1
-                style="font-size: 4.2vw; line-height: 4.4vw;  margin-bottom: 64px; text-align: left; padding-left: 32px;">
-                See other projects</h1>
-            <div class="flexBox" style="padding-left: 16px; padding-right: 16px;">
-                <div class="half" style="padding: 32px; padding-left: 16px;">
-                    <a href="vigor.html">
-                        <div class="clipping">
-                            <div class="cover"></div>
-                            <img draggable="false" src="DMV.svg" width="100%" alt="img">
-                        </div>
-                        <h1 style="padding-left: 0; padding-top: 32px;">Vigor Fitness</h1>
-                        <h2>UX/UI Design, Research, App</h2>
-                    </a>
-                </div>
-                <div class="half" style="padding: 32px; padding-left: 16px;">
-                    <a href="vigor.html">
-                        <div class="clipping">
-                            <div class="cover"></div>
-                            <img draggable="false" src="DMV.svg" width="100%" alt="img">
-                        </div>
-                        <h1 style="padding-left: 0; padding-top: 32px;">Vigor Fitness</h1>
-                        <h2>UX/UI Design, Research, App</h2>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div id="toggle-button" class="toggle">
-            <div class="dot"></div>
-        </div>
-        <footer id="contacts">
-            <div class="gutters">
-                <!-- <h1>Kauffman</h1>
-                <div class="bottomContents">
-                    <div class="flexBox" style="align-items: end;">
-                        <div class="cta">
-                            <h2 onclick="copyContent()">If you'd like to learn more, Lets Talk!</h2>
-                            <span class="underline" id="change-text">Click to copy email to clipboard</span>
-                        </div>
-                        <h2 class="backToTop" onclick="topFunction()" id="toTop">
-                            <span class="material-symbols-outlined">straight</span>
-                        </h2>
-                    </div>
-                </div> -->
-                <div class="flexBox footerbottom">
-                    <h2>&copy; 2024 Alex Kauffman</h2>
-                    <h2>Designed + Coded &nbsp; &mdash; &nbsp; Alex</h2>
-                </div>
-            </div>
-        </footer>
     </div>
-    <script>
-        const toggleButton = document.getElementById('toggle-button');
-
-        toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('lightMode');
-        });
-    </script>
+    <div class="projects moreWork">
+        <hr>
+        <br>
+        <br>
+        <h1>More work</h1>
+        <div class="flexBox">
+            <div class="half">
+                <a href="Color_Health.html">
+                    <div class="photoCard">
+                        <div class="arrow">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                        </div>
+                        <div class="clipping">
+                            <img src="Bento_Color.png" alt="img" width="100%" draggable="false">
+                        </div>
+                        <h2>Color - Health</h2>
+                        <h3>Web & Brand Design, Client</h3>
+                    </div>
+                </a>
+            </div>
+            <div class="half">
+                <a href="Google_for_Creator.html">
+                    <div class="photoCard">
+                        <div class="arrow">
+                            <span class="material-symbols-outlined">
+                                arrow_upward
+                            </span>
+                        </div>
+                        <div class="clipping" style="border: 2px solid #AECBFA;">
+                            <img src="Bento_Creators.png" alt="img" width="100%" draggable="false">
+                        </div>
+                        <h2>Google for Creators</h2>
+                        <h3>UX/UI, Intern at Instrument</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="newcta">
+        <h2 onclick="copyContent()">If you'd like to learn more, Lets Talk!</h2>
+        <h3><span class="underline" id="change-text">Click to copy email to clipboard</span></h3>
+        <div class="marquee">
+            <ul class="hero_marquee__content">
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+            </ul>
+            <ul class="hero_marquee__content" aria-hidden="true">
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+                <li>&copy; 2024 &nbsp; ✷ &nbsp; Alex Kauffman &nbsp; ✷ &nbsp;</li>
+            </ul>
+        </div>
+    </div>
+    <script src="app.js"></script>
 </body>
 
 </html>
