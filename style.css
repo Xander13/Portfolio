@@ -524,7 +524,14 @@ img {
     font-size: 18px;
     margin-bottom: 0;
     margin-top: 16px;
-    color: white;
+    color: black;
+    background-color: white;
+    padding: 8px;
+    padding-left: 16px;
+    font-weight: 500 !important;
+    padding-right: 16px;
+    border-radius: 100rem;
+    text-transform: uppercase;
 }
 
 .project p {
@@ -534,6 +541,17 @@ img {
     margin-top: 8px;
     padding-top: 0;
     margin-bottom: 0;
+}
+
+.lgTitle{
+    font-size: 12vw; 
+    text-transform: uppercase; 
+    line-height: 11vw; 
+    font-weight: 600;
+}
+
+.projectHero .lgTitle{
+    padding-top: 232px;
 }
 
 .half {
@@ -1034,21 +1052,21 @@ img {
 
 .fullImgView {
     margin: auto;
-    padding-left: 32px;
-    padding-right: 32px;
+    padding-left: 64px;
+    padding-right: 64px;
     width: 100%;
 }
 
-.fullImgView .imgCard {
-    margin-left: 0 !important;
-    margin-bottom: 0 !important;
+.fullImgView p{
+    text-align: center;
+    padding-top: 16px;
+    font-size: 24px;
 }
 
 .projectHero {
     margin: auto;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-bottom: 32px;
+    padding-left: 64px;
+    padding-right: 64px;
 }
 
 .rols .cols h2,
@@ -1120,6 +1138,12 @@ img {
     margin-bottom: 32px;
 }
 
+.centerTxt{
+    font-size: 4.8vw;
+    line-height: 4.8vw;
+    text-align: center;
+}
+
 .UFOSearchBar {
     position: absolute;
     top: 48px;
@@ -1131,19 +1155,24 @@ img {
 
 .projectHero {
     margin: auto;
-    padding-top: 64px;
-    padding-bottom: 64px;
+}
+
+.projectHero .flexBox{
+    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    margin-top: 64px;
 }
 
 .projectHero h2 {
     font-weight: 400;
 }
 
-.projectHero .flexBox {
-    align-items: end;
+.team .cols{
+    text-align: center;
 }
 
-.projectHero h1,
 .projectSections h1 {
     font-size: 4.2vw;
     line-height: 4.4vw;
@@ -1291,9 +1320,10 @@ img {
 
 .projectHero p {
     padding-top: 32px;
-    font-size: 22px;
+    font-size: 24px;
     line-height: 1.4em;
     max-width: 860px;
+    font-weight: 500;
     color: var(--gray);
     margin: auto;
     text-wrap: balance;
@@ -1314,7 +1344,7 @@ img {
 }
 
 .projectHeader h4 {
-    font-size: 20px;
+    font-size: 32px;
     line-height: 1.4em;
     max-width: 860px;
     margin: auto;
@@ -1322,7 +1352,7 @@ img {
     font-weight: 400;
     padding-top: 132px;
     text-transform: uppercase;
-    padding-bottom: 32px;
+    margin-bottom: 0;
 }
 
 .projectHeader .cols h1 {
@@ -1880,7 +1910,7 @@ img {
 }
 
 .photoCard:hover img {
-    transform: scale(1.4);
+    transform: scale(1.02);
     transition: 0.4s ease;
 }
 
