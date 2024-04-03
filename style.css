@@ -2632,4 +2632,44 @@ footer h1 {
     .project .flexBox{
         flex-wrap: wrap;
     }
+
+    .imgBG{
+        padding: 0;
+    }
+
+    .imgBG .half{
+        width: 100%;
+        padding: 0 !important;
+    }
+
+    .imgBG .cols{
+        padding: 0 !important;
+        width: 100%;
+        padding: 16px;
+    }
+
+    .imgBG .flexBox{
+        padding: 16px;
+    }
+
+    .imgBG .forty{
+        width: 100%;
+    }
+
+    .imgBG .forty img{
+        margin: 0;
+    }
+
+    .imgBG .full{
+        padding: 16px;
+    }
+
+    .imgBG h1{
+        font-size: 42px;
+        line-height: 50px;
+        padding: 16px;
+        text-align: left !important;
+    }
+
+    
 }
