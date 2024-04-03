@@ -441,9 +441,25 @@ img {
 }
 
 
-.project h1,
+.mdTxt{
+    font-size: 4.2vw;
+    line-height: 4.8vw;
+    color: var(--dark); 
+}
+
+.lgTxt{
+    font-size: 8vw;
+    text-align: center;
+    line-height: 8vw;
+    width: fit-content;
+    cursor: pointer;
+    margin-bottom: 64px;
+    margin-top: 0;
+}
+
 .skills h1 {
     font-size: 4.2vw;
+    line-height: 4.8vw;
     color: var(--dark);
 }
 
@@ -750,16 +766,6 @@ img {
     margin: 0;
     margin: auto;
     height: fit-content;
-}
-
-.newcta h2 {
-    font-size: 8vw;
-    text-align: center;
-    line-height: 8vw;
-    width: fit-content;
-    cursor: pointer;
-    margin-bottom: 64px;
-    margin-top: 0;
 }
 
 .newcta h3 {
