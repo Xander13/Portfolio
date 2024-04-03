@@ -2548,6 +2548,10 @@ footer h1 {
     margin-bottom: 0;
 }
 
+.otto img{
+    margin-bottom: 64px;
+}
+
 .archiveGallery a, .projectHero a {
     padding: 8px;
     padding-left: 16px;
