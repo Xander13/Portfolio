@@ -23,23 +23,6 @@ const copyContent = async () => {
 
 changeText.addEventListener("click", copyContent);
 
-
-//Image flipper 
-document.addEventListener("DOMContentLoaded", function () {
-  const images = document.querySelectorAll("#video-container .image");
-  let index = 0;
-
-  function showImage() {
-    images.forEach(image => {
-      image.classList.remove("active");
-    });
-    images[index].classList.add("active");
-    index = (index + 1) % images.length;
-    setTimeout(showImage, 1200);
-  }
-  showImage();
-});
-
 //toogle light and dark mode
 const toggleButton = document.getElementById('toggle-button');
 toggleButton.addEventListener('click', () => {
