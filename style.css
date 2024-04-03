@@ -457,16 +457,30 @@ img {
     margin-top: 0;
 }
 
+.xlTxt{
+    padding-bottom: 16px;
+    padding-top: 4px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 7vw;
+    line-height: 7vw;
+    margin: 0;
+}
+
+.lgTitle {
+    font-size: 12vw;
+    text-transform: uppercase;
+    line-height: 11vw;
+    font-weight: 600;
+}
+
+.projectHero .lgTitle {
+    padding-top: 232px;
+}
+
 .skills h1 {
-    font-size: 4.2vw;
-    line-height: 4.8vw;
     color: var(--dark);
 }
-
-.project h1 {
-    margin-block-end: 0;
-}
-
 
 .project .flexBox {
     gap: 32px;
@@ -494,17 +508,6 @@ img {
     margin-top: 8px;
     padding-top: 0;
     margin-bottom: 0;
-}
-
-.lgTitle {
-    font-size: 12vw;
-    text-transform: uppercase;
-    line-height: 11vw;
-    font-weight: 600;
-}
-
-.projectHero .lgTitle {
-    padding-top: 232px;
 }
 
 .half {
@@ -650,23 +653,6 @@ img {
     height: 60vh;
 }
 
-.skills .flexBox {
-    gap: 64px;
-    align-items: start;
-    margin-bottom: 0;
-}
-
-.skills h2 {
-    font-size: 7vw;
-    line-height: 7vw;
-    margin: 0;
-    padding-bottom: 32px;
-}
-
-.skills .fifty {
-    width: 50%;
-}
-
 .drawer {
     margin-bottom: 16px;
     overflow: hidden;
@@ -683,17 +669,10 @@ img {
 .drawer p {
     display: none;
     opacity: 0;
-    line-height: 40px !important;
     margin-bottom: 0;
     padding-bottom: 32px;
     border-top: 2px solid black;
-}
-
-.drawer h2 {
-    padding-bottom: 16px;
-    padding-top: 4px;
-    cursor: pointer;
-    user-select: none;
+    color: var(--light);
 }
 
 .drawer h3::after {
@@ -717,6 +696,7 @@ img {
 
 .drawer:hover p {
     border-top: 2px solid var(--dark);
+    color: var(--dark);
 }
 
 .drawer.opened {
@@ -848,7 +828,6 @@ img {
 }
 
 /****************/
-
 
 .hook {
     color: var(--light);
