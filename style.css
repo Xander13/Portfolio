@@ -5,15 +5,6 @@
     --yellow: #FDCA6A;
 }
 
-html::before {
-    font-size: 1rem;
-    word-spacing: 0.0625rem;
-    -ms-text-size-adjust: 100%;
-    -webkit-text-size-adjust: 100%;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
-}
-
 body {
     background-color: var(--light);
     color: var(--dark);
@@ -48,37 +39,8 @@ body {
     cursor: pointer;
 }
 
-.gridLinesBG {
-    width: 100%;
-    height: 100%;
-    top: 0;
-    bottom: 0;
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 32px;
-    padding-right: 32px;
-}
-
 * {
     font-family: "Instrument Sans", sans-serif;
-}
-
-#fullpage {
-    display: none;
-    position: fixed;
-    z-index: 9999;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: contain;
-    background-repeat: no-repeat no-repeat;
-    background-position: center center;
-    background-color: black;
 }
 
 ul {
@@ -97,6 +59,10 @@ a {
 ::selection {
     background: var(--dark);
     color: var(--light);
+}
+
+::-webkit-scrollbar {
+    width: 0px;
 }
 
 h1,
@@ -152,39 +118,6 @@ p {
     align-items: center;
 }
 
-.logo img {
-    width: 78px;
-    position: relative;
-    mix-blend-mode: difference;
-}
-
-.filter {
-    filter: invert(100%);
-}
-
-.logo:hover {
-    background-color: transparent !important;
-}
-
-#navbar {
-    position: fixed;
-    top: 24px;
-    width: 100%;
-    transition: top 0.3s;
-}
-
-::-webkit-scrollbar {
-    width: 0px;
-}
-
-#navbar h2 {
-    font-weight: 400;
-}
-
-.half {
-    width: 50%;
-}
-
 .navList a {
     padding-left: 20px;
     padding-right: 20px;
@@ -231,26 +164,6 @@ p {
     padding: 32px;
 }
 
-#workHover:hover .widthSections {
-    opacity: 1;
-    transition: 0.5s ease;
-}
-
-.widthSections .pBox {
-    width: calc(100% / 7 - 32px);
-    background-color: rgb(234, 234, 234);
-    height: 100%;
-    border-radius: 12px;
-    overflow: hidden;
-    border: 2px solid transparent;
-    transition: 0.4s ease;
-}
-
-.widthSections .pBox:hover {
-    border: 2px solid var(--light);
-    transition: 0.4s ease;
-}
-
 #active {
     font-style: italic;
     color: var(--light);
@@ -269,74 +182,6 @@ p {
     padding-bottom: 0 !important;
 }
 
-.navProject h3 {
-    font-weight: 400;
-    color: var(--gray);
-    font-size: 16px;
-}
-
-/* .mobileList {
-    display: none;
-} */
-
-.mobileList #active {
-    border-radius: 100rem;
-    padding-left: 32px;
-    padding-right: 32px;
-}
-
-.gutters {
-    position: relative;
-    margin: auto;
-    padding-left: 32px;
-    padding-right: 32px;
-}
-
-.fullNav li {
-    padding-bottom: 64px;
-}
-
-.fullNav a {
-    color: var(--dark);
-    font-size: 8vw;
-    line-height: 64px;
-    transition: 0.5s ease;
-    font-weight: 400;
-}
-
-.navStuff {
-    padding-top: 232px;
-}
-
-.fullNav .half {
-    width: 50%;
-}
-
-.fullNav .box {
-    transform: scale(0.5);
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 0;
-}
-
-.fullNav a:hover {
-    color: var(--yellow);
-    transition: 0.5s ease;
-}
-
-#navMenu {
-    position: fixed;
-    top: -100vh;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: var(--light);
-    mix-blend-mode: difference;
-    transition: top 0.3s ease;
-    z-index: 22222;
-}
 
 .smalltxt {
     font-size: 22px;
@@ -363,21 +208,6 @@ p {
     position: relative;
 }
 
-.box {
-    padding-bottom: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 100% !important;
-}
-
-.alex {
-    width: 30%;
-    position: relative;
-    user-select: none;
-}
-
-
 /*Index Styles*/
 .content {
     position: relative;
@@ -388,11 +218,6 @@ p {
 img {
     width: 100%;
     height: fit-content;
-}
-
-.flexBox {
-    display: flex;
-    justify-content: space-between;
 }
 
 .bento {
@@ -414,7 +239,6 @@ img {
 .half {
     width: 50%;
     display: flex;
-    align-items: center;
 }
 
 .half h1 {
@@ -432,14 +256,9 @@ img {
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
-.project .half .flexBox {
-    margin-bottom: 0;
-}
-
 .project .flexBox:last-child {
     margin-bottom: 0;
 }
-
 
 .mdTxt{
     font-size: 4.2vw;
@@ -508,12 +327,6 @@ img {
     margin-top: 8px;
     padding-top: 0;
     margin-bottom: 0;
-}
-
-.half {
-    display: flex;
-    width: 50%;
-    justify-content: start;
 }
 
 .hero {
@@ -2435,27 +2248,6 @@ footer h1 {
     padding-top: 264px;
 }
 
-.newcta h2 {
-    font-size: 8vw;
-    text-align: center;
-    line-height: 8vw;
-    width: fit-content;
-    cursor: pointer;
-    margin-bottom: 64px;
-    margin-top: 0;
-}
-
-.newcta h3 {
-    font-size: 32px;
-    width: fit-content;
-    margin: auto;
-    padding-bottom: 232px;
-}
-
-.newcta .flexBox {
-    margin-bottom: 0;
-}
-
 .otto img {
     margin-bottom: 64px;
 }
@@ -2478,10 +2270,7 @@ footer h1 {
     color: var(--dark);
     transition: color 0.5s ease, background-color 0.5s ease;
 }
-
 /**************/
-
-
 
 @media screen and (max-width: 930px) {
     .reel{
@@ -2598,6 +2387,4 @@ footer h1 {
         padding: 16px;
         text-align: left !important;
     }
-
-
 }
