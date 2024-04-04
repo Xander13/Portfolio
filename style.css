@@ -278,10 +278,10 @@ img {
 }
 
 .lgTitle {
-    font-size: 12vw;
     text-transform: uppercase;
-    line-height: 11vw;
-    font-weight: 600;
+    font-size: 8vw;
+    line-height: 8vw;
+    font-weight: 400;
 }
 
 .projectHero .lgTitle {
