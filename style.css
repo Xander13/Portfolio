@@ -320,21 +320,6 @@ img {
     margin-bottom: 0;
 }
 
-.hero {
-    width: 100%;
-    margin-top: 0;
-    height: fit-content;
-    background-color: var(--light);
-}
-
-.hero .flexBox {
-    align-items: center;
-    margin-top: 432px;
-    margin-bottom: 64px;
-    padding-left: 64px;
-    padding-right: 64px;
-}
-
 .hero h1 {
     font-size: 8vw;
     line-height: 8vw;
@@ -1089,7 +1074,7 @@ img {
     padding-right: 0;
     padding-bottom: 0;
     margin-top: 36px;
-    height: fit-content;
+    height: 72vh;
     background-color: var(--light);
     transition: color 0.5s ease, background-color 0.5s ease;
 }
@@ -1285,6 +1270,7 @@ img {
 
 .articles .cols:hover img {
     transform: scale(1.02);
+    opacity: 0.7;
     cursor: pointer;
     transition: 0.5s ease;
 }
@@ -1486,7 +1472,8 @@ img {
 }
 
 .projects .half h1,
-.projects .md h1 {
+.projects .md h1, 
+.articles .cols h2 {
     text-underline-offset: 8px;
 }
 
@@ -2216,7 +2203,7 @@ footer h1 {
 }
 
 .cols h3 {
-    color: gray;
+    color: black;
     margin-bottom: 64px;
 }
 
