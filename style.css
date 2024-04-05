@@ -2388,6 +2388,11 @@ footer a:hover{
 
     }
 
+    .drawer{
+        padding-left: 0;
+        padding-right: 0;
+    }
+
     .drawer .xlTxt, .drawer h3{
         font-size: 48px;
     }
