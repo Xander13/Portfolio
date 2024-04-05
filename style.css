@@ -5,6 +5,10 @@
     --yellow: #FDCA6A;
 }
 
+html{
+    background-color: var(--light);
+}
+
 body {
     background-color: var(--light);
     color: var(--dark);
