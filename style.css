@@ -31,6 +31,18 @@ body {
     z-index: 9999;
 }
 
+.year{
+    position: absolute;
+    right: 64px;
+    bottom: 32px;
+}
+
+.userRole{
+    position: absolute;
+    left: 64px;
+    bottom: 32px;
+}
+
 .dot {
     border-radius: 100rem;
     height: 32px;
@@ -104,6 +116,11 @@ p {
     overflow: hidden;
     transition: 0.5s ease;
 }
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 0.2s ease-in-out;
+  }
 
 .navList .flexBox {
     margin-bottom: 0;
@@ -257,9 +274,18 @@ img {
     color: var(--dark); 
 }
 
+.smTxt{
+    font-size: 32px !important;
+    line-height: 48px !important;
+    color: white !important;
+    letter-spacing: 1px;
+    font-weight: 400 !important;
+}
+
 .lgTxt{
     font-size: 8vw;
-    text-align: center;
+    padding-left: 64px;
+    padding-right: 64px;
     line-height: 8vw;
     width: fit-content;
     cursor: pointer;
@@ -284,6 +310,17 @@ img {
     font-weight: 400;
 }
 
+.archives h1{
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-size: 7vw;
+    z-index: 12;
+    line-height: 7vw;
+    top: calc(100% / 2 - 7vw);
+}
+
 .projectHero .lgTitle {
     padding-top: 232px;
 }
@@ -293,47 +330,31 @@ img {
 }
 
 .project .flexBox {
-    gap: 32px;
-    margin-bottom: 32px;
+    gap: 96px;
+}
+
+.project .half .flexBox{
+    height: fit-content;
 }
 
 .project h2 {
-    font-size: 18px;
+    font-size: 36px;
+    padding-top: 16px;
     margin-bottom: 0;
     margin-top: 16px;
-    color: black;
-    background-color: white;
-    padding: 8px;
-    padding-left: 16px;
+    color: var(--dark);
     font-weight: 500 !important;
-    padding-right: 16px;
     border-radius: 100rem;
     text-transform: uppercase;
 }
 
 .project p {
     font-size: 18px;
-    color: white;
+    color: var(--dark);
     text-transform: uppercase;
     margin-top: 8px;
     padding-top: 0;
     margin-bottom: 0;
-}
-
-.hero h1 {
-    font-size: 8vw;
-    line-height: 8vw;
-    padding: 0;
-    margin-block-start: 0;
-    margin-block-end: 0;
-    text-transform: uppercase;
-    text-align: left;
-    padding-left: 64px;
-}
-
-.hero .textContainer {
-    position: relative;
-    top: 140px;
 }
 
 .hero .blox {
@@ -351,24 +372,10 @@ img {
     object-fit: cover;
 }
 
-.newcta .marquee {
-    height: fit-content;
-    align-items: center;
-    background-color: #d7ddfa;
-}
-
-.newcta .marquee li {
-    color: var(--light);
-    font-size: 32px;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
 .aboutMe {
     height: fit-content;
-    margin-top: 132px;
-    margin-bottom: 132px;
-    padding-bottom: 0;
+    margin-top: 0px;
+    margin-bottom: 196px;
 }
 
 .aboutMe .marquee {
@@ -381,6 +388,7 @@ img {
 
 .full {
     margin-bottom: 32px;
+    padding: 82px;
     box-sizing: border-box;
 }
 
@@ -428,7 +436,8 @@ img {
 }
 
 .drawer {
-    margin-bottom: 16px;
+    margin-bottom: 32px;
+    margin-top: 32px;
     overflow: hidden;
     transition: 0.3s ease;
     padding-top: 16px;
@@ -436,25 +445,36 @@ img {
     padding-left: 16px;
     padding-right: 16px;
     cursor: pointer;
-    color: black;
-    background-color: #d7ddfa;
+    color: var(--dark);
+    border-bottom: 1px solid var(--dark);
 }
+
+.drawer:first-child{
+    margin-top: 0;
+}
+
+.drawer:last-child{
+    margin-bottom: 0;
+}
+
 
 .drawer p {
     display: none;
     opacity: 0;
     margin-bottom: 0;
     padding-bottom: 32px;
-    border-top: 2px solid black;
-    color: var(--light);
+    color: var(--dark);
+    line-height: 3vw !important;
 }
 
 .drawer h3::after {
     content: '+';
+    color: var(--dark);
 }
 
 .drawer.opened h3::after {
     content: '×';
+    color: var(--dark);
 }
 
 .drawer:hover {
@@ -469,7 +489,6 @@ img {
 }
 
 .drawer:hover p {
-    border-top: 2px solid var(--dark);
     color: var(--dark);
 }
 
@@ -516,7 +535,6 @@ img {
 }
 
 .newcta {
-    border-bottom: 1px solid var(--dark);
     margin: 0;
     margin: auto;
     height: fit-content;
@@ -529,6 +547,10 @@ img {
     padding-bottom: 232px;
 }
 
+.newcta h2{
+    text-align: center;
+}
+
 .newcta .flexBox {
     margin-bottom: 0;
 }
@@ -537,15 +559,28 @@ img {
 .textContainer {
     width: 100%;
     height: fit-content;
-    overflow: hidden;
-    position: relative;
+    /* overflow: hidden; */
+    position: absolute;
+    top: calc(100% / 2 - 9vw);
+    left: 0;
+    right: 0;
+    margin: auto;
+    height: fit-content;
+    z-index: 2222;
+}
+
+.text h2{
+    font-size: 8vw;
+    line-height: 8vw;
+    text-align: center;
 }
 
 .text {
     position: relative;
-    top: 0;
-    left: 0;
     width: 100%;
+    z-index: 12px;
+    overflow: hidden;
+    height: 8.9vw;
 }
 
 .line {
@@ -570,16 +605,7 @@ img {
 .project .half,
 .project .full {
     position: relative;
-}
-
-.project .half .flexBox,
-.project .full .flexBox {
-    position: absolute;
-    bottom: 0;
-    padding: 32px;
-    width: 100%;
-    justify-content: space-between;
-    box-sizing: border-box;
+    margin-bottom: 132px;
 }
 
 .project .half img,
@@ -854,7 +880,8 @@ img {
 .projectHero .flexBox {
     margin-bottom: 0;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 64px;
     align-items: start;
     margin-top: 64px;
 }
@@ -875,7 +902,6 @@ img {
 }
 
 .projectSections h1 {
-    text-align: center;
     padding-top: 232px;
     padding-bottom: 64px;
 }
@@ -899,7 +925,8 @@ img {
 }
 
 .marqueeProjects .marquee__content {
-    height: 600px;
+    height: auto;
+    width: 400px;
     padding: 0;
 }
 
@@ -1039,11 +1066,10 @@ img {
 .projectHeader h4 {
     font-size: 32px;
     line-height: 1.4em;
-    max-width: 860px;
     margin: auto;
+    padding-left: 64px;
     text-wrap: balance;
     font-weight: 400;
-    padding-top: 132px;
     text-transform: uppercase;
     margin-bottom: 0;
 }
@@ -1079,7 +1105,7 @@ img {
 }
 
 .projectHero .half {
-    width: calc(100% / 2 - 16px);
+    width: calc(100% / 2 - 32px);
 }
 
 .TextBox {
@@ -1144,6 +1170,10 @@ img {
 
 .vigor h3 {
     padding-bottom: 64px;
+}
+
+.half p{
+    text-wrap: balance;
 }
 
 .vigor .half p {
@@ -1218,14 +1248,6 @@ img {
     padding-top: 64px;
     padding: 32px;
 }
-
-.articles h1 {
-    font-size: 4vw;
-    line-height: 4.5vw;
-    margin-bottom: 64px;
-    font-weight: 400;
-}
-
 
 .articles .cols {
     position: relative;
@@ -1352,29 +1374,10 @@ img {
     font-size: 32px;
 }
 
-.projects h1 {
-    font-size: 36px;
-    margin-bottom: 4px;
-    text-align: center;
-}
-
-.projects h6 {
-    font-size: 4.4vw;
-    line-height: 4.8vw;
-    margin-bottom: 112px;
-    padding-left: 32px;
-    font-weight: 500 !important;
-}
-
-.projects h2 {
-    text-align: center;
-    color: var(--gray);
-    font-size: 32px !important;
-}
-
-
 .projects .flexBox {
-    gap: 1vw;
+    gap: 32px;
+    padding-left: 64px;
+    padding-right: 64px;
 }
 
 .moreWork,
@@ -1577,7 +1580,7 @@ img {
     right: 0;
     margin: auto;
     width: fit-content;
-    top: calc(100% / 2 - 28px);
+    top: calc(100% / 2 - 48px);
     transition: 0.5s ease;
     display: none;
     text-transform: uppercase;
@@ -1595,7 +1598,7 @@ img {
     100% {
         opacity: 1;
         rotate: 0deg;
-        top: calc(100% / 2 - 28px);
+        top: calc(100% / 2 - 48px);
     }
 }
 
@@ -1731,7 +1734,7 @@ img {
 }
 
 .projectMarquee {
-    --gap: 2rem;
+    --gap: 4rem;
     display: flex;
     overflow: hidden;
     user-select: none;
@@ -1763,12 +1766,13 @@ img {
 }
 
 .marquee__content {
-    animation: scroll 30s linear infinite;
+    animation: scroll 120s linear infinite;
     padding-bottom: 0;
+    opacity: 0.5;
 }
 
 .hero_marquee__content {
-    animation: scroll 60s linear infinite;
+    animation: scroll 120s linear infinite;
     padding-bottom: 0;
 }
 
@@ -2020,7 +2024,7 @@ img {
 }
 
 .gallery .marquee {
-    --gap: 112px;
+    --gap: 212px;
     display: flex;
     overflow: hidden;
     user-select: none;
@@ -2037,9 +2041,8 @@ img {
 }
 
 .gallery .marquee img {
-    max-width: 400px !important;
+    max-width: calc(100vh / 2);
     height: auto !important;
-    filter: saturate(0);
 }
 
 .gallery ul {
@@ -2069,7 +2072,7 @@ img {
 
 .forMoment {
     width: 100%;
-    background-color: var(--light);
+    background-color: #131313;
     max-width: 1200px;
     border-radius: 16px;
     padding-top: 32px;
@@ -2106,38 +2109,23 @@ img {
     padding-top: 0;
 }
 
+.moreProject .half{
+    background-color: rgb(26, 26, 26);
+    padding: 16px;
+    margin-bottom: 64px;
+}
+
 footer {
     position: relative;
-    height: fit-content;
     box-sizing: border-box;
-    padding-top: 0;
-    padding-left: 32px;
-    padding-right: 32px;
-    padding-top: 64px;
-    background-color: var(--light);
-    overflow: hidden;
+    padding-left: 64px;
+    padding-right: 64px;
+    padding-bottom: 38px;
 }
 
-footer .gutters {
-    height: 100%;
-}
-
-footer .flexBox {
-    align-items: end;
-}
-
-footer .bottomContents {
-    position: relative;
-    width: 100%;
-    height: 300px;
-}
-
-footer h1 {
-    text-transform: uppercase;
-    font-size: 16.3vw;
-    margin-block-end: 0px;
-    line-height: 14.5vw;
-    color: var(--dark);
+footer a:hover{
+    text-decoration: underline;
+    text-underline-offset: 16px;
 }
 
 #varType {
@@ -2145,7 +2133,6 @@ footer h1 {
     transition: 0.5s ease;
     cursor: ew-resize;
 }
-
 
 /*Archive*/
 .archiveGallery {
@@ -2202,7 +2189,7 @@ footer h1 {
 }
 
 .cols h3 {
-    color: black;
+    color: var(--light);
     margin-bottom: 64px;
 }
 
@@ -2357,5 +2344,17 @@ footer h1 {
         line-height: 50px;
         padding: 16px;
         text-align: left !important;
+    }
+
+    .full{
+        padding: 0px;
+    }
+
+    .userRole{
+        left: 16px;
+    }
+
+    .year{
+        right: 16px;
     }
 }
