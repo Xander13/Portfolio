@@ -126,7 +126,8 @@ p {
     margin-bottom: 0;
     height: fit-content;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .navContent {
@@ -2356,5 +2357,43 @@ footer a:hover{
 
     .year{
         right: 16px;
+    }
+
+    .lgTitle{
+        font-size: 56px;
+        line-height: 64px;
+    }
+
+    .mdTxt{
+        font-size: 32px;
+        line-height: 42px;
+    }
+
+    .newcta .lgTxt{
+        font-size: 48px;
+        padding: 0;
+        line-height: 56px;
+    }
+
+    .newcta h3{
+        text-align: center;
+    }
+
+    .text{
+        height: 64px;
+    }
+
+    .text h2{
+        font-size: 48px;
+
+    }
+
+    .drawer .xlTxt, .drawer h3{
+        font-size: 48px;
+    }
+
+    .drawer p{
+        font-size: 32px;
+        line-height: 40px !important;
     }
 }
