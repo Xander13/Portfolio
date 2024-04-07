@@ -41,12 +41,6 @@ body {
     bottom: 32px;
 }
 
-.userRole{
-    position: absolute;
-    left: 64px;
-    bottom: 32px;
-}
-
 .dot {
     border-radius: 100rem;
     height: 32px;
@@ -997,6 +991,10 @@ img {
 
 .lgSpacing {
     padding-top: 132px;
+}
+
+.lgSpacing .half{
+    margin: auto;
 }
 
 .forty {
@@ -2136,6 +2134,22 @@ img {
     background-color: rgb(26, 26, 26);
     padding: 16px;
     margin-bottom: 64px;
+    transition: background-color 0.5s ease;
+}
+
+.moreProject .half:hover{
+    background-color: rgb(54, 54, 54);
+    transition: background-color 0.5s ease;
+}
+
+.quotes{
+    background-color: #f6f6f6;
+    color: rgb(7, 7, 7) !important;
+    padding: 32px !important;
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+    border-radius: 16px;
+    text-align: center;
 }
 
 footer {
@@ -2371,10 +2385,6 @@ footer a:hover{
 
     .full{
         padding: 0px;
-    }
-
-    .userRole{
-        left: 16px;
     }
 
     .year{

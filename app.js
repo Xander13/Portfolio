@@ -78,23 +78,3 @@ window.addEventListener('scroll', function() {
 
   lastScrollPosition = currentScrollPosition;
 });
-
-
-//get detroit time
-function updateTime() {
-  var date = new Date(); // Get current date and time
-  var options = { 
-    hour: 'numeric', 
-    minute: 'numeric', 
-    hour12: true, // 12-hour format
-    timeZone: 'America/Detroit' // Detroit timezone
-  };
-  var formattedTime = new Intl.DateTimeFormat('en-US', options).format(date);
-  document.getElementById('time').textContent = formattedTime;
-}
-
-// Update time every minute
-setInterval(updateTime, 60000); // Update every minute (60,000 milliseconds)
-
-// Initial call to display time
-updateTime();
