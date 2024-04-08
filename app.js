@@ -60,21 +60,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
-//fade Nav out
-let lastScrollPosition = 0;
-
-window.addEventListener('scroll', function() {
-  const navbar = document.querySelector('.navList');
-  const currentScrollPosition = window.scrollY;
-
-  if (currentScrollPosition > lastScrollPosition) {
-    // Scrolling down
-    navbar.classList.add('fade-out');
-  } else {
-    // Scrolling up or not scrolling
-    navbar.classList.remove('fade-out');
-  }
-
-  lastScrollPosition = currentScrollPosition;
-});

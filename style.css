@@ -3,6 +3,7 @@
     --light: #080808;
     --gray: #808080;
     --yellow: #FDCA6A;
+    --darkGray: #131313;
 }
 
 html{
@@ -24,6 +25,7 @@ body {
     --dark: #000000;
     --gray: #808080;
     --yellow: #FDCA6A;
+    --darkGray: #dddddd;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
@@ -2093,7 +2095,7 @@ img {
 
 .forMoment {
     width: 100%;
-    background-color: #131313;
+    background-color: var(--darkGray);
     max-width: 1200px;
     border-radius: 16px;
     padding-top: 32px;
@@ -2131,7 +2133,7 @@ img {
 }
 
 .moreProject .half{
-    background-color: rgb(26, 26, 26);
+    background-color: var(--darkGray);
     padding: 16px;
     margin-bottom: 64px;
     transition: background-color 0.5s ease;
@@ -2143,8 +2145,8 @@ img {
 }
 
 .quotes{
-    background-color: #f6f6f6;
-    color: rgb(7, 7, 7) !important;
+    background-color: var(--darkGray);
+    color: var(--light);
     padding: 32px !important;
     padding-top: 64px !important;
     padding-bottom: 64px !important;
