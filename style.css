@@ -6,18 +6,12 @@
     --darkGray: #131313;
 }
 
-html{
-    background-color: var(--light);
-}
-
 body {
     background-color: var(--light);
     color: var(--dark);
     font-family: sans-serif;
     overflow-x: hidden;
     transition: color 0.5s ease, background-color 0.5s ease;
-    /* overscroll-behavior: none;
-    touch-action: pan-down; */
 }
 
 .lightMode {
@@ -25,7 +19,7 @@ body {
     --dark: #000000;
     --gray: #808080;
     --yellow: #FDCA6A;
-    --darkGray: #dddddd;
+    --darkGray: #ededed;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
