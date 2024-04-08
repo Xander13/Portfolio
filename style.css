@@ -837,7 +837,7 @@ img {
     padding-right: 0;
 }
 
-.projectHero .seeSiteBtn a {
+.projectHero .seeSiteBtn a{
     color: var(--light);
     font-size: 22px;
     text-align: center;
@@ -1778,6 +1778,15 @@ img {
     opacity: 0.5;
 }
 
+.projectSections .marquee__content{
+    opacity: 1;
+}
+
+.projectSections .marquee__content{
+    width: auto;
+}
+
+
 .hero_marquee__content {
     animation: scroll 120s linear infinite;
     padding-bottom: 0;
@@ -1787,16 +1796,6 @@ img {
     position: absolute;
     rotate: 0deg;
     animation: spinning 15s linear infinite;
-}
-
-.clipboard{
-    width: 100%;
-    height: 900px;
-    background-color: rgb(20, 20, 20);
-    margin-top: 64px;
-    margin-bottom: 64px;
-    border-radius: 32px;
-    overflow: hidden;
 }
 
 @keyframes spinning {
@@ -2235,7 +2234,8 @@ footer a:hover{
 }
 
 .archiveGallery a,
-.projectHero a {
+.projectHero a,
+.projectWriting a {
     padding: 8px;
     padding-left: 16px;
     padding-right: 16px;
