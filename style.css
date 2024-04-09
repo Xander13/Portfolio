@@ -1952,6 +1952,7 @@ img {
 
 .archives {
     position: relative;
+    height: 100vh;
 }
 
 .archives .reel {
@@ -2046,7 +2047,6 @@ img {
     user-select: none;
     gap: var(--gap);
     color: var(--dark);
-    padding-bottom: 164px;
     padding-top: 8%;
 }
 
@@ -2148,7 +2148,10 @@ img {
 }
 
 footer {
-    position: relative;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
     box-sizing: border-box;
     padding-left: 64px;
     padding-right: 64px;
