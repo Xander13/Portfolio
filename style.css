@@ -2171,7 +2171,6 @@ footer a:hover{
 
 /*Archive*/
 .archiveGallery {
-    padding: 64px;
     padding-top: 0;
 }
 
@@ -2181,8 +2180,12 @@ footer a:hover{
 }
 
 .imgBG {
-    margin-bottom: 132px;
     padding: 64px;
+}
+
+.archiveGallery .flexBox{
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .archiveGallery h1 {
@@ -2207,6 +2210,8 @@ footer a:hover{
 .archiveGallery .half:nth-child(odd) {
     padding: 64px;
     padding-right: 32px;
+    padding-right: 0;
+    padding-left: 0;
 }
 
 .archiveGallery h2 {
