@@ -272,9 +272,10 @@ img {
 .smTxt{
     font-size: 32px !important;
     line-height: 48px !important;
-    color: white !important;
+    color: var(--dark);
     letter-spacing: 1px;
     font-weight: 400 !important;
+    text-transform: none !important;
 }
 
 .lgTxt{
