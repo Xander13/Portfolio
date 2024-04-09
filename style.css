@@ -2449,4 +2449,8 @@ footer a:hover{
         padding-left: 16px;
         padding-right: 16px;
     }
+
+    .aboutMe .marquee{
+        margin-bottom: 96px;
+    }
 }
