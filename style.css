@@ -2236,9 +2236,29 @@ footer a:hover{
 }
 /**************/
 
+.project .full:nth-child(even){
+    padding-left: 20%;
+    padding-right: 0;
+}
+
+.project .full:nth-child(even){
+    padding-left: 0;
+    padding-right:  20%;
+}
+
 @media screen and (max-width: 930px) {
     .reel{
         height: 500px;
+    }
+
+    .project .full:nth-child(even){
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .project .full:nth-child(even){
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .hero h1{
