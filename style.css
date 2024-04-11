@@ -88,6 +88,7 @@ p {
     display: flex;
     justify-content: space-between;
     align-items: start;
+    flex-shrink: 0;
 }
 
 .navList {
@@ -883,6 +884,7 @@ img {
     justify-content: space-between;
     gap: 64px;
     align-items: start;
+    flex-shrink: 0;
 }
 
 .projectHero h2 {
@@ -1017,6 +1019,7 @@ img {
 
 .imageGrid .flexBox {
     gap: 32px;
+    flex-shrink: 0;
 }
 
 .projectHero h2 {
@@ -1279,7 +1282,7 @@ img {
 
 .articles .flexBox {
     gap: 32px;
-    flex-shrink: 1;
+    flex-shrink: 0;
 }
 
 .articles img {
@@ -1402,6 +1405,7 @@ img {
     gap: 32px;
     padding-left: 64px;
     padding-right: 64px;
+    flex-shrink: 0;
 }
 
 .moreWork,
