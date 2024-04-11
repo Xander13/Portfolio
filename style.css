@@ -222,6 +222,7 @@ p {
 img {
     width: 100%;
     height: fit-content;
+    flex-shrink: 0;
 }
 
 .bento {
@@ -238,6 +239,7 @@ img {
 .bento img {
     width: 100%;
     border-radius: 24px;
+    flex-shrink: 0;
 }
 
 .half {
@@ -369,6 +371,7 @@ img {
 
 .hero .blox img {
     width: 100%;
+    flex-shrink: 0;
 }
 
 .aboutMe {
@@ -610,6 +613,7 @@ img {
 .project .half img,
 .project .full img {
     width: 100%;
+    flex-shrink: 0;
 }
 
 .image {
@@ -732,6 +736,7 @@ img {
     height: 100%;
     border-radius: 100rem;
     box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .aboutMe:hover .aboutArrow {
@@ -771,6 +776,7 @@ img {
     padding-left: 64px;
     padding-right: 64px;
     width: 100%;
+    flex-shrink: 0;
 }
 
 .fullImgView p {
@@ -849,6 +855,7 @@ img {
 .imgCard {
     padding: 10%;
     margin-bottom: 32px;
+    flex-shrink: 0;
 }
 
 .centerTxt {
@@ -964,6 +971,7 @@ img {
 
 .painpoints img {
     margin-bottom: 32px;
+    flex-shrink: 0;
 }
 
 .darkbg {
@@ -1271,6 +1279,7 @@ img {
 .articles img {
     transition: 0.5s ease;
     scale: 1.1;
+    flex-shrink: 0;
 }
 
 .articles h2 {
@@ -1301,6 +1310,7 @@ img {
     opacity: 0.7;
     cursor: pointer;
     transition: 0.5s ease;
+    flex-shrink: 0;
 }
 
 .archive {
@@ -1344,6 +1354,7 @@ img {
 .logoReel img {
     width: 200px;
     margin-right: 132px;
+    flex-shrink: 0;
 }
 
 .projects hr {
@@ -1437,6 +1448,7 @@ img {
     transform: scale(1.02);
     transition: 0.8s ease;
     opacity: 1;
+    flex-shrink: 0;
 }
 
 .project .half:hover img,
@@ -1445,11 +1457,13 @@ img {
     transform: scale(1.05);
     transition: 0.8s ease;
     opacity: 0.7;
+    flex-shrink: 0;
 }
 
 .imageGrid .half:hover img{
     transform: scale(1.02);
     opacity: 1;
+    flex-shrink: 0;
 }
 
 .projects .half h1,
@@ -1644,6 +1658,7 @@ img {
 .storyCards img {
     width: 420px;
     height: 500px;
+    flex-shrink: 0;
 }
 
 .contact {
@@ -2030,6 +2045,7 @@ img {
 .gallery .marquee img {
     max-width: calc(100vh / 2);
     height: auto !important;
+    flex-shrink: 0;
 }
 
 .gallery ul {
@@ -2050,6 +2066,7 @@ img {
 
 .moreProjects img {
     width: 100% !important;
+    flex-shrink: 0;
 }
 
 .moreProjects .flexBox {
