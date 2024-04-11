@@ -2235,14 +2235,25 @@ footer a:hover{
 }
 
 .archiveGallery a,
-.projectHero a,
-.projectWriting a {
+.projectHero a {
     padding: 8px;
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 100rem;
     background-color: var(--dark);
     color: var(--light);
+    font-weight: 500;
+    text-transform: uppercase;
+    transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+.projectWriting a{
+    padding: 8px;
+    padding-left: 16px;
+    padding-right: 16px;
+    border-radius: 100rem;
+    border: 1px solid var(--dark);
+    background-color: var(--light);
     font-weight: 500;
     text-transform: uppercase;
     transition: color 0.5s ease, background-color 0.5s ease;
