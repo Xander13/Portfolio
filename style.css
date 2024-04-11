@@ -927,6 +927,12 @@ img {
     height: auto;
     width: 400px;
     padding: 0;
+    flex-shrink: 0;
+}
+
+.marqueeProjects .marquee__content img{
+    width: 400px;
+    flex-shrink: 0;
 }
 
 
@@ -1278,7 +1284,7 @@ img {
 
 .articles img {
     transition: 0.5s ease;
-    scale: 1.1;
+    scale: 1;
     flex-shrink: 0;
 }
 
@@ -1445,7 +1451,7 @@ img {
 
 .project .half img,
 .full img {
-    transform: scale(1.02);
+    transform: scale(1);
     transition: 0.8s ease;
     opacity: 1;
     flex-shrink: 0;
@@ -1454,7 +1460,7 @@ img {
 .project .half:hover img,
 .projects .md:hover img,
 .full:hover img {
-    transform: scale(1.05);
+    transform: scale(1.02);
     transition: 0.8s ease;
     opacity: 0.7;
     flex-shrink: 0;
@@ -2044,8 +2050,6 @@ img {
 
 .gallery .marquee img {
     max-width: calc(100vh / 2);
-    height: auto !important;
-    flex-shrink: 0;
 }
 
 .gallery ul {
