@@ -263,6 +263,10 @@ img {
     margin-bottom: 0;
 }
 
+.passage{
+    max-width: 50%;
+}
+
 .mdTxt{
     font-size: 4.2vw;
     line-height: 4.8vw;
@@ -2250,6 +2254,10 @@ footer a:hover{
 @media screen and (max-width: 930px) {
     .reel{
         height: 500px;
+    }
+
+    .passage{
+        max-width: 100%;
     }
 
     .project .full:nth-child(even){
