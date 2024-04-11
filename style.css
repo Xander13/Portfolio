@@ -2298,9 +2298,13 @@ footer a:hover{
     .skills,
     .articles,
     .experiance,
-    .hero .flexBox,
-    .archiveGallery {
+    .hero .flexBox{
         padding: 16px;
+    }
+
+    .archiveGallery img{
+        padding-top: 32px;
+        padding-bottom: 32px;
     }
 
     .articles {
