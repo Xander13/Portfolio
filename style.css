@@ -2280,7 +2280,15 @@ footer a:hover{
     padding-right:  20%;
 }
 
+.heroTitle{
+    padding-left: 56px;
+}
+
 @media screen and (max-width: 930px) {
+    .heroTitle{
+        padding-left: 16px;
+    }
+
     .reel{
         height: 500px;
     }
@@ -2384,15 +2392,18 @@ footer a:hover{
 
     .project .flexBox {
         flex-wrap: wrap;
+        flex-shrink: 0;
     }
 
     .imgBG {
         padding: 0;
+        flex-shrink: 0;
     }
 
     .imgBG .half, .forty, .sixty {
         width: 100%;
         padding: 0 !important;
+        flex-shrink: 0;
     }
 
     .imgBG .cols {
