@@ -392,6 +392,8 @@ img {
 .full {
     margin-bottom: 32px;
     padding: 82px;
+    padding-left: 0;
+    padding-right: 0;
     box-sizing: border-box;
 }
 
