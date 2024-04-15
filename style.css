@@ -1463,7 +1463,6 @@ img {
     flex-shrink: 0;
 }
 
-.project .half:hover img,
 .projects .md:hover img,
 .full:hover img {
     transform: scale(1.02);
@@ -2086,9 +2085,8 @@ img {
 }
 
 .forMoment {
-    width: 100%;
+    width: 50%;
     background-color: var(--darkGray);
-    max-width: 1200px;
     border-radius: 16px;
     padding-top: 32px;
     padding-bottom: 32px;
@@ -2122,6 +2120,10 @@ img {
 .forMoment p {
     line-height: 1.4em;
     padding-top: 0;
+}
+
+.bullets{
+    width: 50%;
 }
 
 .moreProject .half{
@@ -2579,5 +2581,9 @@ footer a:hover{
 
     .aboutMe .marquee{
         margin-bottom: 96px;
+    }
+
+    .bullets, .forMoment{
+        width: 100%;
     }
 }
