@@ -2381,7 +2381,10 @@ footer a:hover{
         padding-right: 16px;
     }
 
-    .navList a:nth-child(3),
+    .gallery h2{
+        text-wrap: balance;
+    }
+
     .dot {
         display: none;
     }
