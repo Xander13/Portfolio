@@ -1947,12 +1947,14 @@ img {
 }
 
 .archives {
-    position: relative;
+    display: flex;
+        align-items: center;
+        justify-content: center;
     height: 100vh;
+    position: relative;
 }
 
 .archives .reel {
-    background-color: gray;
     position: absolute;
     z-index: -1;
     height: 900px;
@@ -2043,7 +2045,6 @@ img {
     user-select: none;
     gap: var(--gap);
     color: var(--dark);
-    padding-top: 8%;
 }
 
 .gallery .marquee__content {
@@ -2379,14 +2380,75 @@ footer a:hover{
     .navList {
         padding-left: 16px;
         padding-right: 16px;
+        width: 220px;
+        margin-left: 0;
+    }
+
+    .navList .flexBox{
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: start;
+    }
+
+    .forMoment .cols, .quotes{
+        width: 100% !important;
+    }
+
+    .projectHero{
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .projectHero .flexBox{
+        flex-wrap: wrap;
+    }
+
+    .fullImgView{
+        width: 100%;
+        padding: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .rols .flexBox{
+        gap: 32px;
+    }
+
+    .wideTitle{
+        padding: 0px;
+    }
+
+    .flexBox{
+        flex-wrap: wrap;
+    }
+
+    .cols{
+        width: 100%;
+    }
+
+    .half{
+        width: 100% !important;
+    }
+
+    .dot{
+        position: fixed;
+        top: 16px;
+        right: 16px;
+    }
+
+    .passage{
+        width: 100%;
+        text-wrap: wrap;
+        font-size: 24px !important;
+        line-height: 36px !important;
+    }
+
+    .moreProject .half{
+        margin-bottom: 0px;
     }
 
     .gallery h2{
         text-wrap: balance;
-    }
-
-    .dot {
-        display: none;
     }
 
     .project .half {
@@ -2503,6 +2565,14 @@ footer a:hover{
     footer{
         padding-left: 16px;
         padding-right: 16px;
+        padding-bottom: 16px;
+    }
+
+    .archives{
+        height: 100dvh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 
     .aboutMe .marquee{
