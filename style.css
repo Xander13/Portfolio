@@ -4,6 +4,9 @@
     --gray: #808080;
     --yellow: #FDCA6A;
     --darkGray: #262626;
+    --mdMargin: 96px;
+    --lgMargin: 420px;
+    --smMargin: 64px;
 }
 
 body {
@@ -43,6 +46,18 @@ body {
     width: 32px;
     background-color: var(--dark);
     cursor: pointer;
+}
+
+.mdMargin{
+    height: var(--mdMargin);
+    width: 100%;
+    /* background-color: green; */
+}
+
+.lgMargin{
+    height: var(--lgMargin);
+    width: 100%;
+    /* background-color: greenyellow; */
 }
 
 * {
@@ -96,8 +111,8 @@ p {
     top: 0px;
     left: 0;
     right: 0;
-    padding-left: 64px;
-    padding-right: 64px;
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
     padding-top: 16px;
     padding-bottom: 16px;
     z-index: 999999;
@@ -226,23 +241,6 @@ img {
     flex-shrink: 0;
 }
 
-.bento {
-    padding: 64px;
-}
-
-.bento .flexBox {
-    display: flex;
-    flex-shrink: 1;
-    gap: 24px;
-    box-sizing: border-box;
-}
-
-.bento img {
-    width: 100%;
-    border-radius: 24px;
-    flex-shrink: 0;
-}
-
 .half {
     width: 50%;
 }
@@ -256,7 +254,7 @@ img {
 .project,
 .skills {
     position: relative;
-    padding: 64px;
+    padding: var(--smMargin);
     margin: auto;
     background-color: var(--light);
     transition: color 0.5s ease, background-color 0.5s ease;
@@ -287,12 +285,12 @@ img {
 
 .lgTxt{
     font-size: 8vw;
-    padding-left: 64px;
-    padding-right: 64px;
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
     line-height: 8vw;
     width: fit-content;
     cursor: pointer;
-    margin-bottom: 64px;
+    margin-bottom: var(--smMargin);
     margin-top: 0;
 }
 
@@ -325,7 +323,7 @@ img {
 }
 
 .projectHero .lgTitle {
-    padding-top: 232px;
+    padding-top: var(--lgMargin);
 }
 
 .skills h1 {
@@ -377,12 +375,11 @@ img {
 
 .aboutMe {
     height: fit-content;
-    margin-top: 0px;
-    margin-bottom: 196px;
 }
 
 .aboutMe .marquee {
     padding-bottom: 0;
+    text-transform: uppercase;
 }
 
 .flexBox {
@@ -390,8 +387,6 @@ img {
 }
 
 .full {
-    margin-bottom: 32px;
-    padding: 82px;
     padding-left: 0;
     padding-right: 0;
     box-sizing: border-box;
@@ -416,19 +411,6 @@ img {
 
 .seventy {
     width: 70%;
-}
-
-.footerbottom {
-    position: fixed;
-    bottom: 4px;
-    height: fit-content;
-    z-index: 4;
-    left: 32px;
-    right: 32px;
-    margin-bottom: 0 !important;
-    padding-bottom: 0;
-    color: var(--dark);
-    mix-blend-mode: difference;
 }
 
 #toggle-button {
@@ -459,7 +441,6 @@ img {
 .drawer:last-child{
     margin-bottom: 0;
 }
-
 
 .drawer p {
     display: none;
@@ -560,11 +541,9 @@ img {
     margin-bottom: 0;
 }
 
-
 .textContainer {
     width: 100%;
     height: fit-content;
-    /* overflow: hidden; */
     position: absolute;
     top: calc(100% / 2 - 9vw);
     left: 0;
@@ -610,24 +589,13 @@ img {
 .project .half,
 .project .full {
     position: relative;
-    /* margin-bottom: 132px; */
 }
 
 .project .half img,
 .project .full img {
     width: 100%;
     flex-shrink: 0;
-}
-
-.image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    opacity: 0;
-}
-
-.image.active {
-    opacity: 1;
+    aspect-ratio: auto;
 }
 
 /****************/
@@ -730,7 +698,6 @@ img {
     cursor: none;
     background-color: var(--dark);
     border-radius: 100rem;
-    aspect-ratio: 1;
 }
 
 .aboutArrow img {
@@ -740,6 +707,7 @@ img {
     border-radius: 100rem;
     box-sizing: border-box;
     flex-shrink: 0;
+    aspect-ratio: 1/1;
 }
 
 .aboutMe:hover .aboutArrow {
@@ -747,20 +715,6 @@ img {
     opacity: 1;
     transition: 0.1s ease-out;
     cursor: none;
-}
-
-.sm .material-symbols-outlined,
-.photoCard .material-symbols-outlined {
-    rotate: 45deg;
-    user-select: none;
-}
-
-.material-symbols-outlined {
-    font-variation-settings:
-        'FILL'0,
-        'wght'400,
-        'GRAD'0,
-        'opsz'48;
 }
 
 .underline {
@@ -855,25 +809,10 @@ img {
     font-weight: 400;
 }
 
-.imgCard {
-    padding: 10%;
-    margin-bottom: 32px;
-    flex-shrink: 0;
-}
-
 .centerTxt {
     font-size: 4.8vw;
     line-height: 4.8vw;
     text-align: center;
-}
-
-.UFOSearchBar {
-    position: absolute;
-    top: 48px;
-    width: 610px;
-    margin: auto;
-    left: 0;
-    right: 0;
 }
 
 .projectHero {
@@ -939,7 +878,6 @@ img {
     flex-shrink: 0;
 }
 
-
 .projectWriting {
     margin: auto;
     padding: 32px;
@@ -963,38 +901,10 @@ img {
     width: calc(50% - 32px);
 }
 
-.painpoints {
-    max-width: 1200px;
-    margin: auto;
-    background-color: #211D4F;
-    border-top-right-radius: 24px;
-    border-top-left-radius: 24px;
-    padding: 132px;
-    padding-bottom: 32px;
-    padding-top: 64px;
-    color: var(--dark);
-}
-
-.painpoints h1 {
-    padding-bottom: 32px;
-}
-
-.painpoints img {
-    margin-bottom: 32px;
-    flex-shrink: 0;
-}
-
 .darkbg {
     background-color: var(--light);
     color: var(--dark);
     position: relative;
-}
-
-.sideWedge {
-    position: absolute;
-    left: 0;
-    width: 300px;
-    top: -178px;
 }
 
 .lgSpacing {
@@ -1003,14 +913,6 @@ img {
 
 .lgSpacing .half{
     margin: auto;
-}
-
-.forty {
-    width: 40%;
-}
-
-.sixty {
-    width: 60%;
 }
 
 
