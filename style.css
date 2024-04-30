@@ -2274,6 +2274,7 @@ footer a:hover{
         gap: 12px;
         flex-wrap: wrap;
         justify-content: start;
+        width: 120px;
     }
 
     .forMoment .cols, .quotes{
