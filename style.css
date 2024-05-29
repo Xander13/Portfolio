@@ -7,6 +7,7 @@
     --mdMargin: 96px;
     --lgMargin: 360px;
     --smMargin: 64px;
+    --purpleish: #e5e4f2;
 }
 
 body {
@@ -874,7 +875,7 @@ img {
 }
 
 .marqueeProjects .marquee__content img{
-    width: 400px;
+    width: 300px;
     flex-shrink: 0;
 }
 
