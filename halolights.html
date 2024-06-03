@@ -42,16 +42,22 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
-<body class="lightMode">
+<body>
     <div class="navList">
         <div class="flexBox">
-            <a id="active" href="index.html">Work</a>
-            <a href="archive.html">Archive</a>
-            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-            <div id="toggle-button" class="dot" style="background-color: var(--light);"></div>
+            <a href="index.html" style="background-color: transparent; padding: 0;">
+                <img class="logo" src="logo.svg" width="100%">
+            </a>
+            <div class="flexBox" style="width: fit-content; gap: 4px;">
+                <a id="active" href="index.html">Work</a>
+                <a href="archive.html">Archive</a>
+                <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            </div>
+
+            <div id="toggle-button" class="dot"></div>
         </div>
     </div>
-    <div class="project" style="background-color: var(--dark); color: var(--light);">
+    <div class="project">
         <br>
         <br>
         <br>
@@ -67,7 +73,7 @@
         <br>
         <br>
         <h1 class="lgTitle">Halo lighting</h1>
-        <h2 style="color: var(--light);">HALO LIGHTING IS A INDUSTRIAL DESIGN CONCEPT PROJECT FOCUS ON CREATING MORE ACCESSIBLE LIGHT SOURCES THAT
+        <h2>HALO LIGHTING IS A INDUSTRIAL DESIGN CONCEPT PROJECT FOCUS ON CREATING MORE ACCESSIBLE LIGHT SOURCES THAT
             TRAVELS AROUND WITH YOU.
             <h2>
                 <img style="border-radius: 32px;" src="HaloMock1.png" width="100%">
@@ -75,22 +81,22 @@
                 <div class="projectWriting" style="padding: 0;">
                     <div class="flexBox" style="align-items: start;">
                         <div class="cols">
-                            <h2 style="color: var(--light);">Challenges</h2>
-                            <p style="color: var(--light);">Light sources tend to be very static. Halo aims to free
+                            <h2>Challenges</h2>
+                            <p>Light sources tend to be very static. Halo aims to free
                                 range light sources where ever users go.
-                            </p style="color: var(--light);">
+                            </p>
                         </div>
                         <div class="cols">
-                            <h2 style="color: var(--light);">Constraints</h2>
-                            <p style="color: var(--light);">Learn to design a physical product with UX skills</p>
+                            <h2>Constraints</h2>
+                            <p>Learn to design a physical product with UX skills</p>
                         </div>
                         <div class="cols">
-                            <h2 style="color: var(--light);">Role</h2>
-                            <p style="padding-bottom: 0; color: var(--light);">Concept, Industrial Design, <br> Research, prototyping</p>
+                            <h2>Role</h2>
+                            <p style="padding-bottom: 0;">Concept, Industrial Design, <br> Research, prototyping</p>
                         </div>
                         <div class="cols">
-                            <h2 style="color: var(--light);">Timeline</h2>
-                            <p style="color: var(--light);">6 Months V1 design, <br> In progress V2 design</p>
+                            <h2>Timeline</h2>
+                            <p>6 Months V1 design, <br> In progress V2 design</p>
                         </div>
                     </div>
                 </div>
@@ -140,19 +146,19 @@
                         <div class="half" style="border-left: 6px solid var(--gray); padding-left: 24px;">
                             <h1 style="padding-top: 0px !important">Problem</h1>
                             <br>
-                            <p style="color: var(--light);">How might we improve the lighting sources that follows users for atypical environments?
+                            <p>How might we improve the lighting sources that follows users for atypical environments?
                             </p>
                         </div>
                         <div class="half" style="border-left: 6px solid var(--gray); padding-left: 24px;">
                             <h1 style="padding-top: 0px !important">Outcome</h1>
                             <br>
-                            <p style="color: var(--light);">I've designed a drone approach light system that will afloat over peoples head to
+                            <p>I've designed a drone approach light system that will afloat over peoples head to
                                 illuminate light the space.</p>
                         </div>
                         <div class="half" style="border-left: 6px solid var(--gray); padding-left: 24px;">
                             <h1 style="padding-top: 0px !important">Research</h1>
                             <br>
-                            <p style="color: var(--light);">I have researched a lot in understanding how drones system works so I can break the rules
+                            <p>I have researched a lot in understanding how drones system works so I can break the rules
                                 to create a new product.</p>
                         </div>
                     </div>
@@ -165,7 +171,7 @@
                 <br>
                 <br>
                 <br>
-                <h1 class="mdTxt" style="color: var(--light);">Halo light strongest advantage is that it doesn't depend on walls or tables to
+                <h1 class="mdTxt">Halo light strongest advantage is that it doesn't depend on walls or tables to
                     luminate lights to the environment.</h1>
                 <br>
                 <br>
@@ -218,6 +224,7 @@
                     </div>
                     <div class="dot-container">
                         <span class="thedot" onclick="currentSlide(1)"></span>
+                        <span class="thedot" onclick="currentSlide(1)"></span>
                         <span class="thedot" onclick="currentSlide(2)"></span>
                         <span class="thedot" onclick="currentSlide(3)"></span>
                     </div>
@@ -241,9 +248,9 @@
                         slidesWrapper.style.transform = `translateX(${-slideIndex * 100}%)`;
 
                         dots.forEach((dot, i) => {
-                            dot.className = dot.className.replace(" active", "");
+                            dot.className = dot.className.replace("activeBtn", "");
                             if (i === slideIndex) {
-                                dot.className += " active";
+                                dot.className += "activeBtn";
                             }
                         });
                     }
@@ -285,15 +292,16 @@
                         transition: 0.5s ease;
                     }
 
-                    .block{
+                    .block {
                         padding: 32px;
                         background-color: #000;
                         border-radius: 18px;
                         border-top-right-radius: 0;
-                       border-top-left-radius: 0;
+                        border-top-left-radius: 0;
                     }
 
-                    .block h1, .block p{
+                    .block h1,
+                    .block p {
                         color: white;
                     }
 
@@ -383,7 +391,10 @@
 
                     .dot-container {
                         text-align: center;
-                        padding: 20px;
+                        padding: 10px;
+                        width: fit-content;
+                        margin: auto;
+                        border-radius: 100rem;
                     }
 
                     .thedot {
@@ -392,16 +403,15 @@
                         width: 15px;
                         margin: 0 2px;
                         background-color: #ffffff4d;
-                        border-radius: 50%;
+                        border-radius: 100rem;
                         display: inline-block;
-                        transition: background-color 0.6s ease;
                         transition: 0.2s ease;
                         border: 4px solid transparent;
                     }
 
-                    .active,
+                    .activeBtn,
                     .thedot:hover {
-                        border: 4px solid var(--purpleish);
+                        border: 4px solid white;
                         transition: 0.2s ease;
                         background-color: black;
                     }
@@ -419,14 +429,14 @@
                     Explorations</h1>
                 <div class="clipping" style="border-radius: 32px; padding: 64px; background-color: var(--purpleish)">
                     <div class="clipping">
-
                         <img style="border-radius: 18px; margin-bottom: 32px;" src="Halo_inspo.png" width="100%"
                             alt="Sketches of Halo Lighting drone figuring out form designs.">
                         <br>
                         <br>
                         <br>
                         <br>
-                        <h1 class="mdTxt" style="text-align: center;">Sci-Fi movies and tv shows has always inspires me
+                        <h1 class="mdTxt" style="text-align: center; color: black;">Sci-Fi movies and tv shows has
+                            always inspires me
                             to create things that are near impossible to something close to reality.</h1>
                         <br>
                         <br>
@@ -435,11 +445,10 @@
                         <br>
                         <br>
                         <img style="border-radius: 18px; border: 3px solid var(--purpleish); margin-bottom: 32px;"
-                            src="hlaoSketch.png"
-                            width="100%" alt="Sketches of Halo Lighting drone figuring out form designs.">
-                        <img style="border-radius: 18px; margin-bottom: 32px;"
-                            src="Halo Concept.png"
-                            width="100%" alt="Sketches of Halo Lighting drone figuring out form designs.">
+                            src="hlaoSketch.png" width="100%"
+                            alt="Sketches of Halo Lighting drone figuring out form designs.">
+                        <img style="border-radius: 18px; margin-bottom: 32px;" src="Halo Concept.png" width="100%"
+                            alt="Sketches of Halo Lighting drone figuring out form designs.">
                     </div>
 
                     <div class="flexBox" style="gap: 32px; align-items: start;">
@@ -447,7 +456,8 @@
                             <div>
                                 <div class="clipping" style="border-radius: 18px;">
                                     <div class="clipping">
-                                        <img style="border-radius: 18px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;" src="HaloV1.png" width="100%"
+                                        <img style="border-radius: 18px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;"
+                                            src="HaloV1.png" width="100%"
                                             alt="Sketches of Halo Lighting drone figuring out form designs.">
                                     </div>
                                     <div class="block" style="margin-bottom: 32px;">
@@ -455,14 +465,16 @@
                                             V1 design had a much thicker light ring to help luminate much larger.
                                         </h1>
                                         <br>
-                                        <p>The issue with V1 design, was the weight load which made it harder for drone to pick up all the materials and electronics.</p>
+                                        <p>The issue with V1 design, was the weight load which made it harder for drone
+                                            to pick up all the materials and electronics.</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="half">
                             <div class="clipping">
-                                <div class="clipping" style="border-radius: 18px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
+                                <div class="clipping"
+                                    style="border-radius: 18px; border-bottom-right-radius: 0; border-bottom-left-radius: 0;">
                                     <div style="padding:135.19% 0 0 0;position:relative; filter: saturate(0);"><iframe
                                             src="https://player.vimeo.com/video/951147017?h=f3e519ad3a&autoplay=1&loop=1&color=ff9933&title=0&byline=0&portrait=0"
                                             style="position:absolute;top:0;left:0;width:100%;height:100%;"
@@ -491,10 +503,6 @@
                     </div>
                 </div>
                 <br>
-                <div class="projectSections">
-                    <h3>People with smiles helps users see themselves that they can be happy in learning the Color
-                        pages. Avoid the churn and fearing in reading cancer facts.</h3>
-                </div>
                 <br>
                 <br>
                 <br>
@@ -506,13 +514,16 @@
                 <br>
                 <h1 class="lgTxt" style="padding-left: 0;"><span style="color: var(--gray)">04</span><br>Final Results
                 </h1>
-                <div style="padding:56.29% 0 0 0;position:relative;"><iframe
-                        src="https://player.vimeo.com/video/934982849?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-                        frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
-                        style="position:absolute;top:0;left:0;width:100%;height:100%;"
-                        title="Color Health Cancer Pages"></iframe>
+                <div class="clipping" style="border-radius: 18px;">
+                    <div style="padding:56.29% 0 0 0;position:relative;"><iframe
+                            src="https://player.vimeo.com/video/934982849?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
+                            frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write"
+                            style="position:absolute;top:0;left:0;width:100%;height:100%;"
+                            title="Color Health Cancer Pages"></iframe>
+                    </div>
+
+                    <script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
-                <script src="https://player.vimeo.com/api/player.js"></script>
                 <br>
                 <br>
                 <br>
@@ -525,7 +536,7 @@
                 <br>
                 <br>
                 <h1 class="lgTxt" style="padding-left: 0;"><span style="color: var(--gray)">05</span><br>What I've
-                    <br>Learned & <br>  Next Steps</h1>
+                    <br>Learned & <br> Next Steps</h1>
                 <br>
                 <br>
                 <div class="flexBox" style="gap: 32px; align-items: center;">
@@ -534,21 +545,28 @@
                             thinking which I enjoy learning new factors to learn.</h1>
                     </div>
                     <div class="quotes" style="background-color: var(--purpleish)">
-                        <h1 style="color: black;">I have learned to design with feelings and then design baed with measurements. utilizing both is a great tools to be free but being precise to make things work.
+                        <h1 style="color: black;">I have learned to design with feelings and then design baed with
+                            measurements. utilizing both is a great tools to be free but being precise to make things
+                            work.
                         </h1>
                     </div>
                     <div class="quotes" style="background-color: var(--purpleish)">
-                        <h1 style="color: black;">I have learned a lot in non-design learning such as drone systems, understanding basic electronics power usages, and thinking like an industrial designer.</h1>
+                        <h1 style="color: black;">I have learned a lot in non-design learning such as drone systems,
+                            understanding basic electronics power usages, and thinking like an industrial designer.</h1>
                     </div>
                 </div>
                 <br>
                 <br>
                 <br>
                 <br>
-                <h2 style="color: var(--light);">As now Halo lighting can fly at fixed setting, the next steps is creating a more robust system that follows users where ever it goes.</h2>
+                <h2>As now Halo lighting can fly at fixed setting, the next steps is creating a more robust system that
+                    follows users where ever it goes.</h2>
                 <br>
                 <br>
                 <br>
+                <br>
+                <br>
+                <hr>
                 <br>
                 <br>
                 <br>
@@ -556,14 +574,7 @@
                 <br>
     </div>
     </div>
-
     <div class="project moreProject">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
         <h1 class="lgTxt" style="padding-left: 0;">More work</h1>
         <div class="flexBox" style="gap: 32px;">
             <div class="half">

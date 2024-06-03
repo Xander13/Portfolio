@@ -6,7 +6,7 @@
     --darkGray: #262626;
     --mdMargin: 96px;
     --lgMargin: 360px;
-    --smMargin: 64px;
+    --smMargin: 36px;
     --purpleish: #e5e4f2;
 }
 
@@ -43,8 +43,8 @@ body {
 
 .dot {
     border-radius: 100rem;
-    height: 32px;
-    width: 32px;
+    height: 28px;
+    width: 28px;
     background-color: var(--dark);
     cursor: pointer;
 }
@@ -151,10 +151,10 @@ p {
 .navList a {
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    font-size: 18px;
-    font-weight: 500 !important;
+    /* padding-top: 4px;
+    padding-bottom: 4px; */
+    font-size: 12px;
+    font-weight: 600 !important;
     line-height: 32px;
     text-transform: uppercase;
     border-radius: 100rem;
@@ -165,7 +165,7 @@ p {
     color: var(--dark);
     mix-blend-mode: difference;
     height: fit-content;
-    background-color: #7e7e7e7a;
+    background-color: #7e7e7e34;
 }
 
 .widthSections {
@@ -265,8 +265,22 @@ img {
     margin-bottom: 0;
 }
 
+.project h3{
+    text-wrap: balance;
+    text-align: center;
+    margin: auto;
+    margin-top: 32px;
+    font-size: 18px;
+    font-weight: 500;
+    max-width: 50%;
+}
+
 .passage{
     max-width: 50%;
+}
+
+.half .passage{
+    max-width: 80%;
 }
 
 .mdTxt{
@@ -392,6 +406,10 @@ img {
     padding-right: 0;
     box-sizing: border-box;
 }
+
+/* .full img, .half img, .clipping{
+    border-radius: 18px;
+} */
 
 .experiance {
     padding: 0;
@@ -849,16 +867,19 @@ img {
     padding-bottom: 64px;
 }
 
-.projectSections h3 {
+.chips {
     font-weight: 400;
-    text-align: center;
-    text-wrap: balance;
-    max-width: 40ch;
+    width: fit-content;
     font-size: 24px;
     line-height: 1.4em;
-    padding-top: 24px;
-    margin: auto;
-    margin-bottom: 64px;
+    border: 1px solid var(--dark);
+    border-radius: 100rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 16px;
+    padding-right: 16px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
 .marqueeProjects {
@@ -1259,6 +1280,16 @@ img {
     border-radius: 100rem;
 }
 
+.logo{
+    height: 28px;
+    width: fit-content;
+    transition: 0.5s ease;
+}
+
+.logo img{
+    mix-blend-mode: difference;
+}
+
 .logoReel {
     display: flex;
     padding-left: 32px;
@@ -1360,7 +1391,7 @@ img {
 
 .project .half img,
 .full img {
-    transform: scale(1);
+    transform: scale(1.03);
     transition: 0.8s ease;
     opacity: 1;
     flex-shrink: 0;

@@ -42,12 +42,18 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
-<body>
+<body class="lightMode">
     <div class="navList">
         <div class="flexBox">
-            <a id="active" href="index.html">Work</a>
-            <a href="archive.html">Archive</a>
-            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            <a href="index.html" style="background-color: transparent; padding: 0;">
+                <img class="logo" src="logo.svg" width="100%">
+            </a>
+            <div class="flexBox" style="width: fit-content; gap: 4px;">
+                <a id="active" href="index.html">Work</a>
+                <a href="archive.html">Archive</a>
+                <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+            </div>
+
             <div id="toggle-button" class="dot"></div>
         </div>
     </div>
@@ -69,7 +75,9 @@
         <h1 class="lgTitle">Vigor</h1>
         <h2>Vigor is a fitness app that helps maintain workouts for people to avoid burnouts.</h2>
         <br>
+        <div class="clipping" style="border-radius: 18px;">
         <img src="VigorCover.png" width="100%">
+    </div>
         <div class="projectWriting" style="padding: 0;">
             <div class="flexBox" style="align-items: start;">
                 <div class="cols">
@@ -100,38 +108,58 @@
         <h1 class="lgTxt" style="padding-left: 0;"><span style="color: #1279F0;">01</span><br>The designs</h1>
         <div class="projectSections">
             <div class="imageGrid">
-                <img draggable="false" src="vigor_iOS_app.png" width="100%" alt="img">
+                <div class="clipping" style="border-radius: 18px;">
+                    <img draggable="false" src="vigor_iOS_app.png" width="100%" alt="img">
+                </div>
                 <h3>Vigor logo resembles a heart shape to combat heart diseases due to obesity</h3>
+                <br>
+                <br>
+                <br>
                 <div class="flexBox" style="gap: 48px;">
                     <div class="half">
-                        <div class="clipping">
+                        <div class="clipping" style="border-radius: 18px;">
                             <img src="VigorPhoneView1.gif" width="100%" alt="img">
                         </div>
                         <h3>Workout station with <br> automated timer</h3>
+                        <br>
+                        <br>
+                        <br>
                     </div>
                     <div class="half">
-                        <div class="clipping">
+                        <div class="clipping" style="border-radius: 18px;">
                             <img src="VigorPhoneView2.gif" width="100%" alt="img">
                         </div>
                         <h3>A regulated workout app that helps avoid workout burnouts</h3>
+                        <br>
+                        <br>
+                        <br>
                     </div>
                 </div>
                 <div class="flexBox" style="gap: 48px;">
                     <div class="half">
-                        <div class="clipping">
+                        <div class="clipping" style="border-radius: 18px;">
                             <img src="Vigor_image9.png" width="100%" alt="img">
                         </div>
                         <h3>Weekly activity trend to keep users in regulated workout sessions</h3>
+                        <br>
+                        <br>
+                        <br>
                     </div>
                     <div class="half">
-                        <div class="clipping">
+                        <div class="clipping" style="border-radius: 18px;">
                             <img src="Vigor_image10.png" width="100%" alt="img">
                         </div>
                         <h3>Vigor splash screen to keep app private when users switch to other apps</h3>
+                        <br>
+                        <br>
+                        <br>
                     </div>
                 </div>
+                <div class="clipping" style="border-radius: 18px;">
                 <img draggable="false" src="Bento_Vigor_lg1.png" width="100%" alt="img">
+                </div>
                 <h3>Creating fitness right at home on the tv</h3>
+                <br>
             </div>
         </div>
         <br>
@@ -281,7 +309,8 @@
                 <br>
                 <img draggable="false" src="Vigor_FullFlow1.png" width="100%" alt="Img">
                 <div class="projectSections">
-                    <h3>This flow focus on getting into a workout routine users want. I made the workout as automated as possible.</h3>
+                    <h3>This flow focus on getting into a workout routine users want. I made the workout as automated as
+                        possible.</h3>
                 </div>
                 <br>
                 <br>
@@ -313,10 +342,13 @@
                     </div>
                     <div class="half">
                         <h1>Experimentation on friction</h1>
-                        <p>As users are working out, they can get clumsy with their phones while scrolling through text music etc.
-                            I added a friction in this flow to help to help out uses confirm they are exiting out or pressed the wrong button.</p>
-                        
-                            <p>Also I made buttons really larger to make it easy to toggle through each sections of the workout or
+                        <p>As users are working out, they can get clumsy with their phones while scrolling through text
+                            music etc.
+                            I added a friction in this flow to help to help out uses confirm they are exiting out or
+                            pressed the wrong button.</p>
+
+                        <p>Also I made buttons really larger to make it easy to toggle through each sections of the
+                            workout or
                             Pause their activity.</p>
                     </div>
                 </div>
@@ -337,7 +369,8 @@
                 <div class="flexBox">
                     <div class="half">
                         <h1>Progress is everything</h1>
-                        <p>Using Vigor, based on users' input in the sign up has helped shape the app to reduce the users
+                        <p>Using Vigor, based on users' input in the sign up has helped shape the app to reduce the
+                            users
                             churn rate.</p>
                         <p>Minimizing the churn rate will assist busy users to Maintaining their fitness journey.</p>
                     </div>
