@@ -47,7 +47,7 @@
 <body>
     <div class="navList">
         <div class="flexBox">
-            <a href="#" style="width: fit-content; background-color: transparent;">
+            <a href="index.html" style="width: fit-content; background-color: transparent;">
                 <div class="logo">
                     <img src="logo.svg" height="100%" alt="logo">
                 </div>
@@ -79,24 +79,32 @@
                 <div class="rotateShape">
                     <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
                 </div>
+                <div class="rotateShape2">
+                    <img src="rotatingShape2.svg" width="100%" alt="rotating start shape">
+                </div>
             </div>
             <style>
                 .canvas {
                     width: 100%;
                     height: 100vh;
+                    overflow: visible;
                 }
 
                 .rotateShape {
                     position: absolute;
                     top: calc(-18vw / 2);
-                    right: 232px;
+                    left: 232px;
                     width: 18vw;
                     animation: rotateShape 10s linear infinite;
                 }
 
-                .rotateShapeShelf {
-                    width: 8vw;
-                    animation: rotateShape 10s linear infinite;
+                .rotateShape2 {
+                    position: absolute;
+                    bottom: calc(-18vw / 1.8);
+                    right: 132px;
+                    width: 18vw;
+                    animation: rotateShape2 10s linear infinite;
+                    z-index: 12;
                 }
 
                 @keyframes rotateShape {
@@ -106,6 +114,16 @@
 
                     100% {
                         transform: rotate(360deg);
+                    }
+                }
+
+                @keyframes rotateShape2 {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(-360deg);
                     }
                 }
 
@@ -131,11 +149,12 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    border-radius: 8px;
+                    border-radius: 18px;
                     position: absolute;
                     cursor: grab;
                     transform: rotate(0deg);
                     user-select: none;
+                    z-index: 12;
                 }
 
                 .card:active {
@@ -143,13 +162,13 @@
                 }
 
                 .card:hover {
-                    transform: rotate(4deg);
+                    transform: rotate(0deg);
                 }
             </style>
             <footer>
                 <div class="flexBox">
                     <!-- <h2>Alex Kauffman</h2> -->
-                    <!-- <h2>Seeking new roles</h2> -->
+                    <h2>Seeking new roles</h2>
                 </div>
             </footer>
         </div>
@@ -174,11 +193,7 @@
 
                     <p class="passage">Revamping Color's cancer webpages with new exciting visuals to
                         help strengthen their new design language system and brand identity</p>
-                    <div class="flexBox" style="justify-content: start; gap: 4px;">
-                        <h3 class="chips">Illustration</h3>
-                        <h3 class="chips">Web Design</h3>
-                        <h3 class="chips">Client</h3>
-                    </div>
+                    <h3 class="chips">Illustration &nbsp; | &nbsp; Web Design &nbsp; | &nbsp; Client</h3>
                 </a>
             </div>
             <div class="mdMargin"></div>
@@ -192,13 +207,9 @@
                             <img draggable="false" src="Halo_Project.png" width="100%"
                                 alt="Photo of Vigor app on apple tv, iphone and Vigor Logo">
                         </div>
-                        <p class="passage">Halo brinngs more accessible light
+                        <p>Halo brinngs more accessible light
                             sources that travels around with you</p>
-                        <div class="flexBox" style="justify-content: start; gap: 4px;">
-                            <h3 class="chips">Industrial Design</h3>
-                            <h3 class="chips">UI Design</h3>
-                            <h3 class="chips">Concept</h3>
-                        </div>
+                        <h3 class="chips">Industrial Design &nbsp; | &nbsp; User Interface &nbsp; | &nbsp; Concept</h3>
                     </a>
                 </div>
                 <div class="half">
@@ -210,13 +221,9 @@
                                 alt="Photo of Vigor app on apple tv, iphone and Vigor Logo">
                         </div>
 
-                        <p class="passage">Senior Capstone creating wishing well space to bring hope during covid-19
+                        <p class="passage">Creating wishing well space to bring hope during covid-19
                             time</p>
-                        <div class="flexBox" style="justify-content: start; gap: 4px;">
-                            <h3 class="chips">UI Design</h3>
-                            <h3 class="chips">Devlopment</h3>
-                            <h3 class="chips">Capstone</h3>
-                        </div>
+                        <h3 class="chips">User Interface &nbsp; | &nbsp; Devlopment &nbsp; | &nbsp; Capstone</h3>
                     </a>
                 </div>
             </div>
@@ -233,11 +240,7 @@
 
                     <p class="passage">Exploring ways to minimize gymtimidation and improving
                         American health with automated workouts</p>
-                    <div class="flexBox" style="justify-content: start; gap: 4px;">
-                        <h3 class="chips">UI Design</h3>
-                        <h3 class="chips">UX Design</h3>
-                        <h3 class="chips">Concept</h3>
-                    </div>
+                    <h3 class="chips">User Interface &nbsp; | &nbsp; Experiance Design &nbsp; | &nbsp; Concept</h3>
                 </a>
             </div>
         </div>
@@ -308,16 +311,19 @@
     <div class="mdMargin"></div>
     <div class="mdMargin"></div>
     <div class="project">
-        <h1 class="mdTxt" style="max-width: 94%;">Being a designer at <a class="hook" target="_blank" href="https://byhook.com/">Hook</a>,
+        <h1 class="mdTxt" style="max-width: 94%;">Being a designer at <a class="hook" target="_blank"
+                href="https://byhook.com/">Hook</a>,
             I create websites, campaigns, storyboards, motion assets, and more. I also help teams explore new
             design tools such as Figma to improve work production.</h1>
         <br>
         <br>
-        <h1 class="mdTxt" style="max-width: 94%;">In my spare time, I saber fence 🤺 nationally, prototyping with 3D printers,
+        <h1 class="mdTxt" style="max-width: 94%;">In my spare time, I saber fence 🤺 nationally, prototyping with 3D
+            printers,
             and an advocate for the Deaf community.</h1>
         <br>
         <br>
-        <h1 class="mdTxt" style="max-width: 94%;">In near future, as I work in creative industry, I will continue with my education to bring
+        <h1 class="mdTxt" style="max-width: 94%;">In near future, as I work in creative industry, I will continue with
+            my education to bring
             design + business + engineering to more sustainable future.</h1>
     </div>
     <div class="mdMargin"></div>
@@ -349,11 +355,14 @@
             <div class="rotateShape">
                 <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
             </div>
+            <div class="rotateShape2">
+                <img src="rotatingShape2.svg" width="100%" alt="rotating start shape">
+            </div>
         </div>
         <footer>
             <div class="flexBox">
                 <!-- <h2>Alex Kauffman</h2> -->
-                <!-- <h2>Seeking new roles</h2> -->
+                <h2>Seeking new roles</h2>
             </div>
         </footer>
     </div>

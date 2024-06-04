@@ -266,13 +266,11 @@ img {
 }
 
 .project h3{
-    text-wrap: balance;
-    text-align: center;
+    text-align: left;
     margin: auto;
     margin-top: 32px;
-    font-size: 18px;
+    font-size: 32px;
     font-weight: 500;
-    max-width: 50%;
 }
 
 .passage{
@@ -368,7 +366,7 @@ img {
 }
 
 .project p {
-    font-size: 22px;
+    font-size: 32px;
     color: var(--dark);
     text-transform: uppercase;
     margin-top: 24px;
@@ -794,18 +792,14 @@ img {
 }
 
 .chips {
-    font-weight: 400;
     width: fit-content;
-    font-size: 24px;
     line-height: 1.4em;
-    border: 1px solid var(--dark);
-    border-radius: 100rem;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 16px;
-    padding-right: 16px;
     margin-left: 0 !important;
     margin-right: 0 !important;
+    color: gray;
+    font-weight: 400 !important;
+    text-align: left;
+    width: 100%;
 }
 
 .marqueeProjects {
@@ -1160,6 +1154,7 @@ img {
     color: var(--gray);
     font-size: 32px !important;
     padding-bottom: 16px;
+    padding-top: 32px;
 }
 
 .articles .cols .clipping {
@@ -1997,6 +1992,7 @@ footer {
     padding-left: 64px;
     padding-right: 64px;
     padding-bottom: 38px;
+    z-index: 14;
 }
 
 footer h2{
