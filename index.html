@@ -47,6 +47,11 @@
 <body>
     <div class="navList">
         <div class="flexBox">
+            <a href="#" style="width: fit-content; background-color: transparent;">
+                <div class="logo">
+                    <img src="logo.svg" height="100%" alt="logo">
+                </div>
+            </a>
             <div class="flexBox" style="width: fit-content; gap: 4px;">
                 <a id="active" href="index.html">Work</a>
                 <a href="archive.html">Archive</a>
@@ -67,32 +72,84 @@
                     <h2 class="line">into reality</h2>
                 </div>
             </div>
-            <div class="marquee">
-                <ul class="marquee__content" aria-hidden="true">
-                    <img draggable="false" src="marquee_img_1.png" width="100%"
-                        alt="Photograph of Alex Kauffman portrait">
-                    <img draggable="false" src="marquee_img_2.png" width="100%"
-                        alt="Family room view with Tv of Vigor Fitness App">
-                    <img draggable="false" src="marquee_img_3.png" width="100%"
-                        alt="2D illusion of person holding a saber">
-                    <img draggable="false" src="marquee_img_4.png" width="100%"
-                        alt="Tablet with app showcasing covid-19 in 3d model">
-                </ul>
-                <ul class="marquee__content" aria-hidden="true">
-                    <img draggable="false" src="marquee_img_1.png" width="100%"
-                        alt="Photograph of Alex Kauffman portrait">
-                    <img draggable="false" src="marquee_img_2.png" width="100%"
-                        alt="Family room view with Tv of Vigor Fitness App">
-                    <img draggable="false" src="marquee_img_3.png" width="100%"
-                        alt="2D illusion of person holding a saber">
-                    <img draggable="false" src="marquee_img_4.png" width="100%"
-                        alt="Tablet with app showcasing covid-19 in 3d model">
-                </ul>
+            <div class="canvas">
+                <div class="card" id="card1"></div>
+                <div class="card" id="card2"></div>
+                <div class="card" id="card4"></div>
+                <div class="rotateShape">
+                    <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
+                </div>
             </div>
+            <style>
+                .canvas {
+                    width: 100%;
+                    height: 100vh;
+                }
+
+                .rotateShape {
+                    position: absolute;
+                    top: calc(-18vw / 2);
+                    right: 232px;
+                    width: 18vw;
+                    animation: rotateShape 10s linear infinite;
+                }
+
+                .rotateShapeShelf {
+                    width: 8vw;
+                    animation: rotateShape 10s linear infinite;
+                }
+
+                @keyframes rotateShape {
+                    0% {
+                        transform: rotate(0deg);
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                    }
+                }
+
+                .uncard {
+                    background-color: #8e93ff;
+                    height: fit-content;
+                    width: fit-content;
+                    padding: 46px;
+                    padding-left: 92px;
+                    padding-right: 92px;
+                    color: #1a1a1a;
+                    font-size: 2vw;
+                    border-radius: 100rem;
+                    position: absolute;
+                    rotate: -12deg;
+                    bottom: 0;
+                }
+
+                .card {
+                    width: 16vw;
+                    height: 24vw;
+                    background-color: black;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 8px;
+                    position: absolute;
+                    cursor: grab;
+                    transform: rotate(0deg);
+                    user-select: none;
+                }
+
+                .card:active {
+                    cursor: grabbing;
+                }
+
+                .card:hover {
+                    transform: rotate(4deg);
+                }
+            </style>
             <footer>
                 <div class="flexBox">
-                    <h2>Alex Kauffman</h2>
-                    <h2>Seeking for new roles</h2>
+                    <!-- <h2>Alex Kauffman</h2> -->
+                    <!-- <h2>Seeking new roles</h2> -->
                 </div>
             </footer>
         </div>
@@ -100,7 +157,7 @@
         <div class="mdMargin"></div>
 
         <div class="project">
-            <h1 class="mdTxt">As a UX/UI designer, I strive in problem solving. I believe that
+            <h1 class="mdTxt" style="max-width: 94%;">As a UX/UI designer, I strive in problem solving. I believe that
                 designs are not just for aesthetics; they're expressions of a better user experience.
             </h1>
             <div class="mdMargin"></div>
@@ -114,7 +171,7 @@
                         <img draggable="false" src="ColorCover.png" width="100%"
                             alt="Color logo with color background flipping different colors">
                     </div>
-                  
+
                     <p class="passage">Revamping Color's cancer webpages with new exciting visuals to
                         help strengthen their new design language system and brand identity</p>
                     <div class="flexBox" style="justify-content: start; gap: 4px;">
@@ -144,22 +201,6 @@
                         </div>
                     </a>
                 </div>
-                <!-- <div class="half">
-                    <a href="#">
-                        <div class="clipping" style="border: 2px solid black;">
-                            <h3>Coming Soon</h3>
-                            <img draggable="false" src="BagBoy.png" width="100%"
-                                alt="Photo of Vigor app on apple tv, iphone and Vigor Logo">
-                        </div>
-                        <h2>Porter</h2>
-                        <p class="passage">Leave a bag behind? A new bag buddy walks where ever you go</p>
-                        <div class="flexBox" style="justify-content: start; gap: 4px;">
-                            <h3 class="chips">Industrial Design</h3>
-                            <h3 class="chips">Micro Computing</h3>
-                            <h3 class="chips">Concept</h3>
-                        </div>
-                    </a>
-                </div> -->
                 <div class="half">
                     <a href="Wishful.html">
                         <h2>Wishful</h2>
@@ -168,8 +209,9 @@
                             <img draggable="false" src="WishfulPhone2.png" width="100%"
                                 alt="Photo of Vigor app on apple tv, iphone and Vigor Logo">
                         </div>
-             
-                        <p class="passage">Senior Capstone creating wishing well space to bring hope during covid-19 time</p>
+
+                        <p class="passage">Senior Capstone creating wishing well space to bring hope during covid-19
+                            time</p>
                         <div class="flexBox" style="justify-content: start; gap: 4px;">
                             <h3 class="chips">UI Design</h3>
                             <h3 class="chips">Devlopment</h3>
@@ -188,7 +230,7 @@
                         <img draggable="false" src="VigorCover.png" width="100%"
                             alt="Photo of Vigor app on apple tv, iphone and Vigor Logo">
                     </div>
-             
+
                     <p class="passage">Exploring ways to minimize gymtimidation and improving
                         American health with automated workouts</p>
                     <div class="flexBox" style="justify-content: start; gap: 4px;">
@@ -218,74 +260,6 @@
                 </div>
             </a>
         </div>
-        <div class="mdMargin"></div>
-        <div class="mdMargin"></div>
-        <div class="skills">
-            <h1 class="mdTxt">Being a designer at <a class="hook" target="_blank" href="https://byhook.com/">Hook</a>,
-                I create websites, campaigns, storyboards, motion assets, and more. I also help teams explore new
-                design tools such as Figma to improve work production.</h1>
-            <br>
-            <br>
-            <br>
-            <div class="drawer">
-                <div class="copyGap">
-                    <h2 class="xlTxt">UI Design</h2>
-                    <h3></h3>
-                </div>
-                <p class="mdTxt">
-                    I enjoy taking abstract things and creating them something physical from it.
-                </p>
-            </div>
-
-            <div class="drawer">
-                <div class="copyGap">
-                    <h2 class="xlTxt">Research</h2>
-                    <h3></h3>
-                </div>
-                <p class="mdTxt">
-                    I love researching and understanding users' needs to help improve new ways to for a seamless, better
-                    experience. Data is the key for creative motives.
-                </p>
-            </div>
-            <div class="drawer">
-                <div class="copyGap">
-                    <h2 class="xlTxt">Illustration</h2>
-                    <h3></h3>
-                </div>
-                <p class="mdTxt">
-                    Illustration is a passion that me. I enjoys implementing into UX/UI day to day work.
-                </p>
-            </div>
-            <div class="drawer">
-                <div class="copyGap">
-                    <h2 class="xlTxt">Workshop</h2>
-                    <h3></h3>
-                </div>
-                <p class="mdTxt">
-                    Teach others new design skills or exercising new design principles to others.
-                </p>
-            </div>
-            <div class="drawer">
-                <div class="copyGap">
-                    <h2 class="xlTxt">Figma</h2>
-                    <h3></h3>
-                </div>
-                <p class="mdTxt">
-                    I use Figma as much as possible. I love bringing Figma into the creative space in
-                    non-ux space. I'm an advocate for Figma for an inclusive space for Product and Configs events.
-                </p>
-            </div>
-            <div class="drawer">
-                <div class="copyGap">
-                    <h2 class="xlTxt">Thinker</h2>
-                    <h3></h3>
-                </div>
-                <p class="mdTxt">
-                    I enjoy out problems like P vs NP or just figuring out what to wear the
-                    next day. I'm pursuing additional education in design + engineering for a more sustainable future.
-                </p>
-            </div>
-        </div>
     </div>
     <div class="mdMargin"></div>
     <div class="mdMargin"></div>
@@ -314,7 +288,7 @@
                             alt="Picture of Figma doing a workshop at Config 2023" style="user-select: none;"
                             width="100%">
                     </div>
-                    <h2>Thinking of new ways using Figma's variable feature for displaying ads to help cutback
+                    <h2>Using Figma's variable feature for displaying ads to help cutback
                         production time.</h2>
                     <p>LinkedIn - 1 min read</p>
                 </a>
@@ -334,19 +308,25 @@
     <div class="mdMargin"></div>
     <div class="mdMargin"></div>
     <div class="project">
-        <h1 class="mdTxt">In my spare time, I saber fence 🤺 nationally, prototyping with 3D printers,
+        <h1 class="mdTxt" style="max-width: 94%;">Being a designer at <a class="hook" target="_blank" href="https://byhook.com/">Hook</a>,
+            I create websites, campaigns, storyboards, motion assets, and more. I also help teams explore new
+            design tools such as Figma to improve work production.</h1>
+        <br>
+        <br>
+        <h1 class="mdTxt" style="max-width: 94%;">In my spare time, I saber fence 🤺 nationally, prototyping with 3D printers,
             and an advocate for the Deaf community.</h1>
-        <div class="mdMargin"></div>
-        <h1 class="mdTxt">In near future, as I work in creative industry, I will continue with my education to bring
+        <br>
+        <br>
+        <h1 class="mdTxt" style="max-width: 94%;">In near future, as I work in creative industry, I will continue with my education to bring
             design + business + engineering to more sustainable future.</h1>
     </div>
     <div class="mdMargin"></div>
     <div class="mdMargin"></div>
     <div class="mdMargin"></div>
-    <div class="newcta">
+    <!-- <div class="newcta">
         <h2 class="lgTxt" onclick="copyContent()">If you'd like to learn <br> more, Lets Talk!</h2>
         <h3><span class="underline" id="change-text">Click to copy email to clipboard</span></h3>
-    </div>
+    </div> -->
     <div class="archives gallery">
         <br>
         <br>
@@ -362,41 +342,21 @@
                 <h2 class="line">into reality</h2>
             </div>
         </div>
-        <div class="marquee">
-            <ul class="marquee__content" aria-hidden="true">
-                <img draggable="false" src="marquee_img_1.png" width="100%" alt="Photograph of Alex Kauffman portrait">
-                <img draggable="false" src="marquee_img_2.png" width="100%"
-                    alt="Family room view with Tv of Vigor Fitness App">
-                <img draggable="false" src="marquee_img_3.png" width="100%" alt="2D illusion of person holding a saber">
-                <img draggable="false" src="marquee_img_4.png" width="100%"
-                    alt="Tablet with app showcasing covid-19 in 3d model">
-            </ul>
-            <ul class="marquee__content" aria-hidden="true">
-                <img draggable="false" src="marquee_img_1.png" width="100%" alt="Photograph of Alex Kauffman portrait">
-                <img draggable="false" src="marquee_img_2.png" width="100%"
-                    alt="Family room view with Tv of Vigor Fitness App">
-                <img draggable="false" src="marquee_img_3.png" width="100%" alt="2D illusion of person holding a saber">
-                <img draggable="false" src="marquee_img_4.png" width="100%"
-                    alt="Tablet with app showcasing covid-19 in 3d model">
-            </ul>
+        <div class="canvas">
+            <div class="card" id="card1"></div>
+            <div class="card" id="card2"></div>
+            <div class="card" id="card4"></div>
+            <div class="rotateShape">
+                <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
+            </div>
         </div>
         <footer>
             <div class="flexBox">
-                <h2>Alex Kauffman</h2>
-                <h2>Seeking for new roles</h2>
+                <!-- <h2>Alex Kauffman</h2> -->
+                <!-- <h2>Seeking new roles</h2> -->
             </div>
         </footer>
     </div>
-    <style>
-        .half:hover img {
-            transform: scale(1.02);
-            opacity: 0.7;
-            cursor: pointer;
-            transition: 0.5s ease;
-            flex-shrink: 0;
-        }
-    </style>
-    <script src="app.js"></script>
     <script src="otherScript.js"></script>
 </body>
 

@@ -285,8 +285,10 @@ img {
 
 .mdTxt{
     font-size: 4.2vw;
-    line-height: 4.8vw;
+    line-height: 5.2vw;
     color: var(--dark); 
+    text-transform: uppercase;
+    font-weight: 500;
 }
 
 .smTxt{
@@ -443,92 +445,6 @@ img {
     height: 60vh;
 }
 
-.drawer {
-    margin-bottom: 32px;
-    margin-top: 32px;
-    overflow: hidden;
-    transition: 0.3s ease;
-    padding-top: 16px;
-    padding-bottom: 16px;
-    cursor: pointer;
-    color: var(--dark);
-    border-bottom: 1px solid var(--dark);
-}
-
-.drawer:first-child{
-    margin-top: 0;
-}
-
-.drawer:last-child{
-    margin-bottom: 0;
-}
-
-.drawer p {
-    display: none;
-    opacity: 0;
-    margin-bottom: 0;
-    padding-bottom: 32px;
-    color: var(--dark);
-    line-height: 3vw !important;
-}
-
-.drawer h3::after {
-    content: '+';
-    color: var(--dark);
-}
-
-.drawer.opened h3::after {
-    content: '×';
-    color: var(--dark);
-}
-
-.drawer:hover {
-    transition: 0.3s ease;
-    background-color: rgba(236, 236, 236, 0.073);
-    color: var(--dark);
-}
-
-.drawer:hover h3 {
-    transition: 0.3s ease;
-    color: var(--dark);
-}
-
-.drawer:hover p {
-    color: var(--dark);
-}
-
-.drawer.opened {
-    height: auto;
-}
-
-.drawer.opened p {
-    display: block;
-    opacity: 1;
-    transition: opacity 0.8s ease;
-}
-
-.drawer h3 {
-    font-size: 7vw;
-    line-height: 7vw;
-    margin: 0;
-    border-radius: 100rem;
-    display: flex;
-    align-items: center;
-    color: black;
-    justify-content: center;
-}
-
-.skills p {
-    font-size: 32px;
-    line-height: 32px;
-    padding-top: 32px;
-}
-
-.skills .copyGap {
-    display: flex;
-    justify-content: space-between;
-}
-
 .articles {
     margin: 0;
     padding-left: 64px;
@@ -572,12 +488,16 @@ img {
     margin: auto;
     height: fit-content;
     z-index: 2222;
+    user-select: none;
+    backface-visibility: hidden;
 }
 
 .text h2{
     font-size: 8vw;
     line-height: 8vw;
     text-align: center;
+    user-select: none;
+    backface-visibility: hidden;
 }
 
 .text {
@@ -586,10 +506,14 @@ img {
     z-index: 12px;
     overflow: hidden;
     height: 8.9vw;
+    backface-visibility: hidden;
+    user-select: none;
 }
 
 .line {
     opacity: 0;
+    text-transform: uppercase;
+    font-weight: 700;
     animation: slideIn 1.2s forwards;
 }
 
@@ -1283,13 +1207,11 @@ img {
 }
 
 .logo{
-    height: 28px;
-    width: fit-content;
     transition: 0.5s ease;
 }
 
 .logo img{
-    mix-blend-mode: difference;
+    height: 64px;
 }
 
 .logoReel {
@@ -1956,7 +1878,7 @@ img {
 }
 
 .gallery .marquee {
-    --gap: 212px;
+    --gap: 32px;
     display: flex;
     overflow: hidden;
     user-select: none;
@@ -1972,6 +1894,7 @@ img {
 
 .gallery .marquee img {
     max-width: calc(100vh / 2);
+    border-radius: 18px;
 }
 
 .gallery ul {
@@ -2077,7 +2000,7 @@ footer {
 }
 
 footer h2{
-    font-size: 20px;
+    font-size: 22px;
 }
 
 footer a:hover{
@@ -2197,6 +2120,28 @@ footer a:hover{
 
 .heroTitle{
     padding-left: 56px;
+}
+
+canvas{
+    overflow: visible;
+}
+
+#card1{
+    background-image: url(WishfulPhone2.png);
+    object-fit: contain;
+    background-size: 16vw 24vw;
+}
+
+#card2{
+    background-image: url(marquee_img_1.png);
+    object-fit: contain;
+    background-size: 16vw 24vw;
+}
+
+#card4{
+    background-image: url(marquee_img_3.png);
+    object-fit: contain;
+    background-size: 16vw 24vw;
 }
 
 @media screen and (max-width: 930px) {

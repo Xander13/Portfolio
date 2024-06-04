@@ -50,13 +50,4 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   window.addEventListener('mousemove', moveCursor);
-
-  //Clickable drop down
-  const drawers = document.querySelectorAll('.drawer');
-
-  drawers.forEach(drawer => {
-    drawer.addEventListener('click', function () {
-      this.classList.toggle('opened');
-    });
-  });
 });
