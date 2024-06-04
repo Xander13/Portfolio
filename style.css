@@ -6,7 +6,7 @@
     --darkGray: #262626;
     --mdMargin: 96px;
     --lgMargin: 360px;
-    --smMargin: 36px;
+    --smMargin: 64px;
     --purpleish: #e5e4f2;
 }
 
@@ -354,9 +354,10 @@ img {
 }
 
 .project h2 {
-    font-size: 36px;
+    font-size: 4.2vw;
+    line-height: 4.8vw;
     padding-top: 16px;
-    margin-bottom: 0;
+    margin-bottom: 32px;
     margin-top: 16px;
     color: var(--dark);
     font-weight: 500 !important;
@@ -365,10 +366,10 @@ img {
 }
 
 .project p {
-    font-size: 18px;
+    font-size: 22px;
     color: var(--dark);
     text-transform: uppercase;
-    margin-top: 8px;
+    margin-top: 24px;
     padding-top: 0;
     margin-bottom: 0;
 }
@@ -2070,8 +2071,8 @@ footer {
     right: 0;
     bottom: 0;
     box-sizing: border-box;
-    padding-left: 36px;
-    padding-right: 36px;
+    padding-left: 64px;
+    padding-right: 64px;
     padding-bottom: 38px;
 }
 
@@ -2193,16 +2194,6 @@ footer a:hover{
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 /**************/
-
-.project .full:nth-child(even){
-    padding-left: 20%;
-    padding-right: 0;
-}
-
-.project .full:nth-child(even){
-    padding-left: 0;
-    padding-right:  20%;
-}
 
 .heroTitle{
     padding-left: 56px;
