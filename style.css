@@ -43,8 +43,8 @@ body {
 
 .dot {
     border-radius: 100rem;
-    height: 28px;
-    width: 28px;
+    height: 44px;
+    width: 44px;
     background-color: var(--dark);
     cursor: pointer;
 }
@@ -1818,25 +1818,11 @@ img {
     margin-bottom: 32px;
 }
 
-.skillsets {
-    max-width: 1220px;
-    padding-top: 64px;
-    flex-wrap: wrap;
-    justify-content: left;
-    gap: 0 !important;
-}
-
-.skillsets h1 {
-    border: 2px solid var(--light);
-    font-weight: 400;
-    width: fit-content;
-    border-radius: 100rem;
-    text-wrap: nowrap;
-    font-size: 32px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    margin-bottom: 12px;
-    margin-right: 12px;
+.skillsets h3{
+    color: var(--dark) !important;
+    line-height: 32px !important;
+    font-size: 32px !important;
+    margin-bottom: 0 !important;
 }
 
 .experiance .cols h2:nth-child(1) {
@@ -1996,7 +1982,7 @@ footer {
 }
 
 footer h2{
-    font-size: 22px;
+    font-size: 32px;
 }
 
 footer a:hover{
@@ -2125,19 +2111,19 @@ canvas{
 #card1{
     background-image: url(WishfulPhone2.png);
     object-fit: contain;
-    background-size: 16vw 24vw;
+    background-size: 12vw 18vw;
 }
 
 #card2{
     background-image: url(marquee_img_1.png);
     object-fit: contain;
-    background-size: 16vw 24vw;
+    background-size: 12vw 18vw;
 }
 
 #card4{
     background-image: url(marquee_img_3.png);
     object-fit: contain;
-    background-size: 16vw 24vw;
+    background-size: 12vw 18vw;
 }
 
 @media screen and (max-width: 930px) {
