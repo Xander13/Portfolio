@@ -73,14 +73,17 @@
                 </div>
             </div>
             <div class="canvas">
-                <!-- <div class="card" id="card1"></div>
-                <div class="card" id="card2"></div>
-                <div class="card" id="card4"></div> -->
                 <div class="rotateShape">
                     <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
                 </div>
+                <div class="rotateShape4">
+                    <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
+                </div>
                 <div class="rotateShape2">
-                    <img src="rotatingShape2.svg" width="100%" alt="rotating start shape">
+                    <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
+                </div>
+                <div class="rotateShape6">
+                    <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
                 </div>
             </div>
             <style>
@@ -92,18 +95,35 @@
 
                 .rotateShape {
                     position: absolute;
-                    top: calc(-22vw / 2);
-                    left: 280px;
-                    width: 22vw;
+                    top: calc(-37vw / 2.5);
+                    left: calc(-37vw / 2.5);
+                    width: 37vw;
                     animation: rotateShape 10s linear infinite;
+                }
+
+                .rotateShape4 {
+                    position: absolute;
+                    top: calc(-22vw / 2.8);
+                    left: calc(-22vw / 2.8);
+                    width: 22vw;
+                    animation: rotateShape2 10s linear infinite;
                 }
 
                 .rotateShape2 {
                     position: absolute;
-                    bottom: calc(-22vw / 2);
-                    right: 132px;
+                    bottom: calc(-37vw / 2.5);
+                    right: calc(-37vw / 2.5);
+                    width: 37vw;
+                    animation: rotateShape2 10s linear infinite;
+                    z-index: 12;
+                }
+
+                .rotateShape6 {
+                    position: absolute;
+                    bottom: calc(-22vw / 2.8);
+                    right: calc(-22vw / 2.8);
                     width: 22vw;
-                    animation: rotateShape2 40s linear infinite;
+                    animation: rotateShape 10s linear infinite;
                     z-index: 12;
                 }
 
@@ -397,14 +417,17 @@
             </div>
         </div>
         <div class="canvas">
-            <!-- <div class="card" id="card1"></div>
-            <div class="card" id="card2"></div>
-            <div class="card" id="card4"></div> -->
             <div class="rotateShape">
                 <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
             </div>
+            <div class="rotateShape4">
+                <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
+            </div>
             <div class="rotateShape2">
-                <img src="rotatingShape2.svg" width="100%" alt="rotating start shape">
+                <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
+            </div>
+            <div class="rotateShape6">
+                <img src="rotatingShape.svg" width="100%" alt="rotating start shape">
             </div>
         </div>
         <footer>
