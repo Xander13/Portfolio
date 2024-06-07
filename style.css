@@ -42,11 +42,15 @@ body {
 }
 
 .dot {
+    position: fixed;
     border-radius: 100rem;
-    height: 44px;
-    width: 44px;
+    height: 36px;
+    width: 36px;
     background-color: var(--dark);
     cursor: pointer;
+    right: 64px;
+    bottom: 32px;
+    z-index: 2222;
 }
 
 .mdMargin{
@@ -149,11 +153,7 @@ p {
 }
 
 .navList a {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    font-size: 14px;
+    font-size: 32px;
     font-weight: 600 !important;
     line-height: 32px;
     text-transform: uppercase;
@@ -165,7 +165,13 @@ p {
     color: var(--dark);
     mix-blend-mode: difference;
     height: fit-content;
-    background-color: #8080803d;
+    transition: 0.4s ease;
+}
+
+#active {
+    text-decoration: underline;
+    font-style: italic;
+    text-underline-offset: 18px;
 }
 
 .widthSections {
@@ -185,17 +191,7 @@ p {
     padding: 32px;
 }
 
-#active {
-    font-style: italic;
-    color: var(--light);
-    background-color: var(--dark);
-}
 
-.navList a:hover {
-    background-color: white;
-    color: black;
-    transition: 0.5s ease;
-}
 
 .navProject h2 {
     color: var(--light);
@@ -1977,7 +1973,7 @@ footer {
     box-sizing: border-box;
     padding-left: 64px;
     padding-right: 64px;
-    padding-bottom: 38px;
+    padding-bottom: 32px;
     z-index: 14;
 }
 
@@ -2274,7 +2270,7 @@ canvas{
 
     .dot{
         position: fixed;
-        top: 16px;
+        bottom: 16px;
         right: 16px;
     }
 
