@@ -45,16 +45,45 @@
 </head>
 
 <body>
+    <div class="pageArrow">
+        <h1 id="scrollArrow">&#8595;</h1>
+    </div>
+    <script>
+        // Get the scroll arrow element
+        const scrollArrow = document.getElementById('scrollArrow');
+
+        // Add a scroll event listener to the window
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollArrow.innerHTML = '&#x2191;';
+            } else {
+                scrollArrow.innerHTML = '&#8595;';
+            }
+        });
+
+        // Add a click event listener to the arrow to scroll to the top
+        scrollArrow.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
     <div class="navList">
         <div class="flexBox">
-            <div class="flexBox" style="width: fit-content; gap: 64px;">
-                <a id="active" href="index.html">Work</a>
-                <a href="archive.html">Archive</a>  
+            <div class="flexBox" style="justify-content: space-between;">
+                <div class="flexBox" style="width: fit-content; gap: 64px;">
+                    <a id="active" href="index.html">Work</a>
+                    <a href="archive.html">Archive</a>
+                </div>
+                <div class="flexBox" style="width: fit-content; gap: 32px;">
+                    <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+                    <div id="toggle-button" class="dot"></div>
+                </div>
+
             </div>
-            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
         </div>
     </div>
-    <div id="toggle-button" class="dot"></div>
     <div class="content">
         <div class="archives gallery">
             <div class="textContainer">
@@ -68,7 +97,7 @@
                 </div>
             </div>
             <div class="canvas">
-                
+
             </div>
             <footer>
                 <div class="flexBox">
@@ -83,7 +112,8 @@
             <div class="akImg">
                 <img src="AlexCircle.png" width="100%" alt="rotating start shape">
             </div>
-            <h1 class="mdTxt" style="max-width: 94%;">As a UX/UI designer, Alex Kauffman strive in problem solving. I believe that
+            <h1 class="mdTxt" style="max-width: 94%;">As a UX/UI designer, Alex Kauffman strive in problem solving. I
+                believe that
                 designs are not just for aesthetics; they're expressions of a better user experience.
             </h1>
             <div class="mdMargin"></div>
@@ -268,14 +298,17 @@
         </div>
         <div class="mdMargin"></div>
         <div class="mdMargin"></div>
-        <h1 class="mdTxt" style="max-width: 94%;">In my spare time, I saber fence nationally, prototype with 3D printers, and advocate for inclusive design. 
+        <h1 class="mdTxt" style="max-width: 94%;">In my spare time, I saber fence nationally, prototype with 3D
+            printers, and advocate for inclusive design.
             <div class="mdMargin"></div>
             <div class="mdMargin"></div>
-            As I work in the creative industry, I plan to continue my education to integrate design, business, and engineering, aiming to contribute to a more sustainable future.</h1>
-            <div class="mdMargin"></div>
-            <div class="mdMargin"></div>
-            <h2 class="lgTitle">&copy;2024</h2>
-        </div>
+            As I work in the creative industry, I plan to continue my education to integrate design, business, and
+            engineering, aiming to contribute to a more sustainable future.
+        </h1>
+        <div class="mdMargin"></div>
+        <div class="mdMargin"></div>
+        <h2 class="lgTitle">&copy;2024</h2>
+    </div>
     <div class="mdMargin"></div>
     <div class="mdMargin"></div>
     <!-- <div class="newcta">
@@ -298,7 +331,7 @@
             </div>
         </div>
         <div class="canvas">
-           
+
         </div>
         <footer>
             <div class="flexBox">

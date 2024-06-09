@@ -42,15 +42,23 @@ body {
     bottom: 32px;
 }
 
-.dot {
+.pageArrow{
     position: fixed;
+    z-index: 333333;
+    right: 64px;
+    font-size: 32px;
+    bottom: 16px;
+    cursor: pointer;
+}
+
+.dot {
     border-radius: 100rem;
     height: 36px;
     width: 36px;
     background-color: var(--dark);
     cursor: pointer;
-    right: 64px;
-    bottom: 32px;
+    /* right: 64px;
+    bottom: 32px; */
     z-index: 2222;
 }
 
@@ -2300,8 +2308,13 @@ canvas{
 
     .dot{
         position: fixed;
-        bottom: 16px;
+        top: 24px;
         right: 16px;
+    }
+
+    .pageArrow{
+        right: 16px;
+        bottom: 0px;
     }
 
     .passage{
