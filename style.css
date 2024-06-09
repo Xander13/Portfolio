@@ -485,21 +485,18 @@ img {
     width: 100%;
     height: fit-content;
     position: absolute;
-    top: calc(100% / 2 - 9vw);
-    left: 0;
-    right: 0;
-    margin: auto;
+    /* top: calc(100% / 2 - 9vw); */
+    bottom: 16px;
+    left: 64px;
     height: fit-content;
     z-index: 2222;
-    user-select: none;
     backface-visibility: hidden;
 }
 
 .text h2{
     font-size: 8vw;
     line-height: 8vw;
-    text-align: center;
-    user-select: none;
+    text-align: left;
     backface-visibility: hidden;
 }
 
@@ -510,7 +507,8 @@ img {
     overflow: hidden;
     height: 8.9vw;
     backface-visibility: hidden;
-    user-select: none;
+    left: 0;
+    margin-left: 0 !important;
 }
 
 .line {
@@ -2163,6 +2161,11 @@ canvas{
 @media screen and (max-width: 930px) {
     .heroTitle{
         padding-left: 16px;
+    }
+
+    .textContainer{
+        left: 16px;
+        bottom: 0;
     }
 
     .reel{
