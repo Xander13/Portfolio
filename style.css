@@ -2163,6 +2163,11 @@ canvas{
         padding-left: 16px;
     }
 
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+
     .textContainer{
         left: 16px;
         bottom: 0;
