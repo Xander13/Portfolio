@@ -1,6 +1,6 @@
 // Function to reset the scroll position to the top
 function resetScroll() {
-  if (window.location.hostname === 'alex-kauffman.com') {
+  if (window.location.hostname === 'alex-kauffman.com' && window.location.pathname === '/') {
     window.scrollTo(0, 0);
   }
 }
