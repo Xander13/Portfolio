@@ -4,7 +4,7 @@
 function resetScroll() {
   // Check if we are on https://alex-kauffman.com/index.html or https://alex-kauffman.com/
   if (window.location.hostname === 'alex-kauffman.com' &&
-    (window.location.pathname === 'alex-kauffman.com/index.html' || window.location.pathname === '/')) {
+    (window.location.pathname === 'https://alex-kauffman.com/index.html' || window.location.pathname === '/')) {
     window.scrollTo(0, 0);
   }
 }
