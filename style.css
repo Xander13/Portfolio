@@ -15,8 +15,11 @@ body {
     background-color: var(--light);
     color: var(--dark);
     font-family: sans-serif;
-    overflow-x: hidden;
     transition: color 0.5s ease, background-color 0.5s ease;
+}
+
+html, body, .content{
+    overflow-x: hidden;
 }
 
 .lightMode {
