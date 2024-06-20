@@ -1,15 +1,17 @@
 // Function to reset the scroll position to the top
+// Function to reset the scroll position to the top
 function resetScroll() {
-  // Check if we are on alex-kauffman.com without any path or query parameters
-  if (window.location.hostname === 'alex-kauffman.com' && window.location.pathname === '/' && window.location.search === '') {
+  // Check if we are on https://alex-kauffman.com/index.html or https://alex-kauffman.com/
+  if (window.location.hostname === 'alex-kauffman.com' && 
+      (window.location.pathname === '/index.html' || window.location.pathname === '/')) {
     window.scrollTo(0, 0);
   }
 }
 
 // Function to check if scrolling to the bottom
 function checkScroll() {
-  // Check if we are on alex-kauffman.com
-  if (window.location.hostname === 'alex-kauffman.com') {
+  // Check if we are on https://alex-kauffman.com/
+  if (window.location.hostname === 'alex-kauffman.com' && window.location.pathname === '/') {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       resetScroll();
     }
