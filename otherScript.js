@@ -69,7 +69,7 @@ scrollArrow.addEventListener('click', () => {
 });
 
 //loop roles
-let looper = ["Visual Design", "Brand Design", "UI Design"];
+let looper = ["Visual Design", "Brand Design", "UI Design", "UX Engineering"];
                     let index = 0;
                     const looperElement = document.getElementById('looper');
 
