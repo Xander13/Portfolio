@@ -1,22 +1,24 @@
 // Function to reset the scroll position to the top
 // Function to reset the scroll position to the top
+// Function to reset the scroll position to the top
 function resetScroll() {
   // Check if we are on https://alex-kauffman.com/index.html or https://alex-kauffman.com/
-  if (window.location.hostname === 'alex-kauffman.com' && 
-      (window.location.pathname === '/index.html' || window.location.pathname === '/')) {
+  if (window.location.hostname === 'alex-kauffman.com' &&
+    (window.location.pathname === '/index.html' || window.location.pathname === '/')) {
     window.scrollTo(0, 0);
   }
 }
 
 // Function to check if scrolling to the bottom
 function checkScroll() {
-  // Check if we are on https://alex-kauffman.com/
+  // Check if we are on https://alex-kauffman.com/ (the root)
   if (window.location.hostname === 'alex-kauffman.com' && window.location.pathname === '/') {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       resetScroll();
     }
   }
 }
+
 
 
 // Event listener for scrolling
@@ -29,7 +31,7 @@ window.addEventListener('resize', checkScroll);
 const toggleButton = document.getElementById('toggle-button');
 if (toggleButton) {
   toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('lightMode');
+    document.body.classList.toggle('lightMode');
   });
 }
 
@@ -38,15 +40,15 @@ document.addEventListener('DOMContentLoaded', function () {
   const textLines = document.querySelectorAll('.line');
   let delay = 0;
   textLines.forEach(function (line) {
-      line.style.animationDelay = delay + 's';
-      delay += 0.5; // Increase delay for each line
+    line.style.animationDelay = delay + 's';
+    delay += 0.5; // Increase delay for each line
   });
 
   const cursorRounded = document.querySelector('#arrow');
   const moveCursor = (e) => {
-      const mouseY = e.clientY;
-      const mouseX = e.clientX;
-      cursorRounded.style.transform = `translate3d(${mouseX - 160}px, ${mouseY - 160}px, 0)`;
+    const mouseY = e.clientY;
+    const mouseX = e.clientX;
+    cursorRounded.style.transform = `translate3d(${mouseX - 160}px, ${mouseY - 160}px, 0)`;
   }
   window.addEventListener('mousemove', moveCursor);
 });
@@ -55,18 +57,18 @@ document.addEventListener('DOMContentLoaded', function () {
 const scrollArrow = document.getElementById('scrollArrow');
 if (scrollArrow) {
   window.addEventListener('scroll', () => {
-      if (window.scrollY > 200) {
-          scrollArrow.innerHTML = '&#x2191;';
-      } else {
-          scrollArrow.innerHTML = '&#8595;';
-      }
+    if (window.scrollY > 200) {
+      scrollArrow.innerHTML = '&#x2191;';
+    } else {
+      scrollArrow.innerHTML = '&#8595;';
+    }
   });
 
   scrollArrow.addEventListener('click', () => {
-      window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-      });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   });
 }
 
@@ -76,21 +78,21 @@ function copyContent() {
   const changeText = document.querySelector("#change-text");
 
   try {
-      navigator.clipboard.writeText(text)
-          .then(() => {
-              console.log('Content copied to clipboard');
-              changeText.textContent = "Copied!";
-              // Timeout to change the message
-              setTimeout(() => {
-                  changeText.textContent = "Click to copy email to clipboard";
-              }, 2000);
-          })
-          .catch(err => {
-              console.error('Failed to copy: ', err);
-              changeText.textContent = "Failed to copy. Please try manually.";
-          });
+    navigator.clipboard.writeText(text)
+      .then(() => {
+        console.log('Content copied to clipboard');
+        changeText.textContent = "Copied!";
+        // Timeout to change the message
+        setTimeout(() => {
+          changeText.textContent = "Click to copy email to clipboard";
+        }, 2000);
+      })
+      .catch(err => {
+        console.error('Failed to copy: ', err);
+        changeText.textContent = "Failed to copy. Please try manually.";
+      });
   } catch (err) {
-      console.error('Failed to copy: ', err);
-      changeText.textContent = "Failed to copy. Please try manually.";
+    console.error('Failed to copy: ', err);
+    changeText.textContent = "Failed to copy. Please try manually.";
   }
 }
