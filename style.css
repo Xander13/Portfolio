@@ -47,8 +47,9 @@ body {
     z-index: 333333;
     right: 64px;
     font-size: 32px;
-    bottom: 48px;
+    bottom: 30px;
     cursor: pointer;
+    height: auto;
 }
 
 .dot {
@@ -2284,7 +2285,7 @@ canvas{
     }
 
     .navList {
-        padding-left: 16px;
+        padding-left: 12px;
         padding-right: 16px;
         width: 220px;
         margin-left: 0;
