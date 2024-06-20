@@ -67,3 +67,19 @@ scrollArrow.addEventListener('click', () => {
         behavior: 'smooth'
     });
 });
+
+//loop roles
+let looper = ["Visual Design", "Brand Design", "UI Design"];
+                    let index = 0;
+                    const looperElement = document.getElementById('looper');
+
+                    function updateText() {
+                        looperElement.textContent = looper[index];
+                        index = (index + 1) % looper.length; // Increment index and wrap around
+                    }
+
+                    // Initial call
+                    updateText();
+
+                    // Update text every 4 seconds
+                    setInterval(updateText, 4000);
