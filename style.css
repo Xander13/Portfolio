@@ -243,8 +243,7 @@ p {
 
 img {
     width: 100%;
-    height: fit-content;
-    flex-shrink: 0;
+    height: auto;
 }
 
 .half {
@@ -391,7 +390,7 @@ img {
 
 .hero .blox img {
     width: 100%;
-    flex-shrink: 0;
+    height: auto;
 }
 
 .aboutMe {
@@ -540,8 +539,7 @@ img {
 .project .half img,
 .project .full img {
     width: 100%;
-    flex-shrink: 0;
-    aspect-ratio: auto;
+    height: auto;
 }
 
 /****************/
@@ -649,7 +647,7 @@ img {
 .aboutArrow img {
     padding: 32px;
     width: 100%;
-    height: 100%;
+    height: auto;
     border-radius: 100rem;
     box-sizing: border-box;
     flex-shrink: 0;
@@ -679,6 +677,7 @@ img {
     padding-left: 64px;
     padding-right: 64px;
     width: 100%;
+    height: auto;
     flex-shrink: 0;
 }
 
@@ -803,6 +802,7 @@ img {
     font-weight: 400 !important;
     text-align: left;
     width: 100%;
+    height: auto;
 }
 
 .pChips{
@@ -836,6 +836,7 @@ img {
 
 .marqueeProjects .marquee__content img{
     width: 300px;
+    height: auto;
     flex-shrink: 0;
 }
 
@@ -1123,6 +1124,7 @@ img {
 .contact,
 .archive {
     width: 100%;
+    height: auto;
     padding-left: 32px;
     padding-right: 32px;
     margin: auto;
@@ -1226,6 +1228,7 @@ img {
 
 .logo img{
     height: 64px;
+    height: auto;
 }
 
 .logoReel {
@@ -1236,6 +1239,7 @@ img {
 
 .logoReel img {
     width: 200px;
+    height: auto;
     margin-right: 132px;
     flex-shrink: 0;
 }
@@ -1311,6 +1315,7 @@ img {
 .akImg {
     margin-bottom: 32px;
     width: 88px;
+    height: auto;
     z-index: 12;
 }
 
@@ -1533,8 +1538,7 @@ img {
 
 .storyCards img {
     width: 420px;
-    height: 500px;
-    flex-shrink: 0;
+    height: auto;
 }
 
 .contact {
@@ -1907,6 +1911,7 @@ img {
 
 .gallery .marquee img {
     max-width: calc(100vh / 2);
+    height: auto;
     border-radius: 18px;
 }
 
@@ -1928,6 +1933,7 @@ img {
 
 .moreProjects img {
     width: 100% !important;
+    height: auto;
     flex-shrink: 0;
 }
 
@@ -2163,19 +2169,14 @@ canvas{
         padding-left: 16px;
     }
 
-    img {
-        max-width: 100% !important;
-        height: auto !important;
-    }
-
     .textContainer{
         left: 16px;
         bottom: 0;
     }
 
-    .reel{
+    /* .reel{
         height: 500px;
-    }
+    } */
 
     .passage{
         max-width: 100%;
@@ -2289,6 +2290,7 @@ canvas{
 
     .fullImgView{
         width: 100%;
+        height: auto;
         padding: 0;
         padding-left: 16px;
         padding-right: 16px;
@@ -2356,6 +2358,7 @@ canvas{
 
     .imgBG .half, .forty, .sixty {
         width: 100%;
+        height: auto;
         padding: 0 !important;
         flex-shrink: 0;
     }
@@ -2363,6 +2366,7 @@ canvas{
     .imgBG .cols {
         padding: 0 !important;
         width: 100%;
+        height: auto;
         padding: 16px;
     }
 
@@ -2372,6 +2376,7 @@ canvas{
 
     .imgBG .forty {
         width: 100%;
+        height: auto;
     }
 
     .imgBG .forty img {
