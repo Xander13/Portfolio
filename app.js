@@ -66,24 +66,6 @@ if (scrollArrow) {
   });
 }
 
-// Loop roles
-const looperElement = document.getElementById('looper');
-if (looperElement) {
-  let looper = ["Visual Design", "Brand Design", "UI Design", "UX Engineering"];
-  let index = 0;
-
-  function updateText() {
-      looperElement.textContent = looper[index];
-      index = (index + 1) % looper.length; // Increment index and wrap around
-  }
-
-  // Initial call
-  updateText();
-
-  // Update text every 3 seconds
-  setInterval(updateText, 3000);
-}
-
 // Copy text to clipboard
 function copyContent() {
   let text = 'xanderkau13@gmail.com';
