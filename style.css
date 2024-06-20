@@ -47,7 +47,7 @@ body {
     z-index: 333333;
     right: 64px;
     font-size: 32px;
-    bottom: 16px;
+    bottom: 48px;
     cursor: pointer;
 }
 
@@ -166,9 +166,9 @@ p {
     font-weight: 600 !important;
     line-height: 32px;
     text-transform: uppercase;
-    border-radius: 100rem;
     transition: 0.5s ease;
     display: flex;
+    padding: 4px;
     align-items: center;
     justify-content: center;
     color: var(--dark);
@@ -177,9 +177,22 @@ p {
     transition: 0.4s ease;
 }
 
+.navList a:hover, #active:hover{
+    color: var(--light);
+    background-color: var(--dark);
+    border-radius: 0;
+    padding: 4px;
+    border-radius: 4px !important;
+    transition: 0.4s ease;
+}
+
 #active {
-    color: var(--gray);
+    color: var(--light);
+    background-color: var(--dark);
     font-style: italic;
+    border-radius: 0;
+    padding: 4px;
+    border-radius: 4px;
 }
 
 .widthSections {
@@ -485,11 +498,16 @@ img {
     height: fit-content;
     position: absolute;
     /* top: calc(100% / 2 - 9vw); */
-    bottom: 16px;
+    bottom: 48px;
     left: 64px;
     height: fit-content;
     z-index: 2222;
     backface-visibility: hidden;
+}
+
+.textContainer h3{
+    font-size: 32px;
+    width: fit-content;
 }
 
 .text h2{
@@ -504,7 +522,7 @@ img {
     width: 100%;
     z-index: 12px;
     overflow: hidden;
-    height: 8.9vw;
+    height: 7vw;
     backface-visibility: hidden;
     left: 0;
     margin-left: 0 !important;
@@ -1310,6 +1328,10 @@ img {
     width: 100%;
     height: 100vh;
     overflow: visible;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .akImg {
