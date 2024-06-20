@@ -81,5 +81,5 @@ let looper = ["Visual Design", "Brand Design", "UI Design", "UX Engineering"];
                     // Initial call
                     updateText();
 
-                    // Update text every 4 seconds
-                    setInterval(updateText, 4000);
+                    // Update text every 3 seconds
+                    setInterval(updateText, 3000);
