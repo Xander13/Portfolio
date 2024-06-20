@@ -1,14 +1,14 @@
 // Function to reset the scroll position to the top
 function resetScroll() {
-  if (window.location.pathname === '/index.html') {
+  if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
     window.scrollTo(0, 0);
   }
 }
 
 // Function to check if scrolling to the bottom
 function checkScroll() {
-  // Check if we are on index.html page
-  if (window.location.pathname === '/index.html') {
+  // Check if we are on the main page (could be '/' or '/index.html' depending on .htaccess)
+  if (window.location.pathname === '/' || window.location.pathname === '/index.html') {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       resetScroll();
     }
