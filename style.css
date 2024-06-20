@@ -178,9 +178,8 @@ p {
 }
 
 #active {
-    text-decoration: underline;
+    color: var(--gray);
     font-style: italic;
-    text-underline-offset: 18px;
 }
 
 .widthSections {

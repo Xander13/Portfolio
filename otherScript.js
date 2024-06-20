@@ -45,3 +45,25 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener('mousemove', moveCursor);
 });
+
+
+//arrow funcction
+// Get the scroll arrow element
+const scrollArrow = document.getElementById('scrollArrow');
+
+// Add a scroll event listener to the window
+window.addEventListener('scroll', () => {
+    if (window.scrollY > 200) {
+        scrollArrow.innerHTML = '&#x2191;';
+    } else {
+        scrollArrow.innerHTML = '&#8595;';
+    }
+});
+
+// Add a click event listener to the arrow to scroll to the top
+scrollArrow.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+});
