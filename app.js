@@ -1,20 +1,32 @@
-// Function to reset the scroll position to the top
 function resetScroll() {
-  // Check if we are on https://alex-kauffman.com/index.html or https://alex-kauffman.com/
-  if (window.location.href === 'https://alex-kauffman.com/' || window.location.href === 'https://alex-kauffman.com/index.html') {
+  const url = window.location.href;
+
+  // Check if we are on https://alex-kauffman.com/ or https://alex-kauffman.com/index.html or the equivalent without protocol
+  if (url === 'https://alex-kauffman.com/' || url === 'https://alex-kauffman.com/index.html' ||
+      url === 'http://alex-kauffman.com/' || url === 'http://alex-kauffman.com/index.html' ||
+      url === 'alex-kauffman.com/' || url === 'alex-kauffman.com/index.html') {
     window.scrollTo(0, 0);
   }
 }
 
 // Function to check if scrolling to the bottom
 function checkScroll() {
-  // Check if we are on https://alex-kauffman.com/
-  if (window.location.href === 'https://alex-kauffman.com/') {
+  const url = window.location.href;
+
+  // Check if we are on https://alex-kauffman.com/ or http://alex-kauffman.com/ or the equivalent without protocol
+  if (url === 'https://alex-kauffman.com/' || url === 'http://alex-kauffman.com/' ||
+      url === 'alex-kauffman.com/') {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       resetScroll();
     }
   }
 }
+
+// Add event listener to check scroll position
+window.addEventListener('scroll', checkScroll);
+
+// Reset scroll on page load
+resetScroll();
 
 
 // Event listener for scrolling
