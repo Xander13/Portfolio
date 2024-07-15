@@ -18,7 +18,9 @@ body {
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
-html, body, .content{
+html,
+body,
+.content {
     overflow-x: hidden;
 }
 
@@ -39,13 +41,13 @@ html, body, .content{
     z-index: 9999;
 }
 
-.year{
+.year {
     position: absolute;
     right: 64px;
     bottom: 32px;
 }
 
-.pageArrow{
+.pageArrow {
     position: fixed;
     z-index: 333333;
     right: 64px;
@@ -66,13 +68,13 @@ html, body, .content{
     z-index: 2222;
 }
 
-.mdMargin{
+.mdMargin {
     height: var(--mdMargin);
     width: 100%;
     /* background-color: green; */
 }
 
-.lgMargin{
+.lgMargin {
     height: var(--lgMargin);
     width: 100%;
     /* background-color: greenyellow; */
@@ -149,7 +151,7 @@ p {
     opacity: 0;
     display: none;
     transition: opacity 0.2s ease-in-out;
-  }
+}
 
 .navList .flexBox {
     margin-bottom: 0;
@@ -181,7 +183,8 @@ p {
     transition: 0.4s ease;
 }
 
-.navList a:hover, #active:hover{
+.navList a:hover,
+#active:hover {
     color: var(--light);
     background-color: var(--dark);
     border-radius: 0;
@@ -286,7 +289,7 @@ img {
     margin-bottom: 0;
 }
 
-.project h3{
+.project h3 {
     text-align: left;
     margin: auto;
     margin-top: 32px;
@@ -294,23 +297,23 @@ img {
     font-weight: 500;
 }
 
-.passage{
+.passage {
     max-width: 50%;
 }
 
-.half .passage{
+.half .passage {
     max-width: 80%;
 }
 
-.mdTxt{
+.mdTxt {
     font-size: 4.2vw;
     line-height: 5.2vw;
-    color: var(--dark); 
+    color: var(--dark);
     text-transform: uppercase;
     font-weight: 500;
 }
 
-.smTxt{
+.smTxt {
     font-size: 32px !important;
     line-height: 48px !important;
     color: var(--dark);
@@ -319,7 +322,7 @@ img {
     text-transform: none !important;
 }
 
-.lgTxt{
+.lgTxt {
     font-size: 8vw;
     padding-left: var(--smMargin);
     padding-right: var(--smMargin);
@@ -330,7 +333,7 @@ img {
     margin-top: 0;
 }
 
-.xlTxt{
+.xlTxt {
     padding-bottom: 16px;
     padding-top: 4px;
     cursor: pointer;
@@ -347,7 +350,7 @@ img {
     font-weight: 400;
 }
 
-.archives h1{
+.archives h1 {
     position: absolute;
     left: 0;
     right: 0;
@@ -370,7 +373,7 @@ img {
     gap: 96px;
 }
 
-.project .half .flexBox{
+.project .half .flexBox {
     height: fit-content;
 }
 
@@ -489,7 +492,7 @@ img {
     padding-bottom: 232px;
 }
 
-.newcta h2{
+.newcta h2 {
     text-align: center;
 }
 
@@ -500,22 +503,22 @@ img {
 .textContainer {
     width: 100%;
     height: fit-content;
-    position: absolute;
+    position: relative;
     /* top: calc(100% / 2 - 9vw); */
-    bottom: 48px;
+    bottom: -24px;
     left: 64px;
     height: fit-content;
     z-index: 2222;
     backface-visibility: hidden;
 }
 
-.textContainer h3{
+.textContainer h3 {
     font-size: 32px;
     padding-bottom: 16px;
     width: fit-content;
 }
 
-.text h2{
+.text h2 {
     font-size: 8vw;
     line-height: 8vw;
     text-align: left;
@@ -716,11 +719,11 @@ img {
     padding-right: 64px;
 }
 
-.rols{
+.rols {
     padding-bottom: 132px;
 }
 
-.rols p{
+.rols p {
     font-size: 32px;
     font-weight: 400px;
 }
@@ -763,7 +766,7 @@ img {
     padding-right: 0;
 }
 
-.projectHero .seeSiteBtn a{
+.projectHero .seeSiteBtn a {
     color: var(--light);
     font-size: 22px;
     text-align: center;
@@ -828,7 +831,7 @@ img {
     height: auto;
 }
 
-.pChips{
+.pChips {
     font-size: 18px;
     line-height: 18px;
     padding-top: 8px;
@@ -841,7 +844,7 @@ img {
     background-color: var(--ghost);
     width: fit-content;
     height: fit-content;
-    
+
 }
 
 .marqueeProjects {
@@ -857,7 +860,7 @@ img {
     flex-shrink: 0;
 }
 
-.marqueeProjects .marquee__content img{
+.marqueeProjects .marquee__content img {
     width: 300px;
     height: auto;
     flex-shrink: 0;
@@ -870,13 +873,13 @@ img {
     padding-top: 124px;
 }
 
-.projectWriting p{
+.projectWriting p {
     font-size: 32px;
     text-transform: none;
     padding-bottom: 64px;
 }
 
-.projectWriting h1{
+.projectWriting h1 {
     font-weight: 600;
     text-transform: uppercase;
     padding-top: 64px;
@@ -896,7 +899,7 @@ img {
     padding-top: 132px;
 }
 
-.lgSpacing .half{
+.lgSpacing .half {
     margin: auto;
 }
 
@@ -1085,7 +1088,7 @@ img {
     padding-bottom: 64px;
 }
 
-.half p{
+.half p {
     text-wrap: balance;
 }
 
@@ -1245,11 +1248,11 @@ img {
     border-radius: 100rem;
 }
 
-.logo{
+.logo {
     transition: 0.5s ease;
 }
 
-.logo img{
+.logo img {
     height: 64px;
     height: auto;
 }
@@ -1331,7 +1334,11 @@ img {
 /*Canvas element website*/
 .canvas {
     width: 100%;
-    height: 100vh;
+    height: 50vh;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
     overflow: visible;
     background-size: cover;
     background-position: center;
@@ -1345,16 +1352,17 @@ img {
     z-index: 12;
 }
 
-.akImg:hover{
+.akImg:hover {
     animation: rotation 5s linear infinite forwards;
     cursor: cell;
 }
 
-@keyframes rotation{
-    0%{
+@keyframes rotation {
+    0% {
         transform: rotate(0deg);
     }
-    100%{
+
+    100% {
         transform: rotate(360deg);
     }
 }
@@ -1387,14 +1395,14 @@ img {
     flex-shrink: 0;
 }
 
-.imageGrid .half:hover img{
+.imageGrid .half:hover img {
     transform: scale(1.02);
     opacity: 1;
     flex-shrink: 0;
 }
 
 .projects .half h1,
-.projects .md h1, 
+.projects .md h1,
 .articles .cols h2 {
     text-underline-offset: 8px;
 }
@@ -1670,11 +1678,11 @@ img {
     /* opacity: 0.5; */
 }
 
-.projectSections .marquee__content{
+.projectSections .marquee__content {
     opacity: 1;
 }
 
-.projectSections .marquee__content{
+.projectSections .marquee__content {
     width: auto;
 }
 
@@ -1844,9 +1852,9 @@ img {
 
 .archives {
     display: flex;
-        align-items: center;
-        justify-content: center;
-    height: 100vh;
+    align-items: center;
+    justify-content: end;
+    height: 50vh;
     position: relative;
 }
 
@@ -1880,7 +1888,7 @@ img {
     margin-bottom: 32px;
 }
 
-.skillsets h3{
+.skillsets h3 {
     color: var(--dark) !important;
     line-height: 32px !important;
     font-size: 32px !important;
@@ -2006,23 +2014,23 @@ img {
     padding-top: 0;
 }
 
-.bullets{
+.bullets {
     width: 50%;
 }
 
-.moreProject .half{
+.moreProject .half {
     background-color: var(--darkGray);
     padding: 16px;
     margin-bottom: 64px;
     transition: background-color 0.5s ease;
 }
 
-.moreProject .half:hover{
+.moreProject .half:hover {
     background-color: rgb(54, 54, 54);
     transition: background-color 0.5s ease;
 }
 
-.quotes{
+.quotes {
     background-color: var(--darkGray);
     color: var(--light);
     padding: 32px !important;
@@ -2045,11 +2053,11 @@ footer {
     z-index: 14;
 }
 
-footer h2{
+footer h2 {
     font-size: 32px;
 }
 
-footer a:hover{
+footer a:hover {
     text-decoration: underline;
     text-underline-offset: 16px;
 }
@@ -2074,7 +2082,7 @@ footer a:hover{
     padding: 64px;
 }
 
-.archiveGallery .flexBox{
+.archiveGallery .flexBox {
     padding-left: 0;
     padding-right: 0;
 }
@@ -2145,7 +2153,7 @@ footer a:hover{
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
-.projectWriting a{
+.projectWriting a {
     padding: 8px;
     padding-left: 16px;
     padding-right: 16px;
@@ -2162,40 +2170,41 @@ footer a:hover{
     color: var(--dark);
     transition: color 0.5s ease, background-color 0.5s ease;
 }
+
 /**************/
 
-.heroTitle{
+.heroTitle {
     padding-left: 56px;
 }
 
-canvas{
+canvas {
     overflow: visible;
 }
 
-#card1{
+#card1 {
     background-image: url(WishfulPhone2.png);
     object-fit: contain;
     background-size: 12vw 18vw;
 }
 
-#card2{
+#card2 {
     background-image: url(marquee_img_1.png);
     object-fit: contain;
     background-size: 12vw 18vw;
 }
 
-#card4{
+#card4 {
     background-image: url(marquee_img_3.png);
     object-fit: contain;
     background-size: 12vw 18vw;
 }
 
 @media screen and (max-width: 930px) {
-    .heroTitle{
+    .heroTitle {
         padding-left: 16px;
     }
 
-    .textContainer{
+    .textContainer {
         left: 16px;
         bottom: 0;
     }
@@ -2204,26 +2213,26 @@ canvas{
         height: 500px;
     } */
 
-    .passage{
+    .passage {
         max-width: 100%;
     }
 
-    .project .full:nth-child(even){
-        padding-left: 0;
-        padding-right: 0;
-    }
-    
-    .project .full:nth-child(even){
+    .project .full:nth-child(even) {
         padding-left: 0;
         padding-right: 0;
     }
 
-    .hero h1{
+    .project .full:nth-child(even) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .hero h1 {
         font-size: 82px !important;
         line-height: 82px;
     }
 
-    .line{
+    .line {
         height: 96px;
     }
 
@@ -2236,11 +2245,11 @@ canvas{
     .skills,
     .articles,
     .experiance,
-    .hero .flexBox{
+    .hero .flexBox {
         padding: 16px;
     }
 
-    .archiveGallery img{
+    .archiveGallery img {
         padding-top: 32px;
         padding-bottom: 32px;
     }
@@ -2271,7 +2280,7 @@ canvas{
     }
 
     .articles .flexBox,
-    .archiveGallery .flexBox, 
+    .archiveGallery .flexBox,
     .wideTitle .flexBox {
         flex-wrap: wrap;
     }
@@ -2294,27 +2303,28 @@ canvas{
         margin-left: 0;
     }
 
-    .navList .flexBox{
+    .navList .flexBox {
         gap: 12px;
         flex-wrap: wrap;
         justify-content: start;
         width: 120px;
     }
 
-    .forMoment .cols, .quotes{
+    .forMoment .cols,
+    .quotes {
         width: 100% !important;
     }
 
-    .projectHero{
+    .projectHero {
         padding-left: 16px;
         padding-right: 16px;
     }
 
-    .projectHero .flexBox{
+    .projectHero .flexBox {
         flex-wrap: wrap;
     }
 
-    .fullImgView{
+    .fullImgView {
         width: 100%;
         height: auto;
         padding: 0;
@@ -2322,49 +2332,49 @@ canvas{
         padding-right: 16px;
     }
 
-    .rols .flexBox{
+    .rols .flexBox {
         gap: 32px;
     }
 
-    .wideTitle{
+    .wideTitle {
         padding: 0px;
     }
 
-    .flexBox{
+    .flexBox {
         flex-wrap: wrap;
     }
 
-    .cols{
+    .cols {
         width: 100%;
     }
 
-    .half{
+    .half {
         width: 100% !important;
     }
 
-    .dot{
+    .dot {
         position: fixed;
         top: 24px;
         right: 16px;
     }
 
-    .pageArrow{
+    .pageArrow {
         right: 16px;
         bottom: 0px;
     }
 
-    .passage{
+    .passage {
         width: 100%;
         text-wrap: wrap;
         font-size: 24px !important;
         line-height: 36px !important;
     }
 
-    .moreProject .half{
+    .moreProject .half {
         margin-bottom: 0px;
     }
 
-    .gallery h2{
+    .gallery h2 {
         text-wrap: balance;
     }
 
@@ -2382,7 +2392,9 @@ canvas{
         flex-shrink: 0;
     }
 
-    .imgBG .half, .forty, .sixty {
+    .imgBG .half,
+    .forty,
+    .sixty {
         width: 100%;
         height: auto;
         padding: 0 !important;
@@ -2420,86 +2432,88 @@ canvas{
         text-align: left !important;
     }
 
-    .full{
+    .full {
         padding: 0px;
     }
 
-    .year{
+    .year {
         right: 16px;
     }
 
-    .lgTitle{
+    .lgTitle {
         font-size: 56px;
         line-height: 64px;
     }
 
-    .mdTxt{
+    .mdTxt {
         font-size: 32px;
         line-height: 42px;
     }
 
-    .newcta .lgTxt{
+    .newcta .lgTxt {
         font-size: 48px;
         padding: 0;
         line-height: 56px;
     }
 
-    .newcta h3{
+    .newcta h3 {
         text-align: center;
     }
 
-    .text{
+    .text {
         height: 64px;
     }
 
-    .text h2{
+    .text h2 {
         font-size: 48px;
 
     }
 
-    .drawer{
+    .drawer {
         padding-left: 0;
         padding-right: 0;
     }
 
-    .drawer .xlTxt, .drawer h3{
+    .drawer .xlTxt,
+    .drawer h3 {
         font-size: 48px;
     }
 
-    .drawer p{
+    .drawer p {
         font-size: 32px;
         line-height: 40px !important;
     }
 
-    .newcta .lgTxt{
+    .newcta .lgTxt {
         margin: auto;
         padding-bottom: 64px;
         font-size: 62px;
         line-height: 68px;
     }
 
-    #social{
+    #social {
         display: none;
     }
 
-    footer{
+    footer {
         padding-left: 16px;
         padding-right: 16px;
         padding-bottom: 16px;
     }
 
-    .archives{
+    .archives {
         height: 100dvh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
 
-    .aboutMe .marquee{
+    .aboutMe .marquee {
         margin-bottom: 96px;
     }
 
-    .bullets, .forMoment{
+    .bullets,
+    .forMoment {
         width: 100%;
     }
 }
