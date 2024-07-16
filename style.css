@@ -1355,7 +1355,7 @@ img {
     height: 4px;
     margin: auto;
     margin-top: 16px;
-    background: linear-gradient(270deg, #ffffff, #000000);
+    background: linear-gradient(270deg, var(--dark), var(--light));
     background-size: 400% 400%;
     -webkit-animation: GrayScale 9s ease infinite;
     -moz-animation: GrayScale 9s ease infinite;
