@@ -118,3 +118,18 @@ function copyContent() {
           document.body.style.color = '';  // Reset to default text color
       });
   });
+
+
+  //bar
+  document.addEventListener("DOMContentLoaded", function() {
+    const canvases = document.querySelectorAll('.canvas');
+    const numberOfBars = 40; // Specify the number of bar divs to create for each canvas
+
+    canvases.forEach(canvas => {
+        for (let i = 0; i < numberOfBars; i++) {
+            const bar = document.createElement('div');
+            bar.className = 'bar';
+            canvas.appendChild(bar);
+        }
+    });
+});

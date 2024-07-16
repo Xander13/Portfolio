@@ -1350,6 +1350,40 @@ img {
     background-repeat: no-repeat;
 }
 
+.bar{
+    width: calc(100% - 128px);
+    height: 4px;
+    margin: auto;
+    margin-top: 16px;
+    background: linear-gradient(270deg, #ffffff, #000000);
+    background-size: 400% 400%;
+    -webkit-animation: GrayScale 9s ease infinite;
+    -moz-animation: GrayScale 9s ease infinite;
+    -o-animation: GrayScale 9s ease infinite;
+    animation: GrayScale 9s ease infinite;
+}
+
+@-webkit-keyframes GrayScale {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes GrayScale {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes GrayScale {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes GrayScale {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
 .akImg {
     margin-bottom: 32px;
     width: 88px;
