@@ -52,15 +52,15 @@ body,
     z-index: 333333;
     right: 64px;
     font-size: 32px;
-    bottom: 30px;
+    bottom: 16px;
     cursor: pointer;
     height: auto;
 }
 
 .dot {
     border-radius: 100rem;
-    height: 36px;
-    width: 36px;
+    height: 30px;
+    width: 30px;
     background-color: var(--dark);
     cursor: pointer;
     /* right: 64px;
@@ -168,7 +168,7 @@ p {
 }
 
 .navList a {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 600 !important;
     line-height: 32px;
     text-transform: uppercase;
@@ -281,7 +281,6 @@ img {
     position: relative;
     padding: var(--smMargin);
     margin: auto;
-    background-color: var(--light);
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
@@ -298,12 +297,16 @@ img {
 }
 
 .passage {
-    max-width: 50%;
+    text-wrap: balance;
 }
 
-.half .passage {
-    max-width: 80%;
+#paddingTop{
+    padding-top: 430px;
 }
+
+/* .half .passage {
+    max-width: 80%;
+} */
 
 .mdTxt {
     font-size: 4.2vw;
@@ -390,7 +393,7 @@ img {
 }
 
 .project p {
-    font-size: 32px;
+    font-size: 24px;
     color: var(--dark);
     text-transform: uppercase;
     margin-top: 24px;
@@ -430,7 +433,11 @@ img {
     padding-left: 0;
     padding-right: 0;
     box-sizing: border-box;
-    width: 100%;
+    width: 80%;
+}
+
+.full:nth-child(1){
+    width: 80%;
 }
 
 /* .full img, .half img, .clipping{
@@ -757,7 +764,6 @@ img {
 }
 
 .projectHero .seeSiteBtn:hover {
-    opacity: 0.7;
     transition: opacity 0.2s ease;
     cursor: pointer;
 }
@@ -1210,7 +1216,6 @@ img {
 
 .articles .cols:hover img {
     transform: scale(1.02);
-    opacity: 0.7;
     cursor: pointer;
     transition: 0.5s ease;
     flex-shrink: 0;
@@ -1391,13 +1396,11 @@ img {
 .full:hover img {
     transform: scale(1.02);
     transition: 0.8s ease;
-    opacity: 0.7;
     flex-shrink: 0;
 }
 
 .imageGrid .half:hover img {
     transform: scale(1.02);
-    opacity: 1;
     flex-shrink: 0;
 }
 
@@ -1675,7 +1678,6 @@ img {
 .marquee__content {
     animation: scroll 60s linear infinite;
     padding-bottom: 0;
-    /* opacity: 0.5; */
 }
 
 .projectSections .marquee__content {
@@ -2434,6 +2436,15 @@ canvas {
 
     .full {
         padding: 0px;
+        width:100% !important;
+    }
+
+    .half{
+        padding: 0px !important;
+    }
+
+    #paddingTop{
+        padding-top: 0;
     }
 
     .year {

@@ -104,3 +104,17 @@ function copyContent() {
     changeText.textContent = "Failed to copy. Please try manually.";
   }
 }
+
+//set bg color based on clipping hover
+    // Function to change body background color and text color on hover
+    document.querySelectorAll('.clipping').forEach(function (clipping) {
+      clipping.addEventListener('mouseover', function () {
+          document.body.style.backgroundColor = clipping.getAttribute('data-color');
+          document.body.style.color = clipping.getAttribute('data-text-color');
+      });
+
+      clipping.addEventListener('mouseout', function () {
+          document.body.style.backgroundColor = '';  // Reset to default background color
+          document.body.style.color = '';  // Reset to default text color
+      });
+  });
