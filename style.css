@@ -512,7 +512,6 @@ img {
     height: fit-content;
     position: relative;
     /* top: calc(100% / 2 - 9vw); */
-    bottom: -24px;
     left: 64px;
     height: fit-content;
     z-index: 2222;
@@ -529,6 +528,7 @@ img {
     font-size: 8vw;
     line-height: 8vw;
     text-align: left;
+    letter-spacing: 1px;
     backface-visibility: hidden;
 }
 
