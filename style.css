@@ -57,7 +57,7 @@ body,
     height: auto;
 }
 
-.dot {
+.dot, .navDot {
     border-radius: 100rem;
     height: 30px;
     width: 30px;
@@ -66,6 +66,10 @@ body,
     /* right: 64px;
     bottom: 32px; */
     z-index: 2222;
+}
+
+.navDot{
+    display: none;
 }
 
 .mdMargin {
@@ -124,6 +128,57 @@ p {
     justify-content: space-between;
     align-items: start;
     flex-shrink: 0;
+}
+
+/*nav and menu*/
+
+.menu--toggle{
+    display: none;
+}
+
+.menu--body{
+    background-color: #000000;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    z-index: 999999;
+    top: -100%;
+    transition: 1s ease;
+}
+
+.menu--toggle:checked~.menu--body {
+    top: 0;
+    transition: 1s ease;
+}
+
+.menu--toggle--text {
+    display: none;
+    width: fit-content;
+    margin: 0 auto;
+    cursor: pointer;
+    left: 16px;
+    top: 8px;
+    color: var(--dark);
+    font-size: 32px;
+    user-select: none;
+    position: fixed;
+    z-index: 99999999;
+}
+
+.menu--list {
+    list-style: none;
+    padding: 16px;
+    position: absolute;
+    bottom: 0;
+    padding-top: 64px;
+    z-index: 999999;
+    width: 100%;
+    height: fit-content;
+}
+
+.menu--list li {
+    margin-top: 16px;
+    font-size: 56px;
 }
 
 .navList {
@@ -300,7 +355,7 @@ img {
     text-wrap: balance;
 }
 
-#paddingTop{
+#paddingTop {
     padding-top: 430px;
 }
 
@@ -436,7 +491,7 @@ img {
     width: 80%;
 }
 
-.full:nth-child(1){
+.full:nth-child(1) {
     width: 80%;
 }
 
@@ -1351,7 +1406,7 @@ img {
     background-repeat: no-repeat;
 }
 
-.bar{
+.bar {
     width: calc(100% - 128px);
     height: 4px;
     margin: auto;
@@ -1365,24 +1420,59 @@ img {
 }
 
 @-webkit-keyframes GrayScale {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @-moz-keyframes GrayScale {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @-o-keyframes GrayScale {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
+
 @keyframes GrayScale {
-    0%{background-position:0% 50%}
-    50%{background-position:100% 50%}
-    100%{background-position:0% 50%}
+    0% {
+        background-position: 0% 50%
+    }
+
+    50% {
+        background-position: 100% 50%
+    }
+
+    100% {
+        background-position: 0% 50%
+    }
 }
 
 .akImg {
@@ -2233,6 +2323,21 @@ canvas {
         padding-left: 16px;
     }
 
+    .menu--toggle--text{
+        display: block;
+    }
+
+    .navList{
+        display: none;
+    }
+
+    .navDot{
+        position: fixed;
+        top: 16px;
+        right: 16px;
+        display: block;
+    }
+
     .textContainer {
         left: 16px;
         bottom: 24px;
@@ -2288,7 +2393,7 @@ canvas {
         margin: 0;
     }
 
-    .bar{
+    .bar {
         width: calc(100% - 32px);
     }
 
@@ -2463,14 +2568,14 @@ canvas {
 
     .full {
         padding: 0px;
-        width:100% !important;
+        width: 100% !important;
     }
 
-    .half{
+    .half {
         padding: 0px !important;
     }
 
-    #paddingTop{
+    #paddingTop {
         padding-top: 0;
     }
 

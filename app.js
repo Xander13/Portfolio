@@ -3,8 +3,8 @@ function resetScroll() {
 
   // Check if we are on https://alex-kauffman.com/ or https://alex-kauffman.com/index.html or the equivalent without protocol
   if (url === 'https://alex-kauffman.com/' || url === 'https://alex-kauffman.com/index.html' ||
-      url === 'http://alex-kauffman.com/' || url === 'http://alex-kauffman.com/index.html' ||
-      url === 'alex-kauffman.com/' || url === 'alex-kauffman.com/index.html') {
+    url === 'http://alex-kauffman.com/' || url === 'http://alex-kauffman.com/index.html' ||
+    url === 'alex-kauffman.com/' || url === 'alex-kauffman.com/index.html') {
     window.scrollTo(0, 0);
   }
 }
@@ -15,7 +15,7 @@ function checkScroll() {
 
   // Check if we are on https://alex-kauffman.com/ or http://alex-kauffman.com/ or the equivalent without protocol
   if (url === 'https://alex-kauffman.com/' || url === 'http://alex-kauffman.com/' ||
-      url === 'alex-kauffman.com/') {
+    url === 'alex-kauffman.com/') {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       resetScroll();
     }
@@ -40,8 +40,20 @@ const toggleButton = document.getElementById('toggle-button');
 if (toggleButton) {
   toggleButton.addEventListener('click', () => {
     document.body.classList.toggle('lightMode');
+
+    const dot = document.querySelector('.dot');
+    const navDot = document.querySelector('.navDot');
+
+    if (dot) {
+      dot.classList.toggle('active');
+    }
+
+    if (navDot) {
+      navDot.classList.toggle('active');
+    }
   });
 }
+
 
 // Motion text and cursor
 document.addEventListener('DOMContentLoaded', function () {
@@ -106,30 +118,30 @@ function copyContent() {
 }
 
 //set bg color based on clipping hover
-    // Function to change body background color and text color on hover
-    document.querySelectorAll('.clipping').forEach(function (clipping) {
-      clipping.addEventListener('mouseover', function () {
-          document.body.style.backgroundColor = clipping.getAttribute('data-color');
-          document.body.style.color = clipping.getAttribute('data-text-color');
-      });
-
-      clipping.addEventListener('mouseout', function () {
-          document.body.style.backgroundColor = '';  // Reset to default background color
-          document.body.style.color = '';  // Reset to default text color
-      });
+// Function to change body background color and text color on hover
+document.querySelectorAll('.clipping').forEach(function (clipping) {
+  clipping.addEventListener('mouseover', function () {
+    document.body.style.backgroundColor = clipping.getAttribute('data-color');
+    document.body.style.color = clipping.getAttribute('data-text-color');
   });
 
+  clipping.addEventListener('mouseout', function () {
+    document.body.style.backgroundColor = '';  // Reset to default background color
+    document.body.style.color = '';  // Reset to default text color
+  });
+});
 
-  //bar
-  document.addEventListener("DOMContentLoaded", function() {
-    const canvases = document.querySelectorAll('.canvas');
-    const numberOfBars = 40; // Specify the number of bar divs to create for each canvas
 
-    canvases.forEach(canvas => {
-        for (let i = 0; i < numberOfBars; i++) {
-            const bar = document.createElement('div');
-            bar.className = 'bar';
-            canvas.appendChild(bar);
-        }
-    });
+//bar
+document.addEventListener("DOMContentLoaded", function () {
+  const canvases = document.querySelectorAll('.canvas');
+  const numberOfBars = 40; // Specify the number of bar divs to create for each canvas
+
+  canvases.forEach(canvas => {
+    for (let i = 0; i < numberOfBars; i++) {
+      const bar = document.createElement('div');
+      bar.className = 'bar';
+      canvas.appendChild(bar);
+    }
+  });
 });
