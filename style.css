@@ -510,7 +510,8 @@ img {
 .textContainer {
     width: 100%;
     height: fit-content;
-    position: relative;
+    position: absolute;
+    bottom: 64px;
     /* top: calc(100% / 2 - 9vw); */
     left: 64px;
     height: fit-content;
@@ -525,8 +526,8 @@ img {
 }
 
 .text h2 {
-    font-size: 8vw;
-    line-height: 8vw;
+    font-size: 4.2vw;
+    line-height: 5.2vw;
     text-align: left;
     letter-spacing: 1px;
     backface-visibility: hidden;
@@ -537,7 +538,7 @@ img {
     width: 100%;
     z-index: 12px;
     overflow: hidden;
-    height: 7vw;
+    line-height: 5.2vw;
     backface-visibility: hidden;
     left: 0;
     margin-left: 0 !important;
@@ -546,7 +547,7 @@ img {
 .line {
     opacity: 0;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     animation: slideIn 1.2s forwards;
 }
 
@@ -1894,14 +1895,6 @@ img {
     position: relative;
 }
 
-.archives .reel {
-    position: absolute;
-    z-index: -1;
-    height: 900px;
-    width: calc(100% - 128px);
-    margin: 64px;
-}
-
 .cols h2 {
     font-size: 22px;
     font-weight: 400;
@@ -2242,12 +2235,8 @@ canvas {
 
     .textContainer {
         left: 16px;
-        bottom: 0;
+        bottom: 24px;
     }
-
-    /* .reel{
-        height: 500px;
-    } */
 
     .passage {
         max-width: 100%;
@@ -2269,7 +2258,7 @@ canvas {
     }
 
     .line {
-        height: 96px;
+        height: 128px;
     }
 
     img {
@@ -2297,6 +2286,10 @@ canvas {
     .experiance h1 {
         padding: 0;
         margin: 0;
+    }
+
+    .bar{
+        width: calc(100% - 32px);
     }
 
     .hero h1 {
@@ -2506,12 +2499,11 @@ canvas {
     }
 
     .text {
-        height: 64px;
+        height: 42px;
     }
 
     .text h2 {
-        font-size: 48px;
-
+        font-size: 32px;
     }
 
     .drawer {
@@ -2547,7 +2539,7 @@ canvas {
     }
 
     .archives {
-        height: 100dvh;
+        height: 50dvh;
         display: flex;
         align-items: center;
         justify-content: center;
