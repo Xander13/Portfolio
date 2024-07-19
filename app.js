@@ -36,6 +36,7 @@ window.addEventListener('scroll', checkScroll);
 window.addEventListener('resize', checkScroll);
 
 // Toggle light and dark mode
+// Toggle light and dark mode
 const toggleButton = document.getElementById('toggle-button');
 if (toggleButton) {
   toggleButton.addEventListener('click', () => {
@@ -45,11 +46,11 @@ if (toggleButton) {
     const navDot = document.querySelector('.navDot');
 
     if (dot) {
-      dot.classList.toggle('active');
+      dot.classList.toggle('lightMode');
     }
 
     if (navDot) {
-      navDot.classList.toggle('active');
+      navDot.classList.toggle('lightMode');
     }
   });
 }
@@ -133,15 +134,34 @@ document.querySelectorAll('.clipping').forEach(function (clipping) {
 
 
 //bar
+
 document.addEventListener("DOMContentLoaded", function () {
   const canvases = document.querySelectorAll('.canvas');
-  const numberOfBars = 40; // Specify the number of bar divs to create for each canvas
 
-  canvases.forEach(canvas => {
-    for (let i = 0; i < numberOfBars; i++) {
-      const bar = document.createElement('div');
-      bar.className = 'bar';
-      canvas.appendChild(bar);
-    }
-  });
+  const createBars = () => {
+    canvases.forEach(canvas => {
+      // Remove existing bars
+      while (canvas.firstChild) {
+        canvas.removeChild(canvas.firstChild);
+      }
+
+      // Calculate the number of bars based on the window height
+      const barHeight = 20; // Height of each bar in pixels
+      const windowHeight = window.innerHeight;
+      const numberOfBars = Math.floor(windowHeight / barHeight);
+
+      // Create and append bars
+      for (let i = 0; i < numberOfBars; i++) {
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        canvas.appendChild(bar);
+      }
+    });
+  };
+
+  // Initial creation of bars
+  createBars();
+
+  // Update bars on window resize
+  window.addEventListener('resize', createBars);
 });

@@ -9,6 +9,8 @@
     --lgMargin: 360px;
     --smMargin: 64px;
     --purpleish: #e5e4f2;
+    --medium-dark: #696969;
+    --medium-light: #aaa;
 }
 
 body {
@@ -1411,7 +1413,7 @@ img {
     height: 4px;
     margin: auto;
     margin-top: 16px;
-    background: linear-gradient(270deg, var(--dark), var(--light));
+    background: linear-gradient(270deg, var(--light), var(--medium-dark));
     background-size: 400% 400%;
     -webkit-animation: GrayScale 9s ease infinite;
     -moz-animation: GrayScale 9s ease infinite;
@@ -2363,7 +2365,14 @@ canvas {
     }
 
     .line {
-        height: 128px;
+        height: 156px;
+        height: fit-content;
+        width: fit-content;
+    }
+    .text{
+        height: fit-content;
+        width: fit-content;
+        padding-top: 2px;
     }
 
     img {
@@ -2516,9 +2525,28 @@ canvas {
         width: 100%;
     }
 
+    .project h2{
+        font-size: 48px;
+        padding-top: 56px;
+    }
+
     .project .flexBox {
         flex-wrap: wrap;
         flex-shrink: 0;
+        gap: 0 !important;
+    }
+
+    .project .mdMargin, .articles .mdMargin{
+        display: none;
+    }
+
+    .articles h1{
+        font-size: 48px;
+        padding-bottom: 56px;
+    }
+
+    .articles .flexBox{
+        gap: 112px;
     }
 
     .imgBG {
