@@ -24,8 +24,8 @@ class Circle {
 
             // Increase size while the mouse is pressed
             let duration = millis() - mousePressedTime;
-            this.finalSize = map(duration, 0, 1000, 400, 800); // Adjust final size based on duration
-            this.size = constrain(this.size + 0.5, 400, this.finalSize); // Gradually increase size
+            this.finalSize = map(duration, 0, 1000, 100, 800); // Adjust final size based on duration
+            this.size = constrain(this.size + 0.5, 100, this.finalSize); // Gradually increase size
 
             // Check for collision with spike while growing
             if (spike.isTouching(this)) {
@@ -190,7 +190,7 @@ function mousePressed() {
     }
 
     mousePressedTime = millis();
-    let newCircle = new Circle(mouseX, mouseY, 400); // Start with minimum size of 400
+    let newCircle = new Circle(mouseX, mouseY, 100); // Start with minimum size of 100
     growingCircle = newCircle; // Set the newly created circle as active
     circles.push(newCircle);
 
@@ -208,7 +208,7 @@ function mouseReleased() {
     if (growingCircle) {
         // Compute the final size based on the time mouse was pressed
         let duration = millis() - mousePressedTime;
-        let finalSize = map(duration, 0, 1000, 200, 800); // Map duration to size range
+        let finalSize = map(duration, 0, 1000, 100, 800); // Map duration to size range
         growingCircle.size = finalSize;
         growingCircle.finalSize = finalSize; // Set final size
         growingCircle.growing = false; // Stop growing and start falling
