@@ -1333,6 +1333,23 @@ img {
     flex-shrink: 0;
 }
 
+.circle{
+    border: 2px solid var(--dark);
+    border-radius: 100rem;
+    padding-left: 32px;
+    padding-right: 32px;
+}
+
+.skillsets .hr{
+    height: 4px;
+    background: linear-gradient(270deg, var(--light), var(--medium-dark));
+    background-size: 400% 400%;
+    -webkit-animation: GrayScale 9s ease infinite;
+    -moz-animation: GrayScale 9s ease infinite;
+    -o-animation: GrayScale 9s ease infinite;
+    animation: GrayScale 9s ease infinite;
+}
+
 .projects hr {
     margin-bottom: 64px;
     margin-left: 32px;
