@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Kauffman - 404 Not Found</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+    <meta name="author" content="Alex Kauffman">
+    <meta name="description" content="Alex Kauffman – UX/UI designer">
+    <meta name="theme-color" content="var(--light)" />
+    <meta name="robots" content="index,follow"><!-- All Search Engines -->
+    <meta name="googlebot" content="index,follow"><!-- Google Specific -->
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="generator" content="program">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/x-icon" href="alex_web_icon.png">
+    <!--Apple Icon Set-->
+    <link rel="apple-touch-icon" href="AlexIconApp.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="A.K Design">
+    <meta name="apple-mobile-web-app-status-bar-style" content="var(--light)">
+    <meta name="theme-color" content="var(--light)">
+    <meta name="theme-color" content="var(--light)" media="(prefers-color-scheme: dark)">
+    <!-- Facebook Open Graph Image -->
+    <meta property="og:image" content="AlexKauffmanOG.png" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image" content="AlexKauffmanOG2.png" />
+    <meta property="og:image:height" content="1080" />
+    <meta property="og:image:width" content="1080" />
+    <meta property="og:image" content="AlexKauffmanOG3.png" />
+    <meta property="og:image:height" content="600" />
+    <meta property="og:image:width" content="322" />
+    <meta property="og:title"
+        content="Alex Kauffman, a UX/UI designer crafting ideas for websites, apps, experiences, and more." />
+    <meta name="og:description"
+        content="A UX/UI designer who enjoys creating small things that make a big impact. Works with large brands to create solutions that benefit the community at scale.">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.kauffman-alex.com" />
+    <meta property="og:image" content="AlexKauffmanOG.png" />
+    <meta name="og:image:alt" content="Alex Kauffman's Thumbnail cover." />
+    <!-- Twitter Card Image -->
+    <meta property="twitter:image" content="AlexKauffmanOG.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image:alt" content="Alex Kauffman's Thumbnail cover." />
+    <meta name="twitter:creator" content="@akooof13" />
+    <meta name="twitter:description"
+        content="Alex Kauffman, a UX/UI designer crafting ideas for websites, apps, experiences, and more.">
+    <link rel="stylesheet" href="cssReset.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div id="toggle-button" class="navDot"></div>
+    <div class="menu--container">
+        <input id="menu" class="menu--toggle" type="checkbox">
+        <label for="menu" class="menu--toggle--text">Menu</label>
+        <div class="menu--body">
+            <ul class="menu--list">
+                <li><a id="active" href="https://alex-kauffman.com">Work</a></li>
+                <li><a href="https://alex-kauffman.com/archive.html">Archive</a></li>
+                <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="navList">
+        <div class="flexBox">
+            <div class="flexBox" style="justify-content: space-between;">
+                <div class="flexBox" style="width: fit-content; gap: 12px;">
+                    <a id="active" href="https://alex-kauffman.com">Work</a>
+                    <a href="https://alex-kauffman.com/archive.html">Archive</a>
+                </div>
+                <div class="flexBox" style="width: fit-content; gap: 16px;">
+                    <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+                    <div id="toggle-button" class="dot"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="errorMessage">
+        <h1>Ope, You are lost</h1>
+        <p>Please click back or enjoy the page game</p>
+    </div>
+
+    <div class="gameCanvas"></div>
+    <script src="p5.min.js"></script>
+    <script src="game.js"></script>
+</body>
+
+</html>
