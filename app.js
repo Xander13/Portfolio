@@ -41,13 +41,7 @@ const toggleButton = document.getElementById('toggle-button');
 if (toggleButton) {
   toggleButton.addEventListener('click', () => {
     document.body.classList.toggle('lightMode');
-
-    const dot = document.querySelector('.dot');
     const navDot = document.querySelector('.navDot');
-
-    if (dot) {
-      dot.classList.toggle('lightMode');
-    }
 
     if (navDot) {
       navDot.classList.toggle('lightMode');
