@@ -170,40 +170,59 @@ const stickers = [
 const rotations = [30, 0, -30];
 let currentStickerIndex = 0;
 let isTouch = false; // Flag to track if a touch event was used
+let isScrolling = false; // Flag to track if the user is scrolling
 
 document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.canvas').forEach(canvas => {
-        canvas.addEventListener('touchstart', function(event) {
-            isTouch = true; // Touch event detected
-            handleEvent(event);
-        }, { passive: true });
+  document.querySelectorAll('.canvas').forEach(canvas => {
+      let touchTimeout;
 
-        canvas.addEventListener('click', function(event) {
-            if (!isTouch) { // Only handle click if no touch event was detected
-                handleEvent(event);
-            }
-            isTouch = false; // Reset the touch flag after the click event
-        });
-    });
+      canvas.addEventListener('touchstart', function(event) {
+          isTouch = true; // Touch event detected
+          isScrolling = false;
+
+          // Store the canvas reference
+          const currentCanvas = canvas;
+
+          // Clear any existing timeout
+          clearTimeout(touchTimeout);
+
+          // Start a timeout to check if this is a tap or a scroll
+          touchTimeout = setTimeout(() => {
+              if (!isScrolling) {
+                  handleEvent(event, currentCanvas);
+              }
+          }, 100); // 100ms delay to distinguish between scroll and tap
+      });
+
+      canvas.addEventListener('touchmove', function() {
+          isScrolling = true; // Detect touch movement as scrolling
+      });
+
+      canvas.addEventListener('click', function(event) {
+          if (!isTouch) { // Only handle click if no touch event was detected
+              handleEvent(event, canvas);
+          }
+          isTouch = false; // Reset the touch flag after the click event
+      });
+  });
 });
 
-function handleEvent(event) {
-    if (event.cancelable) {
-        event.preventDefault(); // Prevent default only if the event is cancelable
-    }
+function handleEvent(event, canvas) {
+  if (event.cancelable) {
+      event.preventDefault(); // Prevent default only if the event is cancelable
+  }
 
-    const canvas = event.currentTarget;
-    const rect = canvas.getBoundingClientRect();
-    const x = (event.touches ? event.touches[0].clientX : event.clientX) - rect.left;
-    const y = (event.touches ? event.touches[0].clientY : event.clientY) - rect.top;
+  const rect = canvas.getBoundingClientRect(); // Use the passed canvas reference
+  const x = (event.touches ? event.touches[0].clientX : event.clientX) - rect.left;
+  const y = (event.touches ? event.touches[0].clientY : event.clientY) - rect.top;
 
-    const stickerSrc = stickers[currentStickerIndex];
-    const rotation = rotations[Math.floor(Math.random() * rotations.length)];
+  const stickerSrc = stickers[currentStickerIndex];
+  const rotation = rotations[Math.floor(Math.random() * rotations.length)];
 
-    placeSticker(document.getElementById('canvas1'), stickerSrc, x, y, rotation);
-    placeSticker(document.getElementById('canvas2'), stickerSrc, x, y, rotation);
+  placeSticker(document.getElementById('canvas1'), stickerSrc, x, y, rotation);
+  placeSticker(document.getElementById('canvas2'), stickerSrc, x, y, rotation);
 
-    currentStickerIndex = (currentStickerIndex + 1) % stickers.length; // Move to the next sticker
+  currentStickerIndex = (currentStickerIndex + 1) % stickers.length; // Move to the next sticker
 }
 
 function placeSticker(canvas, src, x, y, rotation) {
