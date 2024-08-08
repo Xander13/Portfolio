@@ -166,18 +166,32 @@ const stickers = [
   'heart.svg',
   'AK_Emoji.png'
 ];
+
 const rotations = [30, 0, -30];
 let currentStickerIndex = 0;
+let isTouch = false; // Flag to track if a touch event was used
 
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.canvas').forEach(canvas => {
-        canvas.addEventListener('click', handleEvent);
-        canvas.addEventListener('touchstart', handleEvent);
+        canvas.addEventListener('touchstart', function(event) {
+            isTouch = true; // Touch event detected
+            handleEvent(event);
+        }, { passive: true });
+
+        canvas.addEventListener('click', function(event) {
+            if (!isTouch) { // Only handle click if no touch event was detected
+                handleEvent(event);
+            }
+            isTouch = false; // Reset the touch flag after the click event
+        });
     });
 });
 
 function handleEvent(event) {
-    event.preventDefault();
+    if (event.cancelable) {
+        event.preventDefault(); // Prevent default only if the event is cancelable
+    }
+
     const canvas = event.currentTarget;
     const rect = canvas.getBoundingClientRect();
     const x = (event.touches ? event.touches[0].clientX : event.clientX) - rect.left;

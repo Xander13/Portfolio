@@ -1443,6 +1443,8 @@ img {
     width: 100%;
     z-index: 2;
     cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
 }
 
 .canvas {
@@ -1456,6 +1458,7 @@ img {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    user-select: none;
 }
 
 .defaultstickers{
@@ -1472,6 +1475,10 @@ img {
     height: 300px; /* Set width to 300px */
     width: auto; /* Maintain aspect ratio */
     pointer-events: none; /* Ensure stickers are not clickable */
+    -webkit-touch-callout: none; /* Prevents long-press callout */
+    -webkit-user-select: none; /* Prevents text selection on iOS */
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* Removes the grey tap highlight on iOS */
+    outline: none; /* Remove blue highlight when tapping */
 }
 
 .bar {
@@ -1486,6 +1493,7 @@ img {
     -moz-animation: GrayScale 9s ease infinite;
     -o-animation: GrayScale 9s ease infinite;
     animation: GrayScale 9s ease infinite;
+    user-select: none;
 }
 
 @-webkit-keyframes GrayScale {
@@ -2367,6 +2375,7 @@ footer a:hover {
 
 canvas {
     overflow: visible;
+    user-select: none;
 }
 
 #card1 {
@@ -2753,5 +2762,17 @@ canvas {
     .bullets,
     .forMoment {
         width: 100%;
+    }
+
+    .defaultstickers{
+        top: 32px;
+        left: 0;
+        right: 0;
+        margin: auto;
+    }
+
+    .sticker{
+        height: 200px;
+        width: auto;
     }
 }
