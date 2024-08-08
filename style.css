@@ -1436,6 +1436,15 @@ img {
 }
 
 /*Canvas element website*/
+
+.stickerBoard{
+    position: relative;
+    height: fit-content;
+    width: 100%;
+    z-index: 2;
+    cursor: pointer;
+}
+
 .canvas {
     width: 100%;
     height: 50vh;
@@ -1449,11 +1458,28 @@ img {
     background-repeat: no-repeat;
 }
 
+.defaultstickers{
+    position: absolute;
+    left: 96px;
+    top: 32px;
+    width: 300px;
+    z-index: 3;
+    rotate: -30deg;
+}
+
+.sticker {
+    position: absolute;
+    height: 300px; /* Set width to 300px */
+    width: auto; /* Maintain aspect ratio */
+    pointer-events: none; /* Ensure stickers are not clickable */
+}
+
 .bar {
     width: calc(100% - 128px);
     height: 4px;
     margin: auto;
     margin-top: 16px;
+    z-index: -1;
     background: linear-gradient(270deg, var(--light), var(--medium-dark));
     background-size: 400% 400%;
     -webkit-animation: GrayScale 9s ease infinite;

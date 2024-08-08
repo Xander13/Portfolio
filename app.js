@@ -159,3 +159,45 @@ document.addEventListener("DOMContentLoaded", function () {
   // Update bars on window resize
   window.addEventListener('resize', createBars);
 });
+
+//stickers
+const stickers = [
+  'FigmaSticker.svg',
+  'heart.svg',
+  'AK_Emoji.png'
+];
+const rotations = [30, 0, -30];
+let currentStickerIndex = 0;
+
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.canvas').forEach(canvas => {
+        canvas.addEventListener('click', handleEvent);
+        canvas.addEventListener('touchstart', handleEvent);
+    });
+});
+
+function handleEvent(event) {
+    event.preventDefault();
+    const canvas = event.currentTarget;
+    const rect = canvas.getBoundingClientRect();
+    const x = (event.touches ? event.touches[0].clientX : event.clientX) - rect.left;
+    const y = (event.touches ? event.touches[0].clientY : event.clientY) - rect.top;
+
+    const stickerSrc = stickers[currentStickerIndex];
+    const rotation = rotations[Math.floor(Math.random() * rotations.length)];
+
+    placeSticker(document.getElementById('canvas1'), stickerSrc, x, y, rotation);
+    placeSticker(document.getElementById('canvas2'), stickerSrc, x, y, rotation);
+
+    currentStickerIndex = (currentStickerIndex + 1) % stickers.length; // Move to the next sticker
+}
+
+function placeSticker(canvas, src, x, y, rotation) {
+    const sticker = document.createElement('img');
+    sticker.src = src;
+    sticker.className = 'sticker';
+    sticker.style.left = `${x - 150}px`; // Center the sticker on the click
+    sticker.style.top = `${y - 150}px`; // Center the sticker on the click
+    sticker.style.transform = `rotate(${rotation}deg)`; /* Apply rotation */
+    canvas.appendChild(sticker);
+}
