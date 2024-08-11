@@ -20,6 +20,10 @@ body {
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
+body, html {
+    overscroll-behavior-y: none; /* Disable pull-to-refresh */
+}
+
 html,
 body,
 .content {
