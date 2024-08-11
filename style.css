@@ -1677,7 +1677,7 @@ img {
 .clipping {
     overflow: hidden;
     width: 100%;
-    /* border-radius: 16px; */
+    border-radius: 8px;
     position: relative;
 }
 
@@ -1829,6 +1829,12 @@ img {
     width: calc(100% / 4);
     display: inline-block;
 }
+
+.newcols{
+    width: calc(100% / 3 - 64px);
+    filter: grayscale(1);
+}
+
 
 .cols h4 {
     padding-bottom: 32px;
