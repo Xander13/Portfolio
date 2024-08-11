@@ -2616,6 +2616,14 @@ canvas {
         padding-top: 56px;
     }
 
+    .project .mdTxt{
+        width: 100%;
+    }
+
+    .spacing{
+        margin-top: 64px;
+    }
+
     .project .flexBox {
         flex-wrap: wrap;
         flex-shrink: 0;
@@ -2774,14 +2782,14 @@ canvas {
     }
 
     .defaultstickers{
-        top: 32px;
-        left: 0;
-        right: 0;
+        top: 16px;
+        left: 32px;
+        width: 250px;
         margin: auto;
     }
 
     .sticker{
-        height: 200px;
+        height: 300px;
         width: auto;
     }
 }
