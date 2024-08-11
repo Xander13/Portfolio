@@ -162,9 +162,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //stickers
 const stickers = [
-  'FigmaSticker.svg',
-  'heart.svg',
-  'AK_Emoji.png'
+  'ux.svg',
+  'face.svg',
+  'AK_Emoji.png',
+  'web.svg',
+  'figma.svg',
+  'alogo.svg'
 ];
 
 const rotations = [30, 0, -30];
