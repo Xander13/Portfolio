@@ -173,62 +173,63 @@ let isTouch = false; // Flag to track if a touch event was used
 let isScrolling = false; // Flag to track if the user is scrolling
 
 document.addEventListener('DOMContentLoaded', function() {
-  document.querySelectorAll('.canvas').forEach(canvas => {
-      let touchTimeout;
+    document.querySelectorAll('.stickerBoard').forEach(board => {
+        let touchTimeout;
 
-      canvas.addEventListener('touchstart', function(event) {
-          isTouch = true; // Touch event detected
-          isScrolling = false;
+        board.addEventListener('touchstart', function(event) {
+            isTouch = true; // Touch event detected
+            isScrolling = false;
 
-          // Store the canvas reference
-          const currentCanvas = canvas;
+            // Store the board reference
+            const currentBoard = board;
 
-          // Clear any existing timeout
-          clearTimeout(touchTimeout);
+            // Clear any existing timeout
+            clearTimeout(touchTimeout);
 
-          // Start a timeout to check if this is a tap or a scroll
-          touchTimeout = setTimeout(() => {
-              if (!isScrolling) {
-                  handleEvent(event, currentCanvas);
-              }
-          }, 100); // 100ms delay to distinguish between scroll and tap
-      });
+            // Start a timeout to check if this is a tap or a scroll
+            touchTimeout = setTimeout(() => {
+                if (!isScrolling) {
+                    handleEvent(event, currentBoard);
+                }
+            }, 100); // 100ms delay to distinguish between scroll and tap
+        });
 
-      canvas.addEventListener('touchmove', function() {
-          isScrolling = true; // Detect touch movement as scrolling
-      });
+        board.addEventListener('touchmove', function() {
+            isScrolling = true; // Detect touch movement as scrolling
+        });
 
-      canvas.addEventListener('click', function(event) {
-          if (!isTouch) { // Only handle click if no touch event was detected
-              handleEvent(event, canvas);
-          }
-          isTouch = false; // Reset the touch flag after the click event
-      });
-  });
+        board.addEventListener('click', function(event) {
+            if (!isTouch) { // Only handle click if no touch event was detected
+                handleEvent(event, board);
+            }
+            isTouch = false; // Reset the touch flag after the click event
+        });
+    });
 });
 
-function handleEvent(event, canvas) {
-  if (event.cancelable) {
-      event.preventDefault(); // Prevent default only if the event is cancelable
-  }
+function handleEvent(event, board) {
+    if (event.cancelable) {
+        event.preventDefault(); // Prevent default only if the event is cancelable
+    }
 
-  const rect = canvas.getBoundingClientRect(); // Use the passed canvas reference
-  const x = (event.touches ? event.touches[0].clientX : event.clientX) - rect.left;
-  const y = (event.touches ? event.touches[0].clientY : event.clientY) - rect.top;
+    const rect = board.getBoundingClientRect(); // Use the passed board reference
+    const x = (event.touches ? event.touches[0].clientX : event.clientX) - rect.left;
+    const y = (event.touches ? event.touches[0].clientY : event.clientY) - rect.top;
 
-  const stickerSrc = stickers[currentStickerIndex];
-  const rotation = rotations[Math.floor(Math.random() * rotations.length)];
+    const stickerSrc = stickers[currentStickerIndex];
+    const rotation = rotations[Math.floor(Math.random() * rotations.length)];
 
-  placeSticker(document.getElementById('canvas1'), stickerSrc, x, y, rotation);
-  placeSticker(document.getElementById('canvas2'), stickerSrc, x, y, rotation);
+    placeSticker(document.getElementById('canvas1'), stickerSrc, x, y, rotation);
+    placeSticker(document.getElementById('canvas2'), stickerSrc, x, y, rotation);
 
-  currentStickerIndex = (currentStickerIndex + 1) % stickers.length; // Move to the next sticker
+    currentStickerIndex = (currentStickerIndex + 1) % stickers.length; // Move to the next sticker
 }
 
 function placeSticker(canvas, src, x, y, rotation) {
     const sticker = document.createElement('img');
     sticker.src = src;
     sticker.className = 'sticker';
+    sticker.style.position = 'absolute'; // Ensure sticker is positioned absolutely within the board
     sticker.style.left = `${x - 150}px`; // Center the sticker on the click
     sticker.style.top = `${y - 150}px`; // Center the sticker on the click
     sticker.style.transform = `rotate(${rotation}deg)`; /* Apply rotation */

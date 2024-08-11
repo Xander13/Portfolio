@@ -1458,7 +1458,11 @@ img {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    user-select: none;
+}
+
+.stickerBoard .canvas img.sticker {
+    pointer-events: auto; /* Allow interaction with the stickers if needed */
+    cursor: pointer;
 }
 
 .defaultstickers{
@@ -1466,7 +1470,7 @@ img {
     left: 96px;
     top: 32px;
     width: 300px;
-    z-index: 3;
+    z-index: 1;
     rotate: -30deg;
 }
 
@@ -1479,6 +1483,7 @@ img {
     -webkit-user-select: none; /* Prevents text selection on iOS */
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* Removes the grey tap highlight on iOS */
     outline: none; /* Remove blue highlight when tapping */
+    z-index: 2;
 }
 
 .bar {
