@@ -58,7 +58,7 @@ body,
     z-index: 333333;
     right: 64px;
     font-size: 32px;
-    bottom: 32px;
+    bottom: 56px;
     cursor: pointer;
     height: auto;
 }
@@ -1676,7 +1676,6 @@ img {
 .clipping {
     overflow: hidden;
     width: 100%;
-    border-radius: 8px;
     position: relative;
 }
 
