@@ -592,8 +592,8 @@ img {
 }
 
 .text h2 {
-    font-size: 4.2vw;
-    line-height: 5.2vw;
+    font-size: 10vw;
+    line-height: 10vw;
     text-align: left;
     letter-spacing: 1px;
     backface-visibility: hidden;
@@ -1480,7 +1480,6 @@ img {
 
 .sticker {
     position: absolute;
-    height: 300px; /* Set width to 300px */
     width: auto; /* Maintain aspect ratio */
     pointer-events: none; /* Ensure stickers are not clickable */
     -webkit-touch-callout: none; /* Prevents long-press callout */

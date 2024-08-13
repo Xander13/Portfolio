@@ -229,12 +229,34 @@ function handleEvent(event, board) {
 }
 
 function placeSticker(canvas, src, x, y, rotation) {
-    const sticker = document.createElement('img');
-    sticker.src = src;
-    sticker.className = 'sticker';
-    sticker.style.position = 'absolute'; // Ensure sticker is positioned absolutely within the board
-    sticker.style.left = `${x - 150}px`; // Center the sticker on the click
-    sticker.style.top = `${y - 150}px`; // Center the sticker on the click
-    sticker.style.transform = `rotate(${rotation}deg)`; /* Apply rotation */
-    canvas.appendChild(sticker);
+  const sticker = document.createElement('img');
+  sticker.src = src;
+  sticker.className = 'sticker';
+  sticker.style.position = 'absolute';
+
+  // Make the sticker non-draggable
+  sticker.draggable = false;
+
+  // Determine screen width
+  const screenWidth = window.innerWidth;
+
+  let stickerSize;
+  if (screenWidth <= 768) { // Mobile devices (768px and below)
+      stickerSize = 200; // 300px minimum size for mobile
+  } else if (screenWidth <= 1024) { // Tablets (769px - 1024px)
+      stickerSize = 340; // 500px for tablets
+  } else { // Desktop (1025px and above)
+      stickerSize = 500; // 800px for desktops
+  }
+
+  // Set the sticker size and position
+  sticker.style.height = `${stickerSize}px`;
+  sticker.style.width = 'auto'; // Maintain aspect ratio
+  sticker.style.left = `${x - (stickerSize / 2)}px`; // Center the sticker on the click
+  sticker.style.top = `${y - (stickerSize / 2)}px`; // Center the sticker on the click
+
+  // Apply rotation
+  sticker.style.transform = `rotate(${rotation}deg)`;
+
+  canvas.appendChild(sticker);
 }
