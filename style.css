@@ -5,6 +5,7 @@
     --ghost: #8080804e;
     --yellow: #FDCA6A;
     --darkGray: #262626;
+    --hoverGray: #151515;
     --mdMargin: 96px;
     --lgMargin: 360px;
     --smMargin: 64px;
@@ -36,6 +37,7 @@ body,
     --gray: #808080;
     --yellow: #FDCA6A;
     --darkGray: #ededed;
+    --hoverGray: #d7d7d7;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
@@ -72,10 +74,6 @@ body,
     /* right: 64px;
     bottom: 32px; */
     z-index: 2222;
-}
-
-.navDot{
-    display: none;
 }
 
 .mdMargin {
