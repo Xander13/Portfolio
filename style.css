@@ -65,15 +65,17 @@ body,
     height: auto;
 }
 
-.dot, .navDot {
+.navDot {
     border-radius: 100rem;
     height: 30px;
     width: 30px;
     background-color: var(--dark);
     cursor: pointer;
-    /* right: 64px;
-    bottom: 32px; */
-    z-index: 2222;
+    position: fixed;
+    z-index: 2222222;
+    top: 36px;
+    right: 64px;
+    margin: auto;
 }
 
 .mdMargin {
