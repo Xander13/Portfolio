@@ -262,3 +262,24 @@ function placeSticker(canvas, src, x, y, rotation) {
 
   canvas.appendChild(sticker);
 }
+
+
+//Eyeball movment
+const eyeball = document.getElementById('eyeball');
+const windowWidth = window.innerWidth; // Total width of the window
+
+// Function to move the eyeball horizontally
+function moveEyeball(event) {
+    const mouseX = event.clientX; // Get the mouse X position in the window
+    const eyeballWidth = eyeball.offsetWidth; // Width of the eyeball
+    const maxMovement = windowWidth - eyeballWidth; // Max movement within the window bounds
+
+    // Calculate the left position for the eyeball, accounting for its width
+    let moveX = (mouseX / windowWidth) * maxMovement;
+
+    // Apply the movement to the eyeball, ensuring it stays within bounds
+    eyeball.style.left = `${moveX}px`;
+}
+
+// Listen for mousemove on the document
+document.addEventListener('mousemove', moveEyeball);
