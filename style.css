@@ -2893,4 +2893,8 @@ canvas {
         display: none;
         opacity: 0;
     }
+
+    .errorMessage{
+        padding: 16px;
+    }
 }
