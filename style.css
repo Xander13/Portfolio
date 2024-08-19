@@ -73,7 +73,7 @@ body,
     top: calc(100% / 2 - 90px);
     display: flex;
     justify-content: center;
-    z-index: 1111111;
+    z-index: 1111;
 }
 
 
