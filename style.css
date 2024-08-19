@@ -65,6 +65,40 @@ body,
     height: auto;
 }
 
+.pageViewer{
+    position: fixed;
+    width: 52px;
+    right: 64px;
+    height: 180px;
+    top: calc(100% / 2 - 90px);
+    display: flex;
+    justify-content: center;
+    z-index: 1111111;
+}
+
+
+.pageSection{
+    width: 2px;
+    background-color: var(--dark);
+    height: 180px;
+}
+
+
+.rect{
+    content: '';
+    position: absolute; /* Position absolute to allow top movement */
+    top: 0; /* Start at the top */
+    width: 32px;
+    height: 12px;
+    border-radius: 100rem;
+    background-color: var(--dark);
+    cursor: pointer;
+}
+
+.rect:hover{
+    background-color: gray;
+}
+
 .navDot {
     border-radius: 100rem;
     height: 30px;
@@ -1417,15 +1451,6 @@ img {
     position: relative;
     height: fit-content;
     width: 100%;
-}
-
-.eyeball{
-    position: absolute;
-    top: 50%;
-    user-select: none;
-    left: 0; /* Start at the left */
-    transform: translateY(-50%); /* Only center it vertically */
-    width: 100%; /* Ensure it uses the full width of the eyeball image */
 }
 
 .projects hr {
@@ -2841,5 +2866,9 @@ canvas {
     .sticker{
         height: 300px;
         width: auto;
+    }
+
+    .pageViewer{
+        right: 16px;
     }
 }

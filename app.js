@@ -263,23 +263,54 @@ function placeSticker(canvas, src, x, y, rotation) {
   canvas.appendChild(sticker);
 }
 
+//Page viewer page scroller
+const rect = document.querySelector('.rect');
+const pageViewer = document.querySelector('.pageViewer');
+let isDragging = false;
 
-//Eyeball movment
-const eyeball = document.getElementById('eyeball');
-const windowWidth = window.innerWidth; // Total width of the window
+rect.addEventListener('mousedown', function(e) {
+    isDragging = true;
+    document.body.style.userSelect = 'none'; // Prevent text selection while dragging
+});
 
-// Function to move the eyeball horizontally
-function moveEyeball(event) {
-    const mouseX = event.clientX; // Get the mouse X position in the window
-    const eyeballWidth = eyeball.offsetWidth; // Width of the eyeball
-    const maxMovement = windowWidth - eyeballWidth; // Max movement within the window bounds
+document.addEventListener('mousemove', function(e) {
+    if (isDragging) {
+        // Get the position of the mouse relative to the .pageViewer
+        const rectTop = pageViewer.getBoundingClientRect().top;
+        let newY = e.clientY - rectTop;
 
-    // Calculate the left position for the eyeball, accounting for its width
-    let moveX = (mouseX / windowWidth) * maxMovement;
+        // Clamp the newY position to ensure the .rect stays within .pageViewer
+        newY = Math.max(0, Math.min(newY, 180 - 12)); // 180 is the height of .pageViewer and 12 is the height of .rect
 
-    // Apply the movement to the eyeball, ensuring it stays within bounds
-    eyeball.style.left = `${moveX}px`;
-}
+        // Update the position of the .rect
+        rect.style.top = newY + 'px';
 
-// Listen for mousemove on the document
-document.addEventListener('mousemove', moveEyeball);
+        // Calculate the new scroll position based on the slider position
+        const scrollPercent = newY / (180 - 12);
+        const documentHeight = document.documentElement.scrollHeight;
+        const windowHeight = window.innerHeight;
+        const newScroll = scrollPercent * (documentHeight - windowHeight);
+
+        // Set the new scroll position of the page
+        window.scrollTo(0, newScroll);
+    }
+});
+
+document.addEventListener('mouseup', function() {
+    isDragging = false;
+    document.body.style.userSelect = ''; // Re-enable text selection after dragging
+});
+
+// This part keeps the rect moving with the scroll when not being dragged
+document.addEventListener("scroll", function() {
+    if (!isDragging) { // Only update the rect if not dragging
+        let documentHeight = document.documentElement.scrollHeight;
+        let scrollTop = document.documentElement.scrollTop;
+        let windowHeight = window.innerHeight;
+
+        let scrollPercent = scrollTop / (documentHeight - windowHeight);
+        let newPosition = (180 - 12) * scrollPercent;
+
+        rect.style.top = newPosition + "px";
+    }
+});
