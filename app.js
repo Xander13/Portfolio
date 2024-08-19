@@ -268,16 +268,25 @@ const rect = document.querySelector('.rect');
 const pageViewer = document.querySelector('.pageViewer');
 let isDragging = false;
 
-rect.addEventListener('mousedown', function(e) {
+function startDrag(e) {
     isDragging = true;
     document.body.style.userSelect = 'none'; // Prevent text selection while dragging
-});
+    e.preventDefault(); // Prevent default touch action
+}
 
-document.addEventListener('mousemove', function(e) {
+function drag(e) {
     if (isDragging) {
-        // Get the position of the mouse relative to the .pageViewer
+        // Get the position of the mouse or touch relative to the .pageViewer
         const rectTop = pageViewer.getBoundingClientRect().top;
-        let newY = e.clientY - rectTop;
+        let clientY;
+
+        if (e.type === 'mousemove') {
+            clientY = e.clientY;
+        } else if (e.type === 'touchmove') {
+            clientY = e.touches[0].clientY;
+        }
+
+        let newY = clientY - rectTop;
 
         // Clamp the newY position to ensure the .rect stays within .pageViewer
         newY = Math.max(0, Math.min(newY, 180 - 12)); // 180 is the height of .pageViewer and 12 is the height of .rect
@@ -294,12 +303,21 @@ document.addEventListener('mousemove', function(e) {
         // Set the new scroll position of the page
         window.scrollTo(0, newScroll);
     }
-});
+}
 
-document.addEventListener('mouseup', function() {
+function stopDrag() {
     isDragging = false;
     document.body.style.userSelect = ''; // Re-enable text selection after dragging
-});
+}
+
+rect.addEventListener('mousedown', startDrag);
+rect.addEventListener('touchstart', startDrag);
+
+document.addEventListener('mousemove', drag);
+document.addEventListener('touchmove', drag);
+
+document.addEventListener('mouseup', stopDrag);
+document.addEventListener('touchend', stopDrag);
 
 // This part keeps the rect moving with the scroll when not being dragged
 document.addEventListener("scroll", function() {

@@ -21,8 +21,10 @@ body {
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
-body, html {
-    overscroll-behavior-y: none; /* Disable pull-to-refresh */
+body,
+html {
+    overscroll-behavior-y: none;
+    /* Disable pull-to-refresh */
 }
 
 html,
@@ -65,7 +67,7 @@ body,
     height: auto;
 }
 
-.pageViewer{
+.pageViewer {
     position: fixed;
     width: 52px;
     right: 64px;
@@ -77,25 +79,27 @@ body,
 }
 
 
-.pageSection{
+.pageSection {
     width: 2px;
     background-color: var(--dark);
     height: 180px;
 }
 
 
-.rect{
+.rect {
     content: '';
-    position: absolute; /* Position absolute to allow top movement */
-    top: 0; /* Start at the top */
+    position: absolute;
+    top: 0px;
     width: 32px;
-    height: 12px;
-    border-radius: 100rem;
+    height: 16px;
+    margin-left: 48px;
+    margin-right: 48px;
     background-color: var(--dark);
     cursor: pointer;
+    touch-action: none;
 }
 
-.rect:hover{
+.rect:hover {
     background-color: gray;
 }
 
@@ -115,13 +119,11 @@ body,
 .mdMargin {
     height: var(--mdMargin);
     width: 100%;
-    /* background-color: green; */
 }
 
 .lgMargin {
     height: var(--lgMargin);
     width: 100%;
-    /* background-color: greenyellow; */
 }
 
 * {
@@ -147,7 +149,9 @@ a {
 }
 
 ::-webkit-scrollbar {
+    -webkit-appearance: none;
     width: 0px;
+    background: transparent;
 }
 
 h1,
@@ -172,11 +176,11 @@ p {
 
 /*nav and menu*/
 
-.menu--toggle{
+.menu--toggle {
     display: none;
 }
 
-.menu--body{
+.menu--body {
     background-color: var(--light);
     height: 100%;
     width: 100%;
@@ -196,7 +200,7 @@ p {
     transition: 1s ease;
 }
 
-.follow{
+.follow {
     color: var(--dark);
     padding: 16px;
     bottom: 0;
@@ -209,11 +213,11 @@ p {
 }
 
 
-.follow h1{
+.follow h1 {
     font-size: 22px;
 }
 
-.follow a{
+.follow a {
     color: var(--light);
     font-size: 22px;
     text-transform: uppercase;
@@ -243,7 +247,7 @@ p {
     gap: 32px;
 }
 
-ul{
+ul {
     padding-inline-start: 0;
 }
 
@@ -415,7 +419,7 @@ img {
     margin-bottom: 0;
 }
 
-.wait{
+.wait {
     cursor: wait;
 }
 
@@ -1411,7 +1415,7 @@ img {
     flex-shrink: 0;
 }
 
-.errorMessage{
+.errorMessage {
     position: absolute;
     left: 0;
     bottom: 0;
@@ -1420,24 +1424,24 @@ img {
     user-select: none;
 }
 
-.errorMessage h1{
+.errorMessage h1 {
     padding-bottom: 8px;
 }
 
-.gameCanvas{
+.gameCanvas {
     width: 100%;
     height: 100%;
     position: fixed;
 }
 
-.circle{
+.circle {
     border: 2px solid var(--dark);
     border-radius: 100rem;
     padding-left: 32px;
     padding-right: 32px;
 }
 
-.skillsets .hr{
+.skillsets .hr {
     height: 4px;
     background: linear-gradient(270deg, var(--light), var(--medium-dark));
     background-size: 400% 400%;
@@ -1447,7 +1451,7 @@ img {
     animation: GrayScale 9s ease infinite;
 }
 
-.face{
+.face {
     position: relative;
     height: fit-content;
     width: 100%;
@@ -1516,7 +1520,7 @@ img {
 
 /*Canvas element website*/
 
-.stickerBoard{
+.stickerBoard {
     position: relative;
     height: fit-content;
     width: 100%;
@@ -1540,11 +1544,12 @@ img {
 }
 
 .stickerBoard .canvas img.sticker {
-    pointer-events: auto; /* Allow interaction with the stickers if needed */
+    pointer-events: auto;
+    /* Allow interaction with the stickers if needed */
     cursor: pointer;
 }
 
-.defaultstickers{
+.defaultstickers {
     position: absolute;
     left: 96px;
     top: 32px;
@@ -1555,12 +1560,18 @@ img {
 
 .sticker {
     position: absolute;
-    width: auto; /* Maintain aspect ratio */
-    pointer-events: none; /* Ensure stickers are not clickable */
-    -webkit-touch-callout: none; /* Prevents long-press callout */
-    -webkit-user-select: none; /* Prevents text selection on iOS */
-    -webkit-tap-highlight-color: rgba(0,0,0,0); /* Removes the grey tap highlight on iOS */
-    outline: none; /* Remove blue highlight when tapping */
+    width: auto;
+    /* Maintain aspect ratio */
+    pointer-events: none;
+    /* Ensure stickers are not clickable */
+    -webkit-touch-callout: none;
+    /* Prevents long-press callout */
+    -webkit-user-select: none;
+    /* Prevents text selection on iOS */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /* Removes the grey tap highlight on iOS */
+    outline: none;
+    /* Remove blue highlight when tapping */
     z-index: 2;
 }
 
@@ -1903,7 +1914,7 @@ img {
     display: inline-block;
 }
 
-.newcols{
+.newcols {
     width: calc(100% / 3 - 64px);
     filter: grayscale(1);
 }
@@ -2489,15 +2500,15 @@ canvas {
         padding-left: 16px;
     }
 
-    .menu--toggle--text{
+    .menu--toggle--text {
         display: block;
     }
 
-    .navList{
+    .navList {
         display: none;
     }
 
-    .navDot{
+    .navDot {
         position: fixed;
         top: 16px;
         right: 16px;
@@ -2532,8 +2543,8 @@ canvas {
         height: 156px;
         height: fit-content;
     }
-    
-    .text{
+
+    .text {
         height: fit-content;
         padding-top: 2px;
     }
@@ -2693,17 +2704,17 @@ canvas {
         width: 100%;
     }
 
-    .project h2{
+    .project h2 {
         font-size: 48px;
         line-height: 56px !important;
         padding-top: 56px;
     }
 
-    .project .mdTxt{
+    .project .mdTxt {
         width: 100%;
     }
 
-    .spacing{
+    .spacing {
         margin-top: 64px;
     }
 
@@ -2713,16 +2724,17 @@ canvas {
         gap: 0 !important;
     }
 
-    .project .mdMargin, .articles .mdMargin{
+    .project .mdMargin,
+    .articles .mdMargin {
         display: none;
     }
 
-    .articles h1{
+    .articles h1 {
         font-size: 48px;
         padding-bottom: 56px;
     }
 
-    .articles .flexBox{
+    .articles .flexBox {
         gap: 112px;
     }
 
@@ -2856,19 +2868,25 @@ canvas {
         width: 100%;
     }
 
-    .defaultstickers{
+    .defaultstickers {
         top: 16px;
         left: 32px;
         width: 250px;
         margin: auto;
     }
 
-    .sticker{
+    .sticker {
         height: 300px;
         width: auto;
     }
 
-    .pageViewer{
+    .pageViewer {
         right: 16px;
+    }
+
+    ::-webkit-scrollbar {
+        -webkit-appearance: none;
+        width: 0px;
+        background: transparent;
     }
 }
