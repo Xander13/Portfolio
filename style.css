@@ -150,8 +150,13 @@ a {
 
 ::-webkit-scrollbar {
     -webkit-appearance: none;
+    -ms-overflow-style: none;
     width: 0px;
     background: transparent;
+}
+
+::-webkit-scrollbar-thumb{
+    background-color: transparent;
 }
 
 h1,
@@ -2884,9 +2889,8 @@ canvas {
         right: 16px;
     }
 
-    ::-webkit-scrollbar {
-        -webkit-appearance: none;
-        width: 0px;
-        background: transparent;
+    .pageViewer{
+        display: none;
+        opacity: 0;
     }
 }
