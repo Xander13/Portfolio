@@ -66,7 +66,7 @@
             </ul>
             <div class="follow">
                 <h1>2024</h1>
-             </div>
+            </div>
         </div>
     </div>
     <div class="navList">
@@ -82,10 +82,155 @@
     </div>
     <div class="errorMessage">
         <h1>Ope, You are lost</h1>
-        <p>Please click back or enjoy the page game</p>
+        <p>Please click back any of the link or enjoy Pong</p>
     </div>
     <div class="gameCanvas"></div>
+    <style>
+        .gameCanvas {
+            width: 600px;
+            height: 400px;
+            margin: 0 auto;
+            border: 2px solid white;
+        }
+    </style>
     <script src="app.js"></script>
+    <script>
+        let paddle;
+        let ball;
+        let opponent;
+        let playerScore = 0;
+        let opponentScore = 0;
+        let roundsWon = 0;
+
+        function setup() {
+            let canvas = createCanvas(600, 400);
+            canvas.parent('gameCanvas');
+
+            paddle = new Paddle(true);
+            opponent = new Paddle(false);
+            ball = new Ball();
+        }
+
+        function draw() {
+            background(0);
+
+            paddle.show();
+            opponent.show();
+            ball.show();
+
+            paddle.update();
+            opponent.update(ball);
+            ball.update(paddle, opponent);
+
+            displayScore();
+
+            if (playerScore >= 10 || opponentScore >= 10) {
+                checkRoundWinner();
+            }
+        }
+
+        function displayScore() {
+            textSize(32);
+            fill(255);
+            textAlign(CENTER, CENTER);
+            text(`${playerScore} - ${opponentScore}`, width / 2, 50);
+        }
+
+        function checkRoundWinner() {
+            if (playerScore >= 10) {
+                roundsWon++;
+                if (roundsWon === 3) {
+                    alert('You won 3 rounds in a row! Game Over!');
+                    noLoop();
+                } else {
+                    resetGame();
+                }
+            } else if (opponentScore >= 10) {
+                alert('Opponent won this round!');
+                resetGame();
+            }
+        }
+
+        function resetGame() {
+            playerScore = 0;
+            opponentScore = 0;
+            ball.reset();
+        }
+
+        class Paddle {
+            constructor(isPlayer) {
+                this.w = 10;
+                this.h = 100;
+                this.isPlayer = isPlayer;
+                this.y = height / 2 - this.h / 2;
+                this.x = this.isPlayer ? 10 : width - this.w - 10;
+            }
+
+            show() {
+                fill(255);
+                rect(this.x, this.y, this.w, this.h);
+            }
+
+            update() {
+                if (this.isPlayer) {
+                    this.y = mouseY - this.h / 2;
+                    this.y = constrain(this.y, 0, height - this.h);
+                } else {
+                    // Simple AI for opponent
+                    let ballMiddle = ball.y + ball.r / 2;
+                    this.y += (ballMiddle - (this.y + this.h / 2)) * 0.1;
+                    this.y = constrain(this.y, 0, height - this.h);
+                }
+            }
+        }
+
+        class Ball {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = width / 2;
+                this.y = height / 2;
+                this.r = 10;
+                this.xSpeed = random([-1, 1]) * 5;
+                this.ySpeed = random([-1, 1]) * 3;
+            }
+
+            show() {
+                fill(255);
+                ellipse(this.x, this.y, this.r * 2);
+            }
+
+            update(paddle, opponent) {
+                this.x += this.xSpeed;
+                this.y += this.ySpeed;
+
+                if (this.y < 0 || this.y > height) {
+                    this.ySpeed *= -1;
+                }
+
+                if (this.x < 0) {
+                    opponentScore++;
+                    this.reset();
+                }
+
+                if (this.x > width) {
+                    playerScore++;
+                    this.reset();
+                }
+
+                if (this.hitPaddle(paddle) || this.hitPaddle(opponent)) {
+                    this.xSpeed *= -1;
+                }
+            }
+
+            hitPaddle(paddle) {
+                return this.x - this.r < paddle.x + paddle.w && this.x + this.r > paddle.x &&
+                    this.y + this.r > paddle.y && this.y - this.r < paddle.y + paddle.h;
+            }
+        }
+    </script>
 </body>
 
 </html>
