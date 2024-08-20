@@ -3,10 +3,10 @@ const paddleWidth = 10; // Width of the paddles
 const paddleHeight = 100; // Height of the paddles
 const ballWidth = 115;  // Width of the ball
 const ballHeight = 145; // Height of the ball
-const baseSpeed = 2; // Further reduced base speed for ball movement at 30 fps
-const speedVariance = 0.05; // Reduced variance in ball speed
-const cpuSpeed = 0.5; // Further reduced speed of strong AI paddle movement
-const weakCpuSpeed = 0.25; // Further reduced speed of weaker AI paddle movement
+const baseSpeed = 2; // Base speed for ball movement at 30 fps
+const speedVariance = 0.05; // Variance in ball speed
+const cpuSpeed = 0.5; // Speed of strong AI paddle movement
+const weakCpuSpeed = 0.25; // Speed of weaker AI paddle movement
 
 // Initialize scores
 let playerScore = 0;
@@ -78,18 +78,18 @@ function update() {
     ballX += ballDX;
     ballY += ballDY;
 
-    // Ball collision with the top and bottom edges of the viewport
+    // Ball collision with top and bottom
     if (ballY <= 0 || ballY + ballHeight >= window.innerHeight) {
         ballDY = -ballDY;
     }
 
     // Collision detection with the left paddle (paddle1)
-    if (ballX <= paddleWidth && ballX + ballWidth >= 0) { // Ensure we're checking for overlap on the x-axis
+    if (ballX <= paddleWidth && ballX + ballWidth >= 0) {
         const paddle1Y = parseFloat(paddle1.style.top);
         if (ballY + ballHeight >= paddle1Y && ballY <= paddle1Y + paddleHeight) {
-            ballDX = Math.abs(ballDX); // Ensure the ball moves to the right
-            ballDX += (Math.random() - 0.5) * speedVariance; // Add some variation in speed
-            ballDY += (Math.random() - 0.5) * speedVariance; // Add some variation in direction
+            ballDX = Math.abs(ballDX); // Move ball to the right
+            ballDX += (Math.random() - 0.5) * speedVariance;
+            ballDY += (Math.random() - 0.5) * speedVariance;
         } else {
             opponentScore++;
             checkRoundEnd();
@@ -98,12 +98,12 @@ function update() {
     }
 
     // Collision detection with the right paddle (paddle2)
-    if (ballX + ballWidth >= window.innerWidth - paddleWidth && ballX <= window.innerWidth) { // Ensure we're checking for overlap on the x-axis
+    if (ballX + ballWidth >= window.innerWidth - paddleWidth && ballX <= window.innerWidth) {
         const paddle2Y = parseFloat(paddle2.style.top);
         if (ballY + ballHeight >= paddle2Y && ballY <= paddle2Y + paddleHeight) {
-            ballDX = -Math.abs(ballDX); // Ensure the ball moves to the left
-            ballDX += (Math.random() - 0.5) * speedVariance; // Add some variation in speed
-            ballDY += (Math.random() - 0.5) * speedVariance; // Add some variation in direction
+            ballDX = -Math.abs(ballDX); // Move ball to the left
+            ballDX += (Math.random() - 0.5) * speedVariance;
+            ballDY += (Math.random() - 0.5) * speedVariance;
         } else {
             playerScore++;
             checkRoundEnd();
@@ -120,7 +120,6 @@ function update() {
     requestAnimationFrame(update);
 }
 
-
 window.addEventListener('resize', initializeGame);
 initializeGame();
 update();
@@ -128,12 +127,11 @@ update();
 // Toggle light and dark mode
 const toggleButton = document.getElementById('toggle-button');
 if (toggleButton) {
-  toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('lightMode');
-    const navDot = document.querySelector('.navDot');
-
-    if (navDot) {
-      navDot.classList.toggle('lightMode');
-    }
-  });
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('lightMode');
+        const navDot = document.querySelector('.navDot');
+        if (navDot) {
+            navDot.classList.toggle('lightMode');
+        }
+    });
 }
