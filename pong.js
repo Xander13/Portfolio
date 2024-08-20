@@ -18,6 +18,11 @@ const paddle2 = document.getElementById('paddle2');
 const ball = document.getElementById('ball');
 const scoreElement = document.getElementById('score');
 
+// Function to determine speed adjustment based on window width
+function speedAdjustment() {
+    return window.innerWidth < 920 ? 1 : 1.5; // Further reduce speed for smaller screens
+}
+
 // Initialize ball position and velocity
 let ballX, ballY, ballDX, ballDY;
 
@@ -30,10 +35,11 @@ function initializeGame() {
 }
 
 function resetBall() {
+    const adjustedSpeed = baseSpeed * speedAdjustment();
     ballX = window.innerWidth / 2;
     ballY = window.innerHeight / 2;
-    ballDX = baseSpeed * (Math.random() > 0.5 ? 1 : -1);
-    ballDY = baseSpeed * (Math.random() > 0.5 ? 1 : -1);
+    ballDX = adjustedSpeed * (Math.random() > 0.5 ? 1 : -1);
+    ballDY = adjustedSpeed * (Math.random() > 0.5 ? 1 : -1);
     updateBallPosition();
 }
 
@@ -117,7 +123,6 @@ function update() {
 window.addEventListener('resize', initializeGame);
 initializeGame();
 update();
-
 
 // Toggle light and dark mode
 const toggleButton = document.getElementById('toggle-button');
