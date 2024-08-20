@@ -84,7 +84,7 @@ function update() {
     }
 
     // Collision detection with the left paddle (paddle1)
-    if (ballX <= paddleWidth) {
+    if (ballX <= paddleWidth && ballX + ballWidth >= 0) { // Ensure we're checking for overlap on the x-axis
         const paddle1Y = parseFloat(paddle1.style.top);
         if (ballY + ballHeight >= paddle1Y && ballY <= paddle1Y + paddleHeight) {
             ballDX = Math.abs(ballDX); // Ensure the ball moves to the right
@@ -98,7 +98,7 @@ function update() {
     }
 
     // Collision detection with the right paddle (paddle2)
-    if (ballX + ballWidth >= window.innerWidth - paddleWidth) {
+    if (ballX + ballWidth >= window.innerWidth - paddleWidth && ballX <= window.innerWidth) { // Ensure we're checking for overlap on the x-axis
         const paddle2Y = parseFloat(paddle2.style.top);
         if (ballY + ballHeight >= paddle2Y && ballY <= paddle2Y + paddleHeight) {
             ballDX = -Math.abs(ballDX); // Ensure the ball moves to the left
@@ -119,6 +119,7 @@ function update() {
 
     requestAnimationFrame(update);
 }
+
 
 window.addEventListener('resize', initializeGame);
 initializeGame();
