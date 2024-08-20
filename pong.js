@@ -20,7 +20,7 @@ const scoreElement = document.getElementById('score');
 
 // Function to determine speed adjustment based on window width
 function speedAdjustment() {
-    return window.innerWidth < 920 ? 1 : 1.5; // Further reduce speed for smaller screens
+    return window.innerWidth < 920 ? 1 : 2; // Further reduce speed for smaller screens
 }
 
 // Initialize ball position and velocity
