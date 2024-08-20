@@ -36,7 +36,6 @@ window.addEventListener('scroll', checkScroll);
 window.addEventListener('resize', checkScroll);
 
 // Toggle light and dark mode
-// Toggle light and dark mode
 const toggleButton = document.getElementById('toggle-button');
 if (toggleButton) {
   toggleButton.addEventListener('click', () => {

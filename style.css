@@ -1424,7 +1424,8 @@ img {
     position: absolute;
     left: 0;
     bottom: 0;
-    padding: 64px;
+    padding-left: 64px;
+    padding-bottom: 64px;
     z-index: 2;
     user-select: none;
 }
@@ -2896,5 +2897,9 @@ canvas {
 
     .errorMessage{
         padding: 16px;
+    }
+
+    .score{
+        font-size: 32px;
     }
 }
