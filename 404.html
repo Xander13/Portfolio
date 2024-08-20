@@ -90,7 +90,7 @@
         <div id="paddle2" class="paddle"></div>
         <img id="ball" src="ball.png" alt="Ball">
     </div>
-    <div id="score">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</div>
+    <div id="score">0&nbsp;&nbsp;0</div>
     <script src="pong.js"></script>
     <style>
         #gameContainer {
@@ -99,8 +99,7 @@
             height: 100vh;
         }
 
-        #paddle1,
-        #paddle2 {
+        .paddle {
             position: absolute;
             width: 10px;
             height: 100px;
@@ -118,8 +117,8 @@
         #ball {
             position: absolute;
             width: 115px;
+            /* Adjust the size based on your ball image */
             height: 145px;
-            z-index: 12;
         }
 
         #line {
@@ -128,7 +127,8 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background-color: var(--gray);
+            background-color: var(--dark);
+            border-left: 2px dashed var(--dark);
             transform: translateX(-50%);
         }
 
@@ -137,7 +137,8 @@
             top: calc(100% / 2 - 4.2dvw);
             width: 100%;
             text-align: center;
-            font-size: 4.2dvw;
+            font-size: 4.2vw;
+
             font-family: "Instrument Sans", sans-serif;
         }
     </style>
