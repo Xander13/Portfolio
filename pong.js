@@ -3,10 +3,10 @@ const paddleWidth = 10; // Width of the paddles
 const paddleHeight = 100; // Height of the paddles
 const ballWidth = 115;  // Width of the ball
 const ballHeight = 145; // Height of the ball
-const baseSpeed = 2; // Reduced base speed for ball movement
-const speedVariance = 0.5; // Reduced variance in ball speed
-const cpuSpeed = 3; // Reduced speed of strong AI paddle movement
-const weakCpuSpeed = 2; // Reduced speed of weaker AI paddle movement
+const baseSpeed = 0.25; // Further reduced base speed for ball movement at 30 fps
+const speedVariance = 0.05; // Reduced variance in ball speed
+const cpuSpeed = 0.5; // Further reduced speed of strong AI paddle movement
+const weakCpuSpeed = 0.25; // Further reduced speed of weaker AI paddle movement
 
 // Initialize scores
 let playerScore = 0;
