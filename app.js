@@ -48,7 +48,6 @@ if (toggleButton) {
   });
 }
 
-
 // Motion text and cursor
 document.addEventListener('DOMContentLoaded', function () {
   const textLines = document.querySelectorAll('.line');

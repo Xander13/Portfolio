@@ -612,7 +612,7 @@ img {
 }
 
 .gaps {
-    height: 60vh;
+    height: 60dvh;
 }
 
 .articles {
@@ -1166,7 +1166,7 @@ img {
     padding-right: 0;
     padding-bottom: 0;
     margin-top: 36px;
-    height: 80vh;
+    height: 80dvh;
     background-color: var(--light);
     transition: color 0.5s ease, background-color 0.5s ease;
 }
@@ -1538,7 +1538,7 @@ img {
 
 .canvas {
     width: 100%;
-    height: 50vh;
+    height: 50dvh;
     position: relative;
     left: 0;
     right: 0;
@@ -2163,7 +2163,7 @@ img {
     display: flex;
     align-items: center;
     justify-content: end;
-    height: 50vh;
+    height: 50dvh;
     position: relative;
 }
 
@@ -2245,7 +2245,7 @@ img {
 }
 
 .gallery .marquee img {
-    max-width: calc(100vh / 2);
+    max-width: calc(100dvh / 2);
     height: auto;
     border-radius: 18px;
 }
@@ -2899,7 +2899,7 @@ canvas {
         padding: 16px;
     }
 
-    .score{
-        font-size: 32px;
+    #score{
+        font-size: 56px !important;
     }
 }

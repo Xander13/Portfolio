@@ -84,35 +84,60 @@
         <h1>404 Error. Ope, You are lost</h1>
         <p>Please click back any of the link or enjoy 2 AI playing Pong</p>
     </div>
-    <div class="gameSpace">
-        <div id="score">0 &nbsp; &nbsp; 0</div>
-        <canvas id="gameCanvas"></canvas>
+    <div id="gameContainer">
+        <div id="line"></div>
+        <div id="paddle1" class="paddle"></div>
+        <div id="paddle2" class="paddle"></div>
+        <img id="ball" src="ball.png" alt="Ball">
     </div>
+    <div id="score">0&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0</div>
     <script src="pong.js"></script>
     <style>
-        canvas {
-            display: block;
-            height: 100%;
-            width: 100%;
+        #gameContainer {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .paddle {
+            position: absolute;
+            width: 10px;
+            height: 100px;
+            background-color: var(--dark);
+        }
+
+        #paddle1 {
+            left: 0;
+        }
+
+        #paddle2 {
+            right: 0;
+        }
+
+        #ball {
+            position: absolute;
+            width: 115px;
+            height: 145px;
+            z-index: 12;
+        }
+
+        #line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--gray);
+            transform: translateX(-50%);
         }
 
         #score {
-            position: fixed;
-            left: 0;
-            right: 0;
-            margin: auto;
-            width: fit-content;
-            font-size: 4.8vw;
-            font-weight: 500;
-            font-family: sans-serif;
-            z-index: -1;
-        }
-
-        .gameSpace {
-            height: 100vh;
-            width: 100vw;
-            display: flex;
-            align-items: center;
+            position: absolute;
+            top: calc(100% / 2 - 4.2dvw);
+            width: 100%;
+            text-align: center;
+            font-size: 4.2dvw;
+            font-family: "Instrument Sans", sans-serif;
         }
     </style>
 </body>
