@@ -3,10 +3,10 @@ const paddleWidth = 10; // Width of the paddles
 const paddleHeight = 100; // Height of the paddles
 const ballWidth = 115;  // Width of the ball
 const ballHeight = 145; // Height of the ball
-const baseSpeed = 1; // Base speed for ball movement
-const speedVariance = 1; // Variance in ball speed
-const cpuSpeed = 5; // Speed of strong AI paddle movement
-const weakCpuSpeed = 3; // Speed of weaker AI paddle movement
+const baseSpeed = 2; // Reduced base speed for ball movement
+const speedVariance = 0.5; // Reduced variance in ball speed
+const cpuSpeed = 3; // Reduced speed of strong AI paddle movement
+const weakCpuSpeed = 2; // Reduced speed of weaker AI paddle movement
 
 // Initialize scores
 let playerScore = 0;
@@ -20,7 +20,7 @@ const scoreElement = document.getElementById('score');
 
 // Function to determine speed adjustment based on window width
 function speedAdjustment() {
-    return window.innerWidth < 920 ? 0.2 : 0.5; // Further reduce speed for smaller screens
+    return window.innerWidth < 920 ? 0.5 : 1; // Reduce speed to 50% for smaller screens
 }
 
 // Initialize ball position and velocity
