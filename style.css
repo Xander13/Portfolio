@@ -1440,7 +1440,6 @@ img {
 
 .errorMessage p{
     width: 60%;
-    padding-bottom: 32px;
 }
 
 
@@ -2931,5 +2930,6 @@ canvas {
 
     .errorMessage p{
         width: 60%;
+        padding-bottom: 32px;
     }
 }
