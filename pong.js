@@ -44,8 +44,11 @@ function resetBall() {
     const adjustedSpeed = baseSpeed * speedAdjustment();
     ballX = window.innerWidth / 2;
     ballY = window.innerHeight / 2;
-    ballDX = adjustedSpeed * (Math.random() > 0.5 ? 1 : -1);
-    ballDY = adjustedSpeed * (Math.random() > 0.5 ? 1 : -1);
+
+    // Fixed directions for ball movement
+    ballDX = adjustedSpeed; // Move to the right
+    ballDY = adjustedSpeed; // Move downwards
+
     updateBallPosition();
 }
 
