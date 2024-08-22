@@ -5,8 +5,8 @@ const ballWidth = 115;  // Width of the ball
 const ballHeight = 145; // Height of the ball
 const baseSpeed = 4; // Base speed for ball movement
 const speedVariance = 1; // Variance in ball speed
-const cpuSpeed = 5; // Speed of strong AI paddle movement
-const weakCpuSpeed = 3; // Speed of weaker AI paddle movement
+const cpuSpeed = 2; // Speed of strong AI paddle movement
+const weakCpuSpeed = 2; // Speed of weaker AI paddle movement
 
 // Initialize scores
 let playerScore = 0;
@@ -28,8 +28,8 @@ let ballX, ballY, ballDX, ballDY;
 
 function initializeGame() {
     // Position paddles at the center of the screen
-    paddle1.style.top = (window.innerHeight - paddleHeight) / 2 + 'px';
-    paddle2.style.top = (window.innerHeight - paddleHeight) / 2 + 'px';
+    paddle1.style.transform = `translateY(${(window.innerHeight - paddleHeight) / 2}px)`;
+    paddle2.style.transform = `translateY(${(window.innerHeight - paddleHeight) / 2}px)`;
 
     resetBall();
 }
@@ -44,26 +44,24 @@ function resetBall() {
 }
 
 function updateBallPosition() {
-    ball.style.left = ballX + 'px';
-    ball.style.top = ballY + 'px';
+    ball.style.transform = `translate(${ballX}px, ${ballY}px)`;
 }
 
 function moveAI(paddle, isWeakAI = false) {
     const baseSpeed = isWeakAI ? weakCpuSpeed : cpuSpeed;
     const paddleCenterY = paddle.offsetTop + paddleHeight / 2;
     const ballCenterY = ballY + ballHeight / 2;
-    
-    // Calculate the distance between the paddle center and the ball center
-    const distance = Math.abs(paddleCenterY - ballCenterY);
 
-    // Adjust speed based on distance; closer means faster, farther means slower
-    const speedFactor = 1 - Math.min(distance / window.innerHeight, 0.8); // 0.8 ensures there's always some movement
+    const distance = Math.abs(paddleCenterY - ballCenterY);
+    const speedFactor = 1 - Math.min(distance / window.innerHeight, 0.8);
     const adjustedSpeed = baseSpeed * (1 + speedFactor);
 
+    const currentY = parseFloat(paddle.style.transform.replace('translateY(', '').replace('px)', ''));
+
     if (ballCenterY > paddleCenterY) {
-        paddle.style.top = Math.min(window.innerHeight - paddleHeight, paddle.offsetTop + adjustedSpeed) + 'px';
+        paddle.style.transform = `translateY(${Math.min(window.innerHeight - paddleHeight, currentY + adjustedSpeed)}px)`;
     } else if (ballCenterY < paddleCenterY) {
-        paddle.style.top = Math.max(0, paddle.offsetTop - adjustedSpeed) + 'px';
+        paddle.style.transform = `translateY(${Math.max(0, currentY - adjustedSpeed)}px)`;
     }
 }
 
@@ -85,7 +83,7 @@ function update() {
 
     // Collision detection with the left paddle (paddle1)
     if (ballX <= paddleWidth) {
-        const paddle1Y = parseFloat(paddle1.style.top);
+        const paddle1Y = parseFloat(paddle1.style.transform.replace('translateY(', '').replace('px)', ''));
         if (ballY + ballHeight >= paddle1Y && ballY <= paddle1Y + paddleHeight) {
             ballDX = Math.abs(ballDX); // Ensure the ball moves to the right
             ballDX += (Math.random() - 0.5) * speedVariance; // Add some variation in speed
@@ -99,7 +97,7 @@ function update() {
 
     // Collision detection with the right paddle (paddle2)
     if (ballX + ballWidth >= window.innerWidth - paddleWidth) {
-        const paddle2Y = parseFloat(paddle2.style.top);
+        const paddle2Y = parseFloat(paddle2.style.transform.replace('translateY(', '').replace('px)', ''));
         if (ballY + ballHeight >= paddle2Y && ballY <= paddle2Y + paddleHeight) {
             ballDX = -Math.abs(ballDX); // Ensure the ball moves to the left
             ballDX += (Math.random() - 0.5) * speedVariance; // Add some variation in speed
@@ -127,12 +125,12 @@ update();
 // Toggle light and dark mode
 const toggleButton = document.getElementById('toggle-button');
 if (toggleButton) {
-  toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('lightMode');
-    const navDot = document.querySelector('.navDot');
+    toggleButton.addEventListener('click', () => {
+        document.body.classList.toggle('lightMode');
+        const navDot = document.querySelector('.navDot');
 
-    if (navDot) {
-      navDot.classList.toggle('lightMode');
-    }
-  });
+        if (navDot) {
+            navDot.classList.toggle('lightMode');
+        }
+    });
 }
