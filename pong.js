@@ -53,8 +53,11 @@ function movePaddleOnCollision(paddle) {
     const paddleCenterY = paddle.offsetTop + paddleHeight / 2;
     const ballCenterY = ballY + ballHeight / 2;
 
+    // Determine the proximity value based on screen size
+    const proximity = window.innerWidth < 920 ? 150 : 300; // 150px for mobile, 300px for desktop
+
     // Move the paddle to center the ball when it gets close
-    if (Math.abs(ballX - paddle.offsetLeft) < 150) {
+    if (Math.abs(ballX - paddle.offsetLeft) < proximity) {
         if (ballCenterY > paddleCenterY) {
             paddle.style.top = Math.min(window.innerHeight - paddleHeight, paddle.offsetTop + 4) + 'px';
         } else if (ballCenterY < paddleCenterY) {
