@@ -17,6 +17,11 @@ const paddle2 = document.getElementById('paddle2');
 const ball = document.getElementById('ball');
 const scoreElement = document.getElementById('score');
 
+// Function to determine speed adjustment based on window width
+function speedAdjustment() {
+    return window.innerWidth < 920 ? 0.2 : 0.5; // Further reduce speed for smaller screens
+}
+
 // Initialize ball position and velocity
 let ballX, ballY, ballDX, ballDY;
 
