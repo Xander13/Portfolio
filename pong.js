@@ -5,7 +5,6 @@ const ballWidth = 115;  // Width of the ball
 const ballHeight = 145; // Height of the ball
 const baseSpeed = 4; // Base speed for ball movement
 const speedVariance = 1; // Variance in ball speed
-const weakCpuSpeeds = [1, 2, 3, 4, 5]; // Possible speeds for weaker AI paddle movement
 
 // Initialize scores
 let playerScore = 0;
@@ -25,14 +24,7 @@ function speedAdjustment() {
 // Initialize ball position and velocity
 let ballX, ballY, ballDX, ballDY;
 
-// Randomly assigned AI speeds
-let paddle1Speed, paddle2Speed;
-
 function initializeGame() {
-    // Randomly assign strengths to paddle1 and paddle2 from the weakCpuSpeeds array
-    paddle1Speed = weakCpuSpeeds[Math.floor(Math.random() * weakCpuSpeeds.length)];
-    paddle2Speed = weakCpuSpeeds[Math.floor(Math.random() * weakCpuSpeeds.length)];
-
     // Position paddles at the center of the screen
     paddle1.style.top = (window.innerHeight - paddleHeight) / 2 + 'px';
     paddle2.style.top = (window.innerHeight - paddleHeight) / 2 + 'px';
@@ -57,18 +49,17 @@ function updateBallPosition() {
     ball.style.top = ballY + 'px';
 }
 
-function moveAI(paddle, speed) {
+function movePaddleOnCollision(paddle) {
     const paddleCenterY = paddle.offsetTop + paddleHeight / 2;
     const ballCenterY = ballY + ballHeight / 2;
 
-    const distance = Math.abs(paddleCenterY - ballCenterY);
-    const speedFactor = 1 - Math.min(distance / window.innerHeight, 0.8);
-    const adjustedSpeed = speed * (1 + speedFactor);
-
-    if (ballCenterY > paddleCenterY) {
-        paddle.style.top = Math.min(window.innerHeight - paddleHeight, paddle.offsetTop + adjustedSpeed) + 'px';
-    } else if (ballCenterY < paddleCenterY) {
-        paddle.style.top = Math.max(0, paddle.offsetTop - adjustedSpeed) + 'px';
+    // Move the paddle to center the ball when it gets close
+    if (Math.abs(ballX - paddle.offsetLeft) < 150) {
+        if (ballCenterY > paddleCenterY) {
+            paddle.style.top = Math.min(window.innerHeight - paddleHeight, paddle.offsetTop + 4) + 'px';
+        } else if (ballCenterY < paddleCenterY) {
+            paddle.style.top = Math.max(0, paddle.offsetTop - 4) + 'px';
+        }
     }
 }
 
@@ -116,9 +107,9 @@ function update() {
         }
     }
 
-    // Move AI paddles with their respective speeds
-    moveAI(paddle2, paddle2Speed);
-    moveAI(paddle1, paddle1Speed);
+    // Move paddles on collision
+    movePaddleOnCollision(paddle1);
+    movePaddleOnCollision(paddle2);
 
     updateBallPosition();
     scoreElement.innerHTML = `${playerScore}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${opponentScore}`;
