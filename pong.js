@@ -28,8 +28,8 @@ let ballX, ballY, ballDX, ballDY;
 
 function initializeGame() {
     // Position paddles at the center of the screen
-    paddle1.style.transform = `translateY(${(window.innerHeight - paddleHeight) / 2}px)`;
-    paddle2.style.transform = `translateY(${(window.innerHeight - paddleHeight) / 2}px)`;
+    paddle1.style.top = (window.innerHeight - paddleHeight) / 2 + 'px';
+    paddle2.style.top = (window.innerHeight - paddleHeight) / 2 + 'px';
 
     resetBall();
 }
@@ -44,7 +44,8 @@ function resetBall() {
 }
 
 function updateBallPosition() {
-    ball.style.transform = `translate(${ballX}px, ${ballY}px)`;
+    ball.style.left = ballX + 'px';
+    ball.style.top = ballY + 'px';
 }
 
 function moveAI(paddle, isWeakAI = false) {
@@ -56,12 +57,10 @@ function moveAI(paddle, isWeakAI = false) {
     const speedFactor = 1 - Math.min(distance / window.innerHeight, 0.8);
     const adjustedSpeed = baseSpeed * (1 + speedFactor);
 
-    const currentY = parseFloat(paddle.style.transform.replace('translateY(', '').replace('px)', ''));
-
     if (ballCenterY > paddleCenterY) {
-        paddle.style.transform = `translateY(${Math.min(window.innerHeight - paddleHeight, currentY + adjustedSpeed)}px)`;
+        paddle.style.top = Math.min(window.innerHeight - paddleHeight, paddle.offsetTop + adjustedSpeed) + 'px';
     } else if (ballCenterY < paddleCenterY) {
-        paddle.style.transform = `translateY(${Math.max(0, currentY - adjustedSpeed)}px)`;
+        paddle.style.top = Math.max(0, paddle.offsetTop - adjustedSpeed) + 'px';
     }
 }
 
@@ -83,7 +82,7 @@ function update() {
 
     // Collision detection with the left paddle (paddle1)
     if (ballX <= paddleWidth) {
-        const paddle1Y = parseFloat(paddle1.style.transform.replace('translateY(', '').replace('px)', ''));
+        const paddle1Y = parseFloat(paddle1.style.top);
         if (ballY + ballHeight >= paddle1Y && ballY <= paddle1Y + paddleHeight) {
             ballDX = Math.abs(ballDX); // Ensure the ball moves to the right
             ballDX += (Math.random() - 0.5) * speedVariance; // Add some variation in speed
@@ -97,7 +96,7 @@ function update() {
 
     // Collision detection with the right paddle (paddle2)
     if (ballX + ballWidth >= window.innerWidth - paddleWidth) {
-        const paddle2Y = parseFloat(paddle2.style.transform.replace('translateY(', '').replace('px)', ''));
+        const paddle2Y = parseFloat(paddle2.style.top);
         if (ballY + ballHeight >= paddle2Y && ballY <= paddle2Y + paddleHeight) {
             ballDX = -Math.abs(ballDX); // Ensure the ball moves to the left
             ballDX += (Math.random() - 0.5) * speedVariance; // Add some variation in speed
