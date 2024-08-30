@@ -2932,4 +2932,12 @@ canvas {
         width: 60%;
         padding-bottom: 32px;
     }
+
+    .newcols{
+        width: 100%;
+    }
+
+    .videoFrame{
+        padding-top: 232px;
+    }
 }
