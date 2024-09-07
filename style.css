@@ -233,13 +233,24 @@ p {
     width: fit-content;
     margin: 0 auto;
     cursor: pointer;
-    left: 16px;
+    right: 16px;
     top: 8px;
     color: var(--dark);
     font-size: 32px;
     user-select: none;
     position: fixed;
     z-index: 99999999;
+}
+
+.moibleLogo{
+    position: fixed;
+    left: 16px;
+    top: 16px;
+    z-index: 22222222;
+    font-size: 24px !important;
+    text-transform: uppercase;
+    font-weight: 500;
+    display: none;
 }
 
 .menu--list {
@@ -266,7 +277,7 @@ ul {
     position: fixed;
     top: 0px;
     left: 0;
-    right: 0;
+    right: 42px;
     padding-left: var(--smMargin);
     padding-right: var(--smMargin);
     padding-top: 32px;
@@ -281,6 +292,24 @@ ul {
     color: var(--light);
     overflow: hidden;
     transition: 0.5s ease;
+}
+
+.navList img{
+    height: 48px;
+    mix-blend-mode: difference;
+}
+
+.navList h2{
+    color: var(--dark);
+    font-size: 24px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.navList h2:nth-child(2){
+    font-size: 16px;
+    font-weight: 500;
+    color: gray;
 }
 
 .fade-out {
@@ -2939,5 +2968,9 @@ canvas {
 
     .videoFrame{
         padding-top: 232px;
+    }
+
+    .moibleLogo{
+        display: block;
     }
 }
