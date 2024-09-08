@@ -543,7 +543,20 @@ img {
 }
 
 .project .flexBox {
-    gap: 8vw;
+    gap: 12vw;
+}
+
+.projectWriting .flexBox{
+    gap: 32px;
+}
+
+.bg{
+    background-color: var(--light);
+    padding-bottom: 64px;
+    padding-top: 64px;
+    padding-left: 64px;
+    padding-right: 64px;
+    border-radius: 18px;
 }
 
 .project .half .flexBox {
@@ -561,6 +574,17 @@ img {
     border-radius: 100rem;
     text-transform: uppercase;
 }
+
+/* .project h3{
+    font-size: 4.2vw;
+    line-height: 4.8vw;
+    padding-top: 16px;
+    margin-bottom: 32px;
+    margin-top: 16px;
+    color: var(--dark);
+    font-weight: 500 !important;
+    border-radius: 100rem;
+} */
 
 .project p {
     font-size: 24px;
