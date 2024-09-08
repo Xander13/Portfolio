@@ -543,7 +543,7 @@ img {
 }
 
 .project .flexBox {
-    gap: 96px;
+    gap: 8vw;
 }
 
 .project .half .flexBox {
@@ -2560,6 +2560,10 @@ canvas {
 
     .navDot {
         display: none;
+    }
+
+    .alexImg{
+        padding-top: 64px;
     }
 
     .textContainer {

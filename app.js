@@ -240,7 +240,7 @@ function placeSticker(canvas, src, x, y, rotation) {
 
   let stickerSize;
   if (screenWidth <= 768) { // Mobile devices (768px and below)
-    stickerSize = 200; // 300px minimum size for mobile
+    stickerSize = 280; // 280px minimum size for mobile
   } else if (screenWidth <= 1024) { // Tablets (769px - 1024px)
     stickerSize = 340; // 500px for tablets
   } else if (screenWidth <= 1800) { // Tablets (769px - 1024px)
