@@ -436,9 +436,9 @@ img {
 }
 
 .half h1 {
-    padding-top: 16px !important;
+    padding-top: 16px;
     margin-top: 0;
-    padding-bottom: 0 !important;
+    padding-bottom: 0;
 }
 
 .project,
@@ -2981,5 +2981,9 @@ canvas {
 
     .moibleLogo{
         display: block;
+    }
+
+    .mobileSpacing{
+        padding-top: 132px !important;
     }
 }
