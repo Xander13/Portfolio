@@ -2559,10 +2559,7 @@ canvas {
     }
 
     .navDot {
-        position: fixed;
-        top: 16px;
-        right: 16px;
-        display: block;
+        display: none;
     }
 
     .textContainer {
@@ -2584,8 +2581,8 @@ canvas {
         padding-right: 0;
     }
 
-    .project .full, .project .half, .project .mdTxt{
-        padding-bottom: 132px !important;
+    .project .full, .project .half{
+        padding-top: 132px !important;
     }
 
     .project .full:last-child{
