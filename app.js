@@ -312,3 +312,4 @@ document.addEventListener("scroll", function() {
         rect.style.top = newPosition + "px";
     }
 });
+

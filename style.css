@@ -1,6 +1,6 @@
 :root {
     --dark: #ffffff;
-    --light: #080808;
+    --light: #000000;
     --gray: #808080;
     --ghost: #8080804e;
     --yellow: #FDCA6A;
@@ -72,7 +72,7 @@ body,
     width: 52px;
     right: 64px;
     height: 180px;
-    top: calc(100% / 2 - 90px);
+    bottom: 50px;
     display: flex;
     justify-content: center;
     z-index: 1111;
@@ -155,7 +155,7 @@ a {
     background: transparent;
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
     background-color: transparent;
 }
 
@@ -242,7 +242,7 @@ p {
     z-index: 99999999;
 }
 
-.moibleLogo{
+.moibleLogo {
     position: fixed;
     left: 16px;
     top: 16px;
@@ -277,11 +277,11 @@ ul {
     position: fixed;
     top: 0px;
     left: 0;
-    right: 42px;
+    right: 0px;
     padding-left: var(--smMargin);
     padding-right: var(--smMargin);
     padding-top: 32px;
-    padding-bottom: 16px;
+    padding-bottom: 32px;
     z-index: 999999;
     margin: auto;
     display: flex;
@@ -292,21 +292,29 @@ ul {
     color: var(--light);
     overflow: hidden;
     transition: 0.5s ease;
+    background-image: linear-gradient(to Top,
+        rgba(0, 0, 0, 0),
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.5),
+        rgba(0, 0, 0, 0.75),
+        rgb(0, 0, 0)
+    );
+    pointer-events: none;
 }
 
-.navList img{
+.navList img {
     height: 48px;
     mix-blend-mode: difference;
 }
 
-.navList h2{
+.navList h2 {
     color: var(--dark);
     font-size: 24px;
     font-weight: 700;
     text-transform: uppercase;
 }
 
-.navList h2:nth-child(2){
+.navList h2:nth-child(2) {
     font-size: 16px;
     font-weight: 500;
     color: gray;
@@ -346,6 +354,7 @@ ul {
     mix-blend-mode: difference;
     height: fit-content;
     transition: 0.4s ease;
+    pointer-events: visible;
 }
 
 .navList a:hover,
@@ -365,6 +374,11 @@ ul {
     border-radius: 0;
     padding: 4px;
     border-radius: 4px;
+}
+
+#activeContent{
+    color: white !important;
+    font-weight: 500 !important;
 }
 
 .widthSections {
@@ -426,6 +440,13 @@ ul {
     box-sizing: border-box;
 }
 
+.cpation h1{
+    font-size: 24px !important;
+    line-height: 32px !important;
+    text-align: center;
+    padding-top: 32px !important;
+}
+
 img {
     width: 100%;
     height: auto;
@@ -453,6 +474,24 @@ img {
     margin-bottom: 0;
 }
 
+
+.flowStuff{
+    height: 100%;
+    background-color: green;
+    width: 20%;
+    position: absolute;
+}
+
+.marginMiddle{
+    margin: auto !important;
+    max-width: 920px;
+}
+
+.wrapper{
+    display: flex;
+    height: fit-content;
+}
+
 .wait {
     cursor: wait;
 }
@@ -462,7 +501,7 @@ img {
     margin: auto;
     margin-top: 16px;
     text-transform: uppercase;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: 500;
 }
 
@@ -487,12 +526,22 @@ img {
 }
 
 .smTxt {
-    font-size: 32px !important;
-    line-height: 48px !important;
-    color: var(--dark);
+    font-size: 18px !important;
+    line-height: 24px !important;
+    color: var(--gray) !important;
     letter-spacing: 1px;
     font-weight: 400 !important;
     text-transform: none !important;
+}
+
+.smTitle {
+    font-size: 18px !important;
+    line-height: 24px !important;
+    color: var(--white) !important;
+    letter-spacing: 1px;
+    font-weight: 400 !important;
+    text-transform: none !important;
+    margin-bottom: 0 !important;
 }
 
 .lgTxt {
@@ -546,17 +595,16 @@ img {
     gap: 12vw;
 }
 
-.projectWriting .flexBox{
+.projectWriting .flexBox {
     gap: 32px;
 }
 
-.bg{
+.bg {
     background-color: var(--light);
     padding-bottom: 64px;
     padding-top: 64px;
     padding-left: 64px;
     padding-right: 64px;
-    border-radius: 18px;
 }
 
 .project .half .flexBox {
@@ -957,6 +1005,23 @@ img {
     height: fit-content;
 }
 
+.seeSiteBtn {
+    border-radius: 100rem;
+    background-color: var(--dark);
+    color: var(--light);
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    font-weight: 500;
+    border: 2px solid var(--dark);
+}
+
+.seeSiteBtn:hover {
+    color: var(--dark);
+    background-color: var(--light);
+}
+
 .projectHero .seeLinks {
     height: 100px;
 }
@@ -1018,10 +1083,10 @@ img {
     text-wrap: balance;
 }
 
-.projectSections h1 {
+/* .projectSections h1 {
     padding-top: 232px;
     padding-bottom: 64px;
-}
+} */
 
 .chips {
     width: fit-content;
@@ -1036,12 +1101,12 @@ img {
 }
 
 .pChips {
-    font-size: 18px;
+    font-size: 24px;
     line-height: 18px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
     border-radius: 100rem;
     color: var(--dark);
     text-transform: uppercase;
@@ -1072,9 +1137,14 @@ img {
 
 .projectWriting {
     margin: auto;
-    padding: 32px;
     height: auto;
     padding-top: 124px;
+    max-width: 800px;
+    margin-left: 0;
+}
+
+.projectWriting .half {
+    width: fit-content !important;
 }
 
 .projectWriting p {
@@ -1087,10 +1157,6 @@ img {
     font-weight: 600;
     text-transform: uppercase;
     padding-top: 64px;
-}
-
-.projectWriting .half {
-    width: calc(50% - 32px);
 }
 
 .darkbg {
@@ -1485,18 +1551,18 @@ img {
 }
 
 .errorMessage h1 {
-    font-size: 7vw;
-    height: 7vw;
+    font-size: 4.5vw;
+    height: 4.5vw;
     text-transform: uppercase;
     font-weight: 500;
 }
 
-.errorMessage p{
+.errorMessage p {
     width: 60%;
 }
 
 
-.errorMessage h2{
+.errorMessage h2 {
     font-size: 24px;
     text-transform: uppercase;
     width: fit-content;
@@ -2387,6 +2453,11 @@ img {
     width: 50%;
 }
 
+.moreProject{
+    padding-left: 64px;
+    padding-right: 64px;
+}
+
 .moreProject .half {
     background-color: var(--darkGray);
     padding: 16px;
@@ -2414,11 +2485,10 @@ footer {
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
+    bottom: 64px;
     box-sizing: border-box;
     padding-left: 64px;
     padding-right: 64px;
-    padding-bottom: 32px;
     z-index: 14;
 }
 
@@ -2586,7 +2656,7 @@ canvas {
         display: none;
     }
 
-    .alexImg{
+    .alexImg {
         padding-top: 64px;
     }
 
@@ -2609,11 +2679,12 @@ canvas {
         padding-right: 0;
     }
 
-    .project .full, .project .half{
+    .project .full,
+    .project .half {
         padding-top: 132px !important;
     }
 
-    .project .full:last-child{
+    .project .full:last-child {
         padding-bottom: 0;
     }
 
@@ -2967,47 +3038,51 @@ canvas {
         right: 16px;
     }
 
-    .pageViewer{
+    .pageViewer {
         display: none;
         opacity: 0;
     }
 
-    .errorMessage{
+    .errorMessage {
         padding: 16px;
     }
 
-    #score{
+    #score {
         font-size: 56px !important;
     }
 
-    .errorMessage h2{
+    .errorMessage h2 {
         padding-top: 32px;
     }
 
-    .errorMessage h1{
+    .errorMessage h1 {
         width: 60%;
         font-size: 32px;
         line-height: 32px;
     }
 
-    .errorMessage p{
+    .errorMessage p {
         width: 60%;
         padding-bottom: 32px;
     }
 
-    .newcols{
+    .newcols {
         width: 100%;
     }
 
-    .videoFrame{
+    .videoFrame {
         padding-top: 232px;
     }
 
-    .moibleLogo{
+    .moibleLogo {
         display: block;
     }
 
-    .mobileSpacing{
+    .mobileSpacing {
         padding-top: 132px !important;
+    }
+
+    .project{
+        max-width: 100%;
     }
 }
