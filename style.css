@@ -1897,6 +1897,7 @@ img {
     overflow: hidden;
     width: 100%;
     position: relative;
+    border-radius: 16px;
 }
 
 .clipping:hover h3 {
