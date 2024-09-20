@@ -66,25 +66,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener('mousemove', moveCursor);
 });
 
-// Scroll arrow
-const scrollArrow = document.getElementById('scrollArrow');
-if (scrollArrow) {
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 200) {
-      scrollArrow.innerHTML = '&#x2191;';
-    } else {
-      scrollArrow.innerHTML = '&#8595;';
-    }
-  });
-
-  scrollArrow.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
-}
-
 // Copy text to clipboard
 function copyContent() {
   let text = 'xanderkau13@gmail.com';
