@@ -247,7 +247,8 @@
             Interviewee 3</h1>
         <br>
         <h1 class="mdTxt" style="text-align: center; font-weight: 700;">"If I can't schedule my workout time in my
-            calendar, <span style="color: #5166E5;">I will forget to do it</span>. So I must put down my workout time into my calendar."
+            calendar, <span style="color: #5166E5;">I will forget to do it</span>. So I must put down my workout time
+            into my calendar."
         </h1>
         <div class="mdMargin"></div>
         <div class="mdMargin"></div>
@@ -269,9 +270,9 @@
         <div class="mdMargin"></div>
         <div class="image-slider">
             <div class="image-track">
-                <img draggable="false" src="VigorWatch1.png" width="100%" alt="img">
-                <img draggable="false" src="VigorWatch2.png" width="100%" alt="img">
-                <img draggable="false" src="VigorWatch2.png" width="100%" alt="img">
+                <img draggable="false" src="VigorWatch1.png" height="100%" alt="img">
+                <img draggable="false" src="VigorWatch2.png" height="100%" alt="img">
+                <img draggable="false" src="VigorWatch2.png" height="100%" alt="img">
             </div>
         </div>
         <div class="mdMargin"></div>
@@ -316,10 +317,8 @@
                 <img draggable="false" src="vigor_moodboard.png" width="100%" alt="img">
                 <img draggable="false" src="Vigor_Color.svg" width="100%" alt="img">
                 <img draggable="false" src="Vigor_Process3.png" width="100%" alt="img">
-                <img draggable="false" src="Bento_Vigor_lg1.png" width="100%" alt="img">
             </div>
         </div>
-        <div class="mdMargin"></div>
         <div class="mdMargin"></div>
         <div class="projectWriting" style="padding: 0; padding-top: 32px;">
             <div class="flexBox">
@@ -327,16 +326,13 @@
 
                 </div>
                 <div class="half">
-                    <p style="font-weight: 700; font-size: 32px; text-transform: uppercase;">Finding my
-                        project motives</p>
-                    <br>
-                    <br>
-                    <p style="font-size: 32px; line-height: 38px;">When I started this project, I reflected on how
-                        people in other countries tend to be healthier than Americans. I explored how different cultures
-                        and countries promote fitness more effectively than in the U.S.</p>
+                    <p style="font-size: 32px; line-height: 38px;">Vigor as helped improve my design thinking in colors,
+                        creating UI that helps convey a clear experiance and gamefiying the experiance has brought a
+                        cool journey.</p>
                 </div>
             </div>
         </div>
+        <div class="mdMargin"></div>
         <div class="mdMargin"></div>
         <div class="mdMargin"></div>
         <h1 style="padding-left: 0; text-align: center; font-size: 22px; font-weight: 400; text-transform: uppercase;">
@@ -344,9 +340,6 @@
         <br>
         <h1 class="mdTxt" style="text-align: center; font-weight: 700;">“ I don't like going to the gym because why
             should I waste an hour or two in a space I don't really value for. ”</h1>
-        <br>
-        <h1 class="mdTxt" style="text-align: center; font-weight: 700;">“ <span style="color: #5166E5;">I rather take a
-                bike ride in the woods</span> ”</h1>
         <div class="mdMargin"></div>
         <div class="mdMargin"></div>
         <div class="aboutMe">
@@ -397,16 +390,19 @@
                     <p style="font-weight: 700; font-size: 32px; text-transform: uppercase;">Creating meaningful UI</p>
                     <br>
                     <br>
-                    <p style="font-size: 32px; line-height: 38px;">I wanted to make sure my UI content are shaping with easy understanding for users. <br> <br> With interview inisghts, and learning about how users process information, I wanted to make sure it easy to understand.</p>
+                    <p style="font-size: 32px; line-height: 38px;">I wanted to make sure my UI content are shaping with
+                        easy understanding for users. <br> <br> With interview inisghts, and learning about how users
+                        process information, I wanted to make sure it easy to understand.</p>
                 </div>
             </div>
         </div>
+        <div class="mdMargin"></div>
         <div class="mdMargin"></div>
         <img src="Vigor_UI.png" width="100%" alt="UI Design of Vigor App">
         <div class="lgSpacing" style="padding-top: 0;">
             <style>
                 .image-slider {
-                    width: auto;
+                    width: 100%;
                     height: 600px;
                     overflow: hidden;
                     position: relative;
@@ -418,7 +414,6 @@
                 .image-track {
                     display: flex;
                     gap: 64px;
-                    width: max-content;
                     height: 600px;
                     overflow-x: scroll;
                     scrollbar-width: none;
@@ -434,7 +429,10 @@
                 }
 
                 .image-track img {
-                    height: 100%;
+                    height: 600px;
+                    /* Keeps the height fixed */
+                    width: auto;
+                    /* Ensures the width adjusts to maintain aspect ratio */
                     border-radius: 12px;
                     user-select: none;
                 }
@@ -443,8 +441,8 @@
                     background-color: white;
                     color: black;
                     position: fixed;
-                    left:  0%;
-                    top:  0%;
+                    left: 0%;
+                    top: 0%;
                     width: 140px;
                     border-radius: 100rem;
                     height: 64px;
@@ -458,7 +456,7 @@
                     visibility: hidden;
                     pointer-events: none;
                     user-select: none;
-                    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+                    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
                 }
 
                 .image-slider:active .dragCursor {
@@ -487,7 +485,7 @@
             <div class="mdMargin"></div>
             <div class="mdMargin"></div>
             <h1 style="padding-left: 0; text-align: center;"><span style="color: #5166E5;">03</span><br><span
-                class="mdTxt">What I've learned</span></h1>
+                    class="mdTxt">What I've learned</span></h1>
             <br>
             <br>
             <div class="mdMargin"></div>
