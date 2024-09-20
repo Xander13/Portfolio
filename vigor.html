@@ -314,8 +314,8 @@
         <div class="mdMargin"></div>
         <div class="image-slider">
             <div class="image-track">
-                <img draggable="false" src="vigor_moodboard.png" width="100%" alt="img">
-                <img draggable="false" src="Vigor_Color.svg" width="100%" alt="img">
+                <img draggable="false" src="Vigor_Process1.png" width="100%" alt="img">
+                <img draggable="false" src="Vigor_Process2.png" width="100%" alt="img">
                 <img draggable="false" src="Vigor_Process3.png" width="100%" alt="img">
             </div>
         </div>
@@ -356,11 +356,11 @@
             <br>
             <br>
             <div class="marquee2">
-                <ul class="marquee__content__Slow__inverse">
+                <ul class="marquee__content__Slow">
                     <img src="marquee2.png" width="100%">
                     <img src="marquee2.png" width="100%">
                 </ul>
-                <ul class=".marquee__content__Slow__inverse" aria-hidden="true">
+                <ul class="marquee__content__Slow" aria-hidden="true">
                     <img src="marquee2.png" width="100%">
                     <img src="marquee2.png" width="100%">
                 </ul>
@@ -402,7 +402,7 @@
         <div class="lgSpacing" style="padding-top: 0;">
             <style>
                 .image-slider {
-                    width: 100%;
+                    width: auto;
                     height: 600px;
                     overflow: hidden;
                     position: relative;
@@ -415,6 +415,7 @@
                     display: flex;
                     gap: 64px;
                     height: 600px;
+                    flex-shrink: 1;
                     overflow-x: scroll;
                     scrollbar-width: none;
                     cursor: grab;
@@ -429,8 +430,6 @@
                 }
 
                 .image-track img {
-                    height: 600px;
-                    /* Keeps the height fixed */
                     width: auto;
                     /* Ensures the width adjusts to maintain aspect ratio */
                     border-radius: 12px;

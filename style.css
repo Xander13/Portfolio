@@ -2079,13 +2079,20 @@ img {
 }
 
 .marquee2{
-    --gap: 2rem;
     display: flex;
     overflow: hidden;
     user-select: none;
-    gap: var(--gap);
+    gap: 64px !important;
     color: var(--dark);
-} 
+}
+
+.marquee__content__Slow{
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: 64px !important;
+}
 
 .projectMarquee {
     --gap: 4rem;
@@ -2099,7 +2106,7 @@ img {
 }
 
 .marquee__content,
-.hero_marquee__content, .marquee__content__Slow, .marquee__content__Slow__inverse  {
+.hero_marquee__content {
     flex-shrink: 0;
     display: flex;
     justify-content: space-around;
@@ -2170,17 +2177,7 @@ img {
     }
 
     to {
-        transform: translateX(calc(-100% - var(--gap)));
-    }
-}
-
-@keyframes inverseScroll {
-    from {
         transform: translateX(-100%);
-    }
-
-    to {
-        transform: translateX(calc(0 - var(--gap)));
     }
 }
 
