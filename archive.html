@@ -56,7 +56,6 @@
 </head>
 
 <body>
-    <div id="toggle-button" class="navDot"></div>
     <div class="menu--container">
         <input id="menu" class="menu--toggle" type="checkbox">
         <label for="menu" class="menu--toggle--text">Menu</label>
@@ -284,14 +283,43 @@
     </div>
     <br>
     <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    <div class="moreProject">
+        <div class="marquee">
+            <ul class="marquee__content">
+                <li>More &nbsp; ✷ &nbsp;</li>
+                <li>Project &nbsp; ✷ &nbsp;</li>
+            </ul>
+            <ul class="marquee__content" aria-hidden="true">
+                <li>More &nbsp; ✷ &nbsp;</li>
+                <li>Project &nbsp; ✷ &nbsp;</li>
+            </ul>
+        </div>
+        <div class="mdMargin"></div>
+        <div class="flexBox" style="gap: 32px;">
+            <div class="half">
+                <a href="Wishful.html">
+                    <h2>Wishful</h2>
+                    <p>Capstone, Design, Devlopment</p>
+                </a>
+            </div>
+            <div class="half">
+                <a href="Wishful.html">
+                    <h2>Duolingo ASL</h2>
+                    <p>Concept, Design, Devlopment</p>
+                </a>
+            </div>
+            <div class="half">
+                <a href="Google_for_Creator.html">
+                    <h2>Color Health</h2>
+                    <p>Client, Illustration, UX/UI</p>
+                </a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+    </div>
     <div class="newcta">
         <h2 class="lgTxt" onclick="copyContent()">If you'd like to learn <br> more, Lets Talk!</h2>
         <h3><span class="underline" id="change-text">Click to copy email to clipboard</span></h3>
@@ -303,6 +331,11 @@
         </div>
     </footer>
     <script src="app.js"></script>
+    <style>
+        .navList {
+            background-image: none;
+        }
+    </style>
 </body>
 
 </html>
