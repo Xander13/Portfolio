@@ -110,7 +110,7 @@
                     <p style="font-size: 32px; line-height: 38px;">Vigor is a fitness app that helps busy Americans stay
                         fit by offering automated, interest-based
                         workout recommendations to prevent burnout. <br><br> The project was completed in one semester,
-                        starting with research and goal-setting, and turning
+                        starting with research, goal-setting, and turning
                         insights into visual solutions.</p>
                     <br>
                     <br>
@@ -168,7 +168,7 @@
                             <br>
                             <p style="font-size: 32px; line-height: 38px;">From my research, Vigor is derived from
                                 "vigorous," representing journey, strength, and endurance. <br> <br> The goal of Vigor
-                                is to help people find workouts through an automated system.</p>
+                                is to help people find workouts through an automated interest based system.</p>
                         </div>
                     </div>
                 </div>
@@ -270,10 +270,21 @@
         <div class="mdMargin"></div>
         <div class="image-slider">
             <div class="image-track">
-                <img draggable="false" src="VigorWatch1.png" height="100%" alt="img">
-                <img draggable="false" src="VigorWatch3.png" height="100%" alt="img">
-                <img draggable="false" src="VigorWatch2.png" height="100%" alt="img">
-                <img draggable="false" src="VigorWatch4.png" height="100%" alt="img">
+                <div class="imgCards">
+                    <img draggable="false" src="VigorWatch1.png" width="100%" alt="img">
+                    <p>Vigor for Apple Watch has helped me learned to work with Apple UI system</p>
+                </div>
+                <div class="imgCards">
+                    <img draggable="false" src="VigorWatch3.png" width="100%" alt="img">
+                    <p>Creating a journey map for users on apple watch can easy be tracked during thier activity.</p>
+                </div>
+                <div class="imgCards">
+                    <img draggable="false" src="VigorWatch2.png" width="100%" alt="img">
+                    <p>Showcasing different workout helps perform more exercising for thier game experiance.</p>
+                </div>
+                <div class="imgCards">
+                <img draggable="false" src="VigorWatch4.png" width="100%" alt="img">
+                </div>
             </div>
         </div>
         <div class="mdMargin"></div>
@@ -315,9 +326,18 @@
         <div class="mdMargin"></div>
         <div class="image-slider">
             <div class="image-track">
-                <img draggable="false" src="Vigor_Process1.png" width="100%" alt="img">
-                <img draggable="false" src="Vigor_Process2.png" width="100%" alt="img">
-                <img draggable="false" src="Vigor_Process3.png" width="100%" alt="img">
+                <div class="imgCards">
+                    <img draggable="false" src="Vigor_Process1.png" width="100%" alt="img">
+                    <p>Color Inspirations are pulled by activity and Surroundings</p>
+                </div>
+                <div class="imgCards">
+                    <img draggable="false" src="Vigor_Process2.png" width="100%" alt="img">
+                    <p>Color system use for Vigor based on Inspiration board</p>
+                </div>
+                <div class="imgCards">
+                    <img draggable="false" src="Vigor_Process3.png" width="100%" alt="img">
+                    <p>Improving the craft by questioning the goals to help align the Designs</p>
+                </div>
             </div>
         </div>
         <div class="mdMargin"></div>
@@ -342,20 +362,21 @@
         <h1 class="mdTxt" style="text-align: center; font-weight: 700;">“ I don't like going to the gym because why
             should I waste an hour or two in a space I don't really value for. ”</h1>
         <div class="mdMargin"></div>
+        <div class="projectWriting" style="padding: 0; padding-top: 32px;">
+            <div class="flexBox">
+                <div class="half">
+
+                </div>
+                <div class="half">
+                    <p style="font-weight: 700; font-size: 32px; text-transform: uppercase;">Shaping the contents suits for users needs</p>
+                    <br>
+                    <br>
+                    <p style="font-size: 32px; line-height: 38px;">It was important to showcase that all kinds of activty is exercising to help busy Americans stay fit to thier inerstest.</p>
+                </div>
+            </div>
+        </div>
         <div class="mdMargin"></div>
         <div class="aboutMe">
-            <div class="marquee2">
-                <ul class="marquee__content__Slow">
-                    <img src="marquee1.png" width="100%">
-                    <img src="marquee1.png" width="100%">
-                </ul>
-                <ul class="marquee__content__Slow" aria-hidden="true">
-                    <img src="marquee1.png" width="100%">
-                    <img src="marquee1.png" width="100%">
-                </ul>
-            </div>
-            <br>
-            <br>
             <div class="marquee2">
                 <ul class="marquee__content__Slow">
                     <img src="marquee2.png" width="100%">
@@ -401,73 +422,6 @@
         <div class="mdMargin"></div>
         <img src="Vigor_UI.png" width="100%" alt="UI Design of Vigor App">
         <div class="lgSpacing" style="padding-top: 0;">
-            <style>
-                .image-slider {
-                    width: auto;
-                    height: 600px;
-                    overflow: hidden;
-                    position: relative;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                }
-
-                .image-track {
-                    display: flex;
-                    gap: 64px;
-                    height: 600px;
-                    flex-shrink: 1;
-                    overflow-x: scroll;
-                    scrollbar-width: none;
-                    cursor: grab;
-                }
-
-                .grabbing {
-                    cursor: grabbing;
-                }
-
-                .image-track::-webkit-scrollbar {
-                    display: none;
-                }
-
-                .image-track img {
-                    width: auto;
-                    /* Ensures the width adjusts to maintain aspect ratio */
-                    border-radius: 12px;
-                    user-select: none;
-                }
-
-                .dragCursor {
-                    background-color: white;
-                    color: black;
-                    position: fixed;
-                    left: 0%;
-                    top: 0%;
-                    width: 140px;
-                    border-radius: 100rem;
-                    height: 64px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    text-transform: uppercase;
-                    font-weight: 500;
-                    z-index: 13;
-                    font-size: 22px;
-                    visibility: hidden;
-                    pointer-events: none;
-                    user-select: none;
-                    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-                }
-
-                .image-slider:active .dragCursor {
-                    visibility: visible;
-                }
-
-                img,
-                .clipping {
-                    border-radius: 12px;
-                }
-            </style>
             <div class="dragCursor" id="dragCursor">Drag</div>
             <script>
                 const cursorRounded = document.querySelector('#dragCursor');

@@ -595,6 +595,10 @@ img {
     gap: 32px;
 }
 
+.projectWriting .half{
+    padding-left: 32px;
+}
+
 .bg {
     background-color: var(--light);
     padding-bottom: 64px;
@@ -2650,6 +2654,82 @@ canvas {
     background-size: 12vw 18vw;
 }
 
+
+/*IMG SLIDER*/
+.image-slider {
+    width: 100%;
+    height: fit-content;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+.image-track {
+    display: flex;
+    gap: 56px;
+    height: fit-content;
+    flex-shrink: 0;
+    overflow-x: scroll;
+    scrollbar-width: none;
+    cursor: grab;
+}
+
+.imgCards {
+    min-width: 600px;
+    flex-shrink: 0;
+}
+
+.imgCards p {
+    font-size: 18px;
+    padding-top: 32px;
+    width: 50%;
+    user-select: none;
+}
+
+.grabbing {
+    cursor: grabbing;
+}
+
+.image-track::-webkit-scrollbar {
+    display: none;
+}
+
+.image-track img {
+    width: 100%;
+    /* Ensures the width adjusts to maintain aspect ratio */
+    border-radius: 12px;
+    user-select: none;
+}
+
+.dragCursor {
+    background-color: white;
+    color: black;
+    position: fixed;
+    left: 0%;
+    top: 0%;
+    width: 140px;
+    border-radius: 100rem;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    font-weight: 500;
+    z-index: 13;
+    font-size: 22px;
+    visibility: hidden;
+    pointer-events: none;
+    user-select: none;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+
+.image-slider:active .dragCursor {
+    visibility: visible;
+}
+
+
 @media screen and (max-width: 930px) {
     .heroTitle {
         padding-left: 16px;
@@ -3095,5 +3175,21 @@ canvas {
 
     .project{
         max-width: 100%;
+    }
+
+    .projectWriting .half{
+        padding-left: 0px;
+    }
+
+    .imgCards {
+        max-width: 300px;
+    }
+
+    .imgCards p {
+        width: 100%;
+    }
+
+    .marquee2{
+        padding-top: 132px;
     }
 }
