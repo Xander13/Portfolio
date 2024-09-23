@@ -1819,7 +1819,7 @@ img {
 }
 
 .project .half img,
-.full img {
+.full img, .clipping video {
     transform: scale(1.03);
     transition: 0.8s ease;
     opacity: 1;
@@ -1827,7 +1827,7 @@ img {
 }
 
 .project .half:hover img,
-.full:hover img {
+.full:hover img, .clipping:hover video {
     transform: scale(1.02);
     transition: 0.8s ease;
     flex-shrink: 0;
