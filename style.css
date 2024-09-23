@@ -1454,9 +1454,8 @@ img {
 
 .articles h2 {
     padding-top: 16px;
-    font-size: 32px !important;
+    font-size: 24px !important;
     line-height: 1.4em;
-    text-transform: uppercase;
     color: var(--dark);
     font-weight: 400;
 }
@@ -1467,9 +1466,9 @@ img {
 
 .articles p {
     color: var(--gray);
-    font-size: 32px !important;
+    font-size: 24px !important;
     padding-bottom: 16px;
-    padding-top: 32px;
+    padding-top: 16px;
 }
 
 .articles .cols .clipping {
@@ -2727,6 +2726,17 @@ canvas {
 
 .image-slider:active .dragCursor {
     visibility: visible;
+}
+
+@media screen and (max-width: 1200px){
+    .articles .flexBox{
+        flex-wrap: wrap;
+        gap: 32px;
+    }
+
+    .articles .flexBox .cols{
+        width: calc(100%/2 - 16px);
+    }
 }
 
 
