@@ -445,6 +445,7 @@ ul {
     line-height: 32px !important;
     text-align: center;
     padding-top: 32px !important;
+    height: 180px;
 }
 
 img {
@@ -596,6 +597,8 @@ img {
 
 .projectWriting .half{
     padding-left: 32px;
+    width: 50%;
+    
 }
 
 .bg {
@@ -1139,13 +1142,13 @@ img {
 .projectWriting .flexBox{
     justify-content: start;
     align-items: start;
-    flex-direction: column;
+    flex-direction: auto;
     gap: 64px;
 }
 
 .projectWriting p {
     font-size: 22px;
-    line-height: 30px;
+    line-height: 38px;
     text-transform: none;
 }
 
@@ -2091,6 +2094,7 @@ img {
     display: flex;
     overflow: hidden;
     user-select: none;
+    padding-top: 0;
     gap: 64px !important;
     color: var(--dark);
 }
@@ -3193,10 +3197,6 @@ canvas {
     .projectSections .flexBox{
         flex-direction: column;
         gap: 64px;
-    }
-
-    .marquee2{
-        padding-top: 132px;
     }
 
     .articles .flexBox{
