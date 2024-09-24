@@ -233,7 +233,7 @@ p {
     width: fit-content;
     margin: 0 auto;
     cursor: pointer;
-    right: 16px;
+    right: 32px;
     top: 8px;
     color: var(--dark);
     font-size: 32px;
@@ -244,7 +244,7 @@ p {
 
 .moibleLogo {
     position: fixed;
-    left: 16px;
+    left: 32px;
     top: 16px;
     z-index: 22222222;
     font-size: 24px !important;
@@ -495,7 +495,6 @@ img {
 .project h3 {
     text-align: left;
     margin: auto;
-    margin-top: 16px;
     text-transform: uppercase;
     font-size: 24px;
     font-weight: 500;
@@ -614,9 +613,6 @@ img {
 .project h2 {
     font-size: 4.2vw;
     line-height: 4.8vw;
-    padding-top: 16px;
-    margin-bottom: 32px;
-    margin-top: 16px;
     color: var(--dark);
     font-weight: 500 !important;
     border-radius: 100rem;
@@ -1137,13 +1133,14 @@ img {
 .projectWriting {
     margin: auto;
     height: auto;
-    padding-top: 124px;
     margin-left: 0;
 }
 
 .projectWriting .flexBox{
     justify-content: start;
     align-items: start;
+    flex-direction: column;
+    gap: 64px;
 }
 
 .projectWriting p {
@@ -1432,13 +1429,14 @@ img {
     padding-bottom: 64px;
     padding-top: 64px;
     padding: 32px;
+    transition: 0.4s ease;
 }
 
 .articles .cols {
     position: relative;
-    transition: 0.3s ease;
     top: 0px;
-    width: calc(100% / 3);
+    width: calc(100% / 4);
+    transition: 0.4s ease;
 }
 
 .articles .flexBox {
@@ -1458,7 +1456,7 @@ img {
     line-height: 1.4em;
     color: var(--dark);
     font-weight: 400;
-}
+}.
 
 .articles .cols:hover h2 {
     text-decoration: underline;
@@ -1467,7 +1465,6 @@ img {
 .articles p {
     color: var(--gray);
     font-size: 24px !important;
-    padding-bottom: 16px;
     padding-top: 16px;
 }
 
@@ -1588,6 +1585,14 @@ img {
     animation: GrayScale 9s ease infinite;
 }
 
+.skillsets .flexBox{
+    flex-direction: row;
+    gap: 64px;
+    justify-content: start;
+    align-items: start;
+    transition:  0.4s ease;
+}
+
 .face {
     position: relative;
     height: fit-content;
@@ -1682,7 +1687,6 @@ img {
 
 .stickerBoard .canvas img.sticker {
     pointer-events: auto;
-    /* Allow interaction with the stickers if needed */
     cursor: pointer;
 }
 
@@ -2049,6 +2053,7 @@ img {
 
 .cols {
     width: calc(100% / 4);
+    transition: 0.4s ease;
     display: inline-block;
 }
 
@@ -2409,7 +2414,6 @@ img {
 .moreProjects {
     margin: auto;
     height: auto;
-    padding: 32px;
     padding-top: 56px;
     padding-bottom: 132px;
 }
@@ -2468,8 +2472,8 @@ img {
 }
 
 .moreProject{
-    padding-left: 64px;
-    padding-right: 64px;
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .moreProject .half {
@@ -2497,12 +2501,10 @@ img {
 
 footer {
     position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 64px;
+    padding-left: 32px;
+    padding-right: 32px;
+    width: auto;
     box-sizing: border-box;
-    padding-left: 64px;
-    padding-right: 64px;
     z-index: 14;
 }
 
@@ -2736,7 +2738,7 @@ canvas {
 
     .articles .flexBox .cols{
         width: calc(100%/2 - 16px);
-
+        transition: 0.4s ease;
     }
 }
 
@@ -2758,13 +2760,10 @@ canvas {
         display: none;
     }
 
-    .alexImg {
-        padding-top: 64px;
-    }
-
     .textContainer {
-        left: 16px;
+        left: 32px;
         bottom: 24px;
+        width: fit-content;
     }
 
     .passage {
@@ -2779,11 +2778,6 @@ canvas {
     .project .full:nth-child(even) {
         padding-left: 0;
         padding-right: 0;
-    }
-
-    .project .full,
-    .project .half {
-        padding-top: 132px !important;
     }
 
     .project .full:last-child {
@@ -2820,7 +2814,10 @@ canvas {
     .articles,
     .experiance,
     .hero .flexBox {
-        padding: 16px;
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-bottom: 0;
+        padding-top: 0;
     }
 
     .archiveGallery img {
@@ -2838,7 +2835,7 @@ canvas {
     }
 
     .bar {
-        width: calc(100% - 32px);
+        width: calc(100% - 64px);
     }
 
     .hero h1 {
@@ -2950,6 +2947,7 @@ canvas {
 
     .moreProject .half {
         margin-bottom: 0px;
+        padding: 32px;
     }
 
     .gallery h2 {
@@ -2982,12 +2980,12 @@ canvas {
 
     .project .mdMargin,
     .articles .mdMargin {
-        display: none;
+        height: 64px;
+        /* background-color: green; */
     }
 
     .articles h1 {
         font-size: 48px;
-        padding-bottom: 56px;
     }
 
     .articles .flexBox {
@@ -3044,10 +3042,6 @@ canvas {
         width: 100% !important;
     }
 
-    .half {
-        padding: 0px !important;
-    }
-
     #paddingTop {
         padding-top: 0;
     }
@@ -3063,7 +3057,7 @@ canvas {
 
     .mdTxt {
         font-size: 32px;
-        line-height: 42px;
+        line-height: 48px;
     }
 
     .newcta .lgTxt {
@@ -3103,9 +3097,9 @@ canvas {
     }
 
     footer {
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-bottom: 16px;
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-bottom: 32px;
     }
 
     .archives {
@@ -3113,10 +3107,6 @@ canvas {
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-
-    .aboutMe .marquee {
-        margin-bottom: 96px;
     }
 
     .bullets,
@@ -3193,14 +3183,62 @@ canvas {
     }
 
     .imgCards {
-        max-width: 300px;
+        max-width: 500px;
     }
 
     .imgCards p {
         width: 100%;
     }
 
+    .projectSections .flexBox{
+        flex-direction: column;
+        gap: 64px;
+    }
+
     .marquee2{
         padding-top: 132px;
+    }
+
+    .articles .flexBox{
+        flex-wrap: wrap;
+        gap: 0;
+    }
+
+    .articles .cols{
+        width: 100% !important;
+        padding-bottom: 64px;
+    }
+
+    .articles .cols:last-child{
+        padding-bottom: 0;
+    }
+
+    .marquee li {
+        font-size: 185px;
+        line-height: 185px;
+    }
+
+    .marquee{
+        padding: 0;
+    }
+
+    .skillsets .flexBox{
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 64px;
+        justify-content: start;
+        transition:  0.4s ease;
+    }
+
+    .paddingTop{
+        margin-top: 64px;
+    }
+
+    .image-slider{
+        padding: 0;
+    }
+
+    .image-track{
+        gap: 32px;
     }
 }
