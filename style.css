@@ -7,8 +7,8 @@
     --darkGray: #262626;
     --hoverGray: #151515;
     --mdMargin: 96px;
-    --lgMargin: 360px;
-    --smMargin: 64px;
+    --lgMargin: 240px;
+    --smMargin: 32px;
     --purpleish: #e5e4f2;
     --medium-dark: #696969;
     --medium-light: #4f4f4f;
@@ -51,20 +51,9 @@ body,
     z-index: 9999;
 }
 
-.year {
-    position: absolute;
-    right: 64px;
-    bottom: 32px;
-}
-
-.pageArrow {
-    position: fixed;
-    z-index: 333333;
-    right: 64px;
-    font-size: 32px;
-    bottom: 32px;
-    cursor: pointer;
-    height: auto;
+.contained{
+    margin-left: var(--mdMargin);
+    margin-right: var(--mdMargin);
 }
 
 .pageViewer {
@@ -77,7 +66,6 @@ body,
     justify-content: center;
     z-index: 1111;
 }
-
 
 .pageSection {
     width: 2px;
@@ -119,6 +107,11 @@ body,
 
 .mdMargin {
     height: var(--mdMargin);
+    width: 100%;
+}
+
+.smMargin{
+    height: var(--smMargin);
     width: 100%;
 }
 
@@ -295,27 +288,19 @@ ul {
     top: 0px;
     left: 0;
     right: 0px;
-    padding-left: var(--smMargin);
-    padding-right: var(--smMargin);
-    padding-top: 32px;
-    padding-bottom: 32px;
+    padding-left: var(--mdMargin);
+    padding-right: var(--mdMargin);
+    padding-top: 4px;
+    padding-bottom: 4px;
     z-index: 999999;
     margin: auto;
     display: flex;
     justify-content: space-between;
-    font-weight: 300;
     align-content: center;
     list-style-type: none;
-    color: var(--light);
+    background-color: var(--light);
     overflow: hidden;
     transition: 0.5s ease;
-    /* background-image: linear-gradient(to Top,
-        rgba(0, 0, 0, 0),
-        rgba(0, 0, 0, 0.25),
-        rgba(0, 0, 0, 0.5),
-        rgba(0, 0, 0, 0.75),
-        rgb(0, 0, 0)
-    ); */
     pointer-events: none;
 }
 
@@ -326,9 +311,10 @@ ul {
 
 .navList h2 {
     color: var(--dark);
-    font-size: 24px;
-    font-weight: 400;
+    font-size: 12px;
     text-transform: uppercase;
+    font-weight: 600;
+    mix-blend-mode: difference;
 }
 
 .fade-out {
@@ -352,24 +338,18 @@ ul {
 }
 
 .navList a {
-    font-size: 12px;
-    font-weight: 600 !important;
-    line-height: 32px;
+    font-size: 32px;
+    font-weight: 400 !important;
     text-transform: uppercase;
-    transition: 0.5s ease;
     display: flex;
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 100rem;
     align-items: center;
     justify-content: center;
     color: var(--dark);
-    background-color: #343434b8;
-    backdrop-filter: blur(8px);
     height: fit-content;
-    transition: 0.4s ease;
     pointer-events: visible;
 }
 
@@ -382,19 +362,6 @@ ul {
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 100rem;
-    transition: 0.4s ease;
-}
-
-#active {
-    color: var(--light);
-    background-color: var(--dark);
-    font-style: italic;
-    border-radius: 0;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 4px;
 }
 
 #activeContent{
@@ -461,12 +428,17 @@ ul {
     box-sizing: border-box;
 }
 
+.cpation{
+    width: 100%;
+    margin: auto;
+    padding: 32px;
+}
+
 .cpation h1{
     font-size: 24px !important;
     line-height: 32px !important;
     text-align: center;
-    padding-top: 32px !important;
-    height: 180px;
+    padding-top: var(--smMargin) !important;
 }
 
 img {
@@ -474,8 +446,12 @@ img {
     height: auto;
 }
 
+.bold{
+    font-weight: 700;
+    margin-bottom: var(--mdMargin);
+}
+
 .half h1 {
-    padding-top: 16px;
     margin-top: 0;
     padding-bottom: 0;
 }
@@ -483,7 +459,8 @@ img {
 .project,
 .skills {
     position: relative;
-    padding: var(--smMargin);
+    padding-left: var(--mdMargin);
+    padding-right: var(--mdMargin);
     margin: auto;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
@@ -502,7 +479,7 @@ img {
 
 .marginMiddle{
     margin: auto !important;
-    max-width: 1080px;
+    max-width: 1280px;
 }
 
 .wrapper{
@@ -514,7 +491,7 @@ img {
     cursor: wait;
 }
 
-.project h3 {
+h3 {
     text-align: left;
     margin: auto;
     text-transform: uppercase;
@@ -697,6 +674,11 @@ img {
     width: 80%;
 }
 
+.colorBlock{
+    width: 240px;
+    height: 240px;
+}
+
 .full:nth-child(1) {
     width: 80%;
 }
@@ -735,33 +717,33 @@ img {
     height: 60dvh;
 }
 
-.articles {
-    margin: 0;
-    padding-left: 64px;
-    padding-right: 64px;
-}
-
 .articles .flexBox {
     margin-bottom: 0;
 }
 
 .newcta {
-    margin: 0;
-    margin: auto;
     height: fit-content;
-    margin: auto;
-    width: fit-content;
+    position: relative;
+    margin-right: var(--mdMargin);
+    margin-left: var(--mdMargin);
+    background-color: #111111;
+    padding: 64px;
+    border-radius: 32px;
 }
 
 .newcta h3 {
-    font-size: 32px;
+    font-size: 24px;
     width: fit-content;
     margin: auto;
-    padding-bottom: 232px;
+    color: var(--dark);
 }
 
 .newcta h2 {
     text-align: center;
+    width: fit-content;
+    margin: auto;
+    padding-bottom: var(--mdMargin);
+    color: var(--dark);
 }
 
 .newcta .flexBox {
@@ -774,7 +756,7 @@ img {
     position: absolute;
     bottom: 64px;
     /* top: calc(100% / 2 - 9vw); */
-    left: 64px;
+    left: var(--mdMargin);
     height: fit-content;
     z-index: 2222;
     backface-visibility: hidden;
@@ -783,8 +765,9 @@ img {
 .textContainer h3 {
     font-size: 24px;
     text-transform: uppercase;
-    padding-bottom: 16px;
+    padding-bottom: var(--smMargin);
     width: fit-content;
+    margin: 0;
 }
 
 .text h2 {
@@ -1060,14 +1043,6 @@ img {
     text-align: center;
 }
 
-.projectTitles {
-    padding-bottom: 32px;
-}
-
-.projectTitles h4 {
-    font-weight: 400;
-}
-
 .centerTxt {
     font-size: 4.8vw;
     line-height: 4.8vw;
@@ -1117,6 +1092,8 @@ img {
     text-align: left;
     width: 100%;
     height: auto;
+    text-transform: none;
+    padding-top: 16px;
 }
 
 .pChips {
@@ -1126,10 +1103,10 @@ img {
     padding-bottom: 16px;
     padding-left: 16px;
     padding-right: 16px;
-    border-radius: 100rem;
+    border-radius: 12px;
     color: var(--dark);
-    text-transform: uppercase;
-    background-color: var(--ghost);
+    background-color: #0000007d;
+    backdrop-filter: blur(12px);
     width: fit-content;
     height: fit-content;
 
@@ -1350,41 +1327,6 @@ img {
     color: #8d8d8d;
 }
 
-.vigor h2,
-.vigor h3 {
-    color: #8d8d8d;
-    font-weight: 400;
-    text-align: left;
-    margin: auto;
-    max-width: 800px;
-}
-
-.vigor .center {
-    text-align: center;
-    margin: auto;
-}
-
-.vigor .center h1 {
-    color: #5166E5;
-    max-width: 30ch;
-    font-size: 56px;
-    line-height: 56px;
-    padding-bottom: 64px;
-    padding-top: 0;
-    max-width: 800px;
-}
-
-.vigor .center p {
-    font-weight: 400;
-    text-align: left;
-    margin: auto;
-    max-width: 800px;
-}
-
-.vigor h3 {
-    padding-bottom: 64px;
-}
-
 .half p {
     text-wrap: balance;
 }
@@ -1456,11 +1398,8 @@ img {
 .articles {
     position: relative;
     margin: auto;
-    margin-left: 32px;
-    margin-right: 32px;
-    padding-bottom: 64px;
-    padding-top: 64px;
-    padding: 32px;
+    margin-left: var(--mdMargin);
+    margin-right: var(--mdMargin);
     transition: 0.4s ease;
 }
 
@@ -1595,6 +1534,10 @@ img {
     padding-right: 32px;
 }
 
+hr{
+    opacity: 0.4;
+}
+
 .skillsets .hr {
     height: 4px;
     background: linear-gradient(270deg, var(--light), var(--medium-dark));
@@ -1638,6 +1581,10 @@ img {
 
 .projects .half {
     width: 50%;
+}
+
+.half{
+    position: relative;
 }
 
 .experiance h1 {
@@ -1692,9 +1639,33 @@ img {
     touch-action: manipulation;
 }
 
-.canvas {
+.stickerBoardProject {
+    position: relative;
+    height: 600px;
     width: 100%;
+    z-index: 2;
+    cursor: pointer;
+    user-select: none;
+    touch-action: manipulation;
+}
+
+.canvas {
     height: 50dvh;
+    position: relative;
+    left: 0;
+    right: 0;
+    top: 0;
+    overflow: visible;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-left: var(--mdMargin);
+    margin-right: var(--mdMargin);
+}
+
+.canvasProject {
+    width: 100%;
+    height: 600px;
     position: relative;
     left: 0;
     right: 0;
@@ -1719,6 +1690,15 @@ img {
     rotate: -30deg;
 }
 
+.defaultstickers2{
+    position: absolute;
+    left: 32px;
+    top: 32px;
+    width: 300px;
+    z-index: 1;
+    rotate: -30deg;
+}
+
 .sticker {
     position: absolute;
     width: auto;
@@ -1736,8 +1716,37 @@ img {
     z-index: 2;
 }
 
+.drawers{
+    border-bottom: 1px solid rgb(96, 96, 96);
+    padding-bottom: var(--mdMargin);
+    transition: 0.5s ease;
+}
+
+.drawers:hover{
+    border-bottom: 1px solid rgb(255, 255, 255);
+    transition: 0.5s ease;
+    padding-bottom: var(--mdMargin);
+    cursor: pointer;
+}
+
+.drawers .flexBox{
+    align-items: center;
+    margin-bottom: var(--smMargin);
+    display: flex; /* Use flexbox to align items */
+    align-items: center; /* Center items vertically */
+    position: relative; /* Allow absolute positioning of plusBars within */
+    margin-bottom: var(--smMargin); /* Adjust margin as needed */
+}
+
+.drawers .headers{
+    font-size: 32px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+}
+
 .bar {
-    width: calc(100% - 128px);
+    width: 100%;
     height: 4px;
     margin: auto;
     margin-top: 16px;
@@ -1749,6 +1758,40 @@ img {
     -o-animation: GrayScale 9s ease infinite;
     animation: GrayScale 9s ease infinite;
     user-select: none;
+}
+
+.plus {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
+.plusBar {
+    position: absolute;
+    background-color: white;
+}
+
+.plusBar1 {
+    width: 5px; /* Vertical bar */
+    height: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    position: absolute; /* Ensure absolute positioning */
+    background-color: white; /* Assuming a background color */
+    transition: opacity 0.3s ease; /* Smooth transition for opacity */
+}
+
+.plusBar2 {
+    width: 32px; /* Horizontal bar */
+    height: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute; /* Ensure absolute positioning */
+    background-color: white; /* Assuming a background color */
+}
+
+.expandContent:not(first){
+    display: none;
 }
 
 @-webkit-keyframes GrayScale {
@@ -1841,7 +1884,7 @@ img {
     margin-top: 22px;
 }
 
-.project .half img,
+.project .half img, .clipping img,
 .full img, .clipping video {
     transform: scale(1.03);
     transition: 0.8s ease;
@@ -1849,7 +1892,7 @@ img {
     flex-shrink: 0;
 }
 
-.project .half:hover img,
+.project .half:hover img, .clipping:hover img,
 .full:hover img, .clipping:hover video {
     transform: scale(1.02);
     transition: 0.8s ease;
@@ -1891,6 +1934,28 @@ img {
     margin-bottom: 64px;
 } */
 
+.cpationTag{
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: auto;
+    height: auto;
+    padding: 32px;
+    background-color: black;
+    border-radius: 100rem;
+    cursor: pointer;
+    display: none;
+}
+
+.clipping:hover .cpationTag, .half:hover .cpationTag{
+    display: block;
+}
+
+.cpationTag img{
+    width: 24px;
+}
+
+
 .capations .flexBox {
     padding-bottom: 0;
     padding-top: 16px;
@@ -1924,7 +1989,6 @@ img {
     overflow: hidden;
     width: 100%;
     position: relative;
-    border-radius: 12px;
 }
 
 .clipping:hover h3 {
@@ -2107,16 +2171,32 @@ img {
     color: var(--dark);
 }
 
+.marquee3 {
+    --gap: 1rem;
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+    color: var(--dark);
+}
+
 .marquee2{
     display: flex;
     overflow: hidden;
     user-select: none;
     padding-top: 0;
     gap: 64px !important;
-    color: var(--dark);
 }
 
 .marquee__content__Slow{
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: 64px !important;
+}
+
+.marquee__content__Slow__inverse{
     flex-shrink: 0;
     display: flex;
     justify-content: space-around;
@@ -2156,6 +2236,12 @@ img {
     font-size: 17vw;
 }
 
+.marquee3 li {
+    text-decoration: none;
+    list-style-type: none;
+    font-size: 12vw;
+}
+
 .marquee__content {
     animation: scroll 60s linear infinite;
     padding-bottom: 0;
@@ -2167,7 +2253,7 @@ img {
 }
 
 .marquee__content__Slow__inverse {
-    animation: inverseScroll 120s linear infinite;
+    animation: inversescroll 120s linear infinite;
     padding-bottom: 0;
 }
 
@@ -2208,6 +2294,16 @@ img {
 
     to {
         transform: translateX(-100%);
+    }
+}
+
+@keyframes inversescroll {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0%);
     }
 }
 
@@ -2510,32 +2606,60 @@ img {
 }
 
 .quotes {
-    background-color: var(--darkGray);
-    color: var(--light);
-    padding: 32px !important;
-    padding-top: 64px !important;
-    padding-bottom: 64px !important;
+    color: var(--dark);
     border-radius: 12px;
+    text-align: left;
+    width: 80%;
+}
+
+.italics{
+    font-style: oblique;
+}
+
+.quotes p{
     text-align: center;
-    width: calc(100% / 3);
+    padding-bottom: var(--smMargin);
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0px !important;
+}
+
+.nextProject{
+    padding-left: var(--mdMargin);
+    padding-right: var(--mdMargin);
+    background-color: var(--dark);
+}
+
+.nextProject h1{
+    color: var(--light);
 }
 
 footer {
-    position: absolute;
-    padding-left: 32px;
-    padding-right: 32px;
+    position: relative;
+    margin-left: var(--mdMargin);
+    margin-right: var(--mdMargin);
     width: auto;
     box-sizing: border-box;
     z-index: 14;
+    background-color: var(--light);
+}
+
+.moreWorks{
+    padding-left: var(--mdMargin);
+    padding-right: var(--mdMargin);
 }
 
 footer h2 {
-    font-size: 32px;
+    font-size: 18px;
+    color: var(--dark);
+}
+
+footer .bios{
+    max-width: 800px;
 }
 
 footer a:hover {
-    text-decoration: underline;
-    text-underline-offset: 16px;
+    font-style: italic;
 }
 
 #varType {
@@ -2684,13 +2808,11 @@ canvas {
     overflow-x: hidden;
     overflow-y: hidden;
     position: relative;
-    padding-top: 64px;
-    padding-bottom: 64px;
 }
 
 .image-track {
     display: flex;
-    gap: 16px;
+    gap: 4vw;
     height: fit-content;
     flex-shrink: 0;
     overflow-x: scroll;
@@ -2699,14 +2821,14 @@ canvas {
 }
 
 .imgCards {
-    width: 900px;
+    max-width: 424px;
     flex-shrink: 0;
 }
 
 .imgCards p {
     font-size: 18px;
     padding-top: 32px;
-    width: 50%;
+    width: 100%;
     user-select: none;
 }
 
@@ -2720,35 +2842,7 @@ canvas {
 
 .image-track img {
     width: 100%;
-    /* Ensures the width adjusts to maintain aspect ratio */
-    border-radius: 12px;
     user-select: none;
-}
-
-.dragCursor {
-    background-color: white;
-    color: black;
-    position: fixed;
-    left: 0%;
-    top: 0%;
-    width: 140px;
-    border-radius: 100rem;
-    height: 64px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-transform: uppercase;
-    font-weight: 500;
-    z-index: 13;
-    font-size: 22px;
-    visibility: hidden;
-    pointer-events: none;
-    user-select: none;
-    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-}
-
-.image-slider:active .dragCursor {
-    visibility: visible;
 }
 
 @media screen and (max-width: 1200px){

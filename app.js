@@ -107,7 +107,6 @@ document.querySelectorAll('.clipping').forEach(function (clipping) {
 
 
 //bar
-
 document.addEventListener("DOMContentLoaded", function () {
   const canvases = document.querySelectorAll('.canvas');
 
