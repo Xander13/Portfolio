@@ -110,9 +110,9 @@ const stickers = [
     'face.svg',
     'AK_Emoji.png',
     'web.svg',
-    'figma.svg',
+    'AK_IMG.png',
     'alogo.svg'
-];
+  ];
 
 const rotations = [30, 0, -30];
 let currentStickerIndex = 0;

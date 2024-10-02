@@ -144,7 +144,7 @@ const stickers = [
   'face.svg',
   'AK_Emoji.png',
   'web.svg',
-  'figma.svg',
+  'AK_IMG.png',
   'alogo.svg'
 ];
 

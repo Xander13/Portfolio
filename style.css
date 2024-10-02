@@ -298,7 +298,6 @@ ul {
     justify-content: space-between;
     align-content: center;
     list-style-type: none;
-    background-color: var(--light);
     overflow: hidden;
     transition: 0.5s ease;
     pointer-events: none;
