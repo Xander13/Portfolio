@@ -52,8 +52,8 @@ body,
 }
 
 .contained{
-    margin-left: var(--mdMargin);
-    margin-right: var(--mdMargin);
+    margin-left: var(--smMargin);
+    margin-right: var(--smMargin);
 }
 
 .pageViewer {
@@ -288,8 +288,8 @@ ul {
     top: 0px;
     left: 0;
     right: 0px;
-    padding-left: var(--mdMargin);
-    padding-right: var(--mdMargin);
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
     padding-top: 4px;
     padding-bottom: 4px;
     z-index: 999999;
@@ -458,8 +458,8 @@ img {
 .project,
 .skills {
     position: relative;
-    padding-left: var(--mdMargin);
-    padding-right: var(--mdMargin);
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
     margin: auto;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
@@ -511,8 +511,8 @@ h3 {
 } */
 
 .mdTxt {
-    font-size: 4.2vw;
-    line-height: 5.2vw;
+    font-size: 4vw;
+    line-height: 5vw;
     color: var(--dark);
     text-transform: uppercase;
     font-weight: 500;
@@ -723,8 +723,8 @@ h3 {
 .newcta {
     height: fit-content;
     position: relative;
-    margin-right: var(--mdMargin);
-    margin-left: var(--mdMargin);
+    margin-right: var(--smMargin);
+    margin-left: var(--smMargin);
     background-color: #111111;
     padding: 64px;
     border-radius: 32px;
@@ -755,7 +755,7 @@ h3 {
     position: absolute;
     bottom: 64px;
     /* top: calc(100% / 2 - 9vw); */
-    left: var(--mdMargin);
+    left: var(--smMargin);
     height: fit-content;
     z-index: 2222;
     backface-visibility: hidden;
@@ -1397,8 +1397,8 @@ h3 {
 .articles {
     position: relative;
     margin: auto;
-    margin-left: var(--mdMargin);
-    margin-right: var(--mdMargin);
+    margin-left: var(--smMargin);
+    margin-right: var(--smMargin);
     transition: 0.4s ease;
 }
 
@@ -1658,8 +1658,8 @@ hr{
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    margin-left: var(--mdMargin);
-    margin-right: var(--mdMargin);
+    margin-left: var(--smMargin);
+    margin-right: var(--smMargin);
 }
 
 .canvasProject {
@@ -2624,8 +2624,8 @@ hr{
 }
 
 .nextProject{
-    padding-left: var(--mdMargin);
-    padding-right: var(--mdMargin);
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
     background-color: var(--dark);
 }
 
@@ -2635,8 +2635,8 @@ hr{
 
 footer {
     position: relative;
-    margin-left: var(--mdMargin);
-    margin-right: var(--mdMargin);
+    margin-left: var(--smMargin);
+    margin-right: var(--smMargin);
     width: auto;
     box-sizing: border-box;
     z-index: 14;
@@ -2644,8 +2644,8 @@ footer {
 }
 
 .moreWorks{
-    padding-left: var(--mdMargin);
-    padding-right: var(--mdMargin);
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
 }
 
 footer h2 {
