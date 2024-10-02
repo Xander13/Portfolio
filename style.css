@@ -285,7 +285,7 @@ ul {
 
 .navList {
     position: fixed;
-    top: 0px;
+    top: 16px;
     left: 0;
     right: 0px;
     padding-left: var(--smMargin);
@@ -337,9 +337,8 @@ ul {
 }
 
 .navList a {
-    font-size: 32px;
+    font-size: 14px;
     font-weight: 400 !important;
-    text-transform: uppercase;
     display: flex;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -348,8 +347,11 @@ ul {
     align-items: center;
     justify-content: center;
     color: var(--dark);
+    background-color: #151515;
+    border-radius: 100rem;
     height: fit-content;
     pointer-events: visible;
+    transition: 0.5s ease;
 }
 
 .navList a:hover,
@@ -361,6 +363,7 @@ ul {
     padding-left: 16px;
     padding-right: 16px;
     border-radius: 100rem;
+    transition: 0.5s ease;
 }
 
 #activeContent{
@@ -521,7 +524,7 @@ h3 {
 .smTxt {
     font-size: 18px !important;
     line-height: 24px !important;
-    color: var(--gray) !important;
+    color: var(--dark) !important;
     letter-spacing: 1px;
     font-weight: 400 !important;
     text-transform: none !important;
@@ -1660,6 +1663,16 @@ hr{
     background-repeat: no-repeat;
     margin-left: var(--smMargin);
     margin-right: var(--smMargin);
+}
+
+.cover{
+    height: 90vh;
+}
+
+.cover img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .canvasProject {

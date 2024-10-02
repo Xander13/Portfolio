@@ -91,21 +91,6 @@ function copyContent() {
   }
 }
 
-//set bg color based on clipping hover
-// Function to change body background color and text color on hover
-document.querySelectorAll('.clipping').forEach(function (clipping) {
-  clipping.addEventListener('mouseover', function () {
-    document.body.style.backgroundColor = clipping.getAttribute('data-color');
-    document.body.style.color = clipping.getAttribute('data-text-color');
-  });
-
-  clipping.addEventListener('mouseout', function () {
-    document.body.style.backgroundColor = '';  // Reset to default background color
-    document.body.style.color = '';  // Reset to default text color
-  });
-});
-
-
 //bar
 document.addEventListener("DOMContentLoaded", function () {
   const canvases = document.querySelectorAll('.canvas');
@@ -240,44 +225,6 @@ function placeSticker(canvas, src, x, y, rotation) {
 
   canvas.appendChild(sticker);
 }
-
-//Page viewer page scroller
-const rect = document.querySelector('.rect');
-const pageViewer = document.querySelector('.pageViewer');
-let isDragging = false;
-
-rect.addEventListener('mousedown', function(e) {
-    isDragging = true;
-    document.body.style.userSelect = 'none'; // Prevent text selection while dragging
-});
-
-document.addEventListener('mousemove', function(e) {
-    if (isDragging) {
-        // Get the position of the mouse relative to the .pageViewer
-        const rectTop = pageViewer.getBoundingClientRect().top;
-        let newY = e.clientY - rectTop;
-
-        // Clamp the newY position to ensure the .rect stays within .pageViewer
-        newY = Math.max(0, Math.min(newY, 180 - 12)); // 180 is the height of .pageViewer and 12 is the height of .rect
-
-        // Update the position of the .rect
-        rect.style.top = newY + 'px';
-
-        // Calculate the new scroll position based on the slider position
-        const scrollPercent = newY / (180 - 12);
-        const documentHeight = document.documentElement.scrollHeight;
-        const windowHeight = window.innerHeight;
-        const newScroll = scrollPercent * (documentHeight - windowHeight);
-
-        // Set the new scroll position of the page
-        window.scrollTo(0, newScroll);
-    }
-});
-
-document.addEventListener('mouseup', function() {
-    isDragging = false;
-    document.body.style.userSelect = ''; // Re-enable text selection after dragging
-});
 
 // This part keeps the rect moving with the scroll when not being dragged
 document.addEventListener("scroll", function() {
