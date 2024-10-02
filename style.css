@@ -1682,9 +1682,9 @@ hr{
 
 .defaultstickers {
     position: absolute;
-    left: 96px;
-    top: 32px;
-    width: 300px;
+    left: 54px;
+    top: 18px;
+    width: 240px;
     z-index: 1;
     rotate: -30deg;
 }
@@ -1746,7 +1746,7 @@ hr{
 
 .bar {
     width: 100%;
-    height: 4px;
+    height: 1px;
     margin: auto;
     margin-top: 16px;
     z-index: -1;
