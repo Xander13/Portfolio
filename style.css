@@ -514,7 +514,9 @@ h3 {
 
 .mdTitle{
     font-size: 4vw;
-    line-height: 1.2;
+    line-height: 4vw;
+    font-weight: 900;
+    text-transform: uppercase;
 }
 
 .center{
@@ -529,8 +531,12 @@ h3 {
     margin-bottom: 0;
     font-size: 5vw;
     font-weight: 500;
-    line-height: 1.2;
+    line-height: 4.9vw;
     text-transform: uppercase;
+}
+
+.imgTxtBlock img{
+    width: 100%;
 }
 
 .smTxt {
@@ -562,14 +568,16 @@ h3 {
 }
 
 .lgTxt {
-    font-size: 5vw;
+    font-size: 9vw;
     padding-left: var(--smMargin);
     padding-right: var(--smMargin);
-    line-height: 1.2;
+    line-height: 8vw;
+    text-transform: uppercase;
     width: fit-content;
     cursor: pointer;
     margin-bottom: var(--smMargin);
     margin-top: 0;
+    font-weight: 900;
 }
 
 .xlTxt {
@@ -1812,7 +1820,7 @@ hr{
     left: 50%;
     transform: translateX(-50%);
     position: absolute; /* Ensure absolute positioning */
-    background-color: white; /* Assuming a background color */
+    background-color: var(--dark); /* Assuming a background color */
     transition: opacity 0.3s ease; /* Smooth transition for opacity */
 }
 
@@ -1822,7 +1830,7 @@ hr{
     top: 50%;
     transform: translateY(-50%);
     position: absolute; /* Ensure absolute positioning */
-    background-color: white; /* Assuming a background color */
+    background-color: var(--dark); /* Assuming a background color */
 }
 
 .expandContent:not(first){
