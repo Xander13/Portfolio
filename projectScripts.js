@@ -110,7 +110,6 @@ const stickers = [
     'face.svg',
     'AK_Emoji.png',
     'web.svg',
-    'AK_IMG.png',
     'alogo.svg'
   ];
 
@@ -255,3 +254,24 @@ sliders.forEach(slider => {
     });
 });
 
+//make cover padding when scroll
+window.addEventListener('scroll', adjustCoverSize);
+window.addEventListener('resize', adjustCoverSize); // Trigger on resize to handle dynamic screen width
+
+function adjustCoverSize() {
+    const covers = document.querySelectorAll('.cover');
+    const scrollTop = window.scrollY || document.documentElement.scrollTop; // Use scrollY as the preferred method
+    const isMobile = window.innerWidth <= 930; // Check if screen width is 930px or smaller
+
+    covers.forEach(cover => {
+        if (scrollTop > 100) { // Adjust when scrolled beyond 100px
+            cover.style.marginLeft = isMobile ? '32px' : '48px'; // 32px for mobile, 48px for larger screens
+            cover.style.marginRight = isMobile ? '32px' : '48px';
+            cover.style.borderRadius = isMobile ? '8px' : '16px'; // Smaller border-radius on mobile
+        } else {
+            cover.style.marginLeft = '0';
+            cover.style.marginRight = '0';
+            cover.style.borderRadius = '0'; // Reset border-radius when margin is 0
+        }
+    });
+}
