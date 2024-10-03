@@ -310,7 +310,7 @@ ul {
 
 .navList h2 {
     color: var(--dark);
-    font-size: 12px;
+    font-size: 18px;
     text-transform: uppercase;
     font-weight: 600;
     mix-blend-mode: difference;
@@ -1726,7 +1726,7 @@ hr{
 
 .defaultstickers {
     position: absolute;
-    left: 54px;
+    left: 18px;
     top: 18px;
     width: 240px;
     z-index: 1;
