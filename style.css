@@ -550,7 +550,8 @@ h3 {
 
 .xSmTxt{
     font-size: 14px;
-    line-height: 1.2;
+    font-weight: 400;
+    line-height: 18px;
 }
 
 .bold{
@@ -1456,17 +1457,14 @@ h3 {
     font-size: 24px !important;
     line-height: 1.4em;
     color: var(--dark);
-    font-weight: 400;
-}.
-
-.articles .cols:hover h2 {
-    text-decoration: underline;
+    font-weight: 500;
 }
 
 .articles p {
     color: var(--gray);
-    font-size: 24px !important;
+    font-size: 16px;
     padding-top: 16px;
+    text-transform: uppercase;
 }
 
 .articles .cols .clipping {
@@ -2027,24 +2025,15 @@ hr{
 }
 
 .captions{
-    position: absolute;
-    bottom: 0;
-    padding: 16px;
     width: 100%;
     padding-bottom: 32px;
-}
-
-.captions h2{
-    font-size: 32px;
-    line-height: 40px;
-    text-align: center;
+    padding-top: 16px;
 }
 
 .clipping {
     overflow: hidden;
     width: 100%;
     position: relative;
-    border-radius: 16px;
 }
 
 .clipping:hover h3 {
@@ -2956,9 +2945,10 @@ canvas {
         width: fit-content;
     }
 
-    .textContainer .mdTitle{
+    .mdTitle{
         font-size: 32px;
         width: calc(100% - 16px);
+        line-height: 42px;
     }
 
     .passage {
