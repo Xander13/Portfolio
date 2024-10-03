@@ -253,7 +253,7 @@ p {
 
 .moibleLogo {
     position: fixed;
-    left: 32px;
+    left: 16px;
     top: 32px;
     z-index: 22222222;
     font-size: 24px !important;
@@ -2908,13 +2908,13 @@ canvas {
 
 @media screen and (max-width: 930px) {
     .contained, .stickerBoard {
-        margin-left: 32px;
-        margin-right: 32px;
+        margin-left: 16px;
+        margin-right: 16px;
     }
 
     .moreWorks{
-        padding-left: 32px;
-        padding-right: 32px;
+        padding-left: 16px;
+        padding-right: 16px;
     }
 
     .moreWorks .flexBox{
@@ -2943,14 +2943,14 @@ canvas {
     }
 
     .textContainer {
-        left: 32px;
+        left: 16px;
         bottom: 56px;
         width: fit-content;
     }
 
     .textContainer .mdTitle{
-        font-size: 30px;
-        width: calc(100% - 32px);
+        font-size: 32px;
+        width: calc(100% - 16px);
     }
 
     .passage {
@@ -2985,8 +2985,8 @@ canvas {
     }
 
     .mdTxt, .smTxt, .chips{
-        font-size: 16px !important;
-        line-height: 24px !important;
+        font-size: 20px !important;
+        line-height: 32px !important;
     }
 
     .chips{
@@ -3040,8 +3040,8 @@ canvas {
     .articles,
     .experiance,
     .hero .flexBox {
-        padding-left: 32px;
-        padding-right: 32px;
+        padding-left: 16px;
+        padding-right: 16px;
         padding-bottom: 0;
         padding-top: 0;
     }
@@ -3324,8 +3324,8 @@ canvas {
     }
 
     footer {
-        padding-left: 32px;
-        padding-right: 32px;
+        padding-left: 16px;
+        padding-right: 16px;
         margin: 0;
     }
 

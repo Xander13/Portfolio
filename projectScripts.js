@@ -265,8 +265,8 @@ function adjustCoverSize() {
 
     covers.forEach(cover => {
         if (scrollTop > 100) { // Adjust when scrolled beyond 100px
-            cover.style.marginLeft = isMobile ? '32px' : '48px'; // 32px for mobile, 48px for larger screens
-            cover.style.marginRight = isMobile ? '32px' : '48px';
+            cover.style.marginLeft = isMobile ? '16px' : '48px'; // 32px for mobile, 48px for larger screens
+            cover.style.marginRight = isMobile ? '16px' : '48px';
             cover.style.borderRadius = isMobile ? '8px' : '16px'; // Smaller border-radius on mobile
         } else {
             cover.style.marginLeft = '0';
