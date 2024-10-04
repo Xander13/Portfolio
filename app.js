@@ -21,75 +21,12 @@ function checkScroll() {
     }
   }
 }
-
-// Add event listener to check scroll position
-window.addEventListener('scroll', checkScroll);
-
 // Reset scroll on page load
 resetScroll();
-
 
 // Event listener for scrolling
 window.addEventListener('scroll', checkScroll);
 
-// Event listener for window resize
-window.addEventListener('resize', checkScroll);
-
-// Toggle light and dark mode
-const toggleButton = document.getElementById('toggle-button');
-if (toggleButton) {
-  toggleButton.addEventListener('click', () => {
-    document.body.classList.toggle('lightMode');
-    const navDot = document.querySelector('.navDot');
-
-    if (navDot) {
-      navDot.classList.toggle('lightMode');
-    }
-  });
-}
-
-// Motion text and cursor
-document.addEventListener('DOMContentLoaded', function () {
-  const textLines = document.querySelectorAll('.line');
-  let delay = 0;
-  textLines.forEach(function (line) {
-    line.style.animationDelay = delay + 's';
-    delay += 0.5; // Increase delay for each line
-  });
-
-  const cursorRounded = document.querySelector('#arrow');
-  const moveCursor = (e) => {
-    const mouseY = e.clientY;
-    const mouseX = e.clientX;
-    cursorRounded.style.transform = `translate3d(${mouseX - 160}px, ${mouseY - 160}px, 0)`;
-  }
-  window.addEventListener('mousemove', moveCursor);
-});
-
-// Copy text to clipboard
-function copyContent() {
-  let text = 'xanderkau13@gmail.com';
-  const changeText = document.querySelector("#change-text");
-
-  try {
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        console.log('Content copied to clipboard');
-        changeText.textContent = "Copied!";
-        // Timeout to change the message
-        setTimeout(() => {
-          changeText.textContent = "Click to copy email to clipboard";
-        }, 2000);
-      })
-      .catch(err => {
-        console.error('Failed to copy: ', err);
-        changeText.textContent = "Failed to copy. Please try manually.";
-      });
-  } catch (err) {
-    console.error('Failed to copy: ', err);
-    changeText.textContent = "Failed to copy. Please try manually.";
-  }
-}
 
 //bar
 document.addEventListener("DOMContentLoaded", function () {
@@ -224,18 +161,4 @@ function placeSticker(canvas, src, x, y, rotation) {
 
   canvas.appendChild(sticker);
 }
-
-// This part keeps the rect moving with the scroll when not being dragged
-document.addEventListener("scroll", function() {
-    if (!isDragging) { // Only update the rect if not dragging
-        let documentHeight = document.documentElement.scrollHeight;
-        let scrollTop = document.documentElement.scrollTop;
-        let windowHeight = window.innerHeight;
-
-        let scrollPercent = scrollTop / (documentHeight - windowHeight);
-        let newPosition = (180 - 12) * scrollPercent;
-
-        rect.style.top = newPosition + "px";
-    }
-});
 
