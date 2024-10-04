@@ -162,3 +162,49 @@ function placeSticker(canvas, src, x, y, rotation) {
   canvas.appendChild(sticker);
 }
 
+
+//fade in the page
+document.addEventListener("DOMContentLoaded", function() {
+  // Initial fade-in after page load
+  setTimeout(() => {
+      document.body.classList.remove("fade-out"); // Remove fade-out class
+      document.body.classList.add("fade-in"); // Add fade-in class
+  }, 1000); // 1 second delay for the initial fade-in
+
+  // Fade out on link click
+  const links = document.querySelectorAll('.fade-link');
+  links.forEach(link => {
+      link.addEventListener('click', function(event) {
+          event.preventDefault(); // Prevent default link behavior
+          const targetUrl = this.href; // Store the target URL
+
+          // Add fade-out class to body
+          document.body.classList.remove("fade-in");
+          document.body.classList.add("fade-out");
+
+          // Immediately redirect to the new page
+          window.location.href = targetUrl; // Redirect to the new page
+      });
+  });
+
+  // Debounce function to limit how often a function can be called
+  function debounce(func, wait) {
+      let timeout;
+      return function executedFunction(...args) {
+          const later = () => {
+              clearTimeout(timeout);
+              func(...args);
+          };
+          clearTimeout(timeout);
+          timeout = setTimeout(later, wait);
+      };
+  }
+
+  // Use the debounce function for the resize event
+  window.addEventListener('resize', debounce(function() {
+      if (window.innerWidth === 980) { // Check if the window width is 980px
+          document.body.classList.remove("fade-out"); // Remove fade-out class if present
+          document.body.classList.add("fade-in"); // Add fade-in class
+      }
+  }, 300)); // Adjust the wait time as needed
+});
