@@ -22,21 +22,27 @@ body {
 }
 
 
-html, body {
-    background-color: black; /* Set background color to black */
+html,
+body {
+    background-color: black;
+    /* Set background color to black */
 }
 
 body {
-    opacity: 0; /* Start hidden */
-    transition: opacity 1s ease; /* Short fade in/out duration */
+    opacity: 0;
+    /* Start hidden */
+    transition: opacity 1s ease;
+    /* Short fade in/out duration */
 }
 
 body.fade-in {
-    opacity: 1; /* Fade in to visible */
+    opacity: 1;
+    /* Fade in to visible */
 }
 
 body.fade-out {
-    opacity: 0; /* Fade out to hidden */
+    opacity: 0;
+    /* Fade out to hidden */
 }
 
 body,
@@ -555,9 +561,8 @@ h3 {
 
 .mdTitle {
     font-size: 4vw;
-    line-height: 4vw;
-    font-weight: 900;
-    text-transform: uppercase;
+    line-height: 4.8vw;
+    font-weight: 500;
 }
 
 .center {
@@ -1184,9 +1189,64 @@ h3 {
 
 }
 
+.experiaments {
+    position: relative;
+    height: 200px;
+    transition: 0.5s ease;
+    display: flex;
+    align-items: center;
+}
+
+.experiaments .marquee {
+    position: absolute;
+    font-weight: 900;
+    z-index: 1;
+    height: fit-content;
+    margin-top: var(--smMargin);
+    margin-bottom: var(--smMargin);
+}
+
+@keyframes reveal {
+    0% {
+        scale: 0.8;
+        opacity: 0;
+    }
+
+    100% {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+.experiaments img,
+.experiaments video {
+    margin: auto;
+    position: absolute;
+    pointer-events: none;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    display: none;
+    animation: reveal 0.5s ease;
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.60), 0 15px 12px rgba(0, 0, 0, 0.5);
+}
+
+.experiaments img{
+    height: 80vh;
+    width: auto;
+}
+
+.experiaments video{
+    width: 90vh
+}
+
+.experiaments:hover img,
+.experiaments:hover video {
+    display: block;
+}
+
 .marqueeProjects {
     height: fit-content;
-    padding-top: 56px;
     background-color: var(--dark);
 }
 
@@ -2338,7 +2398,9 @@ hr {
 .marquee li {
     text-decoration: none;
     list-style-type: none;
-    font-size: 17vw;
+    font-size: 8vw;
+    color: white;
+    font-weight: 400;
 }
 
 .marquee3 li {
@@ -2366,7 +2428,7 @@ hr {
     opacity: 1;
 }
 
-.projectSections .marquee__content {
+ .marquee__content {
     width: auto;
 }
 
