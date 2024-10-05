@@ -249,9 +249,3 @@ function hideContent(experiment) {
       image.style.display = 'none';
   }
 }
-
-// Ensure the video is autoplaying correctly
-document.querySelectorAll('video').forEach(function (video) {
-  video.muted = true; // Fix the typo by setting muted
-  video.play();       // Ensure the video is playing
-});
