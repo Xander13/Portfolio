@@ -3085,7 +3085,7 @@ canvas {
     .mdTitle {
         font-size: 32px;
         width: calc(100% - 16px);
-        line-height: 42px;
+        line-height: 48px;
     }
 
     .passage {
@@ -3595,7 +3595,7 @@ canvas {
     }
 
     .experiaments{
-        height: fit-content;
+        height: 120px;
     }
 
     .skillsets .flexBox {
