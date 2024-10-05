@@ -1,28 +1,3 @@
-// Copy text to clipboard
-function copyContent() {
-    let text = 'xanderkau13@gmail.com';
-    const changeText = document.querySelector("#change-text");
-
-    try {
-        navigator.clipboard.writeText(text)
-            .then(() => {
-                console.log('Content copied to clipboard');
-                changeText.textContent = "Copied!";
-                // Timeout to change the message
-                setTimeout(() => {
-                    changeText.textContent = "Click to copy email to clipboard";
-                }, 2000);
-            })
-            .catch(err => {
-                console.error('Failed to copy: ', err);
-                changeText.textContent = "Failed to copy. Please try manually.";
-            });
-    } catch (err) {
-        console.error('Failed to copy: ', err);
-        changeText.textContent = "Failed to copy. Please try manually.";
-    }
-}
-
 //toggle drawers for projects what I learned sections
 document.addEventListener("DOMContentLoaded", function () {
     const drawers = document.querySelectorAll('.drawers');

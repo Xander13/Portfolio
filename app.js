@@ -1,3 +1,28 @@
+// Copy text to clipboard
+function copyContent() {
+  let text = 'a-kauffman@outlook.com';
+  const changeText = document.querySelector("#change-text");
+
+  try {
+      navigator.clipboard.writeText(text)
+          .then(() => {
+              console.log('Content copied to clipboard');
+              changeText.textContent = "Copied!";
+              // Timeout to change the message
+              setTimeout(() => {
+                  changeText.textContent = "Email";
+              }, 2000);
+          })
+          .catch(err => {
+              console.error('Failed to copy: ', err);
+              changeText.textContent = "Failed to copy. Please try manually.";
+          });
+  } catch (err) {
+      console.error('Failed to copy: ', err);
+      changeText.textContent = "Failed to copy. Please try manually.";
+  }
+}
+
 function resetScroll() {
   const url = window.location.href;
 

@@ -15,6 +15,16 @@
     --medium-light: #4f4f4f;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24;
+  scale: 0.65;
+  margin-right: 4px;
+}
+
 body {
     background-color: var(--light);
     color: var(--dark);
@@ -210,7 +220,7 @@ p {
 }
 
 .menu--body {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 9);
     height: 100%;
     width: 100%;
     position: fixed;
@@ -222,27 +232,15 @@ p {
     justify-content: center;
     align-content: center;
     overflow: hidden;
-    backdrop-filter: blur(32px);
 }
 
 .MenuBios {
     padding-left: 16px;
 }
 
-@keyframes blur {
-    0% {
-        backdrop-filter: blur(0px);
-    }
-
-    100% {
-        backdrop-filter: blur(32px);
-    }
-}
-
 .menu--toggle:checked~.menu--body {
     top: 0;
     transition: 1s ease;
-    animation: blur 2s ease;
 }
 
 .follow {
@@ -284,8 +282,7 @@ p {
     padding-bottom: 8px;
     padding-left: 32px;
     padding-right: 32px;
-    background-color: #343434b8;
-    backdrop-filter: blur(12px);
+    background-color: #151515;
     border-radius: 100rem;
     user-select: none;
     position: fixed;
@@ -361,14 +358,6 @@ ul {
     width: fit-content;
 }
 
-.navList h2 {
-    color: var(--dark);
-    font-size: 18px;
-    text-transform: uppercase;
-    font-weight: 600;
-    mix-blend-mode: difference;
-}
-
 .fade-out {
     opacity: 0;
     display: none;
@@ -389,9 +378,9 @@ ul {
     align-items: center;
 }
 
-.navList a {
+.navList a, .navList h2 {
     font-size: 14px;
-    font-weight: 400 !important;
+    font-weight: 500 !important;
     display: flex;
     padding-top: 8px;
     padding-bottom: 8px;
@@ -405,10 +394,12 @@ ul {
     height: fit-content;
     pointer-events: visible;
     transition: 0.5s ease;
+    cursor: pointer;
+    z-index: 2222;
+    user-select: none;
 }
 
-.navList a:hover,
-#active:hover {
+.navList a:hover, .navList h2:hover {
     color: var(--light);
     background-color: var(--dark);
     padding-top: 8px;
@@ -1189,7 +1180,6 @@ h3 {
     border-radius: 12px;
     color: var(--dark);
     background-color: #0000007d;
-    backdrop-filter: blur(12px);
     width: fit-content;
     height: fit-content;
 
