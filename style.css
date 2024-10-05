@@ -9,6 +9,7 @@
     --mdMargin: 96px;
     --lgMargin: 240px;
     --smMargin: 48px;
+    --xSmMargin: 24px;
     --purpleish: #e5e4f2;
     --medium-dark: #696969;
     --medium-light: #4f4f4f;
@@ -136,6 +137,11 @@ body,
 
 .smMargin {
     height: var(--smMargin);
+    width: 100%;
+}
+
+.xSmMargin{
+    height: var(--xSmMargin);
     width: 100%;
 }
 
@@ -561,7 +567,7 @@ h3 {
 
 .mdTitle {
     font-size: 4vw;
-    line-height: 4.8vw;
+    line-height: 4.3vw;
     font-weight: 500;
 }
 
@@ -1191,7 +1197,7 @@ h3 {
 
 .experiaments {
     position: relative;
-    height: 200px;
+    height: 120px;
     transition: 0.5s ease;
     display: flex;
     align-items: center;
