@@ -1228,21 +1228,27 @@ h3 {
     z-index: 2;
     display: none;
     animation: reveal 0.5s ease;
-    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.60), 0 15px 12px rgba(0, 0, 0, 0.5);
 }
 
 .experiaments img{
     height: 80vh;
     width: auto;
+    flex-shrink: 0;
 }
 
 .experiaments video{
-    width: 90vh
+    width: 90vh;
+    height: auto;
+    flex-shrink: 0;
 }
 
 .experiaments:hover img,
 .experiaments:hover video {
     display: block;
+}
+
+.experiaments .marquee:not(:hover){
+    opacity: 0.3;
 }
 
 .marqueeProjects {
@@ -3565,12 +3571,24 @@ canvas {
     }
 
     .marquee li {
-        font-size: 185px;
-        line-height: 185px;
+        font-size: 124px;
+        padding: 0;
     }
 
-    .marquee {
-        padding: 0;
+    .experiaments img{
+        width: 50%;
+        height: auto;
+        flex-shrink: 0;
+    }
+    
+    .experiaments video{
+        width: 90vw;
+        height: auto;
+        flex-shrink: 0;
+    }
+
+    .experiaments{
+        height: fit-content;
     }
 
     .skillsets .flexBox {

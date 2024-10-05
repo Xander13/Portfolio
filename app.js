@@ -208,3 +208,46 @@ document.addEventListener("DOMContentLoaded", function() {
       }
   }, 300)); // Adjust the wait time as needed
 });
+
+
+//view experiments
+// Function to handle hover and touch events for revealing images
+document.querySelectorAll('.experiaments').forEach(function (experiment) {
+  // For hover on desktop
+  experiment.addEventListener('mouseenter', function () {
+      revealContent(experiment);
+  });
+
+  experiment.addEventListener('mouseleave', function () {
+      hideContent(experiment);
+  });
+
+  // For touch on mobile
+  experiment.addEventListener('touchstart', function () {
+      revealContent(experiment);
+  });
+
+  experiment.addEventListener('touchend', function () {
+      hideContent(experiment);
+  });
+});
+
+function revealContent(experiment) {
+  const image = experiment.querySelector('img, video');
+  if (image) {
+      image.style.display = 'block';
+  }
+}
+
+function hideContent(experiment) {
+  const image = experiment.querySelector('img, video');
+  if (image) {
+      image.style.display = 'none';
+  }
+}
+
+// Ensure the video is autoplaying correctly
+document.querySelectorAll('video').forEach(function (video) {
+  video.muted = true; // Fix the typo by setting muted
+  video.play();       // Ensure the video is playing
+});
