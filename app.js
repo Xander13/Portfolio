@@ -211,8 +211,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 //view experiments
-// Function to handle hover and touch events for revealing images
 document.querySelectorAll('.experiaments').forEach(function (experiment) {
+  let touchTimeout;
+
   // For hover on desktop
   experiment.addEventListener('mouseenter', function () {
       revealContent(experiment);
@@ -222,12 +223,15 @@ document.querySelectorAll('.experiaments').forEach(function (experiment) {
       hideContent(experiment);
   });
 
-  // For touch on mobile
+  // For touch on mobile with timeout delay
   experiment.addEventListener('touchstart', function () {
-      revealContent(experiment);
+      touchTimeout = setTimeout(function () {
+          revealContent(experiment);
+      }, 300); // Adjust this value for the desired delay
   });
 
   experiment.addEventListener('touchend', function () {
+      clearTimeout(touchTimeout); // Cancel if touch is lifted too quickly
       hideContent(experiment);
   });
 });
