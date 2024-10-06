@@ -1227,13 +1227,13 @@ h3 {
 }
 
 .experiaments img{
-    height: 80vh;
+    height: 700px;
     width: auto;
     flex-shrink: 0;
 }
 
 .experiaments video{
-    width: 90vh;
+    width: 900px;
     height: auto;
     flex-shrink: 0;
 }
@@ -2409,7 +2409,7 @@ hr {
 .marquee3 li {
     text-decoration: none;
     list-style-type: none;
-    font-size: 12vw;
+    font-size: 8vw;
 }
 
 .marquee__content {
@@ -3016,15 +3016,20 @@ canvas {
 }
 
 @media screen and (max-width: 1200px) {
-    .articles .flexBox {
-        flex-wrap: wrap;
-        gap: 32px;
+    .skillsets .half{
+        width: 100%;
     }
 
-    .articles .flexBox .cols {
-        width: calc(100%/2 - 16px);
-        transition: 0.4s ease;
+    .skillsets .flexBox{
+        flex-wrap: wrap;
     }
+
+    .skillsets .flexBox:nth-child(2){
+        flex-wrap: nowrap;
+        width: 100%;
+    }
+
+
 }
 
 
@@ -3074,8 +3079,9 @@ canvas {
 
     .mdTitle {
         font-size: 32px;
-        width: calc(100% - 16px);
+        width: 100%;
         line-height: 48px;
+        text-wrap: balance;
     }
 
     .passage {
