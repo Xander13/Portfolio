@@ -2041,6 +2041,10 @@ hr {
     margin-top: 22px;
 }
 
+.clipping video{
+    width: 100%;
+}
+
 .project .half img,
 .clipping img,
 .full img,
