@@ -40,20 +40,9 @@ body {
 }
 
 body {
-    opacity: 0;
     /* Start hidden */
     transition: opacity 1s ease;
     /* Short fade in/out duration */
-}
-
-body.fade-in {
-    opacity: 1;
-    /* Fade in to visible */
-}
-
-body.fade-out {
-    opacity: 0;
-    /* Fade out to hidden */
 }
 
 body,
@@ -361,12 +350,6 @@ ul {
 .navList img {
     height: 48px;
     width: fit-content;
-}
-
-.fade-out {
-    opacity: 0;
-    display: none;
-    transition: opacity 0.2s ease-in-out;
 }
 
 .navList .flexBox {

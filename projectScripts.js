@@ -248,28 +248,3 @@ function adjustCoverSize() {
         }
     });
 }
-
-//fade in the page
-document.addEventListener("DOMContentLoaded", function() {
-    // Initial fade-in after page load
-    setTimeout(() => {
-        document.body.classList.remove("fade-out"); // Remove fade-out class
-        document.body.classList.add("fade-in"); // Add fade-in class
-    }, 200); // 1 second delay for the initial fade-in
-
-    // Fade out on link click
-    const links = document.querySelectorAll('.fade-link');
-    links.forEach(link => {
-        link.addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            const targetUrl = this.href; // Store the target URL
-
-            // Add fade-out class to body
-            document.body.classList.remove("fade-in");
-            document.body.classList.add("fade-out");
-
-            // Immediately redirect to the new page
-            window.location.href = targetUrl; // Redirect to the new page
-        });
-    });
-});
