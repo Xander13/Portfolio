@@ -229,6 +229,7 @@ a {
     font-weight: 800;
     text-transform: uppercase;
     cursor: pointer;
+    rotate: 4deg;
 }
 
 .items a:not(:hover) {
@@ -432,7 +433,7 @@ ul {
     user-select: none;
 }
 
-.navList a:hover, .navList h2:hover, .bottom a:hover {
+.navList a:hover, .navList h1:hover, .bottom a:hover {
     rotate: 4deg;
     padding-top: 8px;
     padding-bottom: 8px;
