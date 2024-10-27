@@ -187,6 +187,54 @@ a {
     background-color: transparent;
 }
 
+.index {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 22222;
+    display: none;
+    background-color: black;
+}
+
+.showcase .items {
+    opacity: 1;
+}
+
+.items {
+    overflow: auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    position: relative;
+}
+
+.items a{
+    color: white;
+    font-size: 10vw;
+    line-height: 10.2vw;
+    text-align: center;
+    z-index: 2;
+    transition: 0.5s ease;
+    text-transform: uppercase;
+}
+
+.items a:hover {
+    font-size: 10vw;
+    line-height: 10.2vw;
+    transition: 0.5s ease;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.items a:not(:hover) {
+    opacity: 0.3;
+}
+
 h1,
 h2,
 h3,
@@ -366,7 +414,7 @@ ul {
     align-items: center;
 }
 
-.navList a, .navList h2 {
+.navList a, .navList h1 {
     font-size: 49px;
     font-weight: 500 !important;
     display: flex;
@@ -3610,5 +3658,16 @@ canvas {
 
     .image-track {
         gap: 32px;
+    }
+
+    .items a, .items a:hover{
+        color: white;
+        font-size: 13vw;
+        line-height: 13.2vw;
+        padding: 16px;
+        text-align: center;
+        z-index: 2;
+        transition: 0.5s ease;
+        text-transform: uppercase;
     }
 }

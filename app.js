@@ -226,3 +226,44 @@ function hideContent(experiment) {
       image.style.display = 'none';
   }
 }
+
+//showcase the index list:
+const scrollContainer = document.getElementById('scrollContainer');
+
+function cloneItems() {
+    // Clone the items to create a looping effect
+    const items = Array.from(scrollContainer.children);
+    items.forEach(item => {
+        const clone = item.cloneNode(true);
+        scrollContainer.appendChild(clone);
+    });
+}
+
+function infiniteScroll() {
+    // If scrolled to the bottom, reset to the start
+    if (scrollContainer.scrollTop + scrollContainer.clientHeight >= scrollContainer.scrollHeight) {
+        scrollContainer.scrollTop = 0;
+    }
+}
+
+cloneItems(); // Clone items once to enable looping effect
+scrollContainer.addEventListener('scroll', infiniteScroll); // Listen for user scroll
+
+//SHow the indexList
+const indexButton = $('#indexButton');
+const indexContainer = $('#indexContainer');
+const items = $('.items');
+
+indexButton.on('click', () => {
+  if (indexContainer.is(':visible')) {
+      // Fade out items and index container
+      items.fadeOut(400);
+      indexContainer.fadeOut(400);
+  } else {
+      // Fade in index container first
+      indexContainer.fadeIn(400, () => {
+          // After index fades in, fade in items
+          items.fadeIn(400);
+      });
+  }
+});
