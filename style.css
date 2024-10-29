@@ -208,11 +208,17 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    gap: 4rem;
     position: relative;
 }
 
-.items a{
+.items .flexBox{
+    justify-content: space-between;
+    width: 100%;
+    gap: 32px;
+}
+
+.items h1{
     color: white;
     font-size: 10vw;
     line-height: 10.2vw;
@@ -222,9 +228,13 @@ a {
     text-transform: uppercase;
 }
 
-.items a:hover {
-    font-size: 10vw;
-    line-height: 10.2vw;
+.itmes h2{
+    font-size: 12px;
+    color: gray;
+    transition: 0.5s ease;
+}
+
+.items h1:hover {
     transition: 0.5s ease;
     font-weight: 800;
     text-transform: uppercase;
@@ -232,7 +242,7 @@ a {
     rotate: 4deg;
 }
 
-.items a:not(:hover) {
+.items h1:not(:hover) {
     opacity: 0.3;
 }
 
