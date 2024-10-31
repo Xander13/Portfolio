@@ -3,509 +3,208 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Alex Kauffman - Wishful</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Kauffman</title>
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
     <meta name="author" content="Alex Kauffman">
-    <meta name="description" content="Alex Kauffman – UX/UI designer">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Alex Kauffman - Visual Designer">
+    <meta name="theme-color" content="var(--light)" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="var(--dark)" media="(prefers-color-scheme: light)">
     <meta name="robots" content="index,follow"><!-- All Search Engines -->
     <meta name="googlebot" content="index,follow"><!-- Google Specific -->
     <meta name="google" content="nositelinkssearchbox">
     <meta name="generator" content="program">
     <meta name="format-detection" content="telephone=no">
-    <link rel="icon" type="image/x-icon" href="alex_web_icon.png">
-    <!-- Facebook Open Graph Image -->
+    <link rel="icon" type="image/x-icon" href="aklogo.svg">
+    <!-- Apple Icon Set -->
+    <link rel="apple-touch-icon" href="AlexIconApp.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="A.K Design">
+    <meta name="apple-mobile-web-app-status-bar-style" content="var(--dark)">
+    <!-- Facebook Open Graph -->
     <meta property="og:image" content="AlexKauffmanOG.png" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:width" content="1200" />
-    <meta property="og:image" content="AlexKauffmanOG2.png" />
-    <meta property="og:image:height" content="1080" />
-    <meta property="og:image:width" content="1080" />
-    <meta property="og:image" content="AlexKauffmanOG3.png" />
-    <meta property="og:image:height" content="600" />
-    <meta property="og:image:width" content="322" />
-    <meta property="og:title"
-        content="Alex Kauffman, a UX/UI designer crafting ideas for websites, apps, experiences, and more." />
-    <meta name="og:description"
-        content="A UX/UI designer who enjoys creating small things that make a big impact. Works with large brands to create solutions that benefit the community at scale.">
+    <meta property="og:image:alt" content="Alex Kauffman's Thumbnail cover." />
+    <meta property="og:title" content="Alex Kauffman - Full Stack Designer" />
+    <meta property="og:description" content="Creating visuals that make a big impact." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://www.kauffman-alex.com" />
-    <meta property="og:image" content="AlexKauffmanOG.png" />
-    <meta name="og:image:alt" content="Alex Kauffman's Thumbnail cover." />
-    <!-- Twitter Card Image -->
+    <meta property="og:url" content="https://alex-kauffman.com/" />
+    <!-- Twitter Card -->
     <meta property="twitter:image" content="AlexKauffmanOG.png" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image:alt" content="Alex Kauffman's Thumbnail cover." />
     <meta name="twitter:creator" content="@akooof13" />
-    <meta name="twitter:description"
-        content="Alex Kauffman, a UX/UI designer crafting ideas for websites, apps, experiences, and more.">
-    <!--Other Links and resources-->
+    <meta name="twitter:description" content="Creating visuals that make a big impact.">
     <link rel="stylesheet" href="cssReset.css">
+    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
-    <link rel="stylesheet" href="style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
     <div class="menu--container">
         <input id="menu" class="menu--toggle" type="checkbox">
-        <div class="moibleLogo"><img src="aklogo.svg"></div>
+        <div class="moibleLogo">
+            <a href="https://alex-kauffman.com">
+                <img src="aklogo.svg" width="100%" alt="Logo shaped like 'A' with a person inside.">
+            </a>
+        </div>
         <label for="menu" class="menu--toggle--text">Menu</label>
         <div class="menu--body">
             <ul class="menu--list">
-                <li><a id="active" href="https://alex-kauffman.com">Work</a></li>
-                <li><a href="https://alex-kauffman.com/archive.html">Archive</a></li>
+                <li><a href="https://alex-kauffman.com">Work</a></li>
                 <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
             </ul>
-            <div class="follow">
-                <h1>2024</h1>
+            <div class="social">
+                <h2>
+                    <a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">
+                        LinkedIn
+                    </a>
+                </h2>
+                <h2>
+                    <a href="https://x.com/akooof13" target="_blank">
+                        X ( <span style="text-decoration: line-through;">Twitter</span> )
+                    </a>
+                </h2>
+
+                <h2>
+                    <a href="https://github.com/Xander13" target="_blank">
+                        Github
+                    </a>
+                </h2>
             </div>
         </div>
     </div>
-    <div class="navList">
+    <div class="navList" style="position: relative;">
         <div class="flexBox" style="justify-content: space-between;">
-            <img src="aklogo.svg">
-            <div class="flexBox" style="width: fit-content; gap: 12px;">
+            <a href="https://alex-kauffman.com">
+                <img src="aklogo.svg" width="100%" alt="Logo shaped like 'A' with a person inside.">
+            </a>
+            <div class="flexBox" style="width: fit-content; gap: 32px;">
                 <a id="active" href="https://alex-kauffman.com">Work</a>
-                <a href="https://alex-kauffman.com/archive.html">Archive</a>
                 <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
             </div>
         </div>
     </div>
-    <div class="heroCover">
-        <div class="projectTitle">
-            <div class="flexBox">
-                <div>
-                    <h1>Wishful</h1>
-                    <br>
-                    <div class="flexBox" style="width: fit-content; gap: 12px;">
-                        <p class="pChips">UX/UI</p>
-                        <p class="pChips">Capstone</p>
-                        <p class="pChips">Development</p>
+    <div class="contained" id="heroTop">
+        <div class="lgMargin"></div>
+        <h2>Wishful Capstone</h2>
+        <div class="smMargin"></div>
+        <h1 class="mdTitle">Creating inspiration virtually during COVID-19 to spark hope and aspirations.</h1>
+    </div>
+    <div class="mdMargin"></div>
+    <div class="cover">
+        <img src="Wishful.png" width="100%" alt="image">
+    </div>
+    <div class="contained">
+        <div class="mdMargin"></div>
+        <div class="flexBox" style="align-items:start;">
+            <div class="half">
+                <div class="flexBox">
+                    <div class="half">
+                        <hr>
+                        <br>
+                        <h1 class="xSmTxt">Time: 1 Semester</h1>
+                        <br>
+                        <hr>
+                        <br>
+                        <h1 class="xSmTxt">Role: Capstone, UX/UI Design, Devlopment</h1>
+                        <br>
+                        <hr>
+                        <br>
+                        <h1 class="xSmTxt">Software & Languages: Figma, JS, jQuerry, Three.js, and HTML/CSS</h1>
+                        <br>
+                        <hr>
+                        <br>
+                        <h1 class="xSmTxt">Devices: Web Desktop, Web Mobile</h1>
+                        <br>
+                        <hr>
+                        <br>
+                        <h1 class="xSmTxt">Team: <br> <br> Alex Kauffman – Designer, Developer</h1>
+                        <h1 class="xSmTxt">Will McCloskey – Designer, Developer</h1>
+                        <br>
+                        <h1 class="xSmTxt">Bailey Cunningham – Designer</h1>
+                        <h1 class="xSmTxt">Ben Mendelsohn – Designer</h1>
+                        <br>
+                        <h1 class="xSmTxt">Jason Dtreeter – Developer</h1>
+                        <h1 class="xSmTxt">Gabriel Veit – Developer</h1>
+                        <br>
+                        <hr>
+                        <br>
                     </div>
                 </div>
-                <div class="downArrow">
-                    <img draggable="false" src="DownArrow.svg" width="100%" alt="Down Arrow">
+            </div>
+            <div class="half">
+                <h1 class="mdTxt">Wishful was an RIT capstone project completed in 2021. Due to COVID-19, we had to work from home to create a project that would be engaging for Imagine RIT.</h1>
+                <br>
+                <h1 class="mdTxt">Imagine RIT is a major annual event showcasing senior projects. Our project was featured on local news and the RIT website. We wanted to share inspiration during the challenging times of the COVID-19 pandemic.</h1>
+                <br><br>
+                <h1 class="mdTxt">This project helped me understand our MVP and bridge the gap between design and development. Our team included just two developers; Will and I took on hybrid roles as both designers and developers. This gave us a great opportunity to bring design and development together into tangible solutions.</h1>
+                <br><br>
+                <h1 class="mdTxt">I created an AR experience to make Wishful more interactive and enjoyable for users at home. I also contributed to the UX design, focusing on a seamless experience to ensure smooth transitions throughout the project.</h1>
+            </div>            
+        </div>
+    </div>
+    <div class="lgMargin"></div>
+    <div class="contained">
+        <div class="clipping">
+            <div style="padding:57.46% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/591268125?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Wishful - RIT 2021 Capstone project"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+        </div>
+        <div class="smMargin"></div>
+        <div class="clipping">
+            <img src="Wishful_color.svg" width="100%">
+        </div>
+        <div class="smMargin"></div>
+        <div class="clipping">
+            <img src="WishfulDeep_Dive.png" width="100%">
+        </div>
+        <div class="smMargin"></div>
+        <div class="clipping">
+            <img src="WishFull_Typeface.svg" width="100%">
+        </div>
+        <div class="lgMargin"></div>
+        <div class="breif">
+            <div class="flexBox" style="align-items: start;">
+                <div class="half" style="padding-right: var(--mdMargin)">
+                    <h1 class="mdTxt">Reflections</h1>
+                </div>
+                <div class="half">
+                    <h1 class="mdTitle">Growth Opportunities</h1>
+                    <div class="mdMargin"></div>
+                    <div class="drawers">
+                        <div class="flexBox" style="align-content: space-between;">
+                            <h1 class="headers">Reality vs. Imagination:</h1>
+                            <div class="plus">
+                                <div class="plusBar1"></div>
+                                <div class="plusBar2"></div>
+                            </div>
+                        </div>
+                        <div class="expandContent">
+                            <h1 class="mdTxt">With a powerful tool like Figma, it’s easy to imagine all the bells and whistles, but when it comes to development, making those ideas a reality can be more challenging within tight time frames. <br><br> As a hybrid designer-developer, I can see how to make ideas more feasible, helping our team achieve the vision we wanted to create and bring it to life.</h1>
+                        </div>
+                    </div>                    
+                    <div class="mdMargin"></div>
+                    <div class="drawers">
+                        <div class="flexBox" style="align-content: space-between;">
+                            <h1 class="headers">Development:</h1>
+                            <div class="plus">
+                                <div class="plusBar1"></div>
+                                <div class="plusBar2"></div>
+                            </div>
+                        </div>
+                        <div class="expandContent">
+                            <h1 class="mdTxt">As a developer, I gained valuable experience writing JavaScript code and integrating libraries into our designs. I really enjoy working on front-end development, while our backend developers, Jason and Gabe, bring the ideas to life through code.</h1>
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
-        <img src="Wishful_Cover.png" width="100%" alt="image">
-
     </div>
-    <div class="project">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <h1 class="lgTitle">Wishful</h1>
-        <br>
-        <br>
-        <h1>Creating a wishing well space to bring hope during COVID-19 times.<h1>
-                <br>
-                <img src="WishfulBento.png" width="100%" alt="Bento Design of Wishful Project">
-                <br>
-                <div class="projectWriting marginMiddle" style="padding: 0;"></div>
-                <div class="flexBox" style="gap: 0;">
-                    <div class="half">
-                        <div class="full">
-                            <h2 class="smTitle">Challenges</h2>
-                            <p class="smTxt">Create something fun but 6ft apart. (Covid-19 Time peroid we had to wrok
-                                remote in school settings).
-                            </p>
-                        </div>
-                        <div class="full">
-                            <h2 class="smTitle">Team</h2>
-                            <p class="smTxt">
-                                Designer & Devloper:<br>
-                                Alex Kauffman, Will McCloskey
-                                <br>
-                                <br>
-                                Designer:<br>
-                                Bailey Cunningham & Ben Mendelsohn
-                                <br>
-                                <br>
-                                Developer:<br>
-                                Developer, Jason Streeter & Gabriel Veit
-                            </p>
-                        </div>
-                    </div>
-                    <div class="half" style="flex-wrap: wrap;">
-                        <div class="full">
-                            <h2 class="smTitle">Constraints</h2>
-                            <p class="smTxt">Work with anything you desired but must be used virtualy as due to Covid-19
-                                RIT wasn't able to host inperson Capstone Project showcase.</p>
-                        </div>
-                        <div class="full">
-                            <h2 class="smTitle">Role</h2>
-                            <div class="flexBox"
-                                style="flex-wrap: wrap; gap: 8px; align-items: start; justify-content: start; padding-top: 24px;">
-                                <div class="pChips">
-                                    Capstone
-                                </div>
-                                <div class="pChips">
-                                    1 Semester
-                                </div>
-                                <div class="pChips">
-                                    Visual Design
-                                </div>
-                                <div class="pChips">
-                                    Research
-                                </div>
-                                <div class="pChips">
-                                    Devlopment
-                                </div>
-                                <div class="pChips">
-                                    Teamwork
-                                </div>
-                                <div class="pChips">
-                                    Figma
-                                </div>
-                                <div class="pChips">
-                                    AR
-                                </div>
 
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <h1 class="lgTxt" style="padding-left: 0;"><span style="color: #F2387C;">01</span><br>The designs</h1>
-                <div class="imgCard">
-                    <div style="padding:57.46% 0 0 0;position:relative;"><iframe
-                            src="https://player.vimeo.com/video/591268125?h=6613fab1c8&autoplay=1&loop=1&title=0&byline=0&portrait=0"
-                            style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
-                            allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-                    <script src="https://player.vimeo.com/api/player.js"></script>
-                </div>
-                <div class="ProjectSections">
-                    <h3 style="color: var(--dark);">Full Wishful Experience walk through</h3>
-                </div>
-                <br>
-                <br>
-
-                <div class="flexBox" style="justify-content: space-between; gap: 32px;">
-                    <div class="half">
-                        <div class="clipping">
-                            <img src="Wishful_Main_image3.png" width="100%" alt="Wishful t-shit our team has made">
-
-                        </div>
-                    </div>
-                    <div class="half">
-                        <img src="Wishful_Main_image2.png" width="100%" alt="img">
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <h1 class="lgTxt" style="padding-left: 0;"><span style="color: #F2387C;">02</span><br>Overview</h1>
-                <br>
-                <br>
-                <div class="projectSections">
-                    <div class="flexBox" style="gap: 64px;">
-                        <div class="half" style="border-left: 6px solid #F2387C; padding-left: 24px;">
-                            <h1 style="padding-top: 0px !important">Problem</h1>
-                            <br>
-                            <p>How can we create an experiance for everyone who are at home because of Covid-19 Pandemic
-                                and
-                                enjoy at Imagine RIT?</p>
-                        </div>
-                        <div class="half" style="border-left: 6px solid #F2387C; padding-left: 24px;">
-                            <h1 style="padding-top: 0px !important">Outcome</h1>
-                            <br>
-                            <p>We created an interactive web app that you can share you wish and hope in to the world to
-                                help
-                                spark hope and happiness.</p>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="projectHero projectHeader">
-                    <div class="flexBox" style="gap: 32px;">
-                        <div class="forMoment">
-                            <h1><span style="color: #F2387C; font-weight: 400;">For</span> everyone in Covid-19 hardship
-                                at
-                                home</h1>
-                            <h1><span style="color: #F2387C; font-weight: 400;">Who</span> has hopes and dreams</h1>
-                            <h1><span style="color: #F2387C; font-weight: 400;">The</span> Wishing Well is a library
-                            </h1>
-                            <h1><span style="color: #F2387C; font-weight: 400;">That</span> creates and catalogues
-                                wishes as
-                                digital creatures</h1>
-                            <h1><span style="color: #F2387C; font-weight: 400;">This</span> is a unique visualization of
-                                our
-                                collective human hopes, aspirations, and dreams as a community.</h1>
-                        </div>
-                        <div class="flexBox bullets"
-                            style="gap: 32px; flex-direction: row; justify-content: start; flex-wrap: wrap;">
-                            <div class="cols"
-                                style="background-color: var(--darkGray); padding: 32px; border-radius: 12px; width: 100%;">
-                                <h1 style="color: #F2387C;">Visual</h1>
-                                <p class="smTxt">
-                                    Animated creature representation
-                                </p>
-                                <p class="smTxt">
-                                    1 minimal environment
-                                </p>
-                                <p class="smTxt">Visually awestruck</p>
-                            </div>
-                            <div class="cols"
-                                style="background-color: var(--darkGray); padding: 32px; border-radius: 12px; width: 100%;">
-                                <h1 style="color: #F2387C;">Philosophical</h1>
-                                <p class="smTxt">
-                                    Make someone smile
-                                </p>
-                                <p class="smTxt">
-                                    Motivate connection with others
-                                </p>
-                                <p class="smTxt">Provide an escape from boredom</p>
-                            </div>
-                            <div class="cols"
-                                style="background-color: var(--darkGray); padding: 32px; border-radius: 12px; width: 100%;">
-                                <h1 style="color: #F2387C;">Functional</h1>
-                                <p class="smTxt">
-                                    Convert input to creature
-                                </p>
-                                <p class="smTxt">Gallery/Viewing mode</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="projectHero projectHeader">
-                    <br>
-                    <br>
-                    <br>
-                    <h1 class="lgTxt" style="padding-left: 0;"><span style="color: #F2387C;">03</span><br> The design
-                        <br>
-                        philosophy
-                    </h1>
-                    <br>
-                    <br>
-                    <div class="imgCard" style="padding: 0;">
-                        <img src="WishfulDeep_Dive.png" style="padding: 0;" width="100%" alt="img">
-                        <div class="projectSections">
-                            <h3 style="color: var(--dark);">Jellyfish symbolize love, resilience, survival, faith, and
-                                adaptability</h3>
-                            <div class="mdMargin"></div>
-                        </div>
-                    </div>
-                    <div class="imgCard" style="padding: 0;">
-                        <img src="Wishful_color.svg" style="padding: 0;" width="100%" alt="img">
-                        <div class="projectSections">
-                            <h3 style="color: var(--dark);">Our color reflects deep ocean to deep space. The other color
-                                are the
-                                luminance of deep creatures.</h3>
-                            <div class="mdMargin"></div>
-                        </div>
-                    </div>
-                    <div class="imgCard" style="padding: 0;">
-                        <img src="WishfulColorContrast.svg" style="padding: 0;" width="100%" alt="img">
-                        <div class="projectSections">
-                            <h3 style="color: var(--dark);">Making sure users can see what they are about to experience.
-                            </h3>
-                            <div class="mdMargin"></div>
-                        </div>
-                    </div>
-                    <div class="imgCard" style="padding: 0;">
-                        <img src="WishfulUI.svg" style="padding: 0;" width="100%" alt="img">
-                        <div class="projectSections">
-                            <h3 style="color: var(--dark);">Built out UI elements we used for the interactive site</h3>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="lgSpacing">
-                    <h1 class="lgTxt" style="padding-left: 0;"><span style="color: #F2387C;">04</span><br>The Build</h1>
-                    <br>
-                    <br>
-                    <h1>Being a hybrid Designer and Developer helps minimize gaps and communication barriers. We only
-                        had two
-                        developers on the team, so Will and I helped them code out different areas of
-                        developments. <span style="color: #F2387C;">I focused on coding a lot of the front-end UI
-                            development of the website and how the
-                            motions will work when users interacts</span>.</h1>
-                    <br>
-                    <br>
-                    <h2>Things we learned:</h2>
-
-                </div>
-                <div class="lgSpacing" style="padding-bottom: 132px;">
-                    <div class="flexBox" style="gap: 32px; margin: auto;">
-                        <div class="cols quotes">
-                            <h1 style="color: #F2387C; text-align: left;">Time Management</h1>
-                            <br>
-                            <p style="text-align: left;">As realizing that we can dream all the stars we want to in
-                                Figma but we
-                                learned that not all
-                                thing can be me made well in scale at a specific time stamp.</p>
-                            <br>
-                            <p style="text-align: left;">We factored out how our project will set up based on our
-                                timeline. We
-                                set
-                                goals VMP and Sky
-                                High goals.</p>
-                        </div>
-                        <div class="cols quotes">
-                            <h1 style="color: #F2387C; text-align: left;">Performance</h1>
-                            <br>
-                            <p style="text-align: left;">Creating 100+ Jellyfish and computing all that math power to a
-                                computer
-                                takes a lot of memory
-                                and graphics. We set parameters to populate number of jellyfish mesh baed on number of
-                                jellyfish in plane.</p>
-                            <br>
-                            <p style="text-align: left;">The results from that was thrilling to see all the jellyfish
-                                being
-                                populated and still runs
-                                really well.</p>
-                        </div>
-                        <div class="cols quotes">
-                            <h1 style="color: #F2387C; text-align: left;">Co-learning</h1>
-                            <br>
-                            <p style="text-align: left;">Designer and developers have learned a lot from each other in
-                                the
-                                project process as
-                                understanding how things work with data algorithm, understanding 3d mesh through code
-                                and
-                                how compute them in real time.</p>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <h1 class="lgTxt" style="padding-left: 0;"><span style="color: #F2387C;">05</span><br>Features</h1>
-                <div class="flexBox">
-                    <div class="half">
-                        <div class="imgCard">
-                            <div style="padding:168.42% 0 0 0;position:relative;"><iframe
-                                    src="https://player.vimeo.com/video/593047401?h=661537f9cb&autoplay=1&loop=1&color=ffffff&title=0&byline=0&portrait=0"
-                                    style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
-                                    allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div>
-                            <script src="https://player.vimeo.com/api/player.js"></script>
-                        </div>
-                    </div>
-                    <div class="half">
-                        <h1>I have developed an AR experience to explore ways how the jellyfish can be brought into
-                            life.</h1>
-                        <h1>I have used JS and design the interactions that can be fun. I really like the idea having
-                            the
-                            aspirations into the real world to spark hope.</h1>
-                    </div>
-                </div>
-                <div class="flexBox">
-                    <div class="half">
-                        <h1>I have foucused on how the camera movement will happen when users interact in each states. I
-                            wanted
-                            the web app experience to feel seamless when it jumps to different areas of site.</h1>
-                    </div>
-                    <div class="half">
-                        <div class="imgCard" style="background-color: var(--darkGray); top: 120px;">
-                            <img src="wishfuluserflows.png" width="100%" alt="img">
-                        </div>
-                    </div>
-                </div>
-                <div class="lgMargin"></div>
-                <div class="breif">
-                    <div class="flexBox" style="align-items: start;">
-                        <div class="half" style="padding-right: var(--mdMargin)">
-                            <h1 class="mdTxt">04</h1>
-                            <h1>Reflections</h1>
-                        </div>
-                        <div class="half">
-                            <h1 class="mdTxt">What have I learned</h1>
-                            <div class="lgMargin"></div>
-                            <div class="drawers">
-                                <div class="flexBox" style="align-content: space-between;">
-                                    <h1 class="headers">Insights to Action</h1>
-                                    <div class="plus">
-                                        <div class="plusBar1"></div>
-                                        <div class="plusBar2"></div>
-                                    </div>
-                                </div>
-                                <div class="expandContent">
-                                    <h1>I have learned to take research insights and turn them into actionable steps in
-                                        a
-                                        marketable approach. Our project had no creative restrictions, so we needed to
-                                        define
-                                        our scope and create a design based on that.</h1>
-                                </div>
-                            </div>
-                            <div class="mdMargin"></div>
-                            <div class="drawers">
-                                <div class="flexBox" style="align-content: space-between;">
-                                    <h1 class="headers">Shaping the user flows</h1>
-                                    <div class="plus">
-                                        <div class="plusBar1"></div>
-                                        <div class="plusBar2"></div>
-                                    </div>
-                                </div>
-                                <div class="expandContent">
-                                    <h1>As I was learning to conduct my research, I learned the mental model of fitness
-                                        was far
-                                        different then I thought it would be. I learned so much taking what users
-                                        inisghts about
-                                        life at the gym or doing fitness has helped me reformed my thinking.</h1>
-                                </div>
-                            </div>
-                            <div class="mdMargin"></div>
-                            <div class="drawers">
-                                <div class="flexBox" style="align-content: space-between;">
-                                    <h1 class="headers">The Pivot</h1>
-                                    <div class="plus">
-                                        <div class="plusBar1"></div>
-                                        <div class="plusBar2"></div>
-                                    </div>
-                                </div>
-                                <div class="expandContent">
-                                    <h1>While working on this project, I had to rethink my process for accumulating
-                                        users' fitness point tracking. With the help of gamification, I was able to
-                                        tokenize point tracking into charges ⚡, making it something users can easily
-                                        understand—energy power usage ⚡.</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    </div>
     <div class="lgMargin"></div>
     <div class="marquee3">
         <ul class="marquee__content">
@@ -527,27 +226,27 @@
                     </div>
                     <div class="smMargin"></div>
                     <h3>Duolingo ASL</h3>
-                    <h3 class="chips">UI Design, Devlopment, Concept</h3>
+                    <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">UI Design, Devlopment, Concept</h3>
                 </a>
             </div>
             <div class="half">
-                <a href="ColorHealth.html">
+                <a href="HookMenu.html">
                     <div class="clipping">
-                        <img src="MorePojrectsColor.png" width="100%" alt="Color Cover">
+                        <img src="MorePojrectsHook.png" width="100%" alt="Color Cover">
                     </div>
                     <div class="smMargin"></div>
-                    <h3>Color Health Websites</h3>
-                    <h3 class="chips">Client, Web Design, Illustartions</h3>
+                    <h3>Hook Menu Design</h3>
+                    <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Visual Design, UX Design</h3>
                 </a>
             </div>
             <div class="half">
-                <a href="archive.html">
+                <a href="vigor.html">
                     <div class="clipping">
-                        <img src="MorePojrectsArchives.png" width="100%" alt="Color Cover">
+                        <img src="MorePojrectsVigor.png" width="100%" alt="Color Cover">
                     </div>
                     <div class="smMargin"></div>
-                    <h3>Archives</h3>
-                    <h3 class="chips">Visual Design, Illustrations, UX Designs</h3>
+                    <h3>Vigor Fitness App</h3>
+                    <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Concept, Mobile Design</h3>
                 </a>
             </div>
         </div>
@@ -562,10 +261,8 @@
             <div>
                 <h2 class="bold">BIOS</h2>
                 <br>
-                <h2 class="bios" style="text-transform: uppercase;">As a UX/UI designer, Alex Kauffman Belive That
-                    design are not
-                    just for aesthetics; there're
-                    expresssions of a better user experiance.</h2>
+                <h2 class="bios" style="text-transform: uppercase;">Alex is a UX/UI designer dedicated to crafting
+                    designs that are not only innovative but also serve a tangible purpose.</h2>
                 <br>
                 <h2>&copy; 2024</h2>
             </div>

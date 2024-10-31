@@ -15,6 +15,29 @@
     --medium-light: #4f4f4f;
 }
 
+#indexButton{
+    width: 32px;
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    pointer-events: visible;
+    transition: gap 0.5s ease;
+    cursor: pointer;
+}
+
+.menuBar{
+    width: 100%;
+    height: 4px;
+    background-color: white;
+}
+
+#indexButton:hover{
+    gap: 20px;
+    transition: gap 0.5s ease;
+}
+
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -76,8 +99,7 @@ body,
 }
 
 .eighty{
-    margin-left: var(--lgMargin);
-    margin-right: var(--lgMargin);
+    max-width: 80%;
 }
 
 .contained {
@@ -185,65 +207,6 @@ a {
 
 ::-webkit-scrollbar-thumb {
     background-color: transparent;
-}
-
-.index {
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    z-index: 22222;
-    display: none;
-    background-color: black;
-}
-
-.showcase .items {
-    opacity: 1;
-}
-
-.items {
-    overflow: auto;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4rem;
-    position: relative;
-}
-
-.items .flexBox{
-    justify-content: space-between;
-    width: 100%;
-    gap: 32px;
-}
-
-.items h1{
-    color: white;
-    font-size: 10vw;
-    line-height: 10.2vw;
-    text-align: center;
-    z-index: 2;
-    transition: 0.5s ease;
-    text-transform: uppercase;
-}
-
-.itmes h2{
-    font-size: 12px;
-    color: gray;
-    transition: 0.5s ease;
-}
-
-.items h1:hover {
-    transition: 0.5s ease;
-    font-weight: 800;
-    text-transform: uppercase;
-    cursor: pointer;
-    rotate: 4deg;
-}
-
-.items h1:not(:hover) {
-    opacity: 0.3;
 }
 
 h1,
@@ -363,6 +326,7 @@ p {
     font-weight: 500;
     display: none;
     width: 40px;
+    pointer-events: visible;
 }
 
 .menu--list {
@@ -630,7 +594,7 @@ h3 {
     letter-spacing: 1px;
     font-weight: 400 !important;
     text-transform: none !important;
-    line-height: 1.2 !important;
+    line-height: 22px !important;
 }
 
 .xSmTxt {
@@ -703,7 +667,7 @@ h3 {
 }
 
 .project .flexBox {
-    gap: var(--mdMargin);
+    gap: 32px;
 }
 
 .projectWriting .flexBox {
@@ -3085,7 +3049,7 @@ canvas {
         width: 100%;
     }
 
-
+  
 }
 
 
@@ -3671,14 +3635,4 @@ canvas {
         gap: 32px;
     }
 
-    .items a, .items a:hover{
-        color: white;
-        font-size: 13vw;
-        line-height: 13.2vw;
-        padding: 16px;
-        text-align: center;
-        z-index: 2;
-        transition: 0.5s ease;
-        text-transform: uppercase;
-    }
 }
