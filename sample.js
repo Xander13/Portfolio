@@ -1,16 +1,17 @@
 console.log(`                  
                                                 
-              ████                              
-            ██░░░░██                            
-          ██░░░░░░░░██                          
-          ██░░░░░░░░██                          
-        ██░░░░░░░░░░░░██                        
-        ██░░░░░░░░░░░░██                        
-        ██░░░░░░░░░░░░██                        
-          ██░░░░░░░░██                          
-            ████████ 
+            ████                              
+          ██░░░░██                            
+        ██░░░░░░░░██                          
+        ██░░░░░░░░██                          
+      ██░░░░░░░░░░░░██                        
+      ██░░░░░░░░░░░░██                        
+      ██░░░░░░░░░░░░██                        
+        ██░░░░░░░░██                          
+          ████████ 
                                                          
 `);
+
 console.log('Hello from this side! It\'s \ngreat to meet you. The console \nwill show you how many times \nyou\'ve scrolled!');
 console.log('');
 console.log('Every 5 times you scrolled, \nyou\'ll receive a delightful \nmessage from me!');
@@ -42,16 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 // Log a positive message every 10 scrolls
                 if (numScrollAmount % 5 === 0) {
                     const messages = [
-                        "Wow, you really enjoy this! I hope your day is going wonderfully!",
-                        "This is fantastic! May your day shine as bright as you!",
-                        "Spectacular! Your positivity is sure to inspire others!",
-                        "Wonderful! May your day be filled with joy and prosperity!",
-                        "Amazing! Your enthusiasm is contagious; keep it up!",
-                        "Incredible! Each scroll adds a little more joy to your day!",
-                        "Fabulous! Your spirit brings so much light to the world!",
-                        "Outstanding! Keep spreading those good vibes!",
-                        "Brilliant! Your joy is a gift to everyone around you!",
-                        "Joyful! Your energy brightens even the cloudiest days!"
+                        "Wow, you really enjoy this! \nI hope your day is going wonderfully!",
+                        "This is fantastic! May your \nday shine as bright as you!",
+                        "Spectacular! Your positivity \nis sure to inspire others!",
+                        "Wonderful! May your day be \nfilled with joy and prosperity!",
+                        "Amazing! Your enthusiasm is \ncontagious; keep it up!",
+                        "Incredible! Each scroll adds \na little more joy to your day!",
+                        "Fabulous! Your spirit brings so \nmuch light to the world!",
+                        "Outstanding! Keep spreading \nthose good vibes!",
+                        "Brilliant! Your joy is a gift \nto everyone around you!",
+                        "Joyful! Your energy brightens \neven the cloudiest days!"
                     ];                    
                     const randomMessage = messages[Math.floor(Math.random() * messages.length)];
                     console.log(randomMessage);
