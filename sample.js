@@ -45,7 +45,8 @@ const chickenLeg = `
   ██░░░░██                    
     ████                      
 
-You got hungry wanted fired chicken.
+You got hungry wanted fired chicken. Have a great day!
+
 `;
 
 console.log(`    
