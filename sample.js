@@ -1,19 +1,19 @@
 console.log(`                  
                                                 
-                              ████                              
-                            ██░░░░██                            
-                          ██░░░░░░░░██                          
-                          ██░░░░░░░░██                          
-                        ██░░░░░░░░░░░░██                        
-                        ██░░░░░░░░░░░░██                        
-                        ██░░░░░░░░░░░░██                        
-                          ██░░░░░░░░██                          
-                            ████████ 
+              ████                              
+            ██░░░░██                            
+          ██░░░░░░░░██                          
+          ██░░░░░░░░██                          
+        ██░░░░░░░░░░░░██                        
+        ██░░░░░░░░░░░░██                        
+        ██░░░░░░░░░░░░██                        
+          ██░░░░░░░░██                          
+            ████████ 
                                                          
 `);
-console.log('Hello from this side! It\'s great to meet you. The console will show you how many times you\'ve scrolled!');
+console.log('Hello from this side! It\'s \ngreat to meet you. The console \nwill show you how many times \nyou\'ve scrolled!');
 console.log('');
-console.log('Every 5 times you scrolled, you\'ll receive a delightful message from me!');
+console.log('Every 5 times you scrolled, \nyou\'ll receive a delightful \nmessage from me!');
 console.log('');
 document.addEventListener("DOMContentLoaded", () => {
     const scrollContent = document.getElementById("scrollContent");
