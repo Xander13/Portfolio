@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 console.log(`You scrolled ${numScrollAmount} times! :)`);
 
                 // Log a positive message every 10 scrolls
-                if (numScrollAmount % 5 === 0) {
+                if (numScrollAmount % 3 === 0) {
                     const messages = [
                         "Wow, you really enjoy this! \nI hope your day is going wonderfully!",
                         "This is fantastic! May your \nday shine as bright as you!",
