@@ -46,7 +46,7 @@ const chickenLeg = `
     ████  ████            ████  ████    
                   
 
-You're feeling hungry and craving \nsome delicious Midwest fried chicken.
+You got hungry and started craving some \ngolden, crispy Midwest fried chicken! 🍗
 
 `;
 
@@ -72,8 +72,9 @@ console.log(`
 
 `);
 
-console.log('\nHello from this side! It\'s great \nto meet you. The console will show \nyou how many times you have scrolled!\n\n');
-console.log('\nEvery 5 times you scroll, you\'ll \nreceive a delightful message from me!\n\n \nIf you scrolled 15 times, the egg will hatch!\n\n');
+console.log('\nHello from this side! It\'s great \nto meet you. Watch the console to \nsee how many times you\'ve scrolled!\n\n');
+console.log('\nEvery 5 scrolls, you\'ll get a \ndelightful message from me!\n\n');
+console.log('\nScroll 15 times to hatch the egg! \n\nUp for a challenge? Reach 20 scrolls \nand see the chicken surprise!\n\n');
 
 document.addEventListener("DOMContentLoaded", () => {
     const scrollContent = document.getElementById("scrollContent");
