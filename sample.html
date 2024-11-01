@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,7 +17,7 @@
     <link rel="icon" type="image/x-icon" href="aklogo.svg">
     <!-- Apple Icon Set -->
     <link rel="apple-touch-icon" href="AlexIconApp.png">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="A.K Design">
     <meta name="apple-mobile-web-app-status-bar-style" content="var(--dark)">
     <!-- Facebook Open Graph -->
@@ -47,6 +46,7 @@
     body {
         padding: 0;
         margin: 0;
+        box-sizing: border-box;
     }
 
     .spacer {
@@ -54,82 +54,223 @@
     visibility: hidden;
     }
 
-    .menu{
-        position: fixed;
-        z-index: 12;
-        font-size: 32px;
+    .bios{
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
         padding: 16px;
-        bottom: 16px;
-        left: 16px;
     }
 
-    .MenuBtn{
-        height: 92px;
-        width: 92px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        border-radius: 100rem;
+    .bios h1{
+        font-size: 16px;
+        mix-blend-mode: difference;
+        color: white;
+    }
+
+    .abouts{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        padding: 16px;
+        z-index: 22;
+        mix-blend-mode: difference;
+        color: white;
+    }
+
+    .abouts a{
+        mix-blend-mode: difference;
+        color: white;
+    }
+
+    .abouts .flexBox{
+        gap: 22px;
+    }
+
+    .project{
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 4;
+        overflow-y: scroll;
         background-color: black;
+        color: white;
+        padding-top: 64px;
+        padding-bottom: 64px;
+        display: none;
     }
 
-    .MenuBtn img{
-        width: 30px;
+    .project h1, .project h2, .project h3, .project p{
+        color: white;
+    }
+
+    .abouts h1{
+        cursor: pointer;
     }
 </style>
 
 <body class="lightMode" id="contentWrapper">
-    <div class="menu">
-        <div class="MenuBtn">
-            <img src="aklogo.svg" width="100%" alt="AK logo">
+    <div class="abouts">
+        <div class="flexBox">
+            <a href="index.html" target="_blank">
+                <h1>Kauffman</h1>
+            </a>
+        <div class="flexBox">
+            <h1 id="ToggleAbouts">About</h1>
+            <a href="Alex_Kauffman_Resume.pdf" target="_blank">
+                <h1>Resume</h1>
+            </a>
+        </div>
+    </div>
+    </div>
+    <div class="project" id="ViewAbout" style="max-width: 100%;">
+        <h1 class="mdTitle">As a designer, I specialize in software craftsmanship through engaging visual design
+            and experiences. I'm looking to contribute these skills at a tech company and continue growing in the
+            field.</h1>
+        <div class="mdMargin"></div>
+        <div class="mdMargin"></div>
+        <div class="skillsets">
+            <div class="flexBox">
+                <div class="half">
+                    <h1>Bios</h1>
+                    <br>
+                    <div class="hr"></div>
+                    <br>
+                    <h1 class="mdTxt">Alex Kauffman is a passionate full stack designer focused on data-driven
+                        design
+                        solutions. With a BFA in New Media Design from the Rochester Institute of Technology, Alex
+                        enjoys addressing business challenges through innovative and thoughtful design strategies.
+                    </h1>
+                    <br>
+                    <h1 class="mdTxt">With a strong interest in computing and software, Alex creates delightful
+                        digital experiences and advocates for inclusive and accessible design. He emphasizes
+                        hands-on, visual approaches to improve user interactions.</h1>
+                    <br>
+                    <h1 class="mdTxt">Alex is seeking roles in being a PRODUCER, VISUAL, UX/UI, or BRAND design roles to contribute to
+                        building innovative
+                        MVPs or leading R&D efforts, focusing on pushing boundaries and exploring new possibilities.
+                    </h1>
+                </div>
+                <div class="flexBox">
+                    <div class="half">
+                        <h1>Skills</h1>
+                        <br>
+                        <div class="hr"></div>
+                        <br>
+                        <h1 class="mdTxt">Visual Design</h1>
+                        <h1 class="mdTxt">UI Design</h1>
+                        <h1 class="mdTxt">Workshop Facilitation</h1>
+                        <h1 class="mdTxt">3D Design</h1>
+                        <h1 class="mdTxt">HTML + CSS</h1>
+                        <h1 class="mdTxt">Mentoring</h1>
+                        <h1 class="mdTxt">Illustration</h1>
+                        <h1 class="mdTxt">Prototyping</h1>
+                        <h1 class="mdTxt">Research</h1>
+                        <h1 class="mdTxt">Front-end Development</h1>
+                    </div>
+                    <div class="half">
+                        <h1>Education</h1>
+                        <br>
+                        <div class="hr"></div>
+                        <br>
+                        <h1 class="mdTxt">Rochester Institute of Technology</h1>
+                        <br>
+                        <br>
+                        <h1 class="mdTxt">Bachelor of Fine Arts: <br> <a
+                                style="text-decoration: underline; text-underline-offset: 8px;"
+                                href="https://www.rit.edu/study/new-media-design-bfa" target="_blank">New Media
+                                Design</a></h1>
+                        <br>
+                        <br>
+                        <h1 class="mdTxt">GPA: 3.69/4</h1>
+                        <h1 class="mdTxt">Magna Cum Laude</h1>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <div id="scrollContent">
         <!-- Your original content here -->
         <div class="flexBox">
             <div class="clipping">
+                <div class="bios">
+                    <h1>Project Name</h1>
+                </div>
                 <img src="/Sample/Frame 2.png" width="100%">
             </div>
             <div class="clipping">
+                <div class="bios">
+                    <h1>Project Name</h1>
+                </div>
                 <img src="/Sample/Frame 4.png" width="100%">
             </div>
             <div class="clipping">
+                <div class="bios">
+                    <h1>Project Name</h1>
+                </div>
                 <img src="/Sample/Frame 1.png" width="100%">
             </div>
         </div>
         <div class="clipping">
+            <div class="bios">
+                <h1>Project Name</h1>
+            </div>
             <img src="/Sample/Frame 5.png" width="100%">
         </div>
         <div class="flexBox">
             <div class="clipping">
+                <div class="bios">
+                    <h1>Project Name</h1>
+                </div>
                 <img src="/Sample/Frame 1.png" width="100%">
             </div>
             <div class="clipping">
+                <div class="bios">
+                    <h1>Project Name</h1>
+                </div>
                 <img src="/Sample/Frame 2.png" width="100%">
             </div>
         </div>
         <div class="flexBox">
             <div class="clipping">
+                <div class="bios">
+                    <h1>Project Name</h1>
+                </div>
                 <img src="/Sample/Frame 6.png" width="100%">
             </div>
             <div class="clipping">
+                <div class="bios">
+                    <h1>Project Name</h1>
+                </div>
                 <img src="/Sample/Frame 1.png" width="100%">
             </div>
         </div>
         <div class="clipping">
+            <div class="bios">
+                <h1>Project Name</h1>
+            </div>
             <img src="/Sample/Frame 4.png" width="100%">
         </div>
         <div class="flexBox">
             <div class="clipping">
+                <div class="bios">
+                    <h1>Project Name</h1>
+                </div>
                 <img src="/Sample/Frame 6.png" width="100%">
             </div>
             <div class="clipping">
+                <div class="bios">
+                    <h1>Project Name</h1>
+                </div>
                 <img src="/Sample/Frame 1.png" width="100%">
             </div>
         </div>
         <!-- More content -->
     </div>
 </body>
-
+<script src="jquery-3.6.0.min.js" defer></script>
 <script src="sample.js" defer></script>
 </html>
