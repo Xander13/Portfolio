@@ -29,23 +29,24 @@ const chickenArt = `
 
 const chickenLeg = `
 
-                ████████      
-              ██▒▒▓▓▒▒▓▓██    
-            ██▒▒▒▒▒▒▓▓  ▓▓██  
-          ██▒▒▒▒▒▒▒▒▓▓▓▓░░▓▓██
-        ██▒▒▒▒▒▒▒▒▒▒▓▓▒▒▓▓▓▓██
-      ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▒▒██
-      ██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓██
-      ██▒▒▒▒▒▒▒▒▒▒▒▒▓▓▓▓▓▓██  
-        ██▒▒▒▒▒▒▒▒▓▓▓▓▓▓██    
-      ██  ██▓▓▓▓▓▓▓▓▓▓██      
-  ████    ░░██▓▓▓▓▓▓██        
-██      ░░██  ██████          
-██      ██                    
-  ██░░░░██                    
-    ████                      
+      ████████              ████████    
+  ██████▒▒▒▒████        ██████▒▒▒▒████  
+████▒▒▒▒▒▒▒▒▒▒████    ████▒▒▒▒▒▒▒▒▒▒████
+██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ██▒▒▒▒▒▒▒▒▒▒██
+██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ██▒▒▒▒▒▒▒▒██
+██▒▒▒▒▒▒▒▒▒▒▒▒▒▒██    ██▒▒▒▒▒▒▒██
+████▒▒▒▒▒▒▒▒▒▒████    ████▒▒▒▒▒▒██
+  ████▒▒▒▒▒▒████        ████▒▒▒▒▒▒▒▒██  
+    ██▒▒▒▒▒▒██            ██▒▒▒▒▒▒██    
+    ██▒▒▒▒▒▒██            ██▒▒▒▒▒▒██    
+    ██████████            ██████████    
+      ██  ██                ██  ██      
+      ██  ██                ██  ██      
+    ██  ██  ██            ██  ██  ██    
+    ████  ████            ████  ████    
+                  
 
-You got hungry and wanted a fried chicken. Have a great day!
+You got hungry and wanted some fried chicken.
 
 `;
 
@@ -67,6 +68,7 @@ console.log(`
     ██▒▒              ██                            
       ████        ████                              
           ████████    
+
 
 `);
 
@@ -134,7 +136,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (numScrollAmount === 15) {
                     console.log(chickenArt); // Show the chicken after the 15th scroll
                 }
-                if (numScrollAmount === 30) {
+                if (numScrollAmount === 50) {
                     console.log(chickenLeg); // Show the chicken Legs after the 30th scroll
                 }
             }
