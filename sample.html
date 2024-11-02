@@ -65,13 +65,13 @@
     }
 
     .bios h1 {
-        font-size: 16px;
+        font-size: 24px;
     }
 
     .abouts {
         position: fixed;
         right: 0;
-        bottom: 0;
+        top: 0;
         left: 0;
         padding: 16px;
         padding-bottom: 8px;
@@ -99,8 +99,9 @@
         padding-top: 64px;
         padding-bottom: 64px;
         display: none;
-        padding-left: 22px;
-        padding-right: 22px;
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 212px;
     }
 
     .project h1,
@@ -126,19 +127,53 @@
         transition: 0.2s ease;
     }
 
-    .light{
+    .light {
         color: white;
     }
 
-    .dark{
+    .dark {
         color: black;
     }
+
+    .thecover {
+        display: none;
+        position: fixed;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        height: 100%;
+        background-color: black;
+        z-index: 99999999;
+        animation: toTop 2s ease forwards;
+    }
+
+    /* @keyframes toTop {
+        0% {
+            height: 100%;
+        }
+
+        50% {
+            height: 100%;
+        }
+
+        100% {
+            height: 0%;
+        }
+    } */
 </style>
 
 <body class="lightMode" id="contentWrapper">
+    <div class="thecover">
+
+    </div>
     <div class="abouts">
         <div class="flexBox">
+            <h1>Alex Kauffman</h1>
             <h1 id="ToggleAbouts">About</h1>
+            <a href="Alex_Kauffman_Resume.pdf" target="_blank">
+                <h1>Articles</h1>
+            </a>
             <a href="Alex_Kauffman_Resume.pdf" target="_blank">
                 <h1>Resume</h1>
             </a>
@@ -249,11 +284,12 @@
         <div class="clipping">
             <div class="bios">
                 <div class="flexBox">
-                    <h1 class="light">Vigor Fitness</h1>
-                    <h1 class="light">Visual, UX, Motion</h1>
+                    <h1 class="dark">Vigor Fitness</h1>
+                    <h1 class="dark">Visual, UX, Motion</h1>
                 </div>
             </div>
-            <img src="/Sample/Frame 5.png" width="100%">
+            <img src="/Sample/Frame 2.png"
+                width="100%">
         </div>
         <div class="flexBox">
             <div class="clipping">
@@ -264,7 +300,7 @@
                     </div>
                 </div>
                 <a href="ColorHealth.html">
-                <img src="/Sample/Frame 7.png" width="100%">
+                    <img src="/Sample/Frame 7.png" width="100%">
                 </a>
             </div>
             <div class="clipping">
@@ -278,13 +314,15 @@
             </div>
         </div>
         <div class="clipping">
-            <div class="bios">
-                <div class="flexBox">
-                    <h1 class="dark">Vigor Fitness</h1>
-                    <h1 class="dark">Visual, UX, Motion</h1>
+            <div class="clipping">
+                <div class="bios">
+                    <div class="flexBox">
+                        <h1 class="light">Vigor Fitness</h1>
+                        <h1 class="light">Visual, UX, Motion, Concept</h1>
+                    </div>
                 </div>
+                <img src="/Sample/Frame 1.png" width="100%">
             </div>
-            <img src="/Sample/Frame 4.png" width="100%">
         </div>
         <div class="flexBox">
             <div class="clipping">
