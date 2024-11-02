@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,45 +51,43 @@
     }
 
     .spacer {
-    height: 100vh;  /* Adjust this value based on the effect */
-    visibility: hidden;
+        height: 100vh;
+        visibility: hidden;
     }
 
-    .bios{
+    .bios {
         position: absolute;
-        top: 0;
+        bottom: 0;
         left: 0;
         right: 0;
+        z-index: 2;
         padding: 16px;
     }
 
-    .bios h1{
+    .bios h1 {
         font-size: 16px;
-        mix-blend-mode: difference;
-        color: white;
     }
 
-    .abouts{
+    .abouts {
         position: fixed;
         right: 0;
         bottom: 0;
         left: 0;
         padding: 16px;
+        padding-bottom: 8px;
         z-index: 22;
+        font-size: 12px;
+        mix-blend-mode: difference;
+        text-transform: uppercase;
+        color: white;
+    }
+
+    .abouts a {
         mix-blend-mode: difference;
         color: white;
     }
 
-    .abouts a{
-        mix-blend-mode: difference;
-        color: white;
-    }
-
-    .abouts .flexBox{
-        gap: 22px;
-    }
-
-    .project{
+    .project {
         position: fixed;
         left: 0;
         right: 0;
@@ -97,34 +96,53 @@
         z-index: 4;
         overflow-y: scroll;
         background-color: black;
-        color: white;
         padding-top: 64px;
         padding-bottom: 64px;
         display: none;
+        padding-left: 22px;
+        padding-right: 22px;
     }
 
-    .project h1, .project h2, .project h3, .project p{
+    .project h1,
+    .project h2,
+    .project h3,
+    .project p {
         color: white;
     }
 
-    .abouts h1{
+    .abouts h1 {
         cursor: pointer;
+        font-weight: 700;
+    }
+
+    .clipping img {
+        scale: 1;
+        transition: 0.2s ease;
+        cursor: pointer;
+    }
+
+    .clipping:hover img {
+        scale: 1.01;
+        transition: 0.2s ease;
+    }
+
+    .light{
+        color: white;
+    }
+
+    .dark{
+        color: black;
     }
 </style>
 
 <body class="lightMode" id="contentWrapper">
     <div class="abouts">
         <div class="flexBox">
-            <a href="index.html" target="_blank">
-                <h1>Kauffman</h1>
-            </a>
-        <div class="flexBox">
             <h1 id="ToggleAbouts">About</h1>
             <a href="Alex_Kauffman_Resume.pdf" target="_blank">
                 <h1>Resume</h1>
             </a>
         </div>
-    </div>
     </div>
     <div class="project" id="ViewAbout" style="max-width: 100%;">
         <h1 class="mdTitle">As a designer, I specialize in software craftsmanship through engaging visual design
@@ -149,7 +167,8 @@
                         digital experiences and advocates for inclusive and accessible design. He emphasizes
                         hands-on, visual approaches to improve user interactions.</h1>
                     <br>
-                    <h1 class="mdTxt">Alex is seeking roles in being a PRODUCER, VISUAL, UX/UI, or BRAND design roles to contribute to
+                    <h1 class="mdTxt">Alex is seeking roles in being a PRODUCER, VISUAL, UX/UI, or BRAND design roles to
+                        contribute to
                         building innovative
                         MVPs or leading R&D efforts, focusing on pushing boundaries and exploring new possibilities.
                     </h1>
@@ -197,73 +216,92 @@
         <div class="flexBox">
             <div class="clipping">
                 <div class="bios">
-                    <h1>Project Name</h1>
+                    <div class="flexBox">
+                        <h1>Otto</h1>
+                        <h1>Illustrations</h1>
+                    </div>
                 </div>
-                <img src="/Sample/Frame 2.png" width="100%">
+                <a href="#">
+                    <img src="/Sample/Frame 2.png" width="100%">
+                </a>
             </div>
             <div class="clipping">
                 <div class="bios">
-                    <h1>Project Name</h1>
+                    <div class="flexBox">
+                        <h1>Otto</h1>
+                        <h1>Illustrations</h1>
+                    </div>
                 </div>
-                <img src="/Sample/Frame 4.png" width="100%">
+                <img src="/Sample/Frame 6.png" width="100%">
             </div>
             <div class="clipping">
                 <div class="bios">
-                    <h1>Project Name</h1>
+                    <div class="flexBox">
+                        <h1 class="light">Vigor Fitness</h1>
+                        <h1 class="light">Visual, UX, Motion</h1>
+                    </div>
                 </div>
-                <img src="/Sample/Frame 1.png" width="100%">
+                <a href="vigor.html">
+                    <img src="/Sample/Frame 1.png" width="100%">
+                </a>
             </div>
         </div>
         <div class="clipping">
             <div class="bios">
-                <h1>Project Name</h1>
+                <div class="flexBox">
+                    <h1 class="light">Vigor Fitness</h1>
+                    <h1 class="light">Visual, UX, Motion</h1>
+                </div>
             </div>
             <img src="/Sample/Frame 5.png" width="100%">
         </div>
         <div class="flexBox">
             <div class="clipping">
                 <div class="bios">
-                    <h1>Project Name</h1>
+                    <div class="flexBox">
+                        <h1 class="light">Color Health</h1>
+                        <h1 class="light">UX/UI, Illustration, Client</h1>
+                    </div>
                 </div>
-                <img src="/Sample/Frame 1.png" width="100%">
+                <a href="ColorHealth.html">
+                <img src="/Sample/Frame 7.png" width="100%">
+                </a>
             </div>
             <div class="clipping">
                 <div class="bios">
-                    <h1>Project Name</h1>
-                </div>
-                <img src="/Sample/Frame 2.png" width="100%">
-            </div>
-        </div>
-        <div class="flexBox">
-            <div class="clipping">
-                <div class="bios">
-                    <h1>Project Name</h1>
-                </div>
-                <img src="/Sample/Frame 6.png" width="100%">
-            </div>
-            <div class="clipping">
-                <div class="bios">
-                    <h1>Project Name</h1>
+                    <div class="flexBox">
+                        <h1 class="light">Vigor Fitness</h1>
+                        <h1 class="light">Visual, UX, Motion, Concept</h1>
+                    </div>
                 </div>
                 <img src="/Sample/Frame 1.png" width="100%">
             </div>
         </div>
         <div class="clipping">
             <div class="bios">
-                <h1>Project Name</h1>
+                <div class="flexBox">
+                    <h1 class="dark">Vigor Fitness</h1>
+                    <h1 class="dark">Visual, UX, Motion</h1>
+                </div>
             </div>
             <img src="/Sample/Frame 4.png" width="100%">
         </div>
         <div class="flexBox">
             <div class="clipping">
                 <div class="bios">
-                    <h1>Project Name</h1>
+                    <div class="flexBox">
+                        <h1 class="dark">Vigor Fitness</h1>
+                        <h1 class="dark">Visual, UX, Motion</h1>
+                    </div>
                 </div>
                 <img src="/Sample/Frame 6.png" width="100%">
             </div>
             <div class="clipping">
                 <div class="bios">
-                    <h1>Project Name</h1>
+                    <div class="flexBox">
+                        <h1 class="light">Vigor Fitness</h1>
+                        <h1 class="light">Visual, UX, Motion</h1>
+                    </div>
                 </div>
                 <img src="/Sample/Frame 1.png" width="100%">
             </div>
@@ -273,4 +311,5 @@
 </body>
 <script src="jquery-3.6.0.min.js" defer></script>
 <script src="chicken.js" defer></script>
+
 </html>
