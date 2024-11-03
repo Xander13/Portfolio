@@ -48,6 +48,7 @@
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+        padding: 16px;
     }
 
     .spacer {
@@ -55,13 +56,34 @@
         visibility: hidden;
     }
 
+    .hero {
+        padding-top: 0;
+        margin-top: 0;
+        position: relative;
+        height: fit-content;
+        margin-bottom: 16px;
+        height: 80vh;
+        background-color: black;
+    }
+
+    .hero h1 {
+        position: absolute;
+        z-index: 2;
+        bottom: 0;
+        padding: 16px;
+    }
+
+    .flexBox {
+        gap: 16px;
+    }
+
     .bios {
         position: absolute;
-        bottom: 0;
         left: 0;
         right: 0;
         z-index: 2;
         padding: 16px;
+        padding-bottom: 20px;
     }
 
     .bios h1 {
@@ -71,15 +93,16 @@
     .abouts {
         position: fixed;
         right: 0;
-        top: 0;
+        border-bottom: 0;
         left: 0;
-        padding: 16px;
+        bottom: 0;
+        padding: 32px;
         padding-bottom: 8px;
+        padding-top: 8px;
         z-index: 22;
-        font-size: 12px;
-        mix-blend-mode: difference;
-        text-transform: uppercase;
+        font-size: 8px;
         color: white;
+        background-color: black;
     }
 
     .abouts a {
@@ -93,15 +116,41 @@
         right: 0;
         top: 0;
         bottom: 0;
-        z-index: 4;
+        z-index: 7;
         overflow-y: scroll;
         background-color: black;
         padding-top: 64px;
         padding-bottom: 64px;
         display: none;
-        padding-left: 16px;
-        padding-right: 16px;
+        padding-left: 32px;
+        padding-right: 32px;
         padding-top: 212px;
+    }
+
+    .gap {
+        height: 16px;
+    }
+
+    .frame1 {
+        position: fixed;
+        height: 16px;
+        z-index: 5;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-color: black;
+        backface-visibility: none;
+    }
+
+    .frame2 {
+        position: fixed;
+        height: 16px;
+        z-index: 5;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: black;
+        backface-visibility: none;
     }
 
     .project h1,
@@ -113,7 +162,7 @@
 
     .abouts h1 {
         cursor: pointer;
-        font-weight: 700;
+        font-weight: 400;
     }
 
     .clipping img {
@@ -122,9 +171,14 @@
         cursor: pointer;
     }
 
-    .clipping:hover img {
-        scale: 1.01;
-        transition: 0.2s ease;
+    .clipping:hover .dark {
+        color: white !important;
+    }
+
+    .clipping {
+        position: relative;
+        min-height: 100%;
+        /* Ensures it fills available vertical space */
     }
 
     .light {
@@ -136,7 +190,6 @@
     }
 
     .thecover {
-        display: none;
         position: fixed;
         left: 0;
         right: 0;
@@ -148,7 +201,45 @@
         animation: toTop 2s ease forwards;
     }
 
-    /* @keyframes toTop {
+    .info {
+        background-color: rgb(243, 243, 243);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 100%;
+        /* Match height to parent container */
+        box-sizing: border-box;
+        /* Include padding in total height */
+    }
+
+    .info h2{
+        position: absolute;
+        color: black;
+        padding: 16px;
+        top: 86px;
+        font-size: 3vw;
+        line-height: 3vw;
+    }
+
+    .info h1{
+        font-size: 24px;
+    }
+
+    .info .flexBox{
+        position: absolute;
+        left: 0;
+        right: 0;
+        padding: 16px;
+        color: black;
+    }   
+
+    .funBall {
+        width: 100%;
+        height: 100%;
+        /* Sends it to the background */
+    }
+
+    @keyframes toTop {
         0% {
             height: 100%;
         }
@@ -160,23 +251,29 @@
         100% {
             height: 0%;
         }
-    } */
+    }
 </style>
 
-<body class="lightMode" id="contentWrapper">
+<body id="contentWrapper">
     <div class="thecover">
 
     </div>
     <div class="abouts">
         <div class="flexBox">
             <h1>Alex Kauffman</h1>
-            <h1 id="ToggleAbouts">About</h1>
-            <a href="Alex_Kauffman_Resume.pdf" target="_blank">
-                <h1>Articles</h1>
-            </a>
-            <a href="Alex_Kauffman_Resume.pdf" target="_blank">
-                <h1>Resume</h1>
-            </a>
+            <h1>It's <span id="detroitTime"></span> in Detroit</h1>
+            <div class="flexBox">
+                <h1 id="ToggleAbouts">About</h1>
+                <a href="Alex_Kauffman_Resume.pdf" target="_blank">
+                    <h1>Articles</h1>
+                </a>
+                <a href="Alex_Kauffman_Resume.pdf" target="_blank">
+                    <h1>Resume</h1>
+                </a>
+                <a href="Alex_Kauffman_Resume.pdf" target="_blank">
+                    <h1>LinkedIn</h1>
+                </a>
+            </div>
         </div>
     </div>
     <div class="project" id="ViewAbout" style="max-width: 100%;">
@@ -273,7 +370,7 @@
                 <div class="bios">
                     <div class="flexBox">
                         <h1 class="light">Vigor Fitness</h1>
-                        <h1 class="light">Visual, UX, Motion</h1>
+                        <h1 class="light">Visual, UX</h1>
                     </div>
                 </div>
                 <a href="vigor.html">
@@ -281,6 +378,7 @@
                 </a>
             </div>
         </div>
+        <div class="gap"></div>
         <div class="clipping">
             <div class="bios">
                 <div class="flexBox">
@@ -288,31 +386,32 @@
                     <h1 class="dark">Visual, UX, Motion</h1>
                 </div>
             </div>
-            <img src="/Sample/Frame 2.png"
-                width="100%">
+            <img src="/Sample/Frame 2.png" width="100%">
         </div>
+        <div class="gap"></div>
         <div class="flexBox">
-            <div class="clipping">
-                <div class="bios">
-                    <div class="flexBox">
-                        <h1 class="light">Color Health</h1>
-                        <h1 class="light">UX/UI, Illustration, Client</h1>
-                    </div>
+            <div class="clipping info">
+                <div class="flexBox">
+                    <h1>Bios</h1>
+                    <h1>Read More</h1>
                 </div>
-                <a href="ColorHealth.html">
-                    <img src="/Sample/Frame 7.png" width="100%">
-                </a>
+                <h2>Alex is a full stack designer dedicated to crafting designs that are not only innovative but also
+                    serve a tangible purpose.</h2>
+                <div class="funBall">
+
+                </div>
             </div>
             <div class="clipping">
                 <div class="bios">
                     <div class="flexBox">
-                        <h1 class="light">Vigor Fitness</h1>
-                        <h1 class="light">Visual, UX, Motion, Concept</h1>
+                        <h1 class="light">Hook Menu</h1>
+                        <h1 class="light">Visual, UX</h1>
                     </div>
                 </div>
-                <img src="/Sample/Frame 1.png" width="100%">
+                <img src="Hook_MENU.png" width="100%">
             </div>
         </div>
+        <div class="gap"></div>
         <div class="clipping">
             <div class="clipping">
                 <div class="bios">
@@ -324,6 +423,7 @@
                 <img src="/Sample/Frame 1.png" width="100%">
             </div>
         </div>
+        <div class="gap"></div>
         <div class="flexBox">
             <div class="clipping">
                 <div class="bios">
@@ -344,10 +444,14 @@
                 <img src="Hook_MENU.png" width="100%">
             </div>
         </div>
+        <div class="gap"></div>
         <!-- More content -->
     </div>
+    <div class="frame2"></div>
+    <div class="frame1"></div>
 </body>
 <script src="jquery-3.6.0.min.js" defer></script>
+<script src="matter.js"></script>
 <script src="chicken.js" defer></script>
 
 </html>
