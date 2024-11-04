@@ -145,9 +145,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-// Fade in and out About section
+// Toggle About section and update active class
 $("#ToggleAbouts").click(function() {
-  $("#ViewAbout").fadeToggle();
+  $("#ViewAbout").fadeIn();
+  $("#ToggleAbouts").addClass("active");
+  $("#Work").removeClass("active");
+});
+
+// Hide About section and update active class when Work is clicked
+$("#Work").click(function() {
+  $("#ViewAbout").fadeOut();
+  $("#Work").addClass("active");
+  $("#ToggleAbouts").removeClass("active");
 });
 
 
@@ -230,7 +239,7 @@ const rightWall = Bodies.rectangle(1510, 750, 20, 1500, { isStatic: true });
 World.add(engine.world, [ground, ceiling, leftWall, rightWall]);
 
 // Populate with fixed-size balls
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 7; i++) {
     addBall();
 }
 

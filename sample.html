@@ -64,9 +64,11 @@
         position: absolute;
         left: 0;
         right: 0;
+        bottom: 0;
         z-index: 2;
         padding: 16px;
         padding-bottom: 20px;
+        display: none;
     }
 
     .bios h1 {
@@ -79,18 +81,23 @@
         border-bottom: 0;
         left: 0;
         bottom: 0;
-        padding: 32px;
-        padding-bottom: 8px;
-        padding-top: 8px;
+        padding: 16px;
+        padding-bottom: 16px;
+        padding-top: 16px;
         z-index: 22;
-        font-size: 8px;
-        color: black;
-        background-color: white;
+        color: rgb(255, 255, 255);
+        background-color: rgba(0, 0, 0, 0.352);
+        backdrop-filter: blur(32px);
+        font-size: 14px;
     }
 
     .abouts a {
         mix-blend-mode: difference;
         color: white;
+    }
+
+    .active{
+        color: orangered;
     }
 
     .project {
@@ -117,11 +124,11 @@
     .frame1 {
         position: fixed;
         height: 16px;
-        z-index: 5;
+        z-index: 33333;
         left: 0;
         right: 0;
         top: 0;
-        background-color: white;
+        background-color: rgb(0, 0, 0);
         backface-visibility: none;
     }
 
@@ -132,7 +139,7 @@
         bottom: 0;
         left: 0;
         right: 0;
-        background-color: white;
+        background-color: rgb(0, 0, 0);
         backface-visibility: none;
     }
 
@@ -148,19 +155,34 @@
         font-weight: 400;
     }
 
+    .clipping .bios{
+        transition: 0.4s ease;
+    }
+
+    .clipping:hover .bios{
+        display: block;
+        animation: viewable 0.4s ease;
+    }
+
+    @keyframes viewable {
+        0%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
+
     .clipping img {
         scale: 1;
         transition: 0.2s ease;
         cursor: pointer;
     }
 
-    .clipping:hover .dark {
-        color: white !important;
-    }
-
     .clipping {
         position: relative;
         min-height: 100%;
+        border-radius: 12px;
         /* Ensures it fills available vertical space */
     }
 
@@ -179,14 +201,16 @@
         top: 0;
         bottom: 0;
         height: 100%;
-        background-color: black;
+        background-color: rgb(0, 0, 0);
         z-index: 99999999;
         animation: toTop 2s ease forwards;
     }
 
     .info {
-        background-color: #D4D4D4;
+        background-color: #ffffff;
         display: flex;
+        position: relative;
+        z-index: 12;
         flex-direction: column;
         justify-content: space-between;
         min-height: 100%;
@@ -213,6 +237,11 @@
         left: 0;
         right: 0;
         padding: 16px;
+        z-index: 12;
+        color: black;
+    }
+
+    .info h1, .info a{
         color: black;
     }
 
@@ -239,9 +268,15 @@
             height: 0%;
         }
     }
+
+    @media screen and (max-width: 920px){
+        .abouts{
+            display: none;
+        }
+    }
 </style>
 
-<body id="contentWrapper" class="lightMode">
+<body id="contentWrapper">
     <div class="thecover">
 
     </div>
@@ -250,16 +285,9 @@
             <h1>Alex Kauffman</h1>
             <h1>It's <span id="detroitTime"></span> in Detroit</h1>
             <div class="flexBox">
+                <h1 class="active" id="Work">Work</h1>
                 <h1 id="ToggleAbouts">About</h1>
-                <a href="Alex_Kauffman_Resume.pdf" target="_blank">
-                    <h1>Articles</h1>
-                </a>
-                <a href="Alex_Kauffman_Resume.pdf" target="_blank">
-                    <h1>Resume</h1>
-                </a>
-                <a href="Alex_Kauffman_Resume.pdf" target="_blank">
-                    <h1>LinkedIn</h1>
-                </a>
+                <h1>Contact</h1>
             </div>
         </div>
     </div>
@@ -332,7 +360,7 @@
     </div>
     <div id="scrollContent">
         <!-- Your original content here -->
-        <div class="flexBox">
+        <!-- <div class="flexBox">
             <div class="clipping">
                 <div class="bios">
                     <div class="flexBox">
@@ -364,13 +392,15 @@
                     <img src="/Sample/Frame 1.png" width="100%">
                 </a>
             </div>
-        </div>
-        <div class="gap"></div>
+        </div> -->
+        <!-- <div class="gap"></div> -->
         <div class="flexBox">
             <div class="clipping info">
                 <div class="flexBox">
                     <h1>Bios</h1>
-                    <h1>Read More</h1>
+                    <a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">
+                        <h1>LinkedIn</h1>
+                    </a>
                 </div>
                 <h2>Alex is a full stack designer dedicated to crafting designs that are not only innovative but also
                     serve a tangible purpose.</h2>
@@ -390,22 +420,22 @@
         <div class="clipping">
             <div class="bios">
                 <div class="flexBox">
-                    <h1 class="dark">TBA</h1>
-                    <h1 class="dark">TBA</h1>
+                    <h1 class="light">TBA</h1>
+                    <h1 class="light">TBA</h1>
                 </div>
             </div>
-            <img src="/Sample/Frame 6.png" width="100%">
+            <img src="/Sample/SampleDesign.webp" width="100%">
         </div>
         <div class="gap"></div>
         <div class="flexBox">
             <div class="clipping">
                 <div class="bios">
                     <div class="flexBox">
-                        <h1 class="dark">TBA</h1>
-                        <h1 class="dark">TBA</h1>
+                        <h1 class="dark">Otto</h1>
+                        <h1 class="dark">Illustration</h1>
                     </div>
                 </div>
-                <img src="/Sample/Frame 6.png" width="100%">
+                <img src="/Sample/Frame 2.png" width="100%">
             </div>
             <div class="clipping">
                 <div class="bios">
@@ -426,7 +456,40 @@
                         <h1 class="dark">TBA</h1>
                     </div>
                 </div>
-                <img src="/Sample/Frame 6.png" width="100%">
+                <img src="/Sample/Frame 13.png" width="100%">
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="flexBox">
+            <div class="clipping">
+                <div class="bios">
+                    <div class="flexBox">
+                        <h1 class="light">Vigor Health</h1>
+                        <h1 class="light">UX/UI, Concept</h1>
+                    </div>
+                </div>
+                <img src="/Sample/Frame 1.png" width="100%">
+            </div>
+            <div class="clipping">
+                <div class="bios">
+                    <div class="flexBox">
+                        <h1 class="light">Hook Menu</h1>
+                        <h1 class="light">Visual, UX, Motion</h1>
+                    </div>
+                </div>
+                <img src="Hook_MENU.png" width="100%">
+            </div>
+        </div>
+        <div class="gap"></div>
+        <div class="clipping">
+            <div class="clipping">
+                <div class="bios">
+                    <div class="flexBox">
+                        <h1 class="dark">TBA</h1>
+                        <h1 class="dark">TBA</h1>
+                    </div>
+                </div>
+                <img src="/Sample/Frame 14.png" width="100%">
             </div>
         </div>
         <div class="gap"></div>
