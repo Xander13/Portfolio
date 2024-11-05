@@ -667,7 +667,7 @@ h3 {
 }
 
 .project .flexBox {
-    gap: 32px;
+    gap: var(--smMargin);
 }
 
 .projectWriting .flexBox {
