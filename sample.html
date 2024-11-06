@@ -207,53 +207,40 @@
     }
 
     .info {
-        background-color: #ffffff;
-        display: flex;
-        position: relative;
-        z-index: 12;
-        flex-direction: column;
-        justify-content: space-between;
-        min-height: 100%;
-        /* Match height to parent container */
-        box-sizing: border-box;
-        /* Include padding in total height */
-    }
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    align-self: stretch; /* Make .info take full height of its flex parent */
+    position: relative;
+    border-radius: 12px;
+}
 
     .info h2 {
-        position: absolute;
         color: black;
-        padding: 16px;
         top: 86px;
         font-size: 3vw;
         line-height: 3vw;
+    }
+
+    .clipping img {
+        scale: 1;
+    }
+
+    .clipping:hover img {
+        scale: 1.02;
     }
 
     .info h1 {
         font-size: 24px;
     }
 
-    .info .flexBox {
-        position: absolute;
-        left: 0;
-        right: 0;
+    .info h2,
+    .info a,
+    .info h1 {
+        color: black;
         padding: 16px;
-        z-index: 12;
-        color: black;
-    }
-
-    .info h1,
-    .info a {
-        color: black;
-    }
-
-    .funBall {
-        width: 100%;
-        height: 100%;
-        background: transparent;
-    }
-
-    canvas {
-        scale: 1.001;
     }
 
     @keyframes toTop {
@@ -368,7 +355,7 @@
     </div>
     <div id="scrollContent">
         <div class="flexBox">
-            <div class="clipping info">
+            <div class="info">
                 <div class="flexBox">
                     <h1>Bios</h1>
                     <a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">
@@ -376,8 +363,8 @@
                     </a>
                 </div>
                 <h2>Alex is a full stack designer dedicated to crafting designs that are not only innovative but also
-                    serve a tangible purpose.</h2>
-                <div class="funBall"></div>
+                    serve a tangible purpose.
+                </h2>
             </div>
             <div class="clipping">
                 <div class="bios">
