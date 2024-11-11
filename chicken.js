@@ -158,25 +158,3 @@ $("#Work").click(function() {
   $("#Work").addClass("active");
   $("#ToggleAbouts").removeClass("active");
 });
-
-
-function updateDetroitTime() {
-  const options = { timeZone: 'America/Detroit', hour: 'numeric', minute: '2-digit', hour12: true };
-  let detroitTime = new Intl.DateTimeFormat('en-US', options).format(new Date());
-
-  // Make the colon blink
-  detroitTime = detroitTime.replace(":", "<span id='blinkingColon'>:</span>");
-  document.getElementById('detroitTime').innerHTML = detroitTime;
-}
-
-// Update every minute
-setInterval(updateDetroitTime, 60000);
-
-// Initialize on page load
-updateDetroitTime();
-
-// Blink colon every second
-setInterval(() => {
-  const colon = document.getElementById('blinkingColon');
-  if (colon) colon.style.visibility = colon.style.visibility === 'hidden' ? 'visible' : 'hidden';
-}, 1000);
