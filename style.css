@@ -680,6 +680,11 @@ h3 {
 
 }
 
+.duoBrid{
+    width: 120px;
+    margin-bottom: 32px;
+}
+
 .bg {
     background-color: var(--light);
     padding-bottom: 64px;
