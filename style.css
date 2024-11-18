@@ -929,6 +929,16 @@ h3 {
     text-decoration: none !important;
 }
 
+.duolingoLogo{
+    position: absolute;
+    top: 32px;
+    width: 18vw !important;
+    left: 32px;
+    right: 32px;
+    margin: auto;
+    z-index: 22222;
+}
+
 .hook:hover {
     background-color: var(--light);
     color: var(--dark);
@@ -3638,6 +3648,16 @@ canvas {
 
     .image-track {
         gap: 32px;
+    }
+
+    .duolingoLogo{
+        position: absolute;
+        top: 24px;
+        width: 42vw !important;
+        left: 32px;
+        right: 32px;
+        margin: auto;
+        z-index: 22222;
     }
 
 }
