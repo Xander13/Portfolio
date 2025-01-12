@@ -1602,7 +1602,14 @@ h3 {
     margin-bottom: 16px;
 }
 
-.articles .cols:hover img {
+.articles video{
+    transform: scale(1);
+    cursor: pointer;
+    transition: 0.5s ease;
+    flex-shrink: 0;
+}
+
+.articles .cols:hover img, .articles .half:hover video {
     transform: scale(1.02);
     cursor: pointer;
     transition: 0.5s ease;
