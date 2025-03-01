@@ -2097,6 +2097,11 @@ hr {
     flex-shrink: 0;
 }
 
+.articles .clipping:hover img, .articles .clipping:hover video {
+    opacity: 0.5;
+    transition: 0.4s ease !important;
+}
+
 .imageGrid .half:hover img {
     transform: scale(1.02);
     flex-shrink: 0;
@@ -2191,8 +2196,12 @@ hr {
 }
 
 .clipping {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     overflow: hidden;
     width: 100%;
+    height: 100%;
     position: relative;
 }
 
@@ -2215,39 +2224,30 @@ hr {
     z-index: 2;
     left: 0;
     right: 0;
-    margin: auto;
+    top: 45%; 
     width: fit-content;
-    top: calc(100% / 2 - 48px);
     transition: 0.5s ease;
     display: none;
     text-transform: uppercase;
     rotate: 0deg;
     font-weight: 500;
+    width: fit-content;
+    text-wrap:  nowrap;
 }
 
 @keyframes viewAble {
     0% {
         opacity: 0;
         rotate: -12deg;
-        top: calc(100% / 2.3 + 132px);
+        top: 80%; /* Adjusted to center dynamically */
     }
 
     100% {
         opacity: 1;
         rotate: 0deg;
-        top: calc(100% / 2 - 48px);
+        top: 45%; /* Centered vertically */
     }
 }
-
-/* .photoCard img {
-    transform: scale(1.2);
-    transition: 0.4s ease;
-} */
-
-/* .photoCard:hover img {
-    transform: scale(1.02);
-    transition: 0.4s ease;
-} */
 
 .photoCard h2 {
     font-size: 18px;
@@ -2257,26 +2257,10 @@ hr {
     color: var(--dark);
 }
 
-/* .photoCard h3 {
-    font-size: 16px;
-    padding-top: 2px;
-    text-wrap: balance;
-    max-width: 50ch;
-    font-weight: 400;
-    font-size: 18px;
-    color: #4f4f4f;
-    text-transform: uppercase;
-}
-
 .photoCard h2,
 .photoCard h3,
 .rows h4 {
     transition: color 0.2s ease;
-} */
-
-/* .photoCard:hover h2 {
-    color: #4f4f4f;
-    transition: 0.2s ease;
 } */
 
 .things {
