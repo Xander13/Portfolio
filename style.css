@@ -370,6 +370,37 @@ ul {
     pointer-events: none;
 }
 
+.navList .menuBottom{
+    z-index: 222222;
+    background-color: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 100rem;
+    padding: 8px;
+    width: fit-content;
+    z-index: 999999;
+    display: flex;
+    gap: 0px !important;
+    align-content: center;
+    list-style-type: none;
+    overflow: hidden;
+}
+
+.navList .menuBottom a{
+    font-size: 18px;
+    padding: 10px;
+    padding-left: 32px;
+    padding-right: 32px;
+    width: fit-content;
+    color: #000000;
+}
+
+.navList .menuBottom a:hover{
+    background-color: var(--light);
+    opacity: 0.8;
+    color: var(--dark);
+    transition: 0.5s ease;
+}
+
 .navList img {
     height: 48px;
     width: fit-content;
@@ -407,13 +438,10 @@ ul {
     user-select: none;
 }
 
-.navList a:hover, .navList h1:hover, .bottom a:hover {
-    rotate: 4deg;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-radius: 100rem;
-    transition: 0.4s ease;
-    color: white;
+#active{
+    color: var(--dark);
+    background-color: var(--light);
+    transition: 0.5s ease;
 }
 
 #activeContent {
@@ -1662,8 +1690,8 @@ h3 {
     position: absolute;
     width: 100%;
     bottom: 0;
-    padding-left: 64px;
-    padding-right: 64px;
+    padding-left: var(--mdMargin);
+    padding-right: var(--mdMargin);
     padding-bottom: 64px;
     z-index: 2;
     user-select: none;
