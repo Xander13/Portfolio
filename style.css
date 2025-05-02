@@ -352,54 +352,25 @@ ul {
 
 .navList {
     position: fixed;
-    top: 16px;
+    top: 32px;
     left: 0;
     right: 0px;
     padding-left: var(--mdMargin);
     padding-right: var(--mdMargin);
-    padding-top: 4px;
-    padding-bottom: 4px;
     z-index: 999999;
-    margin: auto;
     display: flex;
     justify-content: space-between;
-    align-content: center;
+    align-items: center;
     list-style-type: none;
     overflow: hidden;
     transition: 0.5s ease;
     pointer-events: none;
 }
 
-.navList .menuBottom{
-    z-index: 222222;
-    background-color: rgba(255, 255, 255);
-    backdrop-filter: blur(10px);
-    border-radius: 100rem;
-    padding: 8px;
-    width: fit-content;
-    z-index: 999999;
-    display: flex;
-    gap: 0px !important;
-    align-content: center;
-    list-style-type: none;
-    overflow: hidden;
+.navList a:hover{
+    color: gray;
 }
 
-.navList .menuBottom a{
-    font-size: 18px;
-    padding: 10px;
-    padding-left: 32px;
-    padding-right: 32px;
-    width: fit-content;
-    color: #000000;
-}
-
-.navList .menuBottom a:hover{
-    background-color: var(--light);
-    opacity: 0.8;
-    color: var(--dark);
-    transition: 0.5s ease;
-}
 
 .navList img {
     height: 48px;
@@ -412,6 +383,13 @@ ul {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    align-items: center;
+}
+
+.secondFlexBox{
+    gap: 32px;
+    display: flex;
+    align-items: center;
 }
 
 .navContent {
@@ -421,13 +399,8 @@ ul {
 }
 
 .navList a, .navList h1 {
-    font-size: 49px;
+    font-size: 32px;
     font-weight: 500 !important;
-    display: flex;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    align-items: center;
-    justify-content: center;
     color: white;
     border-radius: 100rem;
     height: fit-content;
@@ -697,7 +670,6 @@ h3 {
 .project .flexBox {
     gap: var(--smMargin);
 }
-
 .projectWriting .flexBox {
     gap: 32px;
 }
