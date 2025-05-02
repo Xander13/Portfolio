@@ -239,13 +239,14 @@ p {
     background-color: rgba(0, 0, 0, 9);
     height: 100%;
     width: 100%;
+    padding-top: 124px;
     position: fixed;
     z-index: 999999;
     top: -100%;
     transition: 1s ease;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-content: center;
     overflow: hidden;
 }
@@ -305,10 +306,69 @@ p {
     z-index: 99999999;
 }
 
-.social {
-    position: absolute;
-    bottom: 16px;
-    left: 16px;
+.social{
+    padding: 16px;
+}
+
+.latest {
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+.latest h2{
+    padding-bottom: 32px;
+}
+
+/* Only this flexBox under .latest gets scroll styles */
+.latest > .flexBox {
+    display: flex;
+    flex-direction: row; 
+    align-items: start;
+    flex-wrap: nowrap;          /* Horizontal scroll direction */
+    overflow-x: auto;
+    height: fit-content;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    gap: 16px;
+}
+
+.latest p{
+    padding-top: 12px;
+    padding-bottom: 32px;
+}
+
+/* For Chrome, Safari, Edge (WebKit browsers) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #000; /* Scrollbar track */
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #fff; /* Scrollbar thumb */
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #ccc;
+}
+
+::-webkit-scrollbar-corner {
+    background-color: #000;
+}
+
+
+.latest .flexBox .cols {
+    flex: 0 0 auto;
+    width: 210px;              
+    box-sizing: border-box;
+}
+
+.latest .flexBox .cols img {
+    object-fit: cover;
+    width: 100%;
+    display: block;
+    border: 1px solid #696969;
 }
 
 .menu--toggle--text:active {
@@ -3650,5 +3710,20 @@ canvas {
         margin: auto;
         z-index: 22222;
     }
+}
 
+@media (max-height: 780px) {
+    .menu--body{
+        justify-content: space-around;
+    }
+
+    .social{
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+    }
+
+    .latest{
+        display: none;
+    }
 }
