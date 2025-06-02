@@ -23,35 +23,6 @@ function copyContent() {
   }
 }
 
-function resetScroll() {
-  const url = window.location.href;
-
-  // Check if we are on https://alex-kauffman.com/ or https://alex-kauffman.com/index.html or the equivalent without protocol
-  if (url === 'https://alex-kauffman.com/' || url === 'https://alex-kauffman.com/index.html' ||
-    url === 'http://alex-kauffman.com/' || url === 'http://alex-kauffman.com/index.html' ||
-    url === 'alex-kauffman.com/' || url === 'alex-kauffman.com/index.html') {
-    window.scrollTo(0, 0);
-  }
-}
-
-// Function to check if scrolling to the bottom
-function checkScroll() {
-  const url = window.location.href;
-
-  // Check if we are on https://alex-kauffman.com/ or http://alex-kauffman.com/ or the equivalent without protocol
-  if (url === 'https://alex-kauffman.com/' || url === 'http://alex-kauffman.com/' ||
-    url === 'alex-kauffman.com/') {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      resetScroll();
-    }
-  }
-}
-// Reset scroll on page load
-resetScroll();
-
-// Event listener for scrolling
-window.addEventListener('scroll', checkScroll);
-
 //Detroit time baby
 function updateDetroitTime() {
                 const timeEl = document.querySelector(".time");
