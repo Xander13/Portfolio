@@ -52,6 +52,29 @@ resetScroll();
 // Event listener for scrolling
 window.addEventListener('scroll', checkScroll);
 
+//Detroit time baby
+function updateDetroitTime() {
+                const timeEl = document.querySelector(".time");
+                if (!timeEl) return;
+
+                // Detroit is always in America/Detroit timezone (Eastern)
+                const now = new Date();
+                const options = {
+                    hour: "numeric",
+                    minute: "2-digit",
+                    hour12: true,
+                    timeZone: "America/Detroit"
+                };
+
+                const timeString = new Intl.DateTimeFormat("en-US", options).format(now);
+                timeEl.textContent = `It's ${timeString} in Detroit`;
+            }
+
+            // Initial load
+            updateDetroitTime();
+
+            // Optional: Update every minute
+            setInterval(updateDetroitTime, 60000);
 
 //bar
 document.addEventListener("DOMContentLoaded", function () {

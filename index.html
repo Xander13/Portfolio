@@ -27,7 +27,7 @@
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:alt" content="Alex Kauffman's Thumbnail cover." />
     <meta property="og:title" content="Alex Kauffman - Full Stack Designer" />
-    <meta property="og:description" content="Creating visuals that make a big impact." />
+    <meta property="og:description" content="Designing accessible, visual systems for product teams who give a damn." />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://alex-kauffman.com/" />
     <!-- Twitter Card -->
@@ -35,7 +35,7 @@
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:image:alt" content="Alex Kauffman's Thumbnail cover." />
     <meta name="twitter:creator" content="@akooof13" />
-    <meta name="twitter:description" content="Creating visuals that make a big impact.">
+    <meta name="twitter:description" content="Designing accessible, visual systems for product teams who give a damn.">
     <link rel="stylesheet" href="cssReset.css">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
@@ -98,23 +98,30 @@
         </div>
         <div class="navList">
             <div class="flexBox" style="justify-content: space-between;">
-                <a href="https://alex-kauffman.com">
-                    <img src="aklogo.svg" width="100%" alt="Logo shaped like 'A' with a person inside.">
-                </a>
-                <div class="secondFlexBox">
+
+                <div style="gap: 16px; display: flex; align-items: center;">
+                    <p>Alex Kauffman</p>
+                    <p>·</p>
+                    <p class="gray">Product Designer</p>
+                </div>
+                <p class="gray"><span class="time"></span></p>
+                <div style="gap: 32px; display: flex; align-items: center;">
                     <a href="https://alex-kauffman.com">Work</a>
+                    <a href="https://alex-kauffman.com#about">About</a>
                     <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
                 </div>
             </div>
         </div>
         <div class="content">
-            <div class="stickerBoard" style="position: relative; top: -50vh;">
+            <!-- <div class="stickerBoard" style="position: relative; top: -50vh;">
                 <div class="canvas" id="canvas1"></div>
-            </div>
+            </div> -->
+            <div class="mdMargin"></div>
             <div class="archives gallery">
+
                 <div class="flexBox" id="headerBox">
                     <div class="textContainer">
-                        <h2 class="mdTitle">Alex Kauffman designs solutions with clarity and intent.</h2>
+                        <h2 class="mdTitle">Designing accessible, visual systems for product teams who give a damn.</h2>
                     </div>
                 </div>
             </div>
@@ -130,7 +137,10 @@
                             </div>
                             <br>
                             <h3>Duolingo ASL</h3>
-                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Ongoing Case Study</h3>
+                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">
+                                Reimagining language learning without sound — <br> expanding Duolingo’s platform and
+                                revenue stream.
+                            </h3>
                         </a>
                     </div>
                     <div class="half">
@@ -141,21 +151,23 @@
                             </div>
                             <br>
                             <h3>Color Health</h3>
-                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Visual Design, Client</h3>
+                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Revamped site design and built
+                                custom visual storytelling for Color’s DNA and cancer care pages.</h3>
                         </a>
                     </div>
                 </div>
-                <div class="mdMargin"></div>
-                <a href="vigor.html" class="fade-link">
-                    <div class="clipping" data-color="var(--hoverGray)" data-text-color="#FFFFFF">
-                        <img draggable="false" src="Vigor_iWatch.png" width="100%"
-                            alt="Bento Grid photo of Vigor app on apple tv, iphone app with Vigor splash screen and Vigor Logo">
-                    </div>
-                    <br>
-                    <h3>Vigor Fitness App</h3>
-                    <h3 class="xSmTxt" style="padding-top: 8px; color: gray;">UI Design, Research, Concept</h3>
-                </a>
-                <div class="mdMargin"></div>
+                <div class="mxdMargin"></div>
+                    <a href="vigor.html" class="fade-link">
+                        <div class="clipping" data-color="var(--hoverGray)" data-text-color="#FFFFFF">
+                            <img draggable="false" src="Vigor_iWatch.png" width="100%"
+                                alt="Bento Grid photo of Vigor app on apple tv, iphone app with Vigor splash screen and Vigor Logo">
+                        </div>
+                        <br>
+                        <h3>Vigor Fitness App</h3>
+                        <h3 class="xSmTxt" style="padding-top: 8px; color: gray;">Concept fitness app using gamification
+                            to help busy users stay active through daily interaction logging.</h3>
+                    </a>
+                <div class="mxdMargin"></div>
                 <div class="flexBox" style="align-items: center;">
                     <div class="half">
                         <a href="StarbucksIllo.html" class="fade-link">
@@ -163,9 +175,9 @@
                                 <img src="StarbucksCover.png" width="100%" alt="Wishful Capstone Project Cover">
                             </div>
                             <br>
-                            <h3>Starbucks Illustartions</h3>
-                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Product Design, Illustration,
-                                Concept
+                            <h3 class="projectTitle">Starbucks Illustartions</h3>
+                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Improved rewards page with custom
+                                UI and illustrations — bringing the design closer to Starbucks' playful, human brand.
                             </h3>
                         </a>
                     </div>
@@ -177,7 +189,8 @@
                             </div>
                             <br>
                             <h3>Hook Menu Redesign</h3>
-                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Visual Design, UX Design</h3>
+                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Improved UX for a digital agency
+                                site — designed new interactions to boost engagement and site traffic.</h3>
                         </a>
                     </div>
                 </div>
@@ -286,16 +299,17 @@
             <div class="mdMargin"></div>
             <div class="mdMargin"></div>
             <div class="project" style="max-width: 100%;">
-                <h1 class="mdTitle">I specialize in thoughtful solutions through visual systems and interaction design.
-                    I'm
-                    seeking opportunities to shape digital products that explore new ideas, workflows, or technologies.
+                <h1 class="mdTitle">I design thoughtful digital products with a focus on interaction, clarity, and
+                    systems thinking. After years in agency spaces, I’m shifting toward product teams where I can build
+                    tools, not just ship assets — exploring new ideas, workflows, and technologies that actually grow
+                    over time.
                 </h1>
                 <div class="mdMargin"></div>
                 <div class="mdMargin"></div>
-                <div class="skillsets">
+                <div class="skillsets" id="about">
                     <div class="flexBox">
                         <div class="half">
-                            <h1>Bios</h1>
+                            <h1 class="gray">About</h1>
                             <br>
                             <div class="hr"></div>
                             <br>
@@ -321,7 +335,7 @@
                         </div>
                         <div class="flexBox">
                             <div class="half">
-                                <h1>Skills</h1>
+                                <h1 class="gray">Skills</h1>
                                 <br>
                                 <div class="hr"></div>
                                 <br>
@@ -334,16 +348,15 @@
                                 <h1 class="mdTxt">Teamwork</h1>
                                 <br>
                                 <br>
-                                <h1 class="mdTxt">Python, SQL, Basic TS,</h1>
-                                <h1 class="mdTxt">Javascript, HTML/CSS</h1>
+                                <h1 class="mdTxt">Python, SQL, JS</h1>
+                                <h1 class="mdTxt">HTML/CSS</h1>
                                 <br>
                                 <br>
                                 <h1 class="mdTxt">AI-Driven UX Thinking</h1>
-                                <h1 class="mdTxt">Functional Programing</h1>
                                 <h1 class="mdTxt">Front-end Development</h1>
                             </div>
                             <div class="half">
-                                <h1>Education</h1>
+                                <h1 class="gray">Education</h1>
                                 <br>
                                 <div class="hr"></div>
                                 <br>
@@ -370,22 +383,6 @@
                 <div class="mdMargin"></div>
                 <h1 class="mdTitle" style="text-align: left;">&copy;2025</h1>
                 <div class="mdMargin"></div>
-                <div class="mdMargin"></div>
-            </div>
-
-            <div class="stickerBoard">
-                <img draggable="false" src="stickerPlacement.svg" width="100%" class="defaultstickers"
-                    alt="sticker placeholder">
-                <div class="canvas" id="canvas2" style="height: 100vh;"></div>
-            </div>
-            <div class="archives gallery">
-                <br>
-                <br>
-                <br>
-                <br>
-                <div class="textContainer">
-                    <h2 class="mdTitle">Alex Kauffman designs solutions with clarity and intent.</h2>
-                </div>
             </div>
         </div>
         <script src="jquery-3.6.0.min.js"></script>

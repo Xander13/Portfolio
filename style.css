@@ -7,6 +7,7 @@
     --darkGray: #262626;
     --hoverGray: #151515;
     --mdMargin: 96px;
+    --mxdMargin: 96px;
     --lgMargin: 240px;
     --smMargin: 48px;
     --xSmMargin: 24px;
@@ -15,7 +16,7 @@
     --medium-light: #4f4f4f;
 }
 
-#indexButton{
+#indexButton {
     width: 32px;
     height: 64px;
     display: flex;
@@ -27,25 +28,25 @@
     cursor: pointer;
 }
 
-.menuBar{
+.menuBar {
     width: 100%;
     height: 4px;
     background-color: white;
 }
 
-#indexButton:hover{
+#indexButton:hover {
     gap: 20px;
     transition: gap 0.5s ease;
 }
 
 .material-symbols-outlined {
-  font-variation-settings:
-  'FILL' 0,
-  'wght' 400,
-  'GRAD' 0,
-  'opsz' 24;
-  scale: 0.65;
-  margin-right: 4px;
+    font-variation-settings:
+        'FILL'0,
+        'wght'400,
+        'GRAD'0,
+        'opsz'24;
+    scale: 0.65;
+    margin-right: 4px;
 }
 
 body {
@@ -98,8 +99,9 @@ body,
     z-index: 9999;
 }
 
-.eighty{
+.eighty {
     max-width: 80%;
+    margin: auto;
 }
 
 .contained {
@@ -161,12 +163,16 @@ body,
     width: 100%;
 }
 
+.mxdMargin {
+    height: var(--mxdMargin);
+}
+
 .smMargin {
     height: var(--smMargin);
     width: 100%;
 }
 
-.xSmMargin{
+.xSmMargin {
     height: var(--xSmMargin);
     width: 100%;
 }
@@ -306,7 +312,7 @@ p {
     z-index: 99999999;
 }
 
-.social{
+.social {
     padding: 16px;
 }
 
@@ -315,16 +321,17 @@ p {
     padding-right: 16px;
 }
 
-.latest h2{
+.latest h2 {
     padding-bottom: 32px;
 }
 
 /* Only this flexBox under .latest gets scroll styles */
-.latest > .flexBox {
+.latest>.flexBox {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     align-items: start;
-    flex-wrap: nowrap;          /* Horizontal scroll direction */
+    flex-wrap: nowrap;
+    /* Horizontal scroll direction */
     overflow-x: auto;
     height: fit-content;
     overflow-y: hidden;
@@ -332,7 +339,7 @@ p {
     gap: 16px;
 }
 
-.latest p{
+.latest p {
     padding-top: 12px;
     padding-bottom: 32px;
 }
@@ -341,11 +348,13 @@ p {
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
-    background-color: #000; /* Scrollbar track */
+    background-color: #000;
+    /* Scrollbar track */
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #fff; /* Scrollbar thumb */
+    background-color: #fff;
+    /* Scrollbar thumb */
     border-radius: 4px;
 }
 
@@ -360,7 +369,7 @@ p {
 
 .latest .flexBox .cols {
     flex: 0 0 auto;
-    width: 210px;              
+    width: 210px;
     box-sizing: border-box;
 }
 
@@ -412,25 +421,26 @@ ul {
 
 .navList {
     position: fixed;
-    top: 32px;
+    top: 0;
     left: 0;
     right: 0px;
-    padding-left: var(--mdMargin);
-    padding-right: var(--mdMargin);
-    z-index: 999999;
+    padding-left: var(--mxdMargin);
+    padding-right: var(--mxdMargin);
+    padding-top: 16px;
+    padding-bottom: 16px;
+    background-color: black;
+    z-index: 999999999;
     display: flex;
     justify-content: space-between;
     align-items: center;
     list-style-type: none;
     overflow: hidden;
     transition: 0.5s ease;
-    pointer-events: none;
 }
 
-.navList a:hover{
+.navList a:hover {
     color: gray;
 }
-
 
 .navList img {
     height: 48px;
@@ -446,7 +456,7 @@ ul {
     align-items: center;
 }
 
-.secondFlexBox{
+.secondFlexBox {
     gap: 32px;
     display: flex;
     align-items: center;
@@ -458,7 +468,11 @@ ul {
     align-items: center;
 }
 
-.navList a, .navList h1 {
+.navList a, .navList p{
+    font-size: 18px;
+}
+
+.navList h1 {
     font-size: 32px;
     font-weight: 500 !important;
     color: white;
@@ -471,7 +485,7 @@ ul {
     user-select: none;
 }
 
-#active{
+#active {
     color: var(--dark);
     background-color: var(--light);
     transition: 0.5s ease;
@@ -564,8 +578,8 @@ img {
 .project,
 .skills {
     position: relative;
-    padding-left: var(--mdMargin);
-    padding-right: var(--mdMargin);
+    padding-left: var(--mxdMargin);
+    padding-right: var(--mxdMargin);
     margin: auto;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
@@ -618,9 +632,8 @@ h3 {
 
 .mdTxt {
     font-size: 24px;
-    line-height: 1.4;
+    line-height: 38px;
     color: var(--dark);
-    font-weight: 400;
 }
 
 .mdTitle {
@@ -654,14 +667,24 @@ h3 {
     color: var(--dark) !important;
     letter-spacing: 1px;
     font-weight: 400 !important;
-    text-transform: none !important;
-    line-height: 22px !important;
+}
+
+.projectTitle {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 30px;
+    margin-bottom: 8px;
+    color: #ffffff;
+    letter-spacing: -0.2px;
 }
 
 .xSmTxt {
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 28px;
+    color: #888888;
+    text-transform: none;
+    letter-spacing: 0.2px;
 }
 
 .bold {
@@ -728,8 +751,9 @@ h3 {
 }
 
 .project .flexBox {
-    gap: var(--smMargin);
+    gap: 124px;
 }
+
 .projectWriting .flexBox {
     gap: 32px;
 }
@@ -740,7 +764,7 @@ h3 {
 
 }
 
-.duoBrid{
+.duoBrid {
     width: 120px;
     margin-bottom: 32px;
 }
@@ -767,7 +791,7 @@ h3 {
     text-transform: uppercase;
 }
 
-.project h3{
+.project h3 {
     text-align: center;
     padding-top: 8px;
 }
@@ -908,7 +932,7 @@ h3 {
     position: absolute;
     bottom: 64px;
     /* top: calc(100% / 2 - 9vw); */
-    left: var(--mdMargin);
+    left: var(--mxdMargin);
     height: fit-content;
     z-index: 2222;
     backface-visibility: hidden;
@@ -989,7 +1013,7 @@ h3 {
     text-decoration: none !important;
 }
 
-.duolingoLogo{
+.duolingoLogo {
     position: absolute;
     top: 32px;
     width: 18vw !important;
@@ -1313,13 +1337,13 @@ h3 {
     animation: reveal 0.5s ease;
 }
 
-.experiaments img{
+.experiaments img {
     height: 700px;
     width: auto;
     flex-shrink: 0;
 }
 
-.experiaments video{
+.experiaments video {
     width: 900px;
     height: auto;
     flex-shrink: 0;
@@ -1330,7 +1354,7 @@ h3 {
     display: block;
 }
 
-.experiaments .marquee:not(:hover){
+.experiaments .marquee:not(:hover) {
     opacity: 0.3;
 }
 
@@ -1620,9 +1644,15 @@ h3 {
 .articles {
     position: relative;
     margin: auto;
-    margin-left: var(--mdMargin);
-    margin-right: var(--mdMargin);
+    margin-left: var(--mxdMargin);
+    margin-right: var(--mxdMargin);
     transition: 0.4s ease;
+}
+
+.gray{
+    color: #888;
+    font-weight: 400;
+    font-size: 24px;
 }
 
 .articles .cols {
@@ -1662,14 +1692,15 @@ h3 {
     margin-bottom: 16px;
 }
 
-.articles video{
+.articles video {
     transform: scale(1);
     cursor: pointer;
     transition: 0.5s ease;
     flex-shrink: 0;
 }
 
-.articles .cols:hover img, .articles .half:hover video {
+.articles .cols:hover img,
+.articles .half:hover video {
     transform: scale(1.02);
     cursor: pointer;
     transition: 0.5s ease;
@@ -2135,7 +2166,7 @@ hr {
     margin-top: 22px;
 }
 
-.clipping video{
+.clipping video {
     width: 100%;
 }
 
@@ -2157,7 +2188,8 @@ hr {
     flex-shrink: 0;
 }
 
-.articles .clipping:hover img, .articles .clipping:hover video {
+.articles .clipping:hover img,
+.articles .clipping:hover video {
     opacity: 0.5;
     transition: 0.4s ease !important;
 }
@@ -2284,7 +2316,7 @@ hr {
     z-index: 2;
     left: 0;
     right: 0;
-    top: 45%; 
+    top: 45%;
     width: fit-content;
     transition: 0.5s ease;
     display: none;
@@ -2292,20 +2324,22 @@ hr {
     rotate: 0deg;
     font-weight: 500;
     width: fit-content;
-    text-wrap:  nowrap;
+    text-wrap: nowrap;
 }
 
 @keyframes viewAble {
     0% {
         opacity: 0;
         rotate: -12deg;
-        top: 80%; /* Adjusted to center dynamically */
+        top: 80%;
+        /* Adjusted to center dynamically */
     }
 
     100% {
         opacity: 1;
         rotate: 0deg;
-        top: 45%; /* Centered vertically */
+        top: 45%;
+        /* Centered vertically */
     }
 }
 
@@ -2321,9 +2355,9 @@ hr {
 .photoCard h3,
 .rows h4 {
     transition: color 0.2s ease;
-} */
+}
 
-.things {
+*/ .things {
     padding-top: 164px;
 }
 
@@ -2513,7 +2547,7 @@ hr {
     opacity: 1;
 }
 
- .marquee__content {
+.marquee__content {
     width: auto;
 }
 
@@ -2718,6 +2752,7 @@ hr {
     margin-bottom: 0 !important;
 }
 
+
 .experiance .cols h2:nth-child(1) {
     font-weight: 600;
 }
@@ -2901,7 +2936,7 @@ footer {
     padding-right: var(--mdMargin);
 }
 
-.moreWorks h3{
+.moreWorks h3 {
     text-align: center;
 }
 
@@ -3102,20 +3137,20 @@ canvas {
 }
 
 @media screen and (max-width: 1200px) {
-    .skillsets .half{
+    .skillsets .half {
         width: 100%;
     }
 
-    .skillsets .flexBox{
+    .skillsets .flexBox {
         flex-wrap: wrap;
     }
 
-    .skillsets .flexBox:nth-child(2){
+    .skillsets .flexBox:nth-child(2) {
         flex-wrap: nowrap;
         width: 100%;
     }
 
-  
+
 }
 
 
@@ -3664,19 +3699,19 @@ canvas {
         padding: 0;
     }
 
-    .experiaments img{
+    .experiaments img {
         width: 50%;
         height: auto;
         flex-shrink: 0;
     }
-    
-    .experiaments video{
+
+    .experiaments video {
         width: 90vw;
         height: auto;
         flex-shrink: 0;
     }
 
-    .experiaments{
+    .experiaments {
         height: 120px;
     }
 
@@ -3701,7 +3736,7 @@ canvas {
         gap: 32px;
     }
 
-    .duolingoLogo{
+    .duolingoLogo {
         position: absolute;
         top: 24px;
         width: 42vw !important;
@@ -3713,17 +3748,17 @@ canvas {
 }
 
 @media (max-height: 780px) {
-    .menu--body{
+    .menu--body {
         justify-content: space-around;
     }
 
-    .social{
+    .social {
         position: absolute;
         bottom: 0px;
         left: 0px;
     }
 
-    .latest{
+    .latest {
         display: none;
     }
 }
