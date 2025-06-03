@@ -38,7 +38,7 @@ function updateDetroitTime() {
                 };
 
                 const timeString = new Intl.DateTimeFormat("en-US", options).format(now);
-                timeEl.textContent = `It's ${timeString} in Detroit`;
+                timeEl.textContent = `Detroit ${timeString}`;
             }
 
             // Initial load
@@ -180,3 +180,27 @@ function placeSticker(canvas, src, x, y, rotation) {
 
   canvas.appendChild(sticker);
 }
+
+//agency flipper:
+const words = ['Instrument', 'Hook', 'Left Field Labs', 'Punchcut'];
+let index = 0;
+
+const flipText = document.getElementById('flipText');
+flipText.textContent = words[index];
+
+function slideToNextWord() {
+  flipText.style.transform = 'translateY(-100%)';
+
+  setTimeout(() => {
+    index = (index + 1) % words.length;
+    flipText.textContent = words[index];
+    flipText.style.transform = 'translateY(100%)';
+
+    // Force reflow to reset animation
+    void flipText.offsetWidth;
+
+    flipText.style.transform = 'translateY(0%)';
+  }, 500); // wait for slide-up before replacing
+}
+
+setInterval(slideToNextWord, 3000);

@@ -38,10 +38,13 @@
     <meta name="twitter:description" content="Designing accessible, visual systems for product teams who give a damn.">
     <link rel="stylesheet" href="cssReset.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
-        rel="stylesheet">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
@@ -72,34 +75,30 @@
             </div>
         </div>
         <div class="navList">
-            <div class="flexBox" style="justify-content: space-between;">
-
-                <div style="gap: 16px; display: flex; align-items: center;">
-                    <p>Alex Kauffman</p>
-                    <p>·</p>
-                    <p class="gray">Product Designer</p>
+            <div class="flexBox">
+                <div class="half">
+                    <p class="gray" style="padding: 0;">Alex Kauffman</p>
                 </div>
-                <p class="gray"><span class="time"></span></p>
-                <div style="gap: 32px; display: flex; align-items: center;">
-                    <a href="https://alex-kauffman.com">Work</a>
-                    <a href="https://alex-kauffman.com#about">About</a>
-                    <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+                <div class="half">
+                    <div style="display: flex; align-items: center; justify-content: space-between;">
+                        <p class="gray"><span class="time"></span></p>
+                        <div style="gap: 8px; display: flex; justify-content: end; align-items: center;">
+                            <a id="active" href="https://alex-kauffman.com">Work</a>
+                            <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div class="content">
-            <div class="mdMargin"></div>
-            <div class="archives gallery">
-
-                <div class="flexBox" id="headerBox">
-                    <div class="textContainer">
-                        <h2 class="mdTitle">Designing accessible, visual systems for product teams who give a damn.</h2>
-                    </div>
-                </div>
+            <div class="textContainer">
+                <h2 class="mdTitle">Alex Kauffman is a product designer focused on accessible, visual systems for
+                    product teams who give a damn.</h2>
             </div>
             <div class="project" style="width: 100%; max-width: 100%;">
-                <div class="mdMargin"></div>
-                <div class="flexBox" style="align-items: center;">
+
+                <div class="flexBox" style="align-items: start;">
+
                     <div class="half">
                         <a href="duolingoasl.html" class="fade-link">
                             <div class="clipping" data-color="var(--hoverGray)">
@@ -107,50 +106,10 @@
                                 <video src="Duolingo_ASL_Lily.mp4" playsinline autoplay loop nocontrols muted
                                     width="100%">
                             </div>
-                            <br>
-                            <h3>Duolingo ASL</h3>
-                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">
-                                Reimagining language learning without sound — <br> expanding Duolingo’s platform and
-                                revenue stream.
-                            </h3>
-                        </a>
-                    </div>
-                    <div class="half">
-                        <a href="ColorHealth.html" class="fade-link">
-                            <div class="clipping" data-color="var(--hoverGray)">
-                                <img draggable="false" src="Color_Illustartions.png" width="100%"
-                                    alt="Color logo with person with a nice smile with illustration of DNA elements around it.">
+                            <div class="flexBox" style="justify-content: start; align-items: end;">
+                                <h3>Duolingo ASL</h3>
+                                <h3 class="gray">Concept, UI Design</h3>
                             </div>
-                            <br>
-                            <h3>Color Health</h3>
-                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Revamped site design and built
-                                custom visual storytelling for Color’s DNA and cancer care pages.</h3>
-                        </a>
-                    </div>
-                </div>
-                <div class="mxdMargin"></div>
-                    <a href="vigor.html" class="fade-link">
-                        <div class="clipping" data-color="var(--hoverGray)" data-text-color="#FFFFFF">
-                            <img draggable="false" src="Vigor_iWatch.png" width="100%"
-                                alt="Bento Grid photo of Vigor app on apple tv, iphone app with Vigor splash screen and Vigor Logo">
-                        </div>
-                        <br>
-                        <h3>Vigor Fitness App</h3>
-                        <h3 class="xSmTxt" style="padding-top: 8px; color: gray;">Concept fitness app using gamification
-                            to help busy users stay active through daily interaction logging.</h3>
-                    </a>
-                <div class="mxdMargin"></div>
-                <div class="flexBox" style="align-items: center;">
-                    <div class="half">
-                        <a href="StarbucksIllo.html" class="fade-link">
-                            <div class="clipping" data-color="var(--hoverGray)">
-                                <img src="StarbucksCover.png" width="100%" alt="Wishful Capstone Project Cover">
-                            </div>
-                            <br>
-                            <h3 class="projectTitle">Starbucks Illustartions</h3>
-                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Improved rewards page with custom
-                                UI and illustrations — bringing the design closer to Starbucks' playful, human brand.
-                            </h3>
                         </a>
                     </div>
                     <div class="half">
@@ -159,10 +118,47 @@
                                 <img src="HOOK_SQ.png" width="100%"
                                     alt="Hook Agency website with global nav on top of page and second screen is Hook website with full black full menu design.">
                             </div>
-                            <br>
-                            <h3>Hook Menu Redesign</h3>
-                            <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Improved UX for a digital agency
-                                site — designed new interactions to boost engagement and site traffic.</h3>
+                            <div class="flexBox" style="justify-content: start; align-items: end;">
+                                <h3>Hook Menu Redesign</h3>
+                                <h3 class="gray">Client, UX Design</h3>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="smMargin"></div>
+                <a href="vigor.html" class="fade-link">
+                    <div class="clipping" data-color="var(--hoverGray)" data-text-color="#FFFFFF">
+                        <img draggable="false" src="Vigor_iWatch.png" width="100%"
+                            alt="Bento Grid photo of Vigor app on apple tv, iphone app with Vigor splash screen and Vigor Logo">
+                    </div>
+                    <div class="flexBox" style="justify-content: start; align-items: end;">
+                        <h3>Vigor Fitness App</h3>
+                        <h3 class="gray">Concept, UX Design, Visual Desig, Motion Explorations</h3>
+                    </div>
+                </a>
+                <div class="smMargin"></div>
+                <div class="flexBox" style="align-items: center;">
+                    <div class="half">
+                        <a href="StarbucksIllo.html" class="fade-link">
+                            <div class="clipping" data-color="var(--hoverGray)">
+                                <img src="StarbucksCover.png" width="100%" alt="Wishful Capstone Project Cover">
+                            </div>
+                            <div class="flexBox" style="justify-content: start; align-items: end;">
+                                <h3>Starbucks Illustartions</h3>
+                                <h3 class="gray">Concept, Visual Design</h3>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="half">
+                        <a href="ColorHealth.html" class="fade-link">
+                            <div class="clipping" data-color="var(--hoverGray)">
+                                <img draggable="false" src="Color_Illustartions.png" width="100%"
+                                    alt="Color logo with person with a nice smile with illustration of DNA elements around it.">
+                            </div>
+                            <div class="flexBox" style="justify-content: start; align-items: end;">
+                                <h3>Color Health</h3>
+                                <h3 class="gray">Client, Visual Design</h3>
+                            </div>
                         </a>
                     </div>
                 </div>
@@ -172,9 +168,9 @@
             <div class="articles">
                 <!-- <h1 class="mdTitle">In the Field</h1>
             <div class="smMargin"></div> -->
-                <h1 class="mdTitle">Collections of design and technical experiments focused on systems, tools, and
-                    speculative product thinking.</h1>
-                <div class="mdMargin"></div>
+                <h1 class="mdTitle">Experiments and writing that explore new directions in systems, tools, and product
+                    design.</h1>
+                <!-- <div class="mdMargin"></div>
                 <div class="flexBox" style="align-items: start;">
                     <div class="half">
                         <a href="https://www.linkedin.com/posts/alex-kauffman_are-we-humans-just-fancy-conscious-calculators-activity-7320958684061216769-PpiU?utm_source=share&utm_medium=member_desktop&rcm=ACoAACE1dlMBysws_MbV0ryYzQ-CUVKowrTyg-k"
@@ -211,8 +207,8 @@
                         <h2>Hudle is a paradim shifting space coming soon.</h2>
                         <p class="xSmTxt" style="padding-top: 16px; color: gray;">Coming soon</p>
                     </div>
-                </div>
-                <div class="mdMargin"></div>
+                </div> -->
+                <div class="smMargin"></div>
                 <div class="flexBox" style="align-items: start;">
                     <div class="half">
                         <a href="https://www.linkedin.com/feed/update/urn:li:activity:7264858607559598080/"
@@ -221,9 +217,11 @@
                                 <h3>See Post</h3>
                                 <video src="Duolingo_ASL_Lily.mp4" playsinline autoplay loop muted nocontrols></video>
                             </div>
-                            <h2>Python + 3D Software: Exploring Duolingo's Innovations in Non-Verbal Language Learning.
-                            </h2>
-                            <p class="xSmTxt" style="padding-top: 16px; color: gray;">LinkedIn - 1 min read</p>
+                            <br>
+                            <h1 class="mdTxt">8K+ likes on LinkedIn — showing how deeply society values accessibility,
+                                ASL, and non-verbal language learning.
+                            </h1>
+                            <h1 class="gray" style="padding-top: 16px;">LinkedIn - 1 min read</h1>
                         </a>
                     </div>
                     <div class="half">
@@ -235,8 +233,10 @@
                                     alt="Abstract image of hearin aids with a fist hand fighting back for hearing world"
                                     style="user-select: none;" width="100%">
                             </div>
-                            <h2>DEAF CREATIVES—6 WAYS AGENCIES CAN CREATE ACCESSIBLE AND INCLUSIVE ENVIRONMENTS</h2>
-                            <p class="xSmTxt" style="padding-top: 16px; color: gray;">AdAge - 3 min read</p>
+                            <br>
+                            <h1 class="mdTxt">DEAF CREATIVES—6 WAYS AGENCIES CAN CREATE ACCESSIBLE AND INCLUSIVE
+                                ENVIRONMENTS</h1>
+                            <h1 class="gray" style="padding-top: 16px;">AdAge - 3 min read</h1>
                         </a>
                     </div>
                     <div class="half">
@@ -247,9 +247,11 @@
                                     alt="Picture of Config Figma confrence doing a workshop with Ricki and Miggie"
                                     style="user-select: none;" width="100%">
                             </div>
-                            <h2>Hook Agency highlights six key insights from Alex Kauffman's article published in AdAge.
-                            </h2>
-                            <p class="xSmTxt" style="padding-top: 16px; color: gray;">Hook Article - 1 min read</p>
+                            <br>
+                            <h1 class="mdTxt">Hook Agency highlights six key insights from Alex Kauffman's article
+                                published in AdAge.
+                            </h1>
+                            <h1 class="gray" style="padding-top: 16px;">Hook Article - 1 min read</h1>
                         </a>
                     </div>
                     <div class="half">
@@ -261,9 +263,11 @@
                                     alt="Picture of Config Figma confrence doing a workshop with Ricki and Miggie"
                                     style="user-select: none;" width="100%">
                             </div>
-                            <h2>Utilizing Figma's variable feature for displaying ads to help reduce production time.
-                            </h2>
-                            <p>LinkedIn - 1 min read</p>
+                            <br>
+                            <h1 class="mdTxt">Utilizing Figma's variable feature for displaying ads to help reduce
+                                production time.
+                            </h1>
+                            <h1 class="gray" style="padding-top: 16px;">LinkedIn - 1 min read</h1>
                         </a>
                     </div>
                 </div>
@@ -271,90 +275,89 @@
             <div class="mdMargin"></div>
             <div class="mdMargin"></div>
             <div class="project" style="max-width: 100%;">
-                <h1 class="mdTitle">I design thoughtful digital products with a focus on interaction, clarity, and
-                    systems thinking. After years in agency spaces, I’m shifting toward product teams where I can build
-                    tools, not just ship assets — exploring new ideas, workflows, and technologies that actually grow
-                    over time.
+                <h1 class="mdTitle">After several years in fast-paced agencies space, I’m now shifting toward product
+                    teams
+                    where I can help shape tools — not just deliver assets. I bring experience in shipping visuals and
+                    systems at speed, and I’m focused on growing as a designer who values clarity, interaction, and
+                    long-term product thinking.
                 </h1>
                 <div class="mdMargin"></div>
                 <div class="mdMargin"></div>
                 <div class="skillsets" id="about">
-                    <div class="flexBox">
+                    <div class="flexBox" style="gap: 16px;">
                         <div class="half">
                             <h1 class="gray">About</h1>
                             <br>
                             <div class="hr"></div>
                             <br>
-                            <h1 class="mdTxt">Alex Kauffman is a design focused on systems-driven, data-driven design.
-                                With
-                                a BFA in New Media Design from RIT, he blends creative direction, product thinking, and
-                                technical execution to solve real business challenges through thoughtful solutions.
+                            <h1 class="mdTxt">Alex Kauffman is a designer focused on clarity, interaction, and
+                                systems-thinking. With a BFA in New Media Design from RIT, he blends creative direction
+                                and product thinking to design tools that support thoughtful, long-term growth.
                             </h1>
                             <br>
-                            <h1 class="mdTxt">Rooted in computing and visual systems, Alex works across design, tooling,
-                                and
-                                early-stage product development. He’s currently exploring roles in product design,
-                                visual
-                                systems, or software prototyping — aiming to help shape innovative MVPs and lead R&D
-                                efforts
-                                at the edge of design and technology.</h1>
+                            <h1 class="mdTxt">He’s currently exploring roles in product design and visual systems —
+                                aiming to contribute to meaningful products, not just fast-moving ideas. His dream role
+                                is helping Microsoft’s Accessibility team improve the Xbox gaming experience for diverse
+                                players — or working with platforms like Toast to make everyday payments more accessible
+                                for all.</h1>
                             <br>
-                            <h1 class="mdTxt">Long-term, I’m interested in shaping new creative disciplines that help
-                                teams
-                                align design with deeper values — exploring how ethos can be a driver in product,
-                                culture,
-                                and systems.</h1>
+                            <h1 class="mdTxt">
+                                Outside of design, Alex is getting into motocross (MX) as a new hobby. He also enjoys
+                                traveling to different countries, meeting new people, and trying unfamiliar things —
+                                always chasing experiences that expand perspective.
+                            </h1>
                         </div>
-                        <div class="flexBox">
-                            <div class="half">
-                                <h1 class="gray">Skills</h1>
-                                <br>
-                                <div class="hr"></div>
-                                <br>
-                                <h1 class="mdTxt">Visual Design</h1>
-                                <h1 class="mdTxt">UI Design</h1>
-                                <h1 class="mdTxt">Marketing</h1>
-                                <h1 class="mdTxt">3D Design</h1>
-                                <h1 class="mdTxt">Prototyping</h1>
-                                <h1 class="mdTxt">Mentoring</h1>
-                                <h1 class="mdTxt">Teamwork</h1>
-                                <br>
-                                <br>
-                                <h1 class="mdTxt">Python, SQL, JS</h1>
-                                <h1 class="mdTxt">HTML/CSS</h1>
-                                <br>
-                                <br>
-                                <h1 class="mdTxt">AI-Driven UX Thinking</h1>
-                                <h1 class="mdTxt">Front-end Development</h1>
+                        <div class="half">
+                            <div class="flexBox" style="gap: 16px;">
+                                <div class="half">
+                                    <h1 class="gray">Skills</h1>
+                                    <br>
+                                    <div class="hr"></div>
+                                    <br>
+                                    <h1 class="mdTxt">Design:</h1>
+                                    <h1 class="mdTxt">Visual Design</h1>
+                                    <h1 class="mdTxt">UI Design</h1>
+                                    <h1 class="mdTxt">Interaction Design</h1>
+                                    <h1 class="mdTxt">3D Design</h1>
+                                    <h1 class="mdTxt">Figma</h1>
+                                    <h1 class="mdTxt">Prototyping</h1>
+                                    <br>
+                                    <br>
+                                    <h1 class="mdTxt">Tech:</h1>
+                                    <h1 class="mdTxt">Python, SQL, JS</h1>
+                                    <h1 class="mdTxt">HTML/CSS</h1>
+                                    <h1 class="mdTxt">Git / GitHub</h1>
+                                    <h1 class="mdTxt">Agile Methodologies</h1>
+                                    <h1 class="mdTxt">Accessibility Standards</h1>
+                                    <h1 class="mdTxt">Localization / Multilingual UI</h1>
+                                </div>
+                                <div class="half">
+                                    <h1 class="gray">Education</h1>
+                                    <br>
+                                    <div class="hr"></div>
+                                    <br>
+                                    <h1 class="mdTxt">Rochester Institute of Technology</h1>
+                                    <br>
+                                    <br>
+                                    <h1 class="mdTxt">Bachelor of Fine Arts, <br> <a
+                                            style="text-decoration: underline; text-underline-offset: 8px;"
+                                            href="https://www.rit.edu/study/new-media-design-bfa" target="_blank">New
+                                            Media
+                                            Design</a></h1>
+                                    <br>
+                                    <br>
+                                    <h1 class="mdTxt">GPA: 3.69/4 - Magna Cum Laude</h1>
+                                </div>
                             </div>
-                            <div class="half">
-                                <h1 class="gray">Education</h1>
-                                <br>
-                                <div class="hr"></div>
-                                <br>
-                                <h1 class="mdTxt">Rochester Institute of Technology</h1>
-                                <br>
-                                <br>
-                                <h1 class="mdTxt">Bachelor of Fine Arts: <br> <a
-                                        style="text-decoration: underline; text-underline-offset: 8px;"
-                                        href="https://www.rit.edu/study/new-media-design-bfa" target="_blank">New Media
-                                        Design</a></h1>
-                                <br>
-                                <br>
-                                <h1 class="mdTxt">GPA: 3.69/4</h1>
-                                <h1 class="mdTxt">Magna Cum Laude</h1>
-                            </div>
+
+
                         </div>
                     </div>
                 </div>
-                <!-- <div class="mdMargin"></div>
-            <div class="mdMargin"></div>
-            <h1 class="mdTitle">I aim to further my education to bridge design and engineering, with a focus on
-                contributing to a more sustainable future in the creative industry.</h1> -->
                 <div class="mdMargin"></div>
                 <div class="mdMargin"></div>
                 <h1 class="mdTitle" style="text-align: left;">&copy;2025</h1>
-                <div class="mdMargin"></div>
+                <div class="smMargin"></div>
             </div>
         </div>
         <script src="jquery-3.6.0.min.js"></script>

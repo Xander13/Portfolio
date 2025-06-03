@@ -1,5 +1,5 @@
 :root {
-    --dark: #ffffff;
+    --dark: #f5f5f5;
     --light: #000000;
     --gray: #808080;
     --ghost: #8080804e;
@@ -52,7 +52,6 @@
 body {
     background-color: var(--light);
     color: var(--dark);
-    font-family: sans-serif;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
@@ -183,7 +182,9 @@ body,
 }
 
 * {
-    font-family: "Instrument Sans", sans-serif;
+    font-family: "Be Vietnam Pro", sans-serif;
+    font-weight: 300 !important;
+    font-style: normal;
 }
 
 ul {
@@ -200,9 +201,28 @@ a {
 }
 
 ::selection {
-    background: var(--dark);
-    color: var(--light);
+    background: var(--darkGray);
+    color: white;
 }
+
+.flip-wrap {
+    display: inline-block;
+    width: 500px;
+    overflow: hidden;
+    height: 1em;
+    position: relative;
+    text-align: center;
+}
+
+#flipText {
+    position: absolute;
+    left: 0;
+    right: 0;
+    animation: none;
+    transition: transform 0.5s ease-in-out;
+    will-change: transform;
+}
+
 
 ::-webkit-scrollbar {
     -webkit-appearance: none;
@@ -344,29 +364,6 @@ p {
     padding-bottom: 32px;
 }
 
-/* For Chrome, Safari, Edge (WebKit browsers) */
-::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-    background-color: #000;
-    /* Scrollbar track */
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: #fff;
-    /* Scrollbar thumb */
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background-color: #ccc;
-}
-
-::-webkit-scrollbar-corner {
-    background-color: #000;
-}
-
-
 .latest .flexBox .cols {
     flex: 0 0 auto;
     width: 210px;
@@ -421,16 +418,25 @@ ul {
     width: fit-content;
 }
 
+.cta {
+    color: #4c32ff;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.active {
+    font-weight: 500;
+}
+
 .navList {
     position: fixed;
     top: 0;
     left: 0;
     right: 0px;
-    padding-left: var(--mxdMargin);
-    padding-right: var(--mxdMargin);
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
     padding-top: 16px;
     padding-bottom: 16px;
-    background-color: black;
     z-index: 999999999;
     display: flex;
     justify-content: space-between;
@@ -441,7 +447,8 @@ ul {
 }
 
 .navList a:hover {
-    color: gray;
+    background-color: var(--dark);
+    color: var(--light);
 }
 
 .navList img {
@@ -470,8 +477,27 @@ ul {
     align-items: center;
 }
 
-.navList a, .navList p{
-    font-size: 18px;
+.navList p {
+    font-size: 20px;
+    text-transform: uppercase;
+    padding: 12px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: var(--dark);
+}
+
+
+.navList a {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 16px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    background-color: rgba(128, 128, 128, 0.5);
+    backdrop-filter: blur(4px);
+    color: var(--dark);
+    border-radius: 100rem;
+    font-weight: 500;
 }
 
 .navList h1 {
@@ -488,9 +514,8 @@ ul {
 }
 
 #active {
-    color: var(--dark);
-    background-color: var(--light);
-    transition: 0.5s ease;
+    color: var(--light);
+    background-color: var(--dark);
 }
 
 #activeContent {
@@ -580,8 +605,8 @@ img {
 .project,
 .skills {
     position: relative;
-    padding-left: var(--mxdMargin);
-    padding-right: var(--mxdMargin);
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
     margin: auto;
     transition: color 0.5s ease, background-color 0.5s ease;
 }
@@ -614,7 +639,6 @@ img {
 
 h3 {
     text-align: left;
-    margin: auto;
     text-transform: uppercase;
     font-size: 24px;
     font-weight: 500;
@@ -753,7 +777,7 @@ h3 {
 }
 
 .project .flexBox {
-    gap: 124px;
+    gap: 16px;
 }
 
 .projectWriting .flexBox {
@@ -794,8 +818,7 @@ h3 {
 }
 
 .project h3 {
-    text-align: center;
-    padding-top: 8px;
+    padding-top: 16px;
 }
 
 /* .project h3{
@@ -931,13 +954,11 @@ h3 {
 .textContainer {
     width: 100%;
     height: fit-content;
-    position: absolute;
-    bottom: 64px;
-    /* top: calc(100% / 2 - 9vw); */
-    left: var(--mxdMargin);
+    padding: var(--smMargin);
     height: fit-content;
     z-index: 2222;
     backface-visibility: hidden;
+    padding-top: 30%;
 }
 
 .textContainer h3 {
@@ -1646,15 +1667,15 @@ h3 {
 .articles {
     position: relative;
     margin: auto;
-    margin-left: var(--mxdMargin);
-    margin-right: var(--mxdMargin);
+    margin-left: var(--smMargin);
+    margin-right: var(--smMargin);
     transition: 0.4s ease;
 }
 
-.gray{
+.gray {
     color: #888;
     font-weight: 400;
-    font-size: 24px;
+    font-size: 18px;
 }
 
 .articles .cols {
@@ -1665,8 +1686,12 @@ h3 {
 }
 
 .articles .flexBox {
-    gap: 32px;
+    gap: 8px;
     flex-shrink: 0;
+}
+
+.clipping {
+    border-radius: 12px;
 }
 
 .articles img {
@@ -1798,7 +1823,7 @@ hr {
 }
 
 .skillsets .hr {
-    height: 4px;
+    height: 2px;
     background: linear-gradient(270deg, var(--light), var(--medium-dark));
     background-size: 400% 400%;
     -webkit-animation: GrayScale 9s ease infinite;
@@ -3194,10 +3219,10 @@ canvas {
         display: none;
     }
 
-    .textContainer {
-        left: 16px;
-        bottom: 56px;
-        width: fit-content;
+    .textContainer{
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 90%;
     }
 
     .mdTitle {
@@ -3231,11 +3256,6 @@ canvas {
 
     .drawers {
         padding-bottom: 64px;
-    }
-
-    .project .flexBox {
-        flex-direction: column !important;
-        gap: 64px !important;
     }
 
     .mdTxt,
