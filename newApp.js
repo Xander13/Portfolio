@@ -154,11 +154,14 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
 
     if (!readOpen) {
+      // Show doors only if other panels are not open
       if (!infoOpen && !indexOpen) {
         readDoorTop.style.top = "0";
         readDoorBottom.style.bottom = "0";
       }
 
+      // Fully show readBox
+      readBox.style.display = "block";
       readBox.style.visibility = "visible";
       readBox.style.opacity = "1";
 
@@ -166,10 +169,14 @@ document.addEventListener('DOMContentLoaded', () => {
         readFade.style.opacity = "1";
       }, 600);
 
+      // Hide other panels if open
       if (infoOpen) {
         infoFade.style.opacity = "0";
         setTimeout(() => {
           $(infoBox).fadeOut(0);
+          infoBox.style.opacity = "0";
+          infoBox.style.visibility = "hidden";
+          infoBox.style.display = "none";
           infoOpen = false;
         }, 300);
       }
@@ -178,6 +185,9 @@ document.addEventListener('DOMContentLoaded', () => {
         indexFade.style.opacity = "0";
         setTimeout(() => {
           $(indexBox).fadeOut(0);
+          indexBox.style.opacity = "0";
+          indexBox.style.visibility = "hidden";
+          indexBox.style.display = "none";
           indexOpen = false;
         }, 300);
       }
@@ -187,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       readOpen = true;
     } else {
+      // Hide read panel
       readFade.style.opacity = "0";
 
       setTimeout(() => {
@@ -197,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         readBox.style.opacity = "0";
         readBox.style.visibility = "hidden";
+        readBox.style.display = "none";
         readOpen = false;
       }, 900);
 
@@ -285,33 +297,4 @@ document.addEventListener('DOMContentLoaded', () => {
       moveActiveBarTo(link);
     });
   });
-
-  // Simple cursor follow only, no scaling, no pixelation
-  const cursor = document.getElementById('cursor');
-  if (!cursor) {
-    console.warn('No #cursor element found in DOM!');
-    return;
-  }
-
-  let mouseX = 0;
-  let mouseY = 0;
-  let currentX = 0;
-  let currentY = 0;
-  const speed = 0.2; // easing speed
-
-  document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  function animateCursor() {
-    currentX += (mouseX - currentX) * speed;
-    currentY += (mouseY - currentY) * speed;
-
-    cursor.style.left = currentX + 'px';
-    cursor.style.top = currentY + 'px';
-
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
 });

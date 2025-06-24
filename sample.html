@@ -502,18 +502,19 @@
             visibility: hidden;
             transition: opacity 0.3s ease;
         }
-/* 
-         .readsBox {
+
+        .readsBox {
             position: fixed;
             top: 0;
-            bottom: 0;
             left: 0;
-            width: 100%;
-            backdrop-filter: blur(50px);
-            opacity: 0;
+            right: 0;
+            bottom: 0;
             visibility: hidden;
+            opacity: 0;
             transition: opacity 0.3s ease;
-        } */
+            display: none;
+            z-index: 100;
+        }
 
         .infoBox h1 {
             color: black;
@@ -590,33 +591,7 @@
             padding-top: 64px;
             width: calc(50% - 16px);
         }
-
-        .cursor {
-            pointer-events: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 96px;
-            height: 96px;
-            background: white;
-            border-radius: 50%;
-            mix-blend-mode: difference;
-            transform: translate(-50%, -50%);
-            transition: width 0.25s ease, height 0.25s ease, transform 0.15s ease, scale 0.15s ease;
-            z-index: 9999;
-            overflow: visible;
-            /* to show inner canvas properly */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-
-        .cursor.hovering-link {
-            transform: translate(-50%, -50%) scale(0.0);
-        }
     </style>
-    <div class="cursor" id="cursor"></div>
     <div class="readsBox">
         <div class="doorAnimate">
             <div class="doorBottom"></div>
@@ -722,27 +697,12 @@
                     </div>
                 </div>
             </div>
-            <style>
-                .pixelCanvas {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    pointer-events: none;
-                    /* Allows hover to go through to container */
-                    z-index: 2;
-                    /* Make sure it's above the media */
-                }
-            </style>
             <div class="fullView">
-                <canvas class="pixelCanvas"></canvas>
                 <div class="projectDiscrips">
                     <h1 class="dark">Restration Hardware</h1>
                     <h1 class="dark">Client, Production, Motion</h1>
                 </div>
-                <img style="display: none;"
-                    src="https://media.restorationhardware.com/is/image/rhis/cat21180001?$np-cgfull-lg$" width="100%"
+                <img src="https://media.restorationhardware.com/is/image/rhis/cat21180001?$np-cgfull-lg$" width="100%"
                     alt="RH">
             </div>
             <div class="halfView">
@@ -751,18 +711,16 @@
                         <h1>Vigor Fitness</h1>
                         <h1>Concept, UX Research, UI Design, Motion</h1>
                     </div>
-                    <canvas class="pixelCanvas"></canvas>
                     <img class="bgimg" src="VigorSQ.png" alt="vigor fitnes app">
                     <div class="playPause">
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
                     </div>
                 </div>
                 <div class="halfs">
-                    <canvas class="pixelCanvas"></canvas>
                     <video src="https://tubik.b-cdn.net/Malloy_banks/04_2.mp4" loop autoplay muted playinline></video>
                     <div class="projectDiscrips">
-                        <h1>Color Health</h1>
-                        <h1>UI Design, StoryBoarding, Motion</h1>
+                        <h1 class="dark">Color Health</h1>
+                        <h1 class="dark">UI Design, StoryBoarding, Motion</h1>
                     </div>
                     <div class="playPause">
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
@@ -775,7 +733,6 @@
                         <h1 class="dark">B - Side</h1>
                         <h1 class="dark">Motion</h1>
                     </div>
-                    <canvas class="pixelCanvas"></canvas>
                     <video src="MotionExp.mp4" loop autoplay muted playinline></video>
                     <div class="playPause">
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
@@ -968,11 +925,6 @@
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        /* .halfs:hover,
-        .fullView:hover {
-            cursor: pointer;
-        } */
-
         .projectDiscrips {
             position: absolute;
             width: 100%;
@@ -1000,8 +952,8 @@
         .fullView {
             position: relative;
             width: 100%;
-            height: 100%;
-            overflow: hidden;
+            height: 100vh;
+            display: block;
         }
 
         .fullView video,
