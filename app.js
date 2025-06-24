@@ -1,28 +1,3 @@
-// Copy text to clipboard
-function copyContent() {
-  let text = 'a-kauffman@outlook.com';
-  const changeText = document.querySelector("#change-text");
-
-  try {
-      navigator.clipboard.writeText(text)
-          .then(() => {
-              console.log('Content copied to clipboard');
-              changeText.textContent = "Copied!";
-              // Timeout to change the message
-              setTimeout(() => {
-                  changeText.textContent = "Email";
-              }, 2000);
-          })
-          .catch(err => {
-              console.error('Failed to copy: ', err);
-              changeText.textContent = "Failed to copy. Please try manually.";
-          });
-  } catch (err) {
-      console.error('Failed to copy: ', err);
-      changeText.textContent = "Failed to copy. Please try manually.";
-  }
-}
-
 //Detroit time baby
 function updateDetroitTime() {
                 const timeEl = document.querySelector(".time");
@@ -180,27 +155,3 @@ function placeSticker(canvas, src, x, y, rotation) {
 
   canvas.appendChild(sticker);
 }
-
-//agency flipper:
-const words = ['Instrument', 'Hook', 'Left Field Labs', 'Punchcut'];
-let index = 0;
-
-const flipText = document.getElementById('flipText');
-flipText.textContent = words[index];
-
-function slideToNextWord() {
-  flipText.style.transform = 'translateY(-100%)';
-
-  setTimeout(() => {
-    index = (index + 1) % words.length;
-    flipText.textContent = words[index];
-    flipText.style.transform = 'translateY(100%)';
-
-    // Force reflow to reset animation
-    void flipText.offsetWidth;
-
-    flipText.style.transform = 'translateY(0%)';
-  }, 500); // wait for slide-up before replacing
-}
-
-setInterval(slideToNextWord, 3000);

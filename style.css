@@ -104,8 +104,8 @@ body,
 }
 
 .contained {
-    margin-left: var(--mdMargin);
-    margin-right: var(--mdMargin);
+    margin-left: var(--smMargin);
+    margin-right: var(--smMargin);
 }
 
 .pageViewer {
@@ -528,7 +528,6 @@ ul {
     top: 86px;
     width: calc(100% - 64px);
     height: fit-content;
-    border-radius: 12px;
     z-index: 3333;
     background-color: var(--dark);
     left: 32px;
@@ -675,12 +674,10 @@ h3 {
 }
 
 .lgText {
-    letter-spacing: -.02vw;
     margin-top: 0;
     margin-bottom: 0;
-    font-size: 5vw;
     font-weight: 500;
-    line-height: 4.9vw;
+
     text-transform: uppercase;
 }
 
@@ -728,10 +725,10 @@ h3 {
 }
 
 .lgTxt {
-    font-size: 9vw;
+    font-size: 7vw;
     padding-left: var(--smMargin);
     padding-right: var(--smMargin);
-    line-height: 8vw;
+    line-height: 8.2vw;
     text-transform: uppercase;
     width: fit-content;
     cursor: pointer;
@@ -777,7 +774,7 @@ h3 {
 }
 
 .project .flexBox {
-    gap: 16px;
+    gap: 48px;
 }
 
 .projectWriting .flexBox {
@@ -1207,7 +1204,6 @@ h3 {
     padding: 12px;
     padding-left: 32px;
     padding-right: 32px;
-    border-radius: 12px;
     line-height: 24px;
     transition: opacity 0.2s ease;
     cursor: pointer;
@@ -1690,10 +1686,6 @@ h3 {
     flex-shrink: 0;
 }
 
-.clipping {
-    border-radius: 12px;
-}
-
 .articles img {
     transition: 0.5s ease;
     scale: 1;
@@ -1780,8 +1772,8 @@ h3 {
     position: absolute;
     width: 100%;
     bottom: 0;
-    padding-left: var(--mdMargin);
-    padding-right: var(--mdMargin);
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
     padding-bottom: 64px;
     z-index: 2;
     user-select: none;
@@ -2950,8 +2942,8 @@ hr {
 
 footer {
     position: relative;
-    margin-left: var(--mdMargin);
-    margin-right: var(--mdMargin);
+    margin-left: var(--smMargin);
+    margin-right: var(--smMargin);
     width: auto;
     box-sizing: border-box;
     z-index: 14;
@@ -2959,8 +2951,8 @@ footer {
 }
 
 .moreWorks {
-    padding-left: var(--mdMargin);
-    padding-right: var(--mdMargin);
+    padding-left: var(--smMargin);
+    padding-right: var(--smMargin);
 }
 
 .moreWorks h3 {

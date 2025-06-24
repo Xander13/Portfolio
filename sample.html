@@ -40,11 +40,6 @@
         content="Alex is a product designer focused on accessibility, visual systems, and motion — for product teams who give a damn.">
     <link rel="stylesheet" href="cssReset.css">
     <link rel="stylesheet" href="style.css">
-    <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
-        rel="stylesheet"> -->
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -53,17 +48,18 @@
 </head>
 
 <body>
-    <a href="https://alex-kauffman.com/">
-        <div class="logoBox">
+    <div class="logoBox" id="logoBox">
+        <a href="https://alex-kauffman.com/">
             <img src="AlogoShort.svg" alt="Alex Kauffman Logo">
-        </div>
-    </a>
-    <div class="nav">
+        </a>
+    </div>
+
+    <div class="nav" id="nav">
         <div class="flexBox">
             <div class="activeBar" id="activeBar"></div>
             <a href="#">Work</a>
+            <a href="#" id="readSlider">Reads</a>
             <a href="#" id="infoSlider">MX</a>
-            <!-- <a href="#" id="infoSlider">Read</a> -->
             <a href="#" id="index">Index</a>
             <a href="Alex_Kauffman_Resume.pdf" target="_blank">Resume</a>
         </div>
@@ -329,12 +325,12 @@
             position: fixed;
             top: 32px;
             left: 32px;
-            width: 420px;
+            width: auto;
             margin: auto;
             padding: 32px;
             padding-left: 48px;
             padding-right: 48px;
-            z-index: 1000;
+            z-index: 12000;
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(45px);
             border-radius: 100rem;
@@ -502,11 +498,22 @@
             left: 0;
             width: 100%;
             backdrop-filter: blur(50px);
-            z-index: 999;
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease;
         }
+/* 
+         .readsBox {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            backdrop-filter: blur(50px);
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease;
+        } */
 
         .infoBox h1 {
             color: black;
@@ -583,7 +590,45 @@
             padding-top: 64px;
             width: calc(50% - 16px);
         }
+
+        .cursor {
+            pointer-events: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 96px;
+            height: 96px;
+            background: white;
+            border-radius: 50%;
+            mix-blend-mode: difference;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s ease, height 0.25s ease, transform 0.15s ease, scale 0.15s ease;
+            z-index: 9999;
+            overflow: visible;
+            /* to show inner canvas properly */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+
+        .cursor.hovering-link {
+            transform: translate(-50%, -50%) scale(0.0);
+        }
     </style>
+    <div class="cursor" id="cursor"></div>
+    <div class="readsBox">
+        <div class="doorAnimate">
+            <div class="doorBottom"></div>
+            <div class="doorTop"></div>
+        </div>
+        <div class="FadeInAssets">
+            <div class="imgGallary">
+                <img src="https://www.foxracing.com/on/demandware.static/-/Library-Sites-FoxRacing/default/dw937312d1/landing/2023/guide-mx-racewear/airline-explore.jpg"
+                    alt="Alex">
+            </div>
+        </div>
+    </div>
     <div class="infoBox">
         <div class="doorAnimate">
             <div class="doorBottom"></div>
@@ -657,7 +702,7 @@
                 <div class="halfs">
                     <div class="projectDiscrips">
                         <h1>Duolingo ASL</h1>
-                        <h1>UI Design, Accessibility, Motion, Coding</h1>
+                        <h1>UI, Motion, Development</h1>
                     </div>
                     <video src="Duolingo_ASL_Lily.mp4" loop autoplay muted playinline></video>
                     <div class="playPause">
@@ -667,26 +712,38 @@
                 <div class="halfs">
                     <video
                         src="https://player.vimeo.com/progressive_redirect/playback/938113401/rendition/1080p/file.mp4?loc=external&log_user=0&signature=d6d34e02745e1628697adc14e7870a370fb8b23552f32e06d8df4f1030a17c85"
-                        loop autoplay muted playinline></video>
+                        loop autoplay muted playinline></video>>
                     <div class="projectDiscrips">
-                        <h1>ASL Write</h1>
-                        <h1>Concept, Visual Design</h1>
+                        <h1>Deaf C.A.N!</h1>
+                        <h1>Brand, Client</h1>
                     </div>
                     <div class="playPause">
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
                     </div>
                 </div>
             </div>
+            <style>
+                .pixelCanvas {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                    /* Allows hover to go through to container */
+                    z-index: 2;
+                    /* Make sure it's above the media */
+                }
+            </style>
             <div class="fullView">
+                <canvas class="pixelCanvas"></canvas>
                 <div class="projectDiscrips">
-                    <h1>Vigor Fitness</h1>
-                    <h1>Concept, UX Research, UI Design, Motion</h1>
+                    <h1 class="dark">Restration Hardware</h1>
+                    <h1 class="dark">Client, Production, Motion</h1>
                 </div>
-                <div class="playPause">
-                    <img src="PlayIcon.svg" width="32px" alt="Play Icon">
-                </div>
-                <video src="https://tubik.b-cdn.net/HUAWEI/Wavy_Sphere_Diamond_1600_1200.mp4" loop autoplay playinline
-                    muted>
+                <img style="display: none;"
+                    src="https://media.restorationhardware.com/is/image/rhis/cat21180001?$np-cgfull-lg$" width="100%"
+                    alt="RH">
             </div>
             <div class="halfView">
                 <div class="halfs">
@@ -694,12 +751,14 @@
                         <h1>Vigor Fitness</h1>
                         <h1>Concept, UX Research, UI Design, Motion</h1>
                     </div>
+                    <canvas class="pixelCanvas"></canvas>
                     <img class="bgimg" src="VigorSQ.png" alt="vigor fitnes app">
                     <div class="playPause">
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
                     </div>
                 </div>
                 <div class="halfs">
+                    <canvas class="pixelCanvas"></canvas>
                     <video src="https://tubik.b-cdn.net/Malloy_banks/04_2.mp4" loop autoplay muted playinline></video>
                     <div class="projectDiscrips">
                         <h1>Color Health</h1>
@@ -713,9 +772,10 @@
             <div class="halfView">
                 <div class="halfs">
                     <div class="projectDiscrips">
-                        <h1>Motion Experiments</h1>
-                        <h1>Motion</h1>
+                        <h1 class="dark">B - Side</h1>
+                        <h1 class="dark">Motion</h1>
                     </div>
+                    <canvas class="pixelCanvas"></canvas>
                     <video src="MotionExp.mp4" loop autoplay muted playinline></video>
                     <div class="playPause">
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
@@ -724,8 +784,8 @@
                 <div class="halfs">
                     <video src="HookMenuSQ.mp4" loop autoplay muted playinline></video>
                     <div class="projectDiscrips">
-                        <h1>Hook Site UX Revamp</h1>
-                        <h1>UX Design</h1>
+                        <h1 class="dark">Hook Agency</h1>
+                        <h1 class="dark">UX Design</h1>
                     </div>
                     <div class="playPause">
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
@@ -740,8 +800,7 @@
             <!-- Left Column (Sticky Image) -->
             <div class="halfs" style="flex: 1;">
                 <div style="position: sticky; top: 132px;">
-                    <img src="ProfilePic.svg"
-                        alt="Alex Image" style="width: 100%; height: auto;">
+                    <img src="ProfilePic.svg" alt="Alex Image" style="width: 100%; height: auto;">
                 </div>
             </div>
 
@@ -835,13 +894,12 @@
 
         .playPause {
             position: absolute;
-            bottom: 64px;
-            left: 64px;
+            bottom: 32px;
+            left: 32px;
             height: 64px;
             width: 64px;
             background-color: white;
             border-radius: 100rem;
-            mix-blend-mode: difference;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -894,7 +952,15 @@
         .fullView:hover .playPause {
             opacity: 1;
             pointer-events: all;
-            cursor: pointer;
+        }
+
+        .dark {
+            color: black;
+        }
+
+        .halfView .halfs:hover .dark,
+        .fullView:hover .dark {
+            color: white;
         }
 
         .halfView .halfs:hover .projectDiscrips h1,
@@ -902,10 +968,10 @@
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .halfs:hover,
+        /* .halfs:hover,
         .fullView:hover {
             cursor: pointer;
-        }
+        } */
 
         .projectDiscrips {
             position: absolute;
@@ -914,7 +980,7 @@
             left: 0;
             top: 0;
             z-index: 4;
-            padding: calc(64px - 16px);
+            padding: calc(48px - 16px);
             display: flex;
             justify-content: space-between;
             align-content: end;
@@ -935,19 +1001,23 @@
             position: relative;
             width: 100%;
             height: 100%;
+            overflow: hidden;
         }
 
         .fullView video,
-        .halfView video {
+        .halfView video,
+        .halfview img,
+        .fullView img {
             width: 100%;
-            height: 100vh;
+            height: 100%;
             object-fit: cover;
-            background-size: cover;
+            display: block;
         }
 
         .halfs {
             position: relative;
             width: 50%;
+            overflow: hidden;
         }
 
         .halfs .bgimg {
