@@ -59,7 +59,7 @@
             <div class="activeBar" id="activeBar"></div>
             <a href="#">Work</a>
             <a href="#" id="readSlider">Reads</a>
-            <a href="#" id="infoSlider">MX</a>
+            <a href="#" id="infoSlider">About</a>
             <a href="#" id="index">Index</a>
             <a href="Alex_Kauffman_Resume.pdf" target="_blank">Resume</a>
         </div>
@@ -494,13 +494,14 @@
         .infoBox {
             position: fixed;
             top: 0;
-            bottom: 0;
             left: 0;
-            width: 100%;
-            backdrop-filter: blur(50px);
-            opacity: 0;
+            right: 0;
+            bottom: 0;
             visibility: hidden;
+            opacity: 0;
             transition: opacity 0.3s ease;
+            display: none;
+            z-index: 100;
         }
 
         .readsBox {

@@ -19,24 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const workButton = document.querySelector(".flexBox a[href='#']:not(#infoSlider):not(#index):not(#readSlider):not(.branding)");
 
-  // Include readButton in nav links array
   let allNavLinks = Array.from(document.querySelectorAll(".flexBox a:not(.branding)"));
-  if (!allNavLinks.includes(readButton)) {
-    allNavLinks.push(readButton);
-  }
+  if (!allNavLinks.includes(readButton)) allNavLinks.push(readButton);
 
   let infoOpen = false;
   let indexOpen = false;
   let readOpen = false;
 
-  // === ABOUT PANEL ===
+  // === INFO / MX PANEL ===
   infoButton.addEventListener("click", function (e) {
     e.preventDefault();
 
     if (!infoOpen) {
       if (!indexOpen && !readOpen) {
-        infoDoorTop.style.top = "0";
-        infoDoorBottom.style.bottom = "0";
+        $(infoBox).fadeIn(0);
+        setTimeout(() => {
+          infoDoorTop.style.top = "0";
+          infoDoorBottom.style.bottom = "0";
+        }, 10);
       }
 
       infoBox.style.visibility = "visible";
@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       allNavLinks.forEach(link => link.classList.remove("activeState"));
       infoButton.classList.add("activeState");
-
       infoOpen = true;
     } else {
       infoFade.style.opacity = "0";
@@ -92,7 +91,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!indexOpen) {
       if (!infoOpen && !readOpen) {
         $(indexBox).fadeIn(0);
-
         setTimeout(() => {
           indexDoorTop.style.top = "0";
           indexDoorBottom.style.bottom = "0";
@@ -107,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
           infoOpen = false;
 
           $(indexBox).fadeIn(0);
-
           setTimeout(() => {
             indexDoorTop.style.top = "0";
             indexDoorBottom.style.bottom = "0";
@@ -129,7 +126,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       allNavLinks.forEach(link => link.classList.remove("activeState"));
       indexButton.classList.add("activeState");
-
       indexOpen = true;
     } else {
       indexFade.style.opacity = "0";
@@ -142,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         $(indexBox).fadeOut(300);
         indexButton.classList.remove("activeState");
-
         workButton.classList.add("activeState");
         indexOpen = false;
       }, 900);
@@ -154,13 +149,14 @@ document.addEventListener('DOMContentLoaded', () => {
     e.preventDefault();
 
     if (!readOpen) {
-      // Show doors only if other panels are not open
       if (!infoOpen && !indexOpen) {
-        readDoorTop.style.top = "0";
-        readDoorBottom.style.bottom = "0";
+        $(readBox).fadeIn(0);
+        setTimeout(() => {
+          readDoorTop.style.top = "0";
+          readDoorBottom.style.bottom = "0";
+        }, 10);
       }
 
-      // Fully show readBox
       readBox.style.display = "block";
       readBox.style.visibility = "visible";
       readBox.style.opacity = "1";
@@ -169,7 +165,6 @@ document.addEventListener('DOMContentLoaded', () => {
         readFade.style.opacity = "1";
       }, 600);
 
-      // Hide other panels if open
       if (infoOpen) {
         infoFade.style.opacity = "0";
         setTimeout(() => {
@@ -194,10 +189,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       allNavLinks.forEach(link => link.classList.remove("activeState"));
       readButton.classList.add("activeState");
-
       readOpen = true;
     } else {
-      // Hide read panel
       readFade.style.opacity = "0";
 
       setTimeout(() => {
@@ -223,12 +216,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (infoOpen) {
       infoFade.style.opacity = "0";
-
       setTimeout(() => {
         infoDoorTop.style.top = "-50%";
         infoDoorBottom.style.bottom = "-50%";
       }, 300);
-
       setTimeout(() => {
         infoBox.style.opacity = "0";
         infoBox.style.visibility = "hidden";
@@ -238,12 +229,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (indexOpen) {
       indexFade.style.opacity = "0";
-
       setTimeout(() => {
         indexDoorTop.style.top = "-50%";
         indexDoorBottom.style.bottom = "-50%";
       }, 300);
-
       setTimeout(() => {
         $(indexBox).fadeOut(0);
         indexOpen = false;
@@ -252,12 +241,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (readOpen) {
       readFade.style.opacity = "0";
-
       setTimeout(() => {
         readDoorTop.style.top = "-50%";
         readDoorBottom.style.bottom = "-50%";
       }, 300);
-
       setTimeout(() => {
         readBox.style.opacity = "0";
         readBox.style.visibility = "hidden";
@@ -269,21 +256,17 @@ document.addEventListener('DOMContentLoaded', () => {
     workButton.classList.add("activeState");
   });
 
-  // Active bar moving script
+  // === Active bar movement ===
   const activeBar = document.getElementById('activeBar');
-
   function moveActiveBarTo(el) {
     const rect = el.getBoundingClientRect();
     const parentRect = el.parentElement.getBoundingClientRect();
-
     activeBar.style.left = `${rect.left - parentRect.left}px`;
     activeBar.style.width = `${rect.width}px`;
   }
 
-  // Set initial position (work)
   moveActiveBarTo(workButton);
 
-  // Move on hover
   allNavLinks.forEach(link => {
     link.addEventListener('mouseenter', () => moveActiveBarTo(link));
     link.addEventListener('mouseleave', () => {
