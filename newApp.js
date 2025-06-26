@@ -281,3 +281,135 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
+//image gallary view:
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
+let width = window.innerWidth;
+let height = window.innerHeight;
+canvas.width = width;
+canvas.height = height;
+
+window.addEventListener("resize", () => {
+  width = window.innerWidth;
+  height = window.innerHeight;
+  canvas.width = width;
+  canvas.height = height;
+});
+
+const sources = [
+  "bookCovers/CapsLock.jpg",
+  "bookCovers/DieterRams.jpg",
+  "bookCovers/thecreativeAct.jpg",
+  "bookCovers/ADBook.jpg",
+  "bookCovers/KHbook.jpg",
+  "bookCovers/mismatch.jpg",
+  "bookCovers/UXDesign.jpg",
+  "bookCovers/Pentagram.jpg",
+  "bookCovers/monogram.jpg"
+];
+
+const images = [];
+let loadedCount = 0;
+
+for (let i = 0; i < sources.length; i++) {
+  const img = new Image();
+  img.src = sources[i];
+  img.onload = () => {
+    loadedCount++;
+    if (loadedCount === sources.length) {
+      requestAnimationFrame(draw);
+    }
+  };
+  images.push(img);
+}
+
+const imageHeight = 300;
+const verticalPadding = 60;
+const tileHeight = imageHeight + verticalPadding;
+
+let offsetX = 0, offsetY = 0;
+let velocityX = 0, velocityY = 0;
+let dragging = false;
+let lastX = 0, lastY = 0;
+
+canvas.addEventListener("mousedown", e => {
+  dragging = true;
+  lastX = e.clientX;
+  lastY = e.clientY;
+});
+
+canvas.addEventListener("mousemove", e => {
+  if (dragging) {
+    const dx = e.clientX - lastX;
+    const dy = e.clientY - lastY;
+    offsetX += dx;
+    offsetY += dy;
+    velocityX = dx;
+    velocityY = dy;
+    lastX = e.clientX;
+    lastY = e.clientY;
+  }
+});
+
+canvas.addEventListener("mouseup", () => dragging = false);
+canvas.addEventListener("mouseleave", () => dragging = false);
+
+canvas.addEventListener("touchstart", e => {
+  dragging = true;
+  const touch = e.touches[0];
+  lastX = touch.clientX;
+  lastY = touch.clientY;
+}, { passive: true });
+
+canvas.addEventListener("touchmove", e => {
+  if (dragging) {
+    const touch = e.touches[0];
+    const dx = touch.clientX - lastX;
+    const dy = touch.clientY - lastY;
+    offsetX += dx;
+    offsetY += dy;
+    velocityX = dx;
+    velocityY = dy;
+    lastX = touch.clientX;
+    lastY = touch.clientY;
+  }
+}, { passive: true });
+
+canvas.addEventListener("touchend", () => dragging = false);
+
+function draw() {
+  ctx.clearRect(0, 0, width, height);
+
+  const cols = Math.ceil(width / 440) + 4; // flexible width grid
+  const rows = Math.ceil(height / tileHeight) + 4;
+
+  const baseX = -offsetX % 440;
+  const baseY = -offsetY % tileHeight;
+
+  for (let row = 0; row < rows; row++) {
+    for (let col = 0; col < cols; col++) {
+      const img = images[(row * cols + col) % images.length];
+      const aspect = img.width / img.height;
+      const imageWidth = imageHeight * aspect;
+
+      const drawX = baseX + col * 440 + (440 - imageWidth) / 2;
+      const drawY = baseY + row * tileHeight + verticalPadding / 2;
+
+      ctx.drawImage(img, drawX, drawY, imageWidth, imageHeight);
+    }
+  }
+
+  if (!dragging) {
+    offsetX += velocityX;
+    offsetY += velocityY;
+    velocityX *= 0.9;
+    velocityY *= 0.9;
+    if (Math.abs(velocityX) < 0.01) velocityX = 0;
+    if (Math.abs(velocityY) < 0.01) velocityY = 0;
+  }
+
+  requestAnimationFrame(draw);
+}
+

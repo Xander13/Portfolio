@@ -500,6 +500,7 @@
             visibility: hidden;
             opacity: 0;
             transition: opacity 0.3s ease;
+             backdrop-filter: blur(50px);
             display: none;
             z-index: 100;
         }
@@ -511,6 +512,7 @@
             right: 0;
             bottom: 0;
             visibility: hidden;
+            backdrop-filter: blur(50px);
             opacity: 0;
             transition: opacity 0.3s ease;
             display: none;
@@ -599,10 +601,32 @@
             <div class="doorTop"></div>
         </div>
         <div class="FadeInAssets">
-            <div class="imgGallary">
-                <img src="https://www.foxracing.com/on/demandware.static/-/Library-Sites-FoxRacing/default/dw937312d1/landing/2023/guide-mx-racewear/airline-explore.jpg"
-                    alt="Alex">
-            </div>
+            <style>
+                .gallery {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: flex;
+                    flex-wrap: wrap;
+                    width: 200%;
+                    height: 200%;
+                }
+
+                .tile {
+                    width: 200px;
+                    height: 200px;
+                    margin: 4px;
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                canvas {
+                    display: block;
+                    position: absolute;
+                    z-index: 10;
+                }
+            </style>
+            <canvas id="canvas"></canvas>
         </div>
     </div>
     <div class="infoBox">
