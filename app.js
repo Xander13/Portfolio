@@ -1,26 +1,26 @@
 //Detroit time baby
 function updateDetroitTime() {
-                const timeEl = document.querySelector(".time");
-                if (!timeEl) return;
+  const timeEl = document.querySelector(".time");
+  if (!timeEl) return;
 
-                // Detroit is always in America/Detroit timezone (Eastern)
-                const now = new Date();
-                const options = {
-                    hour: "numeric",
-                    minute: "2-digit",
-                    hour12: true,
-                    timeZone: "America/Detroit"
-                };
+  // Detroit is always in America/Detroit timezone (Eastern)
+  const now = new Date();
+  const options = {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "America/Detroit"
+  };
 
-                const timeString = new Intl.DateTimeFormat("en-US", options).format(now);
-                timeEl.textContent = `Detroit ${timeString}`;
-            }
+  const timeString = new Intl.DateTimeFormat("en-US", options).format(now);
+  timeEl.textContent = `Detroit ${timeString}`;
+}
 
-            // Initial load
-            updateDetroitTime();
+// Initial load
+updateDetroitTime();
 
-            // Optional: Update every minute
-            setInterval(updateDetroitTime, 60000);
+// Optional: Update every minute
+setInterval(updateDetroitTime, 60000);
 
 //bar
 document.addEventListener("DOMContentLoaded", function () {
@@ -155,3 +155,62 @@ function placeSticker(canvas, src, x, y, rotation) {
 
   canvas.appendChild(sticker);
 }
+
+//moving chips:
+const ICONS = [
+  "Github_Code_logo.png",
+  "Github_Copilet_logo.png", // Replace with actual different icons if needed
+  "Github_Test_logo.png"  // Placeholder – feel free to swap filenames
+];
+
+
+const NUM_TOKENS = 24;
+const container = document.getElementById("container");
+const screenW = window.innerWidth;
+const screenH = window.innerHeight;
+const images = [];
+
+for (let i = 0; i < NUM_TOKENS; i++) {
+  const img = document.createElement("img");
+  img.src = ICONS[i % ICONS.length];
+  img.alt = `Token ${i}`;
+  container.appendChild(img);
+
+  images.push({
+    el: img,
+    x: Math.random() * (screenW - 80), // Full width minus token width
+    y: Math.random() * -screenH,
+    speedY: 0.6 + Math.random() * 0.8,
+    drift: (Math.random() * 0.6 - 0.3),
+    angle: Math.random() * 360,
+    spinSpeed: 0.1 + Math.random() * 0.2
+  });
+}
+
+function animate() {
+  for (let img of images) {
+    img.y += img.speedY;
+    img.x += img.drift;
+    img.angle += img.spinSpeed;
+
+    // Wrap from bottom to top
+    if (img.y > screenH + 100) {
+      img.y = -100;
+      img.x = Math.random() * (screenW - 80);
+    }
+
+    // Bounce off left/right edges
+    if (img.x < 0 || img.x > screenW - 80) {
+      img.drift *= -1;
+    }
+
+    // ✅ Set position and apply spin
+    img.el.style.left = `${img.x}px`;
+    img.el.style.top = `${img.y}px`;
+    img.el.style.transform = `rotate(${img.angle}deg)`;
+  }
+
+  requestAnimationFrame(animate);
+}
+
+animate();
