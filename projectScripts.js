@@ -248,3 +248,21 @@ function adjustCoverSize() {
         }
     });
 }
+
+//Detroit time baby
+function updateDetroitTime() {
+  const timeEl = document.querySelector(".time");
+  if (!timeEl) return;
+
+  // Detroit is always in America/Detroit timezone (Eastern)
+  const now = new Date();
+  const options = {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "America/Detroit"
+  };
+
+  const timeString = new Intl.DateTimeFormat("en-US", options).format(now);
+  timeEl.textContent = `Detroit ${timeString}`;
+}
