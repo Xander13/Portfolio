@@ -1780,14 +1780,10 @@ h3 {
     max-width: 800px;
     margin-bottom: 32px;
     box-sizing: border-box;
-    background-color: rgba(0, 0, 0, 0.596);
+    background-color: rgb(0, 0, 0);
 }
 
-.pwdSpace h2:hover{
-     background-color: rgb(0, 0, 0);
-}
-
-.captions{
+.captions {
     position: absolute;
     bottom: 32px;
     left: 32px;
@@ -1795,11 +1791,12 @@ h3 {
     z-index: 2;
 }
 
-.fullView, .half{
+.fullView,
+.half {
     position: relative;
 }
 
-.dark{
+.dark {
     color: black;
 }
 
@@ -1821,19 +1818,19 @@ h3 {
 }
 
 input[type=text] {
-  width: 300px;
-  height: 56px;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  background-color: black;
-  border: none;
-  border: 1px solid white;
-  border-radius: 100rem;
-  color: white;
+    width: 300px;
+    height: 56px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    background-color: black;
+    border: none;
+    border: 1px solid white;
+    border-radius: 100rem;
+    color: white;
 }
 
-.arrow-button{
+.arrow-button {
     border: none;
     color: black;
     height: 100%;
@@ -1847,11 +1844,11 @@ input[type=text] {
     cursor: pointer;
 }
 
-.arrow-button:active{
+.arrow-button:active {
     background-color: gray;
 }
 
-input[type=submit]{
+input[type=submit] {
     border: none;
     background-color: white;
 

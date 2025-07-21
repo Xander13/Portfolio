@@ -159,29 +159,38 @@ function placeSticker(canvas, src, x, y, rotation) {
 //moving chips:
 const ICONS = [
   "Github_Code_logo.png",
-  "Github_Copilet_logo.png", // Replace with actual different icons if needed
-  "Github_Test_logo.png"  // Placeholder – feel free to swap filenames
+  "Github_Copilet_logo.png",
+  "Github_Test_logo.png"
 ];
 
-
 const NUM_TOKENS = 24;
+const TOKEN_SIZE = 120;
+
 const container = document.getElementById("container");
 const screenW = window.innerWidth;
 const screenH = window.innerHeight;
+
 const images = [];
 
 for (let i = 0; i < NUM_TOKENS; i++) {
   const img = document.createElement("img");
   img.src = ICONS[i % ICONS.length];
   img.alt = `Token ${i}`;
+
+  // Style the image
+  img.style.width = `${TOKEN_SIZE}px`;
+  img.style.height = "auto";
+  img.style.position = "absolute";
+  img.style.pointerEvents = "none"; // Prevent hover/focus/click
   container.appendChild(img);
 
+  // Push image data to animate array
   images.push({
     el: img,
-    x: Math.random() * (screenW - 80), // Full width minus token width
+    x: Math.random() * (screenW - TOKEN_SIZE),
     y: Math.random() * -screenH,
     speedY: 0.6 + Math.random() * 0.8,
-    drift: (Math.random() * 0.6 - 0.3),
+    drift: Math.random() * 0.6 - 0.3,
     angle: Math.random() * 360,
     spinSpeed: 0.1 + Math.random() * 0.2
   });
@@ -193,18 +202,18 @@ function animate() {
     img.x += img.drift;
     img.angle += img.spinSpeed;
 
-    // Wrap from bottom to top
-    if (img.y > screenH + 100) {
-      img.y = -100;
-      img.x = Math.random() * (screenW - 80);
+    // Wrap to top
+    if (img.y > screenH + TOKEN_SIZE) {
+      img.y = -TOKEN_SIZE;
+      img.x = Math.random() * (screenW - TOKEN_SIZE);
     }
 
-    // Bounce off left/right edges
-    if (img.x < 0 || img.x > screenW - 80) {
+    // Bounce horizontally
+    if (img.x < 0 || img.x > screenW - TOKEN_SIZE) {
       img.drift *= -1;
     }
 
-    // ✅ Set position and apply spin
+    // Apply styles
     img.el.style.left = `${img.x}px`;
     img.el.style.top = `${img.y}px`;
     img.el.style.transform = `rotate(${img.angle}deg)`;
