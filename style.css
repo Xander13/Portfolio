@@ -3845,6 +3845,66 @@ canvas {
         margin: auto;
         z-index: 22222;
     }
+
+    .project .flexBox{
+        gap: 0;
+    }
+
+    .project .smMargin{
+        height: 0;
+    }
+
+    .captions{
+        position: relative;
+        left: 0;
+        padding-top: 12px;
+        gap: 0;
+        padding: 0;
+        height: fit-content;
+        padding-top: 32px;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+    }
+
+    .pwdSpace{
+        justify-content: end;
+    }
+
+    .pwdSpace h2{
+        margin-bottom: 0;
+        padding-bottom: 32px;
+        padding-top: 32px;
+        font-size: 22px;
+        line-height: 36px;
+    }
+
+    input[type=text]{
+        width: calc(100% - 56px);
+    }
+
+    .pwdSpace .flexBox{
+        background-color: black;
+        width: 100%;
+        padding: 32px;
+        box-sizing: border-box;
+    }
+
+
+    .gray{
+        font-size: 20px !important;
+    }
+
+    .captions .dark{
+        color: white;
+    }
+
+    .captions .gray{
+        color: gray;
+         font-size: 20px !important;
+        line-height: 24px;
+        padding-top: 12px;
+    }
 }
 
 @media (max-height: 780px) {

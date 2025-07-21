@@ -164,7 +164,7 @@ const ICONS = [
 ];
 
 const NUM_TOKENS = 24;
-const TOKEN_SIZE = 120;
+const TOKEN_SIZE = 80;
 
 const container = document.getElementById("container");
 const screenW = window.innerWidth;
