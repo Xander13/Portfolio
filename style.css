@@ -10,7 +10,7 @@
     --mxdMargin: 96px;
     --lgMargin: 240px;
     --smMargin: 48px;
-    --xSmMargin: 24px;
+    --xSmMargin: 32px;
     --purpleish: #e5e4f2;
     --medium-dark: #696969;
     --medium-light: #4f4f4f;
@@ -55,23 +55,14 @@ body {
     transition: color 0.5s ease, background-color 0.5s ease;
 }
 
-
-html,
 body {
-    background-color: var(--light);
-    /* Set background color to black */
-}
-
-body {
-    /* Start hidden */
     transition: opacity 1s ease;
-    /* Short fade in/out duration */
 }
 
 body,
 html {
+    background-color: var(--light);
     overscroll-behavior-y: none;
-    /* Disable pull-to-refresh */
 }
 
 html,
@@ -435,8 +426,9 @@ ul {
     right: 0px;
     padding-left: var(--smMargin);
     padding-right: var(--smMargin);
-    padding-top: 16px;
-    padding-bottom: 16px;
+    background-color: var(--light);
+    padding-top: 8px;
+    padding-bottom: 8px;
     z-index: 999999999;
     display: flex;
     justify-content: space-between;
@@ -641,6 +633,7 @@ h3 {
     text-transform: uppercase;
     font-size: 24px;
     font-weight: 500;
+    color: var(--dark);
 }
 
 .passage {
@@ -774,7 +767,7 @@ h3 {
 }
 
 .project .flexBox {
-    gap: 48px;
+    gap: var(--xSmMargin);
 }
 
 .projectWriting .flexBox {
@@ -956,6 +949,7 @@ h3 {
     z-index: 2222;
     backface-visibility: hidden;
     padding-top: 30%;
+    position: relative;
 }
 
 .textContainer h3 {
@@ -1669,7 +1663,7 @@ h3 {
 }
 
 .gray {
-    color: #888;
+    color: var(--light);
     font-weight: 400;
     font-size: 18px;
 }
@@ -1789,6 +1783,7 @@ h3 {
     left: 32px;
     right: 32px;
     z-index: 2;
+    align-items: end;
 }
 
 .fullView,
