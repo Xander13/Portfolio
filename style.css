@@ -387,8 +387,8 @@ p {
 }
 
 .clipping {
-  position: relative;
-  overflow: hidden;
+    position: relative;
+    overflow: hidden;
 }
 
 .menu--list {
@@ -2285,6 +2285,15 @@ hr {
     flex-shrink: 0;
 }
 
+.clipping:hover {
+    border-radius: 32px;
+    transition: 0.5s ease;
+}
+
+.clipping{
+     transition: 0.5s ease;
+}
+
 .project .half:hover img,
 .project .clipping:hover img,
 .project .clipping:hover video,
@@ -3795,15 +3804,15 @@ canvas {
         z-index: 22222;
     }
 
-    .project .flexBox{
+    .project .flexBox {
         gap: 0;
     }
 
-    .project .smMargin{
+    .project .smMargin {
         height: 0;
     }
 
-    .captions{
+    .captions {
         position: relative;
         left: 0;
         padding-top: 12px;
@@ -3816,11 +3825,11 @@ canvas {
         align-items: start;
     }
 
-    .pwdSpace{
+    .pwdSpace {
         justify-content: end;
     }
 
-    .pwdSpace h2{
+    .pwdSpace h2 {
         margin-bottom: 0;
         padding-bottom: 32px;
         padding-top: 32px;
@@ -3828,11 +3837,11 @@ canvas {
         line-height: 36px;
     }
 
-    input[type=text]{
+    input[type=text] {
         width: calc(100% - 56px);
     }
 
-    .pwdSpace .flexBox{
+    .pwdSpace .flexBox {
         background-color: black;
         width: 100%;
         padding: 32px;
@@ -3840,17 +3849,17 @@ canvas {
     }
 
 
-    .gray{
+    .gray {
         font-size: 20px !important;
     }
 
-    .captions .dark{
+    .captions .dark {
         color: white;
     }
 
-    .captions .gray{
+    .captions .gray {
         color: gray;
-         font-size: 20px !important;
+        font-size: 20px !important;
         line-height: 24px;
         padding-top: 12px;
     }
