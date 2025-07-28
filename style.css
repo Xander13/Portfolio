@@ -386,6 +386,11 @@ p {
     pointer-events: visible;
 }
 
+.clipping {
+  position: relative;
+  overflow: hidden;
+}
+
 .menu--list {
     list-style: none;
     z-index: 999999;
@@ -1275,11 +1280,6 @@ h3 {
     font-weight: 400;
     text-wrap: balance;
 }
-
-/* .projectSections h1 {
-    padding-top: 232px;
-    padding-bottom: 64px;
-} */
 
 .chips {
     width: fit-content;
@@ -2395,52 +2395,6 @@ hr {
     width: 100%;
     height: 100%;
     position: relative;
-}
-
-.clipping:hover h3 {
-    animation: viewAble 0.5s ease;
-    transition: 0.5s ease;
-    display: block;
-}
-
-.clipping h3 {
-    background-color: var(--dark);
-    color: var(--light);
-    padding-left: 24px;
-    padding-right: 24px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    position: absolute;
-    font-size: 22px;
-    border-radius: 100rem;
-    z-index: 2;
-    left: 0;
-    right: 0;
-    top: 45%;
-    width: fit-content;
-    transition: 0.5s ease;
-    display: none;
-    text-transform: uppercase;
-    rotate: 0deg;
-    font-weight: 500;
-    width: fit-content;
-    text-wrap: nowrap;
-}
-
-@keyframes viewAble {
-    0% {
-        opacity: 0;
-        rotate: -12deg;
-        top: 80%;
-        /* Adjusted to center dynamically */
-    }
-
-    100% {
-        opacity: 1;
-        rotate: 0deg;
-        top: 45%;
-        /* Centered vertically */
-    }
 }
 
 .photoCard h2 {

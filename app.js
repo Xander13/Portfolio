@@ -223,3 +223,26 @@ function animate() {
 }
 
 animate();
+
+
+//hover news section
+ document.querySelectorAll('.clipping').forEach(container => {
+    const cursor = container.querySelector('.movingCursor');
+
+    container.addEventListener('mouseenter', () => {
+      cursor.style.display = 'block';
+    });
+
+    container.addEventListener('mousemove', (e) => {
+      const rect = container.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      cursor.style.left = `${x}px`;
+      cursor.style.top = `${y}px`;
+    });
+
+    container.addEventListener('mouseleave', () => {
+      cursor.style.display = 'none';
+    });
+  });
