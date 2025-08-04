@@ -2285,11 +2285,6 @@ hr {
     flex-shrink: 0;
 }
 
-.clipping:hover {
-    border-radius: 32px;
-    transition: 0.5s ease;
-}
-
 .clipping{
      transition: 0.5s ease;
 }
