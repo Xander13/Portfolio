@@ -57,10 +57,10 @@ document.addEventListener("DOMContentLoaded", function () {
 //stickers
 const stickers = [
   'ux.svg',
-  'face.svg',
   'AK_Emoji.png',
   'web.svg',
-  'alogo.svg'
+  'alogo.svg',
+  'IconDark.png'
 ];
 
 const rotations = [30, 0, -30];
@@ -157,31 +157,43 @@ function placeSticker(canvas, src, x, y, rotation) {
 }
 
 //moving chips:
-const ICONS = [
+//moving chips:
+const MsIcon = [
   "Github_Code_logo.png",
   "Github_Copilet_logo.png",
   "Github_Test_logo.png"
 ];
 
-const NUM_TOKENS = 24;
-const TOKEN_SIZE = 80;
+const appleIcon = [
+  'AppleIconAccessiblity.png'
+];
+
+const NUM_TOKENS = 56;
+const TOKEN_SIZE = 96;
 
 const container = document.getElementById("container");
 const screenW = window.innerWidth;
 const screenH = window.innerHeight;
 
+// Detect which site you're on (update this condition based on your actual site detection)
+const isAppleSite = window.location.href.includes('apple'); // or however you detect Apple site
+
+// Choose the right icon set
+const iconSet = isAppleSite ? appleIcon : MsIcon;
+
 const images = [];
 
+// Only create ONE set of icons based on the current site
 for (let i = 0; i < NUM_TOKENS; i++) {
   const img = document.createElement("img");
-  img.src = ICONS[i % ICONS.length];
+  img.src = iconSet[i % iconSet.length];
   img.alt = `Token ${i}`;
 
   // Style the image
   img.style.width = `${TOKEN_SIZE}px`;
   img.style.height = "auto";
   img.style.position = "absolute";
-  img.style.pointerEvents = "none"; // Prevent hover/focus/click
+  img.style.pointerEvents = "none";
   container.appendChild(img);
 
   // Push image data to animate array

@@ -82,11 +82,11 @@ document.addEventListener("DOMContentLoaded", function () {
 // Stickers functionality
 const stickers = [
     'ux.svg',
-    'face.svg',
     'AK_Emoji.png',
     'web.svg',
-    'alogo.svg'
-  ];
+    'alogo.svg',
+    'IconDark.png'
+];
 
 const rotations = [30, 0, -30];
 let currentStickerIndex = 0;
@@ -185,12 +185,12 @@ function placeSticker(canvas, src, x, y, rotation) {
 const colorBlocks = document.querySelectorAll('.colorBlock');
 
 // Iterate through each element
-colorBlocks.forEach(function(block) {
-  // Get the value of the 'data-color' attribute
-  const color = block.getAttribute('data-color');
-  
-  // Assign the color to the background-color style
-  block.style.backgroundColor = color;
+colorBlocks.forEach(function (block) {
+    // Get the value of the 'data-color' attribute
+    const color = block.getAttribute('data-color');
+
+    // Assign the color to the background-color style
+    block.style.backgroundColor = color;
 });
 
 //image slider gallery
@@ -251,18 +251,18 @@ function adjustCoverSize() {
 
 //Detroit time baby
 function updateDetroitTime() {
-  const timeEl = document.querySelector(".time");
-  if (!timeEl) return;
+    const timeEl = document.querySelector(".time");
+    if (!timeEl) return;
 
-  // Detroit is always in America/Detroit timezone (Eastern)
-  const now = new Date();
-  const options = {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-    timeZone: "America/Detroit"
-  };
+    // Detroit is always in America/Detroit timezone (Eastern)
+    const now = new Date();
+    const options = {
+        hour: "numeric",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: "America/Detroit"
+    };
 
-  const timeString = new Intl.DateTimeFormat("en-US", options).format(now);
-  timeEl.textContent = `Detroit ${timeString}`;
+    const timeString = new Intl.DateTimeFormat("en-US", options).format(now);
+    timeEl.textContent = `Detroit ${timeString}`;
 }
