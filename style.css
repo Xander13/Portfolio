@@ -695,6 +695,11 @@ h3 {
     font-weight: 400 !important;
 }
 
+.xSmTxt{
+    font-size: 12px !important;
+     color: var(--dark) !important;
+}
+
 .projectTitle {
     font-size: 22px;
     font-weight: 600;
@@ -1794,6 +1799,7 @@ h3 {
 .fullView,
 .half {
     position: relative;
+    height: fit-content;
 }
 
 .dark {
@@ -3295,7 +3301,6 @@ canvas {
     }
 
     .mdTxt,
-    .smTxt,
     .chips {
         font-size: 20px !important;
         line-height: 32px !important;

@@ -48,17 +48,10 @@
 </head>
 
 <body>
-    <div class="logoBox" id="logoBox">
-        <a href="https://alex-kauffman.com/">
-            <img src="AlogoShort.svg" alt="Alex Kauffman Logo">
-        </a>
-    </div>
-
     <div class="nav" id="nav">
         <div class="flexBox">
             <div class="activeBar" id="activeBar"></div>
             <a href="#">Work</a>
-            <a href="#" id="readSlider">Reads</a>
             <a href="#" id="infoSlider">About</a>
             <a href="#" id="index">Index</a>
             <a href="Alex_Kauffman_Resume.pdf" target="_blank">Resume</a>
@@ -323,17 +316,18 @@
 
         .nav {
             position: fixed;
-            top: 32px;
+            top: 12px;
             left: 32px;
-            width: auto;
+            right: 32px;
+            width: fit-content;
             margin: auto;
-            padding: 32px;
-            padding-left: 48px;
-            padding-right: 48px;
+            padding: 16px;
+            padding-left: 24px;
+            padding-right: 24px;
             z-index: 12000;
             background-color: rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(45px);
-            border-radius: 100rem;
+            border-radius: 8px;
             transition: 0.5s ease;
         }
 
@@ -709,12 +703,12 @@
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
                     </div>
                 </div>
-                 <div class="halfs">
+                <div class="halfs">
                     <div class="projectDiscrips">
-                        <h1>Vigor Fitness</h1>
-                        <h1>Concept, UX Research, UI Design, Motion</h1>
+                        <h1>Duolingo ASL</h1>
+                        <h1>UI, Motion, Development</h1>
                     </div>
-                    <img class="bgimg" src="VigorSQ.png" alt="vigor fitnes app">
+                    <video src="Apple_LiveCC.mp4" loop autoplay muted playinline></video>
                     <div class="playPause">
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
                     </div>
@@ -722,11 +716,10 @@
             </div>
             <div class="fullView">
                 <div class="projectDiscrips">
-                    <h1 class="dark">Microsoft Github Copilot</h1>
-                    <h1 class="dark">CaseStudy, Locked, UX</h1>
+                    <h1>Microsoft Github Copilot</h1>
+                    <h1>CaseStudy, Locked, UX</h1>
                 </div>
-                <img src="CoPiletGithub.png" width="100%"
-                    alt="RH">
+                <video src="GithubSplash.mp4" muted autoplay playsinline nocontrols>
             </div>
             <div class="halfView">
                 <div class="halfs">
@@ -740,6 +733,16 @@
                     </div>
                 </div>
                 <div class="halfs">
+                    <div class="projectDiscrips">
+                        <h1>Vigor Fitness</h1>
+                        <h1>Concept, UX Research, UI Design, Motion</h1>
+                    </div>
+                    <img class="bgimg" src="VigorSQ.png" alt="vigor fitnes app">
+                    <div class="playPause">
+                        <img src="PlayIcon.svg" width="32px" alt="Play Icon">
+                    </div>
+                </div>
+                <!-- <div class="halfs">
                     <video src="HookMenuSQ.mp4" loop autoplay muted playinline></video>
                     <div class="projectDiscrips">
                         <h1 class="dark">Hook Agency</h1>
@@ -748,7 +751,7 @@
                     <div class="playPause">
                         <img src="PlayIcon.svg" width="32px" alt="Play Icon">
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -758,7 +761,7 @@
             <!-- Left Column (Sticky Image) -->
             <div class="halfs" style="flex: 1;">
                 <div style="position: sticky; top: 132px;">
-                    <img src="ProfilePic.svg" alt="Alex Image" style="width: 100%; height: auto;">
+                    <img src="AK_Face.png" alt="Alex Image" style="width: 100%; height: auto;">
                 </div>
             </div>
 
