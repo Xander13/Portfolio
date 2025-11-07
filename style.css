@@ -3434,6 +3434,18 @@ canvas {
         width: 100% !important;
     }
 
+    .project .smTxt:nth-child(2){
+        padding-top: 0;
+    }
+
+    .mdtitle{
+        font-size: 32px !important;
+    }
+    
+    .gray{
+        color: white;
+    }
+
     .projectHero {
         padding-left: 16px;
         padding-right: 16px;
