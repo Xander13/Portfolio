@@ -34,6 +34,66 @@
     background-color: white;
 }
 
+.aiBox{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    z-index: 122222222222;
+    background-color: black;
+    padding: var(--xSmMargin);
+}
+
+.responseBox{
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.responseBox p{
+    font-size: 3vw;
+    line-height: 4.8vw;
+      margin-bottom: 20px;
+    color: white;
+}
+
+.responseBox p {
+    margin-bottom: 20px;
+    color: white;
+}
+.user { color: #5cc9ff; }
+.ai { color: #ffffff; }
+
+.send{
+    width: 132px;
+    height: 100%;
+    align-items: stretch;
+    background-color: #111111;
+    border: none;
+    color: white;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.LlmTxt{
+    border-radius: 0 !important;
+    
+    border: none !important;
+    background-color: #111111 !important;
+    width: 100% !important;
+    margin: 0 !important;
+    box-sizing: border-box;
+    padding-left:var(--xSmMargin) !important;
+    padding-right:var(--xSmMargin) !important;
+}
+
+.inputBox{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
 #homeBoard{
         padding-left: var(--smMargin);
     padding-right: var(--smMargin);
