@@ -1,48 +1,79 @@
-let tokenCount = 0;
+// aiMode.js
 
-async function handleSend() {
+let tokenCount = 0; // Tracks number of user questions
+const MAX_TOKENS = 4;
+
+document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.querySelector("#llmTxt");
-  const userInput = inputField.value.trim();
-
-  if (!userInput) return;
-
-  if (tokenCount >= 4) {
-    alert("You’ve reached the 4-question limit!");
-    return;
-  }
-
-  tokenCount++;
-
+  const sendBtn = document.querySelector(".send");
   const responseBox = document.querySelector(".responseBox");
-  const p = document.createElement("p");
-  p.textContent = "…typing"; // placeholder while fetching
-  responseBox.appendChild(p);
 
-  try {
-    const res = await fetch("https://alex-q3tf6mry7-alex-kauffmans-projects.vercel.app/api/chat", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: userInput, tokenCount })
-    });
+  // Initial AI greeting
+  const greeting = document.createElement("p");
+  greeting.textContent = "Hi! Ask me about Alex. You have 4 questions.";
+  responseBox.appendChild(greeting);
 
-    const data = await res.json();
-    p.textContent = ""; // clear typing placeholder
+  // Handle Send button click
+  sendBtn.addEventListener("click", async () => {
+    const userInput = inputField.value.trim();
+    if (!userInput) return;
 
-    // Simple typing animation
-    let i = 0;
-    const text = data.response;
-    const interval = setInterval(() => {
-      if (i < text.length) {
-        p.textContent += text[i];
-        i++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 25);
-  } catch (err) {
-    console.error(err);
-    p.textContent = "Error fetching AI response.";
-  }
+    if (tokenCount >= MAX_TOKENS) {
+      alert("You’ve reached the 4-question limit! Check Alex's portfolio for more.");
+      return;
+    }
 
-  inputField.value = ""; // clear input
-}
+    tokenCount++;
+
+    // Show user's question
+    const userP = document.createElement("p");
+    userP.textContent = `You: ${userInput}`;
+    responseBox.appendChild(userP);
+
+    // Show AI typing placeholder
+    const aiP = document.createElement("p");
+    aiP.textContent = "AlexBot: …typing";
+    responseBox.appendChild(aiP);
+
+    // Scroll responseBox to bottom
+    responseBox.scrollTop = responseBox.scrollHeight;
+
+    inputField.value = ""; // clear input
+
+    try {
+      const res = await fetch(
+        "https://alex-q3tf6mry7-alex-kauffmans-projects.vercel.app/api/chat",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt: userInput, tokenCount })
+        }
+      );
+
+      const data = await res.json();
+      aiP.textContent = "AlexBot: "; // clear typing
+
+      // Typing animation
+      let i = 0;
+      const text = data.response || "No response from AI.";
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          aiP.textContent += text[i];
+          i++;
+        } else {
+          clearInterval(interval);
+          // Auto-scroll to bottom
+          responseBox.scrollTop = responseBox.scrollHeight;
+        }
+      }, 25);
+    } catch (err) {
+      console.error(err);
+      aiP.textContent = "Error fetching AI response.";
+    }
+  });
+
+  // Optional: allow pressing Enter to send
+  inputField.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") sendBtn.click();
+  });
+});
