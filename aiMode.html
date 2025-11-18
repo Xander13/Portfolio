@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Kauffman – Portfolio</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+    <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self'"> -->
     <meta name="author" content="Alex Kauffman">
     <meta name="description" content="Alex Kauffman - Product Designer">
     <meta name="theme-color" content="var(--light)" media="(prefers-color-scheme: dark)">
@@ -94,16 +94,16 @@
         </div>
     </div>
     <div class="aiBox">
-     <div class="responseBox"></div>
-    <div class="inputBox">
-        <div class="flexBox">
-        <input type="text" class="LlmTxt" placeholder="Ask about Alex">
-        <button class="send">Send</button>
+        <div class="responseBox"></div>
+        <div class="inputBox">
+            <div class="flexBox">
+                <input type="text" id="llmTxt" class="LlmTxt" placeholder="Ask about Alex" name="userQuery">
+                <button class="send">Send</button>
+            </div>
         </div>
     </div>
-    </div>
     <script src="jquery-3.6.0.min.js"></script>
-    <script src="aiMode.js"></script>
+    <script src="aiMode.js" type="module"></script>
 </body>
 
 </html>
