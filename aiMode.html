@@ -85,7 +85,6 @@
             bottom: 0;
             top: 0;
             background-color: black;
-            padding: 32px;
             z-index: 888888;
             height: 100%;
             box-sizing: border-box;
@@ -93,9 +92,25 @@
 
         .responseBox {
             overflow-y: auto;
-            height: 100%;
-            padding-bottom: 120px;
+            height: calc(100% - 76px);
             z-index: 1;
+            padding: 32px;
+        }
+
+        .responseBox::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .responseBox::-webkit-scrollbar-track {
+            background: black;
+        }
+
+        .responseBox::-webkit-scrollbar-thumb {
+            background: white;
+        }
+
+        .responseBox::-webkit-scrollbar-thumb:hover {
+            background: #555;
         }
 
         .responseBox p {
@@ -155,11 +170,11 @@
 
         .inputBox {
             position: absolute;
-            z-index: 3;
+            z-index: 12;
             bottom: 0;
             left: 0;
             right: 0;
-            height: fit-content !important;
+            height: 76px;
         }
 
         input[type=text] {
@@ -188,22 +203,29 @@
 
         @media screen and (max-width: 930px) {
             .responseBox p {
-                font-size: 24px;
-                line-height: calc(24px * 1.2);
+                font-size: 18px;
+                letter-spacing: -0.5px;
+                line-height: calc(20px * 1.2);
                 margin-bottom: 20px;
                 color: white;
             }
 
             .send {
-                font-size: 24px;
-                line-height: calc(24px * 1.2);
+               font-size: 18px;
+                letter-spacing: -0.5px;
+                line-height: calc(20px * 1.2);
                 padding-right: 32px;
                 background-color: #1a1a1a !important;
             }
 
+            .inputBox{
+                height: 72px;
+            }
+
             input[type=text] {
-                font-size: 24px;
-                line-height: calc(24px * 1.2);
+                font-size: 18px;
+                letter-spacing: -0.5px;
+                line-height: calc(20px * 1.2);
                 touch-action: auto;
                 background-color: #111 !important;
             }
