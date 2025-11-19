@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial AI greeting
   const greeting = document.createElement("p");
-  greeting.textContent = "Hi! Ask me about Alex. You have 4 questions.";
+  greeting.textContent = "Hello! Ask me about Alex. You have 4 questions before you get auto promot to his LinkedIn page.";
   responseBox.appendChild(greeting);
 
   // Handle Send button click
