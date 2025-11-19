@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({ prompt: 'Hello', tokenCount: 1 })
       });
 
-      const data = await res.json();
+      const data = await response.json(); // now it's correct
       aiP.textContent = "AlexBot: "; // clear typing
 
       // Typing animation
