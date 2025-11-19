@@ -34,7 +34,7 @@
     background-color: white;
 }
 
-.aiBox{
+.aiBox {
     position: fixed;
     left: 0;
     right: 0;
@@ -45,15 +45,15 @@
     padding: var(--xSmMargin);
 }
 
-.responseBox{
+.responseBox {
     height: 100vh;
     overflow-y: auto;
 }
 
-.responseBox p{
-    font-size: 3vw;
-    line-height: 4.8vw;
-      margin-bottom: 20px;
+.responseBox p {
+    font-size: 2vw;
+    line-height: 2.2vw;
+    margin-bottom: 20px;
     color: white;
 }
 
@@ -61,41 +61,80 @@
     margin-bottom: 20px;
     color: white;
 }
-.user { color: #5cc9ff; }
-.ai { color: #ffffff; }
 
-.send{
-    width: 132px;
-    height: 100%;
-    align-items: stretch;
-    background-color: #111111;
+.user {
+    color: #5cc9ff;
+}
+
+.ai {
+    color: #ffffff;
+}
+
+.send {
+    width: fit-content;
+    padding-left: 24px;
+    padding-right: 56px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
     border: none;
     color: white;
     box-sizing: border-box;
     cursor: pointer;
+    font-size: 2vw;
+    line-height: 2.2vw;
 }
 
-.LlmTxt{
+.LlmTxt {
     border-radius: 0 !important;
-    
     border: none !important;
-    background-color: #111111 !important;
+    background-color: black !important;
     width: 100% !important;
     margin: 0 !important;
     box-sizing: border-box;
-    padding-left:var(--xSmMargin) !important;
-    padding-right:var(--xSmMargin) !important;
+    padding-left: var(--xSmMargin) !important;
+    padding-right: var(--xSmMargin) !important;
 }
 
-.inputBox{
+.txtBox {
+    width: 100% !important;
+    border-radius: 0 !important;
+    border: none !important;
+    background-color: black !important;
+    margin: 0 !important;
+    height: fit-content !important;
+}
+
+.inputBox {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
+    height: fit-content !important;
 }
 
-#homeBoard{
-        padding-left: var(--smMargin);
+input[type=text] {
+    font-size: 2vw;
+    line-height: 2.2vw;
+    height: fit-content;
+    padding-top: 24px !important;
+    padding-bottom: 24px !important;
+}
+
+input[type=text]:focus {
+    outline: none;
+}
+
+.inputBox .flexBox {
+    align-items: stretch !important;
+    height: 100%;
+    flex-wrap: nowrap;
+}
+
+#homeBoard {
+    padding-left: var(--smMargin);
     padding-right: var(--smMargin);
 }
 
@@ -106,10 +145,10 @@
 
 .material-symbols-outlined {
     font-variation-settings:
-        'FILL'0,
-        'wght'400,
-        'GRAD'0,
-        'opsz'24;
+        'FILL' 0,
+        'wght' 400,
+        'GRAD' 0,
+        'opsz' 24;
     scale: 0.65;
     margin-right: 4px;
 }
@@ -755,9 +794,9 @@ h3 {
     font-weight: 400 !important;
 }
 
-.xSmTxt{
+.xSmTxt {
     font-size: 12px !important;
-     color: var(--dark) !important;
+    color: var(--dark) !important;
 }
 
 .projectTitle {
@@ -2356,8 +2395,8 @@ hr {
     flex-shrink: 0;
 }
 
-.clipping{
-     transition: 0.5s ease;
+.clipping {
+    transition: 0.5s ease;
 }
 
 .project .half:hover img,
@@ -3494,15 +3533,15 @@ canvas {
         width: 100% !important;
     }
 
-    .project .smTxt:nth-child(2){
+    .project .smTxt:nth-child(2) {
         padding-top: 0;
     }
 
-    .mdtitle{
+    .mdtitle {
         font-size: 32px !important;
     }
-    
-    .gray{
+
+    .gray {
         color: white;
     }
 
