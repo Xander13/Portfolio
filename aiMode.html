@@ -59,12 +59,20 @@
         </div>
     </div>
     <style>
-
-        p, h1, h2, h3, h4, h5, h6, input[type=text], .send, a{
+        p,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        input[type=text],
+        .send,
+        a {
             font-family: monospace;
         }
 
-        a{
+        a {
             text-align: none;
             color: white;
             text-underline-offset: 4px;
@@ -76,17 +84,15 @@
             right: 0;
             bottom: 0;
             top: 0;
-            height: 100vh;
             box-sizing: border-box;
-            z-index: 122222222222;
             background-color: black;
             padding: 32px;
         }
 
         .responseBox {
-            height: 100vh;
             overflow-y: auto;
             padding-bottom: 120px;
+            z-index: 1;
         }
 
         .responseBox p {
@@ -120,7 +126,7 @@
             color: white;
             box-sizing: border-box;
             cursor: pointer;
-             font-size: 32px;
+            font-size: 32px;
             line-height: calc(32px * 1.2);
         }
 
@@ -131,8 +137,8 @@
             width: 100% !important;
             margin: 0 !important;
             box-sizing: border-box;
-            padding-left: var(--xSmMargin) !important;
-            padding-right: var(--xSmMargin) !important;
+            padding-left: 32px;
+            padding-right: 32px;
         }
 
         .txtBox {
@@ -146,6 +152,7 @@
 
         .inputBox {
             position: absolute;
+            z-index: 3;
             bottom: 0;
             left: 0;
             right: 0;
@@ -159,7 +166,7 @@
             padding-top: 24px !important;
             padding-bottom: 24px !important;
             padding-left: 32px;
-            color: white;;
+            color: white;
         }
 
         input[type=text]:focus {
@@ -174,6 +181,26 @@
             align-items: stretch !important;
             height: 100%;
             flex-wrap: nowrap;
+        }
+
+        @media screen and (max-width: 930px) {
+            .responseBox p {
+                font-size: 24px;
+                line-height: calc(24px * 1.2);
+                margin-bottom: 20px;
+                color: white;
+            }
+
+            .send {
+                font-size: 24px;
+                line-height: calc(24px * 1.2);
+                padding-right: 32px;
+            }
+
+            input[type=text] {
+                font-size: 24px;
+                line-height: calc(24px * 1.2);
+            }
         }
     </style>
 </body>
