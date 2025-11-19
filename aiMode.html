@@ -81,7 +81,7 @@
         /*Promopt */
         .promptContainer {
             display: flex;
-            gap: 32px;
+            gap: 16px;
             /* space between the two columns */
             margin-top: 16px;
         }
@@ -90,7 +90,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 32px;
+            gap: 16px;
             opacity: 0;
             /* start hidden */
             transform: translateY(20px);
@@ -109,8 +109,8 @@
             display: block;
             padding: 32px 32px;
             background-color: #111;
-            border: 1px solid white;
             cursor: pointer;
+            margin-bottom: 0 !important;
             transition: background-color 0.2s ease;
         }
 
@@ -216,7 +216,8 @@
             bottom: 0;
             left: 0;
             right: 0;
-            height: 76px;
+            height: fit-content;
+            margin: 32px;
         }
 
         input[type=text] {
@@ -276,10 +277,12 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            gap: 4px;
              }
 
              .promptBox{
                 width: 100%;
+                gap: 4px;
              }
         }
     </style>
