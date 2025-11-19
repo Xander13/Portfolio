@@ -4,7 +4,7 @@ const MAX_TOKENS = 4;
 
 // Helper function to call backend API
 async function sendPrompt(prompt) {
-  const res = await fetch('/api/chat', {
+  const res = await fetch('https://alex-llm-git-main-alex-kauffmans-projects.vercel.app/api/chat', {
     method: 'POST',             // MUST be POST
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ prompt, tokenCount })
