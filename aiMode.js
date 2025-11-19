@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Initial AI greeting
   const greeting = document.createElement("p");
-  greeting.textContent = "Hello! Ask me about Alex. You have 4 questions before you get auto promot to his LinkedIn page.";
+  greeting.textContent = "Hello! Ask me about Alex. You have 4 questions before you get auto-promoted to his LinkedIn page.";
   responseBox.appendChild(greeting);
 
   // Handle Send button click
@@ -41,15 +41,19 @@ document.addEventListener("DOMContentLoaded", () => {
     inputField.value = ""; // clear input
 
     try {
-      fetch('https://alex-llm-git-main-alex-kauffmans-projects.vercel.app/api/chat', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ prompt: 'Hello', tokenCount: 1 })
-      });
+      // Fetch AI response
+      const response = await fetch(
+        'https://alex-llm-git-main-alex-kauffmans-projects.vercel.app/api/chat',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ prompt: userInput, tokenCount })
+        });
 
-      const data = await response.json(); // now it's correct
+      if (!response.ok) throw new Error(`Server error: ${response.status}`);
+
+      const data = await response.json();
+
       aiP.textContent = "AlexBot: "; // clear typing
 
       // Typing animation
@@ -61,10 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
           i++;
         } else {
           clearInterval(interval);
-          // Auto-scroll to bottom
           responseBox.scrollTop = responseBox.scrollHeight;
         }
       }, 25);
+
     } catch (err) {
       console.error(err);
       aiP.textContent = "Error fetching AI response.";
