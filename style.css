@@ -48,6 +48,7 @@
 .responseBox {
     height: 100vh;
     overflow-y: auto;
+    padding-bottom: 120px; /* adjust to match your inputBox height */
 }
 
 .responseBox p {
@@ -60,6 +61,12 @@
 .responseBox p {
     margin-bottom: 20px;
     color: white;
+    text-wrap: wrap;
+}
+
+.userMsg p,
+.aiMsg p {
+    padding: 10px 0;
 }
 
 .user {
@@ -121,6 +128,7 @@ input[type=text] {
     height: fit-content;
     padding-top: 24px !important;
     padding-bottom: 24px !important;
+    padding-left: var(--xSmMargin) !important;
 }
 
 input[type=text]:focus {
