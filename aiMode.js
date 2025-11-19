@@ -41,14 +41,11 @@ document.addEventListener("DOMContentLoaded", () => {
     inputField.value = ""; // clear input
 
     try {
-      const res = await fetch(
-        "https://alex-q3tf6mry7-alex-kauffmans-projects.vercel.app/api/chat",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: userInput, tokenCount })
-        }
-      );
+      const res = await fetch("https://alex-58xmad04i-alex-kauffmans-projects.vercel.app/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ prompt: userInput, tokenCount })
+      });
 
       const data = await res.json();
       aiP.textContent = "AlexBot: "; // clear typing
