@@ -78,6 +78,48 @@
             text-underline-offset: 4px;
         }
 
+        /*Promopt */
+        .promptContainer {
+            display: flex;
+            gap: 32px;
+            /* space between the two columns */
+            margin-top: 16px;
+        }
+
+        .promptBox {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+            opacity: 0;
+            /* start hidden */
+            transform: translateY(20px);
+            /* slightly move down */
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            /* smooth fade + move */
+        }
+
+        .promptBox.visible {
+            opacity: 1;
+            transform: translateY(0);
+            /* move to normal position */
+        }
+
+        .promptBtn {
+            display: block;
+            padding: 32px 32px;
+            background-color: #111;
+            border: 1px solid white;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .promptBtn:hover {
+            background-color: #020202;
+        }
+
+        /*--------*/
+
         .aiBox {
             position: fixed;
             left: 0;
@@ -211,14 +253,14 @@
             }
 
             .send {
-               font-size: 18px;
+                font-size: 18px;
                 letter-spacing: -0.5px;
                 line-height: calc(20px * 1.2);
                 padding-right: 32px;
                 background-color: #1a1a1a !important;
             }
 
-            .inputBox{
+            .inputBox {
                 height: 72px;
             }
 
@@ -229,6 +271,16 @@
                 touch-action: auto;
                 background-color: #111 !important;
             }
+
+             .promptContainer {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+             }
+
+             .promptBox{
+                width: 100%;
+             }
         }
     </style>
 </body>

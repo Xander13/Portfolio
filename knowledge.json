@@ -1,4 +1,14 @@
 {
+  "prompts": {
+    "box1": [
+      "Ask Alex about his educational background",
+      "Ask Alex about his projects"
+    ],
+    "box2": [
+      "Ask Alex about his hobbies",
+      "Ask Alex about his experience"
+    ]
+  },
   "personal": {
     "name": "Alex Kauffman",
     "role": "Alex is a Product Designer who enjoys creating thoughtful and accessible experiences.",
@@ -8,35 +18,56 @@
     "goal": "Alex dreams of joining the Microsoft Xbox Accessibility Team or Apple’s Human Interface Accessibility team.",
     "dream": "Alex dreams of joining the Microsoft Xbox Accessibility Team or Apple’s Human Interface Accessibility team.",
     "linkedin": "You can check out Alex's LinkedIn profile here: ",
-    "projects": "Alex has 5 projects. Duolingo ASL, Microsoft VSC Copilot, Apple Live Captions, Vigor Fitness, Starbucsk Rewards, Color Health. "
+    "projects": "Alex has 5 projects. Duolingo ASL, Microsoft VSC Copilot, Apple Live Captions, Vigor Fitness, Starbucsk Rewards, Color Health are a few projects.",
+    "Education": "He attended the Rochester Institute of Technology, earning a BFA in New Media Design with a 3.69/4.0 GPA, graduating Magna Cum Laude."
   },
   "projects": {
     "Duolingo ASL": {
       "title": "Duolingo ASL Accessibility Project",
       "description": "Created a new business pipeline proposal integrating ASL features. Millions of deaf users face language access barriers...",
-      "images": ["LinSign.png", "Duoling_Feature1.png", "Duoling_Feature2.png", "Duoling_Feature3.png", ""],
-      "videos": ["Duolingo_ASL_Lily.mp4", "Duoling_Feature4.mp4"],
+      "images": [
+        "LinSign.png",
+        "Duoling_Feature1.png",
+        "Duoling_Feature2.png",
+        "Duoling_Feature3.png",
+        ""
+      ],
+      "videos": [
+        "Duolingo_ASL_Lily.mp4",
+        "Duoling_Feature4.mp4"
+      ],
       "link": "https://alex-kauffman.com/duolingoasl.html"
     },
     "Vigor Fitness": {
       "title": "Vigor",
       "description": "Reimagning fitness in a gamification way to avoid burnouts.",
-      "images": ["Vigor_SignUP.png", "Vigor_image13.png", "Vigor_Widgets.png", "Vigor_image12.png"],
-      "videos": ["VigorSplash.mp4"],
+      "images": [
+        "Vigor_SignUP.png",
+        "Vigor_image13.png",
+        "Vigor_Widgets.png",
+        "Vigor_image12.png"
+      ],
+      "videos": [
+        "VigorSplash.mp4"
+      ],
       "link": "https://alex-kauffman.com/vigor.html"
     },
     "Apple Live Captions": {
-     "title": "Apple Live Captions",
-      "chips": "Concept, HI Design, Accessibility",
-      "description": "Redesigned Apple's Live Captions to improve the accesbility ecosystem exploring what is accessible needs and inclusive needs for everyday users.",
-      "videos": ["Apple_LiveCC.mp4"],
-      "link": "https://alex-kauffman.com/applelivecpations.html"
-    },
-     "Live Caption": {
       "title": "Apple Live Captions",
       "chips": "Concept, HI Design, Accessibility",
       "description": "Redesigned Apple's Live Captions to improve the accesbility ecosystem exploring what is accessible needs and inclusive needs for everyday users.",
-      "videos": ["Apple_LiveCC.mp4"],
+      "videos": [
+        "Apple_LiveCC.mp4"
+      ],
+      "link": "https://alex-kauffman.com/applelivecpations.html"
+    },
+    "Live Caption": {
+      "title": "Apple Live Captions",
+      "chips": "Concept, HI Design, Accessibility",
+      "description": "Redesigned Apple's Live Captions to improve the accesbility ecosystem exploring what is accessible needs and inclusive needs for everyday users.",
+      "videos": [
+        "Apple_LiveCC.mp4"
+      ],
       "link": "https://alex-kauffman.com/applelivecpations.html"
     }
   }

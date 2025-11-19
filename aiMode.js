@@ -4,6 +4,7 @@ const input = document.getElementById("llmTxt");
 const sendBtn = document.querySelector(".send");
 const responseBox = document.querySelector(".responseBox");
 let questionCount = 0;
+const wordSpeed = 14;
 const maxQuestions = 8;
 
 // -------- Normalize Input --------
@@ -11,18 +12,10 @@ function normalizeText(text) {
   return text.toLowerCase().replace(/[^\w\s]/gi, '').trim();
 }
 
-// -------- Synonyms Mapping --------
-const personalSynonyms = {
-  name: ["name", "who is alex", "full name"],
-  role: ["role", "job", "position"],
-  "dream job": ["dream job", "goal", "dream"],
-  linkedin: ["linkedin"]
-};
-
 // -------- Load Knowledge JSON --------
 async function loadKnowledge() {
   try {
-    const res = await fetch("knowledge.json"); // make sure path is correct
+    const res = await fetch("knowledge.json");
     knowledge = await res.json();
     console.log("Knowledge loaded:", knowledge);
   } catch (err) {
@@ -31,14 +24,14 @@ async function loadKnowledge() {
 }
 
 // -------- Typing Effect --------
-function typeWriter(element, text, speed = 65, callback = null) {
+function typeWriter(element, text, speed = wordSpeed, callback = null) {
   element.textContent = "";
   let i = 0;
   function typing() {
     if (i < text.length) {
       element.textContent += text.charAt(i);
       i++;
-      requestAnimationFrame(typing);
+      setTimeout(typing, speed);
     } else if (callback) {
       callback();
     }
@@ -46,8 +39,8 @@ function typeWriter(element, text, speed = 65, callback = null) {
   typing();
 }
 
-// -------- Append Message to Chat --------
-function appendMessage(sender, msg, animated = false, extra = {}) {
+// -------- Append Message --------
+function appendMessage(sender, msg, animated = false, extra = {}, callback = null) {
   const wrapper = document.createElement("div");
   wrapper.classList.add(sender === "user" ? "userMsg" : "aiMsg");
 
@@ -57,13 +50,18 @@ function appendMessage(sender, msg, animated = false, extra = {}) {
 
   if (sender === "user") {
     p.textContent = `You: ${msg}`;
+    if (callback) callback();
   } else {
     p.textContent = `Alex Bot: `;
     if (animated) {
-      typeWriter(p, msg, 65, () => appendExtraContent(wrapper, p, extra));
+      typeWriter(p, msg, wordSpeed, () => {
+        appendExtraContent(wrapper, extra);
+        if (callback) callback();
+      });
     } else {
       p.textContent += msg;
-      appendExtraContent(wrapper, p, extra);
+      appendExtraContent(wrapper, extra);
+      if (callback) callback();
     }
   }
 
@@ -71,18 +69,21 @@ function appendMessage(sender, msg, animated = false, extra = {}) {
   responseBox.scrollTop = responseBox.scrollHeight;
 }
 
-function appendExtraContent(wrapper, p, extra) {
-  // Add link
-  if (extra.link) {
+
+// -------- Append Extra Content (links, media) --------
+function appendExtraContent(wrapper, extra = {}) {
+  if (!extra) return;
+
+  // Add link safely
+  if (extra.link && extra.link.href) {
     const a = document.createElement("a");
-    a.href = extra.link.href || extra.link;
+    a.href = extra.link.href;
     a.target = "_blank";
     a.textContent = extra.link.text || "Link";
     a.style.textDecoration = "underline";
-    p.appendChild(a);
+    wrapper.appendChild(a);
   }
 
-  // Collect all media
   const media = [];
 
   if (extra.videos) {
@@ -110,14 +111,13 @@ function appendExtraContent(wrapper, p, extra) {
     });
   }
 
-  // If there’s media, wrap in flex container
   if (media.length > 0) {
     const mediaWrapper = document.createElement("div");
     mediaWrapper.style.display = "flex";
     mediaWrapper.style.flexWrap = "wrap";
-    mediaWrapper.style.gap = "8px"; // spacing between items
+    mediaWrapper.style.gap = "8px";
 
-    media.forEach((item, index) => {
+    media.forEach(item => {
       const itemWrapper = document.createElement("div");
       itemWrapper.style.flex = media.length === 1 ? "1 1 100%" : "1 1 calc(50% - 4px)";
       itemWrapper.appendChild(item);
@@ -128,8 +128,7 @@ function appendExtraContent(wrapper, p, extra) {
   }
 }
 
-
-// -------- Build Paragraph from personal info --------
+// -------- Build Personal Paragraph --------
 function buildParagraph(matchedKeys) {
   const sentences = [];
   matchedKeys.forEach(key => {
@@ -138,7 +137,15 @@ function buildParagraph(matchedKeys) {
   return sentences.join(" ");
 }
 
-// -------- Match User Input --------
+// -------- Synonyms Mapping --------
+const personalSynonyms = {
+  name: ["name", "who is alex", "full name"],
+  role: ["role", "job", "position"],
+  "dream job": ["dream job", "goal", "dream"],
+  linkedin: ["linkedin"]
+};
+
+// -------- Find Response --------
 async function findResponse(userInput) {
   const normalizedInput = normalizeText(userInput);
   const matchedKeys = [];
@@ -150,7 +157,6 @@ async function findResponse(userInput) {
     }
   }
 
-  // LinkedIn
   if (matchedKeys.includes("linkedin")) {
     return {
       text: knowledge.personal.linkedin,
@@ -162,19 +168,20 @@ async function findResponse(userInput) {
     return { text: buildParagraph(matchedKeys) };
   }
 
-  // Catch-all for projects query
+  // Catch-all for "projects"
   if (normalizedInput.includes("project")) {
     const projectNames = Object.keys(knowledge.projects);
-    return { text: `Sure! Here are some of my projects: ${projectNames.join(", ")}. You can ask about any of them for more details!` };
+    return {
+      text: `Sure! Here are some of my projects: ${projectNames.join(", ")}. Ask about any for details!`
+    };
   }
 
-  // Project matching with normalized keys & optional buzzwords
+  // Project matching
   for (const key in knowledge.projects) {
     const project = knowledge.projects[key];
     const normalizedKey = key.toLowerCase();
 
-    // Match key name
-    if (normalizedInput.includes(normalizedKey)) {
+    if (normalizedInput.includes(normalizedKey) || (project.buzzwords && project.buzzwords.some(b => normalizedInput.includes(b.toLowerCase())))) {
       return {
         text: `Sure! Here is my ${project.title}: ${project.description}`,
         images: project.images,
@@ -182,25 +189,12 @@ async function findResponse(userInput) {
         link: project.link
       };
     }
-
-    // Match buzzwords if any
-    if (project.buzzwords) {
-      const buzz = project.buzzwords.map(b => b.toLowerCase());
-      if (buzz.some(word => normalizedInput.includes(word))) {
-        return {
-          text: `Sure! Here is my ${project.title}: ${project.description}`,
-          images: project.images,
-          videos: project.videos,
-          link: project.link
-        };
-      }
-    }
   }
 
   return { text: "Hmm… I don’t have an answer for that yet." };
 }
 
-// -------- Send Message Handler --------
+// -------- Send Message --------
 async function sendMessage() {
   const userText = input.value.trim();
   if (!userText) return;
@@ -229,16 +223,80 @@ async function sendMessage() {
   input.value = "";
 }
 
+// -------- Render Prompts --------
+function renderPrompts() {
+  const responseBox = document.querySelector(".responseBox");
+
+  // Container for prompts
+  const introScreen = document.createElement("div");
+  introScreen.id = "introScreen";
+
+  const promptContainer = document.createElement("div");
+  promptContainer.classList.add("promptContainer");
+
+  const boxes = [document.createElement("div"), document.createElement("div")];
+  boxes.forEach((box, i) => {
+    box.classList.add("promptBox");
+    promptContainer.appendChild(box);
+  });
+
+  introScreen.appendChild(promptContainer);
+  responseBox.appendChild(introScreen);
+
+  // ✅ Load prompts from JSON
+  const prompts = knowledge.prompts; // make sure your JSON has { box1: [], box2: [] }
+
+  boxes.forEach((box, i) => {
+    const key = `box${i + 1}`;
+    if (prompts[key]) {
+      prompts[key].forEach((text, index) => {
+        const p = document.createElement("p");
+        p.classList.add("promptBtn");
+        p.textContent = text;
+        p.addEventListener("click", () => {
+          input.value = text.replace("Ask Alex about ", "");
+          sendMessage();
+          introScreen.remove(); // hide prompts after selection
+        });
+
+        // fade-in each button
+        p.style.opacity = 0;
+        p.style.transform = "translateY(10px)";
+        p.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+
+        setTimeout(() => {
+          p.style.opacity = 1;
+          p.style.transform = "translateY(0)";
+        }, 100 * index);
+
+        box.appendChild(p);
+      });
+    }
+
+    // fade-in the box itself
+    box.style.opacity = 0;
+    box.style.transform = "translateY(20px)";
+    box.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+    setTimeout(() => {
+      box.style.opacity = 1;
+      box.style.transform = "translateY(0)";
+    }, 100 * (i + 1));
+  });
+}
+
+
 // -------- Event Listeners --------
 sendBtn.addEventListener("click", sendMessage);
-input.addEventListener("keydown", (e) => {
-  if (e.key === "Enter") sendMessage();
-});
+input.addEventListener("keydown", e => { if (e.key === "Enter") sendMessage(); });
 
 // -------- Initialize --------
 window.onload = async () => {
   await loadKnowledge();
-  const intro =
-    "Hello! Ask me about Alex. You have 8 questions before you get auto-promoted to his LinkedIn page.";
-  appendMessage("ai", intro, true);
+  appendMessage(
+    "ai",
+    "Hello! Ask me about Alex. You have 8 questions before you get auto-promoted to his LinkedIn page.",
+    true,
+    {},
+    renderPrompts // <-- this will now run after typing finishes
+  );
 };
