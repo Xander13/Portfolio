@@ -1,7 +1,22 @@
 // aiMode.js
-
 let tokenCount = 0; // Tracks number of user questions
 const MAX_TOKENS = 4;
+
+// Helper function to call backend API
+async function sendPrompt(prompt) {
+  const res = await fetch('/api/chat', {
+    method: 'POST',             // MUST be POST
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ prompt, tokenCount })
+  });
+
+  if (!res.ok) {
+    const err = await res.json();
+    throw new Error(err.error || `Server error: ${res.status}`);
+  }
+
+  return res.json();
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const inputField = document.querySelector("#llmTxt");
@@ -41,18 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
     inputField.value = ""; // clear input
 
     try {
-      // Fetch AI response
-      const response = await fetch(
-        'https://alex-llm-git-main-alex-kauffmans-projects.vercel.app/api/chat',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ prompt: userInput, tokenCount })
-        });
-
-      if (!response.ok) throw new Error(`Server error: ${response.status}`);
-
-      const data = await response.json();
+      // Fetch AI response using helper
+      const data = await sendPrompt(userInput);
 
       aiP.textContent = "AlexBot: "; // clear typing
 
