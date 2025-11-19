@@ -41,12 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
     inputField.value = ""; // clear input
 
     try {
-      const res = await fetch('https://alex-llm-git-main-alex-kauffmans-projects.vercel.app/api/chat', {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ prompt: userInput, tokenCount })
-        }
-      );
+      fetch('https://alex-llm-git-main-alex-kauffmans-projects.vercel.app/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ prompt: 'Hello', tokenCount: 1 })
+      });
 
       const data = await res.json();
       aiP.textContent = "AlexBot: "; // clear typing
