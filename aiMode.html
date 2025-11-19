@@ -49,6 +49,12 @@
 </head>
 
 <body>
+    <div class="nav">
+        <div class="flexBox">
+             <img class="logo" src="aLogo.svg" width="100%" alt="Alex Logo">
+             <img class="xbttn" src="xbttn.svg" width="100%" alt="close button">
+        </div>
+    </div>
     <div class="aiBox">
         <div class="responseBox"></div>
         <div class="inputBox">
@@ -76,6 +82,31 @@
             text-align: none;
             color: white;
             text-underline-offset: 4px;
+        }
+
+        .nav{
+            position: relative;
+            z-index: 100;
+            padding-left: 64px;
+            padding-right: 64px;
+            padding-top: 32px;
+            padding-bottom: 32px;
+            background-color: rgb(0, 0, 0);
+            height: fit-content;
+        }
+
+        .logo{
+            height: 48px;
+            width: fit-content;
+        }
+
+        .xbttn{
+            height: 48px;
+            width: fit-content;
+            position: absolute;
+            right: 64px;
+            cursor: pointer;
+            transform: rotate(-45deg);
         }
 
         /*Promopt */
@@ -121,22 +152,18 @@
         /*--------*/
 
         .aiBox {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
+            position: relative;
             background-color: black;
             z-index: 888888;
-            height: 100%;
+            height: calc(100% - 112px);
             box-sizing: border-box;
         }
 
         .responseBox {
             overflow-y: auto;
-            height: calc(100% - 76px);
+            height: calc(100% - 96px);
             z-index: 1;
-            padding: 32px;
+            padding: 64px;
         }
 
         .responseBox::-webkit-scrollbar {
@@ -224,7 +251,7 @@
             font-size: 32px;
             line-height: calc(32px * 1.2);
             height: fit-content;
-            padding-top: 24px !important;
+            padding-top: 32px !important;
             padding-bottom: 24px !important;
             padding-left: 32px;
             color: white;
@@ -245,6 +272,18 @@
         }
 
         @media screen and (max-width: 930px) {
+            .responseBox{
+                padding: 32px;
+            }
+
+            .nav{
+                padding-left: 32px;
+            }
+
+            .xbttn{
+                right: 32px;
+            }
+            
             .responseBox p {
                 font-size: 18px;
                 letter-spacing: -0.5px;
