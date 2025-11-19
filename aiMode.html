@@ -49,50 +49,6 @@
 </head>
 
 <body>
-    <input id="menu" class="menu--toggle" type="checkbox">
-    <div class="moibleLogo">
-        <a href="https://alex-kauffman.com">
-            <img src="aklogo.svg" width="100%" alt="Logo shaped like 'A' with a person inside.">
-        </a>
-    </div>
-    <label for="menu" class="menu--toggle--text">Menu</label>
-    <div class="menu--body">
-        <ul class="menu--list">
-            <li><a href="https://alex-kauffman.com">Work</a></li>
-            <li><a href="https://alex-kauffman.com#about">About</a></li>
-            <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
-        </ul>
-        <div class="social">
-            <h2>
-                <a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">
-                    LinkedIn
-                </a>
-            </h2>
-            <h2>
-                <a href="https://github.com/Xander13" target="_blank">
-                    Github
-                </a>
-            </h2>
-        </div>
-    </div>
-    <div class="navList">
-        <div class="flexBox">
-            <div class="half">
-                <p class="gray" style="padding: 0;">Alex Kauffman</p>
-            </div>
-            <div class="half">
-                <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <p class="gray"><span class="time"></span></p>
-                    <div style="gap: 8px; display: flex; justify-content: end; align-items: center;">
-                        <a id="active" href="https://alex-kauffman.com">Work</a>
-                        <a href="https://alex-kauffman.com#about">About</a>
-                        <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-                    </div>
-                </div>
-            </div>
-            <li><a href="#">AI Mode</a></li>
-        </div>
-    </div>
     <div class="aiBox">
         <div class="responseBox"></div>
         <div class="inputBox">
@@ -120,6 +76,8 @@
             right: 0;
             bottom: 0;
             top: 0;
+            height: 100vh;
+            box-sizing: border-box;
             z-index: 122222222222;
             background-color: black;
             padding: 32px;
