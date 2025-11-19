@@ -84,16 +84,16 @@
             right: 0;
             bottom: 0;
             top: 0;
-            box-sizing: border-box;
             background-color: black;
             padding: 32px;
             z-index: 888888;
-            height: 100dvh;
+            height: 100%;
+            box-sizing: border-box;
         }
 
         .responseBox {
             overflow-y: auto;
-            height: 100dvh;
+            height: 100%;
             padding-bottom: 120px;
             z-index: 1;
         }
@@ -198,11 +198,14 @@
                 font-size: 24px;
                 line-height: calc(24px * 1.2);
                 padding-right: 32px;
+                background-color: #1a1a1a !important;
             }
 
             input[type=text] {
                 font-size: 24px;
                 line-height: calc(24px * 1.2);
+                touch-action: auto;
+                background-color: #111 !important;
             }
         }
     </style>
