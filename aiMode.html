@@ -38,7 +38,7 @@
     <meta name="twitter:description"
         content="Alex is a product designer focused on accessibility, visual systems, and motion — for product teams who give a damn.">
     <link rel="stylesheet" href="cssReset.css">
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -102,7 +102,122 @@
             </div>
         </div>
     </div>
-    <!-- <script src="jquery-3.6.0.min.js"></script> -->
+    <style>
+
+        p, h1, h2, h3, h4, h5, h6, input[type=text], .send, a{
+            font-family: monospace;
+        }
+
+        a{
+            text-align: none;
+            color: white;
+            text-underline-offset: 4px;
+        }
+
+        .aiBox {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            z-index: 122222222222;
+            background-color: black;
+            padding: 32px;
+        }
+
+        .responseBox {
+            height: 100vh;
+            overflow-y: auto;
+            padding-bottom: 120px;
+        }
+
+        .responseBox p {
+            font-size: 32px;
+            line-height: calc(32px * 1.2);
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .responseBox p {
+            margin-bottom: 20px;
+            color: white;
+            text-wrap: wrap;
+        }
+
+        .userMsg p,
+        .aiMsg p {
+            padding: 10px 0;
+        }
+
+        .send {
+            width: fit-content;
+            padding-left: 24px;
+            padding-right: 56px;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            border: none;
+            color: white;
+            box-sizing: border-box;
+            cursor: pointer;
+             font-size: 32px;
+            line-height: calc(32px * 1.2);
+        }
+
+        .LlmTxt {
+            border-radius: 0 !important;
+            border: none !important;
+            background-color: black !important;
+            width: 100% !important;
+            margin: 0 !important;
+            box-sizing: border-box;
+            padding-left: var(--xSmMargin) !important;
+            padding-right: var(--xSmMargin) !important;
+        }
+
+        .txtBox {
+            width: 100% !important;
+            border-radius: 0 !important;
+            border: none !important;
+            background-color: black !important;
+            margin: 0 !important;
+            height: fit-content !important;
+        }
+
+        .inputBox {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: fit-content !important;
+        }
+
+        input[type=text] {
+            font-size: 32px;
+            line-height: calc(32px * 1.2);
+            height: fit-content;
+            padding-top: 24px !important;
+            padding-bottom: 24px !important;
+            padding-left: 32px;
+            color: white;;
+        }
+
+        input[type=text]:focus {
+            outline: none;
+        }
+
+        .flexBox {
+            display: flex;
+        }
+
+        .inputBox .flexBox {
+            align-items: stretch !important;
+            height: 100%;
+            flex-wrap: nowrap;
+        }
+    </style>
 </body>
 
 </html>
