@@ -54,12 +54,12 @@ function forceBotScroll() {
 // -------- Typing Effect --------
 function typeWriter(element, text, baseSpeed = 40, callback = null) {
   element.textContent = "";
-  const words = text.split(" ");
+  const words = text.split(/(\s+|<br>)/); // split spaces or <br>
   let i = 0;
 
   function typing() {
     if (i < words.length) {
-      element.textContent += (i === 0 ? "" : " ") + words[i];
+      element.innerHTML = element.innerHTML + (i === 0 ? "" : " ") + words[i];
       i++;
       // speed scales with word length
       const speed = baseSpeed + words[i - 1].length * 10;
@@ -99,11 +99,12 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
         if (callback) callback();
       });
     } else {
-      p.textContent = msg;
+      p.innerHTML = msg; // <-- changed here
       appendExtraContent(content, extra);
       if (callback) callback();
     }
   }
+
 
   wrapper.style.marginBottom = "16px";
   responseBox.appendChild(wrapper);
