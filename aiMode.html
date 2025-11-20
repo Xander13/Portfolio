@@ -68,8 +68,15 @@
     </div>
 
     <style>
+        :root {
+            --primary-color: #0e0e0e;
+            --secondary-color: #f9f9f9;
+            --text-color: #f9f9f9;
+            --accent-color: #ff6600;
+        }
+
         body {
-            background-color: white;
+            background-color: var(--primary-color);
         }
 
         .aiIcon {
@@ -116,8 +123,8 @@
         h5 {
             position: fixed;
             bottom: 22px;
-            letter-spacing: -1px;
-            font-size: 16px;
+            letter-spacing: -0.5px;
+            font-size: 14px;
             color: gray;
             font-weight: 400;
             text-align: center;
@@ -128,13 +135,13 @@
 
         a {
             text-align: none;
-            color: black;
+            color: var(--secondary-color);
             text-underline-offset: 4px;
         }
 
         h6 {
             font-size: 18px;
-            color: black;
+            color: var(--secondary-color);
             font-weight: 400;
         }
 
@@ -196,7 +203,7 @@
             padding-right: 64px;
             padding-top: 32px;
             padding-bottom: 32px;
-            background-color: white;
+            background-color: var(--primary-color);
             height: fit-content;
         }
 
@@ -243,7 +250,7 @@
 
         .promptBtn {
             display: block;
-            background-color: rgb(237, 238, 240);
+            background-color: #2a2a2a;
             cursor: pointer;
             overflow: hidden;
             border-radius: 4px;
@@ -280,14 +287,14 @@
         }
 
         .promptBtn:hover {
-            background-color: #c4c4c4;
+            background-color: #151515;
         }
 
         /*--------*/
 
         .aiBox {
             position: relative;
-            background-color: white;
+            background-color: var(--primary-color);
             z-index: 888888;
             height: calc(100% - 112px);
             box-sizing: border-box;
@@ -301,31 +308,19 @@
         }
 
         .responseBox::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        .responseBox::-webkit-scrollbar-track {
-            background-color: white;
-        }
-
-        .responseBox::-webkit-scrollbar-thumb {
-            background: black;
-        }
-
-        .responseBox::-webkit-scrollbar-thumb:hover {
-            background: #555;
+            width: 0px;
         }
 
         .responseBox p {
             font-size: 20px;
             line-height: calc(32px * 1.2);
             margin-bottom: 20px;
-            color: black;
+            color: var(--secondary-color);
         }
 
         .responseBox p {
             margin-bottom: 20px;
-            color: black;
+            color: var(--secondary-color);
             text-wrap: wrap;
         }
 
@@ -339,24 +334,19 @@
             display: flex;
             justify-content: stretch;
             align-items: center;
-            background-color: rgb(211, 211, 211);
+            background-color: var(--accent-color);
             border: none;
-            color: black;
+            color: var(--secondary-color);
             box-sizing: border-box;
             cursor: pointer;
             font-size: 20px;
             border-radius: 100rem;
         }
 
-        .send:hover {
-            background-color: #e6590c;
-            color: white;
-        }
-
         .LlmTxt {
             border-radius: 0 !important;
             border: none !important;
-            background-color: white !important;
+            background-color: var(--secondary-color) !important;
             width: 100% !important;
             margin: 0 !important;
             box-sizing: border-box;
@@ -368,7 +358,7 @@
             width: 100% !important;
             border-radius: 0 !important;
             border: none !important;
-            background-color: white !important;
+            background-color: var(--secondary-color) !important;
             margin: 0 !important;
             height: 100%;
             padding-left: 24px;
@@ -376,7 +366,7 @@
 
         input:-webkit-autofill {
             -webkit-box-shadow: 0 0 0 1000px #121212 inset;
-            -webkit-text-fill-color: white;
+            -webkit-text-fill-color: var(--secondary-color);
             transition: background-color 5000s ease-in-out;
         }
 
@@ -391,12 +381,13 @@
             padding: 14px 18px;
             border-radius: 100rem;
             box-sizing: border-box;
-            background-color: rgb(237, 238, 240);
+            background-color: rgb(31, 31, 31);
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
         }
 
         input[type=text] {
             font-size: 20px;
-            color: black;
+            color: var(--secondary-color);
             background-color: transparent !important;
         }
 
@@ -454,7 +445,6 @@
                 letter-spacing: -0.5px;
                 line-height: calc(20px * 1.2);
                 margin-bottom: 20px;
-                color: black;
             }
 
             .inputBox {

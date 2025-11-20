@@ -250,10 +250,14 @@ function buildParagraph(matchedKeys) {
 const personalSynonyms = {
   name: ["name", "who is alex", "full name"],
   role: ["role", "job", "position"],
-  "dream job": ["dream job", "goal", "dream"],
+  "dream job": ["dream job", "goal", "dream", "job idea"],
   linkedin: ["linkedin"],
-  time: ["time", "what time is it", "current time"]
+  time: ["time", "what time is it", "current time"],
+  education: ["education", "school"],
+  philosophy: ["philosophy", "motto", "design thinking"],
+  background: ["background", "who is alex", "perosnal background", "story"]
 };
+
 
 // -------- Find Response --------
 async function findResponse(userInput) {
@@ -448,7 +452,6 @@ function renderPrompts() {
         p.addEventListener("click", () => {
           input.value = item.text.replace("Learn about Alex ", "");
           sendMessage();
-          introScreen.remove(); // hide prompts after selection
         });
 
         box.appendChild(p);

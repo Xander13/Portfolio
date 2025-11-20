@@ -19,14 +19,15 @@
         "image": "PocketCornerTwo.png"
       },
       {
-        "text": "Learn about Alex Dream Job",
+        "text": "Learn about Alex Design Moto",
         "cta": "Click to add into prompt",
-        "image": "PocketCornerTwo.png"
+        "image": "PocketCornerFour.png"
       }
     ]
   },
   "personal": {
     "currentTime": "The local time is {{time}}",
+    "background": "Alex Kauffman is a designer focused on clarity, interaction, and systems-thinking. With a BFA in New Media Design from RIT, he blends creative direction and product thinking to design tools that support thoughtful, long-term growth. He’s currently exploring roles in product design and visual systems — aiming to contribute to meaningful products, not just fast-moving ideas. His dream role is helping Microsoft’s Accessibility team improve the Xbox gaming experience for diverse players — or working with platforms like Toast to make everyday payments more accessible for all. Outside of design, Alex is getting into motocross (MX) as a new hobby. He also enjoys traveling to different countries, meeting new people, and trying unfamiliar things — always chasing experiences that expand perspective.",
     "what time is it": "The local time is {{time}}",
     "name": "Alex Kauffman",
     "role": "Alex is a Product Designer who enjoys creating thoughtful and accessible experiences.",
