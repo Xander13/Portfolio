@@ -23,6 +23,34 @@ async function loadKnowledge() {
   }
 }
 
+// -------- Smooth Scroll Helpers --------
+function forceUserScroll() {
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      responseBox.scrollTo({
+        top: responseBox.scrollHeight,
+        behavior: "smooth"
+      });
+    });
+  });
+}
+
+function forceBotScroll() {
+  // first scroll
+  responseBox.scrollTo({
+    top: responseBox.scrollHeight,
+    behavior: "smooth"
+  });
+
+  // scroll again after images/video load
+  setTimeout(() => {
+    responseBox.scrollTo({
+      top: responseBox.scrollHeight,
+      behavior: "smooth"
+    });
+  }, 180);
+}
+
 // -------- Typing Effect --------
 function typeWriter(element, text, baseSpeed = 40, callback = null) {
   element.textContent = "";
@@ -50,17 +78,14 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
   const wrapper = document.createElement("div");
   wrapper.classList.add(sender === "user" ? "userMsg" : "aiMsg");
 
-  // Left label
   const label = document.createElement("h6");
   label.textContent = sender === "user" ? "You:" : "Alex's essence:";
   wrapper.appendChild(label);
 
-  // Right side content bucket (this is the 70%)
   const content = document.createElement("div");
   content.classList.add("msgContent");
   wrapper.appendChild(content);
 
-  // Message text
   const p = document.createElement("p");
   content.appendChild(p);
 
@@ -82,7 +107,34 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
 
   wrapper.style.marginBottom = "16px";
   responseBox.appendChild(wrapper);
-  responseBox.scrollTop = responseBox.scrollHeight;
+
+  // 🔥 NEW — scroll for AI messages
+  if (sender === "ai") {
+    forceBotScroll();
+  } else {
+    forceUserScroll();
+  }
+
+  nudgeChat(32);
+}
+
+
+// -------- Soft Nudge Scroll Helper --------
+function nudgeChat(amount = 32) {
+  responseBox.scrollTo({
+    top: responseBox.scrollTop + amount,
+    behavior: "smooth"
+  });
+}
+
+// --- DET Time -------
+function getDetroitTime() {
+  return new Date().toLocaleTimeString("en-US", {
+    timeZone: "America/Detroit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
+  });
 }
 
 
@@ -96,9 +148,18 @@ function appendExtraContent(wrapper, extra = {}) {
     a.href = extra.link.href;
     a.target = "_blank";
     a.textContent = extra.link.text || "Link";
-    a.style.textDecoration = "underline";
-    a.style.display = "block";
-    a.style.marginTop = "8px";
+
+    if (extra.inlineLink) {
+      a.style.textDecoration = "underline";
+      a.style.color = "inherit";  // match surrounding text
+      a.style.display = "inline"; // keep inline
+      a.style.margin = "0";       // no margin
+    } else {
+      a.style.textDecoration = "underline";
+      a.style.display = "block";
+      a.style.marginTop = "8px";
+    }
+
     wrapper.appendChild(a);
   }
 
@@ -143,7 +204,28 @@ function appendExtraContent(wrapper, extra = {}) {
       itemWrapper.style.flex = media.length === 1 ? "1 1 100%" : "1 1 calc(50% - 4px)";
       mediaWrapper.appendChild(itemWrapper);
       itemWrapper.appendChild(item);
+
+      // Animation styling
+      item.style.opacity = "0";
+      item.style.transform = "translateY(10px)";
+      item.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+
+      // Reveal on load
+      const reveal = () => {
+        item.style.opacity = "1";
+        item.style.transform = "translateY(0)";
+
+        // *soft chat movement as items stack*
+        nudgeChat(24);
+      };
+
+      if (item.tagName === "IMG") {
+        item.onload = reveal;
+      } else if (item.tagName === "VIDEO") {
+        item.onloadeddata = reveal;
+      }
     });
+
 
     wrapper.appendChild(mediaWrapper); // append below text
   }
@@ -153,7 +235,13 @@ function appendExtraContent(wrapper, extra = {}) {
 function buildParagraph(matchedKeys) {
   const sentences = [];
   matchedKeys.forEach(key => {
-    if (knowledge.personal[key]) sentences.push(knowledge.personal[key]);
+    if (knowledge.personal[key]) {
+      let text = knowledge.personal[key];
+      if (text.includes("{{time}}")) {
+        text = text.replace("{{time}}", getDetroitTime());
+      }
+      sentences.push(text);
+    }
   });
   return sentences.join(" ");
 }
@@ -163,15 +251,28 @@ const personalSynonyms = {
   name: ["name", "who is alex", "full name"],
   role: ["role", "job", "position"],
   "dream job": ["dream job", "goal", "dream"],
-  linkedin: ["linkedin"]
+  linkedin: ["linkedin"],
+  time: ["time", "what time is it", "current time"]
 };
 
 // -------- Find Response --------
 async function findResponse(userInput) {
   const normalizedInput = normalizeText(userInput);
-  const matchedKeys = [];
 
-  // Personal info
+  // --- TIME FIRST ---
+  const timeQueries = ["time", "current time", "currenttime", "what time is it"];
+  if (timeQueries.some(q => normalizedInput.includes(q))) {
+    const detroitTime = new Date().toLocaleTimeString("en-US", {
+      timeZone: "America/Detroit",
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true
+    });
+    return { text: `The current time in Detroit is ${detroitTime}.` };
+  }
+
+  // --- PERSONAL INFO ---
+  const matchedKeys = [];
   for (const key in personalSynonyms) {
     if (personalSynonyms[key].some(s => normalizedInput.includes(s))) {
       matchedKeys.push(key);
@@ -189,22 +290,19 @@ async function findResponse(userInput) {
     return { text: buildParagraph(matchedKeys) };
   }
 
-  // Catch-all for "projects"
+  // --- PROJECTS ---
   if (normalizedInput.includes("project")) {
     const projectNames = Object.keys(knowledge.projects);
-    return {
-      text: `Sure! Here are some of my projects: ${projectNames.join(", ")}. Ask about any for details!`
-    };
+    return { text: `${getFriendlyOpener()} here are some of my projects: ${projectNames.join(", ")}. Ask about any for details!` };
   }
 
-  // Project matching
   for (const key in knowledge.projects) {
     const project = knowledge.projects[key];
     const normalizedKey = key.toLowerCase();
-
-    if (normalizedInput.includes(normalizedKey) || (project.buzzwords && project.buzzwords.some(b => normalizedInput.includes(b.toLowerCase())))) {
+    if (normalizedInput.includes(normalizedKey) ||
+      (project.buzzwords && project.buzzwords.some(b => normalizedInput.includes(b.toLowerCase())))) {
       return {
-        text: `Sure! Here is my ${project.title}: ${project.description}`,
+        text: `${getFriendlyOpener()} here is my ${project.title}: ${project.description}`,
         images: project.images,
         videos: project.videos,
         link: project.link
@@ -215,12 +313,39 @@ async function findResponse(userInput) {
   return { text: "Hmm… I don’t have an answer for that yet." };
 }
 
+// ----- Detroit time helper -----
+function getDetroitTime() {
+  return new Date().toLocaleTimeString("en-US", {
+    timeZone: "America/Detroit",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: true
+  });
+}
+
+// -------- Friendly Openers --------
+function getFriendlyOpener() {
+  const openers = [
+    "Absolutely,",
+    "Sure,",
+    "Of course,",
+    "I'm glad to help,",
+    "Definitely,",
+    "Happy to share,"
+  ];
+  return openers[Math.floor(Math.random() * openers.length)];
+}
+
+
+
 // -------- Send Message --------
 async function sendMessage() {
   const userText = input.value.trim();
   if (!userText) return;
 
   appendMessage("user", userText);
+  forceUserScroll(); // 🔥 added
+
   questionCount++;
 
   if (questionCount > maxQuestions) {
@@ -228,7 +353,10 @@ async function sendMessage() {
       "ai",
       "Looks like you're curious 👀 You’ve reached your 8-question limit. Check out more about Alex on his LinkedIn: ",
       true,
-      { href: "https://www.linkedin.com/in/alex-kauffman/", text: "alex-kauffman" }
+      {
+        link: { href: "https://www.linkedin.com/in/alex-kauffman/", text: "alex-kauffman" },
+        inlineLink: true
+      }
     );
     input.disabled = true;
     return;
@@ -287,44 +415,44 @@ function renderPrompts() {
     const key = `box${i + 1}`;
     if (prompts[key]) {
       prompts[key].forEach((item, index) => {
-  const p = document.createElement("p");
-  p.classList.add("promptBtn");
-  p.style.display = "flex";
-  p.style.flexDirection = "column";
-  p.style.gap = "4px"; // spacing between text, CTA, image
+        const p = document.createElement("p");
+        p.classList.add("promptBtn");
+        p.style.display = "flex";
+        p.style.flexDirection = "column";
+        p.style.gap = "4px"; // spacing between text, CTA, image
 
-  // Add main text
-  const textNode = document.createElement("span");
-  textNode.textContent = item.text;
-  p.appendChild(textNode);
+        // Add main text
+        const textNode = document.createElement("span");
+        textNode.textContent = item.text;
+        p.appendChild(textNode);
 
-  // Add CTA text (just visual)
-  if (item.cta) {
-    const ctaNode = document.createElement("span");
-    ctaNode.textContent = item.cta;
-    ctaNode.style.color = "#007BFF"; // blue hex
-    ctaNode.style.fontSize = "0.9rem";
-    p.appendChild(ctaNode);
-  }
+        // Add CTA text (just visual)
+        if (item.cta) {
+          const ctaNode = document.createElement("span");
+          ctaNode.textContent = item.cta;
+          ctaNode.style.color = "#007BFF"; // blue hex
+          ctaNode.style.fontSize = "0.9rem";
+          p.appendChild(ctaNode);
+        }
 
-  // Add image at the bottom
-  if (item.image) {
-    const img = document.createElement("img");
-    img.src = item.image; // make sure path is correct
-    img.style.width = "100%"; // full width
-    img.style.display = "block";
-    p.appendChild(img);
-  }
+        // Add image at the bottom
+        if (item.image) {
+          const img = document.createElement("img");
+          img.src = item.image; // make sure path is correct
+          img.style.width = "100%"; // full width
+          img.style.display = "block";
+          p.appendChild(img);
+        }
 
-  // Click triggers the whole prompt
-  p.addEventListener("click", () => {
-    input.value = item.text.replace("Learn about Alex ", "");
-    sendMessage();
-    introScreen.remove(); // hide prompts after selection
-  });
+        // Click triggers the whole prompt
+        p.addEventListener("click", () => {
+          input.value = item.text.replace("Learn about Alex ", "");
+          sendMessage();
+          introScreen.remove(); // hide prompts after selection
+        });
 
-  box.appendChild(p);
-});
+        box.appendChild(p);
+      });
 
 
     }

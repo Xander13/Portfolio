@@ -72,7 +72,7 @@
             background-color: white;
         }
 
-        .aiIcon{
+        .aiIcon {
             height: 100px;
             width: fit-content;
             position: fixed;
@@ -80,6 +80,18 @@
             bottom: 32px;
             z-index: 444433333;
         }
+
+        .mediaSlideIn {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .mediaSlideIn.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
 
         p,
         h1,
@@ -94,14 +106,14 @@
             font-family: monospace;
         }
 
-        .aiBox{
+        .aiBox {
             /* text-align: center;
             position: absolute;
             bottom: 0;
             text-align: balance; */
         }
 
-        h5{
+        h5 {
             position: fixed;
             bottom: 22px;
             letter-spacing: -1px;
@@ -239,32 +251,32 @@
             transition: background-color 0.2s ease;
         }
 
-          .promptBtn img{
+        .promptBtn img {
             transform: scale(1);
             transition: 0.5s ease;
         }
 
-        .promptBtn:hover img{
+        .promptBtn:hover img {
             transform: scale(1.05);
             transition: 0.5s ease;
         }
 
-        .promptBtn span{
+        .promptBtn span {
             margin-left: 32px;
             margin-right: 32px;
         }
 
-        .promptBtn span:first-child{
+        .promptBtn span:first-child {
             padding-top: 32px;
         }
 
-        .promptBtn img{
+        .promptBtn img {
             width: 100%;
-            
+
         }
 
-        .promptBtn p{
-              padding: 32px;
+        .promptBtn p {
+            padding: 32px;
         }
 
         .promptBtn:hover {
@@ -471,8 +483,8 @@
             }
 
             .aiBox {
-            height: calc(100% - 76px);
-        }
+                height: calc(100% - 76px);
+            }
         }
     </style>
 </body>

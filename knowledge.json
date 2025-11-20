@@ -7,16 +7,16 @@
         "image": "PocketCornerOne.png"
       },
       {
-        "text": "Learn about Alex Dream Job",
+        "text": "Learn about Alex Education",
         "cta": "Click to add into prompt",
-        "image": "PocketCornerTwo.png"
+        "image": "PocketCornerThree.png"
       }
     ],
     "box2": [
       {
-        "text": "Learn about Alex background",
+        "text": "Learn about Alex Dream Job",
         "cta": "Click to add into prompt",
-        "image": "PocketCornerOne.png"
+        "image": "PocketCornerTwo.png"
       },
       {
         "text": "Learn about Alex Dream Job",
@@ -26,6 +26,8 @@
     ]
   },
   "personal": {
+    "currentTime": "The local time is {{time}}",
+    "what time is it": "The local time is {{time}}",
     "name": "Alex Kauffman",
     "role": "Alex is a Product Designer who enjoys creating thoughtful and accessible experiences.",
     "job": "Alex is a Product Designer who enjoys creating thoughtful and accessible experiences.",
