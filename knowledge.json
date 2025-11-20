@@ -1,12 +1,28 @@
 {
   "prompts": {
     "box1": [
-      "Ask Alex about his alma mater",
-      "Ask Alex about his projects"
+      {
+        "text": "Learn about Alex background",
+        "cta": "Click to add into prompt",
+        "image": "PocketCornerOne.png"
+      },
+      {
+        "text": "Learn about Alex Dream Job",
+        "cta": "Click to add into prompt",
+        "image": "PocketCornerTwo.png"
+      }
     ],
     "box2": [
-      "Ask Alex about his hobbies",
-      "Ask Alex about his experience"
+      {
+        "text": "Learn about Alex background",
+        "cta": "Click to add into prompt",
+        "image": "PocketCornerOne.png"
+      },
+      {
+        "text": "Learn about Alex Dream Job",
+        "cta": "Click to add into prompt",
+        "image": "PocketCornerTwo.png"
+      }
     ]
   },
   "personal": {

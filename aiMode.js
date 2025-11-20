@@ -24,20 +24,26 @@ async function loadKnowledge() {
 }
 
 // -------- Typing Effect --------
-function typeWriter(element, text, speed = wordSpeed, callback = null) {
+function typeWriter(element, text, baseSpeed = 40, callback = null) {
   element.textContent = "";
+  const words = text.split(" ");
   let i = 0;
+
   function typing() {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
+    if (i < words.length) {
+      element.textContent += (i === 0 ? "" : " ") + words[i];
       i++;
+      // speed scales with word length
+      const speed = baseSpeed + words[i - 1].length * 10;
       setTimeout(typing, speed);
     } else if (callback) {
       callback();
     }
   }
+
   typing();
 }
+
 
 // -------- Append Message --------
 function appendMessage(sender, msg, animated = false, extra = {}, callback = null) {
@@ -46,7 +52,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
 
   // Left label
   const label = document.createElement("h6");
-  label.textContent = sender === "user" ? "You:" : "Pal:";
+  label.textContent = sender === "user" ? "You:" : "Alex's essence:";
   wrapper.appendChild(label);
 
   // Right side content bucket (this is the 70%)
@@ -280,28 +286,47 @@ function renderPrompts() {
   boxes.forEach((box, i) => {
     const key = `box${i + 1}`;
     if (prompts[key]) {
-      prompts[key].forEach((text, index) => {
-        const p = document.createElement("p");
-        p.classList.add("promptBtn");
-        p.textContent = text;
-        p.addEventListener("click", () => {
-          input.value = text.replace("Ask Alex about ", "");
-          sendMessage();
-          introScreen.remove(); // hide prompts after selection
-        });
+      prompts[key].forEach((item, index) => {
+  const p = document.createElement("p");
+  p.classList.add("promptBtn");
+  p.style.display = "flex";
+  p.style.flexDirection = "column";
+  p.style.gap = "4px"; // spacing between text, CTA, image
 
-        // fade-in each button
-        p.style.opacity = 0;
-        p.style.transform = "translateY(10px)";
-        p.style.transition = "opacity 0.5s ease, transform 0.5s ease";
+  // Add main text
+  const textNode = document.createElement("span");
+  textNode.textContent = item.text;
+  p.appendChild(textNode);
 
-        setTimeout(() => {
-          p.style.opacity = 1;
-          p.style.transform = "translateY(0)";
-        }, 100 * index);
+  // Add CTA text (just visual)
+  if (item.cta) {
+    const ctaNode = document.createElement("span");
+    ctaNode.textContent = item.cta;
+    ctaNode.style.color = "#007BFF"; // blue hex
+    ctaNode.style.fontSize = "0.9rem";
+    p.appendChild(ctaNode);
+  }
 
-        box.appendChild(p);
-      });
+  // Add image at the bottom
+  if (item.image) {
+    const img = document.createElement("img");
+    img.src = item.image; // make sure path is correct
+    img.style.width = "100%"; // full width
+    img.style.display = "block";
+    p.appendChild(img);
+  }
+
+  // Click triggers the whole prompt
+  p.addEventListener("click", () => {
+    input.value = item.text.replace("Learn about Alex ", "");
+    sendMessage();
+    introScreen.remove(); // hide prompts after selection
+  });
+
+  box.appendChild(p);
+});
+
+
     }
 
     // fade-in the box itself
