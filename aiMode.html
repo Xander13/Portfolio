@@ -49,22 +49,27 @@
 </head>
 
 <body>
-    <div class="nav">
+    <!-- <div class="nav">
         <div class="flexBox">
-             <img class="logo" src="aLogo.svg" width="100%" alt="Alex Logo">
-             <img class="xbttn" src="xbttn.svg" width="100%" alt="close button">
+            <img class="logo" src="aLogo.svg" width="100%" alt="Alex Logo">
+            <img class="xbttn" src="xbttn.svg" width="100%" alt="close button">
         </div>
-    </div>
+    </div> -->
     <div class="aiBox">
         <div class="responseBox"></div>
         <div class="inputBox">
             <div class="flexBox">
-                <input class="txtBox" type="text" id="llmTxt" placeholder="Ask Alex...">
+                <input class="txtBox" autocomplete="off" name="no-autofill" type="text" id="llmTxt"
+                    placeholder="Ask Alex...">
                 <div class="send">Send</div>
             </div>
         </div>
     </div>
     <style>
+        body {
+            background-color: whitesmoke;
+        }
+
         p,
         h1,
         h2,
@@ -80,27 +85,84 @@
 
         a {
             text-align: none;
-            color: white;
+            color: black;
             text-underline-offset: 4px;
         }
 
-        .nav{
+        h6 {
+            font-size: 18px;
+            color: black;
+            font-weight: 400;
+        }
+
+        /* Chat message wrapper */
+        .aiMsg,
+        .userMsg {
+            display: flex;
+            flex-direction: column;
+            width: 50%;
+            margin: auto;
+            gap: 4px;
+        }
+
+        .aiMsg>p,
+        .userMsg>p,
+        .aiMsg .mediaWrapper,
+        .userMsg .mediaWrapper {
+            max-width: 100%;
+        }
+
+        /* Sender label */
+        .aiMsg h6,
+        .userMsg h6 {
+            font-size: 18px;
+            /* smaller label text */
+            margin: 0;
+            color: #999;
+        }
+
+        /* Actual message */
+        .aiMsg p,
+        .userMsg p {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        /* Media section inside AI messages */
+        .aiMsg .mediaWrapper {
+            width: 100%;
+            /* full width under message text */
+            margin-top: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* Media items inside wrapper */
+        .aiMsg .mediaWrapper>div {
+            flex: 1 1 calc(100% - 4px);
+            /* two items per row */
+            max-width: calc(100% - 4px);
+        }
+
+
+        .nav {
             position: relative;
             z-index: 100;
             padding-left: 64px;
             padding-right: 64px;
             padding-top: 32px;
             padding-bottom: 32px;
-            background-color: rgb(0, 0, 0);
+            background-color: whitesmoke;
             height: fit-content;
         }
 
-        .logo{
+        .logo {
             height: 48px;
             width: fit-content;
         }
 
-        .xbttn{
+        .xbttn {
             height: 48px;
             width: fit-content;
             position: absolute;
@@ -113,8 +175,8 @@
         .promptContainer {
             display: flex;
             gap: 16px;
-            /* space between the two columns */
             margin-top: 16px;
+            margin-bottom: 56px;
         }
 
         .promptBox {
@@ -139,7 +201,7 @@
         .promptBtn {
             display: block;
             padding: 32px 32px;
-            background-color: #111;
+            background-color: #dddddd;
             cursor: pointer;
             margin-bottom: 0 !important;
             transition: background-color 0.2s ease;
@@ -153,7 +215,7 @@
 
         .aiBox {
             position: relative;
-            background-color: black;
+            background-color: whitesmoke;
             z-index: 888888;
             height: calc(100% - 112px);
             box-sizing: border-box;
@@ -161,7 +223,7 @@
 
         .responseBox {
             overflow-y: auto;
-            height: calc(100% - 96px);
+            height: calc(100% - 124px);
             z-index: 1;
             padding: 64px;
         }
@@ -171,11 +233,11 @@
         }
 
         .responseBox::-webkit-scrollbar-track {
-            background: black;
+            background-color: whitesmoke;
         }
 
         .responseBox::-webkit-scrollbar-thumb {
-            background: white;
+            background: black;
         }
 
         .responseBox::-webkit-scrollbar-thumb:hover {
@@ -183,44 +245,45 @@
         }
 
         .responseBox p {
-            font-size: 32px;
+            font-size: 20px;
             line-height: calc(32px * 1.2);
             margin-bottom: 20px;
-            color: white;
+            color: black;
         }
 
         .responseBox p {
             margin-bottom: 20px;
-            color: white;
+            color: black;
             text-wrap: wrap;
-        }
-
-        .userMsg p,
-        .aiMsg p {
-            padding: 10px 0;
         }
 
         .send {
             width: fit-content;
-            padding-left: 24px;
-            padding-right: 56px;
+            padding-left: 28px;
+            padding-right: 28px;
+            padding-top: 8px;
+            padding-bottom: 8px;
             box-sizing: border-box;
             display: flex;
-            justify-content: center;
+            justify-content: stretch;
             align-items: center;
-            background-color: black;
+            background-color: rgb(211, 211, 211);
             border: none;
-            color: white;
+            color: black;
             box-sizing: border-box;
             cursor: pointer;
-            font-size: 32px;
-            line-height: calc(32px * 1.2);
+            font-size: 20px;
+            border-radius: 100rem;
+        }
+
+        .send:hover {
+            background-color: #de5206;
         }
 
         .LlmTxt {
             border-radius: 0 !important;
             border: none !important;
-            background-color: black !important;
+            background-color: whitesmoke !important;
             width: 100% !important;
             margin: 0 !important;
             box-sizing: border-box;
@@ -232,29 +295,36 @@
             width: 100% !important;
             border-radius: 0 !important;
             border: none !important;
-            background-color: black !important;
+            background-color: whitesmoke !important;
             margin: 0 !important;
-            height: fit-content !important;
+            height: 100%;
+            padding-left: 24px;
+        }
+
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 1000px #121212 inset;
+            -webkit-text-fill-color: white;
+            transition: background-color 5000s ease-in-out;
         }
 
         .inputBox {
-            position: absolute;
+            position: fixed;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
             z-index: 12;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: fit-content;
-            margin: 32px;
+            width: 50%;
+            height: 86px;
+            padding: 14px 18px;
+            border-radius: 100rem;
+            box-sizing: border-box;
+            background-color: #ffffff;
         }
 
         input[type=text] {
-            font-size: 32px;
-            line-height: calc(32px * 1.2);
-            height: fit-content;
-            padding-top: 32px !important;
-            padding-bottom: 24px !important;
-            padding-left: 32px;
-            color: white;
+            font-size: 20px;
+            color: black;
+            background-color: transparent !important;
         }
 
         input[type=text]:focus {
@@ -272,57 +342,72 @@
         }
 
         @media screen and (max-width: 930px) {
-            .responseBox{
+
+            .aiMsg,
+            .userMsg {
+                display: flex;
+                flex-direction: column;
+                width: 100%;
+                margin: auto;
+                gap: 4px;
+            }
+
+            .mediaWrapper>div {
+                flex: 1 1 100%;
+            }
+
+            .promptContainer {
+                flex-direction: column;
+            }
+
+            .promptBox {
+                flex: 1 1 100%;
+            }
+
+            .responseBox {
                 padding: 32px;
             }
 
-            .nav{
+            .nav {
                 padding-left: 32px;
             }
 
-            .xbttn{
+            .xbttn {
                 right: 32px;
             }
-            
+
             .responseBox p {
                 font-size: 18px;
                 letter-spacing: -0.5px;
                 line-height: calc(20px * 1.2);
                 margin-bottom: 20px;
-                color: white;
-            }
-
-            .send {
-                font-size: 18px;
-                letter-spacing: -0.5px;
-                line-height: calc(20px * 1.2);
-                padding-right: 32px;
-                background-color: #1a1a1a !important;
+                color: black;
             }
 
             .inputBox {
+                height: fit-content;
                 height: 72px;
+                width: calc(100% - 32px);
+                bottom: 16px;
             }
 
             input[type=text] {
                 font-size: 18px;
                 letter-spacing: -0.5px;
-                line-height: calc(20px * 1.2);
                 touch-action: auto;
-                background-color: #111 !important;
             }
 
-             .promptContainer {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-             }
+            .promptContainer {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 4px;
+            }
 
-             .promptBox{
+            .promptBox {
                 width: 100%;
                 gap: 4px;
-             }
+            }
         }
     </style>
 </body>

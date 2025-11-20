@@ -44,28 +44,38 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
   const wrapper = document.createElement("div");
   wrapper.classList.add(sender === "user" ? "userMsg" : "aiMsg");
 
+  // Left label
+  const label = document.createElement("h6");
+  label.textContent = sender === "user" ? "You:" : "Pal:";
+  wrapper.appendChild(label);
+
+  // Right side content bucket (this is the 70%)
+  const content = document.createElement("div");
+  content.classList.add("msgContent");
+  wrapper.appendChild(content);
+
+  // Message text
   const p = document.createElement("p");
-  wrapper.appendChild(p);
-  responseBox.appendChild(wrapper);
+  content.appendChild(p);
 
   if (sender === "user") {
-    p.textContent = `You: ${msg}`;
+    p.textContent = msg;
     if (callback) callback();
   } else {
-    p.textContent = `Alex Bot: `;
     if (animated) {
       typeWriter(p, msg, wordSpeed, () => {
-        appendExtraContent(wrapper, extra);
+        appendExtraContent(content, extra);
         if (callback) callback();
       });
     } else {
-      p.textContent += msg;
-      appendExtraContent(wrapper, extra);
+      p.textContent = msg;
+      appendExtraContent(content, extra);
       if (callback) callback();
     }
   }
 
   wrapper.style.marginBottom = "16px";
+  responseBox.appendChild(wrapper);
   responseBox.scrollTop = responseBox.scrollHeight;
 }
 
@@ -74,18 +84,20 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
 function appendExtraContent(wrapper, extra = {}) {
   if (!extra) return;
 
-  // Add link safely
+  // Add link
   if (extra.link && extra.link.href) {
     const a = document.createElement("a");
     a.href = extra.link.href;
     a.target = "_blank";
     a.textContent = extra.link.text || "Link";
     a.style.textDecoration = "underline";
+    a.style.display = "block";
+    a.style.marginTop = "8px";
     wrapper.appendChild(a);
   }
 
+  // Media
   const media = [];
-
   if (extra.videos) {
     extra.videos.forEach(src => {
       const video = document.createElement("video");
@@ -94,7 +106,7 @@ function appendExtraContent(wrapper, extra = {}) {
       video.autoplay = true;
       video.playsInline = true;
       video.loop = true;
-      video.style.width = "100%";
+      video.style.width = "100%"; // each video fills its wrapper
       media.push(video);
     });
   }
@@ -105,7 +117,7 @@ function appendExtraContent(wrapper, extra = {}) {
       if (!videoSet.has(src)) {
         const img = document.createElement("img");
         img.src = src;
-        img.style.width = "100%";
+        img.style.width = "100%"; // each image fills its wrapper
         media.push(img);
       }
     });
@@ -113,6 +125,9 @@ function appendExtraContent(wrapper, extra = {}) {
 
   if (media.length > 0) {
     const mediaWrapper = document.createElement("div");
+    mediaWrapper.classList.add("mediaWrapper");
+    mediaWrapper.style.width = "100%";   // full width under message
+    mediaWrapper.style.marginTop = "8px";
     mediaWrapper.style.display = "flex";
     mediaWrapper.style.flexWrap = "wrap";
     mediaWrapper.style.gap = "8px";
@@ -120,11 +135,11 @@ function appendExtraContent(wrapper, extra = {}) {
     media.forEach(item => {
       const itemWrapper = document.createElement("div");
       itemWrapper.style.flex = media.length === 1 ? "1 1 100%" : "1 1 calc(50% - 4px)";
-      itemWrapper.appendChild(item);
       mediaWrapper.appendChild(itemWrapper);
+      itemWrapper.appendChild(item);
     });
 
-    wrapper.appendChild(mediaWrapper);
+    wrapper.appendChild(mediaWrapper); // append below text
   }
 }
 
@@ -241,7 +256,23 @@ function renderPrompts() {
   });
 
   introScreen.appendChild(promptContainer);
-  responseBox.appendChild(introScreen);
+  // Create a fake "aiMsg" so it uses the same grid layout
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("aiMsg");
+
+  const label = document.createElement("h6");
+  label.textContent = "Bot:"; // keeps consistency
+  wrapper.appendChild(label);
+
+  const content = document.createElement("div");
+  content.classList.add("msgContent");
+  wrapper.appendChild(content);
+
+  // Put introScreen *inside* the 70% column
+  content.appendChild(introScreen);
+
+  responseBox.appendChild(wrapper);
+
 
   // ✅ Load prompts from JSON
   const prompts = knowledge.prompts; // make sure your JSON has { box1: [], box2: [] }
@@ -294,7 +325,7 @@ window.onload = async () => {
   await loadKnowledge();
   appendMessage(
     "ai",
-    "Hello! Ask me about Alex. You have 8 questions before you get auto-promoted to his LinkedIn page.",
+    "Hello! Let’s learn more about Alex. I’ve generated 4 suggested prompts to help you get started. You have 8 questions before you’re automatically redirected to his LinkedIn page.",
     true,
     {},
     renderPrompts // <-- this will now run after typing finishes
