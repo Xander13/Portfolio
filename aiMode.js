@@ -74,7 +74,6 @@ function typeWriter(element, text, baseSpeed = 40, callback = null) {
 
 
 // -------- Append Message --------
-// -------- Append Message --------
 function appendMessage(sender, msg, animated = false, extra = {}, callback = null) {
   const wrapper = document.createElement("div");
   wrapper.classList.add(sender === "user" ? "userMsg" : "aiMsg");
@@ -90,9 +89,11 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
   const p = document.createElement("p");
   content.appendChild(p);
 
+  // ← HERE is the appendExtras function
   function appendExtras() {
-    appendExtraContent(content, extra);
-    if (extra.skills) appendSkillsGrid(extra.skills, content); // append skills after text
+    appendExtraContent(content, extra);         // existing images/videos
+    if (extra.skills) appendSkillsGrid(extra.skills, content);   // skills
+    if (extra.projects) appendProjectsGrid(extra.projects, content); // ← paste it here
     if (callback) callback();
   }
 
@@ -116,6 +117,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
 
   nudgeChat(32);
 }
+
 
 // -------- Soft Nudge Scroll Helper --------
 function nudgeChat(amount = 32) {
@@ -319,8 +321,10 @@ async function findResponse(userInput) {
 
   // --- PROJECTS ---
   if (normalizedInput.includes("project")) {
-    const projectNames = Object.keys(knowledge.projects);
-    return { text: `${getFriendlyOpener()} here are some of my projects: ${projectNames.join(", ")}. Ask about any for details!` };
+    return {
+      text: "Here are some of my projects:",
+      extra: { projects: knowledge.projects } // this is important
+    };
   }
 
   for (const key in knowledge.projects) {
@@ -344,7 +348,6 @@ async function findResponse(userInput) {
       skills: knowledge.skills
     };
   }
-
 
   return { text: "Hmm… I don’t have an answer for that yet." };
 }
@@ -400,12 +403,13 @@ async function sendMessage() {
 
   const answerObj = await findResponse(userText);
   appendMessage("ai", answerObj.text, true, {
-    text: answerObj.text,
     skills: answerObj.skills,
     images: answerObj.images,
     videos: answerObj.videos,
-    link: answerObj.link
+    link: answerObj.link,
+    projects: answerObj.extra ? answerObj.extra.projects : undefined
   });
+
 
   input.value = "";
 }
@@ -502,6 +506,106 @@ async function sendMessage() {
 //   });
 // }
 
+// ------- Project Grid Sections -------
+function appendProjectsGrid(projects, container) {
+  const gridWrapper = document.createElement("div");
+  gridWrapper.classList.add("projectsGrid");
+  gridWrapper.style.display = "flex";
+  gridWrapper.style.flexDirection = "column";
+  gridWrapper.style.width = "100%"; // full container width
+  gridWrapper.style.margin = "32px auto";
+  gridWrapper.style.gap = "48px"; // vertical spacing between rows
+
+  let i = 0;
+  while (i < projects.length) {
+    const project = projects[i];
+    const nextProject = projects[i + 1];
+
+    // FULL-WIDTH PROJECT (70%)
+    if (project.layout === "full") {
+      const itemWrapper = createProjectItem(project);
+      itemWrapper.style.width = "80%";
+      itemWrapper.style.margin = "0 auto"; // center
+      gridWrapper.appendChild(itemWrapper);
+      i++;
+    }
+    // HALF-WIDTH PROJECTS (50/50) in 90% container
+    else if (project.layout === "half" && nextProject && nextProject.layout === "half") {
+      const rowWrapper = document.createElement("div");
+      rowWrapper.style.display = "flex";
+      rowWrapper.style.gap = "96px"; // space between items
+      rowWrapper.style.width = "90%";
+      rowWrapper.style.margin = "0 auto"; // center the row
+
+      const firstItem = createProjectItem(project);
+      const secondItem = createProjectItem(nextProject);
+
+      firstItem.style.flex = "0 0 calc(50% - 48px)";
+      secondItem.style.flex = "0 0 calc(50% - 48px)";
+
+      rowWrapper.appendChild(firstItem);
+      rowWrapper.appendChild(secondItem);
+
+      gridWrapper.appendChild(rowWrapper);
+      i += 2;
+    }
+    // FALLBACK if only one half-layout project left
+    else {
+      const itemWrapper = createProjectItem(project);
+      itemWrapper.style.width = "80%";
+      itemWrapper.style.margin = "0 auto"; // center
+      gridWrapper.appendChild(itemWrapper);
+      i++;
+    }
+  }
+
+  container.appendChild(gridWrapper);
+}
+
+
+// -------- Create individual project item --------
+function createProjectItem(project) {
+  const wrapper = document.createElement("div");
+  wrapper.style.display = "flex";
+  wrapper.style.flexDirection = "column";
+  wrapper.style.gap = "16px"; // space between media and text
+
+  // MEDIA first
+  const mediaArray = Array.isArray(project.media) ? project.media : [project.media];
+  mediaArray.forEach(src => {
+    const isVideo = src.endsWith(".mp4");
+    const mediaEl = isVideo ? document.createElement("video") : document.createElement("img");
+    mediaEl.src = src;
+    if (isVideo) {
+      mediaEl.autoplay = true;
+      mediaEl.loop = true;
+      mediaEl.muted = true;
+      mediaEl.playsInline = true;
+    }
+    mediaEl.style.width = "100%";
+    mediaEl.style.borderRadius = "8px";
+    wrapper.appendChild(mediaEl);
+  });
+
+  // TITLE
+  const title = document.createElement("h4");
+  title.textContent = project.title;
+  title.style.textAlign = "center";
+  title.style.paddingBottom = "48px";
+   title.style.paddingTop = "32px";
+  wrapper.appendChild(title);
+
+  // DESCRIPTION
+  if (project.description) {
+    const desc = document.createElement("p");
+    desc.textContent = project.description;
+    wrapper.appendChild(desc);
+  }
+
+  return wrapper;
+}
+
+
 // -------- Event Listeners --------
 sendBtn.addEventListener("click", sendMessage);
 input.addEventListener("keydown", e => { if (e.key === "Enter") sendMessage(); });
@@ -511,7 +615,7 @@ window.onload = async () => {
   await loadKnowledge();
   appendMessage(
     "ai",
-    "Hello! Let’s learn more about Alex. I’ve generated 4 suggested prompts to help you get started. You have 8 questions before you’re automatically redirected to his LinkedIn page.",
+    "Hey! You’re chatting the essence of Alex.<br><br>Ask about his work, his story, or anything in between. You’ve got 8 questions before we whisk you to LinkedIn.",
     true,
     {},
     // renderPrompts // <-- this will now run after typing finishes
