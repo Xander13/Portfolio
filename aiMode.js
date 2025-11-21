@@ -74,6 +74,7 @@ function typeWriter(element, text, baseSpeed = 40, callback = null) {
 
 
 // -------- Append Message --------
+// -------- Append Message --------
 function appendMessage(sender, msg, animated = false, extra = {}, callback = null) {
   const wrapper = document.createElement("div");
   wrapper.classList.add(sender === "user" ? "userMsg" : "aiMsg");
@@ -89,36 +90,32 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
   const p = document.createElement("p");
   content.appendChild(p);
 
-  if (sender === "user") {
-    p.textContent = msg;
+  function appendExtras() {
+    appendExtraContent(content, extra);
+    if (extra.skills) appendSkillsGrid(extra.skills, content); // append skills after text
     if (callback) callback();
-  } else {
-    if (animated) {
-      typeWriter(p, msg, wordSpeed, () => {
-        appendExtraContent(content, extra);
-        if (callback) callback();
-      });
-    } else {
-      p.innerHTML = msg; // <-- changed here
-      appendExtraContent(content, extra);
-      if (callback) callback();
-    }
   }
 
+  if (sender === "user") {
+    p.textContent = msg;
+    appendExtras();
+  } else {
+    if (animated) {
+      typeWriter(p, msg, wordSpeed, appendExtras);
+    } else {
+      p.innerHTML = msg;
+      appendExtras();
+    }
+  }
 
   wrapper.style.marginBottom = "16px";
   responseBox.appendChild(wrapper);
 
-  // 🔥 NEW — scroll for AI messages
-  if (sender === "ai") {
-    forceBotScroll();
-  } else {
-    forceUserScroll();
-  }
+  if (sender === "ai") forceBotScroll();
+  else forceUserScroll();
 
   nudgeChat(32);
 }
-
 
 // -------- Soft Nudge Scroll Helper --------
 function nudgeChat(amount = 32) {
@@ -143,29 +140,9 @@ function getDetroitTime() {
 function appendExtraContent(wrapper, extra = {}) {
   if (!extra) return;
 
-  // Add link
-  if (extra.link && extra.link.href) {
-    const a = document.createElement("a");
-    a.href = extra.link.href;
-    a.target = "_blank";
-    a.textContent = extra.link.text || "Link";
-
-    if (extra.inlineLink) {
-      a.style.textDecoration = "underline";
-      a.style.color = "inherit";  // match surrounding text
-      a.style.display = "inline"; // keep inline
-      a.style.margin = "0";       // no margin
-    } else {
-      a.style.textDecoration = "underline";
-      a.style.display = "block";
-      a.style.marginTop = "8px";
-    }
-
-    wrapper.appendChild(a);
-  }
-
-  // Media
   const media = [];
+
+  // Collect videos
   if (extra.videos) {
     extra.videos.forEach(src => {
       const video = document.createElement("video");
@@ -174,58 +151,108 @@ function appendExtraContent(wrapper, extra = {}) {
       video.autoplay = true;
       video.playsInline = true;
       video.loop = true;
-      video.style.width = "100%"; // each video fills its wrapper
-      media.push(video);
+      video.style.width = "100%";
+      media.push({ el: video, type: "video" });
     });
   }
 
+  // Collect images
   if (extra.images) {
-    const videoSet = new Set(extra.videos || []);
     extra.images.forEach(src => {
-      if (!videoSet.has(src)) {
-        const img = document.createElement("img");
-        img.src = src;
-        img.style.width = "100%"; // each image fills its wrapper
-        media.push(img);
-      }
+      const img = document.createElement("img");
+      img.src = src;
+      img.style.width = "100%";
+      media.push({ el: img, type: "image" });
     });
   }
 
-  if (media.length > 0) {
-    const mediaWrapper = document.createElement("div");
-    mediaWrapper.classList.add("mediaWrapper");
+  if (media.length === 0) return;
 
-    media.forEach(item => {
-      const itemWrapper = document.createElement("div");
+  const mediaWrapper = document.createElement("div");
+  mediaWrapper.classList.add("mediaWrapper");
+
+  // Decide wrapper style based on media type
+  const hasVideo = media.some(m => m.type === "video");
+  if (hasVideo && media.every(m => m.type === "video")) {
+    // Only videos: full width
+    mediaWrapper.style.width = "100%";
+    mediaWrapper.style.display = "flex";
+    mediaWrapper.style.flexDirection = "column";
+    mediaWrapper.style.alignItems = "center";
+    mediaWrapper.style.gap = "16px";
+  } else {
+    // Images (or mixed): 2-column flex grid
+    mediaWrapper.style.width = "80%";
+    mediaWrapper.style.display = "flex";
+    mediaWrapper.style.flexWrap = "wrap";
+    mediaWrapper.style.gap = "8px";
+    mediaWrapper.style.margin = "0 auto";
+    mediaWrapper.style.justifyContent = "center";
+  }
+
+  media.forEach(m => {
+    const itemWrapper = document.createElement("div");
+
+    if (m.type === "video") {
+      itemWrapper.style.flex = "1 1 100%";
+      itemWrapper.style.maxWidth = "100%";
+    } else {
       itemWrapper.style.flex = media.length === 1 ? "1 1 100%" : "1 1 calc(50% - 4px)";
-      mediaWrapper.appendChild(itemWrapper);
-      itemWrapper.appendChild(item);
+      itemWrapper.style.maxWidth = media.length === 1 ? "100%" : "calc(50% - 4px)";
+    }
 
-      // Animation styling
-      item.style.opacity = "0";
-      item.style.transform = "translateY(10px)";
-      item.style.transition = "opacity 0.4s ease, transform 0.4s ease";
+    itemWrapper.appendChild(m.el);
+    mediaWrapper.appendChild(itemWrapper);
 
-      // Reveal on load
-      const reveal = () => {
-        item.style.opacity = "1";
-        item.style.transform = "translateY(0)";
+    // animation
+    m.el.style.opacity = "0";
+    m.el.style.transform = "translateY(10px)";
+    m.el.style.transition = "opacity 0.4s ease, transform 0.4s ease";
 
-        // *soft chat movement as items stack*
-        nudgeChat(24);
-      };
+    const reveal = () => {
+      m.el.style.opacity = "1";
+      m.el.style.transform = "translateY(0)";
+      nudgeChat(24);
+    };
 
-      if (item.tagName === "IMG") {
-        item.onload = reveal;
-      } else if (item.tagName === "VIDEO") {
-        item.onloadeddata = reveal;
-      }
+    if (m.type === "video") m.el.onloadeddata = reveal;
+    else m.el.onload = reveal;
+  });
+
+  wrapper.appendChild(mediaWrapper);
+}
+
+
+
+// -------- Append Skills Grid --------
+function appendSkillsGrid(skillsObj, container) {
+  const gridContainer = document.createElement("div");
+  gridContainer.style.display = "flex";
+  gridContainer.style.gap = "32px";
+  gridContainer.style.width = "80%";
+  gridContainer.style.margin = "32px auto";
+
+  Object.keys(skillsObj).forEach(colKey => {
+    const col = document.createElement("div");
+    col.style.display = "flex";
+    col.style.flexDirection = "column";
+    col.style.gap = "8px";
+    col.style.flex = "1";
+
+    const skills = Object.values(skillsObj[colKey]);
+    skills.forEach(skill => {
+      const p = document.createElement("h4");
+      p.textContent = skill;
+      p.style.margin = "4px 0";
+      col.appendChild(p);
     });
 
+    gridContainer.appendChild(col);
+  });
 
-    wrapper.appendChild(mediaWrapper); // append below text
-  }
+  container.appendChild(gridContainer);
 }
+
 
 // -------- Build Personal Paragraph --------
 function buildParagraph(matchedKeys) {
@@ -310,6 +337,15 @@ async function findResponse(userInput) {
     }
   }
 
+  // --- SKILLS GRID ---
+  if (normalizedInput.includes("skills")) {
+    return {
+      text: "Here are my skills:",
+      skills: knowledge.skills
+    };
+  }
+
+
   return { text: "Hmm… I don’t have an answer for that yet." };
 }
 
@@ -364,6 +400,8 @@ async function sendMessage() {
 
   const answerObj = await findResponse(userText);
   appendMessage("ai", answerObj.text, true, {
+    text: answerObj.text,
+    skills: answerObj.skills,
     images: answerObj.images,
     videos: answerObj.videos,
     link: answerObj.link
@@ -373,100 +411,96 @@ async function sendMessage() {
 }
 
 // -------- Render Prompts --------
-function renderPrompts() {
-  const responseBox = document.querySelector(".responseBox");
+// function renderPrompts() {
+//   const responseBox = document.querySelector(".responseBox");
 
-  // Container for prompts
-  const introScreen = document.createElement("div");
-  introScreen.id = "introScreen";
+//   // Container for prompts
+//   const introScreen = document.createElement("div");
+//   introScreen.id = "introScreen";
 
-  const promptContainer = document.createElement("div");
-  promptContainer.classList.add("promptContainer");
+//   const promptContainer = document.createElement("div");
+//   promptContainer.classList.add("promptContainer");
 
-  const boxes = [document.createElement("div"), document.createElement("div")];
-  boxes.forEach((box, i) => {
-    box.classList.add("promptBox");
-    promptContainer.appendChild(box);
-  });
+//   const boxes = [document.createElement("div"), document.createElement("div")];
+//   boxes.forEach((box, i) => {
+//     box.classList.add("promptBox");
+//     promptContainer.appendChild(box);
+//   });
 
-  introScreen.appendChild(promptContainer);
-  // Create a fake "aiMsg" so it uses the same grid layout
-  const wrapper = document.createElement("div");
-  wrapper.classList.add("aiMsg");
+//   introScreen.appendChild(promptContainer);
+//   // Create a fake "aiMsg" so it uses the same grid layout
+//   const wrapper = document.createElement("div");
+//   wrapper.classList.add("aiMsg");
 
-  const label = document.createElement("h6");
-  label.textContent = "Bot:"; // keeps consistency
-  wrapper.appendChild(label);
+//   const label = document.createElement("h6");
+//   label.textContent = "Bot:"; // keeps consistency
+//   wrapper.appendChild(label);
 
-  const content = document.createElement("div");
-  content.classList.add("msgContent");
-  wrapper.appendChild(content);
+//   const content = document.createElement("div");
+//   content.classList.add("msgContent");
+//   wrapper.appendChild(content);
 
-  // Put introScreen *inside* the 70% column
-  content.appendChild(introScreen);
+//   // Put introScreen *inside* the 70% column
+//   content.appendChild(introScreen);
 
-  responseBox.appendChild(wrapper);
+//   responseBox.appendChild(wrapper);
 
+//   // ✅ Load prompts from JSON
+//   const prompts = knowledge.prompts; // make sure your JSON has { box1: [], box2: [] }
 
-  // ✅ Load prompts from JSON
-  const prompts = knowledge.prompts; // make sure your JSON has { box1: [], box2: [] }
+//   boxes.forEach((box, i) => {
+//     const key = `box${i + 1}`;
+//     if (prompts[key]) {
+//       prompts[key].forEach((item, index) => {
+//         const p = document.createElement("p");
+//         p.classList.add("promptBtn");
+//         p.style.display = "flex";
+//         p.style.flexDirection = "column";
+//         p.style.gap = "4px"; // spacing between text, CTA, image
 
-  boxes.forEach((box, i) => {
-    const key = `box${i + 1}`;
-    if (prompts[key]) {
-      prompts[key].forEach((item, index) => {
-        const p = document.createElement("p");
-        p.classList.add("promptBtn");
-        p.style.display = "flex";
-        p.style.flexDirection = "column";
-        p.style.gap = "4px"; // spacing between text, CTA, image
+//         // Add main text
+//         const textNode = document.createElement("span");
+//         textNode.textContent = item.text;
+//         p.appendChild(textNode);
 
-        // Add main text
-        const textNode = document.createElement("span");
-        textNode.textContent = item.text;
-        p.appendChild(textNode);
+//         // Add CTA text (just visual)
+//         if (item.cta) {
+//           const ctaNode = document.createElement("span");
+//           ctaNode.textContent = item.cta;
+//           ctaNode.style.color = "#007BFF"; // blue hex
+//           ctaNode.style.fontSize = "0.9rem";
+//           p.appendChild(ctaNode);
+//         }
 
-        // Add CTA text (just visual)
-        if (item.cta) {
-          const ctaNode = document.createElement("span");
-          ctaNode.textContent = item.cta;
-          ctaNode.style.color = "#007BFF"; // blue hex
-          ctaNode.style.fontSize = "0.9rem";
-          p.appendChild(ctaNode);
-        }
+//         // Add image at the bottom
+//         if (item.image) {
+//           const img = document.createElement("img");
+//           img.src = item.image; // make sure path is correct
+//           img.style.width = "100%"; // full width
+//           img.style.display = "block";
+//           p.appendChild(img);
+//         }
 
-        // Add image at the bottom
-        if (item.image) {
-          const img = document.createElement("img");
-          img.src = item.image; // make sure path is correct
-          img.style.width = "100%"; // full width
-          img.style.display = "block";
-          p.appendChild(img);
-        }
+//         // Click triggers the whole prompt
+//         p.addEventListener("click", () => {
+//           input.value = item.text.replace("Learn about Alex ", "");
+//           sendMessage();
+//         });
 
-        // Click triggers the whole prompt
-        p.addEventListener("click", () => {
-          input.value = item.text.replace("Learn about Alex ", "");
-          sendMessage();
-        });
+//         box.appendChild(p);
+//       });
+//     }
 
-        box.appendChild(p);
-      });
-
-
-    }
-
-    // fade-in the box itself
-    box.style.opacity = 0;
-    box.style.transform = "translateY(20px)";
-    box.style.transition = "opacity 0.6s ease, transform 0.6s ease";
-    setTimeout(() => {
-      box.style.opacity = 1;
-      box.style.transform = "translateY(0)";
-    }, 100 * (i + 1));
-  });
-}
-
+//     // fade-in the box itself
+//     box.style.opacity = 0;
+//     box.style.transform = "translateY(20px)";
+//     box.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+//     setTimeout(() => {
+//       box.style.opacity = 1;
+//       box.style.transform = "translateY(0)";
+//     }, 100 * (i + 1));
+//   });
+// }
 
 // -------- Event Listeners --------
 sendBtn.addEventListener("click", sendMessage);
@@ -480,6 +514,6 @@ window.onload = async () => {
     "Hello! Let’s learn more about Alex. I’ve generated 4 suggested prompts to help you get started. You have 8 questions before you’re automatically redirected to his LinkedIn page.",
     true,
     {},
-    renderPrompts // <-- this will now run after typing finishes
+    // renderPrompts // <-- this will now run after typing finishes
   );
 };

@@ -115,6 +115,7 @@
         .send,
         a {
             font-family: monospace;
+                font-weight: 400;
         }
 
         .aiBox {
@@ -139,8 +140,10 @@
 
         a {
             text-align: none;
-            color: var(--secondary-color);
+            color: white;
             text-underline-offset: 4px;
+            font-size: 2vw;
+            line-height: 3.2vw;
         }
 
         h6 {
@@ -165,9 +168,10 @@
             margin: 0 0 8px 0;
             color: #999;
             text-align: left;
+            font-weight: 400;
             width: 50%;
             max-width: 50%;
-            margin: 32px auto;
+            margin: 0 auto;
             /* force left-aligned */
         }
 
@@ -178,9 +182,10 @@
             max-width: 50%;
             margin: 32px auto;
             /* top/bottom spacing + horizontal center */
-            font-size: 20px;
-            line-height: 1.8;
+            font-size: 2vw;
+            line-height: 3.2vw;
             color: white;
+                font-weight: 400;
             word-wrap: break-word;
             flex-shrink: 0;
             /* prevents shrinking in flex layout */
@@ -210,6 +215,29 @@
             width: 100%;
             display: block;
         }
+
+        /*Skills*/
+        .skillsContainer {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            margin: 16px auto;
+            gap: 16px;
+        }
+
+        .skillsColumn {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        h4 {
+            font-size: 2vw;
+            line-height: 3.2vw;
+            color: white !important;
+            margin: 0;
+        }
+
 
         .nav {
             position: fixed;
@@ -306,7 +334,6 @@
 
         .promptBtn img {
             width: 100%;
-
         }
 
         .promptBtn p {
@@ -339,8 +366,8 @@
         }
 
         .responseBox p {
-            font-size: 1.875rem;
-            line-height: 3.4rem;
+            font-size: 2vw;
+            line-height: 3.2vw;
             margin-top: 32px;
             margin-bottom: 120px;
             text-wrap: wrap;
@@ -397,17 +424,17 @@
             bottom: 56px;
             z-index: 12;
             width: 100%;
-            padding-bottom: 32px;
+            padding-bottom: 0px;
             margin: auto;
             padding-top: 32px;
             box-sizing: border-box;
             background-color: rgb(0, 0, 0);
         }
 
-        .inputBox .flexBox{
-            width: 50%;
+        .inputBox .flexBox {
+            width: 30%;
             margin: auto;
-              border-bottom: 1px solid white;
+            border-bottom: 1px solid white;
         }
 
         input[type=text] {

@@ -40,7 +40,40 @@
     "projects": "Alex has 5 projects. Duolingo ASL, Microsoft VSC Copilot, Apple Live Captions, Vigor Fitness, Starbucsk Rewards, Color Health are a few projects.",
     "education": "He attended the Rochester Institute of Technology, earning a BFA in New Media Design with a 3.69/4.0 GPA, graduating Magna Cum Laude."
   },
+  "skills": {
+    "column1": [
+      "UI",
+      "UX",
+      "Prototyping",
+      "Visual",
+      "Wireframing",
+      "Typography"
+    ],
+    "column2": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node",
+      "Git"
+    ],
+    "column3": [
+      "Communication",
+      "Collaboration",
+      "Problem-solving",
+      "Adaptability",
+      "Time-management",
+      "Critical-thinking"
+    ]
+  },
   "projects": {
+    "Copilot": {
+      "title": "MS VSC Copilot",
+      "description": "Bringing new ways for MS VSC to improve with Copilot.",
+      "videos": [
+        "GithubSplash.mp4"
+      ]
+    },
     "Duolingo ASL": {
       "title": "Duolingo ASL Accessibility Project",
       "description": "Created a new business pipeline proposal integrating ASL features. Millions of deaf users face language access barriers...",
