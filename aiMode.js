@@ -194,11 +194,6 @@ function appendExtraContent(wrapper, extra = {}) {
   if (media.length > 0) {
     const mediaWrapper = document.createElement("div");
     mediaWrapper.classList.add("mediaWrapper");
-    mediaWrapper.style.width = "100%";   // full width under message
-    mediaWrapper.style.marginTop = "8px";
-    mediaWrapper.style.display = "flex";
-    mediaWrapper.style.flexWrap = "wrap";
-    mediaWrapper.style.gap = "8px";
 
     media.forEach(item => {
       const itemWrapper = document.createElement("div");

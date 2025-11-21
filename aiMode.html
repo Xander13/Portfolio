@@ -49,12 +49,16 @@
 </head>
 
 <body>
-    <!-- <div class="nav">
+    <div class="nav">
         <div class="flexBox">
-            <img class="logo" src="aLogo.svg" width="100%" alt="Alex Logo">
-            <img class="xbttn" src="xbttn.svg" width="100%" alt="close button">
+            <h2>Alex Kauffman</h2>
+            <div class="flexBox" style="gap: 32px;">
+                <h2>Work</h2>
+                <h2>Resume</h2>
+                <h2>AI Mode</h2>
+            </div>
         </div>
-    </div> -->
+    </div>
     <div class="aiBox">
         <div class="responseBox"></div>
         <div class="inputBox">
@@ -64,12 +68,12 @@
                 <div class="send">Send</div>
             </div>
         </div>
-        <h5>Alex Bot is only for portfolio inquiring.</h5>
+        <!-- <h5>Alex Bot is only for portfolio inquiring.</h5> -->
     </div>
 
     <style>
         :root {
-            --primary-color: #0e0e0e;
+            --primary-color: #000000;
             --secondary-color: #f9f9f9;
             --text-color: #f9f9f9;
             --accent-color: #ff6600;
@@ -146,65 +150,88 @@
         }
 
         /* Chat message wrapper */
+        /* Chat message wrapper */
         .aiMsg,
         .userMsg {
             display: flex;
             flex-direction: column;
-            width: 50%;
-            margin: auto;
-            gap: 4px;
+            width: 100%;
         }
 
-        .aiMsg>p,
-        .userMsg>p,
-        .aiMsg .mediaWrapper,
-        .userMsg .mediaWrapper {
-            max-width: 100%;
-        }
-
-        /* Sender label */
+        /* Sender label stays left-aligned */
         .aiMsg h6,
         .userMsg h6 {
             font-size: 18px;
-            /* smaller label text */
-            margin: 0;
+            margin: 0 0 8px 0;
             color: #999;
+            text-align: left;
+            width: 50%;
+            max-width: 50%;
+            margin: 32px auto;
+            /* force left-aligned */
         }
 
-        /* Actual message */
+        /* Message text centered without shrinking weirdly */
         .aiMsg p,
         .userMsg p {
+            width: 50%;
+            max-width: 50%;
+            margin: 32px auto;
+            /* top/bottom spacing + horizontal center */
             font-size: 20px;
-            margin: 0;
+            line-height: 1.8;
+            color: white;
+            word-wrap: break-word;
+            flex-shrink: 0;
+            /* prevents shrinking in flex layout */
         }
 
-        /* Media section inside AI messages */
-        .aiMsg .mediaWrapper {
-            width: 100%;
-            /* full width under message text */
-            margin-top: 8px;
+        /* Media grid centered */
+        .aiMsg .mediaWrapper,
+        .userMsg .mediaWrapper {
+            width: 80%;
+            max-width: 80%;
+            margin: 16px auto 32px auto;
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
         }
 
-        /* Media items inside wrapper */
-        .aiMsg .mediaWrapper>div {
-            flex: 1 1 calc(100% - 4px);
-            /* two items per row */
-            max-width: calc(100% - 4px);
+        .aiMsg .mediaWrapper>div,
+        .userMsg .mediaWrapper>div {
+            flex: 1 1 calc(50% - 4px);
+            max-width: calc(50% - 4px);
         }
 
+        .aiMsg .mediaWrapper img,
+        .aiMsg .mediaWrapper video,
+        .userMsg .mediaWrapper img,
+        .userMsg .mediaWrapper video {
+            width: 100%;
+            display: block;
+        }
 
         .nav {
-            position: relative;
-            z-index: 100;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
             padding-left: 64px;
             padding-right: 64px;
-            padding-top: 32px;
+            padding-top: 64px;
             padding-bottom: 32px;
-            background-color: var(--primary-color);
-            height: fit-content;
+            box-sizing: border-box;
+            z-index: 1111111;
+        }
+
+        .nav .flexBox {
+            justify-content: space-between;
+        }
+
+        .nav h2 {
+            color: white;
+            font-weight: 300;
         }
 
         .logo {
@@ -304,7 +331,7 @@
             overflow-y: auto;
             height: 100%;
             z-index: 1;
-            padding: 64px;
+            padding-top: 40vh;
         }
 
         .responseBox::-webkit-scrollbar {
@@ -312,16 +339,12 @@
         }
 
         .responseBox p {
-            font-size: 20px;
-            line-height: calc(32px * 1.2);
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-
-        .responseBox p {
-            margin-bottom: 20px;
-            color: var(--secondary-color);
+            font-size: 1.875rem;
+            line-height: 3.4rem;
+            margin-top: 32px;
+            margin-bottom: 120px;
             text-wrap: wrap;
+            color: white;
         }
 
         .send {
@@ -361,7 +384,6 @@
             background-color: var(--secondary-color) !important;
             margin: 0 !important;
             height: 100%;
-            padding-left: 24px;
         }
 
         input:-webkit-autofill {
@@ -373,20 +395,23 @@
         .inputBox {
             position: fixed;
             bottom: 56px;
-            left: 50%;
-            transform: translateX(-50%);
             z-index: 12;
-            width: 50%;
-            height: 86px;
-            padding: 14px 18px;
-            border-radius: 100rem;
+            width: 100%;
+            padding-bottom: 32px;
+            margin: auto;
+            padding-top: 32px;
             box-sizing: border-box;
-            background-color: rgb(31, 31, 31);
-            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+            background-color: rgb(0, 0, 0);
+        }
+
+        .inputBox .flexBox{
+            width: 50%;
+            margin: auto;
+              border-bottom: 1px solid white;
         }
 
         input[type=text] {
-            font-size: 20px;
+            font-size: 32px;
             color: var(--secondary-color);
             background-color: transparent !important;
         }
