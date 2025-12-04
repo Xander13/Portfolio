@@ -54,46 +54,18 @@
 </head>
 
 <body>
-    <input id="menu" class="menu--toggle" type="checkbox">
-    <div class="moibleLogo">
-        <a href="https://alex-kauffman.com">
-            <img src="aklogo.svg" width="100%" alt="Logo shaped like 'A' with a person inside.">
+     <div class="topNav">
+        <div class="nav-left">
+            <a class="active" href="index.html">
+                <h6>Work</h6>
+            </a>
+            <a href="Alex_Kauffman_Resume.pdf" target="_blank">
+                <h6>Resume</h6>
+            </a>
+        </div>
+        <a href="essence.html">
+            <h6><span class="dot"></span>Essence</h6>
         </a>
-    </div>
-    <label for="menu" class="menu--toggle--text">Menu</label>
-    <div class="menu--body">
-        <ul class="menu--list">
-            <li><a href="https://alex-kauffman.com">Work</a></li>
-            <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
-        </ul>
-        <div class="social">
-            <h2>
-                <a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">
-                    LinkedIn
-                </a>
-            </h2>
-            <h2>
-                <a href="https://github.com/Xander13" target="_blank">
-                    Github
-                </a>
-            </h2>
-        </div>
-    </div>
-    <div class="navList">
-        <div class="flexBox">
-            <div class="half">
-                <p class="gray" style="padding: 0;">Alex Kauffman</p>
-            </div>
-            <div class="half">
-                <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <p class="gray"><span class="time"></span></p>
-                    <div style="gap: 8px; display: flex; justify-content: end; align-items: center;">
-                        <a id="active" href="https://alex-kauffman.com">Work</a>
-                        <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <div class="errorMessage">
         <div class="flexBox" style="align-items: end; justify-content: space-between;">
@@ -113,6 +85,10 @@
     <div id="score">0&nbsp;&nbsp;0</div>
     <script src="pong.js"></script>
     <style>
+        body {
+            overflow: hidden;
+        }
+
         #gameContainer {
             position: relative;
             width: 100vw;
@@ -147,9 +123,31 @@
             top: 0;
             bottom: 0;
             width: 2px;
-            background-color: var(--dark);
-            border-left: 2px dashed var(--dark);
+            background-color: white;
             transform: translateX(-50%);
+        }
+
+        #paddle1,
+        #paddle2 {
+            background-color: white;
+        }
+
+        .errorMessage {
+            position: fixed;
+            bottom: 0;
+            padding: 56px;
+        }
+
+        .errorMessage h2 {
+            position: fixed;
+            right: 56px;
+            bottom: 56px;
+        }
+
+        .errorMessage p {
+            text-wrap: balance;
+            max-width: 80%;
+            padding-bottom: 32px;
         }
 
         #score {
@@ -157,7 +155,7 @@
             top: calc(100% / 2 - 4.2dvw);
             width: 100%;
             text-align: center;
-            font-size: 4.2vw;
+            font-size: 112px;
             font-family: "Instrument Sans", sans-serif;
         }
     </style>

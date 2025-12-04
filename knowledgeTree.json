@@ -1,0 +1,291 @@
+{
+  "prompts": {
+    "box1": [
+      {
+        "text": "Learn about Alex background",
+        "cta": "Click to add into prompt",
+        "image": "PocketCornerOne.png"
+      },
+      {
+        "text": "Learn about Alex Education",
+        "cta": "Click to add into prompt",
+        "image": "PocketCornerThree.png"
+      }
+    ],
+    "box2": [
+      {
+        "text": "Learn about Alex Dream Job",
+        "cta": "Click to add into prompt",
+        "image": "PocketCornerTwo.png"
+      },
+      {
+        "text": "Learn about Alex Design Moto",
+        "cta": "Click to add into prompt",
+        "image": "PocketCornerFour.png"
+      }
+    ]
+  },
+  "links": {
+    "leftfieldlab": "https://www.leftfieldlabs.com/",
+    "rit": "https://www.rit.edu/"
+  },
+  "projects": [
+    {
+      "media": "GithubSplash.mp4",
+      "title": "Microsoft VSC Copilot",
+      "layout": "sixty"
+    },
+    {
+      "media": "Duolingo_ASL_Lily.mp4",
+      "title": "Duolingo ASL",
+      "layout": "forty"
+    },
+    {
+      "media": "Apple_LiveCC.mp4",
+      "title": "Apple Live Captions",
+      "layout": "forty"
+    },
+    {
+      "media": "VigorSplash.mp4",
+      "title": "Vigor Fitness",
+      "layout": "sixty"
+    }
+  ],
+  "personal": {
+    "testimonies": "Alex is a remarkably talented designer and conceptual thinker. From his first day at Instrument, he jumped in and made our team better through diving right into the work creating unique concepts and thoughtfully sharing feedback with teammates. I especially appreciated his enthusiasm and positive attitude towards solving problems and collaborating. He would make a great addition to your team. I know I hope we get to work together again in the future.<br><br> – Sean Joseph Klassen, Instrument",
+    "currentTime": "The local time is {{time}}",
+    "background": "Alex Kauffman is a designer focused on clarity, interaction, and systems-thinking. With a BFA in New Media Design from RIT, he blends creative direction and product thinking to design tools that support thoughtful, long-term growth.<br><br>He’s currently exploring roles in product design and visual systems — aiming to contribute to meaningful products, not just fast-moving ideas. His dream role is helping Microsoft’s Accessibility team improve the Xbox gaming experience for diverse players — or working with platforms like Toast to make everyday payments more accessible for all.<br><br>Outside of design, Alex is getting into motocross (MX) as a new hobby. He also enjoys traveling to different countries, meeting new people, and trying unfamiliar things — always chasing experiences that expand perspective.",
+    "what time is it": "The local time is {{time}}",
+    "name": "Alex Kauffman",
+    "who is alex": "Alex Kauffman, a passionate Product Designer.",
+    "dream job": "My dream is to work on accessibility at Microsoft’s Xbox team or Apple’s Human Interface Accessibility group—creating technology that levels the playing field and helps people move through life with fewer barriers. <br><br> My motto: Accessibility is about building the right tools for users, while inclusion is about supporting their emotional experience. Both are essential to truly empower people through technology.",
+    "goal": "My 5-year goal is to grow in a full-time product design and engineering role while contributing visionary ideas and production support to teams building accessible, mission-driven products at companies like Apple, Disney Research, or Toast.",
+    "dream": "My dream is to work on accessibility at Microsoft’s Xbox team or Apple’s Human Interface Accessibility group—creating technology that levels the playing field and helps people move through life with fewer barriers. <br><br> My motto: Accessibility is about building the right tools for users, while inclusion is about supporting their emotional experience. Both are essential to truly empower people through technology.",
+    "projects": "Alex has 5 projects. Duolingo ASL, Microsoft VSC Copilot, Apple Live Captions, Vigor Fitness, Starbucsk Rewards, Color Health are a few projects.",
+    "skills": "Alex has a UX/UI background that's adapting into the world of AI product thinking. He enjoys working with data and finding tangible insights through prototyping more than pixel pushing.<br><br>He's a visionary type who likes to experiment before perfecting.",
+    "what skills": "Alex has a UX/UI background that's adapting into the world of AI product thinking. He enjoys working with data and finding tangible insights through prototyping more than pixel pushing.<br><br>He's a visionary type who likes to experiment before perfecting.",
+    "availability": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
+    "when available": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
+    "hire": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
+    "weakness": "Ohhh, a trick hot question... I naturally gravitate toward concepting and systems thinking more than pixel-perfect polish. I'm strongest when I'm exploring ideas, shaping flows, and figuring out the experience logic.<br><br>Because I know that about myself, I'm intentional about collaborating with designers who thrive in high-fidelity craftsmanship. It creates a good balance: I move fast on direction and structure, and I partner with detail-oriented teammates to elevate the final visual finish.",
+    "deadlines": "When I work with tight deadlines, I make sure I really understand my project scope and what the needs are. I tend to deliver my concepts in 3 different levels to help step down what is MVP thinking vs what is a sky-high approach.<br><br>This helps me boil out things we can focus on later when we have tight deadlines.",
+    "tight deadlines": "When I work with tight deadlines, I make sure I really understand my project scope and what the needs are. I tend to deliver my concepts in 3 different levels to help step down what is MVP thinking vs what is a sky-high approach.<br><br>This helps me boil out things we can focus on later when we have tight deadlines.",
+    "strength": "I give a shit about the small things people sweep under the rug. Accessibility and things that just get overlooked.<br><br>I think that's where myself comes in — I focus on visionary work, not pixel pushing, because I channel my focus on making sure the product lives in a holistic health outlook that benefits business growth, not just short-term thinking solutions.",
+    "biggest strength": "I give a shit about the small things people sweep under the rug. Accessibility and things that just get overlooked.<br><br>I think that's where myself comes in — I focus on visionary work, not pixel pushing, because I channel my focus on making sure the product lives in a holistic health outlook that benefits business growth, not just short-term thinking solutions.",
+    "successful project": "My most successful project is Duolingo ASL. I showcased to Duolingo a concept that helps open a new streamline of revenue by targeting non-verbal language learning. The amount of statistics and research shows that people need basic accessibility to learn sign language — it proves we need that to happen. Duolingo is a platform that helps understand how users learn in non-verbal language to benefit other purposes of industry use.<br><br>I learned this project showcased that accessibility + purpose = results. My LinkedIn has gained over 8k likes and many comments. It proves my strong vision aligns with what users need — that's what makes a successful project. I didn't have all the flows or perfect pixel layouts. I had a strong foundation of what users needed that made good results to build with.",
+    "duolingo success": "My most successful project is Duolingo ASL. I showcased to Duolingo a concept that helps open a new streamline of revenue by targeting non-verbal language learning. The amount of statistics and research shows that people need basic accessibility to learn sign language — it proves we need that to happen. Duolingo is a platform that helps understand how users learn in non-verbal language to benefit other purposes of industry use.<br><br>I learned this project showcased that accessibility + purpose = results. My LinkedIn has gained over 8k likes and many comments. It proves my strong vision aligns with what users need — that's what makes a successful project. I didn't have all the flows or perfect pixel layouts. I had a strong foundation of what users needed that made good results to build with."
+  },
+  "duolingo_post": {
+    "text": "Check out the LinkedIn post about Duolingo ASL:",
+    "link": {
+      "href": "https://www.linkedin.com/posts/alex-kauffman_duolingo-asl-ui-activity-7264858607559598080-n-CX?utm_source=share&utm_medium=member_desktop",
+      "text": "Duolingo ASL LinkedIn Post"
+    }
+  },
+  "education": {
+    "text": "He attended the Rochester Institute of Technology, earning a BFA in New Media Design with a 3.69/4.0 GPA, graduating Magna Cum Laude. Here is the link to the university:",
+    "link": {
+      "href": "https://www.rit.edu/",
+      "text": "Rochester Institute of Technology"
+    }
+  },
+  "role": {
+    "text": "Alex curent role is freelance at Left Field Labs doing marketing and design. Here is the link to the agency:",
+    "link": {
+      "href": "https://www.leftfieldlabs.com/",
+      "text": "Left Field Labs"
+    }
+  },
+  "linkedin": {
+    "text": "You can check out Alex's LinkedIn profile here:",
+    "link": {
+      "href": "https://www.linkedin.com/in/alex-kauffman/",
+      "text": "alex-kauffman"
+    }
+  },
+  "Articles": [
+    {
+      "media": "Duolingo_ASL_Lily.mp4",
+      "title": "Accessibility + Passion = LinkedIn Success",
+      "description": "8K+ likes on LinkedIn — showing how deeply society values accessibility, ASL, and non-verbal language learning.",
+      "layout": "thrid",
+      "link": "https://www.linkedin.com/feed/update/urn:li:activity:7264858607559598080/"
+    },
+    {
+      "media": "DeafArticle_ADAGE.png",
+      "title": "Ad-Age art",
+      "description": "Deaf creatives—6 ways agencies can create accessible and inclusive environments",
+      "layout": "thrid",
+      "link": "https://adage.com/article/opinion/deaf-creatives-6-ways-agencies-can-create-accessible-and-inclusive-environments/2522961/?adobe_mc=MCMID%3D22128181547166230403502586588145476682%7CMCORGID%3D138FFF2554E6E7220A4C98C6%2540AdobeOrg%7CTS%3D1698070984&CSAuthResp=1%3A%3A2522705%3A150997699%3A24%3Asuccess%3A76E11B8BCD571CDE39D6D8656FF6A8DA"
+    },
+    {
+      "media": "Deaf_Creative_Alex.png",
+      "title": "Hook Agency spotlight designers voices",
+      "description": "Deaf creatives—6 ways agencies can create accessible and inclusive environments",
+      "layout": "thrid",
+      "link": "https://byhook.com/activity/ad-age-deaf-in-design"
+    }
+  ],
+  "Skills": {
+    "column1": [
+      "Interaction Design",
+      "Feature Scoping",
+      "Prototyping",
+      "Wireframing",
+      "Visual"
+    ],
+    "column2": [
+      "HTML/CSS",
+      "JavaScript",
+      "Python",
+      "SQL",
+      "Rust"
+    ],
+    "column3": [
+      "Communication",
+      "Collaboration",
+      "Problem-solving",
+      "Adaptability",
+      "Critical-thinking"
+    ],
+    "column4": [
+      "Anigravity",
+      "Figma/Sketch",
+      "Google Slides",
+      "Adobe Cloud",
+      "VSCode"
+    ]
+  },
+  "case studies": {
+    "Copilot": {
+      "title": "MS VSC Copilot",
+      "role": "Product Designer",
+      "duration": "4 Weeks",
+      "projectType": "Case Study",
+      "link": "githubcopilot.html",
+      "description": "Bringing new ways for MS VSC to improve with Copilot.",
+      "content": [
+        {
+          "type": "video",
+          "files": [
+            "GithubSplash.mp4"
+          ]
+        }
+      ]
+    },
+    "Duolingo ASL": {
+      "title": "Duolingo ASL Accessibility Project",
+      "role": "Product Designer",
+      "duration": "4 Weeks",
+      "projectType": "Case Study",
+      "link": "duolingoasl.html",
+      "description": "Created a new business pipeline proposal integrating ASL features. Millions of deaf users face language access barriers...",
+      "content": [
+        {
+          "type": "video",
+          "files": [
+            "Duolingo_ASL_Lily.mp4"
+          ]
+        },
+        {
+          "type": "images",
+          "width": "w-100",
+          "files": [
+            "Duoling_Feature1.png"
+          ]
+        },
+        {
+          "type": "images",
+          "width": "w-50",
+          "files": [
+            "Duoling_Feature2.png",
+            "Duoling_Feature3.png"
+          ]
+        },
+        {
+          "type": "video",
+          "files": [
+            "Duoling_Feature4.mp4"
+          ]
+        }
+      ]
+    },
+    "Vigor Fitness": {
+      "title": "Vigor Fitness",
+      "role": "Visual Design, Research, Prototyping",
+      "duration": "15 Weeks",
+      "projectType": "Case Study",
+      "description": "Reimagning fitness in a gamification way to avoid burnouts.",
+      "link": "https://alex-kauffman.com/vigor.html",
+      "content": [
+        {
+          "type": "video",
+          "width": "fullBleed",
+          "files": [
+            "VigorSplash.mp4"
+          ]
+        },
+        {
+          "wideTitle": "The challenge was to create a mobile fitness platform designed for phone screens with our own liberty."
+        },
+        {
+          "type": "text",
+          "layout": "split_view",
+          "intro_title": "Vigor Fitness",
+          "intro_paragraph": "Vigor helps busy Americans stay active by turning everyday movement into real progress. Through user research, I shaped a gamified system that transforms daily energy into meaningful action.<br><br>The experience blends mobile and Apple Watch tracking to capture the way people actually move — walking to work, taking the stairs, biking, gardening, and more. Research made one thing clear: most people don’t connect with traditional gyms. They feel uncomfortable, unsure of the equipment, or simply too busy. Vigor meets them where movement already happens."
+        },
+        {
+          "type": "images",
+          "width": "w-50",
+          "files": [
+            "Vigor_image13.png",
+            "Vigor_image10.png"
+          ]
+        },
+        {
+          "type": "images",
+          "width": "w-100",
+          "files": [
+            "Vigor_Widgets.png"
+          ]
+        },
+        {
+          "type": "images",
+          "width": "w-50",
+          "files": [
+            "Vigor_image12.png",
+            "Vigor_image13.png"
+          ]
+        },
+        {
+          "type": "images",
+          "width": "sixty-left",
+          "files": [
+            "Vigor_content_cards.png"
+          ]
+        },
+        {
+          "type": "images",
+          "width": "sixty-right",
+          "files": [
+            "Vigor_content_cards.png"
+          ]
+        }
+      ]
+    },
+    "Apple Live Captions": {
+      "title": "Apple Live Captions",
+      "chips": "Concept, HI Design, Accessibility",
+      "description": "Redesigned Apple's Live Captions to improve the accesbility ecosystem exploring what is accessible needs and inclusive needs for everyday users.",
+      "link": "https://alex-kauffman.com/applelivecpations.html",
+      "content": [
+        {
+          "type": "video",
+          "files": [
+            "Apple_LiveCC.mp4"
+          ]
+        }
+      ]
+    }
+  }
+}

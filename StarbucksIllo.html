@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-     <meta charset="utf-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alex Kauffman – Portfolio</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
@@ -47,44 +47,22 @@
 </head>
 
 <body>
-    <input id="menu" class="menu--toggle" type="checkbox">
-    <div class="moibleLogo">
-        <a href="https://alex-kauffman.com">
-            <img src="aklogo.svg" width="100%" alt="Logo shaped like 'A' with a person inside.">
-        </a>
-    </div>
-    <label for="menu" class="menu--toggle--text">Menu</label>
-    <div class="menu--body">
-        <ul class="menu--list">
-            <li><a href="https://alex-kauffman.com">Work</a></li>
-            <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
-        </ul>
-        <div class="social">
-            <h2>
-                <a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">
-                    LinkedIn
-                </a>
-            </h2>
-            <h2>
-                <a href="https://github.com/Xander13" target="_blank">
-                    Github
-                </a>
-            </h2>
-        </div>
-    </div>
-    <div class="navList">
+    <div class="floatingMenu">
         <div class="flexBox">
-            <div class="half">
-                <p class="gray" style="padding: 0;">Alex Kauffman</p>
+            <h4>Alex Kauffman</h4>
+            <div class="menuBars">
+                <div class="bar"></div>
+                <div class="bar"></div>
             </div>
-            <div class="half">
-                <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <p class="gray"><span class="time"></span></p>
-                    <div style="gap: 8px; display: flex; justify-content: end; align-items: center;">
-                        <a id="active" href="https://alex-kauffman.com">Work</a>
-                        <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-                    </div>
-                </div>
+        </div>
+        <div class="flexBox drawerMenu">
+            <a href="index.html">Work</a>
+            <a href="Alex_Kauffman_Resume.pdf" target="_blank">Resume</a>
+            <a href="#">Articles</a>
+            <a href="essence.html">Essence</a>
+            <div class="flexBox bottomContent">
+                <a href="#">GitHub</a>
+                <a href="#">LinkedIn</a>
             </div>
         </div>
     </div>
@@ -101,9 +79,9 @@
     <div class="contained">
         <div class="mdMargin"></div>
         <div class="flexBox" style="align-items:start;">
-            <div class="half">
+            <div class="w-50">
                 <div class="flexBox">
-                    <div class="half">
+                    <div class="w-50">
                         <hr>
                         <br>
                         <h1 class="xSmTxt">Time: 3 Weeks</h1>
@@ -118,13 +96,15 @@
                     </div>
                 </div>
             </div>
-            <div class="half">
-                <h1 class="mdTxt">Starbucks is the largest coffeehouse chain in the world, but its website has a corporate-focused design that lacks the fun of their brand guidelines.</h1>
+            <div class="w-50">
+                <h1 class="mdTxt">Starbucks is the largest coffeehouse chain in the world, but its website has a
+                    corporate-focused design that lacks the fun of their brand guidelines.</h1>
                 <br>
-                <h1 class="mdTxt">This design demonstrates how Starbucks could enhance its main selling points through improved interaction and illustration.</h1>
+                <h1 class="mdTxt">This design demonstrates how Starbucks could enhance its main selling points through
+                    improved interaction and illustration.</h1>
                 <br><br>
                 <h1 class="mdTxt">I plan to explore motion design experiments as the project progresses.</h1>
-            </div>                      
+            </div>
         </div>
     </div>
     <div class="lgMargin"></div>
@@ -135,22 +115,23 @@
         <div class="smMargin"></div>
         <h1>Pain points:</h1>
         <div class="smMargin"></div>
-        <h1>The existing Starbuck reward website lacked compelling value propositions to encourage users to join Starbucks’ membership for rewards. I found it easy to scroll past due to its dry presentation.</h1>
+        <h1>The existing Starbuck reward website lacked compelling value propositions to encourage users to join
+            Starbucks’ membership for rewards. I found it easy to scroll past due to its dry presentation.</h1>
         <div class="lgMargin"></div>
         <h1 class="lgTxt" style="padding-left: 0;">Let's add fun visuals to boost Rewards website value.</h1>
         <div class="lgMargin"></div>
         <div class="flexBox" style="gap: var(--xSmMargin); align-items: start;">
-            <div class="half">
+            <div class="w-50">
                 <div class="clipping">
                     <img src="StarbucksDark1.png" width="100%">
                 </div>
             </div>
-            <div class="half">
+            <div class="w-50">
                 <div class="clipping">
                     <img src="StarbucksDark3.png" width="100%">
                 </div>
             </div>
-            <div class="half">
+            <div class="w-50">
                 <div class="clipping">
                     <img src="StarbucksDark2.png" width="100%">
                 </div>
@@ -158,12 +139,12 @@
         </div>
         <div class="xSmMargin"></div>
         <div class="flexBox" style="gap: var(--xSmMargin); align-items: start;">
-            <div class="half">
+            <div class="w-50">
                 <div class="clipping">
                     <img src="Starbucks1.png" width="100%">
                 </div>
             </div>
-            <div class="half">
+            <div class="w-50">
                 <div class="clipping">
                     <img src="Starbucks3.png" width="100%">
                 </div>
@@ -176,10 +157,10 @@
         <div class="lgMargin"></div>
         <div class="breif">
             <div class="flexBox" style="align-items: start;">
-                <div class="half" style="padding-right: var(--mdMargin)">
+                <div class="w-50" style="padding-right: var(--mdMargin)">
                     <h1 class="mdTxt">Reflections</h1>
                 </div>
-                <div class="half">
+                <div class="w-50">
                     <h1 class="mdTitle">Growth Opportunities</h1>
                     <div class="mdMargin"></div>
                     <div class="drawers">
@@ -191,7 +172,9 @@
                             </div>
                         </div>
                         <div class="expandContent">
-                            <h1 class="mdTxt">Starbucks missed a key feature of their product: earning points to redeem rewards. I learned to design with a focus on showcasing the benefits of rewards in a fun, engaging visual experience.</h1>
+                            <h1 class="mdTxt">Starbucks missed a key feature of their product: earning points to redeem
+                                rewards. I learned to design with a focus on showcasing the benefits of rewards in a
+                                fun, engaging visual experience.</h1>
                         </div>
                     </div>
                     <div class="mdMargin"></div>
@@ -204,9 +187,11 @@
                             </div>
                         </div>
                         <div class="expandContent">
-                            <h1 class="mdTxt">Starbucks has a great design system, but it lacks web-specific guidelines. Experimenting with their style allowed me to reimagine the website with more engaging, user-friendly content.</h1>
+                            <h1 class="mdTxt">Starbucks has a great design system, but it lacks web-specific guidelines.
+                                Experimenting with their style allowed me to reimagine the website with more engaging,
+                                user-friendly content.</h1>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </div>
         </div>
@@ -226,7 +211,7 @@
     <div class="moreWorks">
         <div class="mdMargin"></div>
         <div class="flexBox" style="gap: 32px;">
-            <div class="half">
+            <div class="w-50">
                 <a href="duolingoasl.html">
                     <div class="clipping">
                         <video src="DuolingoASLMoreWork.mp4" playsinline autoplay loop controls></video>
@@ -236,7 +221,7 @@
                     <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">UI Design, Devlopment, Concept</h3>
                 </a>
             </div>
-            <div class="half">
+            <div class="w-50">
                 <a href="HookMenu.html">
                     <div class="clipping">
                         <img src="MorePojrectsHook.png" width="100%" alt="Color Cover">
@@ -246,7 +231,7 @@
                     <h3 class="xSmTxt" style="padding-top: 16px; color: gray;">Visual Design, UX Design</h3>
                 </a>
             </div>
-            <div class="half">
+            <div class="w-50">
                 <a href="vigor.html">
                     <div class="clipping">
                         <img src="MorePojrectsVigor.png" width="100%" alt="Color Cover">
@@ -268,7 +253,8 @@
             <div>
                 <h2 class="bold">BIOS</h2>
                 <br>
-                <h2 class="bios" style="text-transform: uppercase;">Alex Kauffman designs solutions with clarity and intent.</h2>
+                <h2 class="bios" style="text-transform: uppercase;">Alex Kauffman designs solutions with clarity and
+                    intent.</h2>
                 <br>
                 <h2>&copy; 2025</h2>
             </div>

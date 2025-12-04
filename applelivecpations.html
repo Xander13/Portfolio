@@ -44,64 +44,29 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
         rel="stylesheet">
 </head>
 
-<body>
-    <input id="menu" class="menu--toggle" type="checkbox">
-    <div class="moibleLogo">
-        <a href="https://alex-kauffman.com">
-            <img src="aklogo.svg" width="100%" alt="Logo shaped like 'A' with a person inside.">
+<body class="locked-page">
+    <div class="topNav">
+        <div class="nav-left">
+            <a class="active" href="index.html">
+                <h6>Work</h6>
+            </a>
+            <a href="Alex_Kauffman_Resume.pdf" target="_blank">
+                <h6>Resume</h6>
+            </a>
+        </div>
+        <a href="essence.html">
+            <h6><span class="dot"></span>Essence</h6>
         </a>
     </div>
-    <label for="menu" class="menu--toggle--text">Menu</label>
-    <div class="menu--body">
-        <ul class="menu--list">
-            <li><a href="https://alex-kauffman.com">Work</a></li>
-            <li><a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a></li>
-        </ul>
-        <div class="social">
-            <h2>
-                <a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">
-                    LinkedIn
-                </a>
-            </h2>
-            <h2>
-                <a href="https://github.com/Xander13" target="_blank">
-                    Github
-                </a>
-            </h2>
-        </div>
-    </div>
-    <div class="navList">
-        <div class="flexBox">
-            <div class="half">
-                <p class="gray" style="padding: 0;">Alex Kauffman</p>
-            </div>
-            <div class="half">
-                <div style="display: flex; align-items: center; justify-content: space-between;">
-                    <p class="gray"><span class="time"></span></p>
-                    <div style="gap: 8px; display: flex; justify-content: end; align-items: center;">
-                        <a id="active" href="https://alex-kauffman.com">Work</a>
-                        <a target="_blank" href="Alex_Kauffman_Resume.pdf">Resume</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <div class="randomMover" id="container"></div>
     <div class="pwdSpace">
-        <div class="randomMover" id="container"></div>
         <h2>This project is currently locked. If you would like access or wish to discuss the case study, please contact
             me via <a href="https://www.linkedin.com/in/alex-kauffman/" target="_blank">LinkedIn</a> to arrange a
             virtual conversation.</h2>
-        <div class="flexBox">
-            <input type="text" placeholder="Enter password">
-            <button type="submit" class="arrow-button">
-                Go
-            </button>
-        </div>
     </div>
     <script src="jquery-3.6.0.min.js"></script>
     <script type="module" src="app.js"></script>

@@ -172,89 +172,92 @@ const NUM_TOKENS = 56;
 const TOKEN_SIZE = 96;
 
 const container = document.getElementById("container");
-const screenW = window.innerWidth;
-const screenH = window.innerHeight;
 
-// Detect which site you're on (update this condition based on your actual site detection)
-const isAppleSite = window.location.href.includes('apple'); // or however you detect Apple site
+if (container) {
+  const screenW = window.innerWidth;
+  const screenH = window.innerHeight;
 
-// Choose the right icon set
-const iconSet = isAppleSite ? appleIcon : MsIcon;
+  // Detect which site you're on (update this condition based on your actual site detection)
+  const isAppleSite = window.location.href.includes('apple'); // or however you detect Apple site
 
-const images = [];
+  // Choose the right icon set
+  const iconSet = isAppleSite ? appleIcon : MsIcon;
 
-// Only create ONE set of icons based on the current site
-for (let i = 0; i < NUM_TOKENS; i++) {
-  const img = document.createElement("img");
-  img.src = iconSet[i % iconSet.length];
-  img.alt = `Token ${i}`;
+  const images = [];
 
-  // Style the image
-  img.style.width = `${TOKEN_SIZE}px`;
-  img.style.height = "auto";
-  img.style.position = "absolute";
-  img.style.pointerEvents = "none";
-  container.appendChild(img);
+  // Only create ONE set of icons based on the current site
+  for (let i = 0; i < NUM_TOKENS; i++) {
+    const img = document.createElement("img");
+    img.src = iconSet[i % iconSet.length];
+    img.alt = `Token ${i}`;
 
-  // Push image data to animate array
-  images.push({
-    el: img,
-    x: Math.random() * (screenW - TOKEN_SIZE),
-    y: Math.random() * -screenH,
-    speedY: 0.6 + Math.random() * 0.8,
-    drift: Math.random() * 0.6 - 0.3,
-    angle: Math.random() * 360,
-    spinSpeed: 0.1 + Math.random() * 0.2
-  });
-}
+    // Style the image
+    img.style.width = `${TOKEN_SIZE}px`;
+    img.style.height = "auto";
+    img.style.position = "absolute";
+    img.style.pointerEvents = "none";
+    container.appendChild(img);
 
-function animate() {
-  for (let img of images) {
-    img.y += img.speedY;
-    img.x += img.drift;
-    img.angle += img.spinSpeed;
-
-    // Wrap to top
-    if (img.y > screenH + TOKEN_SIZE) {
-      img.y = -TOKEN_SIZE;
-      img.x = Math.random() * (screenW - TOKEN_SIZE);
-    }
-
-    // Bounce horizontally
-    if (img.x < 0 || img.x > screenW - TOKEN_SIZE) {
-      img.drift *= -1;
-    }
-
-    // Apply styles
-    img.el.style.left = `${img.x}px`;
-    img.el.style.top = `${img.y}px`;
-    img.el.style.transform = `rotate(${img.angle}deg)`;
+    // Push image data to animate array
+    images.push({
+      el: img,
+      x: Math.random() * (screenW - TOKEN_SIZE),
+      y: Math.random() * -screenH,
+      speedY: 0.6 + Math.random() * 0.8,
+      drift: Math.random() * 0.6 - 0.3,
+      angle: Math.random() * 360,
+      spinSpeed: 0.1 + Math.random() * 0.2
+    });
   }
 
-  requestAnimationFrame(animate);
-}
+  function animate() {
+    for (let img of images) {
+      img.y += img.speedY;
+      img.x += img.drift;
+      img.angle += img.spinSpeed;
 
-animate();
+      // Wrap to top
+      if (img.y > screenH + TOKEN_SIZE) {
+        img.y = -TOKEN_SIZE;
+        img.x = Math.random() * (screenW - TOKEN_SIZE);
+      }
+
+      // Bounce horizontally
+      if (img.x < 0 || img.x > screenW - TOKEN_SIZE) {
+        img.drift *= -1;
+      }
+
+      // Apply styles
+      img.el.style.left = `${img.x}px`;
+      img.el.style.top = `${img.y}px`;
+      img.el.style.transform = `rotate(${img.angle}deg)`;
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+}
 
 
 //hover news section
- document.querySelectorAll('.clipping').forEach(container => {
-    const cursor = container.querySelector('.movingCursor');
+document.querySelectorAll('.clipping').forEach(container => {
+  const cursor = container.querySelector('.movingCursor');
 
-    container.addEventListener('mouseenter', () => {
-      cursor.style.display = 'block';
-    });
-
-    container.addEventListener('mousemove', (e) => {
-      const rect = container.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-
-      cursor.style.left = `${x}px`;
-      cursor.style.top = `${y}px`;
-    });
-
-    container.addEventListener('mouseleave', () => {
-      cursor.style.display = 'none';
-    });
+  container.addEventListener('mouseenter', () => {
+    cursor.style.display = 'block';
   });
+
+  container.addEventListener('mousemove', (e) => {
+    const rect = container.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    cursor.style.left = `${x}px`;
+    cursor.style.top = `${y}px`;
+  });
+
+  container.addEventListener('mouseleave', () => {
+    cursor.style.display = 'none';
+  });
+});
