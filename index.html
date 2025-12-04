@@ -50,22 +50,42 @@
 
 <body>
     <div class="topNav">
+        <a href="essence.html">
+            <h6>Alex Kauffman</h6>
+        </a>
         <div class="nav-left">
-            <a class="active" href="index.html">
+            <div class="pill-background"></div>
+            <a class="active nav-pill-link" href="#" data-mode="essence">
+                <h6><span class="dot"></span>Essence</h6>
+            </a>
+            <a class="nav-pill-link" href="#" data-mode="work">
                 <h6>Work</h6>
             </a>
-            <a href="Alex_Kauffman_Resume.pdf" target="_blank">
-                <h6>Resume</h6>
-            </a>
         </div>
-        <a href="essence.html">
-            <h6><span class="dot"></span>Essence</h6>
+        <a href="Alex_Kauffman_Resume.pdf" target="_blank">
+            <h6>Resume</h6>
         </a>
     </div>
-    <div class="content">
+
+    <!-- AI Chat Mode Elements (shown by default now) -->
+    <div class="responseBox"></div>
+    <div class="modes">
+        <div class="flexBox">
+            <div class="modeIcon"></div>
+            <div class="speachMode">Speech Mode</div>
+        </div>
+    </div>
+    <div class="gallery" id="gallery"></div>
+    <div class="inputBox">
+        <input class="txtBox" autocomplete="off" name="no-autofill" type="text" id="llmTxt" placeholder="Ask Alex...">
+        <div class="send">Send</div>
+    </div>
+
+    <!-- Portfolio Content (hidden by default) -->
+    <div class="content" style="display: none;">
         <div class="hero">
             <h3>Inqure Alex portfolio with Essence</h3>
-            <h2>Alex Kauffman is a product designer focused on accessible, visual systems for
+            <h2>Alex Kauffman is a product designer focused on accessible, visual design, system thinking for
                 product teams who give a damn.</h2>
         </div>
 
@@ -249,9 +269,13 @@
         </div>
     </div>
     <script src="jquery-3.6.0.min.js"></script>
+    <script src="modeToggle.js"></script>
     <script type="module" src="app.js"></script>
     <script src="projectScripts.js"></script>
     <script src="global.js"></script>
 </body>
 
 </html>
+<script src="p5.min.js"></script>
+<script src="dot.js"></script>
+<script src="essence.js"></script>

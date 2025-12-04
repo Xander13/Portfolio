@@ -1459,8 +1459,11 @@ window.onload = async () => {
         });
     }
 
-    // Show welcome message on load
-    showWelcomeMessage();
+    // Show welcome message on load only if on essence.html page
+    // On index.html, the welcome message is triggered by modeToggle.js
+    if (document.body.classList.contains('essence-page')) {
+        showWelcomeMessage();
+    }
 };
 
 // -------- Welcome Message --------
@@ -1476,7 +1479,7 @@ function showWelcomeMessage() {
     p.id = "IntroChat";
     p.classList.add("IntroChat"); // Add class for CSS padding
 
-    const welcomeText = "Hello, I'm Alex's essence. I'm here to help you answer questions. Here are a few prompts you can type or click right away to get a response:";
+    const welcomeText = "Essence is Alex's digital assistant—built on accessible, visual design, system thinking for product teams who actually give a damn. Ask away.";
 
     // Create clickable prompt links
     const prompts = [
@@ -1595,3 +1598,6 @@ function animatePlaceholder() {
 
 // Start animations
 animatePlaceholder();
+
+// Expose showWelcomeMessage globally for mode toggle
+window.showWelcomeMessage = showWelcomeMessage;
