@@ -339,7 +339,6 @@ a {
 #heroTop {
     padding-top: 40vh;
     text-wrap: balance;
-    width: 60%;
 }
 
 .IntroChat {
@@ -794,6 +793,7 @@ a {
     padding: 16px;
     font-size: 18px;
     transition: bottom 0.5s ease;
+    text-wrap: balance;
 }
 
 .clipping:hover .captions {
@@ -985,13 +985,9 @@ a {
 .moreWorks video,
 .moreWorks img {
     width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    object-position: center 25%;
 }
 
 .moreWorks h1 {
-    width: 50%;
     text-wrap: balance;
 }
 
@@ -1475,6 +1471,7 @@ a {
         margin-left: 16px;
         margin-right: 16px;
         box-sizing: border-box;
+        height: 60vh;
     }
 
     .moreWorks video{

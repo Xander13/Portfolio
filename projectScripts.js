@@ -10,11 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
         let expandedDrawer = drawers[0];
         expandedDrawer.classList.add('expanded');
         expandedDrawer.querySelector('.expandContent').style.display = 'block'; // Show first content
-        plusBars1[0].style.opacity = 0; // Hide the plusBar1 for the first drawer
+        plusBars2[0].style.opacity = 0; // Hide the plusBar1 for the first drawer
 
         // Function to update the opacity of the plusBars1
         function updatePlusBars() {
-            plusBars1.forEach((bar, index) => {
+            plusBars2.forEach((bar, index) => {
                 if (drawers[index] === expandedDrawer) {
                     bar.style.opacity = 0; // Hide plusBar1 for the expanded drawer
                 } else {
