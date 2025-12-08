@@ -113,8 +113,8 @@ function adjustCoverSize() {
 
     covers.forEach(cover => {
         if (scrollTop > 100) { // Adjust when scrolled beyond 100px
-            cover.style.marginLeft = isMobile ? '16px' : '96px';
-            cover.style.marginRight = isMobile ? '16px' : '96px';
+            cover.style.marginLeft = isMobile ? '16px' : '56px';
+            cover.style.marginRight = isMobile ? '16px' : '56px';
             cover.style.transition = 'all 0.5s ease';
         } else {
             cover.style.marginLeft = '0';
@@ -507,18 +507,20 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
         }
 
-        const utterance = new SpeechSynthesisUtterance(text);
+        // Remove emojis from text before speaking
+        const textWithoutEmojis = text.replace(/[\u{1F600}-\u{1F64F}\u{1F300}-\u{1F5FF}\u{1F680}-\u{1F6FF}\u{1F1E0}-\u{1F1FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F900}-\u{1F9FF}\u{1FA00}-\u{1FA6F}\u{1FAB0}-\u{1FABF}\u{1FAC0}-\u{1FAFF}\u{1F004}\u{1F0CF}\u{1F18E}\u{1F191}-\u{1F19A}\u{1F201}\u{1F21A}\u{1F22F}\u{1F232}-\u{1F236}\u{1F238}-\u{1F23A}\u{1F250}\u{1F251}\u{1F300}-\u{1F320}\u{1F32D}-\u{1F335}\u{1F337}-\u{1F37C}\u{1F37E}-\u{1F393}\u{1F3A0}-\u{1F3CA}\u{1F3CF}-\u{1F3D3}\u{1F3E0}-\u{1F3F0}\u{1F3F4}\u{1F3F8}-\u{1F43E}\u{1F440}\u{1F442}-\u{1F4FC}\u{1F4FF}-\u{1F53D}\u{1F54B}-\u{1F54E}\u{1F550}-\u{1F567}\u{1F57A}\u{1F595}\u{1F596}\u{1F5A4}\u{1F5FB}-\u{1F64F}\u{1F680}-\u{1F6C5}\u{1F6CC}\u{1F6D0}-\u{1F6D2}\u{1F6D5}-\u{1F6D7}\u{1F6EB}\u{1F6EC}\u{1F6F4}-\u{1F6FC}\u{1F7E0}-\u{1F7EB}]/gu, '');
+
+        const utterance = new SpeechSynthesisUtterance(textWithoutEmojis);
 
         // Ensure voices are loaded
         let voices = synthesis.getVoices();
         if (voices.length > 0) {
-            // Prioritize female voices
+            // Prioritize male voices
             const preferredVoice = voices.find(v =>
-                v.name === 'Samantha' ||
-                v.name === 'Karen' ||
-                v.name.includes('Google') && v.name.includes('Female') ||
-                v.name.includes('Zira') ||
-                v.name.includes('Female')
+                v.name === 'David' ||
+                v.name === 'Daniel' ||
+                v.name.includes('Google') && v.name.includes('Male') ||
+                v.name.includes('Male')
             );
 
             if (preferredVoice) {
@@ -577,5 +579,49 @@ document.addEventListener("DOMContentLoaded", function () {
         if (synthesis.paused) synthesis.resume();
 
         synthesis.speak(utterance);
+    }
+});
+
+// -------------------------------------------------
+// Page Transition Logic
+// -------------------------------------------------
+document.addEventListener('DOMContentLoaded', () => {
+    // Fade in on load
+    setTimeout(() => {
+        document.body.classList.add('loaded');
+    }, 50);
+
+    // Handle links for smooth fade out
+    document.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            const target = link.getAttribute('target');
+            
+            // Ignore special links
+            if (!href || 
+                href === '#' || 
+                href.startsWith('#') || 
+                target === '_blank' || 
+                href.startsWith('mailto:') || 
+                href.startsWith('tel:') || 
+                href.startsWith('javascript:')) {
+                return;
+            }
+
+            // Proceed with fade out navigation
+            e.preventDefault();
+            document.body.classList.remove('loaded');
+            
+            setTimeout(() => {
+                window.location.href = href;
+            }, 500); // Match CSS transition time
+        });
+    });
+});
+
+// Handle back/forward cache (bfcache)
+window.addEventListener('pageshow', (event) => {
+    if (event.persisted) {
+        document.body.classList.add('loaded');
     }
 });

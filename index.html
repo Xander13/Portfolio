@@ -49,94 +49,106 @@
 </head>
 
 <body>
-    <div class="topNav">
-        <a href="essence.html">
+    <nav class="topNav" aria-label="Main Navigation">
+        <a href="essence.html" class="nav-brand">
             <h6>Alex Kauffman</h6>
         </a>
-        <div class="nav-left">
-            <div class="pill-background"></div>
-            <a class="active nav-pill-link" href="#" data-mode="essence">
-                <h6><span class="dot"></span>Essence</h6>
-            </a>
-            <a class="nav-pill-link" href="#" data-mode="work">
-                <h6>Work</h6>
-            </a>
-        </div>
-        <a href="Alex_Kauffman_Resume.pdf" target="_blank">
-            <h6>Resume</h6>
-        </a>
-    </div>
 
-    <!-- AI Chat Mode Elements (shown by default now) -->
-    <div class="responseBox"></div>
-    <div class="modes">
-        <div class="flexBox">
-            <div class="modeIcon"></div>
-            <div class="speachMode">Speech Mode</div>
+        <div class="nav-center">
+            <div class="nav-underline"></div>
+            <a class="nav-pill-link" href="#" data-mode="essence">
+                <h6><span class="nav-text">Essence</span></h6>
+            </a>
+            <a class="active nav-pill-link" href="#" data-mode="work">
+                <h6><span class="nav-text">Work</span></h6>
+            </a>
+            <a class="nav-pill-link" href="Alex_Kauffman_Resume.pdf" target="_blank">
+                <h6><span class="nav-text">Resume</span></h6>
+            </a>
         </div>
-    </div>
-    <div class="gallery" id="gallery"></div>
-    <div class="inputBox">
+
+        <div class="nav-right">
+            <div class="modes">
+                <div class="flexBox">
+                    <div class="modeIcon"></div>
+                    <div class="speachMode">Speech Mode</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- AI Chat Mode Elements (hidden by default) -->
+    <div class="responseBox" aria-live="polite" style="display: none;"></div>
+    <!-- Gallery removed -->
+    <div class="inputBox" style="display: none;">
+        <label for="llmTxt" class="sr-only" style="display:none;">Ask Alex</label>
         <input class="txtBox" autocomplete="off" name="no-autofill" type="text" id="llmTxt" placeholder="Ask Alex...">
-        <div class="send">Send</div>
+        <div class="send" role="button" tabindex="0">Send</div>
     </div>
 
-    <!-- Portfolio Content (hidden by default) -->
-    <div class="content" style="display: none;">
-        <div class="hero">
-            <h3>Inqure Alex portfolio with Essence</h3>
-            <h2>Alex Kauffman is a product designer focused on accessible, visual design, system thinking for
-                product teams who give a damn.</h2>
-        </div>
+    <!-- Portfolio Content (shown by default) -->
+    <main class="content" style="display: block;">
+        <header class="hero">
+            <p class="mdTxt">Inquire Alex portfolio with Essence</p>
+            <h1>Alex Kauffman is a product designer focused on accessible, visual design, system thinking for
+                product teams who give a damn.</h1>
+        </header>
 
-        <div class="project" style="width: 100%; max-width: 100%;">
+        <section class="project" style="width: 100%; max-width: 100%; display: flex; flex-direction: column; gap: 10vh;"
+            aria-label="Selected Work">
             <div class="w-100">
                 <a href="#" class="fade-link">
                     <video src="GithubSplash.mp4" nocontrol loop muted autoplay playsinline></video>
-                    <h3>Microsoft VSC Copilot</h3>
+                    <h2>Microsoft VSC Copilot</h2>
                 </a>
             </div>
             <div class="flexBox" style="align-items: start;">
-                <div class="w-50 spaceBottom spaceTop">
-                    <a href="#" class="fade-link">
+
+                <div class="w-50">
+                    <a href="duolingoasl.html" class="fade-link">
                         <video src="Duolingo_ASL_Lily.mp4" playsinline autoplay loop nocontrols muted
                             width="100%"></video>
-                        <h3>Duolingo ASL</h3>
+                        <h2>Duolingo ASL</h2>
                     </a>
                 </div>
-                <div class="w-50 spaceBottom spaceTop">
-                    <a href="#" class="fade-link">
+                <div class="w-05">
+
+                </div>
+                <div class="w-40">
+                    <a href="applelivecpations.html" class="fade-link">
                         <video src="Apple_LiveCC.mp4" playsinline autoplay loop nocontrols muted width="100%"></video>
-                        <h3>Apple Live Captions</h3>
+                        <h2>Apple Live Captions</h2>
                     </a>
+                </div>
+                <div class="w-05">
+
                 </div>
             </div>
-            <div class="w-100 spaceBottom">
-                <a href="#" class="fade-link">
+            <div class="w-80">
+                <a href="vigor.html" class="fade-link">
                     <video src="VigorSplash.mp4" nocontrol loop muted autoplay playsinline></video>
-                    <h3>Vigor Fitness App</h3>
+                    <h2>Vigor Fitness App</h2>
                 </a>
             </div>
-        </div>
+        </section>
         <div class="lgMargin"></div>
-        <div class="articles">
+        <section class="articles" aria-label="Writing and Experiments">
             <h1>Experiments and writing that explore new directions in systems, tools, and product
                 design.</h1>
             <div class="smMargin"></div>
             <div class="flexBox">
-                <div class="w-40">
+                <article class="w-40">
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7264858607559598080/" target="_blank">
                         <div class="clipping">
                             <video src="Duolingo_ASL_Lily.mp4" playsinline autoplay loop muted nocontrols></video>
                         </div>
                         <br>
-                        <h2>8K+ likes on LinkedIn — showing how deeply society values accessibility,
+                        <h3>8K+ likes on LinkedIn — showing how deeply society values accessibility,
                             ASL, and non-verbal language learning.
-                        </h2>
+                        </h3>
                         <h4 class="gray" style="padding-top: 16px;">LinkedIn - 1 min read</h4>
                     </a>
-                </div>
-                <div class="w-40">
+                </article>
+                <article class="w-40">
                     <a href="https://adage.com/article/opinion/deaf-creatives-6-ways-agencies-can-create-accessible-and-inclusive-environments/2522961?adobe_mc=MCMID%3D22128181547166230403502586588145476682%7CMCORGID%3D138FFF2554E6E7220A4C98C6%2540AdobeOrg%7CTS%3D1698070984&CSAuthResp=1%3A%3A2522705%3A150997699%3A24%3Asuccess%3A76E11B8BCD571CDE39D6D8656FF6A8DA"
                         target="_blank">
                         <div class="clipping">
@@ -145,12 +157,12 @@
                                 style="user-select: none;" width="100%">
                         </div>
                         <br>
-                        <h2>DEAF CREATIVES—6 WAYS AGENCIES CAN CREATE ACCESSIBLE AND INCLUSIVE
-                            ENVIRONMENTS</h2>
+                        <h3>DEAF CREATIVES—6 WAYS AGENCIES CAN CREATE ACCESSIBLE AND INCLUSIVE
+                            ENVIRONMENTS</h3>
                         <h4 style="padding-top: 16px;">AdAge - 3 min read</h4>
                     </a>
-                </div>
-                <div class="w-40">
+                </article>
+                <article class="w-40">
                     <a href="https://byhook.com/activity/ad-age-deaf-in-design" target="blank">
                         <div class="clipping">
                             <img draggable="false" src="Deaf_Creative_Alex.png"
@@ -158,13 +170,13 @@
                                 style="user-select: none;" width="100%">
                         </div>
                         <br>
-                        <h2>Hook Agency highlights six key insights from Alex Kauffman's article
+                        <h3>Hook Agency highlights six key insights from Alex Kauffman's article
                             published in AdAge.
-                        </h2>
-                        <h4 style="padding-top: 16px;">Hook Article - 1 min read</h1>
+                        </h3>
+                        <h4 style="padding-top: 16px;">Hook Article - 1 min read</h4>
                     </a>
-                </div>
-                <div class="w-40">
+                </article>
+                <article class="w-40">
                     <a href="https://www.linkedin.com/posts/alex-kauffman_new-figma-features-from-config2023-activity-7079514392333074433-I4WV?utm_source=share&utm_medium=member_desktop"
                         target="blank">
                         <div class="clipping">
@@ -173,15 +185,15 @@
                                 style="user-select: none;" width="100%">
                         </div>
                         <br>
-                        <h2>Utilizing Figma's variable feature for displaying ads to help reduce
+                        <h3>Utilizing Figma's variable feature for displaying ads to help reduce
                             production time.
-                        </h2>
-                        <h4 style="padding-top: 16px;">LinkedIn - 1 min read</h1>
+                        </h3>
+                        <h4 style="padding-top: 16px;">LinkedIn - 1 min read</h4>
                     </a>
-                </div>
+                </article>
             </div>
-        </div>
-        <div class="articles">
+        </section>
+        <section class="articles" aria-label="Philosophy">
             <div class="mdMargin"></div>
             <div class="mdMargin"></div>
             <h1>After several years in fast-paced agencies space, I’m now shifting toward product
@@ -194,29 +206,29 @@
             <div class="mdMargin"></div>
             <div class="skillsets" id="about">
                 <div class="flexBox" style="gap: 16px;">
-                    <div class="w-50">
-                        <h2>About</h2>
+                    <section class="w-50" aria-labelledby="about-heading">
+                        <h2 id="about-heading">About</h2>
                         <br>
                         <div class="hr"></div>
                         <br>
-                        <h3 class="w-80">Alex Kauffman is a designer focused on clarity, interaction, and
+                        <p class="w-90">Alex Kauffman is a designer focused on clarity, interaction, and
                             systems-thinking. With a BFA in New Media Design from RIT, he blends creative direction
                             and product thinking to design tools that support thoughtful, long-term growth.
-                        </h3>
+                        </p>
                         <br>
-                        <h3 class="w-80">He’s currently exploring roles in product design and visual systems —
+                        <p class="w-90">He’s currently exploring roles in product design and visual systems —
                             aiming to contribute to meaningful products, not just fast-moving ideas. His dream role
                             is helping Microsoft’s Accessibility team improve the Xbox gaming experience for diverse
                             players — or working with platforms like Toast to make everyday payments more accessible
-                            for all.</h3>
+                            for all.</p>
                         <br>
-                        <h3 class="w-80">
+                        <p class="w-90">
                             Outside of design, Alex is getting into motocross (MX) as a new hobby. He also enjoys
                             traveling to different countries, meeting new people, and trying unfamiliar things —
                             always chasing experiences that expand perspective.
-                        </h3>
-                    </div>
-                    <div class="w-50">
+                        </p>
+                    </section>
+                    <section class="w-50" aria-label="Skills and Education">
                         <div class="flexBox" style="gap: 16px;">
                             <div class="w-50">
                                 <h2 class="gray">Skills</h2>
@@ -224,21 +236,25 @@
                                 <div class="hr"></div>
                                 <br>
                                 <h3>Design:</h3>
-                                <h3>Visual Design</h3>
-                                <h3>UI Design</h3>
-                                <h3>Interaction Design</h3>
-                                <h3>3D Design</h3>
-                                <h3>Figma</h3>
-                                <h3>Prototyping</h3>
+                                <ul class="no-bullets">
+                                    <li>Visual Design</li>
+                                    <li>UI Design</li>
+                                    <li>Interaction Design</li>
+                                    <li>3D Design</li>
+                                    <li>Figma</li>
+                                    <li>Prototyping</li>
+                                </ul>
                                 <br>
                                 <br>
                                 <h3>Tech:</h3>
-                                <h3>Python, SQL, JS</h3>
-                                <h3>HTML/CSS</h3>
-                                <h3>Git / GitHub</h3>
-                                <h3>Agile Methodologies</h3>
-                                <h3>Accessibility Standards</h3>
-                                <h3>Localization / Multilingual UI</h3>
+                                <ul class="no-bullets">
+                                    <li>Python, SQL, JS</li>
+                                    <li>HTML/CSS</li>
+                                    <li>Git / GitHub</li>
+                                    <li>Agile Methodologies</li>
+                                    <li>Accessibility Standards</li>
+                                    <li>Localization / Multilingual UI</li>
+                                </ul>
                             </div>
                             <div class="w-50">
                                 <h2 class="gray">Education</h2>
@@ -248,26 +264,27 @@
                                 <h3>Rochester Institute of Technology</h3>
                                 <br>
                                 <br>
-                                <h3>Bachelor of Fine Arts, <br> <a
+                                <p>Bachelor of Fine Arts, <br> <a
                                         style="text-decoration: underline; text-underline-offset: 8px;"
                                         href="https://www.rit.edu/study/new-media-design-bfa" target="_blank">New
                                         Media
-                                        Design</a></h3>
+                                        Design</a></p>
                                 <br>
                                 <br>
-                                <h3>GPA: 3.69/4 - Magna Cum Laude</h3>
+                                <p>GPA: 3.69/4 - Magna Cum Laude</p>
                             </div>
                         </div>
 
-                    </div>
+                    </section>
                 </div>
             </div>
             <div class="mdMargin"></div>
             <div class="mdMargin"></div>
-            <h1 class="footer">&copy;2025</h1>
-            <div class="smMargin"></div>
-        </div>
-    </div>
+            <footer>
+                <h1>&copy;2025</h1>
+            </footer>
+        </section>
+    </main>
     <script src="jquery-3.6.0.min.js"></script>
     <script src="modeToggle.js"></script>
     <script type="module" src="app.js"></script>
@@ -276,6 +293,6 @@
 </body>
 
 </html>
-<script src="p5.min.js"></script>
-<script src="dot.js"></script>
+<!-- Scripts removed: p5.min.js, dot.js -->
+<script src="worldClocks.js"></script>
 <script src="essence.js"></script>

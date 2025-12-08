@@ -184,8 +184,8 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
     function appendExtras() {
         appendExtraContent(content, extra);
 
-        // Skills and Projects must append to the wrapper, not the <p>
-        if (extra.skills) appendSkillsGrid(extra.skills, wrapper);
+        // Skills should append to content (msgContent), not wrapper
+        if (extra.skills) appendSkillsGrid(extra.skills, content);
         // Append projects grid if provided
         if (extra.projects) {
             const hr = document.createElement("div");
@@ -205,6 +205,11 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             hr.classList.add("separator-line");
             wrapper.appendChild(hr);
             appendCaseStudy(extra.caseStudy, wrapper);
+        }
+
+        // Append World Clocks if provided
+        if (extra.worldClocks) {
+            appendWorldClocks(content);
         }
 
         // ✅ Move inline link here AFTER typewriter
@@ -272,22 +277,52 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
                     window.stopPulseLoop();
                 }
             });
-        } else if (animated) {
-            typeWriter(p, msg, wordSpeed, () => {
-                appendExtras();
-                if (typeof window.stopPulseLoop === "function") {
-                    window.stopPulseLoop();
-                }
-            });
         } else {
-            p.innerHTML = msg;
-            appendExtras();
+            // Normal mode: Split by <br><br> and animate paragraphs sequentially
+            const paragraphs = msg.split(/<br\s*\/?>\s*<br\s*\/?>/i);
+
+            // Remove the default <p> since we'll create multiple
+            p.remove();
+
+            const paragraphElements = [];
+            paragraphs.forEach((paragraphText, index) => {
+                const paragraphElement = document.createElement("p");
+                paragraphElement.innerHTML = paragraphText.trim();
+                paragraphElement.style.position = "relative";
+                paragraphElement.style.animation = `slideIn 0.8s ease ${index * 0.3}s forwards`;
+                paragraphElement.style.opacity = "0"; // Start hidden
+
+                content.appendChild(paragraphElement);
+                paragraphElements.push(paragraphElement);
+            });
+
+            // Append inline link to the last paragraph if provided
+            if (extra?.link && extra.inlineLink && paragraphElements.length > 0) {
+                const lastParagraph = paragraphElements[paragraphElements.length - 1];
+                const a = document.createElement("a");
+                a.href = extra.link.href;
+                a.textContent = extra.link.text;
+                a.target = "_blank";
+                lastParagraph.append(" ");
+                lastParagraph.append(a);
+            }
+
+            // Append extras after all paragraphs are added
+            const totalDelay = paragraphs.length * 0.3 * 1000;
+            setTimeout(() => {
+                appendExtras();
+            }, totalDelay);
+
+            // Stop pulse after animation completes
             if (typeof window.stopPulseLoop === "function") {
-                window.stopPulseLoop();
+                setTimeout(() => {
+                    window.stopPulseLoop();
+                }, totalDelay + 800); // Animation duration + last paragraph delay
             }
         }
     } else {
-        p.textContent = msg;
+        // User message: always instant
+        p.innerHTML = msg;
         appendExtras();
     }
 
@@ -305,13 +340,33 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
     // Observe the new wrapper for scroll-based color changes
     bgColorObserver.observe(wrapper);
 
-    // Scroll responseBox to the new card unless it's a case study (let user scroll manually)
+    // Smart Scroll Logic
     if (!extra.caseStudy) {
         setTimeout(() => {
-            responseBox.scrollTo({
-                top: responseBox.scrollHeight,
-                behavior: 'smooth'
-            });
+            if (extra.worldClocks) {
+                // Force scroll to bottom to show clocks
+                responseBox.scrollTo({
+                    top: responseBox.scrollHeight,
+                    behavior: 'smooth'
+                });
+                return;
+            }
+            const cardHeight = card.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            const isShortResponse = cardHeight < (viewportHeight * 0.4);
+
+            if (isShortResponse) {
+                // Short response: Scroll to show the whole thing
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                // Long response: Center the interaction (User Q + Start of A)
+                const prevCard = card.previousElementSibling;
+                if (prevCard) {
+                    prevCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
         }, 100);
     }
 }
@@ -599,7 +654,10 @@ async function findResponse(userInput) {
             minute: "2-digit",
             hour12: true
         });
-        return { text: `The current time in Detroit is ${detroitTime}.` };
+        return {
+            text: `Here is the current time in Detroit and across the globe.`,
+            worldClocks: true // Flag to render world clocks
+        };
     }
 
     // --- PERSONAL INFO ---
@@ -706,7 +764,17 @@ async function findResponse(userInput) {
     }
 
     // --- PROJECTS ---
-    if (normalizedInput.includes("project") || normalizedInput.includes("projects") || normalizedInput.includes("work")) {
+    // Don't show all projects if they're asking about successful/best/proudest project
+    const isAskingAboutSuccessfulProject = normalizedInput.includes("successful") ||
+        normalizedInput.includes("best") ||
+        normalizedInput.includes("proudest");
+
+    if (!isAskingAboutSuccessfulProject && (
+        normalizedInput.includes("project") ||
+        normalizedInput.includes("projects") ||
+        normalizedInput.includes("work") ||
+        normalizedInput.includes("case studies")
+    )) {
         return {
             text: "Driven by a future-forward aesthetic and a love for experimentation, I push AI, Accessibility, and UI design into tangible, usable products.",
             extra: { projects: knowledge.projects }, // this is important
@@ -810,11 +878,12 @@ async function sendMessage() {
     const userText = input.value.trim();
     if (!userText) return;
 
+    // 1. Show user message immediately
     appendMessage("user", userText);
     questionCount++;
 
     if (questionCount > maxQuestions) {
-        const limitMsg = "Wow, you really like to inquire about me! � Why not have a meeting? Contact Alex on <a href='https://www.linkedin.com/in/alex-kauffman' target='_blank'>LinkedIn</a>.";
+        const limitMsg = "Wow, you really like to inquire about me! 😉 Why not have a meeting? Contact Alex on <a href='https://www.linkedin.com/in/alex-kauffman' target='_blank'>LinkedIn</a>.";
         appendMessage("ai", limitMsg);
 
         // Trigger scatter effect
@@ -827,10 +896,33 @@ async function sendMessage() {
         return;
     }
 
+    // 2. Show thinking indicator
+    const thinkingIndicator = document.createElement("div");
+    thinkingIndicator.classList.add("thinking-indicator");
+    thinkingIndicator.innerHTML = `
+        <div class="dot-pulse"></div>
+        <div class="dot-pulse"></div>
+        <div class="dot-pulse"></div>
+    `;
+    responseBox.appendChild(thinkingIndicator);
 
-    // ✅ await is now valid because we're inside async
+    // Scroll to show thinking indicator
+    responseBox.scrollTo({
+        top: responseBox.scrollHeight,
+        behavior: 'smooth'
+    });
+
+    // 3. Get response (with artificial thinking delay)
     const answerObj = await findResponse(userText);
 
+    // Add artificial delay for "thinking" feel (800ms - 1500ms random)
+    const thinkingDelay = 800 + Math.random() * 700;
+    await new Promise(resolve => setTimeout(resolve, thinkingDelay));
+
+    // 4. Remove thinking indicator
+    thinkingIndicator.remove();
+
+    // 5. Show AI response
     appendMessage("ai", answerObj.text, true, {
         skills: answerObj.skills,
         images: answerObj.images,
@@ -841,7 +933,8 @@ async function sendMessage() {
         inlineLink: answerObj.inlineLink,
         color: answerObj.color,
         caseStudy: answerObj.caseStudy,
-        inlineLinks: answerObj.inlineLinks
+        inlineLinks: answerObj.inlineLinks,
+        worldClocks: answerObj.worldClocks
     });
 
     input.value = "";
@@ -854,51 +947,108 @@ function appendProjectsGrid(projects, container, skipSpaceTop = false) {
     projectWrapper.classList.add("project");
     projectWrapper.style.width = "100%";
     projectWrapper.style.maxWidth = "100%";
+    projectWrapper.style.display = "flex";
+    projectWrapper.style.flexDirection = "column";
+    projectWrapper.style.gap = "10vh"; // Big gap for spacing
 
     let i = 0;
+    // Layout pattern: 0: Full(100), 1: Split(50/40), 2: Wide(80) ... repeat
+    let patternIndex = 0;
+
     while (i < projects.length) {
         const project = projects[i];
-        const nextProject = projects[i + 1];
 
-        // Single full-width project
-        if (!nextProject || project.layout === "sixty") {
+        // Pattern 0: Full Width (100%)
+        if (patternIndex === 0) {
             const fullWidthDiv = document.createElement("div");
             fullWidthDiv.classList.add("w-100");
-            if (i > 0) fullWidthDiv.classList.add("spaceBottom");
 
             const projectItem = createProjectItem(project);
             fullWidthDiv.appendChild(projectItem);
             projectWrapper.appendChild(fullWidthDiv);
 
             i++;
+            patternIndex = 1;
         }
-        // Pair of projects side by side
-        else {
+        // Pattern 1: Split (50% / 40%) - Requires 2 projects
+        else if (patternIndex === 1 && i + 1 < projects.length) {
+            const nextProject = projects[i + 1];
+
             const flexBox = document.createElement("div");
             flexBox.classList.add("flexBox");
             flexBox.style.alignItems = "start";
 
+            // Left Item (50%)
             const firstDiv = document.createElement("div");
-            firstDiv.classList.add("w-50", "spaceBottom");
-            if (!skipSpaceTop) firstDiv.classList.add("spaceTop");
+            firstDiv.classList.add("w-50");
             const firstItem = createProjectItem(project);
             firstDiv.appendChild(firstItem);
 
+            // Spacer (5%)
+            const spacerDiv = document.createElement("div");
+            spacerDiv.classList.add("w-05");
+
+            // Right Item (40%)
             const secondDiv = document.createElement("div");
-            secondDiv.classList.add("w-50", "spaceBottom");
-            if (!skipSpaceTop) secondDiv.classList.add("spaceTop");
+            secondDiv.classList.add("w-40");
             const secondItem = createProjectItem(nextProject);
             secondDiv.appendChild(secondItem);
 
+            // End Spacer (5%) - to balance if needed, or just leave empty space on right
+            const endSpacer = document.createElement("div");
+            endSpacer.classList.add("w-05");
+
             flexBox.appendChild(firstDiv);
+            flexBox.appendChild(spacerDiv);
             flexBox.appendChild(secondDiv);
+            flexBox.appendChild(endSpacer);
+
             projectWrapper.appendChild(flexBox);
 
             i += 2;
+            patternIndex = 2;
+        }
+        // Pattern 2: Wide (80%)
+        else if (patternIndex === 2) {
+            const wideDiv = document.createElement("div");
+            wideDiv.classList.add("w-80");
+
+            const projectItem = createProjectItem(project);
+            wideDiv.appendChild(projectItem);
+            projectWrapper.appendChild(wideDiv);
+
+            i++;
+            patternIndex = 0; // Reset to full width
+        }
+        // Fallback: If pattern expects 2 items but only 1 left, show as full or wide
+        else {
+            const fullWidthDiv = document.createElement("div");
+            fullWidthDiv.classList.add("w-100");
+
+            const projectItem = createProjectItem(project);
+            fullWidthDiv.appendChild(projectItem);
+            projectWrapper.appendChild(fullWidthDiv);
+
+            i++;
+            patternIndex = 0;
         }
     }
 
     container.appendChild(projectWrapper);
+
+    // Scroll to peek at projects (not all the way to bottom)
+    setTimeout(() => {
+        if (responseBox) {
+            // Scroll down just enough to show a peek (30vh)
+            const currentScroll = responseBox.scrollTop;
+            const peekAmount = window.innerHeight * 0.3; // 30% of viewport height
+
+            responseBox.scrollTo({
+                top: currentScroll + peekAmount,
+                behavior: 'smooth'
+            });
+        }
+    }, 100); // Small delay to ensure DOM is updated
 }
 
 // -------- Create individual project item --------
@@ -925,7 +1075,7 @@ function createProjectItem(project) {
         }
 
         if (caseStudy) {
-            appendMessage("ai", `Here is the case study for ${project.title}:`, false, {
+            appendMessage("ai", `Here is the case study for ${project.title}: `, false, {
                 caseStudy: caseStudy
             });
         } else {
@@ -978,7 +1128,7 @@ function appendCaseStudy(caseStudy, container) {
     const addInfoItem = (label, text) => {
         if (text) {
             const div = document.createElement("div");
-            div.innerHTML = `<span style="opacity: 0.6">${label}:</span> ${text}`;
+            div.innerHTML = `< span style = "opacity: 0.6" > ${label}:</span > ${text} `;
             infoRow.appendChild(div);
         }
     };
@@ -1303,17 +1453,22 @@ function appendCaseStudy(caseStudy, container) {
             const shuffled = [...availableProjects].sort(() => 0.5 - Math.random());
             const randomProjects = shuffled.slice(0, 2);
 
-            // Force all projects to be "forty" layout for 50% width display
-            const modifiedProjects = randomProjects.map(p => ({ ...p, layout: "forty" }));
+            // Create a simple 50/50 flexbox layout for Related Work
+            const flexBox = document.createElement("div");
+            flexBox.classList.add("flexBox");
+            flexBox.style.alignItems = "start";
+            flexBox.style.gap = "32px";
 
-            // Create a flex container for horizontal layout
-            const projectsContainer = document.createElement("div");
-            projectsContainer.style.display = "flex";
-            projectsContainer.style.gap = "var(--spacing-md)";
-            projectsContainer.style.flexWrap = "wrap";
-            container.appendChild(projectsContainer);
+            randomProjects.forEach(project => {
+                const projectDiv = document.createElement("div");
+                projectDiv.classList.add("w-50");
 
-            appendProjectsGrid(modifiedProjects, projectsContainer, true); // Skip spaceTop for Related Work
+                const projectItem = createProjectItem(project);
+                projectDiv.appendChild(projectItem);
+                flexBox.appendChild(projectDiv);
+            });
+
+            container.appendChild(flexBox);
         }
     }
 }
@@ -1479,27 +1634,53 @@ function showWelcomeMessage() {
     p.id = "IntroChat";
     p.classList.add("IntroChat"); // Add class for CSS padding
 
-    const welcomeText = "Essence is Alex's digital assistant—built on accessible, visual design, system thinking for product teams who actually give a damn. Ask away.";
+    const welcomeText = "👋 I'm Essence — Alex's portfolio assistant.<br>Ask me anything about his work, skills, or vision.";
 
     // Create clickable prompt links
     const prompts = [
-        { text: "What's Alex's dream job?", displayText: "What's Alex's dream job?", query: "dream job" },
-        { text: "What's Alex's role right now?", displayText: "What's Alex's current role?", query: "role" },
-        { text: "What's his educational background?", displayText: "What's Alex's educational background?", query: "education" },
-        { text: "Tell me about Alex", displayText: "Tell me about Alex?", query: "background" },
-        { text: "What projects does Alex have?", displayText: "What projects Alex's have worked on?", query: "projects" },
-        { text: "What are Alex's skills?", displayText: "What are Alex's skills?", query: "skills" }
+        { text: "💭 Dream job", displayText: "What's Alex's dream job?", query: "dream job" },
+        { text: "💼 Current role", displayText: "What's Alex's current role?", query: "role" },
+        { text: "🎓 Education", displayText: "What's Alex's educational background?", query: "education" },
+        { text: "👤 About Alex", displayText: "Tell me about Alex", query: "background" },
+        { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
+        { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" }
     ];
 
     const appendPrompts = () => {
         p.appendChild(document.createElement("br"));
         p.appendChild(document.createElement("br"));
 
+        const promptsContainer = document.createElement("div");
+        promptsContainer.style.display = "flex";
+        promptsContainer.style.flexWrap = "wrap";
+        promptsContainer.style.gap = "12px";
+        promptsContainer.style.marginTop = "24px";
+
         prompts.forEach((prompt, index) => {
             const link = document.createElement("a");
             link.href = "#";
             link.textContent = prompt.text;
             link.style.cursor = "pointer";
+            link.style.padding = "12px 20px";
+            link.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+            link.style.border = "1px solid rgba(255, 255, 255, 0.2)";
+            link.style.borderRadius = "100rem";
+            link.style.fontSize = "16px";
+            link.style.transition = "all 0.2s ease";
+            link.style.textDecoration = "none";
+            link.style.display = "inline-block";
+
+            link.addEventListener("mouseenter", () => {
+                link.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
+                link.style.borderColor = "rgba(255, 255, 255, 0.4)";
+                link.style.transform = "translateY(-2px)";
+            });
+
+            link.addEventListener("mouseleave", () => {
+                link.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+                link.style.borderColor = "rgba(255, 255, 255, 0.2)";
+                link.style.transform = "translateY(0)";
+            });
 
             link.addEventListener("click", async (e) => {
                 e.preventDefault();
@@ -1511,6 +1692,7 @@ function showWelcomeMessage() {
                 const userText = prompt.displayText;
                 if (!userText) return;
 
+                // 1. Show user message
                 appendMessage("user", userText);
                 questionCount++;
 
@@ -1528,9 +1710,33 @@ function showWelcomeMessage() {
                     return;
                 }
 
-                // Use the query keyword instead of the display text
+                // 2. Show thinking indicator
+                const thinkingIndicator = document.createElement("div");
+                thinkingIndicator.classList.add("thinking-indicator");
+                thinkingIndicator.innerHTML = `
+                    <div class="dot-pulse"></div>
+                    <div class="dot-pulse"></div>
+                    <div class="dot-pulse"></div>
+                `;
+                responseBox.appendChild(thinkingIndicator);
+
+                // Scroll to show thinking indicator
+                responseBox.scrollTo({
+                    top: responseBox.scrollHeight,
+                    behavior: 'smooth'
+                });
+
+                // 3. Get response (with artificial thinking delay)
                 const answerObj = await findResponse(prompt.query);
 
+                // Add artificial delay for "thinking" feel (800ms - 1500ms random)
+                const thinkingDelay = 800 + Math.random() * 700;
+                await new Promise(resolve => setTimeout(resolve, thinkingDelay));
+
+                // 4. Remove thinking indicator
+                thinkingIndicator.remove();
+
+                // 5. Show AI response
                 appendMessage("ai", answerObj.text, true, {
                     skills: answerObj.skills,
                     images: answerObj.images,
@@ -1547,12 +1753,10 @@ function showWelcomeMessage() {
                 input.value = "";
             });
 
-            p.appendChild(link);
-
-            if (index < prompts.length - 1) {
-                p.appendChild(document.createTextNode(", "));
-            }
+            promptsContainer.appendChild(link);
         });
+
+        p.appendChild(promptsContainer);
     };
 
     wrapper.appendChild(p);
@@ -1591,7 +1795,7 @@ function animatePlaceholder() {
         for (let i = 0; i < dots; i++) {
             dotString += ".";
         }
-        input.setAttribute("placeholder", `${baseText}${dotString}`);
+        input.setAttribute("placeholder", `${baseText}${dotString} `);
     }, 500); // Update every 500ms
 }
 

@@ -3,9 +3,9 @@
    ------------------------------------------------- */
 :root {
     /* Colors */
-    --primary: #000000;
+    --primary: #080808;
     /* black background */
-    --white: #ffffff;
+    --white: #f6f6f6;
     /* white text */
     --gray: #A5A5A5;
     --dark-gray: #333333;
@@ -45,10 +45,13 @@ body {
     background-color: var(--primary);
     color: var(--white);
     overscroll-behavior-y: none;
-    transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.5s, color 0.5s, opacity 0.5s ease-in-out;
     position: relative;
-    /* Ensure absolute children are relative to body/viewport if needed */
+    opacity: 0;
+}
 
+body.loaded {
+    opacity: 1;
 }
 
 body.essence-page,
@@ -74,10 +77,10 @@ body.essence-mode {
 }
 
 .modes {
-    position: fixed;
-    z-index: 22222222;
-    bottom: 48px;
-    right: 56px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    /* Removed fixed positioning */
 }
 
 .speachMode {
@@ -92,8 +95,8 @@ body.essence-mode {
 }
 
 .modeIcon {
-    width: 24px;
-    height: 24px;
+    width: 18px;
+    height: 18px;
     border-radius: 100rem;
     background-color: rgba(255, 255, 255, 0.319);
     transition: background-color 0.3s, transform 0.3s;
@@ -182,18 +185,18 @@ a {
    Text size utilities
    ------------------------------------------------- */
 .lgTxt {
-    font-size: 48px;
-    line-height: 1.2;
+    font-size: 124px;
+    line-height: 1.1;
 }
 
 .mdTitle {
-    font-size: 40px;
+    font-size: 32px;
     line-height: 1.3;
 }
 
 .mdTxt {
-    font-size: 24px;
-    line-height: 1.6;
+    font-size: 2rem;
+    line-height: 1.5;
 }
 
 .smTxt {
@@ -213,6 +216,10 @@ a {
    ------------------------------------------------- */
 .w-100 {
     width: 100%;
+}
+
+.w-90 {
+    width: 90%;
 }
 
 .w-80 {
@@ -237,6 +244,18 @@ a {
 
 .w-30 {
     width: calc(30% - 16px);
+}
+
+.w-20 {
+    width: calc(20% - 16px);
+}
+
+.w-10 {
+    width: calc(10% - 16px);
+}
+
+.w-05 {
+    width: calc(5% - 16px);
 }
 
 /* -------------------------------------------------
@@ -295,22 +314,16 @@ a {
 
 .hero h1 {
     position: absolute;
-    font-size: 8vw;
-    max-width: 50%;
-    line-height: 7.5vw;
-    padding-top: 56px;
-}
-
-.hero h2 {
-    position: absolute;
     font-size: 2.8vw;
     line-height: 2.8vw;
     bottom: 56px;
     max-width: 70%;
     text-wrap: balance;
+    padding-top: 0;
+    /* Reset padding from previous h1 style */
 }
 
-.hero h3 {
+.hero p {
     position: absolute;
     right: 0;
     bottom: 56px;
@@ -325,6 +338,8 @@ a {
 
 #heroTop {
     padding-top: 40vh;
+    text-wrap: balance;
+    width: 60%;
 }
 
 .IntroChat {
@@ -392,7 +407,7 @@ a {
     left: 0;
     right: 0;
     z-index: 3333333;
-    background: linear-gradient(to bottom, #000, rgba(0, 0, 0, 0));
+    background: linear-gradient(to bottom, var(--primary), rgba(0, 0, 0, 0));
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -403,44 +418,68 @@ a {
     display: flex;
     flex-direction: row;
     width: 100%;
+    align-items: center;
 }
 
-.nav-left {
+.nav-center {
     display: flex;
     align-items: center;
-    background-color: rgba(128, 128, 128, 0.53);
-    backdrop-filter: blur(32px);
-    padding-left: 8px;
-    padding-right: 8px;
-    border-radius: 100rem;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 8px;
-    margin: auto;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 50%;
+    margin-top: -12px;
+    /* Adjust for text height */
     width: fit-content;
-    gap: 0;
+    height: auto;
+    gap: 32px;
+    /* More space between text */
+    z-index: 20;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+    /* Space between Resume and Speech */
 }
 
 .pill-background {
+    display: none;
+    /* Hide the old pill */
+}
+
+/* New Sliding Underline */
+.nav-underline {
     position: absolute;
-    background-color: black;
-    border-radius: 100rem;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    height: calc(100% - 8px);
-    top: 4px;
-    z-index: 0;
+    bottom: -8px;
+    left: 0;
+    height: 2px;
+    background-color: var(--white);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 0;
+    /* JS will set this */
     pointer-events: none;
 }
 
 .nav-pill-link {
     position: relative;
     z-index: 1;
-    padding: 8px 24px;
-    transition: color 0.3s;
-    margin-right: 0 !important;
+    padding: 0;
+    /* Remove padding */
+    transition: opacity 0.3s;
+    text-decoration: none;
+    opacity: 0.5;
+    /* Default dimmed */
+}
+
+.nav-pill-link.active {
+    opacity: 1;
+    /* Active bright */
+}
+
+.nav-pill-link:hover {
+    opacity: 1;
 }
 
 .nav-pill-link h6 {
@@ -557,32 +596,20 @@ a {
 
 .responseBox {
     position: absolute;
-    left: 0;
-    margin: auto;
-    padding-left: 56px;
-    padding-right: 56px;
+    left: 56px;
+    right: 56px;
+    /* Constrain right side too */
+    margin: 0;
+    padding: 0;
+    /* Remove padding as we use margins */
     margin-bottom: 132px;
     overflow-y: auto;
-    height: calc(100vh - 132px);
-    width: 70%;
+    height: calc(100% - 86px);
+    width: auto;
+    /* Let left/right control width */
+    max-width: none;
     z-index: 2;
-}
-
-.gallery {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 30%;
-    height: 100vh;
-    z-index: 1;
-    background-color: var(--primary);
-}
-
-.gallery img {
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    box-sizing: border-box;
 }
 
 .aiMsg,
@@ -594,12 +621,81 @@ a {
 .userMsg .msg-wrapper,
 .aiMsg .msg-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: flex-start;
 }
 
+/* Staggered slide-in animations */
 .label-col {
-    width: 100%;
+    width: 20%;
+    position: relative;
+    animation: slideIn 0.6s ease forwards;
+}
+
+.msgContent {
+    padding-bottom: 64px;
+    width: 80%;
+    position: relative;
+    animation: slideIn 0.8s ease 0.15s forwards;
+    /* Delayed start */
+    opacity: 0;
+    /* Start hidden */
+}
+
+@keyframes slideIn {
+    from {
+        top: 40px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
+}
+
+/* Thinking indicator */
+.thinking-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 24px 0;
+    opacity: 0.6;
+}
+
+.thinking-indicator .dot-pulse {
+    width: 12px;
+    height: 12px;
+    background-color: var(--white);
+    border-radius: 50%;
+    animation: dotPulse 1.4s infinite ease-in-out;
+}
+
+.thinking-indicator .dot-pulse:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.thinking-indicator .dot-pulse:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.thinking-indicator .dot-pulse:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes dotPulse {
+
+    0%,
+    60%,
+    100% {
+        opacity: 0.3;
+        transform: scale(0.8);
+    }
+
+    30% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .response-card {
@@ -687,6 +783,25 @@ a {
     }
 }
 
+.clipping {
+    position: relative;
+    overflow: hidden;
+}
+
+.clipping .captions {
+    position: absolute;
+    bottom: -120px;
+    padding: 16px;
+    font-size: 18px;
+    transition: bottom 0.5s ease;
+}
+
+.clipping:hover .captions {
+    bottom: 0;
+    transition: bottom 0.5s ease;
+}
+
+
 .chat-card {
     margin-bottom: 32px;
 }
@@ -694,18 +809,20 @@ a {
 .aiMsg p,
 .userMsg p {
     width: 100%;
-    font-size: 2.8vw;
-    line-height: 2.8vw;
+    font-size: 56px;
+    line-height: 72px;
+    margin-bottom: 32px;
+}
+
+.aiMsg p:last-child,
+.userMsg p:last-child {
+    margin-bottom: 0;
 }
 
 .aiMsg.long-response p,
 .userMsg.long-response p {
-    font-size: 1.8vw;
-    line-height: 110%;
-}
-
-.msgContent {
-    padding-bottom: 64px;
+    font-size: 56px;
+    line-height: 72px;
 }
 
 .aiMsg a {
@@ -734,21 +851,27 @@ a {
 
 .inputBox {
     position: fixed;
-    bottom: 32px;
+    bottom: 0;
     left: 56px;
-    padding: 24px;
-    border-radius: 100rem;
-    padding-left: 48px;
-    width: calc(70% - 64px);
+    right: 56px;
+    /* Constrain right side */
+    transform: none;
+    padding: 0;
+    /* Remove padding if not needed, or keep internal padding */
+    width: auto;
+    /* Let left/right control width */
+    height: 86px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    background-color: #111111;
+    background-color: var(--primary);
+    z-index: 10;
 }
 
 .inputBox input[type="text"] {
     flex: 1;
-    font-size: 18px;
+    font-size: 32px;
+    /* Larger to match chat */
     color: white;
     background: transparent;
     border: none;
@@ -757,12 +880,14 @@ a {
 
 .inputBox ::placeholder {
     color: white;
+    opacity: 0.5;
 }
 
 .send {
     margin-left: 12px;
     padding-right: 24px;
-    font-size: 18px;
+    font-size: 24px;
+    /* Larger send button */
     color: white;
     cursor: pointer;
 }
@@ -784,7 +909,19 @@ a {
 }
 
 .promptBtn:hover {
-    background: var(--darker-gray-hover);
+    background: var(--orange);
+}
+
+.no-bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.no-bullets li {
+    font-size: 24px;
+    line-height: 1.4;
+    margin-bottom: 8px;
 }
 
 /* Skills */
@@ -814,11 +951,11 @@ a {
 }
 
 .spaceTop {
-    margin-top: 96px;
+    margin-top: 196px;
 }
 
 .spaceBottom {
-    margin-bottom: 96px;
+    margin-bottom: 196px;
 }
 
 /* Projects grid */
@@ -837,6 +974,27 @@ a {
     grid-column: 1/-1;
 }
 
+.moreWorks {
+    overflow: hidden;
+    height: 80vh;
+    margin-left: 56px;
+    margin-right: 56px;
+    border-top: 1px solid var(--white);
+}
+
+.moreWorks video,
+.moreWorks img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    object-position: center 25%;
+}
+
+.moreWorks h1 {
+    width: 50%;
+    text-wrap: balance;
+}
+
 .project h3 {
     text-align: left;
     padding-top: 16px;
@@ -844,9 +1002,17 @@ a {
     font-weight: 400;
 }
 
+.project h2 {
+    padding-top: 16px;
+}
+
 .project .w-50 {
     gap: 0;
     width: 50%;
+}
+
+.project .flexBox {
+    gap: 5%;
 }
 
 /* -------------------------------------------------
@@ -874,6 +1040,12 @@ a {
     width: 24px;
     height: 24px;
     flex-shrink: 0;
+}
+
+.hr {
+    background-color: var(--white);
+    height: 1px;
+    width: 100%;
 }
 
 .drawers .plusBar1,
@@ -935,7 +1107,6 @@ a {
 }
 
 .articles h1 {
-    padding-top: 56px;
     text-wrap: balance;
     padding-bottom: 56px;
 }
@@ -1004,6 +1175,8 @@ a {
 }
 
 .separator-line {
+    display: none;
+    /* Removed as requested */
     width: 100%;
     height: 2px;
     background-color: rgba(255, 255, 255, 0.2);
@@ -1033,6 +1206,12 @@ a {
 
 .pwdSpace a {
     text-decoration: underline;
+}
+
+.footer {
+    color: white;
+    padding-bottom: 56px;
+    font-size: 124px;
 }
 
 /* Mobile adjustments (≤930px) */
@@ -1127,24 +1306,23 @@ a {
         padding: 16px;
     }
 
-    .gallery {
-        position: fixed;
-        left: 0;
-        right: 0;
-        top: 0;
+    .msgContent {
+        padding-bottom: 64px;
         width: 100%;
-        height: 100%;
-        z-index: -1;
-        opacity: 0.1;
     }
 
-    .msgContent {
-        padding-bottom: 0;
+    .userMsg .msg-wrapper,
+    .aiMsg .msg-wrapper {
+        flex-direction: column;
+    }
+
+    .label-col {
+        width: 100%;
     }
 
     .responseBox {
         z-index: 1;
-        height: calc(100% - 96px);
+        height: calc(100% - 86px);
     }
 
     .spaceTop {
@@ -1248,4 +1426,18 @@ a {
    ------------------------------------------------- */
 ::-webkit-scrollbar {
     width: 0;
+}
+
+/* Case Study Specific Styles */
+.duoBrid {
+    width: 132px;
+    height: auto;
+}
+
+.case-study h4 {
+    font-size: 18px;
+    padding-top: 32px;
+    margin-bottom: 64px;
+    width: 100%;
+    display: block;
 }

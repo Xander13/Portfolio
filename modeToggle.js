@@ -2,64 +2,100 @@
 (function () {
     'use strict';
 
-    let currentMode = 'essence'; // Default mode is now essence
+    let currentMode = 'work'; // Default mode is now work
 
     // Initialize on DOM load
     document.addEventListener('DOMContentLoaded', function () {
-        // Add essence-mode class to body since we start in essence mode
-        document.body.classList.add('essence-mode');
+        // Start in work mode (default HTML state)
         initializePillAnimation();
 
-        // Show welcome message on initial load since we start in essence mode
-        setTimeout(() => {
-            initializeEssenceMode();
-        }, 500);
+        // Ensure Essence mode is hidden initially (just in case CSS doesn't cover it)
+        const contentDiv = document.querySelector('.content');
+        const responseBox = document.querySelector('.responseBox');
+        const modesDiv = document.querySelector('.modes');
+        const inputBox = document.querySelector('.inputBox');
+
+        if (contentDiv) contentDiv.style.display = 'block';
+        if (responseBox) responseBox.style.display = 'none';
+        // modesDiv should stay visible - don't hide it
+        if (inputBox) inputBox.style.display = 'none';
+
+        // Check for URL query param
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('mode') === 'essence') {
+            const essenceLink = document.querySelector('.nav-pill-link[data-mode="essence"]');
+            if (essenceLink) {
+                // Use setTimeout to ensure everything is ready and avoid transition issues on load
+                setTimeout(() => essenceLink.click(), 100);
+            }
+        }
     });
 
     function initializePillAnimation() {
-        const pillBackground = document.querySelector('.pill-background');
-        const navLinks = document.querySelectorAll('.nav-pill-link');
+        // Underline animation logic
+        const underline = document.querySelector('.nav-underline');
+        const links = document.querySelectorAll('.nav-pill-link');
 
-        if (!pillBackground || navLinks.length === 0) return;
+        function updateUnderline(targetLink) {
+            if (!targetLink || !underline) return;
 
-        // Set initial position based on active link
-        const activeLink = document.querySelector('.nav-pill-link.active');
-        if (activeLink) {
-            // Use setTimeout to ensure DOM is fully rendered
-            setTimeout(() => {
-                updatePillPosition(activeLink, pillBackground);
-            }, 100);
+            // Target the specific text span if available, otherwise fallback to link
+            const textSpan = targetLink.querySelector('.nav-text');
+            const targetElement = textSpan || targetLink;
+
+            // Get position relative to the container (.nav-center)
+            const containerRect = document.querySelector('.nav-center').getBoundingClientRect();
+            const targetRect = targetElement.getBoundingClientRect();
+
+            const left = targetRect.left - containerRect.left;
+            const width = targetRect.width;
+
+            underline.style.width = `${width}px`;
+            underline.style.transform = `translateX(${left}px)`;
         }
 
-        // Add click handlers to nav links
-        navLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
-                e.preventDefault();
+        // Initialize
+        // Initialize
+        const activeLink = document.querySelector('.nav-pill-link.active');
+        if (activeLink) {
+            // Small delay to ensure layout is settled
+            setTimeout(() => updateUnderline(activeLink), 100);
+        }
 
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                updateUnderline(link);
+            });
+
+            link.addEventListener('mouseleave', () => {
+                const currentActive = document.querySelector('.nav-pill-link.active');
+                updateUnderline(currentActive);
+            });
+
+            link.addEventListener('click', function (e) {
                 const mode = this.getAttribute('data-mode');
 
-                // Update active state
-                navLinks.forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
+                // If it's a mode switch link
+                if (mode) {
+                    e.preventDefault();
 
-                // Animate pill
-                updatePillPosition(this, pillBackground);
+                    // Update active class
+                    links.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    updateUnderline(this);
 
-                // Switch mode
-                switchMode(mode);
+                    // Switch mode
+                    switchMode(mode);
+                }
+                // If no mode (like Resume), let the default link behavior happen
             });
         });
-    }
 
-    function updatePillPosition(activeLink, pillBackground) {
-        const linkRect = activeLink.getBoundingClientRect();
-        const containerRect = activeLink.parentElement.getBoundingClientRect();
-
-        const left = linkRect.left - containerRect.left;
-        const width = linkRect.width;
-
-        pillBackground.style.left = `${left}px`;
-        pillBackground.style.width = `${width}px`;
+        // Update on resize
+        window.addEventListener('resize', () => {
+            const currentActive = document.querySelector('.nav-pill-link.active');
+            updateUnderline(currentActive);
+        });
     }
 
     function switchMode(mode) {
@@ -70,82 +106,76 @@
         const contentDiv = document.querySelector('.content');
         const responseBox = document.querySelector('.responseBox');
         const modesDiv = document.querySelector('.modes');
-        const gallery = document.querySelector('.gallery');
         const inputBox = document.querySelector('.inputBox');
 
         if (mode === 'essence') {
-            // Switch to AI chat mode
-
-            // Fade out portfolio content
+            // 1. Fade out Work elements
+            contentDiv.classList.remove('fade-in');
             contentDiv.classList.add('fade-out');
 
             setTimeout(() => {
-                // Hide portfolio, show AI elements
+                // 2. Hide Work elements
                 contentDiv.style.display = 'none';
+
+                // 3. Prepare Essence elements (start hidden/transparent)
+                responseBox.classList.remove('fade-in');
+                responseBox.classList.add('fade-out'); // Ensure opacity 0
                 responseBox.style.display = 'block';
-                modesDiv.style.display = 'block';
-                gallery.style.display = 'block';
+
+                inputBox.classList.remove('fade-in');
+                inputBox.classList.add('fade-out');
                 inputBox.style.display = 'flex';
 
-                // Add essence mode class to body
+                modesDiv.style.display = 'block';
+
                 document.body.classList.add('essence-mode');
 
-                // Fade in AI elements
-                setTimeout(() => {
-                    responseBox.classList.add('fade-in');
-                    modesDiv.classList.add('fade-in');
-                    gallery.classList.add('fade-in');
-                    inputBox.classList.add('fade-in');
-                }, 50);
+                // 4. Force Reflow
+                void responseBox.offsetWidth;
+                void inputBox.offsetWidth;
 
-                // Initialize essence functionality if not already initialized
+                // 5. Fade in Essence elements
+                responseBox.classList.remove('fade-out');
+                responseBox.classList.add('fade-in');
+
+                inputBox.classList.remove('fade-out');
+                inputBox.classList.add('fade-in');
+
+                // Initialize essence functionality
                 initializeEssenceMode();
-
-                // Focus on input
                 const llmInput = document.getElementById('llmTxt');
-                if (llmInput) {
-                    llmInput.focus();
-                }
-            }, 500); // Wait for fade out
+                if (llmInput) llmInput.focus();
+
+            }, 500);
 
         } else if (mode === 'work') {
-            // Switch to portfolio mode
-
-            // Fade out AI elements
+            // 1. Fade out Essence elements
             responseBox.classList.remove('fade-in');
-            modesDiv.classList.remove('fade-in');
-            gallery.classList.remove('fade-in');
-            inputBox.classList.remove('fade-in');
-
             responseBox.classList.add('fade-out');
-            modesDiv.classList.add('fade-out');
-            gallery.classList.add('fade-out');
+
+            inputBox.classList.remove('fade-in');
             inputBox.classList.add('fade-out');
 
             setTimeout(() => {
-                // Hide AI elements, show portfolio
+                // 2. Hide Essence elements
                 responseBox.style.display = 'none';
-                modesDiv.style.display = 'none';
-                gallery.style.display = 'none';
                 inputBox.style.display = 'none';
 
+                // 3. Prepare Work elements
+                contentDiv.classList.remove('fade-in');
+                contentDiv.classList.add('fade-out'); // Ensure opacity 0
                 contentDiv.style.display = 'block';
 
-                // Remove essence mode class from body
                 document.body.classList.remove('essence-mode');
 
-                // Fade in portfolio
+                // 4. Force Reflow
+                void contentDiv.offsetWidth;
+
+                // 5. Fade in Work elements
                 contentDiv.classList.remove('fade-out');
                 contentDiv.classList.add('fade-in');
 
-                // Clean up fade classes
-                setTimeout(() => {
-                    responseBox.classList.remove('fade-out');
-                    modesDiv.classList.remove('fade-out');
-                    gallery.classList.remove('fade-out');
-                    inputBox.classList.remove('fade-out');
-                }, 100);
-            }, 500); // Wait for fade out
+            }, 500);
         }
     }
 

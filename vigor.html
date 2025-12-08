@@ -47,84 +47,79 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 
-<body>
-    <div class="topNav">
-        <div class="nav-left">
-            <a class="active" href="index.html">
-                <h6>Work</h6>
+<body class="case-study">
+    <nav class="topNav" aria-label="Main Navigation">
+        <a href="index.html" class="nav-brand">
+            <h6>Alex Kauffman</h6>
+        </a>
+
+        <div class="nav-center">
+            <div class="nav-underline"></div>
+            <a class="nav-pill-link" href="index.html?mode=essence">
+                <h6><span class="nav-text">Essence</span></h6>
             </a>
-            <a href="Alex_Kauffman_Resume.pdf" target="_blank">
-                <h6>Resume</h6>
+            <a class="active nav-pill-link" href="index.html">
+                <h6><span class="nav-text">Work</span></h6>
+            </a>
+            <a class="nav-pill-link" href="Alex_Kauffman_Resume.pdf" target="_blank">
+                <h6><span class="nav-text">Resume</span></h6>
             </a>
         </div>
-        <a href="essence.html">
-            <h6><span class="dot"></span>Essence</h6>
-        </a>
-    </div>
-    <div class="content" id="heroTop">
-        <div class="modes">
-            <div class="flexBox">
-                <div class="modeIcon"></div>
-                <div class="speachMode">Speach Mode</div>
+
+        <div class="nav-right">
+            <div class="modes">
+                <div class="flexBox">
+                    <div class="modeIcon"></div>
+                    <div class="speachMode">Speech Mode</div>
+                </div>
             </div>
         </div>
-        <h2>Vigor Fitness App</h2>
-        <div class="smMargin"></div>
-        <h1 class="mdTitle">Reimagning fitness in a gamification way to avoid burnouts.</h1>
+    </nav>
+    <div class="content" id="heroTop">
+        <h1>Vigor Fitness App - Reimagning fitness in a gamification way to avoid burnouts.</h1>
     </div>
     <div class="mdMargin"></div>
     <div class="cover">
-        <video src="VigorSplash.mp4" nocontrol loop muted autoplay playsinline>
+        <video src="VigorSplash.mp4" playsinline autoplay loop muted>
     </div>
     <div class="content">
         <div class="mdMargin"></div>
-        <div class="flexBox" style="align-items:start;">
+        <div class="flexBox" style="align-items:start; gap: 64px;">
             <div class="w-50">
-                <div class="flexBox">
-                    <div class="w-50">
-                        <hr>
-                        <br>
-                        <h1 class="xSmTxt">Time: Spring 2020</h1>
-                        <br>
-                        <hr>
-                        <br>
-                        <h1 class="xSmTxt">Role: Visual Design, Research</h1>
-                        <br>
-                        <hr>
-                        <br>
-                        <h1 class="xSmTxt">Devices: Apple iPhone, Watch</h1>
-                        <br>
-                        <hr>
-                        <br>
-                    </div>
-                </div>
+                <h4>Deliverables</h4>
+                <h2>Concept development</h2>
+                <h2>Interactive design</h2>
+                <h2>Experience design</h2>
             </div>
             <div class="w-50">
-                <h1 class="mdTxt">Vigor is a fitness app designed to help busy Americans stay active. It uses
+                <h4>The brief</h4>
+                <h2>Vigor is a fitness app designed to help busy Americans stay active. It uses
                     gamification to encourage users to exercise based on their interests, which are identified during
-                    the onboarding process.</h1>
+                    the onboarding process.</h2>
                 <br>
-                <h1 class="mdTxt">I conducted 10 interviews to better understand today’s fitness needs. Through these
+                <h2>I conducted 10 interviews to better understand today’s fitness needs. Through these
                     conversations, I gained insights into why many people find going to the gym unfavorable. I learned
                     that fitness is defined differently for everyone, and gyms tend to cater to only a specific group of
                     users. The mental model we've built around exercise makes us feel like we need to be in a gym
-                    environment in order to work out.</h1>
+                    environment in order to work out.</h2>
                 <br>
-                <h1 class="mdTxt">The outcome of this project helped me better understand users' needs and translate
-                    them into tangible interfaces.</h1>
+                <h2>The outcome of this project helped me better understand users' needs and translate
+                    them into tangible interfaces.</h2>
             </div>
         </div>
         <div class="lgMargin"></div>
-        <h1 class="mdTxt">The ask</h1>
-        <div class="smMargin"></div>
-        <h1 class="lgTxt" id="lgText" style="padding-left: 0;">Create a fitness experience open to your own
-            interpretation</h1>
+        <h4>The ask</h4>
+        <div class="w-90">
+            <h1 class="lgTxt" id="lgText" style="text-wrap: balance;">Create a fitness experience open to your own
+                interpretation, must be mobile first device and apple watch</h1>
+        </div>
         <div class="lgMargin"></div>
         <div class="flexBox" style="align-items: start; gap: 1.25em;">
             <div class="w-50">
-                <h1 class="mdTxt">Key findings</h1>
+
             </div>
             <div class="w-50">
+                <h4>Key findings</h4>
                 <h1 class="mdTxt">Busy Americans are not getting enough fitness into their day to day routines due to
                     busy lifestyles.</h1>
                 <div class="smMargin"></div>
@@ -139,34 +134,25 @@
             </div>
         </div>
     </div>
-    <div class="mdMargin"></div>
+    <div class="lgMargin"></div>
     <div class="content">
-        <div class="fullView">
-            <div class="clipping">
-                <img draggable="false" src="Vigor_SignUP.png" width="100%" alt="image">
-            </div>
-            <div class="captions">
-                <h1 class="xSmTxt">Sign up screens</h1>
-            </div>
-        </div>
-        <div class="xSmMargin"></div>
         <div class="flexBox" style="gap: var(--xSmMargin); align-items: start;">
             <div class="w-50">
                 <div class="clipping">
                     <img draggable="false" src="Vigor_image10.png" width="100%"
                         alt="Vigor Phone App showing a warning to not over exercise.">
-                </div>
-                <div class="captions">
-                    <h1 class="xSmTxt">Splash Screen</h1>
+                    <div class="captions">
+                        <h1 class="xSmTxt">Splash Screen</h1>
+                    </div>
                 </div>
             </div>
             <div class="w-50">
                 <div class="clipping">
                     <img draggable="false" src="Vigor_image13.png" width="100%"
                         alt="Vigor Phone App showing a warning to not over exercise.">
-                </div>
-                <div class="captions">
-                    <h1 class="xSmTxt">Map auto routes based on amounts of charges users perform</h1>
+                    <div class="captions">
+                        <h1 class="xSmTxt">Map auto routes based on amounts of charges users perform</h1>
+                    </div>
                 </div>
             </div>
         </div>
@@ -174,9 +160,9 @@
         <div class="fullView">
             <div class="clipping">
                 <img draggable="false" src="Vigor_Widgets.png" width="100%">
-            </div>
-            <div class="captions">
-                <h1 class="xSmTxt">Add widgets to your mobile devices</h1>
+                <div class="captions">
+                    <h1 class="xSmTxt">Add widgets to your mobile devices</h1>
+                </div>
             </div>
         </div>
         <div class="xSmMargin"></div>
@@ -185,18 +171,18 @@
                 <div class="clipping">
                     <img draggable="false" src="Vigor_image12.png" width="100%"
                         alt="Vigor Phone App showing a warning to not over exercise.">
-                </div>
-                <div class="captions">
-                    <h1 class="xSmTxt">Friction state to avoid users burn out</h1>
+                    <div class="captions">
+                        <h1 class="xSmTxt">Friction state to avoid users burn out</h1>
+                    </div>
                 </div>
             </div>
             <div class="w-50">
                 <div class="clipping">
                     <img draggable="false" src="Vigor_image9.png" width="100%"
                         alt="Vigor Phone App showing a warning to not over exercise.">
-                </div>
-                <div class="captions">
-                    <h1 class="xSmTxt">Log workout to earn charges</h1>
+                    <div class="captions">
+                        <h1 class="xSmTxt">Log workout to earn charges</h1>
+                    </div>
                 </div>
             </div>
         </div>
@@ -204,19 +190,24 @@
         <div class="fullView">
             <div class="clipping">
                 <img draggable="false" src="Vigor_iWatch.png" width="100%">
-            </div>
-            <div class="captions">
-                <h1 class="xSmTxt">Vigor on watch device</h1>
+                <div class="captions">
+                    <h1 class="xSmTxt">Vigor on watch device</h1>
+                </div>
             </div>
         </div>
         <div class="lgMargin"></div>
-        <div class="center">
-            <h1 class="mdTitle">Fitness can be achieved through various activities</h1>
-            <div class="smMargin"></div>
-            <h1 class="mdTxt">From the interviews, people are more motivated to do what they love. Often, these
-                activities also provide great benefits for exercise.</h1>
+        <div class="flexBox" style="gap: 32px;">
+            <div class="w-50">
+
+            </div>
+            <div class="w-50">
+                <h2>Fitness can be achieved through various activities</h2>
+                <div class="smMargin"></div>
+                <h2>From the interviews, people are more motivated to do what they love. Often, these
+                    activities also provide great benefits for exercise.</h2>
+            </div>
         </div>
-        <div class="mdMargin"></div>
+        <div class="lgMargin"></div>
         <div class="clipping">
             <img src="Collage Workouts.png" width="100%">
         </div>
@@ -224,59 +215,52 @@
         <div class="flexBox" style="align-items: start;">
             <div class="w-50"></div>
             <div class="w-50">
-                <h1 class="mdTitle">Iterating until it feels right</h1>
+                <h1>Iterating until it feels right</h1>
                 <br>
                 <br>
-                <h2 class="mdTxt">Design process overview</h2>
+                <h2>Design process overview</h2>
                 <br>
-                <p>During my design process, I began developing wireframes to focus on the finer details of how
-                    interactions would function. My main goals for the design include:</p>
+                <h2>During my design process, I began developing wireframes to focus on the finer details of how
+                    interactions would function. My main goals for the design include:</h2>
                 <div class="smMargin"></div>
-                <div class="flexBox" style="gap: 32px;">
-                    <div class="w-50">
-                        <h2 class="mdTxt">Gamification approach</h2>
-                        <br>
-                        <p>Gamification is essential for this experience, as it creates a dopamine reward system that
-                            encourages users to engage. It also aligns well with their journey for personal growth
-                            within their busy lifestyles.</p>
-                    </div>
-                    <div class="w-50">
-                        <h2 class="mdTxt">Point system</h2>
-                        <br>
-                        <p>The point system helps users understand the energy expenditure associated with their
-                            activities. I introduced a charge ⚡ to provide a clear, comprehensive understanding of how
-                            much energy they will burn.</p>
-                    </div>
-                </div>
+                <h2>Gamification approach</h2>
+                <br>
+                <h2>Gamification is essential for this experience, as it creates a dopamine reward system that
+                    encourages users to engage. It also aligns well with their journey for personal growth
+                    within their busy lifestyles.</h2>
+                <div class="smMargin"></div>
+                <h2>Point system</h2>
+                <br>
+                <h2>The point system helps users understand the energy expenditure associated with their
+                    activities. I introduced a charge ⚡ to provide a clear, comprehensive understanding of how
+                    much energy they will burn.</h2>
             </div>
         </div>
         <div class="mdMargin"></div>
         <div class="clipping">
             <img src="Vigor_Process3.png" width="100%">
         </div>
-        <div class="smMargin"></div>
+        <div class="lgMargin"></div>
         <div class="flexBox" style="gap: var(--smMargin);">
             <div class="w-50">
                 <div class="clipping">
-                    <video src="Vigor_V1.mov" playsinline autoplay loop controls></video>
+                    <video src="Vigor_V1.mov" playsinline autoplay loop muted></video>
                 </div>
             </div>
             <div class="w-50">
-                <div class="clipping">
-                    <img src="Vigor_Color.png" width="100%"
-                        alt="Apple watch with Vigor UI showcasing list of workouts to do.">
-                </div>
-                <div class="smMargin"></div>
-                <div class="clipping">
-                    <img src="VigorMoodBoard.png" width="100%"
-                        alt="Apple watch with Vigor UI showcasing list of workouts to do.">
-                </div>
+                <h2>Prototyping for the Right Move</h2>
+                <br>
+                <br>
+                <h2>This concept reimagines progress tracking on Apple Watch through gamification. Quick interactions,
+                    clear rewards—charge more, climb higher.</h2>
             </div>
         </div>
+        <div class="lgMargin"></div>
+        <img src="VigorMoodBoard.png" width="100%" alt="Apple watch with Vigor UI showcasing list of workouts to do.">
         <div class="smMargin"></div>
-        <div class="clipping">
-            <img draggable="false" src="Vigor_Cover.png" width="100%">
-        </div>
+        <img src="Vigor_Color.png" width="100%" alt="Color palette for Vigor app">
+        <div class="smMargin"></div>
+        <img draggable="false" src="Vigor_Cover.png" width="100%">
         <div class="lgMargin"></div>
         <div class="breif">
             <div class="flexBox" style="align-items: start;">
@@ -338,10 +322,17 @@
                 </div>
             </div>
         </div>
-        <div class="moreWorks">
-            <div class="mdMargin"></div>
-            <div id="related-projects" data-project="Vigor Fitness"></div>
-        </div>
+    </div>
+    <div class="lgMargin"></div>
+    <div class="moreWorks">
+        <h4>Next Project</h4>
+        <div class="mdMargin"></div>
+        <a href="applelivecpations.html">
+            <h1>Apple Live Captions - Reimagning how Apple Accessbility in more coherit approch across all devices.</h1>
+            <br>
+            <br>
+            <video src="Apple Live CC.mp4" playsinline autoplay loop muted></video>
+        </a>
     </div>
     <script src="projectScripts.js"></script>
 </body>
