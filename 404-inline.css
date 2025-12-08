@@ -1,0 +1,74 @@
+/* Styles moved from inline <style> in 404.html */
+body {
+    overflow: hidden;
+}
+
+#gameContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.paddle {
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background-color: var(--dark);
+}
+
+#paddle1 {
+    left: 0;
+}
+
+#paddle2 {
+    right: 0;
+}
+
+#ball {
+    position: absolute;
+    width: 115px;
+    user-select: none;
+    height: 145px;
+}
+
+#line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: white;
+    transform: translateX(-50%);
+}
+
+#paddle1,
+#paddle2 {
+    background-color: white;
+}
+
+.errorMessage {
+    position: fixed;
+    bottom: 0;
+    padding: 56px;
+}
+
+.errorMessage h2 {
+    position: fixed;
+    right: 56px;
+    bottom: 56px;
+}
+
+.errorMessage p {
+    text-wrap: balance;
+    max-width: 80%;
+    padding-bottom: 32px;
+}
+
+#score {
+    position: absolute;
+    top: calc(100% / 2 - 4.2dvw);
+    width: 100%;
+    text-align: center;
+    font-size: 112px;
+    font-family: "Bricolage Grotesque", sans-serif;
+}

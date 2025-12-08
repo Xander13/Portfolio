@@ -1223,6 +1223,52 @@ a {
         margin-top: 156px;
     }
 
+    .hero {
+        height: 90vh;
+    }
+
+    .hero h1 {
+        position: absolute;
+        bottom: 48px;
+        max-width: 100%;
+        font-size: 28px;
+        line-height: 1.3;
+        padding: 0;
+        padding-bottom: 32px;
+    }
+
+    .hero p {
+        position: absolute;
+        right: auto;
+        bottom: 0;
+        margin-top: 16px;
+        font-size: 16px;
+        padding-bottom: 32px;
+    }
+
+    .topNav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: fit-content;
+    }
+
+    .nav-center {
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .inputBox {
+        position: fixed;
+        width: 100%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+
     .locked-page {
         overflow: hidden !important;
     }
@@ -1241,15 +1287,6 @@ a {
     }
 
     .mdMargin {
-        display: none;
-    }
-
-    .hero {
-        height: fit-content;
-        padding-bottom: 0;
-    }
-
-    .hero h3 {
         display: none;
     }
 
@@ -1283,6 +1320,16 @@ a {
         width: 100%;
     }
 
+    .IntroChat {
+        text-wrap: balance;
+        word-break: normal;
+    }
+
+    .nav-right,
+    .nav-brand {
+        display: none;
+    }
+
     .aiMsg a,
     .userMsg a {
         font-size: 24px;
@@ -1297,15 +1344,6 @@ a {
         padding-top: 48px;
     }
 
-    .inputBox {
-        width: calc(100% - 32px);
-        bottom: 38px;
-        left: 16;
-        right: 16;
-        font-size: 18px;
-        padding: 16px;
-    }
-
     .msgContent {
         padding-bottom: 64px;
         width: 100%;
@@ -1314,6 +1352,7 @@ a {
     .userMsg .msg-wrapper,
     .aiMsg .msg-wrapper {
         flex-direction: column;
+        width: 100%;
     }
 
     .label-col {
@@ -1322,7 +1361,13 @@ a {
 
     .responseBox {
         z-index: 1;
-        height: calc(100% - 86px);
+        height: calc(100% - 88px);
+        left: 0;
+        right: 0;
+        padding-left: 16px;
+        padding-right: 16px;
+        width: 100%;
+        position: fixed;
     }
 
     .spaceTop {
@@ -1334,13 +1379,7 @@ a {
     }
 
     .modes {
-        position: fixed;
-        bottom: 8px;
-        left: 0;
-        right: 0;
-        width: fit-content;
-        z-index: 333334;
-        margin: auto;
+        display: none;
     }
 
     .modeIcon {
@@ -1400,16 +1439,6 @@ a {
         padding-right: 16px;
     }
 
-    .topNav {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .responseBox {
-        width: 100%;
-        padding: 16px;
-    }
-
     .footer {
         font-size: 56px;
         padding-bottom: 0px !important;
@@ -1418,6 +1447,56 @@ a {
     .lgMargin {
         height: 1px;
         background-color: gray;
+    }
+
+    .project{
+        gap: 0 !important;
+    }
+
+    .project h2{
+        padding-bottom: 10vh;
+    }
+
+    .articles h1{
+        padding-top: 10vh;
+    }
+
+    #heroTop{
+        width: 100%;
+        text-wrap: wrap;
+        padding-bottom: 32px;
+    }
+
+    .moreWorks{
+        margin-left: 16px;
+        margin-right: 16px;
+        box-sizing: border-box;
+    }
+
+    .moreWorks video{
+        width: 100%;
+    }
+
+    .drawers .flexBox{
+        flex-direction: row;
+    }
+
+    .drawers{
+        padding-top: 56px;
+        padding-bottom: 56px;
+    }
+
+    .drawers .mdTxt{
+        font-size: 18px;
+    }
+
+    .breif{
+        padding-top: 10vh;
+    }
+
+    .moreWorks h1{
+        width: 100%;
+        text-wrap: wrap;
     }
 }
 
@@ -1440,4 +1519,87 @@ a {
     margin-bottom: 64px;
     width: 100%;
     display: block;
+}
+
+/* -------------------------------------------------
+   404 Error page
+   ------------------------------------------------- */
+.error-page {
+    display: block;
+    opacity: 1;
+}
+
+.error-page #gameContainer {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.error-page .paddle {
+    position: absolute;
+    width: 10px;
+    height: 100px;
+    background-color: var(--dark);
+}
+
+.error-page #paddle1 {
+    left: 0;
+}
+
+.error-page #paddle2 {
+    right: 0;
+}
+
+.error-page #ball {
+    position: absolute;
+    width: 115px;
+    user-select: none;
+    height: 145px;
+}
+
+.error-page #line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background-color: white;
+    transform: translateX(-50%);
+}
+
+.error-page #paddle1,
+.error-page #paddle2 {
+    background-color: white;
+}
+
+.error-page .errorMessage {
+    position: fixed;
+    bottom: 0;
+    padding: 56px;
+}
+
+.error-page .errorMessage h2 {
+    position: fixed;
+    right: 56px;
+    bottom: 56px;
+}
+
+.error-page .errorMessage p {
+    text-wrap: balance;
+    max-width: 80%;
+    padding-bottom: 32px;
+}
+
+.error-page #score {
+    position: absolute;
+    top: calc(100% / 2 - 4.2dvw);
+    width: 100%;
+    text-align: center;
+    font-size: 112px;
+    font-family: "Bricolage Grotesque", sans-serif;
+}
+
+/* ensure only the 404 page hides overflow */
+.error-page {
+    overflow: hidden;
 }

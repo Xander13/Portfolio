@@ -5,7 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AK - 404</title>
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self'">
+    <!-- Relaxed CSP to allow inline scripts/styles and data images.
+         For production, move inline JS to external files and replace 'unsafe-inline'
+         with hashes/nonces for better security. -->
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' https://fonts.googleapis.com; style-src-elem 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:;">
+
+    <!-- Add the modern (non-deprecated) meta and keep the Apple one for compatibility -->
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="author" content="Alex Kauffman">
     <meta name="description" content="Alex Kauffman - Product Designer">
     <meta name="theme-color" content="var(--light)" />
@@ -14,7 +21,10 @@
     <meta name="google" content="nositelinkssearchbox">
     <meta name="generator" content="program">
     <meta name="format-detection" content="telephone=no">
-    <link rel="icon" type="image/x-icon" href="alex_web_icon.png">
+    <!-- Fallback: small transparent PNG data-URI to avoid 404 while you fix the real path.
+         Replace href with the correct path (e.g. /assets/alex_web_icon.png) when available. -->
+    <link rel="icon" type="image/x-icon"
+        href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P4//8/AwAI/AL+X5mSAAAAAElFTkSuQmCC">
     <!--Apple Icon Set-->
     <link rel="apple-touch-icon" href="AlexIconApp.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -49,32 +59,42 @@
         content="Alex Kauffman, a UX/UI designer crafting ideas for websites, apps, experiences, and more.">
     <link rel="stylesheet" href="cssReset.css">
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
         rel="stylesheet">
 </head>
 
-<body>
-    <div class="floatingMenu">
-        <div class="flexBox">
-            <h4>Alex Kauffman</h4>
-            <div class="menuBars">
-                <div class="bar"></div>
-                <div class="bar"></div>
+<body class="error-page">
+    <nav class="topNav" aria-label="Main Navigation">
+        <a href="essence.html" class="nav-brand">
+            <h6>Alex Kauffman</h6>
+        </a>
+
+        <div class="nav-center">
+            <div class="nav-underline"></div>
+            <a class="nav-pill-link" href="#" data-mode="essence">
+                <h6><span class="nav-text">Essence</span></h6>
+            </a>
+            <a class="active nav-pill-link" href="#" data-mode="work">
+                <h6><span class="nav-text">Work</span></h6>
+            </a>
+            <a class="nav-pill-link" href="Alex_Kauffman_Resume.pdf" target="_blank">
+                <h6><span class="nav-text">Resume</span></h6>
+            </a>
+        </div>
+
+        <div class="nav-right">
+            <div class="modes">
+                <div class="flexBox">
+                    <div class="modeIcon"></div>
+                    <div class="speachMode">Speech Mode</div>
+                </div>
             </div>
         </div>
-        <div class="flexBox drawerMenu">
-            <a href="index.html">Work</a>
-            <a href="Alex_Kauffman_Resume.pdf" target="_blank">Resume</a>
-            <a href="#">Articles</a>
-            <a href="essence.html">Essence</a>
-            <div class="flexBox bottomContent">
-                <a href="#">GitHub</a>
-                <a href="#">LinkedIn</a>
-            </div>
-        </div>
-    </div>
+    </nav>
     <div class="errorMessage">
-        <div class="flexBox" style="align-items: end; justify-content: space-between;">
+        <div class="flexBox">
             <div>
                 <p>Page not found. Please click back any of the link or enjoy 2 AI playing Pong</p>
                 <h1>404 Error</h1>
@@ -90,81 +110,6 @@
     </div>
     <div id="score">0&nbsp;&nbsp;0</div>
     <script src="pong.js"></script>
-    <style>
-        body {
-            overflow: hidden;
-        }
-
-        #gameContainer {
-            position: relative;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        .paddle {
-            position: absolute;
-            width: 10px;
-            height: 100px;
-            background-color: var(--dark);
-        }
-
-        #paddle1 {
-            left: 0;
-        }
-
-        #paddle2 {
-            right: 0;
-        }
-
-        #ball {
-            position: absolute;
-            width: 115px;
-            user-select: none;
-            height: 145px;
-        }
-
-        #line {
-            position: absolute;
-            left: 50%;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: white;
-            transform: translateX(-50%);
-        }
-
-        #paddle1,
-        #paddle2 {
-            background-color: white;
-        }
-
-        .errorMessage {
-            position: fixed;
-            bottom: 0;
-            padding: 56px;
-        }
-
-        .errorMessage h2 {
-            position: fixed;
-            right: 56px;
-            bottom: 56px;
-        }
-
-        .errorMessage p {
-            text-wrap: balance;
-            max-width: 80%;
-            padding-bottom: 32px;
-        }
-
-        #score {
-            position: absolute;
-            top: calc(100% / 2 - 4.2dvw);
-            width: 100%;
-            text-align: center;
-            font-size: 112px;
-            font-family: "Instrument Sans", sans-serif;
-        }
-    </style>
 </body>
 
 </html>
