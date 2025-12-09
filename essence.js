@@ -637,7 +637,8 @@ const personalSynonyms = {
     deadlines: ["deadlines", "tight deadlines", "handle deadlines", "time pressure"],
     strength: ["strength", "strengths", "biggest strength", "what are you good at"],
     "successful project": ["successful project", "best project", "proudest project", "duolingo success"],
-    testimonies: ["testimonies", "recommendation", "what people say", "references", "feedback"]
+    testimonies: ["testimonies", "recommendation", "what people say", "references", "feedback"],
+    resume: ["resume", "alex's resume", "CV", "cv"]
 };
 
 
@@ -709,6 +710,17 @@ async function findResponse(userInput) {
         return {
             text: knowledge.personal["successful project"],
             link: knowledge.duolingo_post.link,
+            inlineLink: true,
+            instant: true
+        };
+    }
+
+     // Check for "resume" to include Resume PDF
+    if (matchedKeys.includes("resume")) {
+        // knowledgeTree.json exposes resume_post with text and link
+        return {
+            text: knowledge.resume_post?.text || "Check out the resume:",
+            link: knowledge.resume_post?.link,
             inlineLink: true,
             instant: true
         };
@@ -1380,7 +1392,6 @@ function appendCaseStudy(caseStudy, container) {
             // Let's just manually create it to match exactly what was there before or use renderText if flexible enough.
             // The old logic was specific: w-60, margin-left auto.
             // Let's just paste the old logic back for safety or adapt renderText.
-            // Adapting renderText:
             // renderText(caseStudy.bodyTitle, caseStudy.bodyParagraph, "old-style");
             // But renderText above handles "right-50".
             // Let's just keep the old logic block for fallback to be safe.
