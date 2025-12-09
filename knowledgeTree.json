@@ -62,8 +62,8 @@
     "goal": "My 5-year goal is to grow in a full-time product design and engineering role while contributing visionary ideas and production support to teams building accessible, mission-driven products at companies like Apple, Disney Research, or Toast.",
     "dream": "My dream is to work on accessibility at Microsoft’s Xbox team or Apple’s Human Interface Accessibility group—creating technology that levels the playing field and helps people move through life with fewer barriers. <br><br> My motto: Accessibility is about building the right tools for users, while inclusion is about supporting their emotional experience. Both are essential to truly empower people through technology.",
     "projects": "Alex has 5 projects. Duolingo ASL, Microsoft VSC Copilot, Apple Live Captions, Vigor Fitness, Starbucsk Rewards, Color Health are a few projects.",
-    "skills": "Alex has a UX/UI background that's adapting into the world of AI product thinking. He enjoys working with data and finding tangible insights through prototyping more than pixel pushing.<br><br>He's a visionary type who likes to experiment before perfecting.",
-    "what skills": "Alex has a UX/UI background that's adapting into the world of AI product thinking. He enjoys working with data and finding tangible insights through prototyping more than pixel pushing.<br><br>He's a visionary type who likes to experiment before perfecting.",
+    "skills": "Alex is a UX/UI designer evolving into AI-focused product thinking. He’s driven by data, rapid prototyping, and turning early insights into meaningful product direction—rather than getting stuck on pixel perfection.<br><br>He brings a visionary, experimental approach to problem-solving, exploring ideas quickly and refining them with intention once the right direction emerges.",
+    "what skills": "Alex is a UX/UI designer evolving into AI-focused product thinking. He’s driven by data, rapid prototyping, and turning early insights into meaningful product direction—rather than getting stuck on pixel perfection.<br><br>He brings a visionary, experimental approach to problem-solving, exploring ideas quickly and refining them with intention once the right direction emerges.",
     "availability": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
     "when available": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
     "hire": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
@@ -90,14 +90,14 @@
     }
   },
   "education": {
-    "text": "He attended the Rochester Institute of Technology, earning a BFA in New Media Design with a 3.69/4.0 GPA, graduating Magna Cum Laude. Here is the link to the university:",
+    "text": "He earned a BFA in New Media Design from the Rochester Institute of Technology, graduating Magna Cum Laude with a 3.69/4 GPA. Here’s a link to the university:",
     "link": {
       "href": "https://www.rit.edu/",
       "text": "Rochester Institute of Technology"
     }
   },
   "role": {
-    "text": "Alex curent role is freelance at Left Field Labs doing marketing and design. Here is the link to the agency:",
+    "text": "Currently freelancing at Left Field Labs, focusing on marketing and design. Check out the agency here:",
     "link": {
       "href": "https://www.leftfieldlabs.com/",
       "text": "Left Field Labs"
