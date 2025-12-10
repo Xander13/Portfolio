@@ -766,8 +766,6 @@ async function findResponse(userInput) {
     }
 
 
-
-
     if (matchedKeys.length > 0) {
         const response = buildParagraph(matchedKeys);
         // Check if buildParagraph returned an object (new behavior) or string (old behavior)
