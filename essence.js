@@ -729,9 +729,9 @@ async function findResponse(userInput) {
     // Priority checks for specific interview questions BEFORE general matching
     // This prevents "tell me about alex's strength" from matching "background"
 
-    if (matchedKeys.includes("strength")) {
+    if (matchedKeys.includes("strengths")) {
         return {
-            text: knowledge.personal["strength"],
+            text: knowledge.personal["strengths"],
             instant: true
         };
     }
