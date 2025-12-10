@@ -264,6 +264,45 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+
+// -------------------------------------------------
+// Data Color Highlighter mode
+// -------------------------------------------------
+document.querySelectorAll('.highlight').forEach(el => {
+  const color = el.dataset.color;
+  if (color) {
+    el.style.setProperty('--hl-color', color);
+  }
+});
+
+
+//
+// Slide Show of Users Tes
+//
+
+const track = document.querySelector('.carousel-track');
+const cards = Array.from(track.children);
+
+let index = 0;
+
+function updateCarousel() {
+  const cardWidth = cards[0].offsetWidth + 24; // includes gap
+  track.style.transform = `translateX(${-index * cardWidth}px)`;
+}
+
+document.querySelector('.next').addEventListener('click', () => {
+  index = (index + 1) % cards.length;
+  updateCarousel();
+});
+
+document.querySelector('.prev').addEventListener('click', () => {
+  index = (index - 1 + cards.length) % cards.length;
+  updateCarousel();
+});
+
+window.addEventListener('resize', updateCarousel);
+
+
 // -------------------------------------------------
 // Speech Mode Implementation
 // -------------------------------------------------
