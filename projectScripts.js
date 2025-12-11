@@ -276,32 +276,162 @@ document.querySelectorAll('.highlight').forEach(el => {
 });
 
 
-//
-// Slide Show of Users Tes
-//
+// -------------------------------------------------
+// Carousel with Prev and Next Button Effects
+// -------------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+    const carousel = document.querySelector(".carousel");
+    const track = document.querySelector(".carousel-track");
+    const nextBtn = document.querySelector(".next");
+    const prevBtn = document.querySelector(".prev");
 
-const track = document.querySelector('.carousel-track');
-const cards = Array.from(track.children);
+    if (!carousel || !track || !nextBtn || !prevBtn) return;
 
-let index = 0;
+    const cards = Array.from(track.children);
+    if (cards.length === 0) return;
 
-function updateCarousel() {
-  const cardWidth = cards[0].offsetWidth + 24; // includes gap
-  track.style.transform = `translateX(${-index * cardWidth}px)`;
-}
+    let index = 0;
+    let isDragging = false;
+    let startX = 0;
+    let scrollStart = 0;
 
-document.querySelector('.next').addEventListener('click', () => {
-  index = (index + 1) % cards.length;
-  updateCarousel();
+    // =========================
+    // CARD WIDTH CALCULATOR
+    // =========================
+    function getCardWidth() {
+        const gap = parseInt(getComputedStyle(track).gap) || 24;
+        return cards[0].offsetWidth + gap;
+    }
+
+    function updateCarousel() {
+        const cardWidth = getCardWidth();
+        track.style.transform = `translateX(${-index * cardWidth}px)`;
+    }
+
+    // =========================
+    // MOUSE-FOLLOW BUTTON LOGIC
+    // (Desktop only)
+    // =========================
+    function enableCursorButtons() {
+        carousel.addEventListener("mouseenter", () => {
+            nextBtn.style.opacity = "1";
+            prevBtn.style.opacity = "1";
+        });
+
+        carousel.addEventListener("mouseleave", () => {
+            nextBtn.style.opacity = "0";
+            prevBtn.style.opacity = "0";
+        });
+
+        carousel.addEventListener("mousemove", (e) => {
+            const rect = carousel.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            prevBtn.style.top = `${y}px`;
+            nextBtn.style.top = `${y}px`;
+
+            const showNext = x > rect.width / 2;
+
+            if (showNext) {
+                nextBtn.style.left = `${x}px`;
+                nextBtn.style.display = "flex";
+                prevBtn.style.display = "none";
+            } else {
+                prevBtn.style.left = `${x}px`;
+                prevBtn.style.display = "flex";
+                nextBtn.style.display = "none";
+            }
+        });
+    }
+
+    // Desktop = pointer:fine
+    if (window.matchMedia("(pointer:fine)").matches) {
+        enableCursorButtons();
+    } else {
+        // Mobile: hide cursor buttons + remove hover behavior completely
+        nextBtn.style.display = "none";
+        prevBtn.style.display = "none";
+        nextBtn.style.opacity = "0";
+        prevBtn.style.opacity = "0";
+    }
+
+    // =========================
+    // NEXT / PREV BUTTON LOGIC
+    // =========================
+    function goNext() {
+        if (index < cards.length - 1) {
+            index++;
+            updateCarousel();
+        }
+    }
+
+    function goPrev() {
+        if (index > 0) {
+            index--;
+            updateCarousel();
+        }
+    }
+
+    nextBtn.addEventListener("click", goNext);
+    prevBtn.addEventListener("click", goPrev);
+
+    // =========================
+    // DRAG / SWIPE SUPPORT
+    // =========================
+    function startDrag(e) {
+        isDragging = true;
+
+        // NEW: shrink buttons + hide text while dragging
+        nextBtn.classList.add("dragging");
+        prevBtn.classList.add("dragging");
+
+        startX = e.pageX || e.touches?.[0].pageX;
+        scrollStart = track.style.transform;
+    }
+
+    function onDrag(e) {
+        if (!isDragging) return;
+
+        const x = e.pageX || e.touches?.[0].pageX;
+        const dx = x - startX;
+
+        track.style.transform = `translateX(calc(${scrollStart} + ${dx}px))`;
+    }
+
+    function endDrag(e) {
+        if (!isDragging) return;
+        isDragging = false;
+
+        // restore button size
+        nextBtn.classList.remove("dragging");
+        prevBtn.classList.remove("dragging");
+
+        const x = e.pageX || e.changedTouches?.[0].pageX;
+        const dx = x - startX;
+
+        const threshold = cards[0].offsetWidth / 3;
+
+        if (dx < -threshold && index < cards.length - 1) goNext();
+        else if (dx > threshold && index > 0) goPrev();
+        else updateCarousel();
+    }
+
+    track.addEventListener("mousedown", startDrag);
+    track.addEventListener("mousemove", onDrag);
+    track.addEventListener("mouseup", endDrag);
+    track.addEventListener("mouseleave", endDrag);
+
+    track.addEventListener("touchstart", startDrag, { passive: true });
+    track.addEventListener("touchmove", onDrag, { passive: true });
+    track.addEventListener("touchend", endDrag);
+
+    // =========================
+    // INITIALIZE
+    // =========================
+    window.addEventListener("resize", updateCarousel);
+    setTimeout(updateCarousel, 100);
 });
-
-document.querySelector('.prev').addEventListener('click', () => {
-  index = (index - 1 + cards.length) % cards.length;
-  updateCarousel();
-});
-
-window.addEventListener('resize', updateCarousel);
-
 
 // -------------------------------------------------
 // Speech Mode Implementation
