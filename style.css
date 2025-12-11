@@ -1190,6 +1190,10 @@ Slider effect
     padding-bottom: 56px;
 }
 
+.case-study{
+    overflow-x: hidden;
+}
+
 .case-study-wrapper {
     color: white;
     box-sizing: border-box;
