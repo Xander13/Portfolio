@@ -1769,7 +1769,7 @@ Slider effect
 .controls-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     gap: 15px;
     margin-top: 10px;
 }

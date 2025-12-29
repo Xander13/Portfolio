@@ -664,7 +664,7 @@ async function findResponse(userInput) {
             hour12: true
         });
         return {
-            text: `Here is the current time in Detroit and across the globe.`,
+            text: `Here is the current time in Detroit and across the globe. Alex is open to relocating for his next role. (Not specific to the clocks below.)`,
             worldClocks: true // Flag to render world clocks
         };
     }
