@@ -207,9 +207,16 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             appendCaseStudy(extra.caseStudy, wrapper);
         }
 
-        // Append World Clocks if provided
         if (extra.worldClocks) {
             appendWorldClocks(content);
+        }
+
+        // Append Sorting Visualization if provided
+        if (extra.sorting) {
+            const hr = document.createElement("div");
+            hr.classList.add("separator-line");
+            content.appendChild(hr);
+            appendSortingVisualization(content);
         }
 
         // ✅ Move inline link here AFTER typewriter
@@ -638,7 +645,8 @@ const personalSynonyms = {
     strength: ["strength", "strengths", "biggest strength", "what are you good at"],
     "successful project": ["successful project", "best project", "proudest project", "duolingo success"],
     testimonies: ["testimonies", "recommendation", "what people say", "references", "feedback"],
-    resume: ["resume", "alex's resume", "CV", "cv"]
+    resume: ["resume", "alex's resume", "CV", "cv"],
+    coding: ["coding", "code", "programming", "development", "engineering", "cs", "computer science", "algorithm", "algorithms", "sort", "sorting"]
 };
 
 
@@ -666,6 +674,14 @@ async function findResponse(userInput) {
     for (const key in personalSynonyms) {
         if (personalSynonyms[key].some(s => normalizedInput.includes(s))) {
             matchedKeys.push(key);
+        }
+    }
+
+    if (matchedKeys.includes("coding")) {
+        return {
+            text: knowledge.personal["Coding"] || "Coding is a passion of mine.",
+            sorting: true,
+            instant: true
         }
     }
 
@@ -715,7 +731,7 @@ async function findResponse(userInput) {
         };
     }
 
-     // Check for "resume" to include Resume PDF
+    // Check for "resume" to include Resume PDF
     if (matchedKeys.includes("resume")) {
         // knowledgeTree.json exposes resume_post with text and link
         return {
@@ -944,7 +960,8 @@ async function sendMessage() {
         color: answerObj.color,
         caseStudy: answerObj.caseStudy,
         inlineLinks: answerObj.inlineLinks,
-        worldClocks: answerObj.worldClocks
+        worldClocks: answerObj.worldClocks,
+        sorting: answerObj.sorting
     });
 
     input.value = "";
@@ -1652,7 +1669,9 @@ function showWelcomeMessage() {
         { text: "🎓 Education", displayText: "What's Alex's educational background?", query: "education" },
         { text: "👤 About Alex", displayText: "Tell me about Alex", query: "background" },
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
-        { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" }
+        { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" },
+        { text: "💻 Code", displayText: "What Alex coding background?", query: "code" },
+        { text: "⏰ Time", displayText: "What time is it?", query: "time" }
     ];
 
     const appendPrompts = () => {
@@ -1756,7 +1775,9 @@ function showWelcomeMessage() {
                     inlineLink: answerObj.inlineLink,
                     color: answerObj.color,
                     caseStudy: answerObj.caseStudy,
-                    inlineLinks: answerObj.inlineLinks
+                    inlineLinks: answerObj.inlineLinks,
+                    sorting: answerObj.sorting,
+                    worldClocks: answerObj.worldClocks
                 });
 
                 input.value = "";
@@ -1814,3 +1835,378 @@ animatePlaceholder();
 
 // Expose showWelcomeMessage globally for mode toggle
 window.showWelcomeMessage = showWelcomeMessage;
+
+// -------- Sorting Visualization --------
+function appendSortingVisualization(container) {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("sorting-wrapper");
+
+    // 1. Boxes Container (Row 1)
+    const boxesContainer1 = document.createElement("div");
+    boxesContainer1.classList.add("boxes-container");
+
+    // Bubble Sort Box
+    const bubbleBox = createSortBox("Bubble Sort");
+    boxesContainer1.appendChild(bubbleBox);
+
+    // Merge Sort Box
+    const mergeBox = createSortBox("Merge Sort");
+    boxesContainer1.appendChild(mergeBox);
+
+    wrapper.appendChild(boxesContainer1);
+
+    // 2. Boxes Container (Row 2)
+    const boxesContainer2 = document.createElement("div");
+    boxesContainer2.classList.add("boxes-container");
+    boxesContainer2.style.marginTop = "20px"; // Space between rows
+
+    // Quick Sort Box
+    const quickBox = createSortBox("Quick Sort");
+    boxesContainer2.appendChild(quickBox);
+
+    // Heap Sort Box
+    const heapBox = createSortBox("Heap Sort");
+    boxesContainer2.appendChild(heapBox);
+
+    wrapper.appendChild(boxesContainer2);
+
+
+    // 3. Stats & Controls
+    const controlsContainer = document.createElement("div");
+    controlsContainer.classList.add("controls-container");
+
+    // Buttons Row
+    const btnRow = document.createElement("div");
+    btnRow.classList.add("btn-row");
+
+    // Helper to create styled buttons
+    const createBtn = (text, onClick) => {
+        const btn = document.createElement("button");
+        btn.textContent = text;
+        btn.classList.add("sort-btn");
+        btn.onclick = onClick;
+        return btn;
+    };
+
+    let numItems = 12;
+    let arrayData = [];
+    let isSorted = false;
+
+    // Helper to init arrays
+    const initArrays = (n) => {
+        arrayData = [];
+        // Generate values 1 to n
+        for (let i = 1; i <= n; i++) {
+            arrayData.push({
+                value: i,
+                id: i
+            });
+        }
+
+        // Shuffle (Fisher-Yates)
+        for (let i = arrayData.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [arrayData[i], arrayData[j]] = [arrayData[j], arrayData[i]];
+        }
+
+        renderBars(bubbleBox.querySelector(".bars-container"), arrayData, n, 'blue');
+        renderBars(mergeBox.querySelector(".bars-container"), arrayData, n, 'green');
+        renderBars(quickBox.querySelector(".bars-container"), arrayData, n, 'red');
+        renderBars(heapBox.querySelector(".bars-container"), arrayData, n, 'teal');
+
+        // Set initial stats text
+        bubbleBox.querySelector(".box-stats").innerHTML = "O(n²)";
+        mergeBox.querySelector(".box-stats").innerHTML = "O(n log n)";
+        quickBox.querySelector(".box-stats").innerHTML = "O(n log n)";
+        heapBox.querySelector(".box-stats").innerHTML = "O(n log n)";
+
+        isSorted = false;
+
+        // Reset Run Button if it exists
+        if (typeof runBtn !== 'undefined') {
+            runBtn.textContent = "Run Sort";
+            runBtn.disabled = false;
+        }
+    };
+
+    const minusBtn = createBtn("-", () => {
+        if (numItems > 5) {
+            numItems--;
+            initArrays(numItems);
+        }
+    });
+
+    const plusBtn = createBtn("+", () => {
+        if (numItems < 30) {
+            numItems++;
+            initArrays(numItems);
+        }
+    });
+
+    const runBtn = createBtn("Run Sort", async () => {
+        if (isSorted) {
+            // Restart / Shuffle behavior
+            initArrays(numItems);
+            return;
+        }
+
+        runBtn.disabled = true;
+        minusBtn.disabled = true;
+        plusBtn.disabled = true;
+
+        const bubbleStats = bubbleBox.querySelector(".box-stats");
+        const mergeStats = mergeBox.querySelector(".box-stats");
+        const quickStats = quickBox.querySelector(".box-stats");
+        const heapStats = heapBox.querySelector(".box-stats");
+
+        bubbleStats.innerHTML = "Sorting...";
+        mergeStats.innerHTML = "Sorting...";
+        quickStats.innerHTML = "Sorting...";
+        heapStats.innerHTML = "Sorting...";
+
+        // Run all sorts
+        const bubbleData = JSON.parse(JSON.stringify(arrayData));
+        const mergeData = JSON.parse(JSON.stringify(arrayData));
+        const quickData = JSON.parse(JSON.stringify(arrayData));
+        const heapData = JSON.parse(JSON.stringify(arrayData));
+
+        const p1 = runBubbleSort(bubbleBox.querySelector(".bars-container"), bubbleData, numItems, 'blue');
+        const p2 = runMergeSort(mergeBox.querySelector(".bars-container"), mergeData, numItems, 'green');
+        const p3 = runQuickSort(quickBox.querySelector(".bars-container"), quickData, numItems, 'red');
+        const p4 = runHeapSort(heapBox.querySelector(".bars-container"), heapData, numItems, 'teal');
+
+        const [t1, t2, t3, t4] = await Promise.all([p1, p2, p3, p4]);
+
+        bubbleStats.innerHTML = `${t1}ms (Steps: ${Math.floor(t1 / 20)})`;
+        mergeStats.innerHTML = `${t2}ms (Steps: ${Math.floor(t2 / 20)})`;
+        quickStats.innerHTML = `${t3}ms (Steps: ${Math.floor(t3 / 20)})`;
+        heapStats.innerHTML = `${t4}ms (Steps: ${Math.floor(t4 / 20)})`;
+
+        // Enable buttons and switch to Restart
+        runBtn.disabled = false;
+        runBtn.textContent = "Restart";
+        minusBtn.disabled = false;
+        plusBtn.disabled = false;
+        isSorted = true;
+    });
+
+    btnRow.appendChild(minusBtn);
+    btnRow.appendChild(plusBtn);
+    btnRow.appendChild(runBtn);
+
+    controlsContainer.appendChild(btnRow);
+    wrapper.appendChild(controlsContainer);
+
+    container.appendChild(wrapper);
+
+    // Initial Render
+    initArrays(numItems);
+}
+
+function createSortBox(title) {
+    const box = document.createElement("div");
+    box.classList.add("w-50", "sort-box");
+
+    const titleEl = document.createElement("h4");
+    titleEl.textContent = title;
+    box.appendChild(titleEl);
+
+    const barsContainer = document.createElement("div");
+    barsContainer.classList.add("bars-container");
+    box.appendChild(barsContainer);
+
+    const statsEl = document.createElement("div");
+    statsEl.classList.add("box-stats");
+    statsEl.style.marginTop = "10px";
+    statsEl.style.fontSize = "12px";
+    statsEl.style.color = "var(--gray)";
+    statsEl.style.textAlign = "center";
+    statsEl.style.fontFamily = "monospace";
+    box.appendChild(statsEl);
+
+    return box;
+}
+
+function renderBars(container, data, maxN, colorTheme = 'blue') {
+    container.innerHTML = "";
+    // If maxN not passed, find max from data (fallback)
+    const maxVal = maxN || Math.max(...data.map(d => d.value));
+
+    data.forEach((item, idx) => {
+        // Wrapper for the bar column
+        const barWrapper = document.createElement("div");
+        barWrapper.style.display = "flex";
+        barWrapper.style.flexDirection = "column";
+        barWrapper.style.justifyContent = "flex-end";
+        barWrapper.style.alignItems = "center";
+        barWrapper.style.width = "100%";
+        barWrapper.style.height = "100%";
+
+        // The number label above
+        const label = document.createElement("div");
+        label.textContent = item.value;
+        label.style.fontSize = "10px";
+        label.style.color = "var(--gray)";
+        label.style.marginBottom = "4px"; // Padding above bar
+        label.style.textAlign = "center";
+
+        const bar = document.createElement("div");
+        bar.classList.add("sort-bar");
+        bar.classList.add(colorTheme); // 'blue' or 'green' or 'red' or 'teal'
+
+        // Dynamic height only
+        bar.style.height = `${(item.value / maxVal) * 100}%`;
+        bar.style.width = "100%";
+
+        // bar.textContent = item.value; // Removed, now using label
+
+        barWrapper.appendChild(label);
+        barWrapper.appendChild(bar);
+        container.appendChild(barWrapper);
+    });
+}
+
+// BUBBLE SORT
+async function runBubbleSort(container, data, maxN, theme) {
+    const startTime = Date.now();
+    let n = data.length;
+    let swapped;
+    let steps = 0;
+    do {
+        swapped = false;
+        for (let i = 0; i < n - 1; i++) {
+            if (data[i].value > data[i + 1].value) {
+                // Swap
+                let temp = data[i];
+                data[i] = data[i + 1];
+                data[i + 1] = temp;
+                swapped = true;
+                steps++;
+
+                renderBars(container, data, maxN, theme);
+                await new Promise(r => setTimeout(r, 100)); // Delay
+            }
+        }
+        n--;
+    } while (swapped);
+    renderBars(container, data, maxN, theme);
+    return Date.now() - startTime;
+}
+
+// MERGE SORT
+async function runMergeSort(container, data, maxN, theme) {
+    const startTime = Date.now();
+
+    async function mergeSortHelper(arr, startIdx) {
+        if (arr.length <= 1) return arr;
+
+        const mid = Math.floor(arr.length / 2);
+        const left = await mergeSortHelper(arr.slice(0, mid), startIdx);
+        const right = await mergeSortHelper(arr.slice(mid), startIdx + mid);
+
+        return await merge(left, right, startIdx);
+    }
+
+    async function merge(left, right, startIdx) {
+        let resultArray = [], leftIndex = 0, rightIndex = 0;
+
+        while (leftIndex < left.length && rightIndex < right.length) {
+            if (left[leftIndex].value < right[rightIndex].value) {
+                resultArray.push(left[leftIndex]);
+                leftIndex++;
+            } else {
+                resultArray.push(right[rightIndex]);
+                rightIndex++;
+            }
+        }
+
+        resultArray = resultArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
+
+        // Update the main data array with sorted slice
+        for (let i = 0; i < resultArray.length; i++) {
+            data[startIdx + i] = resultArray[i];
+        }
+
+        renderBars(container, data, maxN, theme);
+        await new Promise(r => setTimeout(r, 150)); // Delay
+
+        return resultArray;
+    }
+
+    await mergeSortHelper(data, 0);
+    renderBars(container, data, maxN, theme);
+    return Date.now() - startTime;
+}
+
+// QUICK SORT
+async function runQuickSort(container, data, maxN, theme) {
+    const startTime = Date.now();
+
+    async function partition(arr, low, high) {
+        let pivot = arr[high];
+        let i = low - 1;
+
+        for (let j = low; j < high; j++) {
+            if (arr[j].value < pivot.value) {
+                i++;
+                [arr[i], arr[j]] = [arr[j], arr[i]];
+                renderBars(container, data, maxN, theme);
+                await new Promise(r => setTimeout(r, 80));
+            }
+        }
+        [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
+        renderBars(container, data, maxN, theme);
+        await new Promise(r => setTimeout(r, 80));
+        return i + 1;
+    }
+
+    async function quickSortHelper(arr, low, high) {
+        if (low < high) {
+            let pi = await partition(arr, low, high);
+            await quickSortHelper(arr, low, pi - 1);
+            await quickSortHelper(arr, pi + 1, high);
+        }
+    }
+
+    await quickSortHelper(data, 0, data.length - 1);
+    renderBars(container, data, maxN, theme);
+    return Date.now() - startTime;
+}
+
+// HEAP SORT
+async function runHeapSort(container, data, maxN, theme) {
+    const startTime = Date.now();
+    let n = data.length;
+
+    async function heapify(arr, n, i) {
+        let largest = i;
+        let l = 2 * i + 1;
+        let r = 2 * i + 2;
+
+        if (l < n && arr[l].value > arr[largest].value) largest = l;
+        if (r < n && arr[r].value > arr[largest].value) largest = r;
+
+        if (largest !== i) {
+            [arr[i], arr[largest]] = [arr[largest], arr[i]];
+            renderBars(container, data, maxN, theme);
+            await new Promise(r => setTimeout(r, 80));
+            await heapify(arr, n, largest);
+        }
+    }
+
+    // Build heap (rearrange array)
+    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
+        await heapify(data, n, i);
+    }
+
+    // One by one extract an element from heap
+    for (let i = n - 1; i > 0; i--) {
+        [data[0], data[i]] = [data[i], data[0]]; // Move current root to end
+        renderBars(container, data, maxN, theme);
+        await new Promise(r => setTimeout(r, 80));
+        await heapify(data, i, 0); // call max heapify on the reduced heap
+    }
+
+    renderBars(container, data, maxN, theme);
+    return Date.now() - startTime;
+}

@@ -1190,7 +1190,7 @@ Slider effect
     padding-bottom: 56px;
 }
 
-.case-study{
+.case-study {
     overflow-x: hidden;
 }
 
@@ -1725,4 +1725,153 @@ Slider effect
 /* ensure only the 404 page hides overflow */
 .error-page {
     overflow: hidden;
+}
+
+/* -------------------------------------------------
+   Sorting Visualization
+   ------------------------------------------------- */
+.sorting-wrapper {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.boxes-container {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.sort-box {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sort-box h4 {
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--white);
+}
+
+.bars-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    height: 150px;
+    width: 100%;
+    gap: 2px;
+    border-bottom: 1px solid white;
+}
+
+.controls-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.stats-log {
+    font-family: monospace;
+    font-size: 14px;
+    color: var(--gray);
+}
+
+.btn-row {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.sort-btn {
+    padding: 8px 16px;
+    cursor: pointer;
+    border: 1px solid var(--white);
+    border-radius: 100rem;
+    background-color: transparent;
+    color: var(--white);
+    transition: all 0.2s;
+}
+
+.sort-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sort-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Sorting Bars */
+.sort-bar {
+    width: 100%;
+    color: white;
+    /* Default text color, overridden if bright */
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease;
+}
+
+.sort-bar.text-dark {
+    color: #000;
+}
+
+.sort-bar.text-light {
+    color: #fff;
+}
+
+/* Sorting Bar Gradients */
+.sort-bar.blue {
+    background: linear-gradient(0deg, #03001e 0%, #3f2b96 50%, #a8c0ff 100%);
+    border-top-left-radius: 100rem;
+    border-top-right-radius: 100rem;
+    color: black;
+}
+
+.sort-bar.green {
+    background: linear-gradient(0deg, #03001e 0%, #00b09b 50%, #96c93d 100%);
+    border-top-left-radius: 100rem;
+    border-top-right-radius: 100rem;
+    color: black;
+}
+
+.sort-bar {
+    position: relative;
+    /* Ensure no flex centering text inside */
+    display: block !important;
+    transition: all 0.1s ease;
+}
+
+.sort-bar-label {
+    position: absolute;
+    top: -20px;
+    /* Adjust 8px above the bar */
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    /* Or variable based on theme */
+    padding-bottom: 8px;
+    /* Extra padding if needed */
+}
+
+.sort-bar.red {
+    background: linear-gradient(0deg, #03001e 0%, #fc4a1a 50%, #f7b733 100%);
+    border-top-left-radius: 100rem;
+    border-top-right-radius: 100rem;
+    color: white;
+}
+
+.sort-bar.teal {
+    background: linear-gradient(0deg, #03001e 0%, #7303c0 50%, #ec38bc 100%);
+    border-top-left-radius: 100rem;
+    border-top-right-radius: 100rem;
+    color: black;
 }

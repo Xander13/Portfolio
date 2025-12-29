@@ -9,10 +9,10 @@ function appendWorldClocks(container) {
     clocksContainer.style.justifyContent = "space-between";
 
     const clocks = [
-        { city: "Detroit", timezone: "America/Detroit", color: "#FF0055" }, // Electric Raspberry
-        { city: "Romania", timezone: "Europe/Bucharest", color: "#00FFCC" }, // Neon Mint
-        { city: "Tokyo", timezone: "Asia/Tokyo", color: "#BD00FF" }, // Vibrant Purple
-        { city: "London", timezone: "Europe/London", color: "#FFCC00" } // Cyber Yellow
+        { city: "Detroit", timezone: "America/Detroit", darkColor: "#03001e", color: "#a8c0ff", color2: "#3f2b96" },
+        { city: "Romania", timezone: "Europe/Bucharest", darkColor: "#03001e", color: "#00b09b", color2: "#96c93d" },
+        { city: "Tokyo", timezone: "Asia/Tokyo", darkColor: "#03001e", color: "#fc4a1a", color2: "#f7b733" },
+        { city: "London", timezone: "Europe/London", darkColor: "#03001e", color: "#7303c0", color2: "#ec38bc" }
     ];
 
     clocks.forEach(clock => {
@@ -49,7 +49,7 @@ function appendWorldClocks(container) {
         minuteRing.style.top = "0";
         minuteRing.style.left = "0";
         // Gradient: Fun Color to Black. Hard stop at 0deg (which rotates).
-        minuteRing.style.background = `conic-gradient(from 0deg, ${clock.color} 0%, #000000 100%)`;
+        minuteRing.style.background = `conic-gradient(from 0deg, ${clock.darkColor} 0%, ${clock.color} 50%, ${clock.color2} 100%)`;
         minuteRing.style.transition = "transform 0.5s cubic-bezier(0.4, 2.08, 0.55, 0.44)"; // Bouncy transition
 
         // Hour Ring (Inner)
@@ -62,7 +62,7 @@ function appendWorldClocks(container) {
         hourRing.style.left = "25%";
         hourRing.style.zIndex = "10";
         // Gradient: Fun Color to Black
-        hourRing.style.background = `conic-gradient(from 0deg, ${clock.color} 0%, #000000 100%)`;
+        hourRing.style.background = `conic-gradient(from 0deg, ${clock.darkColor} 0%, ${clock.color} 50%, ${clock.color2} 100%)`;
         hourRing.style.transition = "transform 0.5s cubic-bezier(0.4, 2.08, 0.55, 0.44)";
 
         face.appendChild(minuteRing);
