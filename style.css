@@ -108,7 +108,8 @@ body.essence-mode {
 }
 
 .modes.active .modeIcon {
-    background-color: var(--orange);
+    background: var(--active-gradient, var(--orange));
+    box-shadow: 0 0 15px var(--active-color, var(--orange));
 }
 
 @keyframes speaking-wave {
@@ -133,9 +134,14 @@ body.essence-mode {
 
 /* Highlighted Word */
 .word-highlight {
-    color: var(--orange) !important;
+    color: var(--active-color, var(--orange)) !important;
+    background: var(--active-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
     opacity: 1 !important;
-    transition: color 0.1s;
+    transition: all 0.2s ease;
+    display: inline;
 }
 
 /* -------------------------------------------------
@@ -1431,6 +1437,40 @@ Slider effect
         flex-direction: column;
     }
 
+    .project,
+    .essence-project-grid.project,
+    .project .flexBox {
+        gap: 56px !important;
+    }
+
+    .btn-row {
+        width: 100%;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 4px;
+        /* Tighter gap for mobile */
+    }
+
+    .sort-btn {
+        flex: 1;
+        padding: 8px 0;
+        /* Remove side padding to fit text */
+        font-size: 16px;
+        /* Match other interface buttons */
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    .sort-btn.run-sort-btn {
+        flex: 4;
+        /* Takes 50% of 8 total parts */
+    }
+
+    .w-05,
+    .w-10 {
+        display: none !important;
+    }
+
     .aiMsg p,
     .userMsg p {
         font-size: 24px;
@@ -1572,10 +1612,14 @@ Slider effect
     }
 
     .project {
-        gap: 0 !important;
+        gap: 56px !important;
     }
 
     .project h2 {
+        padding-bottom: 0px;
+    }
+
+    .project>*:last-child {
         padding-bottom: 10vh;
     }
 
@@ -1874,4 +1918,37 @@ Slider effect
     border-top-left-radius: 100rem;
     border-top-right-radius: 100rem;
     color: black;
+}
+
+/* -------------------------------------------------
+   World Clocks Responsive
+   ------------------------------------------------- */
+.world-clocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    justify-content: space-between;
+}
+
+.world-clock-item {
+    flex: 1 1 calc(25% - 32px);
+    min-width: 150px;
+    max-width: 100%;
+}
+
+@media screen and (max-width: 930px) {
+    .world-clock-item {
+        flex: 1 1 calc(50% - 32px);
+        /* 2 per row */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .world-clocks-container {
+        gap: 16px;
+    }
+
+    .world-clock-item {
+        flex: 1 1 calc(50% - 16px);
+    }
 }

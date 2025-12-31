@@ -269,10 +269,10 @@ document.addEventListener("DOMContentLoaded", function () {
 // Data Color Highlighter mode
 // -------------------------------------------------
 document.querySelectorAll('.highlight').forEach(el => {
-  const color = el.dataset.color;
-  if (color) {
-    el.style.setProperty('--hl-color', color);
-  }
+    const color = el.dataset.color;
+    if (color) {
+        el.style.setProperty('--hl-color', color);
+    }
 });
 
 
@@ -483,10 +483,19 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.toggle('reading-mode', isSpeechActive);
 
         if (isSpeechActive) {
-            // Randomize color (High Contrast & Fun)
-            const colors = ['#b8aaffff', '#40dff8ff', '#9af52a', '#ff7a1aff', '#ff58ffff'];
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            document.documentElement.style.setProperty('--orange', randomColor);
+            // Pick a random theme matching world clocks / sorting graphs
+            const themes = [
+                { name: "Detroit", c1: "#a8c0ff", c2: "#3f2b96" },
+                { name: "Romania", c1: "#00b09b", c2: "#96c93d" },
+                { name: "Tokyo", c1: "#fc4a1a", c2: "#f7b733" },
+                { name: "London", c1: "#7303c0", c2: "#ec38bc" }
+            ];
+            const theme = themes[Math.floor(Math.random() * themes.length)];
+
+            // Set CSS variables for the gradient and primary color
+            document.documentElement.style.setProperty('--active-gradient', `linear-gradient(135deg, ${theme.c1} 0%, ${theme.c2} 100%)`);
+            document.documentElement.style.setProperty('--active-color', theme.c1);
+            document.documentElement.style.setProperty('--orange', theme.c1); // Fallback for existing vars
 
             // Start audio with fade in
             bgAudio.currentTime = 0;
@@ -765,14 +774,14 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
             const target = link.getAttribute('target');
-            
+
             // Ignore special links
-            if (!href || 
-                href === '#' || 
-                href.startsWith('#') || 
-                target === '_blank' || 
-                href.startsWith('mailto:') || 
-                href.startsWith('tel:') || 
+            if (!href ||
+                href === '#' ||
+                href.startsWith('#') ||
+                target === '_blank' ||
+                href.startsWith('mailto:') ||
+                href.startsWith('tel:') ||
                 href.startsWith('javascript:')) {
                 return;
             }
@@ -780,7 +789,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Proceed with fade out navigation
             e.preventDefault();
             document.body.classList.remove('loaded');
-            
+
             setTimeout(() => {
                 window.location.href = href;
             }, 500); // Match CSS transition time

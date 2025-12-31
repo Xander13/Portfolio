@@ -1,8 +1,10 @@
 // -------- World Clocks Display --------
 function appendWorldClocks(container) {
     const clocksContainer = document.createElement("div");
+    clocksContainer.classList.add("world-clocks-container");
     clocksContainer.style.display = "flex";
     clocksContainer.style.flexDirection = "row";
+    clocksContainer.style.flexWrap = "wrap";
     clocksContainer.style.gap = "32px";
     clocksContainer.style.marginTop = "48px";
     clocksContainer.style.width = "100%";
@@ -17,11 +19,12 @@ function appendWorldClocks(container) {
 
     clocks.forEach(clock => {
         const clockDiv = document.createElement("div");
+        clockDiv.classList.add("world-clock-item");
         clockDiv.style.display = "flex";
         clockDiv.style.flexDirection = "column";
         clockDiv.style.alignItems = "center";
         clockDiv.style.gap = "16px";
-        clockDiv.style.flex = "1";
+        // clockDiv.style.flex = "1"; // Moved to CSS for responsiveness
 
         // City label
         const label = document.createElement("div");

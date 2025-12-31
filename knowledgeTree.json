@@ -1,30 +1,4 @@
 {
-  "prompts": {
-    "box1": [
-      {
-        "text": "Learn about Alex background",
-        "cta": "Click to add into prompt",
-        "image": "PocketCornerOne.png"
-      },
-      {
-        "text": "Learn about Alex Education",
-        "cta": "Click to add into prompt",
-        "image": "PocketCornerThree.png"
-      }
-    ],
-    "box2": [
-      {
-        "text": "Learn about Alex Dream Job",
-        "cta": "Click to add into prompt",
-        "image": "PocketCornerTwo.png"
-      },
-      {
-        "text": "Learn about Alex Design Moto",
-        "cta": "Click to add into prompt",
-        "image": "PocketCornerFour.png"
-      }
-    ]
-  },
   "links": {
     "leftfieldlab": "https://www.leftfieldlabs.com/",
     "rit": "https://www.rit.edu/"
@@ -75,7 +49,7 @@
     "biggest strengths": "I give a shit about the small things people sweep under the rug. Accessibility and things that just get overlooked.<br><br>I think that's where myself comes in — I focus on visionary work, not pixel pushing, because I channel my focus on making sure the product lives in a holistic health outlook that benefits business growth, not just short-term thinking solutions.",
     "successful project": "My most successful project is Duolingo ASL. I showcased to Duolingo a concept that helps open a new streamline of revenue by targeting non-verbal language learning. The amount of statistics and research shows that people need basic accessibility to learn sign language — it proves we need that to happen. Duolingo is a platform that helps understand how users learn in non-verbal language to benefit other purposes of industry use.<br><br>I learned this project showcased that accessibility + purpose = results. My LinkedIn has gained over 8k likes and many comments. It proves my strong vision aligns with what users need — that's what makes a successful project. I didn't have all the flows or perfect pixel layouts. I had a strong foundation of what users needed that made good results to build with.",
     "duolingo success": "My most successful project is Duolingo ASL. I showcased to Duolingo a concept that helps open a new streamline of revenue by targeting non-verbal language learning. The amount of statistics and research shows that people need basic accessibility to learn sign language — it proves we need that to happen. Duolingo is a platform that helps understand how users learn in non-verbal language to benefit other purposes of industry use.<br><br>I learned this project showcased that accessibility + purpose = results. My LinkedIn has gained over 8k likes and many comments. It proves my strong vision aligns with what users need — that's what makes a successful project. I didn't have all the flows or perfect pixel layouts. I had a strong foundation of what users needed that made good results to build with.",
-    "Coding": "Alex initially explored a computing-focused major because he enjoyed building, but found the Web and Mobile track lacked the deeper CS “how and why.” While pursuing a BFA in New Media Design at RIT, he took computer science courses alongside his studies to better understand how design and engineering connect, including applied calculus and discrete math to translate theory into practice.<br><br>These sorting algorithms are especially compelling to Alex because they show that one solution doesn’t always produce the best result. A combined design and engineering mindset helps bridge disciplines and build better, more human-centered products."
+    "Coding": "Alex bridges the gap between design and engineering, translating intent into functional systems. By studying programming alongside his BFA at RIT, he developed a deep understanding of how technical constraints shape design outcomes—this is why he loves exploring concepts like sorting algorithms."
   },
   "resume_post": {
     "text": "Check out the Alex Kauffman's resume:",

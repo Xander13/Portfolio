@@ -219,6 +219,12 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             appendSortingVisualization(content);
         }
 
+        // Append Fourier Visualization if provided
+        if (extra.fourier) {
+            appendFourierVisualization(content);
+        }
+
+
         // ✅ Move inline link here AFTER typewriter
         if (extra?.link && extra.inlineLink) {
             const a = document.createElement("a");
@@ -646,7 +652,7 @@ const personalSynonyms = {
     "successful project": ["successful project", "best project", "proudest project", "duolingo success"],
     testimonies: ["testimonies", "recommendation", "what people say", "references", "feedback"],
     resume: ["resume", "alex's resume", "CV", "cv"],
-    coding: ["coding", "code", "programming", "development", "engineering", "cs", "computer science", "algorithm", "algorithms", "sort", "sorting"]
+    coding: ["coding", "code", "programming", "development", "engineering", "cs", "computer science", "algorithm", "algorithms", "sort", "sorting"],
 };
 
 
@@ -664,7 +670,7 @@ async function findResponse(userInput) {
             hour12: true
         });
         return {
-            text: `From Detroit to the world—Alex’s favorite watch faces, ticking across time zones.`,
+            text: `Alex works in Eastern Standard Time, based in Detroit. Here are a few other clocks I enjoy looking at!`,
             worldClocks: true // Flag to render world clocks
         };
     }
@@ -677,9 +683,10 @@ async function findResponse(userInput) {
         }
     }
 
+
     if (matchedKeys.includes("coding")) {
         return {
-            text: knowledge.personal["Coding"] || "Coding is a passion of mine.",
+            text: knowledge.personal["Coding"] || "Alex bridges the gap between design and engineering, using computational thinking to build functional, accessible systems.",
             sorting: true,
             instant: true
         }
@@ -787,6 +794,16 @@ async function findResponse(userInput) {
         // Check if buildParagraph returned an object (new behavior) or string (old behavior)
         if (typeof response === 'object') return response;
         return { text: response };
+    }
+
+    // --- SWEET SPOT ---
+    if (normalizedInput.includes("sweet spot") || normalizedInput.includes("human maximum") || normalizedInput.includes("predictive analytics")) {
+        return {
+            text: `<h3>"Modeling the Human Maximum" Where Predictive Analytics Meets Human Factors</h3><br>
+            I treat data as a living landscape. Using Predictive Modeling, I map the relationship between system performance and human capability. The resulting surface isn't just a statistical distribution—it's a map of Access.<br><br>
+            While the sorting algorithms provide the structural integrity (the 'Build'), the Philosophy of Accessibility determines the height of the peak. By using regression analysis to identify the 'Sweet Spot,' I ensure that my designs aren't just mathematically correct, but humanly optimal. The peak represents the moment where complexity vanishes, leaving only a seamless, inclusive experience.`,
+            instant: true
+        };
     }
 
     // --- PROJECTS ---
@@ -961,7 +978,8 @@ async function sendMessage() {
         caseStudy: answerObj.caseStudy,
         inlineLinks: answerObj.inlineLinks,
         worldClocks: answerObj.worldClocks,
-        sorting: answerObj.sorting
+        sorting: answerObj.sorting,
+        fourier: answerObj.fourier
     });
 
     input.value = "";
@@ -971,7 +989,7 @@ async function sendMessage() {
 function appendProjectsGrid(projects, container, skipSpaceTop = false) {
     // Create wrapper with .project class to match index.html
     const projectWrapper = document.createElement("div");
-    projectWrapper.classList.add("project");
+    projectWrapper.classList.add("project", "essence-project-grid");
     projectWrapper.style.width = "100%";
     projectWrapper.style.maxWidth = "100%";
     projectWrapper.style.display = "flex";
@@ -1670,8 +1688,8 @@ function showWelcomeMessage() {
         { text: "👤 About Alex", displayText: "Tell me about Alex", query: "background" },
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
         { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" },
-        { text: "💻 Code", displayText: "What Alex coding background?", query: "code" },
-        { text: "⏰ Time", displayText: "What time is it?", query: "time" }
+        { text: "👨‍💻 Coding Background", displayText: "What is Alex's coding background?", query: "code" },
+        { text: "🌍 World Clocks", displayText: "What time is it?", query: "time" }
     ];
 
     const appendPrompts = () => {
@@ -1777,7 +1795,8 @@ function showWelcomeMessage() {
                     caseStudy: answerObj.caseStudy,
                     inlineLinks: answerObj.inlineLinks,
                     sorting: answerObj.sorting,
-                    worldClocks: answerObj.worldClocks
+                    worldClocks: answerObj.worldClocks,
+                    fourier: answerObj.fourier
                 });
 
                 input.value = "";
@@ -1888,7 +1907,9 @@ function appendSortingVisualization(container) {
         return btn;
     };
 
-    let numItems = 12;
+    const isSorterMobile = window.innerWidth <= 930;
+    let numItems = isSorterMobile ? 6 : 12;
+    const maxItems = isSorterMobile ? 12 : 30;
     let arrayData = [];
     let isSorted = false;
 
@@ -1937,7 +1958,7 @@ function appendSortingVisualization(container) {
     });
 
     const plusBtn = createBtn("+", () => {
-        if (numItems < 30) {
+        if (numItems < maxItems) {
             numItems++;
             initArrays(numItems);
         }
@@ -1970,10 +1991,10 @@ function appendSortingVisualization(container) {
         const quickData = JSON.parse(JSON.stringify(arrayData));
         const heapData = JSON.parse(JSON.stringify(arrayData));
 
-        const p1 = runBubbleSort(bubbleBox.querySelector(".bars-container"), bubbleData, numItems, 'blue');
-        const p2 = runMergeSort(mergeBox.querySelector(".bars-container"), mergeData, numItems, 'green');
-        const p3 = runQuickSort(quickBox.querySelector(".bars-container"), quickData, numItems, 'red');
-        const p4 = runHeapSort(heapBox.querySelector(".bars-container"), heapData, numItems, 'teal');
+        const p1 = runBubbleSort(bubbleBox.querySelector(".bars-container"), bubbleData, numItems, 'blue', speedConfig);
+        const p2 = runMergeSort(mergeBox.querySelector(".bars-container"), mergeData, numItems, 'green', speedConfig);
+        const p3 = runQuickSort(quickBox.querySelector(".bars-container"), quickData, numItems, 'red', speedConfig);
+        const p4 = runHeapSort(heapBox.querySelector(".bars-container"), heapData, numItems, 'teal', speedConfig);
 
         const [t1, t2, t3, t4] = await Promise.all([p1, p2, p3, p4]);
 
@@ -1989,10 +2010,41 @@ function appendSortingVisualization(container) {
         plusBtn.disabled = false;
         isSorted = true;
     });
+    runBtn.classList.add("run-sort-btn");
+
+    // Speed Controls
+    const speedConfig = { multiplier: 1 };
+
+    const btn1x = createBtn("1x", () => {
+        speedConfig.multiplier = 1;
+        updateSpeedBtns();
+    });
+    const btn2x = createBtn("2x", () => {
+        speedConfig.multiplier = 2; // 2x slower (double delay)
+        updateSpeedBtns();
+    });
+
+    const updateSpeedBtns = () => {
+        // Simple active state style
+        if (speedConfig.multiplier === 1) {
+            btn1x.style.backgroundColor = "white";
+            btn1x.style.color = "black";
+            btn2x.style.backgroundColor = "transparent";
+            btn2x.style.color = "var(--white)";
+        } else {
+            btn2x.style.backgroundColor = "white";
+            btn2x.style.color = "black";
+            btn1x.style.backgroundColor = "transparent";
+            btn1x.style.color = "var(--white)";
+        }
+    };
+    updateSpeedBtns(); // Init state
 
     btnRow.appendChild(minusBtn);
     btnRow.appendChild(plusBtn);
     btnRow.appendChild(runBtn);
+    btnRow.appendChild(btn1x);
+    btnRow.appendChild(btn2x);
 
     controlsContainer.appendChild(btnRow);
     wrapper.appendChild(controlsContainer);
@@ -2027,47 +2079,91 @@ function createSortBox(title) {
     return box;
 }
 
-function renderBars(container, data, maxN, colorTheme = 'blue') {
-    container.innerHTML = "";
-    // If maxN not passed, find max from data (fallback)
+function renderBars(container, data, maxN, colorTheme = 'blue', activeIndices = [], compareIndices = [], speedConfig = { multiplier: 1 }) {
+    const transitionDuration = `${0.1 * speedConfig.multiplier}s`;
     const maxVal = maxN || Math.max(...data.map(d => d.value));
+    const widthPct = 100 / data.length;
 
+    // Initialize if empty or mismatch
+    if (container.children.length !== data.length) {
+        container.innerHTML = "";
+        container.style.position = "relative";
+        container.style.display = "block";
+
+        data.forEach((item, idx) => {
+            const barWrapper = document.createElement("div");
+            barWrapper.setAttribute("data-id", item.id);
+            barWrapper.style.position = "absolute";
+            barWrapper.style.bottom = "0";
+            barWrapper.style.left = `${idx * widthPct}%`;
+            barWrapper.style.width = `${widthPct}%`;
+            barWrapper.style.height = "100%";
+            barWrapper.style.display = "flex";
+            barWrapper.style.flexDirection = "column";
+            barWrapper.style.justifyContent = "flex-end";
+            barWrapper.style.alignItems = "center";
+            barWrapper.style.padding = "0 2px";
+            barWrapper.style.transition = `left ${transitionDuration} ease-in-out`;
+
+            const label = document.createElement("div");
+            label.textContent = item.value;
+            label.classList.add("bar-label");
+            label.style.width = "24px";
+            label.style.height = "24px";
+            label.style.display = "flex";
+            label.style.justifyContent = "center";
+            label.style.alignItems = "center";
+            label.style.marginBottom = "4px";
+            label.style.fontWeight = "bold";
+            label.style.fontSize = "10px";
+            label.style.borderRadius = "100rem";
+            label.style.transition = "all 0.1s ease";
+            label.style.color = "var(--gray)";
+            label.style.backgroundColor = "transparent";
+            label.style.border = "1px solid transparent";
+
+            const bar = document.createElement("div");
+            bar.classList.add("sort-bar");
+            bar.classList.add(colorTheme);
+            bar.style.width = "100%";
+            bar.style.height = `${(item.value / maxVal) * 100}%`;
+
+            barWrapper.appendChild(label);
+            barWrapper.appendChild(bar);
+            container.appendChild(barWrapper);
+        });
+    }
+
+    // Update positions and styles
     data.forEach((item, idx) => {
-        // Wrapper for the bar column
-        const barWrapper = document.createElement("div");
-        barWrapper.style.display = "flex";
-        barWrapper.style.flexDirection = "column";
-        barWrapper.style.justifyContent = "flex-end";
-        barWrapper.style.alignItems = "center";
-        barWrapper.style.width = "100%";
-        barWrapper.style.height = "100%";
+        const wrapper = container.querySelector(`[data-id="${item.id}"]`);
+        if (!wrapper) return;
 
-        // The number label above
-        const label = document.createElement("div");
-        label.textContent = item.value;
-        label.style.fontSize = "10px";
-        label.style.color = "var(--gray)";
-        label.style.marginBottom = "4px"; // Padding above bar
-        label.style.textAlign = "center";
+        wrapper.style.left = `${idx * widthPct}%`;
+        wrapper.style.transition = `left ${transitionDuration} ease-in-out`;
 
-        const bar = document.createElement("div");
-        bar.classList.add("sort-bar");
-        bar.classList.add(colorTheme); // 'blue' or 'green' or 'red' or 'teal'
+        const label = wrapper.querySelector(".bar-label");
+        const isActive = activeIndices.includes(idx);
+        const isCompare = compareIndices.includes(idx);
 
-        // Dynamic height only
-        bar.style.height = `${(item.value / maxVal) * 100}%`;
-        bar.style.width = "100%";
-
-        // bar.textContent = item.value; // Removed, now using label
-
-        barWrapper.appendChild(label);
-        barWrapper.appendChild(bar);
-        container.appendChild(barWrapper);
+        if (isActive) {
+            label.style.backgroundColor = "white";
+            label.style.color = "black";
+            label.style.border = "1px solid white";
+        } else if (isCompare) {
+            label.style.backgroundColor = "transparent";
+            label.style.color = "white";
+            label.style.border = "1px solid white";
+        } else {
+            label.style.backgroundColor = "transparent";
+            label.style.color = "var(--gray)";
+            label.style.border = "1px solid transparent";
+        }
     });
 }
 
 // BUBBLE SORT
-async function runBubbleSort(container, data, maxN, theme) {
+async function runBubbleSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
     const startTime = Date.now();
     let n = data.length;
     let swapped;
@@ -2075,6 +2171,10 @@ async function runBubbleSort(container, data, maxN, theme) {
     do {
         swapped = false;
         for (let i = 0; i < n - 1; i++) {
+            // Visualize comparison
+            renderBars(container, data, maxN, theme, [i], [i + 1], speedConfig);
+            await new Promise(r => setTimeout(r, 100 * speedConfig.multiplier)); // Delay for comparison
+
             if (data[i].value > data[i + 1].value) {
                 // Swap
                 let temp = data[i];
@@ -2083,18 +2183,19 @@ async function runBubbleSort(container, data, maxN, theme) {
                 swapped = true;
                 steps++;
 
-                renderBars(container, data, maxN, theme);
-                await new Promise(r => setTimeout(r, 100)); // Delay
+                // Visualize Swap (Active moving)
+                renderBars(container, data, maxN, theme, [i + 1], [i], speedConfig);
+                await new Promise(r => setTimeout(r, 100 * speedConfig.multiplier)); // Delay
             }
         }
         n--;
     } while (swapped);
-    renderBars(container, data, maxN, theme);
+    renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
 }
 
 // MERGE SORT
-async function runMergeSort(container, data, maxN, theme) {
+async function runMergeSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
     const startTime = Date.now();
 
     async function mergeSortHelper(arr, startIdx) {
@@ -2109,6 +2210,15 @@ async function runMergeSort(container, data, maxN, theme) {
 
     async function merge(left, right, startIdx) {
         let resultArray = [], leftIndex = 0, rightIndex = 0;
+
+        // Visualize Processing Range (Active work area)
+        let rangeIndices = [];
+        for (let k = 0; k < left.length + right.length; k++) {
+            rangeIndices.push(startIdx + k);
+        }
+        // Show range
+        renderBars(container, data, maxN, theme, [], rangeIndices, speedConfig);
+        await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
 
         while (leftIndex < left.length && rightIndex < right.length) {
             if (left[leftIndex].value < right[rightIndex].value) {
@@ -2125,38 +2235,50 @@ async function runMergeSort(container, data, maxN, theme) {
         // Update the main data array with sorted slice
         for (let i = 0; i < resultArray.length; i++) {
             data[startIdx + i] = resultArray[i];
+            // Visualize Updating (Active element)
+            renderBars(container, data, maxN, theme, [startIdx + i], rangeIndices, speedConfig);
+            await new Promise(r => setTimeout(r, 50 * speedConfig.multiplier));
         }
 
-        renderBars(container, data, maxN, theme);
-        await new Promise(r => setTimeout(r, 150)); // Delay
-
+        renderBars(container, data, maxN, theme, [], [], speedConfig);
         return resultArray;
     }
 
     await mergeSortHelper(data, 0);
-    renderBars(container, data, maxN, theme);
+    renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
 }
 
 // QUICK SORT
-async function runQuickSort(container, data, maxN, theme) {
+async function runQuickSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
     const startTime = Date.now();
 
     async function partition(arr, low, high) {
         let pivot = arr[high];
+        // Visualize Pivot Highlighting
+        renderBars(container, data, maxN, theme, [high], [], speedConfig);
+        await new Promise(r => setTimeout(r, 50 * speedConfig.multiplier));
+
         let i = low - 1;
 
         for (let j = low; j < high; j++) {
+            // Visualize Comparison: j vs pivot
+            renderBars(container, data, maxN, theme, [high], [j], speedConfig);
+            await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
+
             if (arr[j].value < pivot.value) {
                 i++;
+                // Swap
                 [arr[i], arr[j]] = [arr[j], arr[i]];
-                renderBars(container, data, maxN, theme);
-                await new Promise(r => setTimeout(r, 80));
+
+                // Visualize Swap
+                renderBars(container, data, maxN, theme, [high, i], [j], speedConfig);
+                await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
             }
         }
         [arr[i + 1], arr[high]] = [arr[high], arr[i + 1]];
-        renderBars(container, data, maxN, theme);
-        await new Promise(r => setTimeout(r, 80));
+        renderBars(container, data, maxN, theme, [i + 1], [], speedConfig);
+        await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
         return i + 1;
     }
 
@@ -2169,12 +2291,12 @@ async function runQuickSort(container, data, maxN, theme) {
     }
 
     await quickSortHelper(data, 0, data.length - 1);
-    renderBars(container, data, maxN, theme);
+    renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
 }
 
 // HEAP SORT
-async function runHeapSort(container, data, maxN, theme) {
+async function runHeapSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
     const startTime = Date.now();
     let n = data.length;
 
@@ -2183,13 +2305,18 @@ async function runHeapSort(container, data, maxN, theme) {
         let l = 2 * i + 1;
         let r = 2 * i + 2;
 
+        // Visualize Root Check
+        renderBars(container, data, maxN, theme, [i], [l < n ? l : -1], speedConfig);
+        await new Promise(r => setTimeout(r, 40 * speedConfig.multiplier));
+
         if (l < n && arr[l].value > arr[largest].value) largest = l;
         if (r < n && arr[r].value > arr[largest].value) largest = r;
 
         if (largest !== i) {
             [arr[i], arr[largest]] = [arr[largest], arr[i]];
-            renderBars(container, data, maxN, theme);
-            await new Promise(r => setTimeout(r, 80));
+            // Visualize Swap
+            renderBars(container, data, maxN, theme, [largest], [i], speedConfig);
+            await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
             await heapify(arr, n, largest);
         }
     }
@@ -2202,11 +2329,14 @@ async function runHeapSort(container, data, maxN, theme) {
     // One by one extract an element from heap
     for (let i = n - 1; i > 0; i--) {
         [data[0], data[i]] = [data[i], data[0]]; // Move current root to end
-        renderBars(container, data, maxN, theme);
-        await new Promise(r => setTimeout(r, 80));
+
+        // Visualize Extraction
+        renderBars(container, data, maxN, theme, [i], [0], speedConfig);
+        await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
+
         await heapify(data, i, 0); // call max heapify on the reduced heap
     }
 
-    renderBars(container, data, maxN, theme);
+    renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
 }
