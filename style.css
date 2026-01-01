@@ -80,7 +80,6 @@ body.essence-mode {
     display: flex;
     align-items: center;
     cursor: pointer;
-    /* Removed fixed positioning */
 }
 
 .speachMode {
@@ -1689,87 +1688,111 @@ Slider effect
 }
 
 /* -------------------------------------------------
-   404 Error page
+   404 Error page (New Two Balls Version)
    ------------------------------------------------- */
 .error-page {
     display: block;
-    opacity: 1;
+    overflow: hidden;
+    background-color: var(--primary);
+}
+
+.error-page .modes {
+    opacity: 0.2;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .error-page #gameContainer {
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
+    z-index: 1;
 }
 
-.error-page .paddle {
+#gameCanvas {
+    width: 100%;
+    height: 100%;
+}
+
+.error-page .ball {
     position: absolute;
-    width: 10px;
-    height: 100px;
-    background-color: var(--dark);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    z-index: 2000;
+    /* Higher than text */
+    pointer-events: none;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
 
-.error-page #paddle1 {
-    left: 0;
+#ball-white {
+    background-color: #000000 !important;
+    border: none;
 }
 
-.error-page #paddle2 {
-    right: 0;
+#ball-black {
+    background-color: #FFFFFF !important;
+    border: none;
 }
 
-.error-page #ball {
-    position: absolute;
-    width: 115px;
-    user-select: none;
-    height: 145px;
+#ball-gray {
+    background-color: #A5A5A5 !important;
+    border: none;
 }
 
-.error-page #line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background-color: white;
-    transform: translateX(-50%);
-}
-
-.error-page #paddle1,
-.error-page #paddle2 {
-    background-color: white;
+#ball-darkgray {
+    background-color: #000000 !important;
+    border: none;
 }
 
 .error-page .errorMessage {
     position: fixed;
-    bottom: 0;
-    padding: 56px;
-}
-
-.error-page .errorMessage h2 {
-    position: fixed;
+    bottom: 16px;
+    left: 56px;
     right: 56px;
-    bottom: 56px;
+    z-index: 1000;
 }
 
-.error-page .errorMessage p {
-    text-wrap: balance;
-    max-width: 80%;
-    padding-bottom: 32px;
-}
-
-.error-page #score {
-    position: absolute;
-    top: calc(100% / 2 - 4.2dvw);
+.error-page .big-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 100%;
-    text-align: center;
-    font-size: 112px;
-    font-family: "Bricolage Grotesque", sans-serif;
 }
 
-/* ensure only the 404 page hides overflow */
-.error-page {
-    overflow: hidden;
+.error-page .large-err {
+    font-size: 56px;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    font-weight: 500;
+    margin: 0;
+    color: black;
+    mix-blend-mode: difference;
+    pointer-events: auto;
+    user-select: text;
 }
+
+/* Removed anchor styles as text is now static */
+
+.error-page .err-content p {
+    font-size: 18px;
+    margin-bottom: 8px;
+    color: black;
+    mix-blend-mode: difference;
+    pointer-events: auto;
+    user-select: text;
+}
+
+.error-page .error-link {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
 
 /* -------------------------------------------------
    Sorting Visualization
@@ -1940,6 +1963,16 @@ Slider effect
     .world-clock-item {
         flex: 1 1 calc(50% - 32px);
         /* 2 per row */
+    }
+
+    .error-page .errorMessage {
+        position: fixed;
+        bottom: 16px;
+        left: 16px;
+        right: 16px;
+        z-index: 1000;
+        text-wrap: balance;
+        pointer-events: none;
     }
 }
 

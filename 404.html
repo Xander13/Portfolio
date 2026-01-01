@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AK - 404</title>
+    <title>Alex Kauffman - 404</title>
     <!-- Relaxed CSP to allow inline scripts/styles and data images.
          For production, move inline JS to external files and replace 'unsafe-inline'
          with hashes/nonces for better security. -->
@@ -67,16 +67,16 @@
 
 <body class="error-page">
     <nav class="topNav" aria-label="Main Navigation">
-        <a href="essence.html" class="nav-brand">
+        <a href="https://alex-kauffman.com/" class="nav-brand">
             <h6>Alex Kauffman</h6>
         </a>
 
         <div class="nav-center">
             <div class="nav-underline"></div>
-            <a class="nav-pill-link" href="#" data-mode="essence">
+            <a class="nav-pill-link" href="index.html?mode=essence" data-mode="essence">
                 <h6><span class="nav-text">Essence</span></h6>
             </a>
-            <a class="active nav-pill-link" href="#" data-mode="work">
+            <a class="nav-pill-link" href="index.html?mode=work" data-mode="work">
                 <h6><span class="nav-text">Work</span></h6>
             </a>
             <a class="nav-pill-link" href="Alex_Kauffman_Resume.pdf" target="_blank">
@@ -94,22 +94,49 @@
         </div>
     </nav>
     <div class="errorMessage">
-        <div class="flexBox">
-            <div>
-                <p>Page not found. Please click back any of the link or enjoy 2 AI playing Pong</p>
-                <h1>404 Error</h1>
+        <div class="err-content">
+            <p>Page not found. <a href="index.html" class="error-link">Go back.</a></p>
+            <div class="big-text">
+                <h1 class="large-err">404 Error</h1>
+                <h1 class="large-err">&copy; 2025</h1>
             </div>
-            <h2>&copy; 2025</h2>
         </div>
     </div>
     <div id="gameContainer">
-        <div id="line"></div>
-        <div id="paddle1" class="paddle"></div>
-        <div id="paddle2" class="paddle"></div>
-        <img draggable="false" id="ball" src="ball.png" alt="Ball">
+        <canvas id="gameCanvas"></canvas>
+        <div id="ball-black" class="ball ball-black"></div>
+        <div id="ball-white" class="ball ball-white"></div>
+        <div id="ball-gray" class="ball ball-gray"></div>
+        <div id="ball-darkgray" class="ball ball-darkgray"></div>
     </div>
-    <div id="score">0&nbsp;&nbsp;0</div>
     <script src="pong.js"></script>
+    <script>
+        // Smooth Page Transition Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fade in on load
+            setTimeout(() => {
+                document.body.classList.add('loaded');
+            }, 50);
+
+            // Handle links for smooth fade out
+            document.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    const href = link.getAttribute('href');
+                    const target = link.getAttribute('target');
+
+                    // Skip transition for non-standard links
+                    if (!href || href === '#' || href.startsWith('#') || target === '_blank') return;
+
+                    e.preventDefault();
+                    document.body.classList.remove('loaded');
+
+                    setTimeout(() => {
+                        window.location.href = href;
+                    }, 500); // Matches CSS transition time
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

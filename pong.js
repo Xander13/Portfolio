@@ -1,138 +1,156 @@
-// Define the dimensions and other constants
-const paddleWidth = 10; // Width of the paddles
-const paddleHeight = 100; // Height of the paddles
-const ballWidth = 115;  // Width of the ball
-const ballHeight = 145; // Height of the ball
-const baseSpeed = 4; // Base speed for ball movement
-const speedVariance = 1; // Variance in ball speed
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
 
-// Initialize scores
-let playerScore = 0;
-let opponentScore = 0;
+const balls = [
+    { id: 'ball-black', colorIdx: 0, hex: '#000000', el: document.getElementById('ball-black') },
+    { id: 'ball-darkgray', colorIdx: 1, hex: '#FFFFFF', el: document.getElementById('ball-darkgray') }
+];
 
-// Get the paddle and ball elements from the DOM
-const paddle1 = document.getElementById('paddle1');
-const paddle2 = document.getElementById('paddle2');
-const ball = document.getElementById('ball');
-const scoreElement = document.getElementById('score');
+let width, height;
+let gridSize = 80;
+let cols, rows;
+let matrix = [];
+let offsetX = 0;
+let offsetY = 0;
 
-// Function to determine speed adjustment based on window width
-function speedAdjustment() {
-    return window.innerWidth < 920 ? 0.2 : 0.5; // Further reduce speed for smaller screens
+// Initialize ball physics
+balls.forEach(ball => {
+    ball.x = 0;
+    ball.y = 0;
+    ball.dx = (Math.random() > 0.5 ? 1 : -1) * (7 + Math.random() * 2);
+    ball.dy = (Math.random() > 0.5 ? 1 : -1) * (7 + Math.random() * 2);
+    ball.size = 60;
+    ball.strength = 1.0;
+});
+
+// Hide unused balls
+document.getElementById('ball-white').style.display = 'none';
+document.getElementById('ball-gray').style.display = 'none';
+
+function init() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+
+    // Determine target grid size based on screen
+    let targetGridSize = width < 768 ? 40 : 80;
+
+    // Calculate how many blocks fit, ensuring even numbers for perfect split
+    cols = Math.floor(width / targetGridSize);
+    if (cols % 2 !== 0) cols--; // Make even
+
+    rows = Math.floor(height / targetGridSize);
+    if (rows % 2 !== 0) rows--; // Make even
+
+    // Recalculate actual gridSize to perfectly fill the window
+    gridSize = width / cols; // This will stretch blocks to fit perfectly horizontally
+
+    // Update ball sizes proportionally
+    balls.forEach(b => {
+        b.size = width < 768 ? 40 : 60;
+    });
+
+    // No offsets needed - blocks fill edge to edge
+    offsetX = 0;
+    offsetY = 0;
+
+    matrix = [];
+    for (let x = 0; x < cols; x++) {
+        matrix[x] = [];
+        for (let y = 0; y < rows; y++) {
+            // 50% Top Black (0), 50% Bottom White (1)
+            matrix[x][y] = y < rows / 2 ? 0 : 1;
+        }
+    }
+
+    // Random Winner Bias
+    const winner = balls[Math.floor(Math.random() * balls.length)];
+    balls.forEach((ball) => {
+        ball.strength = (ball.id === winner.id) ? 1.06 : 0.96;
+
+        if (ball.id === 'ball-black') {
+            ball.x = width * 0.5;
+            ball.y = height * 0.25;
+        }
+        if (ball.id === 'ball-darkgray') {
+            ball.x = width * 0.5;
+            ball.y = height * 0.75;
+        }
+
+        ball.el.style.width = ball.size + 'px';
+        ball.el.style.height = ball.size + 'px';
+        ball.el.style.position = 'absolute';
+    });
 }
 
-// Initialize ball position and velocity
-let ballX, ballY, ballDX, ballDY;
+const colorHexes = ['#000000', '#FFFFFF', '#A5A5A5', '#1a1a2e'];
 
-function initializeGame() {
-    // Position paddles at the center of the screen
-    paddle1.style.top = (window.innerHeight - paddleHeight) / 2 + 'px';
-    paddle2.style.top = (window.innerHeight - paddleHeight) / 2 + 'px';
+function draw() {
+    ctx.fillStyle = '#000000';
+    ctx.fillRect(0, 0, width, height);
 
-    resetBall();
-}
+    // Calculate vertical grid size to fill height perfectly
+    const gridSizeY = height / rows;
 
-function resetBall() {
-    const adjustedSpeed = baseSpeed * speedAdjustment();
-    ballX = window.innerWidth / 2;
-    ballY = window.innerHeight / 2;
+    for (let x = 0; x < cols; x++) {
+        for (let y = 0; y < rows; y++) {
+            const gx = x * gridSize;
+            const gy = y * gridSizeY;
+            const cIdx = matrix[x][y];
 
-    // Fixed directions for ball movement
-    ballDX = adjustedSpeed; // Move to the right
-    ballDY = adjustedSpeed; // Move downwards
-
-    updateBallPosition();
-}
-
-function updateBallPosition() {
-    ball.style.left = ballX + 'px';
-    ball.style.top = ballY + 'px';
-}
-
-function movePaddleOnCollision(paddle) {
-    const paddleCenterY = paddle.offsetTop + paddleHeight / 2;
-    const ballCenterY = ballY + ballHeight / 2;
-
-    // Determine the proximity value based on screen size
-    const proximity = window.innerWidth < 920 ? 150 : 300; // 150px for mobile, 300px for desktop
-
-    // Move the paddle to center the ball when it gets close
-    if (Math.abs(ballX - paddle.offsetLeft) < proximity) {
-        if (ballCenterY > paddleCenterY) {
-            paddle.style.top = Math.min(window.innerHeight - paddleHeight, paddle.offsetTop + 4) + 'px';
-        } else if (ballCenterY < paddleCenterY) {
-            paddle.style.top = Math.max(0, paddle.offsetTop - 4) + 'px';
+            ctx.fillStyle = colorHexes[cIdx];
+            // Use gridSize for width, gridSizeY for height to fill perfectly
+            ctx.fillRect(gx, gy, gridSize + 1, gridSizeY + 1);
         }
     }
 }
 
-function checkRoundEnd() {
-    if (playerScore >= 5 || opponentScore >= 5) {
-        playerScore = 0;
-        opponentScore = 0;
+function moveBall(ball) {
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+
+    const half = ball.size / 2;
+
+    if (ball.x - half <= 0 || ball.x + half >= width) {
+        ball.dx = -ball.dx;
+        ball.x = Math.max(half, Math.min(width - half, ball.x));
     }
+    if (ball.y - half <= 0 || ball.y + half >= height) {
+        ball.dy = -ball.dy;
+        ball.y = Math.max(half, Math.min(height - half, ball.y));
+    }
+
+    let gx = Math.floor((ball.x - offsetX) / gridSize);
+    let gy = Math.floor((ball.y - offsetY) / (height / rows));
+
+    if (gx >= 0 && gx < cols && gy >= 0 && gy < rows) {
+        if (matrix[gx][gy] !== ball.colorIdx) {
+            if (Math.random() < ball.strength) {
+                matrix[gx][gy] = ball.colorIdx;
+            }
+
+            ball.dx = -ball.dx;
+            ball.dy = -ball.dy;
+
+            ball.dx += (Math.random() - 0.5) * 2;
+            ball.dy += (Math.random() - 0.5) * 2;
+
+            const speed = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
+            const targetSpeed = width < 768 ? 6.5 : 8.5;
+            ball.dx = (ball.dx / speed) * targetSpeed;
+            ball.dy = (ball.dy / speed) * targetSpeed;
+        }
+    }
+
+    ball.el.style.left = (ball.x - ball.size / 2) + 'px';
+    ball.el.style.top = (ball.y - ball.size / 2) + 'px';
 }
 
 function update() {
-    ballX += ballDX;
-    ballY += ballDY;
-
-    // Ball collision with the top and bottom edges of the viewport
-    if (ballY <= 0 || ballY + ballHeight >= window.innerHeight) {
-        ballDY = -ballDY;
-    }
-
-    // Collision detection with the left paddle (paddle1)
-    if (ballX <= paddleWidth) {
-        const paddle1Y = parseFloat(paddle1.style.top);
-        if (ballY + ballHeight >= paddle1Y && ballY <= paddle1Y + paddleHeight) {
-            ballDX = Math.abs(ballDX); // Ensure the ball moves to the right
-            ballDX += (Math.random() - 0.5) * speedVariance; // Add some variation in speed
-            ballDY += (Math.random() - 0.5) * speedVariance; // Add some variation in direction
-        } else {
-            opponentScore++;
-            checkRoundEnd();
-            resetBall();
-        }
-    }
-
-    // Collision detection with the right paddle (paddle2)
-    if (ballX + ballWidth >= window.innerWidth - paddleWidth) {
-        const paddle2Y = parseFloat(paddle2.style.top);
-        if (ballY + ballHeight >= paddle2Y && ballY <= paddle2Y + paddleHeight) {
-            ballDX = -Math.abs(ballDX); // Ensure the ball moves to the left
-            ballDX += (Math.random() - 0.5) * speedVariance; // Add some variation in speed
-            ballDY += (Math.random() - 0.5) * speedVariance; // Add some variation in direction
-        } else {
-            playerScore++;
-            checkRoundEnd();
-            resetBall();
-        }
-    }
-
-    // Move paddles on collision
-    movePaddleOnCollision(paddle1);
-    movePaddleOnCollision(paddle2);
-
-    updateBallPosition();
-    scoreElement.innerHTML = `${playerScore}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${opponentScore}`;
-
+    balls.forEach(ball => moveBall(ball));
+    draw();
     requestAnimationFrame(update);
 }
 
-window.addEventListener('resize', initializeGame);
-initializeGame();
+window.addEventListener('resize', init);
+init();
 update();
-
-// Toggle light and dark mode
-const toggleButton = document.getElementById('toggle-button');
-if (toggleButton) {
-    toggleButton.addEventListener('click', () => {
-        document.body.classList.toggle('lightMode');
-        const navDot = document.querySelector('.navDot');
-
-        if (navDot) {
-            navDot.classList.toggle('lightMode');
-        }
-    });
-}
