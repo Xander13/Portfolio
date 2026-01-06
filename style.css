@@ -231,7 +231,7 @@ a {
     position: absolute;
     width: 100%;
     height: 100%;
-       object-fit: cover;
+    object-fit: cover;
     flex-shrink: 1;
     transform-origin: center;
 }
@@ -1596,15 +1596,15 @@ Slider effect
     }
 
     .imageFLip {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    background: black;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        position: relative;
+        width: 100%;
+        height: 300px;
+        background: black;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     /* All width classes become full width on mobile */
     .w-100,
