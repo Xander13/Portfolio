@@ -19,7 +19,6 @@ function updateDetroitTime() {
 //Image flip gallery mode:
 function initImageFlip(container, interval = 1000) {
     const files = [
-        { type: "img", src: "Chains.png" },
         { type: "video", src: "Google_Braile.mp4" },
         { type: "img", src: "HookMenu.gif" },
         { type: "video", src: "Hood.mp4" },
