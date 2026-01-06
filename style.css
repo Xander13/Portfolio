@@ -214,7 +214,27 @@ a {
     line-height: 1.5;
 }
 
+.imageFLip {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background: black;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+/* stacked media */
+.imageFLip img,
+.imageFLip video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+       object-fit: cover;
+    flex-shrink: 1;
+    transform-origin: center;
+}
 
 /* -------------------------------------------------
    Width utilities (gap = 16px)
@@ -1574,6 +1594,17 @@ Slider effect
     .skillsColumn {
         min-width: 45%;
     }
+
+    .imageFLip {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    background: black;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
     /* All width classes become full width on mobile */
     .w-100,

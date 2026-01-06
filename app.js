@@ -16,6 +16,68 @@ function updateDetroitTime() {
   timeEl.textContent = `Detroit ${timeString}`;
 }
 
+//Image flip gallery mode:
+function initImageFlip(container, interval = 1000) {
+    const files = [
+        { type: "img", src: "Chains.png" },
+        { type: "video", src: "Google_Braile.mp4" },
+        { type: "img", src: "HookMenu.gif" },
+        { type: "video", src: "Hood.mp4" },
+        { type: "video", src: "AppleMusicCoverFlow.MP4" }
+    ];
+
+    container.innerHTML = "";
+
+    const elements = files.map((file, i) => {
+        let el;
+
+        if (file.type === "video") {
+            el = document.createElement("video");
+            el.src = file.src;
+            el.muted = true;
+            el.loop = true;
+            el.playsInline = true;
+        } else {
+            el = document.createElement("img");
+            el.src = file.src;
+        }
+
+        el.style.display = i === 0 ? "block" : "none";
+        el.style.zIndex = files.length - i;
+
+        container.appendChild(el);
+        return el;
+    });
+
+    let index = 0;
+
+    setInterval(() => {
+        const current = elements[index];
+        current.style.display = "none";
+
+        if (current.tagName === "VIDEO") {
+            current.pause();
+            current.currentTime = 0; // reset video to start
+        }
+
+        index = (index + 1) % elements.length;
+
+        const next = elements[index];
+        next.style.display = "block";
+        next.style.zIndex = files.length + 1;
+
+        if (next.tagName === "VIDEO") {
+            next.currentTime = 0; // ensure video starts from beginning
+            next.play();
+        }
+    }, interval);
+}
+
+document.querySelectorAll(".imageFLip").forEach(flip => {
+    initImageFlip(flip, 3000);
+});
+
+
 // Initial load
 updateDetroitTime();
 
