@@ -38,6 +38,7 @@
 
 html {
     scroll-behavior: smooth;
+    overscroll-behavior: none;
 }
 
 body {
@@ -58,6 +59,21 @@ body.essence-page,
 body.locked-page,
 body.essence-mode {
     overflow: hidden;
+}
+
+/* B-Side Mobile Scroll Fixes */
+.bside-page {
+    /* Prevent Safari from bouncing the whole body */
+    overscroll-behavior-y: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+.bside-page .autoScrollGallery {
+    /* Tell Safari we are handling the vertical pan */
+    touch-action: pan-y;
+    /* Prevent unexpected horizontal shifts */
+    overflow-x: hidden;
+    width: 100%;
 }
 
 /* Fade transitions for mode switching */
@@ -664,6 +680,8 @@ a {
     /* Delayed start */
     opacity: 0;
     /* Start hidden */
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 
 @keyframes slideIn {
@@ -1213,6 +1231,10 @@ Slider effect
 .articles h1 {
     text-wrap: balance;
     padding-bottom: 56px;
+}
+
+.articles h3 {
+    padding-right: 18px;
 }
 
 .case-study {

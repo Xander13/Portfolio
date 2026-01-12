@@ -2,7 +2,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Alex Kauffman – Portfolio - B-Side</title>
     <meta http-equiv="Content-Security-Policy"
         content="script-src 'self' https://cdn.jsdelivr.net 'unsafe-eval' 'unsafe-inline';">
@@ -48,7 +48,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body class="bside-page">
     <nav class="topNav" aria-label="Main Navigation">
         <a href="https://alex-kauffman.com/" class="nav-brand">
             <h6>Alex Kauffman</h6>
@@ -76,13 +76,13 @@
     </nav>
     <div class="content">
         <div class="autoScrollGallery"
-            style="width: 100%; max-width: 100%; display: flex; flex-direction: column; gap: 10vh;">
+            style="width: 100%; max-width: 100%; display: flex; flex-direction: column; gap: 20vh;">
             <!-- Hook Menu -->
             <div class="flexBox">
                 <div class="w-20"></div>
                 <!-- Applying data-id to the wrapper div -->
                 <div class="w-80" data-id="hook-menu">
-                    <img src="HookMenu.gif" alt="img" style="border: 1px solid rgb(24, 24, 24)">
+                    <img src="HookMenu.gif" alt="img" loading="lazy" style="border: 1px solid rgb(24, 24, 24)">
                     <br>
                     <h2>Hook Menu Redesigned - UX</h2>
                 </div>
@@ -92,13 +92,14 @@
             <!-- Hood & Starbucks -->
             <div class="flexBox">
                 <div class="w-50" data-id="hood-motion">
-                    <video src="Hood.mp4" width="100%" autoplay playsinline muted nocontrols loop></video>
+                    <video src="Hood.mp4" width="100%" preload="metadata" autoplay playsinline muted nocontrols
+                        loop></video>
                     <br>
                     <h2>Hood - Motion</h2>
                 </div>
                 <div class="w-05"></div>
                 <div class="w-50" data-id="starbucks">
-                    <img src="Starbucks3.png" alt="img">
+                    <img src="Starbucks3.png" alt="img" loading="lazy">
                     <br>
                     <h2>Starbucks Rewards - Illustration/UI</h2>
                 </div>
@@ -106,7 +107,7 @@
             <!--Copy -->
             <div>
                 <div class="mdMargin"></div>
-                <h1>From agency-led concepts to independent explorations, these Artifacts represent the design thinking
+                <h1>From concepts to prototypes, these Artifacts represent the design thinking
                     and motion expertise behind every problem I solve.
                 </h1>
                 <div class="mdMargin"></div>
@@ -114,8 +115,8 @@
             <!-- Apple Music -->
             <div class="flexBox">
                 <div class="w-70" data-id="apple-music">
-                    <video src="AppleMusicCoverFlow.MP4" width="100%" autoplay playsinline muted nocontrols
-                        loop></video>
+                    <video src="AppleMusicCoverFlow.MP4" width="100%" preload="metadata" autoplay playsinline muted
+                        nocontrols loop></video>
                     <br>
                     <h2>Apple Music Cover Flow - AR/UI</h2>
                 </div>
@@ -125,13 +126,14 @@
             <!-- Google Braille -->
             <div class="flexBox">
                 <div class="w-60" data-id="google-braille">
-                    <video src="Google_Braile.mp4" autoplay playsinline muted nocontrols loop></video>
+                    <video src="Google_Braile.mp4" preload="metadata" autoplay playsinline muted nocontrols
+                        loop></video>
                     <br>
                     <h2>Google Braille - Motion</h2>
                 </div>
                 <div class="w-05"></div>
                 <div class="w-40" data-id="google-braille">
-                    <img src="Google_Braille.svg" alt="img">
+                    <img src="google_braille.svg" alt="img" loading="lazy">
                     <br>
                     <h2>Google Braille - Logo Mark</h2>
                 </div>
@@ -147,8 +149,8 @@
         <input class="txtBox" autocomplete="off" name="no-autofill" type="text" id="llmTxt" placeholder="Ask Alex...">
         <div class="send" role="button" tabindex="0">Send</div>
     </div>
-    <script src="projectScripts.js"></script>
-    <script src="bside.js"></script>
+    <script src="projectScripts.js" defer></script>
+    <script src="bside.js" defer></script>
 </body>
 
 </html>

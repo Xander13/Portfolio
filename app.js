@@ -19,7 +19,7 @@ function updateDetroitTime() {
 //Image flip gallery mode:
 function initImageFlip(container, interval = 1000) {
   const files = [
-    { type: "img", src: "Google_Braille.svg" },
+    { type: "img", src: "google_braille.svg" },
     { type: "video", src: "Google_Braile.mp4" },
     { type: "img", src: "HookMenu.gif" },
     { type: "video", src: "Hood.mp4" },
@@ -258,6 +258,9 @@ if (container) {
     img.style.height = "auto";
     img.style.position = "absolute";
     img.style.pointerEvents = "none";
+    img.style.top = "0";
+    img.style.left = "0";
+    img.style.willChange = "transform";
     container.appendChild(img);
 
     // Push image data to animate array
@@ -273,7 +276,8 @@ if (container) {
   }
 
   function animate() {
-    for (let img of images) {
+    for (let i = 0; i < images.length; i++) {
+      const img = images[i];
       img.y += img.speedY;
       img.x += img.drift;
       img.angle += img.spinSpeed;
@@ -289,10 +293,8 @@ if (container) {
         img.drift *= -1;
       }
 
-      // Apply styles
-      img.el.style.left = `${img.x}px`;
-      img.el.style.top = `${img.y}px`;
-      img.el.style.transform = `rotate(${img.angle}deg)`;
+      // Apply styles with translate3d for better performance
+      img.el.style.transform = `translate3d(${img.x}px, ${img.y}px, 0) rotate(${img.angle}deg)`;
     }
 
     requestAnimationFrame(animate);

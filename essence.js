@@ -140,9 +140,19 @@ const bgColorObserver = new IntersectionObserver((entries) => {
 
 // -------- Append Message --------
 function appendMessage(sender, msg, animated = false, extra = {}, callback = null) {
+    // Pre-process inline links into the message string if they exist
+    let processedMsg = msg;
+    if (extra?.inlineLinks && Array.isArray(extra.inlineLinks)) {
+        extra.inlineLinks.forEach(linkInfo => {
+            const escaped = linkInfo.searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            const regex = new RegExp(`(${escaped})`, 'g');
+            processedMsg = processedMsg.replace(regex, `<a href="${linkInfo.href}" target="_blank" style="color: white; text-decoration: underline;">$1</a>`);
+        });
+    }
+
     // Trigger pattern change on user input
     if (sender === "user" && typeof window.changePattern === "function") {
-        window.changePattern(msg);
+        window.changePattern(processedMsg);
     }
 
     // Trigger pulse on AI response
@@ -225,54 +235,18 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
         }
 
 
-        // ✅ Move inline link here AFTER typewriter
+        // ✅ Append standalone link if provided
         if (extra?.link && extra.inlineLink) {
+            const allPs = content.querySelectorAll("p");
+            const lastP = allPs[allPs.length - 1] || p;
             const a = document.createElement("a");
             a.href = extra.link.href;
             a.textContent = extra.link.text;
             a.target = "_blank";
-            p.append(" ");
-            p.append(a);
-        }
-
-        // ✅ Handle inline links in the middle of text
-        if (extra?.inlineLinks && Array.isArray(extra.inlineLinks)) {
-            console.log("Processing inlineLinks:", extra.inlineLinks);
-            console.log("Current paragraph text:", p.textContent);
-
-            extra.inlineLinks.forEach(linkInfo => {
-                const textContent = p.textContent;
-                const searchText = linkInfo.searchText;
-
-                console.log("Looking for:", searchText, "in:", textContent);
-
-                if (textContent.includes(searchText)) {
-                    console.log("Found! Replacing with link");
-                    // Split the text into parts
-                    const parts = textContent.split(searchText);
-
-                    // Clear the paragraph
-                    p.textContent = "";
-
-                    // Rebuild with link elements
-                    parts.forEach((part, index) => {
-                        p.appendChild(document.createTextNode(part));
-
-                        // Add link between parts (except after the last part)
-                        if (index < parts.length - 1) {
-                            const a = document.createElement("a");
-                            a.href = linkInfo.href;
-                            a.textContent = linkInfo.linkText;
-                            a.target = "_blank";
-                            a.style.color = "gray";
-                            p.appendChild(a);
-                            console.log("Added link element:", a);
-                        }
-                    });
-                } else {
-                    console.log("NOT found in text");
-                }
-            });
+            a.style.color = "white";
+            a.style.textDecoration = "underline";
+            lastP.append(" ");
+            lastP.append(a);
         }
 
         if (callback) callback();
@@ -281,7 +255,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
     if (sender === "ai") {
         if (window.speechMode && window.speechMode.isActive && window.speechMode.isActive()) {
             // Speech Mode: Instant render + Speak
-            p.innerHTML = msg;
+            p.innerHTML = processedMsg;
             appendExtras();
 
             // Speak
@@ -292,7 +266,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             });
         } else {
             // Normal mode: Split by <br><br> and animate paragraphs sequentially
-            const paragraphs = msg.split(/<br\s*\/?>\s*<br\s*\/?>/i);
+            const paragraphs = processedMsg.split(/<br\s*\/?>\s*<br\s*\/?>/i);
 
             // Remove the default <p> since we'll create multiple
             p.remove();
@@ -309,17 +283,6 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
                 paragraphElements.push(paragraphElement);
             });
 
-            // Append inline link to the last paragraph if provided
-            if (extra?.link && extra.inlineLink && paragraphElements.length > 0) {
-                const lastParagraph = paragraphElements[paragraphElements.length - 1];
-                const a = document.createElement("a");
-                a.href = extra.link.href;
-                a.textContent = extra.link.text;
-                a.target = "_blank";
-                lastParagraph.append(" ");
-                lastParagraph.append(a);
-            }
-
             // Append extras after all paragraphs are added
             const totalDelay = paragraphs.length * 0.3 * 1000;
             setTimeout(() => {
@@ -335,7 +298,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
         }
     } else {
         // User message: always instant
-        p.innerHTML = msg;
+        p.innerHTML = processedMsg;
         appendExtras();
     }
 
@@ -557,6 +520,57 @@ function appendSkillsGrid(skills, container) {
 
 
 // -------- Build Personal Paragraph --------
+function processPlaceholders(text) {
+    let inlineLinks = [];
+    if (text.includes("{{time}}")) {
+        text = text.replace("{{time}}", getDetroitTime());
+    }
+    if (text.includes("{{leftfieldlab}}")) {
+        text = text.replace("{{leftfieldlab}}", "Left Field Lab");
+        inlineLinks.push({
+            searchText: "Left Field Lab",
+            href: knowledge.links?.leftfieldlab || "https://www.leftfieldlabs.com/",
+            linkText: "Left Field Lab"
+        });
+    }
+    if (text.includes("{{rit}}")) {
+        text = text.replace("{{rit}}", "Rochester Institute of Technology");
+        inlineLinks.push({
+            searchText: "Rochester Institute of Technology",
+            href: knowledge.links?.rit || "https://www.rit.edu/",
+            linkText: "Rochester Institute of Technology"
+        });
+    }
+    if (text.includes("{{microsoft}}")) {
+        const fullPhrase = "Microsoft Accessibility's adaptive controllers";
+        text = text.replace("{{microsoft}}", fullPhrase);
+        inlineLinks.push({
+            searchText: fullPhrase,
+            href: knowledge.links?.microsoft || "https://www.xbox.com/en-US/community/for-everyone/accessibility",
+            linkText: fullPhrase
+        });
+    }
+    if (text.includes("{{apple}}")) {
+        const fullPhrase = "Apple's Inclusion & Diversity team";
+        text = text.replace("{{apple}}", fullPhrase);
+        inlineLinks.push({
+            searchText: fullPhrase,
+            href: knowledge.links?.apple || "https://www.apple.com/diversity/",
+            linkText: fullPhrase
+        });
+    }
+    if (text.includes("{{jnj}}")) {
+        const fullPhrase = "JnJ MedTech's";
+        text = text.replace("{{jnj}}", fullPhrase);
+        inlineLinks.push({
+            searchText: fullPhrase,
+            href: knowledge.links?.jnj || "https://www.careers.jnj.com/en/",
+            linkText: fullPhrase
+        });
+    }
+    return { text, inlineLinks };
+}
+
 function buildParagraph(matchedKeys) {
     // Prioritize specific keys to avoid duplication
     const priority = ["background", "dream job", "philosophy", "name"];
@@ -564,70 +578,26 @@ function buildParagraph(matchedKeys) {
     // Find the highest priority match
     for (const key of priority) {
         if (matchedKeys.includes(key) && knowledge.personal[key]) {
-            let text = knowledge.personal[key];
-            let inlineLinks = [];
-
-            if (text.includes("{{time}}")) {
-                text = text.replace("{{time}}", getDetroitTime());
-            }
-
-            // Track inline links to append after typewriter
-            if (text.includes("{{leftfieldlab}}")) {
-                text = text.replace("{{leftfieldlab}}", "Left Field Lab");
-                inlineLinks.push({
-                    searchText: "Left Field Lab",
-                    href: knowledge.links?.leftfieldlab || "https://www.leftfieldlabs.com/",
-                    linkText: "Left Field Lab"
-                });
-            }
-            if (text.includes("{{rit}}")) {
-                text = text.replace("{{rit}}", "Rochester Institute of Technology");
-                inlineLinks.push({
-                    searchText: "Rochester Institute of Technology",
-                    href: knowledge.links?.rit || "https://www.rit.edu/",
-                    linkText: "Rochester Institute of Technology"
-                });
-            }
+            let originalText = knowledge.personal[key];
+            const processed = processPlaceholders(originalText);
 
             return {
-                text: text,
+                text: processed.text,
                 color: key === "background" ? knowledge.personal.color : undefined,
-                inlineLinks: inlineLinks.length > 0 ? inlineLinks : undefined
+                inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined
             };
         }
     }
 
     // Fallback: if no priority match, use the first matched key
     if (matchedKeys.length > 0 && knowledge.personal[matchedKeys[0]]) {
-        let text = knowledge.personal[matchedKeys[0]];
-        let inlineLinks = [];
-
-        if (text.includes("{{time}}")) {
-            text = text.replace("{{time}}", getDetroitTime());
-        }
-
-        // Track inline links to append after typewriter
-        if (text.includes("{{leftfieldlab}}")) {
-            text = text.replace("{{leftfieldlab}}", "Left Field Lab");
-            inlineLinks.push({
-                searchText: "Left Field Lab",
-                href: "https://www.leftfieldlabs.com/",
-                linkText: "Left Field Lab"
-            });
-        }
-        if (text.includes("{{rit}}")) {
-            text = text.replace("{{rit}}", "Rochester Institute of Technology");
-            inlineLinks.push({
-                searchText: "Rochester Institute of Technology",
-                href: "https://www.rit.edu/",
-                linkText: "Rochester Institute of Technology"
-            });
-        }
+        let originalText = knowledge.personal[matchedKeys[0]];
+        const processed = processPlaceholders(originalText);
 
         return {
-            text: text,
+            text: processed.text,
             color: undefined,
-            inlineLinks: inlineLinks.length > 0 ? inlineLinks : undefined
+            inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined
         };
     }
 
@@ -712,9 +682,9 @@ async function findResponse(userInput) {
 
     // Check for "dream job" BEFORE "role" since "job" is in both
     if (matchedKeys.includes("dream job")) {
-        const dreamJobText = knowledge.personal["dream job"];
+        const response = buildParagraph(["dream job"]);
         return {
-            text: dreamJobText,
+            ...response,
             instant: true
         };
     }
@@ -827,7 +797,7 @@ async function findResponse(userInput) {
     // --- ARTICLES ---
     if (normalizedInput.includes("article") || normalizedInput.includes("writing")) {
         return {
-            text: "Here are some articles I've written:",
+            text: "Here are experiments and writing that explore new directions in systems, tools, and product design.",
             extra: { articles: knowledge.Articles }
         };
     }
@@ -1522,8 +1492,7 @@ function appendArticlesGrid(articles, container) {
     const gridWrapper = document.createElement("div");
     gridWrapper.classList.add("articles-grid");
     gridWrapper.style.display = "grid";
-    gridWrapper.style.gridTemplateColumns = "repeat(3, 1fr)";
-    gridWrapper.style.gap = "var(--spacing-md)";
+    gridWrapper.style.gridTemplateColumns = "repeat(4, 1fr)";
     gridWrapper.style.marginTop = "var(--spacing-md)";
     gridWrapper.style.width = "100%";
 
@@ -1553,7 +1522,6 @@ function createArticleItem(article) {
         mediaEl.style.width = "100%";
         mediaEl.style.display = "block";
         mediaEl.style.marginBottom = "var(--spacing-sm)";
-        mediaEl.style.borderRadius = "8px";
 
         if (isVideo) {
             mediaEl.autoplay = true;
@@ -1567,21 +1535,24 @@ function createArticleItem(article) {
     // Title
     const title = document.createElement("h3");
     title.textContent = article.title;
-    title.style.fontSize = "24px";
+    title.style.fontSize = "20px";
     title.style.fontWeight = "400";
     title.style.color = "var(--black)";
-    title.style.marginBottom = "var(--spacing-xs)";
     title.style.lineHeight = "1.4";
+    title.style.paddingRight = "12px";
     wrapper.appendChild(title);
 
     // Description (if exists)
     if (article.description) {
         const desc = document.createElement("p");
         desc.textContent = article.description;
-        desc.style.fontSize = "24px";
-        desc.style.color = "#808080";
-        desc.style.lineHeight = "1.5";
+        desc.style.fontSize = "20px";
+        desc.style.color = "var(--black)";
+        desc.style.lineHeight = "1.3";
         desc.style.margin = "0";
+        desc.style.paddingRight = "12px";
+        desc.style.paddingBlock = "64px";
+        desc.style.paddingTop = "12px";
         wrapper.appendChild(desc);
     }
 
@@ -1868,9 +1839,9 @@ function appendSortingVisualization(container) {
     const bubbleBox = createSortBox("Bubble Sort");
     boxesContainer1.appendChild(bubbleBox);
 
-    // Merge Sort Box
-    const mergeBox = createSortBox("Merge Sort");
-    boxesContainer1.appendChild(mergeBox);
+    // Counting Sort Box
+    const countingBox = createSortBox("Counting Sort");
+    boxesContainer1.appendChild(countingBox);
 
     wrapper.appendChild(boxesContainer1);
 
@@ -1879,13 +1850,13 @@ function appendSortingVisualization(container) {
     boxesContainer2.classList.add("boxes-container");
     boxesContainer2.style.marginTop = "20px"; // Space between rows
 
+    // Insertion Sort Box
+    const insertionBox = createSortBox("Insertion Sort");
+    boxesContainer2.appendChild(insertionBox);
+
     // Quick Sort Box
     const quickBox = createSortBox("Quick Sort");
     boxesContainer2.appendChild(quickBox);
-
-    // Heap Sort Box
-    const heapBox = createSortBox("Heap Sort");
-    boxesContainer2.appendChild(heapBox);
 
     wrapper.appendChild(boxesContainer2);
 
@@ -1931,15 +1902,15 @@ function appendSortingVisualization(container) {
         }
 
         renderBars(bubbleBox.querySelector(".bars-container"), arrayData, n, 'blue');
-        renderBars(mergeBox.querySelector(".bars-container"), arrayData, n, 'green');
+        renderBars(countingBox.querySelector(".bars-container"), arrayData, n, 'green');
+        renderBars(insertionBox.querySelector(".bars-container"), arrayData, n, 'teal');
         renderBars(quickBox.querySelector(".bars-container"), arrayData, n, 'red');
-        renderBars(heapBox.querySelector(".bars-container"), arrayData, n, 'teal');
 
         // Set initial stats text
         bubbleBox.querySelector(".box-stats").innerHTML = "O(n²)";
-        mergeBox.querySelector(".box-stats").innerHTML = "O(n log n)";
+        countingBox.querySelector(".box-stats").innerHTML = "O(n + k)";
+        insertionBox.querySelector(".box-stats").innerHTML = "O(n²)";
         quickBox.querySelector(".box-stats").innerHTML = "O(n log n)";
-        heapBox.querySelector(".box-stats").innerHTML = "O(n log n)";
 
         isSorted = false;
 
@@ -1976,32 +1947,32 @@ function appendSortingVisualization(container) {
         plusBtn.disabled = true;
 
         const bubbleStats = bubbleBox.querySelector(".box-stats");
-        const mergeStats = mergeBox.querySelector(".box-stats");
+        const countingStats = countingBox.querySelector(".box-stats");
+        const insertionStats = insertionBox.querySelector(".box-stats");
         const quickStats = quickBox.querySelector(".box-stats");
-        const heapStats = heapBox.querySelector(".box-stats");
 
         bubbleStats.innerHTML = "Sorting...";
-        mergeStats.innerHTML = "Sorting...";
+        countingStats.innerHTML = "Sorting...";
+        insertionStats.innerHTML = "Sorting...";
         quickStats.innerHTML = "Sorting...";
-        heapStats.innerHTML = "Sorting...";
 
         // Run all sorts
         const bubbleData = JSON.parse(JSON.stringify(arrayData));
-        const mergeData = JSON.parse(JSON.stringify(arrayData));
+        const countingData = JSON.parse(JSON.stringify(arrayData));
+        const insertionData = JSON.parse(JSON.stringify(arrayData));
         const quickData = JSON.parse(JSON.stringify(arrayData));
-        const heapData = JSON.parse(JSON.stringify(arrayData));
 
         const p1 = runBubbleSort(bubbleBox.querySelector(".bars-container"), bubbleData, numItems, 'blue', speedConfig);
-        const p2 = runMergeSort(mergeBox.querySelector(".bars-container"), mergeData, numItems, 'green', speedConfig);
-        const p3 = runQuickSort(quickBox.querySelector(".bars-container"), quickData, numItems, 'red', speedConfig);
-        const p4 = runHeapSort(heapBox.querySelector(".bars-container"), heapData, numItems, 'teal', speedConfig);
+        const p2 = runCountingSort(countingBox.querySelector(".bars-container"), countingData, numItems, 'green', speedConfig);
+        const p3 = runInsertionSort(insertionBox.querySelector(".bars-container"), insertionData, numItems, 'teal', speedConfig);
+        const p4 = runQuickSort(quickBox.querySelector(".bars-container"), quickData, numItems, 'red', speedConfig);
 
         const [t1, t2, t3, t4] = await Promise.all([p1, p2, p3, p4]);
 
         bubbleStats.innerHTML = `${t1}ms (Steps: ${Math.floor(t1 / 20)})`;
-        mergeStats.innerHTML = `${t2}ms (Steps: ${Math.floor(t2 / 20)})`;
-        quickStats.innerHTML = `${t3}ms (Steps: ${Math.floor(t3 / 20)})`;
-        heapStats.innerHTML = `${t4}ms (Steps: ${Math.floor(t4 / 20)})`;
+        countingStats.innerHTML = `${t2}ms (Steps: ${Math.floor(t2 / 20)})`;
+        insertionStats.innerHTML = `${t3}ms (Steps: ${Math.floor(t3 / 20)})`;
+        quickStats.innerHTML = `${t4}ms (Steps: ${Math.floor(t4 / 20)})`;
 
         // Enable buttons and switch to Restart
         runBtn.disabled = false;
@@ -2194,57 +2165,66 @@ async function runBubbleSort(container, data, maxN, theme, speedConfig = { multi
     return Date.now() - startTime;
 }
 
-// MERGE SORT
-async function runMergeSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
+// COUNTING SORT
+async function runCountingSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
     const startTime = Date.now();
+    let n = data.length;
 
-    async function mergeSortHelper(arr, startIdx) {
-        if (arr.length <= 1) return arr;
-
-        const mid = Math.floor(arr.length / 2);
-        const left = await mergeSortHelper(arr.slice(0, mid), startIdx);
-        const right = await mergeSortHelper(arr.slice(mid), startIdx + mid);
-
-        return await merge(left, right, startIdx);
+    // 1. Find the maximum value
+    let max = 0;
+    for (let i = 0; i < n; i++) {
+        if (data[i].value > max) max = data[i].value;
     }
 
-    async function merge(left, right, startIdx) {
-        let resultArray = [], leftIndex = 0, rightIndex = 0;
+    // 2. Count occurrences
+    const count = new Array(max + 1).fill(0);
+    const countMap = {}; // To store the original objects by value
 
-        // Visualize Processing Range (Active work area)
-        let rangeIndices = [];
-        for (let k = 0; k < left.length + right.length; k++) {
-            rangeIndices.push(startIdx + k);
-        }
-        // Show range
-        renderBars(container, data, maxN, theme, [], rangeIndices, speedConfig);
-        await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
+    for (let i = 0; i < n; i++) {
+        // Visualize Scanning
+        renderBars(container, data, maxN, theme, [i], [], speedConfig);
+        await new Promise(r => setTimeout(r, 60 * speedConfig.multiplier));
 
-        while (leftIndex < left.length && rightIndex < right.length) {
-            if (left[leftIndex].value < right[rightIndex].value) {
-                resultArray.push(left[leftIndex]);
-                leftIndex++;
-            } else {
-                resultArray.push(right[rightIndex]);
-                rightIndex++;
-            }
-        }
-
-        resultArray = resultArray.concat(left.slice(leftIndex)).concat(right.slice(rightIndex));
-
-        // Update the main data array with sorted slice
-        for (let i = 0; i < resultArray.length; i++) {
-            data[startIdx + i] = resultArray[i];
-            // Visualize Updating (Active element)
-            renderBars(container, data, maxN, theme, [startIdx + i], rangeIndices, speedConfig);
-            await new Promise(r => setTimeout(r, 50 * speedConfig.multiplier));
-        }
-
-        renderBars(container, data, maxN, theme, [], [], speedConfig);
-        return resultArray;
+        const val = data[i].value;
+        count[val]++;
+        if (!countMap[val]) countMap[val] = [];
+        countMap[val].push(data[i]);
     }
 
-    await mergeSortHelper(data, 0);
+    // 3. Reconstruct the array
+    let index = 0;
+    for (let val = 0; val <= max; val++) {
+        while (count[val] > 0) {
+            data[index] = countMap[val].shift();
+            // Visualize Reconstruction
+            renderBars(container, data, maxN, theme, [index], [], speedConfig);
+            await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
+            index++;
+            count[val]--;
+        }
+    }
+
+    renderBars(container, data, maxN, theme, [], [], speedConfig);
+    return Date.now() - startTime;
+}
+
+// INSERTION SORT
+async function runInsertionSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
+    const startTime = Date.now();
+    let n = data.length;
+    for (let i = 1; i < n; i++) {
+        let key = data[i];
+        let j = i - 1;
+        while (j >= 0 && data[j].value > key.value) {
+            renderBars(container, data, maxN, theme, [j, j + 1], [i], speedConfig);
+            await new Promise(r => setTimeout(r, 60 * speedConfig.multiplier));
+            data[j + 1] = data[j];
+            j = j - 1;
+        }
+        data[j + 1] = key;
+        renderBars(container, data, maxN, theme, [j + 1], [], speedConfig);
+        await new Promise(r => setTimeout(r, 100 * speedConfig.multiplier));
+    }
     renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
 }
@@ -2295,48 +2275,4 @@ async function runQuickSort(container, data, maxN, theme, speedConfig = { multip
     return Date.now() - startTime;
 }
 
-// HEAP SORT
-async function runHeapSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
-    const startTime = Date.now();
-    let n = data.length;
 
-    async function heapify(arr, n, i) {
-        let largest = i;
-        let l = 2 * i + 1;
-        let r = 2 * i + 2;
-
-        // Visualize Root Check
-        renderBars(container, data, maxN, theme, [i], [l < n ? l : -1], speedConfig);
-        await new Promise(r => setTimeout(r, 40 * speedConfig.multiplier));
-
-        if (l < n && arr[l].value > arr[largest].value) largest = l;
-        if (r < n && arr[r].value > arr[largest].value) largest = r;
-
-        if (largest !== i) {
-            [arr[i], arr[largest]] = [arr[largest], arr[i]];
-            // Visualize Swap
-            renderBars(container, data, maxN, theme, [largest], [i], speedConfig);
-            await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
-            await heapify(arr, n, largest);
-        }
-    }
-
-    // Build heap (rearrange array)
-    for (let i = Math.floor(n / 2) - 1; i >= 0; i--) {
-        await heapify(data, n, i);
-    }
-
-    // One by one extract an element from heap
-    for (let i = n - 1; i > 0; i--) {
-        [data[0], data[i]] = [data[i], data[0]]; // Move current root to end
-
-        // Visualize Extraction
-        renderBars(container, data, maxN, theme, [i], [0], speedConfig);
-        await new Promise(r => setTimeout(r, 80 * speedConfig.multiplier));
-
-        await heapify(data, i, 0); // call max heapify on the reduced heap
-    }
-
-    renderBars(container, data, maxN, theme, [], [], speedConfig);
-    return Date.now() - startTime;
-}

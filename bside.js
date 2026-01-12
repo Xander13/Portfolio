@@ -12,19 +12,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const html = document.documentElement;
     html.style.scrollBehavior = 'auto';
 
-    const getGap = () => {
-        const style = window.getComputedStyle(gallery);
-        return parseFloat(style.gap) || 0;
-    };
-
     let isAdjusting = false;
     let isDrawerOpen = false;
 
-    const checkScroll = () => {
-        if (isAdjusting || isDrawerOpen) {
-            isAdjusting = false;
-            return;
+    // Stabilize gap for mobile (vh units can jump when address bar hides/shows)
+    let memoizedGap = null;
+    const getGap = () => {
+        if (!memoizedGap) {
+            const style = window.getComputedStyle(gallery);
+            memoizedGap = parseFloat(style.gap) || 0;
         }
+        return memoizedGap;
+    };
+
+    const checkScroll = () => {
+        if (isAdjusting || isDrawerOpen) return;
 
         const children = gallery.children;
         if (children.length < 2) return;
@@ -44,6 +46,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: height + gap,
                 behavior: 'instant'
             });
+
+            requestAnimationFrame(() => {
+                isAdjusting = false;
+            });
             return;
         }
 
@@ -62,6 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 top: -(height + gap),
                 behavior: 'instant'
             });
+
+            requestAnimationFrame(() => {
+                isAdjusting = false;
+            });
         }
     };
 
@@ -76,6 +86,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 isAdjusting = true;
                 gallery.prepend(lastItem);
                 window.scrollBy({ top: height + gap, behavior: 'instant' });
+                requestAnimationFrame(() => {
+                    isAdjusting = false;
+                });
             }
         }
     }, 100);
