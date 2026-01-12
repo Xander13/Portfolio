@@ -110,8 +110,8 @@ body.essence-mode {
 }
 
 .modeIcon {
-    width: 18px;
-    height: 18px;
+    width: 32px;
+    height: 12px;
     border-radius: 100rem;
     background-color: rgba(255, 255, 255, 0.319);
     transition: background-color 0.3s, transform 0.3s;
