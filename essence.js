@@ -640,7 +640,7 @@ async function findResponse(userInput) {
             hour12: true
         });
         return {
-            text: `Alex works in Eastern Standard Time, based in Detroit. Here are a few other clocks I enjoy looking at!`,
+            text: `Alex is based in Detroit, working in Eastern Standard Time. Here are a few other clocks I enjoy looking at!`,
             worldClocks: true // Flag to render world clocks
         };
     }
@@ -1660,7 +1660,7 @@ function showWelcomeMessage() {
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
         { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" },
         { text: "👨‍💻 Coding Background", displayText: "What is Alex's coding background?", query: "code" },
-        { text: "🌍 World Clocks", displayText: "What time is it?", query: "time" }
+        { text: "🌍 Based", displayText: "Where's Alex Based?", query: "time" }
     ];
 
     const appendPrompts = () => {
@@ -2274,5 +2274,3 @@ async function runQuickSort(container, data, maxN, theme, speedConfig = { multip
     renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
 }
-
-
