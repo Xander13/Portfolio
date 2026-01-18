@@ -1660,7 +1660,7 @@ function showWelcomeMessage() {
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
         { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" },
         { text: "👨‍💻 Coding Background", displayText: "What is Alex's coding background?", query: "code" },
-        { text: "🌍 Based", displayText: "Where's Alex Based?", query: "time" }
+        { text: "📍 Located", displayText: "Where's Alex Located?", query: "time" }
     ];
 
     const appendPrompts = () => {

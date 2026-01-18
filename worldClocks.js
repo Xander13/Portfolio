@@ -12,7 +12,7 @@ function appendWorldClocks(container) {
 
     const clocks = [
         { city: "Detroit", timezone: "America/Detroit", darkColor: "#03001e", color: "#a8c0ff", color2: "#3f2b96" },
-        { city: "Romania", timezone: "Europe/Bucharest", darkColor: "#03001e", color: "#00b09b", color2: "#96c93d" },
+        { city: "Los Angeles", timezone: "America/Los_Angeles", darkColor: "#03001e", color: "#00b09b", color2: "#96c93d" },
         { city: "Tokyo", timezone: "Asia/Tokyo", darkColor: "#03001e", color: "#fc4a1a", color2: "#f7b733" },
         { city: "London", timezone: "Europe/London", darkColor: "#03001e", color: "#7303c0", color2: "#ec38bc" }
     ];
