@@ -1,11 +1,20 @@
 // -------- Globals --------
 let knowledge = {};
-const input = document.getElementById("llmTxt");
-const sendBtn = document.querySelector(".send");
-const responseBox = document.querySelector(".responseBox");
-const chatContainer = document.querySelector(".chat-container");
+let input = null;
+let sendBtn = null;
+let responseBox = null;
+let chatContainer = null;
+
+function initElements() {
+    input = document.getElementById("llmTxt");
+    sendBtn = document.querySelector(".send");
+    responseBox = document.querySelector(".responseBox");
+    chatContainer = document.querySelector(".chat-container");
+}
+
 let questionCount = 0;
 const wordSpeed = 4;
+let welcomeShown = false;
 const maxQuestions = 25; // No limit on questions
 let isExpanded = false;
 
@@ -22,7 +31,7 @@ function normalizeText(text) {
 // -------- Load Knowledge JSON --------
 async function loadKnowledge() {
     try {
-        const res = await fetch("knowledgeTree.json");
+        const res = await fetch("js/knowledgeTree.json");
         knowledge = await res.json();
         console.log("Knowledge loaded:", knowledge);
     } catch (err) {
@@ -631,7 +640,7 @@ async function findResponse(userInput) {
     const normalizedInput = normalizeText(userInput);
 
     // --- TIME FIRST ---
-    const timeQueries = ["time", "current time", "currenttime", "what time is it"];
+    const timeQueries = ["time", "current time", "currenttime", "what time is it", "located"];
     if (timeQueries.some(q => normalizedInput.includes(q))) {
         const detroitTime = new Date().toLocaleTimeString("en-US", {
             timeZone: "America/Detroit",
@@ -888,6 +897,9 @@ function getFriendlyOpener() {
 
 // -------- Send Message --------
 async function sendMessage() {
+    if (!input || !responseBox) initElements();
+    if (!input || !responseBox) return;
+
     const userText = input.value.trim();
     if (!userText) return;
 
@@ -1561,8 +1573,7 @@ function createArticleItem(article) {
 
 
 // -------- Event Listeners --------
-sendBtn.addEventListener("click", sendMessage);
-input.addEventListener("keydown", e => { if (e.key === "Enter") sendMessage(); });
+// Moved to initElements or onload to ensure elements exist
 
 // -------- Hex to RGB Helper --------
 function hexToRgb(hex) {
@@ -1581,8 +1592,16 @@ function hexToRgb(hex) {
 }
 
 // -------- Initialize --------
-window.onload = async () => {
-    await loadKnowledge();
+// Load knowledge immediately
+const knowledgePromise = loadKnowledge();
+
+window.addEventListener('load', async () => {
+    initElements();
+
+    if (sendBtn) sendBtn.addEventListener("click", sendMessage);
+    if (input) input.addEventListener("keydown", e => { if (e.key === "Enter") sendMessage(); });
+
+    await knowledgePromise;
 
     // V2: Show helper and expand on input focus/click
     input.addEventListener('focus', () => {
@@ -1629,15 +1648,26 @@ window.onload = async () => {
         });
     }
 
-    // Show welcome message on load only if on essence.html page
-    // On index.html, the welcome message is triggered by modeToggle.js
-    if (document.body.classList.contains('essence-page')) {
+    // Show welcome message on load only if on essence.html page (legacy)
+    // Or if currently in essence mode (on refresh)
+    if (document.body.classList.contains('essence-page') || document.body.classList.contains('essence-mode')) {
         showWelcomeMessage();
     }
-};
+});
 
 // -------- Welcome Message --------
+
 function showWelcomeMessage() {
+    if (!responseBox) initElements();
+    if (!responseBox) return;
+
+    // Guard against multiple calls
+    if (welcomeShown) return;
+    welcomeShown = true;
+
+    // Clear any existing content
+    responseBox.innerHTML = "";
+
     const card = document.createElement("div");
     card.classList.add("chat-card");
     card.setAttribute("data-bg-color", "var(--primary)");
@@ -1651,6 +1681,22 @@ function showWelcomeMessage() {
 
     const welcomeText = "👋 I'm Essence — Alex's portfolio assistant.<br>Ask me anything about his work, skills, or vision.";
 
+    wrapper.appendChild(p);
+    card.appendChild(wrapper);
+    responseBox.appendChild(card);
+
+    // Observe for background color changes
+    bgColorObserver.observe(card);
+
+    // Type out welcome text for premium feel
+    typeWriter(p, welcomeText, 20, () => {
+        appendPrompts(wrapper);
+    });
+}
+
+function appendPrompts(container) {
+    if (!container) return;
+
     // Create clickable prompt links
     const prompts = [
         { text: "💭 Dream job", displayText: "What's Alex's dream job?", query: "dream job" },
@@ -1660,136 +1706,71 @@ function showWelcomeMessage() {
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
         { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" },
         { text: "👨‍💻 Coding Background", displayText: "What is Alex's coding background?", query: "code" },
-        { text: "📍 Located", displayText: "Where's Alex Located?", query: "time" }
+        { text: "📍 Located", displayText: "Where's Alex Located?", query: "Located" }
     ];
 
-    const appendPrompts = () => {
-        p.appendChild(document.createElement("br"));
-        p.appendChild(document.createElement("br"));
+    const promptsContainer = document.createElement("div");
+    promptsContainer.style.display = "flex";
+    promptsContainer.style.flexWrap = "wrap";
+    promptsContainer.style.gap = "12px";
+    promptsContainer.style.marginTop = "24px";
+    promptsContainer.style.opacity = "0";
+    promptsContainer.style.transition = "opacity 0.6s ease";
 
-        const promptsContainer = document.createElement("div");
-        promptsContainer.style.display = "flex";
-        promptsContainer.style.flexWrap = "wrap";
-        promptsContainer.style.gap = "12px";
-        promptsContainer.style.marginTop = "24px";
+    prompts.forEach((prompt, index) => {
+        const link = document.createElement("a");
+        link.href = "#";
+        link.textContent = prompt.text;
+        link.style.cursor = "pointer";
+        link.style.padding = "12px 20px";
+        link.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+        link.style.border = "1px solid rgba(255, 255, 255, 0.2)";
+        link.style.borderRadius = "100rem";
+        link.style.fontSize = "16px";
+        link.style.color = "var(--white)";
+        link.style.transition = "all 0.2s ease";
+        link.style.textDecoration = "none";
+        link.style.display = "inline-block";
 
-        prompts.forEach((prompt, index) => {
-            const link = document.createElement("a");
-            link.href = "#";
-            link.textContent = prompt.text;
-            link.style.cursor = "pointer";
-            link.style.padding = "12px 20px";
-            link.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-            link.style.border = "1px solid rgba(255, 255, 255, 0.2)";
-            link.style.borderRadius = "100rem";
-            link.style.fontSize = "16px";
-            link.style.transition = "all 0.2s ease";
-            link.style.textDecoration = "none";
-            link.style.display = "inline-block";
-
-            link.addEventListener("mouseenter", () => {
-                link.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
-                link.style.borderColor = "rgba(255, 255, 255, 0.4)";
-                link.style.transform = "translateY(-2px)";
-            });
-
-            link.addEventListener("mouseleave", () => {
-                link.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-                link.style.borderColor = "rgba(255, 255, 255, 0.2)";
-                link.style.transform = "translateY(0)";
-            });
-
-            link.addEventListener("click", async (e) => {
-                e.preventDefault();
-
-                // Show the display text in input
-                input.value = prompt.displayText;
-
-                // But use the query for the actual search
-                const userText = prompt.displayText;
-                if (!userText) return;
-
-                // 1. Show user message
-                appendMessage("user", userText);
-                questionCount++;
-
-                if (questionCount > maxQuestions) {
-                    const limitMsg = "Want to dive deeper? Connect with Alex to set up a chat. Contact through LinkedIn: <a href='https://www.linkedin.com/in/alex-kauffman' target='_blank'>LinkedIn</a>.";
-                    appendMessage("ai", limitMsg);
-
-                    // Trigger scatter effect
-                    if (typeof window.scatterParticles === "function") {
-                        window.scatterParticles();
-                    }
-
-                    input.disabled = true;
-                    input.placeholder = "Limit reached.";
-                    return;
-                }
-
-                // 2. Show thinking indicator
-                const thinkingIndicator = document.createElement("div");
-                thinkingIndicator.classList.add("thinking-indicator");
-                thinkingIndicator.innerHTML = `
-                    <div class="dot-pulse"></div>
-                    <div class="dot-pulse"></div>
-                    <div class="dot-pulse"></div>
-                `;
-                responseBox.appendChild(thinkingIndicator);
-
-                // Scroll to show thinking indicator
-                responseBox.scrollTo({
-                    top: responseBox.scrollHeight,
-                    behavior: 'smooth'
-                });
-
-                // 3. Get response (with artificial thinking delay)
-                const answerObj = await findResponse(prompt.query);
-
-                // Add artificial delay for "thinking" feel (800ms - 1500ms random)
-                const thinkingDelay = 800 + Math.random() * 700;
-                await new Promise(resolve => setTimeout(resolve, thinkingDelay));
-
-                // 4. Remove thinking indicator
-                thinkingIndicator.remove();
-
-                // 5. Show AI response
-                appendMessage("ai", answerObj.text, true, {
-                    skills: answerObj.skills,
-                    images: answerObj.images,
-                    videos: answerObj.videos,
-                    link: answerObj.link,
-                    projects: answerObj.extra ? answerObj.extra.projects : undefined,
-                    articles: answerObj.extra ? answerObj.extra.articles : undefined,
-                    inlineLink: answerObj.inlineLink,
-                    color: answerObj.color,
-                    caseStudy: answerObj.caseStudy,
-                    inlineLinks: answerObj.inlineLinks,
-                    sorting: answerObj.sorting,
-                    worldClocks: answerObj.worldClocks,
-                    fourier: answerObj.fourier
-                });
-
-                input.value = "";
-            });
-
-            promptsContainer.appendChild(link);
+        link.addEventListener("mouseenter", () => {
+            link.style.backgroundColor = "rgba(255, 255, 255, 0.15)";
+            link.style.borderColor = "rgba(255, 255, 255, 0.4)";
+            link.style.transform = "translateY(-2px)";
         });
 
-        p.appendChild(promptsContainer);
-    };
+        link.addEventListener("mouseleave", () => {
+            link.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
+            link.style.borderColor = "rgba(255, 255, 255, 0.2)";
+            link.style.transform = "translateY(0)";
+        });
 
-    wrapper.appendChild(p);
-    card.appendChild(wrapper);
-    responseBox.appendChild(card);
+        link.addEventListener("click", async (e) => {
+            e.preventDefault();
 
-    // Observe for background color changes
-    bgColorObserver.observe(card);
+            // Re-fetch input if needed
+            if (!input) input = document.getElementById("llmTxt");
+            if (!input) return;
 
-    // Display welcome text instantly
-    p.innerHTML = welcomeText;
-    appendPrompts();
+            // Show the display text in input
+            input.value = prompt.displayText;
+
+            // Trigger actual message send
+            sendMessage();
+        });
+
+        promptsContainer.appendChild(link);
+    });
+
+    container.appendChild(promptsContainer);
+
+    container.appendChild(promptsContainer);
+
+    // Trigger fade in with slight delay to ensure DOM render
+    setTimeout(() => {
+        promptsContainer.style.opacity = "1";
+    }, 50);
 }
+
 
 
 // Floating Menu Toggle
@@ -1806,10 +1787,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // -------- Placeholder Animation --------
 function animatePlaceholder() {
+    if (!input) input = document.getElementById('llmTxt');
+    if (!input) return;
+
     const baseText = "Ask Alex";
     let dots = 0;
 
     setInterval(() => {
+        if (!input) input = document.getElementById('llmTxt');
+        if (!input) return;
+
         dots = (dots + 1) % 4; // Cycle 0, 1, 2, 3
         let dotString = "";
         for (let i = 0; i < dots; i++) {
@@ -1820,8 +1807,8 @@ function animatePlaceholder() {
 }
 
 
-// Start animations
-animatePlaceholder();
+// Start animations moved to init or specific triggers
+// animatePlaceholder();
 
 // Expose showWelcomeMessage globally for mode toggle
 window.showWelcomeMessage = showWelcomeMessage;
@@ -2273,4 +2260,14 @@ async function runQuickSort(container, data, maxN, theme, speedConfig = { multip
     await quickSortHelper(data, 0, data.length - 1);
     renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
+}
+
+// -------- Fourier Visualization (Stub) --------
+function appendFourierVisualization(container) {
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("fourier-wrapper");
+    wrapper.style.padding = "20px";
+    wrapper.style.textAlign = "center";
+    wrapper.innerHTML = "<p>Fourier Transform visualization coming soon...</p>";
+    container.appendChild(wrapper);
 }

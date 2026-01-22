@@ -635,21 +635,19 @@ a {
 }
 
 .responseBox {
-    position: absolute;
-    left: 56px;
-    right: 56px;
-    /* Constrain right side too */
+    position: fixed;
+    top: 0px;
+    left: 48px;
+    right: 48px;
     margin: 0;
     padding: 0;
-    /* Remove padding as we use margins */
-    margin-bottom: 132px;
     overflow-y: auto;
-    height: calc(100% - 86px);
+    height: calc(100% - 56px);
     width: auto;
-    /* Let left/right control width */
     max-width: none;
     z-index: 2;
     box-sizing: border-box;
+    background-color: var(--primary);
 }
 
 .aiMsg,
@@ -895,15 +893,15 @@ a {
 .inputBox {
     position: fixed;
     bottom: 0;
-    left: 56px;
-    right: 56px;
+    left: 48px;
+    right: 48px;
     /* Constrain right side */
     transform: none;
     padding: 0;
     /* Remove padding if not needed, or keep internal padding */
     width: auto;
     /* Let left/right control width */
-    height: 86px;
+    height: 56px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
@@ -928,7 +926,7 @@ a {
 
 .send {
     margin-left: 12px;
-    padding-right: 24px;
+    padding-right: 0;
     font-size: 24px;
     /* Larger send button */
     color: white;
@@ -1537,6 +1535,7 @@ Slider effect
 
     .send {
         font-size: 18px;
+        padding-right: 16px;
     }
 
     .response-card {
@@ -1560,7 +1559,8 @@ Slider effect
 
     .responseBox {
         z-index: 1;
-        height: calc(100% - 88px);
+        height: calc(100% - 150px);
+        top: 64px;
         left: 0;
         right: 0;
         padding-left: 16px;

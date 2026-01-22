@@ -19,11 +19,11 @@ function updateDetroitTime() {
 //Image flip gallery mode:
 function initImageFlip(container, interval = 1000) {
   const files = [
-    { type: "img", src: "Google_Braille.svg" },
-    { type: "video", src: "Google_Braile.mp4" },
-    { type: "img", src: "HookMenu.gif" },
-    { type: "video", src: "Hood.mp4" },
-    { type: "video", src: "AppleMusicCoverFlow.MP4" }
+    { type: "img", src: "img/Google_Braille.svg" },
+    { type: "video", src: "video/Google_Braile.mp4" },
+    { type: "img", src: "img/HookMenu.gif" },
+    { type: "video", src: "video/Hood.mp4" },
+    { type: "video", src: "video/AppleMusicCoverFlow.MP4" }
   ];
 
   container.innerHTML = "";
@@ -118,11 +118,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
 //stickers
 const stickers = [
-  'ux.svg',
-  'AK_Emoji.png',
-  'web.svg',
-  'aklogo.svg',
-  'IconDark.png'
+  'img/ux.svg',
+  'img/AK_Emoji.png',
+  'img/web.svg',
+  'img/aklogo.svg',
+  'img/IconDark.png'
 ];
 
 const rotations = [30, 0, -30];
@@ -221,13 +221,13 @@ function placeSticker(canvas, src, x, y, rotation) {
 //moving chips:
 //moving chips:
 const MsIcon = [
-  "Github_Code_logo.png",
-  "Github_Copilet_logo.png",
-  "Github_Test_logo.png"
+  "img/Github_Code_logo.png",
+  "img/Github_Copilet_logo.png",
+  "img/Github_Test_logo.png"
 ];
 
 const appleIcon = [
-  'AppleIconAccessiblity.png'
+  'img/AppleIconAccessiblity.png'
 ];
 
 const NUM_TOKENS = 56;

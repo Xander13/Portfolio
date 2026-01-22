@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function () {
 // -------- Load Related Projects --------
 window.loadRelatedProjects = async function (currentProjectName) {
     try {
-        const response = await fetch('knowledgeTree.json');
+        const response = await fetch('js/knowledgeTree.json');
         const data = await response.json();
         const projectsList = data.projects; // The array of projects for the grid
 
@@ -331,6 +331,10 @@ document.addEventListener("DOMContentLoaded", () => {
             prevBtn.style.top = `${y}px`;
             nextBtn.style.top = `${y}px`;
 
+            // Center the button on the cursor
+            prevBtn.style.transform = "translate(-50%, -50%)";
+            nextBtn.style.transform = "translate(-50%, -50%)";
+
             const showNext = x > rect.width / 2;
 
             if (showNext) {
@@ -446,7 +450,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentElementIndex = 0;
 
     // Background Audio
-    const bgAudio = new Audio('nature-music-vkroxstarsinger-226067.mp3');
+    const bgAudio = new Audio('audio/nature-music-vkroxstarsinger-226067.mp3');
     bgAudio.loop = true;
     bgAudio.volume = 0.3; // 30% volume
 

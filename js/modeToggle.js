@@ -2,7 +2,7 @@
 (function () {
     'use strict';
 
-    let currentMode = 'work'; // Default mode is now work
+    let currentMode = 'work';
 
     // Initialize on DOM load
     document.addEventListener('DOMContentLoaded', function () {
@@ -109,6 +109,8 @@
         const inputBox = document.querySelector('.inputBox');
 
         if (mode === 'essence') {
+
+
             // 1. Fade out Work elements
             contentDiv.classList.remove('fade-in');
             contentDiv.classList.add('fade-out');
@@ -149,6 +151,8 @@
             }, 500);
 
         } else if (mode === 'work') {
+
+
             // 1. Fade out Essence elements
             responseBox.classList.remove('fade-in');
             responseBox.classList.add('fade-out');
@@ -176,6 +180,7 @@
                 contentDiv.classList.add('fade-in');
 
             }, 500);
+
         }
     }
 

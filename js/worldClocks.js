@@ -105,3 +105,5 @@ function appendWorldClocks(container) {
 
     container.appendChild(clocksContainer);
 }
+
+window.appendWorldClocks = appendWorldClocks;
