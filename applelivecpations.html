@@ -48,6 +48,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
         rel="stylesheet">
+    <!-- Preload critical resources for LCP -->
+    <link rel="preload" as="video" href="video/Apple Live CC.mp4">
 </head>
 
 <body class="case-study">
@@ -83,7 +85,8 @@
     </div>
     <div class="mdMargin"></div>
     <div class="cover">
-        <video src="video/Apple Live CC.mp4" width="100%" height="auto" playsinline autoplay loop muted>
+        <video src="video/Apple Live CC.mp4" width="100%" height="auto" playsinline autoplay loop muted preload="auto"
+            aria-label="Apple Live Captions unified design demonstration">
     </div>
     <div class="content">
         <div class="mdMargin"></div>
@@ -109,13 +112,16 @@
             </div>
         </div>
         <div class="mdMargin"></div>
-        <img src="img/Apple_LIve_Captions_UI.png" width="100%" alt="Apple Live Captions Watch">
+        <img src="img/Apple_LIve_Captions_UI.png" width="100%"
+            alt="Apple Live Captions interface design on iPhone and Watch" loading="lazy">
         <br>
         <br>
-        <img src="img/Apple_LIve_Captions_UI_2.png" width="100%" alt="Apple Live Captions Watch">
+        <img src="img/Apple_LIve_Captions_UI_2.png" width="100%" alt="Apple Live Captions UI variations across devices"
+            loading="lazy">
         <br>
         <br>
-        <img src="img/Apple_Live_Captions_Needs_Map.png" width="100%" alt="Apple Live Captions Watch">
+        <img src="img/Apple_Live_Captions_Needs_Map.png" width="100%"
+            alt="Apple Live Captions user needs mapping diagram" loading="lazy">
         <div class="mdMargin"></div>
         <div class="breif">
             <div class="flexBox" style="gap: 32px; align-items: start;">
@@ -176,10 +182,12 @@
             <br>
             <div class="flexBox">
                 <div class="w-50">
-                    <video src="video/Duolingo_ASL_Lily.mp4" playsinline autoplay loop muted></video>
+                    <video src="video/Duolingo_ASL_Lily.mp4" playsinline autoplay loop muted preload="metadata"
+                        aria-label="Duolingo ASL preview video"></video>
                 </div>
                 <div class="w-50">
-                    <video src="video/Duoling_Feature4.mp4" playsinline autoplay loop muted></video>
+                    <video src="video/Duoling_Feature4.mp4" playsinline autoplay loop muted preload="metadata"
+                        aria-label="Duolingo feature demonstration"></video>
                 </div>
             </div>
         </a>

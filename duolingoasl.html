@@ -48,6 +48,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
         rel="stylesheet">
+    <!-- Preload critical resources for LCP -->
+    <link rel="preload" as="video" href="video/Duolingo_ASL_Lily.mp4">
 </head>
 
 <body class="case-study">
@@ -83,10 +85,12 @@
     <div class="cover">
         <div class="flexBox" style="gap: 0;">
             <div class="w-50" style="width: 100%;">
-                <video src="video/Duolingo_ASL_Lily.mp4" playsinline autoplay loop muted></video>
+                <video src="video/Duolingo_ASL_Lily.mp4" playsinline autoplay loop muted preload="auto"
+                    aria-label="Duolingo ASL Lily character demonstration"></video>
             </div>
             <div class="w-50" style="width: 100%;">
-                <video src="video/Duoling_Feature4.mp4" playsinline autoplay loop muted></video>
+                <video src="video/Duoling_Feature4.mp4" playsinline autoplay loop muted preload="auto"
+                    aria-label="Duolingo ASL feature demonstration"></video>
             </div>
         </div>
     </div>
@@ -128,7 +132,7 @@
         <h1 class="w-50">ASL belongs in the core of Duolingo—not on the edge.</h1>
         <br>
         <br>
-        <img src="img/DuolingoASL_UI.png" width="100%" alt="Duolingo ASL UI">
+        <img src="img/DuolingoASL_UI.png" width="100%" alt="Duolingo ASL user interface design mockup" loading="lazy">
         <div class="mdMargin"></div>
         <div class="flexBox" style="justify-content: space-between;">
             <div class="w-50">
@@ -142,14 +146,16 @@
         </div>
         <div class="mdMargin"></div>
         <img src="img/DuolingoASL_Lin_Sign.png" width="100%"
-            alt="Duolingo ASL Lin Sign My Name What in ASL Sprite Sheet">
+            alt="Duolingo ASL Lin Sign My Name What in ASL Sprite Sheet" loading="lazy">
         <div class="xSmMargin"></div>
         <div class="flexBox" style="justify-content: space-between;">
             <div class="w-50">
-                <video style="width: 100%;" src="video/Duolingo_ASL_Lily.mp4" playsinline autoplay loop muted></video>
+                <video style="width: 100%;" src="video/Duolingo_ASL_Lily.mp4" playsinline autoplay loop muted
+                    preload="metadata" aria-label="Duolingo ASL Lily character animation"></video>
             </div>
             <div class="w-50">
-                <video style="width: 100%;" src="video/Duoling_Feature4.mp4" playsinline autoplay loop muted></video>
+                <video style="width: 100%;" src="video/Duoling_Feature4.mp4" playsinline autoplay loop muted
+                    preload="metadata" aria-label="Duolingo ASL feature showcase"></video>
             </div>
         </div>
         <div class="lgMargin"></div>
@@ -366,7 +372,8 @@
             <h1>Apple Live Captions — A unified approach to accessibility across all Apple devices.</h1>
             <br>
             <br>
-            <video src="video/Apple Live CC.mp4" playsinline autoplay loop muted></video>
+            <video src="video/Apple Live CC.mp4" playsinline autoplay loop muted preload="metadata"
+                aria-label="Apple Live Captions next project preview"></video>
         </a>
     </div>
     <script src="js/projectScripts.js"></script>

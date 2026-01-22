@@ -48,6 +48,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
         rel="stylesheet">
+    <!-- Preload critical resources for LCP -->
+    <link rel="preload" as="video" href="video/VigorSplash.mp4">
 </head>
 
 <body class="case-study">
@@ -83,7 +85,8 @@
     </div>
     <div class="mdMargin"></div>
     <div class="cover">
-        <video src="video/VigorSplash.mp4" playsinline autoplay loop muted>
+        <video src="video/VigorSplash.mp4" playsinline autoplay loop muted preload="auto" poster="img/Vigor_image10.png"
+            aria-label="Vigor fitness app demonstration video">
     </div>
     <div class="content">
         <div class="mdMargin"></div>
@@ -142,7 +145,8 @@
             </div>
             <div class="w-50">
                 <div class="clipping">
-                    <img draggable="false" src="img/Vigor_Icon_App.png" width="100%">
+                    <img draggable="false" src="img/Vigor_Icon_App.png" width="100%"
+                        alt="Vigor fitness app icon design">
                     <div class="captions">
                         <h1 class="xSmTxt">Default App Icon</h1>
                     </div>
@@ -161,7 +165,8 @@
         <div class="xSmMargin"></div>
         <div class="fullView">
             <div class="clipping">
-                <img draggable="false" src="img/Vigor_Widgets.png" width="100%">
+                <img draggable="false" src="img/Vigor_Widgets.png" width="100%"
+                    alt="Vigor widget designs for mobile devices" loading="lazy">
                 <div class="captions">
                     <h1 class="xSmTxt">Add widgets to your mobile devices</h1>
                 </div>
@@ -191,7 +196,8 @@
         <div class="xSmMargin"></div>
         <div class="fullView">
             <div class="clipping">
-                <img draggable="false" src="img/Vigor_iWatch.png" width="100%">
+                <img draggable="false" src="img/Vigor_iWatch.png" width="100%" alt="Vigor app interface on Apple Watch"
+                    loading="lazy">
                 <div class="captions">
                     <h1 class="xSmTxt">Vigor on watch device</h1>
                 </div>
@@ -210,7 +216,8 @@
         <div class="mdMargin"></div>
         <div class="mdMargin"></div>
         <div class="clipping">
-            <img src="img/Collage Workouts.png" width="100%">
+            <img src="img/Collage Workouts.png" width="100%"
+                alt="Collage of various workout activities supported by Vigor app" loading="lazy">
         </div>
         <div class="lgMargin"></div>
 
@@ -235,18 +242,20 @@
                     <br>
                     <br>
                     <br>
-                    <video src="video/Vigor_V1.mp4" playsinline autoplay loop muted></video>
+                    <video src="video/Vigor_V1.mp4" playsinline autoplay loop muted preload="metadata"
+                        aria-label="Vigor app version 1 demonstration"></video>
             </div>
         </div>
         <div class="mdMargin"></div>
-        <img src="img/Vigor_Process3.png" width="100%">
+        <img src="img/Vigor_Process3.png" width="100%" alt="Vigor app design process wireframes and iterations"
+            loading="lazy">
         <br>
         <br>
-        <img src="img/VigorMoodBoard.png" width="100%"
-            alt="Apple watch with Vigor UI showcasing list of workouts to do.">
+        <img src="img/VigorMoodBoard.png" width="100%" alt="Apple watch with Vigor UI showcasing list of workouts to do"
+            loading="lazy">
         <br>
         <br>
-        <img src="img/Vigor_Color.png" width="100%" alt="Color palette for Vigor app">
+        <img src="img/Vigor_Color.png" width="100%" alt="Color palette for Vigor app" loading="lazy">
         <br>
         <br>
         <div class="mdMargin"></div>
@@ -319,7 +328,8 @@
             <h1>Apple Live Captions - Reimagning how Apple Accessbility in more coherit approch across all devices.</h1>
             <br>
             <br>
-            <video src="video/Apple Live CC.mp4" playsinline autoplay loop muted></video>
+            <video src="video/Apple Live CC.mp4" playsinline autoplay loop muted preload="metadata"
+                aria-label="Apple Live Captions project preview"></video>
         </a>
     </div>
     <script src="js/projectScripts.js"></script>

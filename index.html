@@ -48,6 +48,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
         rel="stylesheet">
+    <!-- Preload critical CSS for LCP -->
+    <link rel="preload" as="style" href="css/style.css">
 </head>
 
 <body>
@@ -97,8 +99,8 @@
         <section class="project" style="width: 100%; max-width: 100%; display: flex; flex-direction: column; gap: 20vh;"
             aria-label="Selected Work">
             <div class="w-100">
-                <video src="video/GithubSplash.mp4" preload="metadata" nocontrol loop muted autoplay
-                    playsinline></video>
+                <video src="video/GithubSplash.mp4" preload="metadata" nocontrol loop muted autoplay playsinline
+                    aria-label="Microsoft VSCode Copilot project preview"></video>
                 <h2>Microsoft VSC Copilot - Coming Soon</h2>
             </div>
             <!-- <div class="w-80">
@@ -111,7 +113,7 @@
                 <div class="w-50">
                     <a href="duolingoasl.html" class="fade-link">
                         <video src="video/Duolingo_ASL_Lily.mp4" preload="metadata" playsinline autoplay loop nocontrols
-                            muted width="100%"></video>
+                            muted width="100%" aria-label="Duolingo ASL project demonstration"></video>
                         <h2>Duolingo ASL</h2>
                     </a>
                 </div>
@@ -119,7 +121,7 @@
                 <div class="w-40">
                     <a href="applelivecpations.html" class="fade-link">
                         <video src="video/Apple_LiveCC.mp4" preload="metadata" playsinline autoplay loop nocontrols
-                            muted width="100%"></video>
+                            muted width="100%" aria-label="Apple Live Captions project demonstration"></video>
                         <h2>Apple Live Captions</h2>
                     </a>
                 </div>
@@ -129,8 +131,8 @@
                 <div class="w-20"></div>
                 <div class="w-80">
                     <a href="vigor.html" class="fade-link">
-                        <video src="video/VigorSplash.mp4" preload="metadata" nocontrol loop muted autoplay
-                            playsinline></video>
+                        <video src="video/VigorSplash.mp4" preload="metadata" nocontrol loop muted autoplay playsinline
+                            aria-label="Vigor Fitness App project demonstration"></video>
                         <h2>Vigor Fitness App</h2>
                     </a>
                 </div>
@@ -155,7 +157,7 @@
                     <a href="https://www.linkedin.com/feed/update/urn:li:activity:7264858607559598080/" target="_blank">
                         <div class="clipping">
                             <video src="video/Duolingo_ASL_Lily.mp4" preload="none" playsinline autoplay loop muted
-                                nocontrols></video>
+                                nocontrols aria-label="Duolingo ASL post video"></video>
                         </div>
                         <br>
                         <h3>8K+ likes on LinkedIn — showing how deeply society values accessibility,

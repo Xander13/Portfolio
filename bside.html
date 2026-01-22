@@ -48,6 +48,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
         rel="stylesheet">
+    <!-- Preload critical image for LCP -->
+    <link rel="preload" as="image" href="img/HookMenu.gif">
 </head>
 
 <body class="bside-page">
@@ -84,7 +86,8 @@
                 <div class="w-20"></div>
                 <!-- Applying data-id to the wrapper div -->
                 <div class="w-80" data-id="hook-menu">
-                    <img src="img/HookMenu.gif" alt="img" loading="lazy" style="border: 1px solid rgb(24, 24, 24)">
+                    <img src="img/HookMenu.gif" alt="Hook Menu redesigned interface animation" fetchpriority="high"
+                        style="border: 1px solid rgb(24, 24, 24)">
                     <br>
                     <h2>Hook Menu Redesigned - Product Design</h2>
                 </div>
