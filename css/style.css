@@ -206,7 +206,8 @@ a {
    Text size utilities
    ------------------------------------------------- */
 .lgTxt {
-    font-size: 124px;
+    font-size: 96px;
+    text-wrap: balance;
     line-height: 1.1;
 }
 
