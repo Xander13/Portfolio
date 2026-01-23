@@ -1451,7 +1451,7 @@ Slider effect
     }
 
     .mdMargin {
-        display: none;
+        height: 56px;
     }
 
     .topNav h6 {
@@ -1660,8 +1660,7 @@ Slider effect
     }
 
     .lgMargin {
-        height: 1px;
-        background-color: gray;
+        height: 56px;
     }
 
     .project {
@@ -1706,17 +1705,33 @@ Slider effect
         padding-bottom: 56px;
     }
 
+    .case-study h4{
+        margin-bottom: 32px !important;
+    }
+
+    .case-study .lgTxt{
+        font-size: 24px;
+    }
+
+    br:nth-child(even){
+        display: none;
+    }
+
     .drawers .mdTxt {
         font-size: 18px;
     }
 
-    .breif {
+    /* .breif {
         padding-top: 10vh;
-    }
+    } */
 
     .moreWorks h1 {
         width: 100%;
         text-wrap: wrap;
+    }
+
+    .moreWorks{
+         border-top: 0px solid transparent;
     }
 }
 
