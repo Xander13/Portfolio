@@ -155,7 +155,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
         extra.inlineLinks.forEach(linkInfo => {
             const escaped = linkInfo.searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
             const regex = new RegExp(`(${escaped})`, 'g');
-            processedMsg = processedMsg.replace(regex, `<a href="${linkInfo.href}" target="_blank" style="color: white; text-decoration: underline;">$1</a>`);
+            processedMsg = processedMsg.replace(regex, `<a href="${linkInfo.href}" target="_blank" style="color: white; text-decoration: none;">$1</a>`);
         });
     }
 
@@ -218,13 +218,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             appendArticlesGrid(extra.articles, wrapper);
         }
 
-        // Append Case Study if provided
-        if (extra.caseStudy) {
-            const hr = document.createElement("div");
-            hr.classList.add("separator-line");
-            wrapper.appendChild(hr);
-            appendCaseStudy(extra.caseStudy, wrapper);
-        }
+
 
         if (extra.worldClocks) {
             appendWorldClocks(content);
@@ -326,7 +320,18 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
     bgColorObserver.observe(wrapper);
 
     // Smart Scroll Logic
-    if (!extra.caseStudy) {
+    // If case study, force scroll to bottom to reveal content
+    if (extra.caseStudy) {
+        setTimeout(() => {
+            responseBox.scrollTo({
+                top: responseBox.scrollHeight,
+                behavior: 'smooth'
+            });
+        }, 300); // Slight delay for rendering
+    }
+
+    // Original logic for other content
+    else {
         setTimeout(() => {
             if (extra.worldClocks) {
                 // Force scroll to bottom to show clocks
@@ -1083,32 +1088,56 @@ function createProjectItem(project) {
     const wrapper = document.createElement("a");
     wrapper.href = "#";
     wrapper.classList.add("fade-link");
-    wrapper.style.cursor = "pointer";
+
+    // Check if project is "Coming Soon"
+    const isComingSoon = project.title.toLowerCase().includes("coming soon");
+
+    if (isComingSoon) {
+        wrapper.style.cursor = "default";
+        wrapper.style.pointerEvents = "none"; // Disable interactions
+    } else {
+        wrapper.style.cursor = "pointer";
+    }
 
     // Add click listener to load case study
-    wrapper.addEventListener("click", (e) => {
-        e.preventDefault();
+    // Add click listener to load case study directly inline
+    if (!isComingSoon) {
+        wrapper.addEventListener("click", (e) => {
+            e.preventDefault();
 
-        // Find case study by title
-        let caseStudy = knowledge["case studies"][project.title];
+            // Find case study by title from knowledge tree
+            let caseStudy = knowledge["case studies"][project.title];
 
-        if (!caseStudy) {
-            // Fallback: try to find a key that contains the project title or vice versa
-            const key = Object.keys(knowledge["case studies"]).find(k =>
-                k.toLowerCase().includes(project.title.toLowerCase()) ||
-                project.title.toLowerCase().includes(k.toLowerCase())
-            );
-            if (key) caseStudy = knowledge["case studies"][key];
-        }
+            if (!caseStudy) {
+                // Fallback search
+                const key = Object.keys(knowledge["case studies"]).find(k =>
+                    k.toLowerCase().includes(project.title.toLowerCase()) ||
+                    project.title.toLowerCase().includes(k.toLowerCase())
+                );
+                if (key) caseStudy = knowledge["case studies"][key];
+            }
 
-        if (caseStudy) {
-            appendMessage("ai", `Here is the case study for ${project.title}: `, false, {
-                caseStudy: caseStudy
-            });
-        } else {
-            console.log("No case study found for:", project.title);
-        }
-    });
+            if (caseStudy) {
+                // Create a new AI message container for the case study
+                appendMessage("ai", `Here is the full case study for ${project.title}:`, false, {
+                    caseStudy: caseStudy
+                });
+                // Actually, simply setting window.location.href is better if user wants to jump pages.
+                // "When user click on them it will jump to that page."
+                if (caseStudy.link) {
+                    // Trigger fade out
+                    document.body.classList.remove('loaded');
+
+                    // Wait for transition then navigate
+                    setTimeout(() => {
+                        window.location.href = caseStudy.link;
+                    }, 500);
+                }
+            } else {
+                console.log("No case study link found for:", project.title);
+            }
+        });
+    }
 
     // MEDIA first
     const mediaArray = Array.isArray(project.media) ? project.media : [project.media];
@@ -1136,368 +1165,162 @@ function createProjectItem(project) {
 }
 
 // -------- Append Case Study --------
-function appendCaseStudy(caseStudy, container) {
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("case-study-wrapper");
 
-    // 1. Title
-    if (caseStudy.title) {
-        const h1 = document.createElement("h1");
-        h1.textContent = caseStudy.title;
-        h1.classList.add("case-study-header");
-        wrapper.appendChild(h1);
-    }
 
-    // 2. Info Row (Role, Duration, Type, Link)
-    const infoRow = document.createElement("div");
-    infoRow.classList.add("case-study-flex-text");
+// Helper to render a video block
+const renderVideo = (files, widthMode, targetContainer) => {
+    files.forEach(src => {
+        const isVideo = src.endsWith(".mp4") || src.endsWith(".webm") || src.endsWith(".mov");
+        let mediaEl;
 
-    const addInfoItem = (label, text) => {
-        if (text) {
-            const div = document.createElement("div");
-            div.innerHTML = `< span style = "opacity: 0.6" > ${label}:</span > ${text} `;
-            infoRow.appendChild(div);
-        }
-    };
-
-    addInfoItem("Role", caseStudy.role);
-    addInfoItem("Duration", caseStudy.duration);
-    addInfoItem("Project Type", caseStudy.projectType);
-
-    if (caseStudy.link) {
-        const linkDiv = document.createElement("div");
-        const a = document.createElement("a");
-        a.href = caseStudy.link;
-        a.textContent = "View Project ↗";
-        a.target = "_blank";
-        linkDiv.appendChild(a);
-        infoRow.appendChild(linkDiv);
-    }
-
-    wrapper.appendChild(infoRow);
-
-    // Helper to render a video block
-    const renderVideo = (files, widthMode) => {
-        files.forEach(src => {
-            const isVideo = src.endsWith(".mp4") || src.endsWith(".webm") || src.endsWith(".mov");
-            let mediaEl;
-
-            if (isVideo) {
-                mediaEl = document.createElement("video");
-                mediaEl.autoplay = true;
-                mediaEl.loop = true;
-                mediaEl.muted = true;
-                mediaEl.playsInline = true;
-            } else {
-                mediaEl = document.createElement("img");
-            }
-
-            mediaEl.src = src;
-
-            if (widthMode === "fullBleed") {
-                // Fix width issue: use calc(100% + padding) instead of 100vw
-                mediaEl.style.width = "calc(100% + 64px)";
-                mediaEl.style.maxWidth = "none";
-                mediaEl.style.marginLeft = "-32px";
-                mediaEl.style.marginRight = "-32px";
-                mediaEl.style.height = "auto";
-                mediaEl.style.position = "relative";
-                mediaEl.style.left = "0";
-
-                // Add animation class
-                mediaEl.classList.add("mediaSlideIn");
-                // Trigger animation
-                setTimeout(() => {
-                    mediaEl.classList.add("show");
-                }, 100);
-            } else {
-                mediaEl.style.width = "100%";
-                mediaEl.style.height = "auto";
-            }
-
-            mediaEl.style.marginBottom = "var(--spacing-md)";
-            wrapper.appendChild(mediaEl);
-        });
-    };
-
-    // Helper to render an image block
-    const renderImages = (files, widthClass, textContent = null) => {
-        let widthStyle = "100%";
-        let wrapperWidth = "100%";
-        let alignment = null;
-
-        // Handle sixty layouts with alignment
-        if (widthClass === "sixty-left" || widthClass === "sixty-right" || widthClass === "sixty-middle") {
-            wrapperWidth = "70%";
-            widthStyle = "100%"; // Image fills the wrapper
-
-            if (widthClass === "sixty-left") {
-                alignment = "flex-start";
-            } else if (widthClass === "sixty-right") {
-                alignment = "flex-end";
-            } else if (widthClass === "sixty-middle") {
-                alignment = "center";
-            }
-        } else if (widthClass === "w-50") {
-            widthStyle = "calc(50% - var(--spacing-md) / 2)";
-        } else if (widthClass === "w-40") {
-            widthStyle = "calc(40% - var(--spacing-md) / 2)";
-        } else if (widthClass === "w-60") {
-            widthStyle = "calc(60% - var(--spacing-md) / 2)";
-        } else if (widthClass === "w-100") {
-            widthStyle = "100%";
-        }
-
-        // Create outer container for alignment
-        const outerContainer = document.createElement("div");
-        outerContainer.style.display = "flex";
-        outerContainer.style.width = "100%";
-        if (alignment) {
-            outerContainer.style.justifyContent = alignment;
-            outerContainer.style.paddingTop = "124px";
-        }
-        outerContainer.style.marginBottom = "var(--spacing-md)";
-
-        const imagesWrapper = document.createElement("div");
-        imagesWrapper.classList.add("case-study-images");
-        imagesWrapper.style.display = "flex";
-        imagesWrapper.style.flexWrap = "wrap";
-        imagesWrapper.style.gap = "var(--spacing-md)";
-        imagesWrapper.style.alignItems = "flex-start";
-        imagesWrapper.style.width = wrapperWidth;
-
-        files.forEach(src => {
-            const img = document.createElement("img");
-            img.src = src;
-            img.style.width = widthStyle;
-            img.style.height = "auto";
-            img.style.objectFit = "cover";
-            imagesWrapper.appendChild(img);
-        });
-
-        // If there is text, append it as a sibling (assuming w-50 layout for now)
-        if (textContent) {
-            const textDiv = document.createElement("div");
-            textDiv.innerHTML = textContent;
-            textDiv.classList.add("split-view-paragraph");
-
-            // Sticky positioning
-            textDiv.style.flex = "1";
-            textDiv.style.minWidth = "300px";
-            textDiv.style.position = "sticky";
-            textDiv.style.top = "20px";
-            textDiv.style.alignSelf = "flex-start";
-
-            imagesWrapper.appendChild(textDiv);
-        }
-
-        outerContainer.appendChild(imagesWrapper);
-        wrapper.appendChild(outerContainer);
-    };
-
-    // Helper to render text block
-    const renderText = (title, paragraph, layout, block) => {
-        const bodyWrapper = document.createElement("div");
-        bodyWrapper.classList.add("case-study-body");
-
-        // Default styles
-        bodyWrapper.style.boxSizing = "border-box";
-        bodyWrapper.style.marginBottom = "var(--spacing-md)";
-
-        // Layout logic
-        if (layout === "split_view") {
-            bodyWrapper.style.display = "flex";
-            bodyWrapper.style.gap = "var(--spacing-md)";
-            bodyWrapper.style.marginBottom = "var(--spacing-md)";
-            bodyWrapper.style.alignItems = "flex-start";
-
-            const leftCol = document.createElement("div");
-            leftCol.style.flex = "1";
-            leftCol.style.position = "sticky";
-            leftCol.style.top = "20px";
-            leftCol.style.alignSelf = "flex-start";
-
-            if (block.intro_title) {
-                const h2 = document.createElement("h2");
-                h2.textContent = block.intro_title;
-                h2.style.fontSize = "32px";
-                h2.style.fontWeight = "400";
-                h2.style.marginBottom = "16px";
-                leftCol.appendChild(h2);
-            }
-
-            bodyWrapper.appendChild(leftCol);
-
-            const rightCol = document.createElement("div");
-            rightCol.style.flex = "1";
-
-            if (block.intro_paragraph) {
-                const p = document.createElement("p");
-                p.innerHTML = block.intro_paragraph;
-                p.style.fontSize = "24px";
-                p.style.lineHeight = "1.6";
-                rightCol.appendChild(p);
-            }
-
-            bodyWrapper.appendChild(rightCol);
-        } else if (layout === "right-50") {
-            bodyWrapper.style.width = "50%";
-            bodyWrapper.style.marginLeft = "auto";
-            bodyWrapper.style.paddingLeft = "var(--spacing-md)";
-            bodyWrapper.style.boxSizing = "border-box";
-            bodyWrapper.style.marginBottom = "var(--spacing-md)";
+        if (isVideo) {
+            mediaEl = document.createElement("video");
+            mediaEl.autoplay = true;
+            mediaEl.loop = true;
+            mediaEl.muted = true;
+            mediaEl.playsInline = true;
         } else {
-            // Default full width or other layouts can be added here
-            bodyWrapper.style.width = "60%";
-            bodyWrapper.style.marginLeft = "auto";
-            bodyWrapper.style.paddingLeft = "var(--spacing-md)";
-            bodyWrapper.style.boxSizing = "border-box";
-            bodyWrapper.style.marginBottom = "var(--spacing-md)";
+            mediaEl = document.createElement("img");
         }
 
+        mediaEl.src = src;
+
+        if (widthMode === "fullBleed") {
+            mediaEl.style.width = "calc(100% + 64px)";
+            mediaEl.style.maxWidth = "none";
+            mediaEl.style.marginLeft = "-32px";
+            mediaEl.style.marginRight = "-32px";
+            mediaEl.style.height = "auto";
+            mediaEl.style.position = "relative";
+            mediaEl.style.left = "0";
+
+            mediaEl.classList.add("mediaSlideIn");
+            setTimeout(() => {
+                mediaEl.classList.add("show");
+            }, 100);
+        } else {
+            mediaEl.style.width = "100%";
+            mediaEl.style.height = "auto";
+        }
+
+        mediaEl.style.marginBottom = "var(--spacing-md)";
+        (targetContainer || wrapper).appendChild(mediaEl);
+    });
+};
+
+// Helper to render an image block
+const renderImages = (files, widthClass, textContent = null, targetContainer) => {
+    let widthStyle = "100%";
+    let wrapperWidth = "100%";
+    let alignment = null;
+
+    if (widthClass === "sixty-left" || widthClass === "sixty-right" || widthClass === "sixty-middle") {
+        wrapperWidth = "70%";
+        widthStyle = "100%";
+        if (widthClass === "sixty-left") alignment = "flex-start";
+        else if (widthClass === "sixty-right") alignment = "flex-end";
+        else if (widthClass === "sixty-middle") alignment = "center";
+    } else if (widthClass === "w-50") {
+        widthStyle = "calc(50% - var(--spacing-md) / 2)";
+    } else if (widthClass === "w-40") {
+        widthStyle = "calc(40% - var(--spacing-md) / 2)";
+    } else if (widthClass === "w-60") {
+        widthStyle = "calc(60% - var(--spacing-md) / 2)";
+    } else if (widthClass === "w-100") {
+        widthStyle = "100%";
+    }
+
+    const outerContainer = document.createElement("div");
+    outerContainer.style.display = "flex";
+    outerContainer.style.width = "100%";
+    if (alignment) {
+        outerContainer.style.justifyContent = alignment;
+        outerContainer.style.paddingTop = "124px";
+    }
+    outerContainer.style.marginBottom = "var(--spacing-md)";
+
+    const imagesWrapper = document.createElement("div");
+    imagesWrapper.classList.add("case-study-images");
+    imagesWrapper.style.display = "flex";
+    imagesWrapper.style.flexWrap = "wrap";
+    imagesWrapper.style.gap = "var(--spacing-md)";
+    imagesWrapper.style.alignItems = "flex-start";
+    imagesWrapper.style.width = wrapperWidth;
+
+    files.forEach(src => {
+        const img = document.createElement("img");
+        img.src = src;
+        img.style.width = widthStyle;
+        img.style.height = "auto";
+        img.style.objectFit = "cover";
+        imagesWrapper.appendChild(img);
+    });
+
+    if (textContent) {
+        const textDiv = document.createElement("div");
+        textDiv.innerHTML = textContent;
+        textDiv.classList.add("split-view-paragraph");
+        textDiv.style.flex = "1";
+        textDiv.style.minWidth = "300px";
+        textDiv.style.position = "sticky";
+        textDiv.style.top = "20px";
+        textDiv.style.alignSelf = "flex-start";
+        imagesWrapper.appendChild(textDiv);
+    }
+
+    outerContainer.appendChild(imagesWrapper);
+    (targetContainer || wrapper).appendChild(outerContainer);
+};
+
+// Helper to render text block
+const renderText = (title, paragraph, layout, block, targetContainer) => {
+    const bodyWrapper = document.createElement("div");
+    bodyWrapper.classList.add("case-study-body");
+
+    if (layout === "split_view") {
+        bodyWrapper.style.display = "flex";
+        bodyWrapper.style.gap = "var(--spacing-md)";
+        bodyWrapper.style.marginBottom = "var(--spacing-md)";
+        bodyWrapper.style.alignItems = "flex-start";
+
+        const leftCol = document.createElement("div");
+        leftCol.style.flex = "1";
+        leftCol.style.position = "sticky";
+        leftCol.style.top = "20px";
+        leftCol.style.alignSelf = "flex-start";
+
+        if (block.intro_title) {
+            const h2 = document.createElement("h2");
+            h2.textContent = block.intro_title;
+            leftCol.appendChild(h2);
+        }
+        bodyWrapper.appendChild(leftCol);
+
+        const rightCol = document.createElement("div");
+        rightCol.style.flex = "1";
+        if (block.intro_paragraph) {
+            const p = document.createElement("p");
+            p.innerHTML = block.intro_paragraph;
+            rightCol.appendChild(p);
+        }
+        bodyWrapper.appendChild(rightCol);
+    } else {
         if (title) {
             const h3 = document.createElement("h3");
             h3.textContent = title;
-            h3.style.fontSize = "24px";
-            h3.style.fontWeight = "400";
-            h3.style.marginBottom = "16px";
-            h3.style.color = "var(--dark)";
             bodyWrapper.appendChild(h3);
         }
-
         if (paragraph) {
             const p = document.createElement("p");
             p.innerHTML = paragraph;
-            p.style.fontSize = "24px";
-            p.style.lineHeight = "1.6";
-            p.style.color = "var(--dark)";
             bodyWrapper.appendChild(p);
         }
-
-        wrapper.appendChild(bodyWrapper);
-    };
-
-    // --- NEW: Check for ordered content array ---
-    if (caseStudy.content && Array.isArray(caseStudy.content)) {
-        caseStudy.content.forEach(block => {
-            if (block.wideTitle) {
-                const wideTitle = document.createElement("h2");
-                wideTitle.textContent = block.wideTitle;
-                wideTitle.classList.add("wideTitle");
-                wrapper.appendChild(wideTitle);
-            } else if (block.type === "video") {
-                renderVideo(block.files || [], block.width);
-            } else if (block.type === "images" || block.type === "image") {
-                renderImages(block.files || [], block.width, block.intro_paragraph);
-            } else if (block.type === "text") {
-                renderText(block.title, block.paragraph, block.layout, block);
-            }
-        });
     }
-    // --- OLD: Fallback for backward compatibility ---
-    else {
-        // 1. Videos (Full Width)
-        if (caseStudy.videos) {
-            renderVideo(caseStudy.videos);
-        }
+    (targetContainer || wrapper).appendChild(bodyWrapper);
 
-        // 2. Body Content (Right aligned, w-60)
-        if (caseStudy.bodyTitle || caseStudy.bodyParagraph) {
-            // Re-use renderText logic but force the old style manually or just call renderText with custom layout?
-            // Let's just manually create it to match exactly what was there before or use renderText if flexible enough.
-            // The old logic was specific: w-60, margin-left auto.
-            // Let's just paste the old logic back for safety or adapt renderText.
-            // renderText(caseStudy.bodyTitle, caseStudy.bodyParagraph, "old-style");
-            // But renderText above handles "right-50".
-            // Let's just keep the old logic block for fallback to be safe.
-
-            const bodyWrapper = document.createElement("div");
-            bodyWrapper.classList.add("case-study-body");
-            bodyWrapper.style.width = "60%";
-            bodyWrapper.style.marginLeft = "auto";
-            bodyWrapper.style.paddingLeft = "var(--spacing-md)";
-            bodyWrapper.style.boxSizing = "border-box";
-            bodyWrapper.style.marginBottom = "var(--spacing-md)";
-
-            if (caseStudy.bodyTitle) {
-                const h3 = document.createElement("h3");
-                h3.textContent = caseStudy.bodyTitle;
-                h3.style.fontSize = "24px";
-                h3.style.fontWeight = "400";
-                h3.style.marginBottom = "24px";
-                h3.style.color = "var(--dark)";
-                bodyWrapper.appendChild(h3);
-            }
-
-            if (caseStudy.bodyParagraph) {
-                const p = document.createElement("p");
-                p.innerHTML = caseStudy.bodyParagraph;
-                p.style.fontSize = "24px";
-                p.style.lineHeight = "1.6";
-                p.style.color = "var(--dark)";
-                bodyWrapper.appendChild(p);
-            }
-            wrapper.appendChild(bodyWrapper);
-        }
-
-        // 3. Dynamic Images
-        Object.keys(caseStudy).forEach(key => {
-            if (key.startsWith("images")) {
-                const images = caseStudy[key];
-                if (!images || images.length === 0) return;
-
-                let widthClass = "w-100";
-                if (key.includes("w-50")) widthClass = "w-50";
-                else if (key.includes("w-40")) widthClass = "w-40";
-                else if (key.includes("w-60")) widthClass = "w-60";
-
-                renderImages(images, widthClass);
-            }
-        });
-    }
-
-    container.appendChild(wrapper);
-
-    // Add separator line after case study with extra top padding
-    const bottomSeparator = document.createElement("div");
-    bottomSeparator.classList.add("separator-line", "bottomSpace");
-    container.appendChild(bottomSeparator);
-
-    // Add Related Work section
-    const relatedHeader = document.createElement("h2");
-    relatedHeader.textContent = "Related Work";
-    relatedHeader.style.fontSize = "48px"; // Match skills heading size
-    relatedHeader.style.marginBottom = "32px";
-    container.appendChild(relatedHeader);
-
-    // Get random projects (2 projects at 50% width)
-    if (knowledge.projects && knowledge.projects.length > 0) {
-        // Filter out the current case study from the projects list
-        const availableProjects = knowledge.projects.filter(p => p.title !== caseStudy.title);
-
-        if (availableProjects.length > 0) {
-            const shuffled = [...availableProjects].sort(() => 0.5 - Math.random());
-            const randomProjects = shuffled.slice(0, 2);
-
-            // Create a simple 50/50 flexbox layout for Related Work
-            const flexBox = document.createElement("div");
-            flexBox.classList.add("flexBox");
-            flexBox.style.alignItems = "start";
-            flexBox.style.gap = "32px";
-
-            randomProjects.forEach(project => {
-                const projectDiv = document.createElement("div");
-                projectDiv.classList.add("w-50");
-
-                const projectItem = createProjectItem(project);
-                projectDiv.appendChild(projectItem);
-                flexBox.appendChild(projectDiv);
-            });
-
-            container.appendChild(flexBox);
-        }
-    }
-}
+    // Ensure no internal links have underlines
+    bodyWrapper.querySelectorAll("a").forEach(a => a.style.textDecoration = "none");
+};
 
 // -------- Append Articles Grid --------
 function appendArticlesGrid(articles, container) {
