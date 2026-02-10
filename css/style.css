@@ -1559,7 +1559,7 @@ Slider effect
 
     .responseBox {
         z-index: 1;
-        height: calc(100% - 150px);
+        height: calc(100% - 56px);
         top: 64px;
         left: 0;
         right: 0;
@@ -1650,7 +1650,8 @@ Slider effect
     }
 
     footer{
-        margin-top: 124px !important;
+        margin-top: 96px !important;
+        margin-bottom: 96px !important;
     }
     
     .copyrights{
