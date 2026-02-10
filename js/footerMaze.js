@@ -7,12 +7,13 @@
      */
 
     // Global image objects
+    // 400px width source
     const handImage = new Image();
-    handImage.src = 'img/Hand.png'; // 400px width source
+    handImage.src = 'img/Hand.png';
     const footImage = new Image();
-    footImage.src = 'img/Foot.png'; // 400px width source
+    footImage.src = 'img/Foot.png';
     const headImage = new Image();
-    headImage.src = 'img/Head.png'; // 400px width source
+    headImage.src = 'img/Head.png';
 
     class GenerativeSnake {
         constructor(canvas, ctx, color, thickness, gridSize, bounds, startCapType = 'none', endCapType = 'none', obstacleType = 'none') {
@@ -25,9 +26,7 @@
             this.startCapType = startCapType;
             this.endCapType = endCapType;
             this.obstacleType = obstacleType;
-
             this.obstacleCell = null; // {x, y} in maze coords
-
             this.reset();
         }
 
@@ -37,7 +36,7 @@
             this.segmentProgress = 0;
             this.segmentProgress = 0;
             this.isDone = false;
-            this.speed = 4; // Initial slow speed
+            this.speed = 2; // Initial slow speed
             this.generatePath();
         }
 
@@ -207,10 +206,7 @@
                 for (let mx = 0; mx < mazeCols; mx++) {
                     // Wall between cell (mx, my) and cell (mx, my+1)
                     // This is wallsH[(my+1) * mazeCols + mx]
-                    if (wallsH[(my + 1) * mazeCols + mx] === 0) { // No wall -> Connected
-                        // Merge Cell(mx, my) with Cell(mx, my+1)
-                        // Top cell (mx, my) bottom edge: BL-BR
-                        // Bottom cell (mx, my+1) top edge: TL-TR
+                    if (wallsH[(my + 1) * mazeCols + mx] === 0) {
 
                         const top_bl = getFNode(mx * 2, my * 2 + 1);
                         const top_br = getFNode(mx * 2 + 1, my * 2 + 1);
@@ -218,11 +214,11 @@
                         const bot_tl = getFNode(mx * 2, (my + 1) * 2);
                         const bot_tr = getFNode(mx * 2 + 1, (my + 1) * 2);
 
-                        removeAdj(top_bl, top_br); // Remove bottom edge of top cell
-                        removeAdj(bot_tl, bot_tr); // Remove top edge of bottom cell
+                        removeAdj(top_bl, top_br);
+                        removeAdj(bot_tl, bot_tr);
 
-                        setAdj(top_bl, bot_tl); // Connect left-left
-                        setAdj(top_br, bot_tr); // Connect right-right
+                        setAdj(top_bl, bot_tl);
+                        setAdj(top_br, bot_tr);
                     }
                 }
             }
@@ -252,9 +248,6 @@
             let curr = 0; // Start at fine grid (0,0)
             let prev = -1;
 
-            // Find first neighbor to start
-            // Just pick adj[0]
-
             const limit = fCols * fRows * 4; // Safety limit to prevent infinite loops
             for (let i = 0; i < limit; i++) {
                 // Add Point
@@ -266,14 +259,7 @@
                 const n2 = adj[curr * 2 + 1];
 
                 let next = -1;
-                if (i === 0) {
-                    // For the very first step, pick one of the neighbors.
-                    // If n1 is -1, try n2. If both are -1, something is wrong.
-                    next = (n1 !== -1) ? n1 : n2;
-                } else {
-                    // For subsequent steps, pick the neighbor that is not 'prev'
-                    next = (n1 === prev) ? n2 : n1;
-                }
+                next = i === 0 ? (n1 !== -1 ? n1 : n2) : (n1 === prev ? n2 : n1);
 
                 if (next === -1 || next === undefined) break; // Should not happen in a valid cycle
                 if (next === 0) break; // Loop closed, returned to start node
@@ -332,7 +318,7 @@
             this.segmentProgress = 0;
             this.isDone = false;
             this.finishAnim = 0; // 0 to 1 for end bounce animation
-            this.speed = 4; // Initial slow speed
+            this.speed = 2; // Initial slow speed
             this.generatePath();
         }
 
@@ -390,10 +376,8 @@
             let drawY = -h - gap;
 
             if (img === footImage) {
-                // User requested 180 deg flip to face outward.
+                // User requested 180 deg flip for boots
                 this.ctx.rotate(Math.PI);
-                // Draw at Positive Y to appear at Negative Y (Outside) in rotated frame
-                // X is symmetric (-w/2) so rotation doesn't shift it.
                 this.ctx.drawImage(img, -w / 2, gap, w, h);
             } else {
                 this.ctx.drawImage(img, drawX, drawY, w, h);
@@ -423,18 +407,6 @@
             this.ctx.lineWidth = this.thickness;
             this.ctx.strokeStyle = this.color;
             this.ctx.beginPath();
-
-            // 1. Determine Start Point (Shortened by thickness to allow "Leg" + Hand offset)
-            // Actually, if we want closed ends, we can just start exactly at the point.
-            // User asked for "height will be subtracted to leg end points".
-            // Let's shorten the very first and very last segments by `thickness`.
-
-            // Image dimensions: Source is 400px width.
-            // We want image width to match thickness.
-            // Scale factor = thickness / 400.
-            // Height in pixels = (ImageHeight) * (thickness / 400).
-            // Since user said "400px width/height", let's assume square or allow aspect ratio.
-            // Actually, we need to know the height to subtract from the line length.
 
             // Define helpers
             const getImg = (type) => {
@@ -508,13 +480,6 @@
                     this.ctx.lineTo(pCurr.x, pCurr.y);
                     continue;
                 }
-
-                // Calculate direction vectors for "Prev->Curr" and "Curr->Next"
-                // But simpler: Corner pCurr.
-                // Radius r.
-                // Tangent points:
-                // T1 = pCurr - (pCurr - pPrev).normalized * r
-                // T2 = pCurr + (pNext - pCurr).normalized * r
 
                 // Vector 1 (Entering corner)
                 const v1x = pCurr.x - pPrev.x;
@@ -698,13 +663,13 @@
                     // Maze cell (ox, oy) covers fine grid (2*ox, 2*oy) to (2*ox+2, 2*oy+2)
                     // Center in fine grid coords: 2*ox + 1, 2*oy + 1
                     // Pixel coords:
-                    const centerX = (this.bounds.x1 + this.obstacleCell.x * 2 + 1) * this.gridSize; 
+                    const centerX = (this.bounds.x1 + this.obstacleCell.x * 2 + 1) * this.gridSize;
 
                     const pixelX = (this.bounds.x1 + this.obstacleCell.x * 2 + 1) * this.gridSize;
                     const pixelY = (this.bounds.y1 + this.obstacleCell.y * 2 + 1) * this.gridSize;
 
                     const scale = this.thickness / img.naturalWidth; // Or just force thickness
-          
+
                     const renderW = this.thickness * 1.1;
                     const renderH = img.naturalHeight * (renderW / img.naturalWidth);
 
@@ -749,7 +714,7 @@
             // High DPI / Retina support
             const dpr = window.devicePixelRatio || 1;
             const width = window.innerWidth;
-            const height = 760; 
+            const height = 600;
 
             if (width <= 0) return;
 
@@ -761,14 +726,14 @@
             ctx.resetTransform();
 
             const gap = 2; // User requested smaller gap "like 2px"
-            let targetThickness = width > 768 ? 96 : 56;
+            let targetThickness = width > 720 ? 96 : 56;
             let gridSize = targetThickness + gap;
 
             // Calculate approx cols
             let cols = Math.round(width / gridSize);
-            // Recalculate grid size to perfectly fill WIDTH
-            if (cols < 2) cols = 2; // Minimum
-            if (cols % 2 !== 0) cols++;
+            // Force col count to be multiple            // Force col count to be multiple of 4 for clean 50/50 splits without gaps
+            if (cols < 4) cols = 4;
+            if (cols % 4 !== 0) cols += (4 - (cols % 4));
 
             const finalGridSize = width / cols;
             const thickness = finalGridSize - gap;
@@ -776,16 +741,17 @@
 
             // Calculate Rows based on fixed height
             let rows = Math.round(height / gridSize);
-            // Ensure even count
+            // Ensure rows are also a multiple of 1 to fit even maze blocks
+            if (rows < 2) rows = 2;
             if (rows % 2 !== 0) rows++;
 
             const scaleY = height / (rows * gridSize);
 
             // Apply Scale
-            ctx.setTransform(dpr, 0, 0, dpr * scaleY, 0, 0); // Stretch vertically to fill 760px exactly
+            ctx.setTransform(dpr, 0, 0, dpr * scaleY, 0, 0); // Stretch vertically to fill 600px exactly
 
             // Layout Decision:
-            const isVertical = (width > 768) && randomSplitDecision;
+            const isVertical = (width > 720) && randomSplitDecision;
 
             if (isVertical) {
                 // 50/50 Vertical Split
