@@ -72,7 +72,6 @@
             let cy = Math.floor(Math.random() * mazeRows);
 
             // Setup Obstacle if requested
-            // Setup Obstacle if requested
             if (this.obstacleType !== 'none') {
                 // Pick a random cell for the obstacle
                 // Avoid edges? Maybe not necessary, but safest to be internal or random is fine.
@@ -586,10 +585,6 @@
             this.ctx.lineTo(headX, headY);
             this.ctx.stroke();
 
-            // Draw Inner Stroke (The Fill/Cutout) - Creates Outline Loop
-            // We need to draw the EXACT SAME path but with a thinner stroke.
-            // AND we want to clip the ends to create the "Closed" cap effect.
-
             const borderW = 4; // Total border width (2px each side)
             const capInset = 4; // How far to inset the black line to create the "Cap"
 
@@ -661,16 +656,6 @@
 
             this.ctx.stroke();
 
-            // Draw Caps
-            // Images must be placed at the EXACT end of the visible line (startX / headX)
-            // Previous logic used pStart/pStartNext vector.
-            // Rotation is perpendicular to line?
-            // Let's verify standard drawEndCap:
-            // angle = atan2(dy, dx) + PI/2.
-            // If line is vertical down (dy=1, dx=0), angle = PI/2 + PI/2 = PI (180).
-            // Image rotated 180 (upside down).
-            // If hand image is "Flat Hand Points Up", rotated 180 means Points Down. Correct.
-
             if (this.startCapType !== 'none' && startImg) {
                 // Direction: P0 -> P1.
                 // Line starts at P0+offset.
@@ -713,50 +698,13 @@
                     // Maze cell (ox, oy) covers fine grid (2*ox, 2*oy) to (2*ox+2, 2*oy+2)
                     // Center in fine grid coords: 2*ox + 1, 2*oy + 1
                     // Pixel coords:
-                    const centerX = (this.bounds.x1 + this.obstacleCell.x * 2 + 1) * this.gridSize; // + gridSize/2 ? No. 
-                    // this.points logic: p.x = fineX * gridSize + gridSize/2.
-                    // So center of fine cell (fx, fy) is (fx*gridSize + gridSize/2, ...)
-                    // The "Hole" is a 2x2 fine block.
-                    // The exact center of the 2x2 block is at fine coord (2*ox + 1, 2*oy + 1)?
-                    // Corners: TL(2ox, 2oy), BR(2ox+2, 2oy+2).
-                    // Midpoint: (2ox+1, 2oy+1).
-                    // Pixel X = (this.bounds.x1 + 2*this.obstacleCell.x + 1) * this.gridSize?
-                    // No. 
-                    // Grid point (x,y) is at x * gridSize + gridSize/2.
-                    // We want the visual center of 4 grid points? Or the center of the void?
-                    // The void is "inside" the loop formed by 2x2.
-                    // The loop goes through centers of the 4 fine cells.
-                    // The geometric center is at the vertex shared by the 4 cells.
-                    // Fine coord index (2ox+1, 2oy+1)? No...
-                    // Let's deduce:
-                    // TL cell center: (2ox * G + G/2, 2oy * G + G/2)
-                    // BR cell center: ((2ox+1) * G + G/2, (2oy+1) * G + G/2)
-                    // Average X = (2ox + 0.5 + 2ox + 1.5) * G / 2 = (4ox + 2) * G / 2 ??
-                    // Center X = (2ox * G + G/2 + 2ox * G + 1.5G) / 2?
-                    // Simply: (2ox + 1) * G.
-
-                    // Yes. (2*ox * G) is left edge of TL. (2*ox+2)*G is right edge of BR.
-                    // Midpoint is (2*ox + 1) * G.
+                    const centerX = (this.bounds.x1 + this.obstacleCell.x * 2 + 1) * this.gridSize; 
 
                     const pixelX = (this.bounds.x1 + this.obstacleCell.x * 2 + 1) * this.gridSize;
                     const pixelY = (this.bounds.y1 + this.obstacleCell.y * 2 + 1) * this.gridSize;
 
-                    // Draw Check
-                    // User wants Head "randomly placed".
-                    // Size? "match size of the snake 1 line thickness".
-                    // Currently w = thickness.
-                    // But the hole is 2x2 cells.
-                    // So it fits easily.
-
                     const scale = this.thickness / img.naturalWidth; // Or just force thickness
-                    // But if it's too small in a large hole it looks lonely.
-                    // User said "find a gap ... and make sure maze folds around it".
-                    // If I use my obstacle logic, the gap is 2x2 cells.
-                    // Let's stick to thickness * 1.2 for visibility, or just thickness as requested.
-                    // I'll do thickness * 1.5 purely for aesthetics in the hole, user can ask to shrink.
-                    // User said "find a gap ... and make sure maze folds around it".
-                    // Increasing size to reduce visual gap.
-                    // Tweaked down to 1.1 per user request "shrink ... a bit"
+          
                     const renderW = this.thickness * 1.1;
                     const renderH = img.naturalHeight * (renderW / img.naturalWidth);
 
@@ -767,15 +715,6 @@
                     if (this.isDone && this.finishAnim > 0) {
                         // Elastic Out for rotation
                         const t = this.finishAnim;
-                        // Damped sine wave centering on 1.0
-                        // We want it to go from 0 to 1 * Target
-
-                        // Standard Elastic Out?
-                        // p = 0.3
-                        // return pow(2, -10*t) * sin((t-p/4)*(2*PI)/p) + 1;
-
-                        // Simplified spring for visual pop:
-                        // Overshoot and settle
                         const p = 0.4;
                         const s = p / 4;
                         const val = (t === 1) ? 1 : Math.pow(2, -10 * t) * Math.sin((t - s) * (2 * Math.PI) / p) + 1;
@@ -804,13 +743,13 @@
         if (!canvas) return;
         ctx = canvas.getContext('2d');
 
-        const randomSplitDecision = Math.random() > 0.5; // Persist decision across resizes
+        const randomSplitDecision = Math.random() > 0.5;
 
         function resize() {
             // High DPI / Retina support
             const dpr = window.devicePixelRatio || 1;
             const width = window.innerWidth;
-            const height = 760; // Fixed height per user request (Updated from 800)
+            const height = 760; 
 
             if (width <= 0) return;
 
