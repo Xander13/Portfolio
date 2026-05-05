@@ -76,6 +76,19 @@ body.essence-mode {
     width: 100%;
 }
 
+.boxes {
+    border-left: 1px solid white;
+    padding-left: 64px;
+    margin-bottom: 64px;
+    gap: 32px;
+    padding-right: 64px;
+    text-wrap: balance;
+}
+
+.boxes h2 {
+    padding-bottom: 16px;
+}
+
 /* Fade transitions for mode switching */
 .fade-out {
     opacity: 0;
@@ -1649,12 +1662,12 @@ Slider effect
         padding-right: 16px;
     }
 
-    footer{
+    footer {
         margin-top: 96px !important;
         margin-bottom: 96px !important;
     }
-    
-    .copyrights{
+
+    .copyrights {
         padding-bottom: 16px !important;
         font-size: 24px !important;
     }
