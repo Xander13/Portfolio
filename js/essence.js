@@ -19,10 +19,6 @@ const maxQuestions = 25; // No limit on questions
 let isExpanded = false;
 
 
-
-// -------- Scroll Listener --------
-// Removed smart scroll logic as we are now locking scroll during typing
-
 // -------- Normalize Input --------
 function normalizeText(text) {
     return text.toLowerCase().replace(/[^\w\s]/gi, '').trim();
@@ -126,7 +122,6 @@ function typeWriter(element, text, baseSpeed = 40, callback = null) {
 }
 
 
-
 // -------- Background Color Observer --------
 const bgColorObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -217,8 +212,6 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
         if (extra.articles) {
             appendArticlesGrid(extra.articles, wrapper);
         }
-
-
 
         if (extra.worldClocks) {
             appendWorldClocks(content);
@@ -362,7 +355,6 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
 }
 
 
-
 // -------- Soft Nudge Scroll Helper --------
 function nudgeChat(amount = 32) {
     responseBox.scrollTo({
@@ -370,6 +362,7 @@ function nudgeChat(amount = 32) {
         behavior: "smooth"
     });
 }
+
 
 // --- DET Time -------
 function getDetroitTime() {
@@ -453,7 +446,6 @@ function appendExtraContent(wrapper, extra = {}) {
 
     wrapper.appendChild(mediaWrapper);
 }
-
 
 
 // -------- Append Skills Grid --------
@@ -618,6 +610,7 @@ function buildParagraph(matchedKeys) {
     return { text: "I don't have that information." };
 }
 
+
 // -------- Synonyms Mapping --------
 const personalSynonyms = {
     name: ["name", "full name"],
@@ -687,9 +680,11 @@ async function findResponse(userInput) {
 
     if (matchedKeys.includes("education")) {
         return {
+            // This ensures the text and link objects are passed 
+            // so your parser can inject the <a> tag into the {{{rit}}} placeholder
             text: knowledge.education.text,
             link: knowledge.education.link,
-            inlineLink: true,
+            inlineLink: true, 
             instant: true
         };
     }
@@ -771,7 +766,6 @@ async function findResponse(userInput) {
             instant: true
         };
     }
-
 
     if (matchedKeys.length > 0) {
         const response = buildParagraph(matchedKeys);
@@ -875,6 +869,7 @@ async function findResponse(userInput) {
     return { text: "Hmm… I don’t have an answer for that yet." };
 }
 
+
 // ----- Detroit time helper -----
 function getDetroitTime() {
     return new Date().toLocaleTimeString("en-US", {
@@ -884,6 +879,7 @@ function getDetroitTime() {
         hour12: true
     });
 }
+
 
 // -------- Friendly Openers --------
 function getFriendlyOpener() {
@@ -897,7 +893,6 @@ function getFriendlyOpener() {
     ];
     return openers[Math.floor(Math.random() * openers.length)];
 }
-
 
 
 // -------- Send Message --------
@@ -971,6 +966,7 @@ async function sendMessage() {
 
     input.value = "";
 }
+
 
 // ------- Project Grid Sections -------
 function appendProjectsGrid(projects, container, skipSpaceTop = false) {
@@ -1083,6 +1079,7 @@ function appendProjectsGrid(projects, container, skipSpaceTop = false) {
     }, 100); // Small delay to ensure DOM is updated
 }
 
+
 // -------- Create individual project item --------
 function createProjectItem(project) {
     const wrapper = document.createElement("a");
@@ -1164,9 +1161,8 @@ function createProjectItem(project) {
     return wrapper;
 }
 
+
 // -------- Append Case Study --------
-
-
 // Helper to render a video block
 const renderVideo = (files, widthMode, targetContainer) => {
     files.forEach(src => {
@@ -1207,6 +1203,7 @@ const renderVideo = (files, widthMode, targetContainer) => {
         (targetContainer || wrapper).appendChild(mediaEl);
     });
 };
+
 
 // Helper to render an image block
 const renderImages = (files, widthClass, textContent = null, targetContainer) => {
@@ -1272,6 +1269,7 @@ const renderImages = (files, widthClass, textContent = null, targetContainer) =>
     (targetContainer || wrapper).appendChild(outerContainer);
 };
 
+
 // Helper to render text block
 const renderText = (title, paragraph, layout, block, targetContainer) => {
     const bodyWrapper = document.createElement("div");
@@ -1322,6 +1320,7 @@ const renderText = (title, paragraph, layout, block, targetContainer) => {
     bodyWrapper.querySelectorAll("a").forEach(a => a.style.textDecoration = "none");
 };
 
+
 // -------- Append Articles Grid --------
 function appendArticlesGrid(articles, container) {
     const gridWrapper = document.createElement("div");
@@ -1338,6 +1337,7 @@ function appendArticlesGrid(articles, container) {
 
     container.appendChild(gridWrapper);
 }
+
 
 // -------- Create individual article item --------
 function createArticleItem(article) {
@@ -1395,9 +1395,6 @@ function createArticleItem(article) {
 }
 
 
-// -------- Event Listeners --------
-// Moved to initElements or onload to ensure elements exist
-
 // -------- Hex to RGB Helper --------
 function hexToRgb(hex) {
     // Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
@@ -1413,6 +1410,7 @@ function hexToRgb(hex) {
         b: parseInt(result[3], 16)
     } : null;
 }
+
 
 // -------- Initialize --------
 // Load knowledge immediately
@@ -1478,8 +1476,8 @@ window.addEventListener('load', async () => {
     }
 });
 
-// -------- Welcome Message --------
 
+// -------- Welcome Message --------
 function showWelcomeMessage() {
     if (!responseBox) initElements();
     if (!responseBox) return;
@@ -1516,6 +1514,7 @@ function showWelcomeMessage() {
         appendPrompts(wrapper);
     });
 }
+
 
 function appendPrompts(container) {
     if (!container) return;
@@ -1595,7 +1594,6 @@ function appendPrompts(container) {
 }
 
 
-
 // Floating Menu Toggle
 document.addEventListener('DOMContentLoaded', function () {
     const menuBars = document.querySelector('.menuBars');
@@ -1607,6 +1605,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
+
 
 // -------- Placeholder Animation --------
 function animatePlaceholder() {
@@ -1629,9 +1628,6 @@ function animatePlaceholder() {
     }, 500); // Update every 500ms
 }
 
-
-// Start animations moved to init or specific triggers
-// animatePlaceholder();
 
 // Expose showWelcomeMessage globally for mode toggle
 window.showWelcomeMessage = showWelcomeMessage;
@@ -1836,6 +1832,7 @@ function appendSortingVisualization(container) {
     initArrays(numItems);
 }
 
+
 function createSortBox(title) {
     const box = document.createElement("div");
     box.classList.add("w-50", "sort-box");
@@ -1859,6 +1856,7 @@ function createSortBox(title) {
 
     return box;
 }
+
 
 function renderBars(container, data, maxN, colorTheme = 'blue', activeIndices = [], compareIndices = [], speedConfig = { multiplier: 1 }) {
     const transitionDuration = `${0.1 * speedConfig.multiplier}s`;
@@ -1943,6 +1941,7 @@ function renderBars(container, data, maxN, colorTheme = 'blue', activeIndices = 
     });
 }
 
+
 // BUBBLE SORT
 async function runBubbleSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
     const startTime = Date.now();
@@ -1974,6 +1973,7 @@ async function runBubbleSort(container, data, maxN, theme, speedConfig = { multi
     renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
 }
+
 
 // COUNTING SORT
 async function runCountingSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
@@ -2018,6 +2018,7 @@ async function runCountingSort(container, data, maxN, theme, speedConfig = { mul
     return Date.now() - startTime;
 }
 
+
 // INSERTION SORT
 async function runInsertionSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
     const startTime = Date.now();
@@ -2038,6 +2039,7 @@ async function runInsertionSort(container, data, maxN, theme, speedConfig = { mu
     renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
 }
+
 
 // QUICK SORT
 async function runQuickSort(container, data, maxN, theme, speedConfig = { multiplier: 1 }) {
@@ -2084,6 +2086,7 @@ async function runQuickSort(container, data, maxN, theme, speedConfig = { multip
     renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
 }
+
 
 // -------- Fourier Visualization (Stub) --------
 function appendFourierVisualization(container) {

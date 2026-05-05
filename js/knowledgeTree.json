@@ -31,27 +31,27 @@
   "personal": {
     "testimonies": "Alex is a remarkably talented designer and conceptual thinker. From his first day at Instrument, he jumped in and made our team better through diving right into the work creating unique concepts and thoughtfully sharing feedback with teammates. I especially appreciated his enthusiasm and positive attitude towards solving problems and collaborating. He would make a great addition to your team. I know I hope we get to work together again in the future.<br><br> – Sean Joseph Klassen, Instrument",
     "currentTime": "The local time is {{time}}",
-    "background": "Alex Kauffman is a Product Designer focused on clarity, interaction, and systems-thinking. With a BFA in New Media Design from {{rit}}, he blends creative direction and systems logic to build tools that support thoughtful, long-term growth.<br><br>Outside of work, Alex is getting into motocross (MX) as a new hobby. He also enjoys traveling to different countries, meeting new people, and trying unfamiliar things — always chasing experiences that expand perspective.",
+    "background": "Alex Kauffman is a Design Engineer focused on clarity, interaction, and systems thinking. With a BFA in New Media Design from {{{rit}}}, he blends creative direction with systems logic to build tools that prioritize long-term utility over simple asset delivery.<br><br>Outside of the screen, Alex is a dirtbike 450r rider and currently pursuing further academic studies to deepen his technical foundation in complex systems. He travels and seeks out unfamiliar experiences that push his perspective — whether he's on a bike, in the classroom, or exploring a new city.",
     "what time is it": "The local time is {{time}}",
     "name": "Alex Kauffman",
-    "who is alex": "Alex Kauffman, a passionate Product Designer.",
+    "who is alex": "Alex Kauffman, a systems-driven Design Engineer.",
     "dream job": "Building assistive technology that improves human interaction is my core focus. I am targeting roles at {{microsoft}}, {{apple}}, and {{jnj}} that specifically align with this mission.",
-    "goal": "My 5-year goal is to grow in a full-time product design and engineering role while contributing visionary ideas and production support to teams building accessible, mission-driven products at companies like {{apple}}, Disney Research, or Toast.",
+    "goal": "My 5-year goal is to bridge the gap between design and development as a Senior Design Engineer. I aim to contribute to the architectural logic and accessibility standards of mission-driven products at companies like {{apple}}, Disney Research, or Toast.",
     "dream": "Building assistive technology that improves human interaction is my core focus. I am targeting roles at {{microsoft}}, {{apple}}, and {{jnj}} that specifically align with this mission.",
-    "skills": "Alex is a Product Designer focused on accessibility and system thinking. He’s driven by data, rapid prototyping, and turning early insights into meaningful direction — rather than getting stuck on pixel perfection.",
-    "what skills": "Alex is a Product Designer focused on accessibility and system thinking. He’s driven by data, rapid prototyping, and turning early insights into meaningful direction — rather than getting stuck on pixel perfection.",
+    "skills": "Alex is a Design Engineer focused on interactive systems and accessibility. He blends systems logic with front-end engineering to ship tools centered on long-term utility and structural clarity — prioritizing functional integrity over mere asset delivery.",
+    "what skills": "Alex is a Design Engineer focused on interactive systems and accessibility. He blends systems logic with front-end engineering to ship tools centered on long-term utility and structural clarity — prioritizing functional integrity over mere asset delivery.",
     "availability": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
     "when available": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
     "hire": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
-    "weakness": "Ohhh, a trick hot question... I naturally gravitate toward concepting and systems thinking more than pixel-perfect polish. I'm strongest when I'm exploring ideas, shaping flows, and figuring out the experience logic.<br><br>Because I know that about myself, I'm intentional about collaborating with designers who thrive in high-fidelity craftsmanship. It creates a good balance: I move fast on direction and structure, and I partner with detail-oriented teammates to elevate the final visual finish.",
+    "weakness": "I naturally gravitate toward systems thinking and interaction logic over high-fidelity visual ornamentation. I’m strongest when I'm architecting how a system handles complexity.<br><br>Because of this, I’m intentional about using robust design systems and collaborating with visual specialists to ensure the final output is as polished as it is functional.",
     "deadlines": "When I work with tight deadlines, I make sure I really understand my project scope and what the needs are. I tend to deliver my concepts in 3 different levels to help step down what is MVP thinking vs what is a sky-high approach.<br><br>This helps me boil out things we can focus on later when we have tight deadlines.",
     "tight deadlines": "When I work with tight deadlines, I make sure I really understand my project scope and what the needs are. I tend to deliver my concepts in 3 different levels to help step down what is MVP thinking vs what is a sky-high approach.<br><br>This helps me boil out things we can focus on later when we have tight deadlines.",
-    "strengths": "I give a shit about the small things people sweep under the rug. Accessibility and things that just get overlooked.<br><br>I think that's where myself comes in — I focus on visionary work, not pixel pushing, because I channel my focus on making sure the product lives in a holistic health outlook that benefits business growth, not just short-term thinking solutions.",
-    "strength": "I give a shit about the small things people sweep under the rug. Accessibility and things that just get overlooked.<br><br>I think that's where myself comes in — I focus on visionary work, not pixel pushing, because I channel my focus on making sure the product lives in a holistic health outlook that benefits business growth, not just short-term thinking solutions.",
-    "biggest strengths": "I give a shit about the small things people sweep under the rug. Accessibility and things that just get overlooked.<br><br>I think that's where myself comes in — I focus on visionary work, not pixel pushing, because I channel my focus on making sure the product lives in a holistic health outlook that benefits business growth, not just short-term thinking solutions.",
-    "successful project": "My most successful project is Duolingo ASL. I showcased to Duolingo a concept that helps open a new streamline of revenue by targeting non-verbal language learning. The amount of statistics and research shows that people need basic accessibility to learn sign language — it proves we need that to happen. Duolingo is a platform that helps understand how users learn in non-verbal language to benefit other purposes of industry use.<br><br>I learned this project showcased that accessibility + purpose = results. My LinkedIn has gained over 8k likes and many comments. It proves my strong vision aligns with what users need — that's what makes a successful project. I didn't have all the flows or perfect pixel layouts. I had a strong foundation of what users needed that made good results to build with.",
-    "duolingo success": "My most successful project is Duolingo ASL. I showcased to Duolingo a concept that helps open a new streamline of revenue by targeting non-verbal language learning. The amount of statistics and research shows that people need basic accessibility to learn sign language — it proves we need that to happen. Duolingo is a platform that helps understand how users learn in non-verbal language to benefit other purposes of industry use.<br><br>I learned this project showcased that accessibility + purpose = results. My LinkedIn has gained over 8k likes and many comments. It proves my strong vision aligns with what users need — that's what makes a successful project. I didn't have all the flows or perfect pixel layouts. I had a strong foundation of what users needed that made good results to build with.",
-    "Coding": "Alex thrives at the intersection of design and engineering, translating creative intent into functional systems. While earning his BFA at RIT, he supplemented his studies with computer science coursework to better understand how technical constraints shape design. This fascination with the mechanics behind the interface is why he enjoys diving into the logic of complex systems, from UI components to sorting algorithms.",
+    "strengths": "I focus on the structural details that often get overlooked, specifically accessibility and system logic. My strength lies in ensuring a product maintains a holistic health outlook—prioritizing functional integrity and long-term scalability over short-term visual fixes.",
+    "strength": "I focus on the structural details that often get overlooked, specifically accessibility and system logic. My strength lies in ensuring a product maintains a holistic health outlook—prioritizing functional integrity and long-term scalability over short-term visual fixes.",
+    "biggest strengths": "I focus on the structural details that often get overlooked, specifically accessibility and system logic. My strength lies in ensuring a product maintains a holistic health outlook—prioritizing functional integrity and long-term scalability over short-term visual fixes.",
+    "successful project": "My most successful project is Duolingo ASL. I developed a concept for non-verbal language learning that identifies a new revenue stream through accessibility. While the project gained significant traction on LinkedIn (8k+ likes), its real success was proving that accessibility + purpose = results. I focused on the technical foundation of how users learn non-verbally, creating a scalable framework rather than just a set of static screens.",
+    "duolingo success": "My most successful project is Duolingo ASL. I developed a concept for non-verbal language learning that identifies a new revenue stream through accessibility. While the project gained significant traction on LinkedIn (8k+ likes), its real success was proving that accessibility + purpose = results. I focused on the technical foundation of how users learn non-verbally, creating a scalable framework rather than just a set of static screens.",
+    "coding": "Alex thrives at the intersection of design and engineering, translating creative intent into functional systems. While earning his BFA at RIT, he supplemented his studies with computer science coursework to better understand how technical constraints shape design. This fascination with the mechanics behind the interface is why he enjoys diving into the logic of complex systems, from UI components to sorting algorithms.",
     "ai_thinking": "I believe AI has real value in science and engineering—especially in areas like protein modeling, vaccine development, and pattern discovery where speed and scale matter. <br><br> I’m far less convinced by generative AI as it exists today. Training on scraped creative work and burning massive energy to produce low-value outputs feels misaligned with what technology should optimize for. <br><br> AI should help us see patterns, surface insights, and reduce friction—but it is not the output. Humans define the intent, context, and meaning. AI is just a tool to amplify our thinking, not replace it. <br><br> In the end, the function still depends on us."
   },
   "resume_post": {
@@ -69,10 +69,10 @@
     }
   },
   "education": {
-    "text": "He earned a BFA in New Media Design from the Rochester Institute of Technology, graduating Magna Cum Laude with a 3.69/4 GPA. Here’s a link to the university:",
+    "text": "He earned a BFA in New Media Design from the Rochester Institute of Technology, graduating Magna Cum Laude with a 3.69/4 GPA.",
     "link": {
       "href": "https://www.rit.edu/",
-      "text": "Rochester Institute of Technology"
+      "text": "See University Page"
     }
   },
   "role": {
@@ -163,11 +163,11 @@
       "Critical Thinking"
     ],
     "column4": [
-      "Antigravity",
       "VSCode / Vercel",
-      "Figma / Sketch",
-      "Adobe XD",
-      "Google Slides"
+      "Figma",
+      "Antigravity",
+      "Chrome DevTools",
+      "LaTeX"
     ]
   },
   "case studies": {
