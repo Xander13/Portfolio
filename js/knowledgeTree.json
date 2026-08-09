@@ -4,7 +4,8 @@
     "rit": "https://www.rit.edu/",
     "microsoft": "https://www.xbox.com/en-US/community/for-everyone/accessibility",
     "apple": "https://www.apple.com/diversity/",
-    "jnj": "https://www.careers.jnj.com/en/"
+    "jnj": "https://www.careers.jnj.com/en/",
+    "weatherBug": "https://www.weatherbug.com/"
   },
   "projects": [
     {
@@ -52,13 +53,22 @@
     "successful project": "My most successful project is Duolingo ASL. I developed a concept for non-verbal language learning that identifies a new revenue stream through accessibility. While the project gained significant traction on LinkedIn (8k+ likes), its real success was proving that accessibility + purpose = results. I focused on the technical foundation of how users learn non-verbally, creating a scalable framework rather than just a set of static screens.",
     "duolingo success": "My most successful project is Duolingo ASL. I developed a concept for non-verbal language learning that identifies a new revenue stream through accessibility. While the project gained significant traction on LinkedIn (8k+ likes), its real success was proving that accessibility + purpose = results. I focused on the technical foundation of how users learn non-verbally, creating a scalable framework rather than just a set of static screens.",
     "coding": "Alex thrives at the intersection of design and engineering, translating creative intent into functional systems. While earning his BFA at RIT, he supplemented his studies with computer science coursework to better understand how technical constraints shape design. This fascination with the mechanics behind the interface is why he enjoys diving into the logic of complex systems, from UI components to sorting algorithms.",
-    "ai_thinking": "I believe AI has real value in science and engineering—especially in areas like protein modeling, vaccine development, and pattern discovery where speed and scale matter. <br><br> I’m far less convinced by generative AI as it exists today. Training on scraped creative work and burning massive energy to produce low-value outputs feels misaligned with what technology should optimize for. <br><br> AI should help us see patterns, surface insights, and reduce friction—but it is not the output. Humans define the intent, context, and meaning. AI is just a tool to amplify our thinking, not replace it. <br><br> In the end, the function still depends on us."
+    "ai_thinking": "I believe AI has real value in science and engineering—especially in areas like protein modeling, vaccine development, and pattern discovery where speed and scale matter. <br><br> I’m far less convinced by generative AI as it exists today. Training on scraped creative work and burning massive energy to produce low-value outputs feels misaligned with what technology should optimize for. <br><br> AI should help us see patterns, surface insights, and reduce friction—but it is not the output. Humans define the intent, context, and meaning. AI is just a tool to amplify our thinking, not replace it. <br><br> In the end, the function still depends on us.",
+    "weather": "Todays weather is {{weather}}"
   },
   "resume_post": {
     "text": "Check out the Alex Kauffman's resume:",
     "link": {
       "href": "pdf/Alex_Kauffman_Resume.pdf",
       "text": "Resume"
+    }
+  },
+  "weather_post":{
+    "text": "Todays weather looks like:",
+    "apiUrl": "",
+    "link": {
+      "href": "https://www.weatherbug.com/",
+      "text": "Weatherbug"
     }
   },
   "duolingo_post": {

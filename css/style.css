@@ -884,6 +884,29 @@ a {
     text-decoration: underline;
 }
 
+.weather-confirmation-actions {
+    display: flex;
+    gap: 24px;
+    margin-top: 8px;
+}
+
+.weather-confirmation-action {
+    padding: 0;
+    border: 0;
+    color: inherit;
+    background: transparent;
+    font: inherit;
+    font-size: 56px;
+    line-height: inherit;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.weather-confirmation-action:hover,
+.weather-confirmation-action:focus-visible {
+    opacity: 0.65;
+}
+
 .essence-tooltip {
     position: absolute;
     left: 0;
@@ -1528,6 +1551,11 @@ Slider effect
         font-size: 24px;
         line-height: 32px;
         width: 100%;
+    }
+
+    .weather-confirmation-action {
+        font-size: 24px;
+        line-height: 32px;
     }
 
     .IntroChat {

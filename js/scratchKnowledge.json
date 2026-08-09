@@ -1,0 +1,101 @@
+{
+  "modeName": "Scratch",
+  "intro": "How can I assist you today? This is a private, local scratch space in your browser. Type -exit when you're done.",
+  "calculator": {
+    "expressionIntro": "Let's work that out:",
+    "wordProblemIntro": "Let's map the quantities step by step:",
+    "comparisonIntro": "Let's compare the two measurements:",
+    "timeIntro": "Let's add the time:",
+    "verbalMathIntro": "Let's translate that into math:",
+    "conversionIntro": "Let's convert that temperature:",
+    "operationIntro": "Let's work through that operation:",
+    "totalLabel": "Together",
+    "notations": [
+      { "triggers": ["union"], "symbol": "∪", "label": "Union", "meaning": "combines the members of two sets" },
+      { "triggers": ["intersection"], "symbol": "∩", "label": "Intersection", "meaning": "shows the members shared by two sets" },
+      { "triggers": ["for all", "forall"], "symbol": "∀", "label": "For all", "meaning": "says a statement applies to every member" },
+      { "triggers": ["there exists", "exists"], "symbol": "∃", "label": "There exists", "meaning": "says at least one member satisfies a condition" },
+      { "triggers": ["not equal"], "symbol": "≠", "label": "Not equal", "meaning": "shows that two values are different" },
+      { "triggers": ["less than or equal"], "symbol": "≤", "label": "Less than or equal to", "meaning": "shows a value is smaller than or the same as another" },
+      { "triggers": ["greater than or equal"], "symbol": "≥", "label": "Greater than or equal to", "meaning": "shows a value is larger than or the same as another" }
+    ]
+  },
+  "oneWordResponses": [
+    { "id": "one-word-help", "triggers": ["help"], "style": "question", "text": "I'm here. Do you want to untangle a decision, develop an idea, or make sense of a feeling?" },
+    { "id": "one-word-stuck", "triggers": ["stuck"], "style": "reflect", "text": "Being stuck is information. What feels blocked: the goal, the options, or the first step?" },
+    { "id": "one-word-improve", "triggers": ["improve", "better"], "style": "question", "text": "What are you trying to make better, and who would notice the difference?" },
+    { "id": "one-word-why", "triggers": ["why"], "style": "question", "text": "What answer are you hoping the why will reveal?" },
+    { "id": "one-word-tired", "triggers": ["tired", "overwhelmed"], "style": "reflect", "text": "That sounds like a lot to carry. Would it help to name what can wait?" }
+  ],
+  "patterns": [
+    {
+      "id": "improvement",
+      "priority": 10,
+      "triggers": ["improve", "improvement", "better", "change", "fix"],
+      "stages": {
+        "opening": [
+          { "id": "improvement-opening-1", "style": "reflect", "text": "It sounds like you are looking for a meaningful improvement, not just a cosmetic change." },
+          { "id": "improvement-opening-2", "style": "question", "text": "What would better look like in a specific, observable way?" }
+        ],
+        "clarify": [
+          { "id": "improvement-clarify-1", "style": "question", "text": "What is working already, and what is getting in the way?" },
+          { "id": "improvement-clarify-2", "style": "reflect", "text": "A useful improvement usually protects something that is already valuable. What do you want to keep?" }
+        ],
+        "explore": [
+          { "id": "improvement-explore-1", "style": "action", "text": "What is the smallest change you could test before redesigning the whole thing?" },
+          { "id": "improvement-explore-2", "style": "question", "text": "Which improvement would create the most useful change with the least effort?" }
+        ],
+        "next_step": [
+          { "id": "improvement-next-1", "style": "action", "text": "Write down one change, one signal that would show it helped, and one date to review it." },
+          { "id": "improvement-next-2", "style": "action", "text": "Choose the version you can try this week. Learning from a small test is better than polishing a guess." }
+        ]
+      }
+    },
+    {
+      "id": "stuck",
+      "priority": 10,
+      "triggers": ["stuck", "blocked", "confused", "unclear", "lost"],
+      "stages": {
+        "opening": [
+          { "id": "stuck-opening-1", "style": "reflect", "text": "It sounds like the path is hard to see right now. That does not mean there is no path." },
+          { "id": "stuck-opening-2", "style": "question", "text": "What feels blocked: the goal, the options, or the first step?" }
+        ],
+        "clarify": [
+          { "id": "stuck-clarify-1", "style": "question", "text": "What is the smallest question inside this bigger problem?" },
+          { "id": "stuck-clarify-2", "style": "reflect", "text": "Which part do you actually control, even if it is smaller than you would like?" }
+        ],
+        "explore": [
+          { "id": "stuck-explore-1", "style": "action", "text": "Imagine you had to move one inch forward. What would that look like?" },
+          { "id": "stuck-explore-2", "style": "question", "text": "What assumption could you set aside temporarily to see another option?" }
+        ],
+        "next_step": [
+          { "id": "stuck-next-1", "style": "action", "text": "Pick one question to answer, not the whole problem to solve. That can be your next step." },
+          { "id": "stuck-next-2", "style": "action", "text": "Make a ten-minute version of the task. Starting smaller may reveal what is actually difficult." }
+        ]
+      }
+    },
+    {
+      "id": "idea",
+      "priority": 8,
+      "triggers": ["idea", "ideas", "brainstorm", "create", "concept"],
+      "stages": {
+        "opening": [
+          { "id": "idea-opening-1", "style": "reflect", "text": "There is something here worth shaping. What part of the idea has the most energy?" },
+          { "id": "idea-opening-2", "style": "question", "text": "Who is this idea for, and what would it help them do?" }
+        ],
+        "clarify": [
+          { "id": "idea-clarify-1", "style": "question", "text": "What problem is the idea responding to?" },
+          { "id": "idea-clarify-2", "style": "reflect", "text": "Try describing the idea without its features. What experience or change is underneath it?" }
+        ],
+        "explore": [
+          { "id": "idea-explore-1", "style": "action", "text": "List three versions: the practical one, the surprising one, and the version with no constraints." },
+          { "id": "idea-explore-2", "style": "question", "text": "What is the simplest version that could be tested without building everything?" }
+        ],
+        "next_step": [
+          { "id": "idea-next-1", "style": "action", "text": "Give the idea a temporary name and write the one sentence that makes it worth pursuing." },
+          { "id": "idea-next-2", "style": "action", "text": "Find one person who has the problem and ask how they handle it today." }
+        ]
+      }
+    }
+  ]
+}
