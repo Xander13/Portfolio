@@ -556,7 +556,7 @@ async function getWeatherResponse() {
 function getWeatherConfirmation() {
     pendingWeatherConfirmation = true;
     return {
-        text: "Hey, I can tell you the weather. Please type yes to continue. I can use your location to pull weather from <a href=\"https://weather.gov/\" target=\"_blank\" rel=\"noopener noreferrer\">weather.gov</a>. Your browser may ask you to allow location access after you choose YES. FYI, no location data is saved by this weather lookup.",
+        text: "I can pull today's local forecast directly from weather.gov. Click or type <strong>Yes</strong> to continue. Your browser will ask for permission, and your location data is never saved.",
         weatherConfirmation: true,
         instant: true
     };
@@ -918,6 +918,8 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             }
         }, 100);
     }
+
+    return card;
 }
 
 
@@ -1213,8 +1215,9 @@ async function findResponse(userInput) {
             minute: "2-digit",
             hour12: true
         });
+        const formattedDetroitTime = detroitTime.replace(/^0/, "").replace(" ", "");
         return {
-            text: `Alex is based in Detroit, working in Eastern Standard Time. Here are a few other clocks I enjoy looking at!`,
+            text: `It's currently ${formattedDetroitTime} in Detroit Metro.<br>Here are a few other clocks I enjoy looking at!`,
             worldClocks: true // Flag to render world clocks
         };
     }
@@ -1517,7 +1520,7 @@ async function sendMessage() {
     let answerObj;
     if (shouldCloseScratch) {
         clearScratchMode();
-        answerObj = { text: "Scratch mode closed. Your local scratch notes have been cleared." };
+        answerObj = { text: "Scratch mode closed." };
     } else if (startsScratchMode) {
         answerObj = enterScratchMode();
     } else if (scratchMode) {
@@ -2141,7 +2144,8 @@ function appendPrompts(container) {
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
         { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" },
         { text: "👨‍💻 Coding Background", displayText: "What is Alex's coding background?", query: "code" },
-        { text: "📍 Located", displayText: "Where's Alex Located?", query: "Located" }
+        { text: "📍 Located", displayText: "Where's Alex Located?", query: "Located" },
+        { text: "☀️ Today's weather", displayText: "What's the weather like today?", query: "weather" }
     ];
 
     const promptsContainer = document.createElement("div");
