@@ -36,7 +36,7 @@
     "what time is it": "The local time is {{time}}",
     "name": "Alex Kauffman",
     "who is alex": "Alex Kauffman &#8594; designer, thinker, and builder.",
-    "dream job": "Designer &#8594; Controls &amp; Automation<br>Bridging human-machine interaction, spatial logic, and physical hardware. Alex is looking to apply his background in systems thinking and user workflows toward entry-level technical training in control systems engineering.",
+    "dream job": "Designer &#8594; Controls &amp; Automation<br><br>Bridging human-machine interaction, spatial logic, and physical hardware. Alex is looking to apply his background in systems thinking and user workflows toward entry-level technical training in control systems engineering. <br> <br> This shift opens direct pathways into mechatronics and advanced systems at organizations like Disney Research or JPL. It applies the same fundamental design principles (state management, user feedback, and spatial awareness) to the engineering side of physical automation and diagnostic problem-solving.",
     "goal": "Over the next 5 years, my goal is to transition my design and logic background into physical systems. Starting with entry-level technical training, I aim to grow into an automation engineer who builds reliable, human-centered control systems for complex hardware applications.",
     "dream": "Designer &#8594; Controls &amp; Automation<br>Bridging human-machine interaction, spatial logic, and physical hardware. Alex is looking to apply his background in systems thinking and user workflows toward entry-level technical training in control systems engineering.",
     "skills": "Alex applies systems thinking, structured logic, and workflow design to complex problems. He focuses on understanding how processes work, turning requirements into clear steps, and applying these fundamentals toward learning physical hardware systems.",
@@ -86,7 +86,7 @@
     }
   },
   "role": {
-    "text": "Alex recently completed his contract at Left Field Labs and is actively seeking hands-on trainee or apprenticeship roles in controls and systems engineering. He thrives on applying operational logic and systems thinking directly to physical hardware—from control panel integration to automated I/O loops.<br><br>See his previous job:",
+    "text": "Alex recently completed his contract at Left Field Labs and is actively seeking hands-on trainee or apprenticeship roles in controls and systems engineering. He thrives on applying operational logic and systems thinking directly to physical hardware from control panel integration to automated I/O loops.<br><br>See his previous job:",
     "link": {
       "href": "https://www.leftfieldlabs.com/",
       "text": "Left Field Labs"
