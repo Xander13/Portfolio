@@ -32,24 +32,24 @@
   "personal": {
     "testimonies": "Alex is a remarkably talented designer and conceptual thinker. From his first day at Instrument, he jumped in and made our team better through diving right into the work creating unique concepts and thoughtfully sharing feedback with teammates. I especially appreciated his enthusiasm and positive attitude towards solving problems and collaborating. He would make a great addition to your team. I know I hope we get to work together again in the future.<br><br> – Sean Joseph Klassen, Instrument",
     "currentTime": "The local time is {{time}}",
-    "background": "Alex Kauffman is a Design Engineer focused on clarity, interaction, and systems thinking. With a BFA in New Media Design from {{{rit}}}, he blends creative direction with systems logic to build tools that prioritize long-term utility over simple asset delivery.<br><br>Outside of the screen, Alex is a dirtbike 450r rider and currently pursuing further academic studies to deepen his technical foundation in complex systems. He travels and seeks out unfamiliar experiences that push his perspective — whether he's on a bike, in the classroom, or exploring a new city.",
+    "background": "Alex Kauffman is a designer who graduated with a BFA from {{rit}}. After years of working in the digital design industry, he is shifting his focus toward physical hardware, looking to build a new foundation in industrial controls and automation.<br><br>Outside of work, Alex spends his time riding dirt bikes, snowboarding, and traveling.",
     "what time is it": "The local time is {{time}}",
     "name": "Alex Kauffman",
-    "who is alex": "Alex Kauffman, a systems-driven Design Engineer.",
-    "dream job": "Building assistive technology that improves human interaction is my core focus. I am targeting roles at {{microsoft}}, {{apple}}, and {{jnj}} that specifically align with this mission.",
-    "goal": "My 5-year goal is to bridge the gap between design and development as a Senior Design Engineer. I aim to contribute to the architectural logic and accessibility standards of mission-driven products at companies like {{apple}}, Disney Research, or Toast.",
-    "dream": "Building assistive technology that improves human interaction is my core focus. I am targeting roles at {{microsoft}}, {{apple}}, and {{jnj}} that specifically align with this mission.",
-    "skills": "Alex is a Design Engineer focused on interactive systems and accessibility. He blends systems logic with front-end engineering to ship tools centered on long-term utility and structural clarity — prioritizing functional integrity over mere asset delivery.",
-    "what skills": "Alex is a Design Engineer focused on interactive systems and accessibility. He blends systems logic with front-end engineering to ship tools centered on long-term utility and structural clarity — prioritizing functional integrity over mere asset delivery.",
-    "availability": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
-    "when available": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
-    "hire": "Alex is ready to start January 1st, 2025. He's willing to relocate and is currently in the Detroit area.<br><br>Alex is also flexible for hybrid roles — he loves interacting with others and bringing collective thinking into one space.",
-    "weakness": "I naturally gravitate toward systems thinking and interaction logic over high-fidelity visual ornamentation. I’m strongest when I'm architecting how a system handles complexity.<br><br>Because of this, I’m intentional about using robust design systems and collaborating with visual specialists to ensure the final output is as polished as it is functional.",
-    "deadlines": "When I work with tight deadlines, I make sure I really understand my project scope and what the needs are. I tend to deliver my concepts in 3 different levels to help step down what is MVP thinking vs what is a sky-high approach.<br><br>This helps me boil out things we can focus on later when we have tight deadlines.",
-    "tight deadlines": "When I work with tight deadlines, I make sure I really understand my project scope and what the needs are. I tend to deliver my concepts in 3 different levels to help step down what is MVP thinking vs what is a sky-high approach.<br><br>This helps me boil out things we can focus on later when we have tight deadlines.",
-    "strengths": "I focus on the structural details that often get overlooked, specifically accessibility and system logic. My strength lies in ensuring a product maintains a holistic health outlook—prioritizing functional integrity and long-term scalability over short-term visual fixes.",
-    "strength": "I focus on the structural details that often get overlooked, specifically accessibility and system logic. My strength lies in ensuring a product maintains a holistic health outlook—prioritizing functional integrity and long-term scalability over short-term visual fixes.",
-    "biggest strengths": "I focus on the structural details that often get overlooked, specifically accessibility and system logic. My strength lies in ensuring a product maintains a holistic health outlook—prioritizing functional integrity and long-term scalability over short-term visual fixes.",
+    "who is alex": "Alex Kauffman &#8594; designer, thinker, and builder.",
+    "dream job": "Designer &#8594; Controls &amp; Automation<br>Bridging human-machine interaction, spatial logic, and physical hardware. Alex is looking to apply his background in systems thinking and user workflows toward entry-level technical training in control systems engineering.",
+    "goal": "Over the next 5 years, my goal is to transition my design and logic background into physical systems. Starting with entry-level technical training, I aim to grow into an automation engineer who builds reliable, human-centered control systems for complex hardware applications.",
+    "dream": "Designer &#8594; Controls &amp; Automation<br>Bridging human-machine interaction, spatial logic, and physical hardware. Alex is looking to apply his background in systems thinking and user workflows toward entry-level technical training in control systems engineering.",
+    "skills": "Alex applies systems thinking, structured logic, and workflow design to complex problems. He focuses on understanding how processes work, turning requirements into clear steps, and applying these fundamentals toward learning physical hardware systems.",
+    "what skills": "Alex applies systems thinking, structured logic, and workflow design to complex problems. He focuses on understanding how processes work, turning requirements into clear steps, and applying these fundamentals toward learning physical hardware systems.",
+    "availability": "Alex is actively seeking full-time trainee and apprenticeship roles in controls and systems engineering. He is based in the Detroit area, open to hybrid/onsite roles, and open to relocation for the right opportunity.",
+    "when available": "Alex is actively seeking full-time trainee and apprenticeship roles in controls and systems engineering. He is based in the Detroit area, open to hybrid/onsite roles, and open to relocation for the right opportunity.",
+    "hire": "Alex is actively seeking full-time trainee and apprenticeship roles in controls and systems engineering. He is based in the Detroit area, open to hybrid/onsite roles, and open to relocation for the right opportunity.",
+    "weakness": "I naturally prioritize system logic and core workflows over surface-level visual decoration. I focus on making sure the underlying process is clear before refining aesthetics.",
+    "deadlines": "When working with tight deadlines, I focus on understanding project requirements and scope clearly. I break concepts down into simple, modular steps so the essential process works first.",
+    "tight deadlines": "When working with tight deadlines, I focus on understanding project requirements and scope clearly. I break concepts down into simple, modular steps so the essential process works first.",
+    "strengths": "I focus on process logic, clarity, and user interaction. My strength is breaking down complex workflows so they are easy to understand and follow.",
+    "strength": "I focus on process logic, clarity, and user interaction. My strength is breaking down complex workflows so they are easy to understand and follow.",
+    "biggest strengths": "I focus on process logic, clarity, and user interaction. My strength is breaking down complex workflows so they are easy to understand and follow.",
     "successful project": "My most successful project is Duolingo ASL. I developed a concept for non-verbal language learning that identifies a new revenue stream through accessibility. While the project gained significant traction on LinkedIn (8k+ likes), its real success was proving that accessibility + purpose = results. I focused on the technical foundation of how users learn non-verbally, creating a scalable framework rather than just a set of static screens.",
     "duolingo success": "My most successful project is Duolingo ASL. I developed a concept for non-verbal language learning that identifies a new revenue stream through accessibility. While the project gained significant traction on LinkedIn (8k+ likes), its real success was proving that accessibility + purpose = results. I focused on the technical foundation of how users learn non-verbally, creating a scalable framework rather than just a set of static screens.",
     "coding": "Alex thrives at the intersection of design and engineering, translating creative intent into functional systems. While earning his BFA at RIT, he supplemented his studies with computer science coursework to better understand how technical constraints shape design. This fascination with the mechanics behind the interface is why he enjoys diving into the logic of complex systems, from UI components to sorting algorithms.",
@@ -63,7 +63,7 @@
       "text": "Resume"
     }
   },
-  "weather_post":{
+  "weather_post": {
     "text": "Todays weather looks like:",
     "apiUrl": "",
     "link": {
@@ -86,7 +86,7 @@
     }
   },
   "role": {
-    "text": "Currently freelancing at Left Field Labs, focusing on design and development for the marketing team. I also provide additional support on client-facing projects. Explore the agency here:",
+    "text": "Alex recently completed his contract at Left Field Labs and is actively seeking hands-on trainee or apprenticeship roles in controls and systems engineering. He thrives on applying operational logic and systems thinking directly to physical hardware—from control panel integration to automated I/O loops.<br><br>See his previous job:",
     "link": {
       "href": "https://www.leftfieldlabs.com/",
       "text": "Left Field Labs"
@@ -183,7 +183,6 @@
   "case studies": {
     "Copilot": {
       "title": "MS VSC Copilot",
-      "role": "Product Designer",
       "duration": "4 Weeks",
       "projectType": "Case Study",
       "link": "githubcopilot.html",

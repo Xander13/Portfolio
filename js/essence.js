@@ -539,9 +539,18 @@ async function getWeatherResponse() {
         const forecast = await forecastResponse.json();
         const period = forecast.properties?.periods?.[0];
         if (!period) throw new Error("NWS did not return a forecast period.");
+        const precipitationChance = period.probabilityOfPrecipitation?.value;
+        const precipitationText = precipitationChance === null || precipitationChance === undefined
+            ? ""
+            : ` There is a ${precipitationChance}% chance of precipitation.`;
+        const advice = Number(period.temperature) >= 75
+            ? "Looks like a light shirt and some sunscreen would be a good call."
+            : Number(period.temperature) <= 50
+                ? "A warm layer would be a good idea."
+                : "A light layer should do nicely today.";
 
         return {
-            text: `Today in ${location.name}, expect ${period.shortForecast.toLowerCase()} with a high around ${period.temperature}°${period.temperatureUnit}. ${period.detailedForecast} ${Number(period.temperature) >= 75 ? "Looks like a light shirt and some sunscreen would be a good call." : "A light layer should do nicely today."}`,
+            text: `Today in ${location.name}, expect ${period.shortForecast.toLowerCase()} with a high around ${period.temperature}°${period.temperatureUnit}.${precipitationText} ${advice}`,
             instant: true
         };
     } catch (error) {
