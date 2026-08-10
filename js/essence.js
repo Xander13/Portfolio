@@ -26,6 +26,8 @@ const maxQuestions = 25; // No limit on questions
 let isExpanded = false;
 let pendingWeatherConfirmation = false;
 let scratchMode = false;
+let pendingTimerRestart = false;
+let activeTimer = null;
 const scratchStorageKey = "essenceScratchHistory";
 const scratchStateKey = "essenceScratchState";
 
@@ -571,6 +573,57 @@ function getWeatherConfirmation() {
     };
 }
 
+function parseTimerDuration(userInput) {
+    const normalizedInput = normalizeText(userInput);
+    const clockMatch = userInput.match(/\b(\d{1,2}):([0-5]\d)\b/);
+    if (clockMatch) {
+        return Number(clockMatch[1]) * 60 + Number(clockMatch[2]);
+    }
+
+    const durationMatch = userInput.match(/(\d+(?:\.\d+)?)\s*(seconds?|secs?|minutes?|mins?|hours?)/i);
+    if (durationMatch) {
+        const value = Number(durationMatch[1]);
+        const unit = durationMatch[2].toLowerCase();
+        if (unit.startsWith("hour")) return Math.round(value * 3600);
+        if (unit.startsWith("min")) return Math.round(value * 60);
+        return Math.round(value);
+    }
+
+    if (/\b(?:timer|countdown)\b/.test(normalizedInput)) {
+        const bareNumber = normalizedInput.match(/\b\d+(?:\.\d+)?\b/);
+        if (bareNumber) return Math.round(Number(bareNumber[0]));
+    }
+
+    return null;
+}
+
+function isTimerPrompt(userInput) {
+    return /\b(?:set\s+(?:a\s+)?(?:timer|time)|need\s+(?:a\s+)?timer|start\s+(?:a\s+)?timer|countdown)\b/i.test(userInput) ||
+        parseTimerDuration(userInput) !== null;
+}
+
+function formatTimerDuration(totalSeconds) {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function getTimerResponse(userInput) {
+    const duration = parseTimerDuration(userInput);
+    if (duration === null || duration <= 0) {
+        return {
+            text: "How long should I set the timer for? Try 30 seconds, 5 minutes, or 1:30.",
+            instant: true
+        };
+    }
+
+    return {
+        text: `Timer set for ${formatTimerDuration(duration)}.`,
+        timer: { duration },
+        instant: true
+    };
+}
+
 // -------- Load Knowledge JSON --------
 async function loadKnowledge() {
     try {
@@ -753,6 +806,80 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
 
     function appendExtras() {
         appendExtraContent(content, extra);
+
+        if (extra.timer) {
+            const timerContainer = document.createElement("div");
+            timerContainer.className = "timer-container";
+            timerContainer.style.width = "100%";
+            timerContainer.style.maxWidth = "100%";
+            timerContainer.style.alignSelf = "stretch";
+
+            const timerDisplay = document.createElement("div");
+            timerDisplay.className = "timer-display";
+            timerContainer.appendChild(timerDisplay);
+
+            const timerControls = document.createElement("div");
+            timerControls.className = "timer-controls";
+
+            const createTimerButton = (label, handler) => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.className = "sort-btn";
+                button.textContent = label;
+                button.addEventListener("click", handler);
+                timerControls.appendChild(button);
+            };
+
+            if (activeTimer?.interval) clearInterval(activeTimer.interval);
+
+            const timer = {
+                remaining: extra.timer.duration,
+                size: 1,
+                interval: null,
+                display: timerDisplay
+            };
+
+            const updateTimerDisplay = () => {
+                const minutes = Math.floor(timer.remaining / 60);
+                const seconds = timer.remaining % 60;
+                timerDisplay.innerHTML = `${String(minutes).padStart(2, "0")}<span class="timer-colon">:</span>${String(seconds).padStart(2, "0")}`;
+            };
+
+            const finishTimer = () => {
+                if (timer.interval) clearInterval(timer.interval);
+                if (activeTimer === timer) activeTimer = null;
+                pendingTimerRestart = true;
+                appendMessage("ai", "Timer went off! Do you need to set a new timer?");
+            };
+
+            const stopTimer = () => {
+                if (timer.interval) clearInterval(timer.interval);
+                if (activeTimer === timer) activeTimer = null;
+                pendingTimerRestart = false;
+                timerDisplay.textContent = "Timer stopped.";
+            };
+
+            createTimerButton("1x size", () => {
+                timer.size = 1;
+                timerDisplay.classList.remove("timer-large");
+            });
+            createTimerButton("2x size", () => {
+                timer.size = 2;
+                timerDisplay.classList.add("timer-large");
+            });
+            createTimerButton("Stop timer", stopTimer);
+
+            timerContainer.appendChild(timerControls);
+            content.appendChild(timerContainer);
+            activeTimer = timer;
+            updateTimerDisplay();
+
+            timer.interval = setInterval(() => {
+                timer.remaining -= 1;
+                updateTimerDisplay();
+                if (timer.remaining <= 0) finishTimer();
+            }, 1000);
+        }
 
         if (extra.weatherConfirmation) {
             const actions = document.createElement("div");
@@ -1215,6 +1342,10 @@ const personalSynonyms = {
 async function findResponse(userInput) {
     const normalizedInput = normalizeText(userInput);
 
+    if (isTimerPrompt(userInput)) {
+        return getTimerResponse(userInput);
+    }
+
     // --- TIME FIRST ---
     const timeQueries = ["time", "current time", "currenttime", "what time is it", "located"];
     if (timeQueries.some(q => normalizedInput.includes(q))) {
@@ -1533,7 +1664,12 @@ async function sendMessage() {
     } else if (startsScratchMode) {
         answerObj = enterScratchMode();
     } else if (scratchMode) {
-        answerObj = findScratchResponse(userText);
+        answerObj = isTimerPrompt(userText)
+            ? getTimerResponse(userText)
+            : findScratchResponse(userText);
+    } else if (pendingTimerRestart && normalizedUserText === "yes") {
+        pendingTimerRestart = false;
+        answerObj = { text: "How long should I set the next timer for?" };
     } else if (pendingWeatherConfirmation && (normalizedUserText === "yes" || normalizedUserText === "no")) {
         pendingWeatherConfirmation = false;
         answerObj = normalizedUserText === "yes"
@@ -1565,7 +1701,8 @@ async function sendMessage() {
         worldClocks: answerObj.worldClocks,
         sorting: answerObj.sorting,
         fourier: answerObj.fourier,
-        weatherConfirmation: answerObj.weatherConfirmation
+        weatherConfirmation: answerObj.weatherConfirmation,
+        timer: answerObj.timer
     });
 
     if (scratchMode && !exitsScratchMode && !answerObj.scratchIntro) saveScratchMessage("ai", answerObj.text);
