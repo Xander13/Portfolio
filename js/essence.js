@@ -1580,7 +1580,7 @@ async function findResponse(userInput) {
         };
     }
 
-    return { text: "Hmm… I don’t have an answer for that yet." };
+    return { text: "Hmm… I don’t have an answer for that." };
 }
 
 
