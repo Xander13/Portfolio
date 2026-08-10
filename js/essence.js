@@ -1357,7 +1357,7 @@ async function findResponse(userInput) {
         });
         const formattedDetroitTime = detroitTime.replace(/^0/, "").replace(" ", "");
         return {
-            text: `It's currently ${formattedDetroitTime} in Detroit Metro.<br>Here are a few other clocks I enjoy looking at!`,
+            text: `It's currently ${formattedDetroitTime} in Detroit Metro Area (GMT-4). Here are a few other time zones I enjoy looking at!`,
             worldClocks: true // Flag to render world clocks
         };
     }
@@ -2290,7 +2290,7 @@ function appendPrompts(container) {
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
         { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" },
         { text: "👨‍💻 Coding Background", displayText: "What is Alex's coding background?", query: "code" },
-        { text: "📍 Located", displayText: "Where's Alex Located?", query: "Located" },
+        { text: "⏱️ Time Zone", displayText: "What time zone is Alex In?", query: "Located" },
         { text: "☀️ Today's weather", displayText: "What's the weather like today?", query: "weather" }
     ];
 
