@@ -1,6 +1,5 @@
 // -------- Globals --------
 let knowledge = {};
-let scratchKnowledge = {};
 let input = null;
 let sendBtn = null;
 let responseBox = null;
@@ -25,462 +24,16 @@ let welcomeShown = false;
 const maxQuestions = 25; // No limit on questions
 let isExpanded = false;
 let pendingWeatherConfirmation = false;
-let scratchMode = false;
 let pendingTimerRestart = false;
 let activeTimer = null;
-const scratchStorageKey = "essenceScratchHistory";
-const scratchStateKey = "essenceScratchState";
+let noteMode = false;
+let activeNoteEditor = null;
+let activeNoteLine = null;
 
 
 // -------- Normalize Input --------
 function normalizeText(text) {
     return text.toLowerCase().replace(/[^\w\s]/gi, '').trim();
-}
-
-function getScratchHistory() {
-    try {
-        return JSON.parse(sessionStorage.getItem(scratchStorageKey) || "[]");
-    } catch (error) {
-        console.error("Unable to read scratch history", error);
-        return [];
-    }
-}
-
-function saveScratchMessage(sender, text) {
-    const history = getScratchHistory();
-    history.push({ sender, text });
-    sessionStorage.setItem(scratchStorageKey, JSON.stringify(history));
-}
-
-function getScratchState() {
-    try {
-        return JSON.parse(sessionStorage.getItem(scratchStateKey) || "null") || {
-            turn: 0,
-            patternId: null,
-            recentResponseIds: []
-        };
-    } catch (error) {
-        console.error("Unable to read scratch state", error);
-        return { turn: 0, patternId: null, recentResponseIds: [] };
-    }
-}
-
-function saveScratchState(state) {
-    sessionStorage.setItem(scratchStateKey, JSON.stringify(state));
-}
-
-function clearScratchMode() {
-    scratchMode = false;
-    sessionStorage.removeItem(scratchStorageKey);
-    sessionStorage.removeItem(scratchStateKey);
-}
-
-function enterScratchMode() {
-    scratchMode = true;
-    if (responseBox) {
-        responseBox.style.display = "";
-        responseBox.style.opacity = "1";
-    }
-    const introText = scratchKnowledge.intro || "How can I help you think today?";
-    sessionStorage.setItem(scratchStorageKey, JSON.stringify([
-        { sender: "ai", text: introText }
-    ]));
-    saveScratchState({ turn: 0, patternId: null, recentResponseIds: [] });
-    return {
-        text: introText,
-        scratchIntro: true,
-        instant: true
-    };
-}
-
-function formatScratchNumber(value) {
-    if (!Number.isFinite(value)) return null;
-    const rounded = Math.round(value * 10000000000) / 10000000000;
-    return Number.isInteger(rounded) ? String(rounded) : String(rounded);
-}
-
-function evaluateScratchExpression(expression) {
-    const compactExpression = expression.replace(/[×x]/gi, "*").replace(/÷/g, "/").replace(/,/g, "").replace(/\s+/g, "");
-    if (!compactExpression || !/^[\d.()+\-*/%]+$/.test(compactExpression)) return null;
-
-    const rawTokens = compactExpression.match(/\d+(?:\.\d+)?|[()+\-*/%]/g) || [];
-    if (rawTokens.join("") !== compactExpression) return null;
-
-    const tokens = [];
-    rawTokens.forEach((token, index) => {
-        const previous = rawTokens[index - 1];
-        if (token === "-" && (index === 0 || ["(", "+", "-", "*", "/", "%"].includes(previous))) {
-            const next = rawTokens[index + 1];
-            if (next && /^\d/.test(next)) {
-                tokens.push(String(-Number(next)));
-                rawTokens[index + 1] = "";
-                return;
-            }
-        }
-        if (token) tokens.push(token);
-    });
-
-    const values = [];
-    const operators = [];
-    const precedence = { "+": 1, "-": 1, "*": 2, "/": 2, "%": 2 };
-    const applyOperator = () => {
-        const operator = operators.pop();
-        const right = values.pop();
-        const left = values.pop();
-        if (left === undefined || right === undefined || (operator === "/" && right === 0)) return false;
-        const result = operator === "+" ? left + right
-            : operator === "-" ? left - right
-                : operator === "*" ? left * right
-                    : operator === "/" ? left / right
-                        : left % right;
-        if (!Number.isFinite(result)) return false;
-        values.push(result);
-        return true;
-    };
-
-    for (const token of tokens) {
-        if (/^-?\d/.test(token)) {
-            values.push(Number(token));
-        } else if (token === "(") {
-            operators.push(token);
-        } else if (token === ")") {
-            while (operators.length && operators.at(-1) !== "(") {
-                if (!applyOperator()) return null;
-            }
-            if (operators.pop() !== "(") return null;
-        } else if (precedence[token]) {
-            while (operators.length && precedence[operators.at(-1)] >= precedence[token]) {
-                if (!applyOperator()) return null;
-            }
-            operators.push(token);
-        } else {
-            return null;
-        }
-    }
-
-    while (operators.length) {
-        if (operators.at(-1) === "(") return null;
-        if (!applyOperator()) return null;
-    }
-
-    return values.length === 1 ? formatScratchNumber(values[0]) : null;
-}
-
-function findScratchPerson(people, name) {
-    const normalizedName = normalizeText(name);
-    return people.find(person => person.key === normalizedName) || people.find(person =>
-        normalizedName.startsWith(person.key) || person.key.startsWith(normalizedName)
-    );
-}
-
-function solveScratchWordProblem(userInput) {
-    if (!/\b(?:had|has|have)\b/i.test(userInput) || !/\b\d+\s+[A-Za-z]+\b/i.test(userInput)) return null;
-
-    const people = [];
-    const initialPattern = /\b([A-Za-z]+(?:\s+[A-Za-z]+)?)\s+(?:had|has|have)\s+(\d+)\s+([A-Za-z]+)\b/gi;
-    let initialMatch;
-    while ((initialMatch = initialPattern.exec(userInput))) {
-        const key = normalizeText(initialMatch[1]);
-        if (!people.some(person => person.key === key)) {
-            people.push({
-                key,
-                name: initialMatch[1].trim(),
-                amount: Number(initialMatch[2]),
-                changes: [],
-                index: initialMatch.index
-            });
-        }
-    }
-    if (people.length === 0) return null;
-
-    const personBefore = index => people.filter(person => person.index < index).at(-1);
-    const atePattern = /\b(?:ate|lost|used)\s+(\d+)(?:\s+of them|\s+[A-Za-z]+)?/gi;
-    let actionMatch;
-    while ((actionMatch = atePattern.exec(userInput))) {
-        const person = personBefore(actionMatch.index);
-        if (person) {
-            const amount = Number(actionMatch[1]);
-            person.amount -= amount;
-            person.changes.push(`- ${amount}`);
-        }
-    }
-
-    const stolenPattern = /\bstole\s+(\d+)(?:\s+[A-Za-z]+)?\s+from\s+([A-Za-z]+(?:\s+[A-Za-z]+)?)/gi;
-    while ((actionMatch = stolenPattern.exec(userInput))) {
-        const thief = personBefore(actionMatch.index);
-        const donor = findScratchPerson(people, actionMatch[2]);
-        if (thief && donor) {
-            const amount = Number(actionMatch[1]);
-            thief.amount += amount;
-            donor.amount -= amount;
-            thief.changes.push(`+ ${amount}`);
-            donor.changes.push(`- ${amount}`);
-        }
-    }
-
-    const lines = people.map(person => {
-        const calculation = `${escapeScratchText(person.name)}: ${person.changes.length ? `${person.amount - person.changes.reduce((sum, change) => sum + (change.startsWith("+") ? Number(change.slice(1)) : -Number(change.slice(1))), 0)} ${person.changes.join(" ")} = ` : ""}${person.amount}`;
-        return calculation;
-    });
-    const total = people.reduce((sum, person) => sum + person.amount, 0);
-    const calculator = scratchKnowledge.calculator || {};
-    return `${calculator.wordProblemIntro || "Let's map the quantities step by step:"}<br><br>${lines.join("<br>")}<br><br>${calculator.totalLabel || "Together"}: ${total}`;
-}
-
-function solveScratchComparison(userInput) {
-    if (!/\b(?:difference|differ|apart|less|more)\b/i.test(userInput)) return null;
-
-    const measurements = [];
-    const measurementPattern = /(\d+(?:\.\d+)?)\s*(inches?|centimeters?|cm|feet|ft|meters?|m|pounds?|lbs?|ounces?|oz|degrees?|°[cf])/gi;
-    let measurementMatch;
-    while ((measurementMatch = measurementPattern.exec(userInput))) {
-        measurements.push({
-            value: Number(measurementMatch[1]),
-            unit: measurementMatch[2].toLowerCase()
-        });
-    }
-    if (measurements.length < 2) return null;
-
-    const firstUnit = measurements[0].unit;
-    const sameUnit = measurements.every(measurement => {
-        const unit = measurement.unit;
-        return unit === firstUnit ||
-            (firstUnit.startsWith("inch") && unit.startsWith("inch")) ||
-            (firstUnit.startsWith("cent") && (unit === "cm" || unit.startsWith("cent"))) ||
-            (firstUnit.startsWith("foot") && unit === "ft") ||
-            (firstUnit.startsWith("meter") && unit === "m") ||
-            (firstUnit.startsWith("pound") && unit.startsWith("lb")) ||
-            (firstUnit.startsWith("ounce") && unit.startsWith("oz"));
-    });
-    if (!sameUnit) return null;
-
-    const difference = formatScratchNumber(Math.abs(measurements[0].value - measurements[1].value));
-    const calculator = scratchKnowledge.calculator || {};
-    return `${calculator.comparisonIntro || "Let's compare the two measurements:"}<br><br>${measurements[0].value} ${measurements[0].unit} - ${measurements[1].value} ${measurements[1].unit} = ${difference} ${firstUnit}`;
-}
-
-function findScratchNotationResponse(userInput) {
-    const normalizedInput = normalizeText(userInput);
-    const notations = (scratchKnowledge.calculator?.notations || []).filter(notation =>
-        notation.triggers.some(trigger => normalizedInput.includes(normalizeText(trigger)))
-    );
-    if (notations.length === 0) return null;
-
-    const lines = notations.map(notation =>
-        `${escapeScratchText(notation.label)}: <strong>${notation.symbol}</strong><br>${escapeScratchText(notation.meaning)}`
-    );
-    return `Here is the notation:<br><br>${lines.join("<br><br>")}`;
-}
-
-function solveScratchTimeMath(userInput) {
-    const timeMatch = userInput.match(/\b(\d{1,2}):([0-5]\d)\b/);
-    const hoursMatch = userInput.match(/(\d+(?:\.\d+)?)\s*hours?/i);
-    if (!timeMatch || !hoursMatch) return null;
-
-    const startMinutes = Number(timeMatch[1]) * 60 + Number(timeMatch[2]);
-    const addedMinutes = Math.round(Number(hoursMatch[1]) * 60);
-    const resultMinutes = startMinutes + addedMinutes;
-    const resultHour = Math.floor((resultMinutes / 60) % 24);
-    const resultMinute = resultMinutes % 60;
-    const result = `${String(resultHour).padStart(2, "0")}:${String(resultMinute).padStart(2, "0")}`;
-    const calculator = scratchKnowledge.calculator || {};
-    return `${calculator.timeIntro || "Let's add the time:"}<br><br>${timeMatch[0]} + ${hoursMatch[1]} hours = ${result}`;
-}
-
-function solveScratchTemperature(userInput) {
-    const temperatureMatch = userInput.match(/(-?\d+(?:\.\d+)?)\s*(?:degrees?\s*)?(celsius|fahrenheit|°c|°f|c|f)?\b/i);
-    if (!temperatureMatch || !/(?:temp|temperature|degrees?|celsius|fahrenheit|°c|°f)/i.test(userInput)) return null;
-
-    const value = Number(temperatureMatch[1]);
-    const unit = temperatureMatch[2]?.toLowerCase();
-    const isFahrenheit = unit === "f" || unit === "°f" || unit === "fahrenheit";
-    const isCelsius = unit === "c" || unit === "°c" || unit === "celsius";
-    const format = number => formatScratchNumber(number);
-    const calculator = scratchKnowledge.calculator || {};
-
-    if (isFahrenheit) {
-        return `${calculator.conversionIntro || "Let's convert that temperature:"}<br><br>${value}°F = ${format((value - 32) * 5 / 9)}°C`;
-    }
-
-    if (isCelsius) {
-        return `${calculator.conversionIntro || "Let's convert that temperature:"}<br><br>${value}°C = ${format(value * 9 / 5 + 32)}°F`;
-    }
-
-    return `${calculator.conversionIntro || "Let's convert that temperature:"}<br><br>${value}°C = ${format(value * 9 / 5 + 32)}°F<br>${value}°F = ${format((value - 32) * 5 / 9)}°C`;
-}
-
-function solveScratchDegreeDifference(userInput) {
-    if (!/\b(?:from|form|difference|apart)\b/i.test(userInput)) return null;
-
-    const degreeValues = [...userInput.matchAll(/(-?\d+(?:\.\d+)?)\s*(?:degrees?|°)/gi)]
-        .map(match => Number(match[1]));
-    if (degreeValues.length < 2) return null;
-
-    const difference = formatScratchNumber(Math.abs(degreeValues[0] - degreeValues[1]));
-    const calculator = scratchKnowledge.calculator || {};
-    return `${calculator.comparisonIntro || "Let's compare the two measurements:"}<br><br>${degreeValues[1]}° - ${degreeValues[0]}° = ${difference}°`;
-}
-
-function solveScratchVerbalOperation(userInput) {
-    const numbers = [...userInput.matchAll(/-?\d+(?:\.\d+)?/g)].map(match => Number(match[0]));
-    if (numbers.length < 2) return null;
-
-    const normalizedInput = normalizeText(userInput);
-    let operator = null;
-    let symbol = null;
-    if (/\b(?:add|sum|plus|total)\b/.test(normalizedInput)) {
-        operator = (total, number) => total + number;
-        symbol = "+";
-    } else if (/\b(?:multiply|multiplied|product|times)\b/.test(normalizedInput)) {
-        operator = (total, number) => total * number;
-        symbol = "×";
-    } else if (/\b(?:divide|divided|quotient)\b/.test(normalizedInput)) {
-        operator = (total, number) => number === 0 ? NaN : total / number;
-        symbol = "÷";
-    } else {
-        return null;
-    }
-
-    const result = numbers.slice(1).reduce(operator, numbers[0]);
-    if (!Number.isFinite(result)) return "I can't divide by zero.";
-
-    const calculator = scratchKnowledge.calculator || {};
-    return `${calculator.operationIntro || "Let's work through that operation:"}<br><br>${numbers.join(` ${symbol} `)} = ${formatScratchNumber(result)}`;
-}
-
-function solveScratchVerbalMath(userInput) {
-    const subtractionMatch = userInput.match(/\b(\d+(?:\.\d+)?)\s+subtracted\s+from\s+(\d+(?:\.\d+)?)/i);
-    const subtractMatch = userInput.match(/\bsubtract\s+(\d+(?:\.\d+)?)\s+from\s+(\d+(?:\.\d+)?)/i);
-    const minusMatch = userInput.match(/\b(\d+(?:\.\d+)?)\s+(?:minus|less)\s+(\d+(?:\.\d+)?)/i);
-    const match = subtractionMatch || subtractMatch || minusMatch;
-    if (!match) return null;
-
-    const subtractor = Number(subtractionMatch || subtractMatch ? match[1] : match[2]);
-    const firstBase = Number(subtractionMatch || subtractMatch ? match[2] : match[1]);
-    const allNumbers = [...userInput.matchAll(/\b\d+(?:\.\d+)?\b/g)].map(number => Number(number[0]));
-    const additionalBases = subtractionMatch || subtractMatch
-        ? [...new Set(allNumbers.filter(number => number !== subtractor && number !== firstBase))]
-        : [];
-    const bases = [firstBase, ...additionalBases];
-    const suffix = /degr(?:ee|ees|e|ess)|°/i.test(userInput) ? "°" : "";
-    const calculations = bases.map(base => `${base} - ${subtractor} = ${formatScratchNumber(base - subtractor)}${suffix}`);
-    const calculator = scratchKnowledge.calculator || {};
-    return `${calculator.verbalMathIntro || "Let's translate that into math:"}<br><br>${calculations.join("<br>")}`;
-}
-
-function findScratchResponse(userInput) {
-    const degreeDifferenceResponse = solveScratchDegreeDifference(userInput);
-    if (degreeDifferenceResponse) {
-        return { text: degreeDifferenceResponse, instant: true };
-    }
-
-    const temperatureResponse = solveScratchTemperature(userInput);
-    if (temperatureResponse) {
-        return { text: temperatureResponse, instant: true };
-    }
-
-    const timeResponse = solveScratchTimeMath(userInput);
-    if (timeResponse) {
-        return { text: timeResponse, instant: true };
-    }
-
-    const verbalMathResponse = solveScratchVerbalMath(userInput);
-    if (verbalMathResponse) {
-        return { text: verbalMathResponse, instant: true };
-    }
-
-    const verbalOperationResponse = solveScratchVerbalOperation(userInput);
-    if (verbalOperationResponse) {
-        return { text: verbalOperationResponse, instant: true };
-    }
-
-    const notationResponse = findScratchNotationResponse(userInput);
-    if (notationResponse) {
-        return { text: notationResponse, instant: true };
-    }
-
-    const comparisonResponse = solveScratchComparison(userInput);
-    if (comparisonResponse) {
-        return { text: comparisonResponse, instant: true };
-    }
-
-    const wordProblemResponse = solveScratchWordProblem(userInput);
-    if (wordProblemResponse) {
-        return { text: wordProblemResponse, instant: true };
-    }
-
-    const expressionInput = userInput.replace(/\bmod(?:ulo)?\b/gi, "%");
-    const expression = expressionInput.match(/^[\s\d.+\-*/%()×x÷,]+$/i)?.[0];
-    const expressionResult = expression ? evaluateScratchExpression(expression) : null;
-    if (expressionResult !== null) {
-        const calculator = scratchKnowledge.calculator || {};
-        return {
-            text: `${calculator.expressionIntro || "Let's work that out:"}<br><br>${escapeScratchText(expression.trim())} = ${expressionResult}`,
-            instant: true
-        };
-    }
-
-    const normalizedInput = normalizeText(userInput);
-    const state = getScratchState();
-    const words = normalizedInput.split(/\s+/).filter(Boolean);
-    const oneWordResponse = words.length === 1
-        ? (scratchKnowledge.oneWordResponses || []).find(response =>
-            response.triggers.some(trigger => words[0] === normalizeText(trigger))
-        )
-        : null;
-    const matchingPatterns = (scratchKnowledge.patterns || [])
-        .map(pattern => ({
-            pattern,
-            matches: pattern.triggers.filter(trigger => words.includes(normalizeText(trigger)))
-        }))
-        .filter(result => result.matches.length > 0)
-        .sort((a, b) => (b.pattern.priority || 0) - (a.pattern.priority || 0) || b.matches.length - a.matches.length);
-    const matchingPattern = matchingPatterns[0]?.pattern;
-    const stageNames = ["opening", "clarify", "explore", "next_step"];
-    const stage = stageNames[Math.min(state.turn, stageNames.length - 1)];
-    const responsePool = oneWordResponse
-        ? [oneWordResponse]
-        : matchingPattern?.stages?.[stage] || matchingPattern?.stages?.next_step || [];
-    let availableResponses = responsePool.filter(response => !state.recentResponseIds.includes(response.id));
-
-    if (availableResponses.length === 0) {
-        state.recentResponseIds = [];
-        availableResponses = responsePool;
-    }
-
-    const response = availableResponses[Math.floor(Math.random() * availableResponses.length)] || {
-        id: "scratch-fallback",
-        style: "question",
-        text: "What feels most important to put into words next?"
-    };
-    const topic = escapeScratchText(userInput.trim().slice(0, 120));
-    const responseText = response.text.replace(/\{\{topic\}\}/g, topic);
-    state.turn += 1;
-    state.patternId = matchingPattern?.id || null;
-    state.recentResponseIds.push(response.id);
-    state.recentResponseIds = state.recentResponseIds.slice(-8);
-    saveScratchState(state);
-
-    return {
-        text: response.style === "reflect"
-            ? `${responseText}<br><br>What part of that feels most true?`
-            : responseText,
-        instant: true
-    };
-}
-
-function escapeScratchText(text) {
-    const element = document.createElement("div");
-    element.textContent = text;
-    return element.innerHTML;
-}
-
-function restoreScratchHistory() {
-    const history = getScratchHistory();
-    if (!scratchMode || history.length === 0) return;
-
-    responseBox.innerHTML = "";
-    history.forEach(message => appendMessage(message.sender, message.text, false, {}, null, false));
 }
 
 async function getWeatherLocation() {
@@ -624,6 +177,339 @@ function getTimerResponse(userInput) {
     };
 }
 
+function formatNoteFilename() {
+    const now = new Date();
+    const datePart = now.toISOString().slice(0, 10);
+    const timePart = `${String(now.getHours()).padStart(2, "0")}${String(now.getMinutes()).padStart(2, "0")}`;
+    return `notes-${datePart}-${timePart}.txt`;
+}
+
+function downloadTextFile(text, filename) {
+    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const link = document.createElement("a");
+    link.href = URL.createObjectURL(blob);
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(() => URL.revokeObjectURL(link.href), 0);
+}
+
+function escapeHtml(text) {
+    return text
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
+function createNoteLine(text = "") {
+    const line = document.createElement("div");
+    line.className = "note-line";
+    line.contentEditable = "true";
+    line.spellcheck = false;
+    line.tabIndex = 0;
+    line.dataset.align = "left";
+    line.dataset.fontSize = "20px";
+    line.style.textAlign = "left";
+    line.style.fontSize = "20px";
+    line.innerHTML = text ? escapeHtml(text) : "<br>";
+
+    const focusLine = () => {
+        activeNoteLine = line;
+    };
+
+    line.addEventListener("focus", focusLine);
+    line.addEventListener("mousedown", focusLine);
+    line.addEventListener("click", focusLine);
+    line.addEventListener("input", () => {
+        if (!line.innerText.trim()) {
+            line.innerHTML = "<br>";
+        }
+        activeNoteLine = line;
+    });
+    line.addEventListener("keydown", event => {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            insertNoteLineAfter(line);
+            return;
+        }
+
+        if (event.key === "Backspace" && isCaretAtLineStart(line)) {
+            const currentText = line.innerText.replace(/\u00a0/g, " ").trim();
+            const previousLine = line.previousElementSibling?.classList?.contains("note-line")
+                ? line.previousElementSibling
+                : null;
+
+            if (!currentText) {
+                event.preventDefault();
+                if (previousLine) {
+                    line.remove();
+                    activeNoteLine = previousLine;
+                    focusCaretAtEnd(previousLine);
+                } else {
+                    line.innerHTML = "<br>";
+                }
+                return;
+            }
+
+            if (previousLine) {
+                event.preventDefault();
+                const previousText = previousLine.innerText.replace(/\u00a0/g, " ");
+                const mergedText = `${previousText}${currentText}`.trim();
+                previousLine.innerText = mergedText || "";
+                line.remove();
+                activeNoteLine = previousLine;
+                focusCaretAtEnd(previousLine);
+            }
+        }
+    });
+
+    return line;
+}
+
+function isCaretAtLineStart(line) {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0 || !selection.isCollapsed) return false;
+
+    const range = selection.getRangeAt(0);
+    if (!line.contains(range.startContainer)) return false;
+
+    const preRange = range.cloneRange();
+    preRange.selectNodeContents(line);
+    preRange.setEnd(range.startContainer, range.startOffset);
+    return preRange.toString().length === 0;
+}
+
+function focusCaretAtEnd(line) {
+    if (!line) return;
+
+    requestAnimationFrame(() => {
+        const selection = window.getSelection();
+        const range = document.createRange();
+        range.selectNodeContents(line);
+        range.collapse(false);
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        line.focus();
+    });
+}
+
+function getActiveNoteLine() {
+    if (activeNoteLine && activeNoteEditor?.contains(activeNoteLine)) {
+        return activeNoteLine;
+    }
+
+    if (!activeNoteEditor) return null;
+
+    return activeNoteEditor.querySelector(".note-line:last-child") || null;
+}
+
+function ensureNoteEditorLine() {
+    if (!activeNoteEditor) return null;
+
+    let line = activeNoteEditor.querySelector(".note-line:last-child");
+    if (!line) {
+        line = createNoteLine();
+        activeNoteEditor.appendChild(line);
+    }
+
+    return line;
+}
+
+function insertNoteLineAfter(referenceLine) {
+    if (!activeNoteEditor) return;
+
+    const nextLine = createNoteLine();
+    if (referenceLine && referenceLine.parentNode === activeNoteEditor) {
+        referenceLine.insertAdjacentElement("afterend", nextLine);
+    } else {
+        activeNoteEditor.appendChild(nextLine);
+    }
+
+    activeNoteLine = nextLine;
+    nextLine.focus();
+}
+
+function clearNoteEditor() {
+    if (!activeNoteEditor) return;
+
+    activeNoteEditor.innerHTML = "";
+    const line = createNoteLine();
+    activeNoteEditor.appendChild(line);
+    activeNoteLine = line;
+    line.focus();
+}
+
+function importNoteText(text) {
+    if (!activeNoteEditor) return;
+
+    activeNoteEditor.innerHTML = "";
+    const lines = String(text).replace(/\r\n/g, "\n").split("\n");
+    if (lines.length === 0) {
+        clearNoteEditor();
+        return;
+    }
+
+    lines.forEach(lineText => {
+        const line = createNoteLine(lineText);
+        activeNoteEditor.appendChild(line);
+    });
+
+    activeNoteLine = activeNoteEditor.querySelector(".note-line:last-child");
+    activeNoteLine?.focus();
+
+    if (responseBox) {
+        responseBox.scrollTo({
+            top: responseBox.scrollHeight,
+            behavior: "smooth"
+        });
+    }
+}
+
+function updateNoteLineStyle(property, value) {
+    const line = getActiveNoteLine() || ensureNoteEditorLine();
+    if (!line) return;
+
+    line.style[property] = value;
+    if (property === "textAlign") {
+        line.dataset.align = value;
+    }
+    if (property === "fontSize") {
+        line.dataset.fontSize = value;
+    }
+    activeNoteLine = line;
+    focusCaretAtEnd(line);
+}
+
+function createNotePanel() {
+    const panel = document.createElement("div");
+    panel.className = "note-mode-panel";
+
+    const toolbar = document.createElement("div");
+    toolbar.className = "note-mode-actions";
+
+    const editor = document.createElement("div");
+    editor.className = "note-mode-editor";
+    editor.setAttribute("role", "group");
+
+    const createActionButton = (label, handler) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "sort-btn";
+        button.textContent = label;
+        button.addEventListener("click", handler);
+        return button;
+    };
+
+    toolbar.appendChild(createActionButton("A-", () => updateNoteLineStyle("fontSize", "16px")));
+    toolbar.appendChild(createActionButton("A", () => updateNoteLineStyle("fontSize", "20px")));
+    toolbar.appendChild(createActionButton("A+", () => updateNoteLineStyle("fontSize", "24px")));
+    toolbar.appendChild(createActionButton("Left", () => updateNoteLineStyle("textAlign", "left")));
+    toolbar.appendChild(createActionButton("Center", () => updateNoteLineStyle("textAlign", "center")));
+    toolbar.appendChild(createActionButton("Right", () => updateNoteLineStyle("textAlign", "right")));
+
+    const clearButton = document.createElement("button");
+    clearButton.type = "button";
+    clearButton.className = "sort-btn";
+    clearButton.textContent = "Clear";
+    clearButton.addEventListener("click", () => {
+        clearNoteEditor();
+    });
+
+    const importButton = document.createElement("button");
+    importButton.type = "button";
+    importButton.className = "sort-btn";
+    importButton.textContent = "Import";
+
+    const importInput = document.createElement("input");
+    importInput.type = "file";
+    importInput.accept = ".txt,text/plain";
+    importInput.style.display = "none";
+    importInput.addEventListener("change", async () => {
+        const file = importInput.files?.[0];
+        importInput.value = "";
+        if (!file) return;
+
+        const isTxt = file.type === "text/plain" || file.name.toLowerCase().endsWith(".txt");
+        if (!isTxt) {
+            alert("Please import a .txt file only.");
+            return;
+        }
+
+        const content = await file.text();
+        importNoteText(content);
+    });
+    importButton.addEventListener("click", () => importInput.click());
+
+    const saveButton = document.createElement("button");
+    saveButton.type = "button";
+    saveButton.className = "sort-btn";
+    saveButton.textContent = "Save";
+    saveButton.addEventListener("click", () => {
+        downloadTextFile(Array.from(editor.querySelectorAll(".note-line")).map(line => line.innerText).join("\n").trim() || "", formatNoteFilename());
+    });
+
+    const startLine = createNoteLine();
+    editor.appendChild(startLine);
+
+    toolbar.appendChild(clearButton);
+    toolbar.appendChild(importButton);
+    panel.appendChild(toolbar);
+    panel.appendChild(importInput);
+    panel.appendChild(editor);
+    toolbar.appendChild(saveButton);
+
+    activeNoteEditor = editor;
+    activeNoteLine = startLine;
+    return panel;
+}
+
+function appendNoteLine(text) {
+    if (!activeNoteEditor) return;
+
+    const cleanText = text.trim();
+    if (!cleanText) return;
+
+    appendNoteBlock(cleanText);
+    ensureNoteEditorLine();
+
+    if (responseBox) {
+        responseBox.scrollTo({
+            top: responseBox.scrollHeight,
+            behavior: "smooth"
+        });
+    }
+}
+
+function enterNoteMode() {
+    noteMode = true;
+    input.placeholder = "Ask Alex...";
+    appendMessage("ai", "Ok here is a space for your notes. Use Save to download a Txt file, Clear to reset, or Import a .txt file.", true, {
+        noteMode: true,
+        instant: true
+    });
+}
+
+function shouldEnterNoteMode(userText) {
+    const rawText = String(userText || "").toLowerCase().trim();
+
+    if (/^\-?notes?$/.test(rawText)) {
+        return true;
+    }
+
+    if (/(^|\s)\-notes?\b/.test(rawText)) {
+        return true;
+    }
+
+    if (/\blet'?s\s+write\s+some\s+\-?notes?\b/.test(rawText)) {
+        return true;
+    }
+
+    return false;
+}
+
 // -------- Load Knowledge JSON --------
 async function loadKnowledge() {
     try {
@@ -632,15 +518,6 @@ async function loadKnowledge() {
         console.log("Knowledge loaded:", knowledge);
     } catch (err) {
         console.error("Failed to load knowledgeTree.json", err);
-    }
-}
-
-async function loadScratchKnowledge() {
-    try {
-        const res = await fetch("js/scratchKnowledge.json");
-        scratchKnowledge = await res.json();
-    } catch (err) {
-        console.error("Failed to load scratchKnowledge.json", err);
     }
 }
 
@@ -932,6 +809,10 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             appendFourierVisualization(content);
         }
 
+        if (extra.noteMode) {
+            appendNoteEditor(content);
+        }
+
 
         // ✅ Append standalone link if provided
         if (extra?.link && extra.inlineLink) {
@@ -1149,6 +1030,14 @@ function appendExtraContent(wrapper, extra = {}) {
     });
 
     wrapper.appendChild(mediaWrapper);
+}
+
+function appendNoteEditor(container) {
+    const panel = createNotePanel();
+    container.appendChild(panel);
+    requestAnimationFrame(() => {
+        activeNoteLine?.focus();
+    });
 }
 
 
@@ -1617,16 +1506,18 @@ async function sendMessage() {
     const userText = input.value.trim();
     if (!userText) return;
     const normalizedUserText = normalizeText(userText);
-    const startsScratchMode = normalizedUserText === "scratch" || normalizedUserText === "braindump";
-    const exitsScratchMode = normalizedUserText === "exit";
-    const shouldCloseScratch = exitsScratchMode && scratchMode;
+
+    if (!noteMode && shouldEnterNoteMode(userText)) {
+        enterNoteMode();
+        input.value = "";
+        return;
+    }
 
     // 1. Show user message immediately
     appendMessage("user", userText);
-    if (scratchMode || startsScratchMode) saveScratchMessage("user", userText);
-    if (!scratchMode && !startsScratchMode) questionCount++;
+    questionCount++;
 
-    if (!scratchMode && !startsScratchMode && questionCount > maxQuestions) {
+    if (questionCount > maxQuestions) {
         const limitMsg = "Wow, you really like to inquire about me! 😉 Why not have a meeting? Contact Alex on <a href='https://www.linkedin.com/in/alex-kauffman' target='_blank'>LinkedIn</a>.";
         appendMessage("ai", limitMsg);
 
@@ -1658,16 +1549,7 @@ async function sendMessage() {
 
     // 3. Get response (with artificial thinking delay)
     let answerObj;
-    if (shouldCloseScratch) {
-        clearScratchMode();
-        answerObj = { text: "Scratch mode closed." };
-    } else if (startsScratchMode) {
-        answerObj = enterScratchMode();
-    } else if (scratchMode) {
-        answerObj = isTimerPrompt(userText)
-            ? getTimerResponse(userText)
-            : findScratchResponse(userText);
-    } else if (pendingTimerRestart && normalizedUserText === "yes") {
+    if (pendingTimerRestart && normalizedUserText === "yes") {
         pendingTimerRestart = false;
         answerObj = { text: "How long should I set the next timer for?" };
     } else if (pendingWeatherConfirmation && (normalizedUserText === "yes" || normalizedUserText === "no")) {
@@ -1704,8 +1586,6 @@ async function sendMessage() {
         weatherConfirmation: answerObj.weatherConfirmation,
         timer: answerObj.timer
     });
-
-    if (scratchMode && !exitsScratchMode && !answerObj.scratchIntro) saveScratchMessage("ai", answerObj.text);
 
     input.value = "";
 }
@@ -2158,12 +2038,6 @@ function hexToRgb(hex) {
 // -------- Initialize --------
 // Load knowledge immediately
 const knowledgePromise = loadKnowledge();
-const scratchKnowledgePromise = loadScratchKnowledge();
-try {
-    scratchMode = sessionStorage.getItem(scratchStorageKey) !== null;
-} catch (error) {
-    console.error("Unable to restore scratch mode", error);
-}
 
 window.addEventListener('load', async () => {
     initElements();
@@ -2176,7 +2050,7 @@ window.addEventListener('load', async () => {
         }
     });
 
-    await Promise.all([knowledgePromise, scratchKnowledgePromise]);
+    await Promise.all([knowledgePromise]);
 
     // V2: Show helper and expand on input focus/click
     input.addEventListener('focus', () => {
@@ -2225,9 +2099,7 @@ window.addEventListener('load', async () => {
 
     // Show welcome message on load only if on essence.html page (legacy)
     // Or if currently in essence mode (on refresh)
-    if (scratchMode && getScratchHistory().length > 0) {
-        restoreScratchHistory();
-    } else if (document.body.classList.contains('essence-page') || document.body.classList.contains('essence-mode')) {
+    if (document.body.classList.contains('essence-page') || document.body.classList.contains('essence-mode')) {
         showWelcomeMessage();
     }
 });
@@ -2237,12 +2109,6 @@ window.addEventListener('load', async () => {
 function showWelcomeMessage() {
     if (!responseBox) initElements();
     if (!responseBox) return;
-
-    if (scratchMode && getScratchHistory().length > 0) {
-        restoreScratchHistory();
-        welcomeShown = true;
-        return;
-    }
 
     // Guard against multiple calls
     if (welcomeShown) return;

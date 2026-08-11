@@ -1982,6 +1982,76 @@ Slider effect
     cursor: not-allowed;
 }
 
+.note-mode-panel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+    opacity: 0;
+    transform: translateY(18px);
+    animation: notePanelSlideIn 0.45s ease forwards;
+}
+
+@keyframes notePanelSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.note-mode-editor {
+    width: 100%;
+    min-height: 280px;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 18px;
+    background: transparent;
+    color: var(--white);
+    font: inherit;
+    line-height: 1.6;
+    caret-color: var(--white);
+    resize: vertical;
+    outline: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    overflow-y: auto;
+}
+
+.note-line {
+    min-height: 1.6em;
+    white-space: pre-wrap;
+    word-break: break-word;
+    outline: none;
+}
+
+.note-line:focus {
+    outline: none;
+}
+
+.note-mode-editor:focus-within {
+    border-color: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+}
+
+.note-mode-actions {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.note-mode-actions .sort-btn:last-child {
+    margin-left: auto;
+}
+
 .timer-container {
     display: flex;
     flex-direction: column;
