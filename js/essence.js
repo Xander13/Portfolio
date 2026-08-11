@@ -1064,9 +1064,22 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             const a = document.createElement("a");
             a.href = extra.link.href;
             a.textContent = extra.link.text;
-            a.target = "_blank";
+            if (!extra.link.sameTab) {
+                a.target = "_blank";
+            }
             a.style.color = "white";
             a.style.textDecoration = "underline";
+
+            if (extra.link.fadeNavigate) {
+                a.addEventListener("click", event => {
+                    event.preventDefault();
+                    document.body.classList.remove("loaded");
+                    setTimeout(() => {
+                        window.location.href = extra.link.href;
+                    }, 500);
+                });
+            }
+
             lastP.append(" ");
             lastP.append(a);
         }
@@ -1463,7 +1476,7 @@ const personalSynonyms = {
     weakness: ["weakness", "weaknesses", "areas for improvement"],
     deadlines: ["deadlines", "tight deadlines", "handle deadlines", "time pressure"],
     strength: ["strength", "strengths", "biggest strength", "what are you good at"],
-    "successful project": ["successful project", "best project", "proudest project", "duolingo success"],
+    "successful project": ["successful project", "best project", "proudest project", "favorite project", "favourite project", "favorite personal project", "favorite case study", "favourite case study", "duolingo success"],
     testimonies: ["testimonies", "recommendation", "what people say", "references", "feedback"],
     resume: ["resume", "alex's resume", "CV", "cv"],
     coding: ["coding", "code", "programming", "development", "engineering", "cs", "computer science", "algorithm", "algorithms", "sort", "sorting"],
@@ -1556,8 +1569,17 @@ async function findResponse(userInput) {
     // Check for "successful project" to include LinkedIn link
     if (matchedKeys.includes("successful project")) {
         return {
-            text: knowledge.personal["successful project"],
-            link: knowledge.duolingo_post.link,
+            videos: ["video/Duolingo_ASL_Lily.mp4", "video/Duoling_Feature4.mp4"],
+            text: `Favorite project:<br><br>
+Duolingo ASL Case Study
+<br><br>
+Core Challenge: Integrating American Sign Language into Duolingo's rigid, world-class design system.
+<br><br>
+Execution: Combined UI design, accessibility strategy, and front-end code to build a functional proof-of-concept.
+<br><br>
+Impact: Proved how platforms can tap into major underserved markets without compromising core design constraints, with high social interaction on <a href="https://www.linkedin.com/feed/update/urn:li:activity:7264858607559598080/" target="_blank" style="color: white; text-decoration: underline;">LinkedIn</a>.
+<br><br>
+<a href="http://127.0.0.1:5519/duolingoasl.html" style="color: white; text-decoration: underline;">See Duolingo Case Study</a>`,
             inlineLink: true,
             instant: true
         };
@@ -1634,7 +1656,9 @@ async function findResponse(userInput) {
     // Don't show all projects if they're asking about successful/best/proudest project
     const isAskingAboutSuccessfulProject = normalizedInput.includes("successful") ||
         normalizedInput.includes("best") ||
-        normalizedInput.includes("proudest");
+        normalizedInput.includes("proudest") ||
+        normalizedInput.includes("favorite") ||
+        normalizedInput.includes("favourite");
 
     if (!isAskingAboutSuccessfulProject && (
         normalizedInput.includes("project") ||
@@ -1643,7 +1667,7 @@ async function findResponse(userInput) {
         normalizedInput.includes("case studies")
     )) {
         return {
-            text: "Driven by a future-forward aesthetic and a love for experimentation, I push AI, Accessibility, and UI design into tangible, usable products.",
+            text: "My favorite personal project is the Duolingo ASL case study, where I combined UI design, accessibility strategy, and front-end coding to prove ASL can fit seamlessly inside Duolingo's strict design system. The work demonstrates a major untapped market in accessible learning and shows how inclusive design can expand platform growth without breaking product constraints.",
             extra: { projects: knowledge.projects }, // this is important
         };
     }
