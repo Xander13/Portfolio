@@ -1595,11 +1595,11 @@ Slider effect
     }
 
     .response-card {
-        padding-top: 48px;
+        padding-top: 24px;
     }
 
     .msgContent {
-        padding-bottom: 64px;
+        padding-bottom: 24px;
         width: 100%;
     }
 
@@ -1621,6 +1621,7 @@ Slider effect
         right: 0;
         padding-left: 16px;
         padding-right: 16px;
+        padding-bottom: 120px;
         width: 100%;
         position: fixed;
     }
@@ -2010,12 +2011,9 @@ Slider effect
     width: 100%;
     min-height: 280px;
     padding: 16px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.9);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
-    border-left: 1px solid rgba(255, 255, 255, 0.9);
-    border-right: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 0;
-    background: transparent;
+    border: none;
+    border-radius: 4px;
+    background: rgba(128, 128, 128, 0.2);
     color: var(--white);
     font: inherit;
     line-height: 1.6;
@@ -2031,6 +2029,7 @@ Slider effect
 
 .note-line {
     min-height: 1.6em;
+    font-size: 20px;
     white-space: pre-wrap;
     word-break: break-word;
     outline: none;
@@ -2038,6 +2037,30 @@ Slider effect
     position: relative;
     padding: 2px 0 2px 28px;
     border-radius: 2px;
+}
+
+.note-line-heading {
+    font-size: 56px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.note-line-bold {
+    font-weight: 700;
+}
+
+.note-line-bullet {
+    padding-left: 44px;
+}
+
+.note-line-bullet::after {
+    content: "•";
+    color: rgba(255, 255, 255, 0.85);
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
 }
 
 .note-line::before {
@@ -2079,8 +2102,6 @@ Slider effect
 }
 
 .note-mode-editor:focus-within {
-    border-top-color: rgba(255, 255, 255, 1);
-    border-bottom-color: rgba(255, 255, 255, 1);
     box-shadow: none;
 }
 
@@ -2091,6 +2112,8 @@ Slider effect
     align-items: center;
     flex-wrap: wrap;
     padding: 16px 0;
+    position: relative;
+    z-index: 20;
 }
 
 .note-mode-toolbar-group {
@@ -2100,8 +2123,138 @@ Slider effect
     flex-wrap: wrap;
 }
 
+.note-mode-toolbar-left {
+    justify-content: flex-start;
+}
+
 .note-mode-toolbar-right {
     margin-left: auto;
+    justify-content: flex-end;
+}
+
+.note-fontsize-dropdown {
+    position: relative;
+}
+
+.note-alignment-dropdown {
+    position: relative;
+}
+
+.note-fontsize-list {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 4px 0;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    min-width: 0;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background: rgba(15, 15, 15, 0.95);
+    z-index: 120;
+}
+
+.note-alignment-list {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 4px 0;
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 100%;
+    min-width: 0;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background: rgba(15, 15, 15, 0.95);
+    z-index: 120;
+}
+
+@media (max-width: 768px) {
+    .note-mode-actions {
+        justify-content: flex-start;
+        gap: 8px;
+    }
+
+    .note-mode-toolbar-left,
+    .note-mode-toolbar-right {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .note-mode-toolbar-left {
+        flex-wrap: nowrap;
+        gap: 8px;
+    }
+
+    .note-fontsize-dropdown,
+    .note-alignment-dropdown {
+        width: calc((100% - 8px) / 2);
+        flex: 0 0 calc((100% - 8px) / 2);
+    }
+
+    .note-fontsize-toggle,
+    .note-alignment-toggle {
+        width: 100%;
+    }
+
+    .note-mode-toolbar-right {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .note-mode-toolbar-right .sort-btn {
+        width: 100%;
+    }
+
+    .note-fontsize-list,
+    .note-alignment-list {
+        top: auto;
+        bottom: calc(100% + 8px);
+        margin: 0;
+        z-index: 160;
+    }
+}
+
+.note-fontsize-dropdown.is-open .note-fontsize-list {
+    display: block;
+}
+
+.note-alignment-dropdown.is-open .note-alignment-list {
+    display: block;
+}
+
+.note-fontsize-option {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    text-align: left;
+    font: inherit;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.note-alignment-option {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    text-align: left;
+    font: inherit;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.note-fontsize-option:hover {
+    font-weight: 700;
+}
+
+.note-alignment-option:hover {
+    font-weight: 700;
 }
 
 .timer-container {

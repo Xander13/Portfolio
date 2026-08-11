@@ -205,6 +205,89 @@ function escapeHtml(text) {
         .replace(/'/g, "&#39;");
 }
 
+const NOTE_LINE_FORMAT_CLASS = {
+    heading: "note-line-heading",
+    bold: "note-line-bold",
+    bullet: "note-line-bullet"
+};
+
+function syncNoteLineFormatClass(line) {
+    line.classList.remove(
+        NOTE_LINE_FORMAT_CLASS.heading,
+        NOTE_LINE_FORMAT_CLASS.bold,
+        NOTE_LINE_FORMAT_CLASS.bullet
+    );
+
+    const format = line.dataset.noteFormat;
+    if (format && NOTE_LINE_FORMAT_CLASS[format]) {
+        line.classList.add(NOTE_LINE_FORMAT_CLASS[format]);
+    }
+}
+
+function setNoteLineFormat(line, format) {
+    if (!format) {
+        delete line.dataset.noteFormat;
+    } else {
+        line.dataset.noteFormat = format;
+    }
+    syncNoteLineFormatClass(line);
+}
+
+function applyMarkdownShortcutFormatting(line, { moveCaret = true } = {}) {
+    if (!line) return false;
+
+    const sourceText = line.innerText.replace(/\u00a0/g, " ");
+    const rawText = sourceText.trim();
+    if (!rawText) {
+        setNoteLineFormat(line, "");
+        return false;
+    }
+
+    let format = "";
+    let content = rawText;
+
+    if (/^#(?:\s|$)/.test(rawText)) {
+        format = "heading";
+        content = rawText.replace(/^#\s*/, "");
+    } else if (/^-(?:\s|$)/.test(rawText)) {
+        format = "bullet";
+        content = rawText.replace(/^-\s*/, "");
+    } else {
+        const boldMatch = rawText.match(/^\*\*(.+)\*\*$/);
+        if (boldMatch) {
+            format = "bold";
+            content = boldMatch[1].trim();
+        }
+    }
+
+    if (!format) return false;
+
+    line.textContent = content;
+    setNoteLineFormat(line, format);
+
+    if (moveCaret) {
+        focusCaretAtEnd(line);
+    }
+
+    return true;
+}
+
+function serializeNoteLineForMarkdown(line) {
+    const text = line.innerText.replace(/\u00a0/g, " ").trim();
+    if (!text) return "";
+
+    switch (line.dataset.noteFormat) {
+        case "heading":
+            return `# ${text}`;
+        case "bold":
+            return `**${text}**`;
+        case "bullet":
+            return `- ${text}`;
+        default:
+            return text;
+    }
+}
+
 function createNoteLine(text = "") {
     const line = document.createElement("div");
     line.className = "note-line";
@@ -215,11 +298,11 @@ function createNoteLine(text = "") {
     line.dataset.align = "left";
     line.dataset.fontSize = "20px";
     line.style.textAlign = "left";
-    line.style.fontSize = "20px";
     line.style.color = "var(--white)";
 
     if (text) {
         line.textContent = text;
+        applyMarkdownShortcutFormatting(line, { moveCaret: false });
     } else {
         line.innerHTML = "";
     }
@@ -232,6 +315,7 @@ function createNoteLine(text = "") {
     line.addEventListener("mousedown", focusLine);
     line.addEventListener("click", focusLine);
     line.addEventListener("input", () => {
+        applyMarkdownShortcutFormatting(line);
         activeNoteLine = line;
     });
 
@@ -495,12 +579,71 @@ function createNotePanel() {
         return button;
     };
 
-    leftActions.appendChild(createActionButton("A -", () => updateNoteLineStyle("fontSize", "16px")));
-    leftActions.appendChild(createActionButton("A", () => updateNoteLineStyle("fontSize", "24px")));
-    leftActions.appendChild(createActionButton("A +", () => updateNoteLineStyle("fontSize", "56px")));
-    leftActions.appendChild(createActionButton("Left", () => updateNoteLineStyle("textAlign", "left")));
-    leftActions.appendChild(createActionButton("Center", () => updateNoteLineStyle("textAlign", "center")));
-    leftActions.appendChild(createActionButton("Right", () => updateNoteLineStyle("textAlign", "right")));
+    const fontSizeDropdown = document.createElement("div");
+    fontSizeDropdown.className = "note-fontsize-dropdown";
+
+    const fontSizeToggle = createActionButton("Type Size", () => {
+        fontSizeDropdown.classList.toggle("is-open");
+    });
+    fontSizeToggle.classList.add("note-fontsize-toggle");
+
+    const fontSizeList = document.createElement("ul");
+    fontSizeList.className = "note-fontsize-list";
+
+    const createFontSizeItem = (label, size) => {
+        const item = document.createElement("li");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "note-fontsize-option";
+        button.textContent = label;
+        button.addEventListener("click", () => {
+            updateNoteLineStyle("fontSize", size);
+            fontSizeDropdown.classList.remove("is-open");
+        });
+        item.appendChild(button);
+        return item;
+    };
+
+    fontSizeList.appendChild(createFontSizeItem("Small", "16px"));
+    fontSizeList.appendChild(createFontSizeItem("Body", "20px"));
+    fontSizeList.appendChild(createFontSizeItem("Medium", "24px"));
+    fontSizeList.appendChild(createFontSizeItem("Header", "56px"));
+    fontSizeDropdown.appendChild(fontSizeToggle);
+    fontSizeDropdown.appendChild(fontSizeList);
+
+    const alignmentDropdown = document.createElement("div");
+    alignmentDropdown.className = "note-alignment-dropdown";
+
+    const alignmentToggle = createActionButton("Text Aligment", () => {
+        alignmentDropdown.classList.toggle("is-open");
+    });
+    alignmentToggle.classList.add("note-alignment-toggle");
+
+    const alignmentList = document.createElement("ul");
+    alignmentList.className = "note-alignment-list";
+
+    const createAlignmentItem = (label, align) => {
+        const item = document.createElement("li");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "note-alignment-option";
+        button.textContent = label;
+        button.addEventListener("click", () => {
+            updateNoteLineStyle("textAlign", align);
+            alignmentDropdown.classList.remove("is-open");
+        });
+        item.appendChild(button);
+        return item;
+    };
+
+    alignmentList.appendChild(createAlignmentItem("Left", "left"));
+    alignmentList.appendChild(createAlignmentItem("Center", "center"));
+    alignmentList.appendChild(createAlignmentItem("Right", "right"));
+    alignmentDropdown.appendChild(alignmentToggle);
+    alignmentDropdown.appendChild(alignmentList);
+
+    leftActions.appendChild(fontSizeDropdown);
+    leftActions.appendChild(alignmentDropdown);
 
     const clearButton = document.createElement("button");
     clearButton.type = "button";
@@ -541,7 +684,7 @@ function createNotePanel() {
     saveButton.textContent = "Save";
     saveButton.addEventListener("click", () => {
         const noteContent = Array.from(editor.querySelectorAll(".note-line"))
-            .map(line => line.innerText)
+            .map(line => serializeNoteLineForMarkdown(line))
             .join("\n")
             .trim() || "";
         downloadTextFile(noteContent, formatNoteFilename());
@@ -550,7 +693,7 @@ function createNotePanel() {
     const startLine = createNoteLine();
     editor.appendChild(startLine);
 
-    leftActions.appendChild(clearButton);
+    rightActions.appendChild(clearButton);
     rightActions.appendChild(saveButton);
     rightActions.appendChild(importButton);
 
