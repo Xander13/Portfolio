@@ -29,6 +29,7 @@ let activeTimer = null;
 let noteMode = false;
 let activeNoteEditor = null;
 let activeNoteLine = null;
+let draggedNoteLine = null;
 
 
 // -------- Normalize Input --------
@@ -181,11 +182,11 @@ function formatNoteFilename() {
     const now = new Date();
     const datePart = now.toISOString().slice(0, 10);
     const timePart = `${String(now.getHours()).padStart(2, "0")}${String(now.getMinutes()).padStart(2, "0")}`;
-    return `notes-${datePart}-${timePart}.txt`;
+    return `notes-${datePart}-${timePart}.md`;
 }
 
 function downloadTextFile(text, filename) {
-    const blob = new Blob([text], { type: "text/plain;charset=utf-8" });
+    const blob = new Blob([text], { type: "text/markdown;charset=utf-8" });
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
     link.download = filename;
@@ -210,11 +211,18 @@ function createNoteLine(text = "") {
     line.contentEditable = "true";
     line.spellcheck = false;
     line.tabIndex = 0;
+    line.draggable = true;
     line.dataset.align = "left";
     line.dataset.fontSize = "20px";
     line.style.textAlign = "left";
     line.style.fontSize = "20px";
-    line.innerHTML = text ? escapeHtml(text) : "<br>";
+    line.style.color = "var(--white)";
+
+    if (text) {
+        line.textContent = text;
+    } else {
+        line.innerHTML = "";
+    }
 
     const focusLine = () => {
         activeNoteLine = line;
@@ -224,13 +232,62 @@ function createNoteLine(text = "") {
     line.addEventListener("mousedown", focusLine);
     line.addEventListener("click", focusLine);
     line.addEventListener("input", () => {
-        if (!line.innerText.trim()) {
-            line.innerHTML = "<br>";
-        }
         activeNoteLine = line;
     });
+
+    const clearDragState = () => {
+        line.classList.remove("dragging", "drag-over");
+        if (draggedNoteLine === line) {
+            draggedNoteLine = null;
+        }
+    };
+
+    line.addEventListener("dragstart", event => {
+        draggedNoteLine = line;
+        line.classList.add("dragging");
+        event.dataTransfer?.setData("text/plain", "note-line");
+        event.dataTransfer.effectAllowed = "move";
+    });
+
+    line.addEventListener("dragover", event => {
+        if (!draggedNoteLine || draggedNoteLine === line) return;
+        event.preventDefault();
+        line.classList.add("drag-over");
+        event.dataTransfer.dropEffect = "move";
+    });
+
+    line.addEventListener("dragleave", () => {
+        line.classList.remove("drag-over");
+    });
+
+    line.addEventListener("drop", event => {
+        event.preventDefault();
+        if (!draggedNoteLine || draggedNoteLine === line) {
+            clearDragState();
+            return;
+        }
+
+        const parent = line.parentElement;
+        if (!parent || !parent.contains(line)) {
+            clearDragState();
+            return;
+        }
+
+        parent.insertBefore(draggedNoteLine, line);
+        activeNoteLine = draggedNoteLine;
+        clearDragState();
+        line.classList.remove("drag-over");
+    });
+
+    line.addEventListener("dragend", clearDragState);
     line.addEventListener("keydown", event => {
         if (event.key === "Enter") {
+            if (event.shiftKey) {
+                event.preventDefault();
+                insertSoftBreakInLine(line);
+                return;
+            }
+
             event.preventDefault();
             insertNoteLineAfter(line);
             return;
@@ -294,6 +351,35 @@ function focusCaretAtEnd(line) {
         selection?.addRange(range);
         line.focus();
     });
+}
+
+function insertSoftBreakInLine(line) {
+    if (!line) return false;
+
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return false;
+
+    const range = selection.getRangeAt(0);
+    const br = document.createElement("br");
+
+    if (range.collapsed) {
+        range.insertNode(br);
+        range.setStartAfter(br);
+        range.setEndAfter(br);
+        selection.removeAllRanges();
+        selection.addRange(range);
+        line.focus();
+        return true;
+    }
+
+    range.deleteContents();
+    range.insertNode(br);
+    range.setStartAfter(br);
+    range.setEndAfter(br);
+    selection.removeAllRanges();
+    selection.addRange(range);
+    line.focus();
+    return true;
 }
 
 function getActiveNoteLine() {
@@ -387,12 +473,18 @@ function createNotePanel() {
     const panel = document.createElement("div");
     panel.className = "note-mode-panel";
 
-    const toolbar = document.createElement("div");
-    toolbar.className = "note-mode-actions";
-
     const editor = document.createElement("div");
     editor.className = "note-mode-editor";
     editor.setAttribute("role", "group");
+
+    const toolbar = document.createElement("div");
+    toolbar.className = "note-mode-actions";
+
+    const leftActions = document.createElement("div");
+    leftActions.className = "note-mode-toolbar-group note-mode-toolbar-left";
+
+    const rightActions = document.createElement("div");
+    rightActions.className = "note-mode-toolbar-group note-mode-toolbar-right";
 
     const createActionButton = (label, handler) => {
         const button = document.createElement("button");
@@ -403,12 +495,12 @@ function createNotePanel() {
         return button;
     };
 
-    toolbar.appendChild(createActionButton("A-", () => updateNoteLineStyle("fontSize", "16px")));
-    toolbar.appendChild(createActionButton("A", () => updateNoteLineStyle("fontSize", "20px")));
-    toolbar.appendChild(createActionButton("A+", () => updateNoteLineStyle("fontSize", "24px")));
-    toolbar.appendChild(createActionButton("Left", () => updateNoteLineStyle("textAlign", "left")));
-    toolbar.appendChild(createActionButton("Center", () => updateNoteLineStyle("textAlign", "center")));
-    toolbar.appendChild(createActionButton("Right", () => updateNoteLineStyle("textAlign", "right")));
+    leftActions.appendChild(createActionButton("A -", () => updateNoteLineStyle("fontSize", "16px")));
+    leftActions.appendChild(createActionButton("A", () => updateNoteLineStyle("fontSize", "24px")));
+    leftActions.appendChild(createActionButton("A +", () => updateNoteLineStyle("fontSize", "56px")));
+    leftActions.appendChild(createActionButton("Left", () => updateNoteLineStyle("textAlign", "left")));
+    leftActions.appendChild(createActionButton("Center", () => updateNoteLineStyle("textAlign", "center")));
+    leftActions.appendChild(createActionButton("Right", () => updateNoteLineStyle("textAlign", "right")));
 
     const clearButton = document.createElement("button");
     clearButton.type = "button";
@@ -425,16 +517,16 @@ function createNotePanel() {
 
     const importInput = document.createElement("input");
     importInput.type = "file";
-    importInput.accept = ".txt,text/plain";
+    importInput.accept = ".md,text/markdown,.txt,text/plain";
     importInput.style.display = "none";
     importInput.addEventListener("change", async () => {
         const file = importInput.files?.[0];
         importInput.value = "";
         if (!file) return;
 
-        const isTxt = file.type === "text/plain" || file.name.toLowerCase().endsWith(".txt");
-        if (!isTxt) {
-            alert("Please import a .txt file only.");
+        const isSupported = file.type === "text/plain" || file.type === "text/markdown" || file.name.toLowerCase().endsWith(".txt") || file.name.toLowerCase().endsWith(".md");
+        if (!isSupported) {
+            alert("Please import a .md or .txt file only.");
             return;
         }
 
@@ -448,18 +540,26 @@ function createNotePanel() {
     saveButton.className = "sort-btn";
     saveButton.textContent = "Save";
     saveButton.addEventListener("click", () => {
-        downloadTextFile(Array.from(editor.querySelectorAll(".note-line")).map(line => line.innerText).join("\n").trim() || "", formatNoteFilename());
+        const noteContent = Array.from(editor.querySelectorAll(".note-line"))
+            .map(line => line.innerText)
+            .join("\n")
+            .trim() || "";
+        downloadTextFile(noteContent, formatNoteFilename());
     });
 
     const startLine = createNoteLine();
     editor.appendChild(startLine);
 
-    toolbar.appendChild(clearButton);
-    toolbar.appendChild(importButton);
+    leftActions.appendChild(clearButton);
+    rightActions.appendChild(saveButton);
+    rightActions.appendChild(importButton);
+
+    toolbar.appendChild(leftActions);
+    toolbar.appendChild(rightActions);
+
+    panel.appendChild(editor);
     panel.appendChild(toolbar);
     panel.appendChild(importInput);
-    panel.appendChild(editor);
-    toolbar.appendChild(saveButton);
 
     activeNoteEditor = editor;
     activeNoteLine = startLine;
@@ -486,7 +586,7 @@ function appendNoteLine(text) {
 function enterNoteMode() {
     noteMode = true;
     input.placeholder = "Ask Alex...";
-    appendMessage("ai", "Ok here is a space for your notes. Use Save to download a Txt file, Clear to reset, or Import a .txt file.", true, {
+    appendMessage("ai", "Ok here is a space for your notes. Use the Save button to download as a .md file, Clear to reset, or Import a .md or .txt file.", true, {
         noteMode: true,
         instant: true
     });

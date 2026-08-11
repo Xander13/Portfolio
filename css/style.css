@@ -1987,7 +1987,8 @@ Slider effect
     display: flex;
     flex-direction: column;
     gap: 16px;
-    margin-top: 16px;
+    margin-top: 48px;
+    margin-bottom: 16px;
     opacity: 0;
     transform: translateY(18px);
     animation: notePanelSlideIn 0.45s ease forwards;
@@ -2008,9 +2009,12 @@ Slider effect
 .note-mode-editor {
     width: 100%;
     min-height: 280px;
-    padding: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    border-radius: 18px;
+    padding: 16px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.9);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+    border-left: 1px solid rgba(255, 255, 255, 0.9);
+    border-right: 1px solid rgba(255, 255, 255, 0.9);
+    border-radius: 0;
     background: transparent;
     color: var(--white);
     font: inherit;
@@ -2030,6 +2034,44 @@ Slider effect
     white-space: pre-wrap;
     word-break: break-word;
     outline: none;
+    cursor: grab;
+    position: relative;
+    padding: 2px 0 2px 28px;
+    border-radius: 2px;
+}
+
+.note-line::before {
+    content: "⋮⋮";
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    line-height: 1;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease;
+}
+
+.note-line:hover,
+.note-line:focus-within,
+.note-line.dragging {
+    background: rgba(128, 128, 128, 0.2);
+}
+
+.note-line:hover::before,
+.note-line:focus-within::before,
+.note-line.dragging::before {
+    opacity: 0.8;
+}
+
+.note-line.dragging {
+    cursor: grabbing;
+}
+
+.note-line.drag-over {
+    border-top: 1px solid rgba(255, 255, 255, 0.7);
 }
 
 .note-line:focus {
@@ -2037,18 +2079,28 @@ Slider effect
 }
 
 .note-mode-editor:focus-within {
-    border-color: rgba(255, 255, 255, 1);
-    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.35);
+    border-top-color: rgba(255, 255, 255, 1);
+    border-bottom-color: rgba(255, 255, 255, 1);
+    box-shadow: none;
 }
 
 .note-mode-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 16px 0;
+}
+
+.note-mode-toolbar-group {
     display: flex;
     gap: 10px;
     align-items: center;
     flex-wrap: wrap;
 }
 
-.note-mode-actions .sort-btn:last-child {
+.note-mode-toolbar-right {
     margin-left: auto;
 }
 
