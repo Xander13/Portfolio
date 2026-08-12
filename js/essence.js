@@ -208,14 +208,16 @@ function escapeHtml(text) {
 const NOTE_LINE_FORMAT_CLASS = {
     heading: "note-line-heading",
     bold: "note-line-bold",
-    bullet: "note-line-bullet"
+    bullet: "note-line-bullet",
+    divider: "note-line-divider"
 };
 
 function syncNoteLineFormatClass(line) {
     line.classList.remove(
         NOTE_LINE_FORMAT_CLASS.heading,
         NOTE_LINE_FORMAT_CLASS.bold,
-        NOTE_LINE_FORMAT_CLASS.bullet
+        NOTE_LINE_FORMAT_CLASS.bullet,
+        NOTE_LINE_FORMAT_CLASS.divider
     );
 
     const format = line.dataset.noteFormat;
@@ -230,6 +232,11 @@ function setNoteLineFormat(line, format) {
     } else {
         line.dataset.noteFormat = format;
     }
+
+    if (line) {
+        line.contentEditable = format !== "divider";
+    }
+
     syncNoteLineFormatClass(line);
 }
 
@@ -249,7 +256,10 @@ function applyMarkdownShortcutFormatting(line, { moveCaret = true } = {}) {
     if (/^#(?:\s|$)/.test(rawText)) {
         format = "heading";
         content = rawText.replace(/^#\s*/, "");
-    } else if (/^-(?:\s|$)/.test(rawText)) {
+    } else if (/^---(?:\s|$)/.test(rawText)) {
+        format = "divider";
+        content = "";
+    } else if (/^-(?!-).+/.test(rawText)) {
         format = "bullet";
         content = rawText.replace(/^-\s*/, "");
     } else {
@@ -264,6 +274,16 @@ function applyMarkdownShortcutFormatting(line, { moveCaret = true } = {}) {
 
     line.textContent = content;
     setNoteLineFormat(line, format);
+
+    if (format === "divider") {
+        line.textContent = "";
+        line.setAttribute("aria-label", "Divider line");
+        line.setAttribute("data-divider-line", "true");
+        if (moveCaret) {
+            line.focus();
+        }
+        return true;
+    }
 
     if (moveCaret) {
         focusCaretAtEnd(line);
@@ -283,6 +303,8 @@ function serializeNoteLineForMarkdown(line) {
             return `**${text}**`;
         case "bullet":
             return `- ${text}`;
+        case "divider":
+            return "---";
         default:
             return text;
     }
@@ -365,6 +387,24 @@ function createNoteLine(text = "") {
 
     line.addEventListener("dragend", clearDragState);
     line.addEventListener("keydown", event => {
+        if (line.dataset.noteFormat === "divider") {
+            if (event.key === "Backspace" || event.key === "Delete") {
+                event.preventDefault();
+                line.remove();
+                activeNoteLine = line.previousElementSibling || line.nextElementSibling || null;
+                if (activeNoteLine) {
+                    focusCaretAtEnd(activeNoteLine);
+                }
+                return;
+            }
+
+            if (event.key === "Enter") {
+                event.preventDefault();
+                insertNoteLineAfter(line);
+                return;
+            }
+        }
+
         if (event.key === "Enter") {
             if (event.shiftKey) {
                 event.preventDefault();
