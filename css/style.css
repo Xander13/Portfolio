@@ -1990,6 +1990,7 @@ Slider effect
     gap: 16px;
     margin-top: 48px;
     margin-bottom: 16px;
+    border-radius: 6px;
     opacity: 0;
     transform: translateY(18px);
     animation: notePanelSlideIn 0.45s ease forwards;
@@ -2013,7 +2014,6 @@ Slider effect
     padding: 16px 0;
     border: none;
     border-radius: 4px;
-    background: rgb(35, 35, 35);
     color: var(--white);
     font: inherit;
     line-height: 1.6;
@@ -2025,10 +2025,11 @@ Slider effect
     flex-direction: column;
     gap: 6px;
     overflow-y: auto;
+    background-color: #0c0c0c;
+    border: 1px solid rgb(35, 35, 35);
 }
 
 .note-line {
-    min-height: 1.6em;
     font-size: 20px;
     white-space: pre-wrap;
     word-break: break-word;
@@ -2051,6 +2052,56 @@ Slider effect
 
 .note-line-bullet {
     padding-left: 44px;
+}
+
+.note-line-divider {
+    width: 100%;
+    min-height: 56px;
+    height: 56px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    border-radius: 2px;
+    cursor: grab;
+    position: relative;
+}
+
+.note-line-divider::before {
+    content: "⋮⋮";
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 20px;
+    line-height: 1;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: opacity 0.2s ease;
+}
+
+.note-line-divider::after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 1px;
+    background: rgba(255, 255, 255, 0.8);
+    pointer-events: none;
+}
+
+.note-line-divider:hover,
+.note-line-divider:focus-within,
+.note-line-divider.dragging {
+    background: rgba(128, 128, 128, 0.2);
+}
+
+.note-line-divider:hover::before,
+.note-line-divider:focus-within::before,
+.note-line-divider.dragging::before {
+    opacity: 0.8;
 }
 
 .note-line-bullet::after {
