@@ -1764,6 +1764,11 @@ function getFriendlyOpener() {
     return openers[Math.floor(Math.random() * openers.length)];
 }
 
+function shouldClearChat(userText) {
+    const rawText = String(userText || "").trim().toLowerCase();
+    return /^(clear|clear chat|clear history|reset chat|reset history)$/.test(rawText);
+}
+
 
 // -------- Send Message --------
 async function sendMessage() {
@@ -1774,7 +1779,16 @@ async function sendMessage() {
     if (!userText) return;
     const normalizedUserText = normalizeText(userText);
 
-    if (!noteMode && shouldEnterNoteMode(userText)) {
+    if (shouldClearChat(userText)) {
+        responseBox.innerHTML = "";
+        questionCount = 0;
+        welcomeShown = false;
+        input.value = "";
+        showWelcomeMessage();
+        return;
+    }
+
+    if (shouldEnterNoteMode(userText)) {
         enterNoteMode();
         input.value = "";
         return;
@@ -2416,15 +2430,15 @@ function appendPrompts(container) {
 
     // Create clickable prompt links
     const prompts = [
-        { text: "💭 Dream job", displayText: "What's Alex's dream job?", query: "dream job" },
-        { text: "💼 Current role", displayText: "What's Alex's current role?", query: "role" },
+        { text: "🎯 Target jobs", displayText: "What's Alex's dream job?", query: "dream job" },
+        { text: "💼 Role", displayText: "What's Alex's current role?", query: "role" },
         { text: "🎓 Education", displayText: "What's Alex's educational background?", query: "education" },
-        { text: "👤 About Alex", displayText: "Tell me about Alex", query: "background" },
+        { text: "👤 About", displayText: "Tell me about Alex", query: "background" },
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
-        { text: "⚡ Skills", displayText: "What are Alex's skills?", query: "skills" },
-        { text: "👨‍💻 Coding Background", displayText: "What is Alex's coding background?", query: "code" },
-        { text: "⏱️ Time Zone", displayText: "What time zone is Alex In?", query: "Located" },
-        { text: "☀️ Today's weather", displayText: "What's the weather like today?", query: "weather" }
+        { text: "🛠️ Skills", displayText: "What are Alex's skills?", query: "skills" },
+        { text: "👨‍💻 Coding", displayText: "What is Alex's coding background?", query: "code" },
+        { text: "📍 Location", displayText: "What time zone is Alex In?", query: "Located" },
+        { text: "☀️ Weather", displayText: "What's the weather like today?", query: "weather" }
     ];
 
     const promptsContainer = document.createElement("div");

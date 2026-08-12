@@ -2013,7 +2013,7 @@ Slider effect
     padding: 16px 0;
     border: none;
     border-radius: 4px;
-    background: rgba(128, 128, 128, 0.2);
+    background: rgb(35, 35, 35);
     color: var(--white);
     font: inherit;
     line-height: 1.6;
