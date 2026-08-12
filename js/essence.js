@@ -252,6 +252,13 @@ function positionSlashMenu() {
     slashMenu.style.bottom = `${rect.height + 6}px`;
 }
 
+function applySlashMenuLayout() {
+    if (!slashMenu) return;
+
+    const isCompact = window.matchMedia("(max-width: 917px)").matches;
+    slashMenu.style.padding = isCompact ? "0 16px 32px 16px" : "0 0 32px 0";
+}
+
 function selectSlashShortcut(shortcut) {
     if (!input) initElements();
     if (!input) return;
@@ -277,14 +284,16 @@ function showSlashMenu() {
         slashMenu = document.createElement("div");
         slashMenu.className = "slash-menu";
         slashMenu.style.position = "fixed";
+        slashMenu.style.height = "100vh";
+        slashMenu.style.overflow = "hidden";
         slashMenu.style.zIndex = "50";
-        slashMenu.style.padding = "0 0 32px 0";
         slashMenu.style.border = "none";
         slashMenu.style.borderBottom = "1px solid rgba(255, 255, 255, 0.9)";
         slashMenu.style.borderRadius = "0";
         slashMenu.style.background = "linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.22) 25%, rgba(0, 0, 0, 0.92) 78%, rgba(0, 0, 0, 1) 100%)";
         slashMenu.style.boxShadow = "none";
         slashMenu.style.backdropFilter = "none";
+        applySlashMenuLayout();
 
         const label = document.createElement("div");
         label.textContent = "Lil Shortcuts";
@@ -305,12 +314,12 @@ function showSlashMenu() {
     }
 
     positionSlashMenu();
+    applySlashMenuLayout();
     requestAnimationFrame(() => {
         if (!slashMenu) return;
         slashMenu.classList.add("is-visible");
         slashMenu.style.opacity = "1";
         slashMenu.style.transform = "translateY(0)";
-        slashMenu.style.pointerEvents = "auto";
     });
 }
 
@@ -2537,6 +2546,7 @@ window.addEventListener('load', async () => {
     window.addEventListener("resize", () => {
         if (slashMenu && slashMenu.classList.contains("is-visible")) {
             positionSlashMenu();
+            applySlashMenuLayout();
         }
     });
 
