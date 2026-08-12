@@ -945,6 +945,58 @@ a {
     z-index: 10;
 }
 
+.slash-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 0 0 32px;
+    user-select: none;
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    will-change: opacity, transform;
+}
+
+.slash-menu.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.slash-menu-label {
+    font-size: 18px;
+    line-height: 1.2;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.45);
+    margin: 0;
+    user-select: none;
+}
+
+.slash-menu-item {
+    width: 100%;
+    text-align: left;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.82);
+    font: inherit;
+    font-size: 32px;
+    line-height: 1.08;
+    cursor: pointer;
+    user-select: text;
+    text-decoration: none;
+    transition: color 0.18s ease, text-decoration-color 0.18s ease;
+}
+
+.slash-menu-item:hover,
+.slash-menu-item:focus-visible {
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 0.16em;
+}
+
 .inputBox input[type="text"] {
     flex: 1;
     font-size: 32px;
@@ -1656,6 +1708,10 @@ Slider effect
     .inputBox input[type="text"] {
         font-size: 18px;
         margin-left: 12px;
+    }
+
+    .slash-menu-item {
+        font-size: 18px;
     }
 
     .inputBox::placeholder {

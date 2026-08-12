@@ -1,9 +1,11 @@
 // -------- Globals --------
 let knowledge = {};
 let input = null;
+let inputBox = null;
 let sendBtn = null;
 let responseBox = null;
 let chatContainer = null;
+let slashMenu = null;
 
 const defaultWeatherLocation = {
     latitude: 42.3314,
@@ -13,6 +15,7 @@ const defaultWeatherLocation = {
 
 function initElements() {
     input = document.getElementById("llmTxt");
+    inputBox = document.querySelector(".inputBox");
     sendBtn = document.querySelector(".send");
     responseBox = document.querySelector(".responseBox");
     chatContainer = document.querySelector(".chat-container");
@@ -203,6 +206,126 @@ function escapeHtml(text) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
+}
+
+const slashShortcuts = [
+    {
+        label: "Write a new note",
+        value: "write a new note"
+    },
+    {
+        label: "Check weather",
+        value: "What's the weather like today?"
+    },
+    {
+        label: "Set a timer to...",
+        value: "Set a timer to ",
+        sendOnSelect: false
+    }
+];
+
+function hideSlashMenu() {
+    if (!slashMenu) return;
+    slashMenu.classList.remove("is-visible");
+    slashMenu.style.opacity = "0";
+    slashMenu.style.transform = "translateY(10px)";
+    slashMenu.style.pointerEvents = "none";
+
+    const menuToRemove = slashMenu;
+    setTimeout(() => {
+        if (slashMenu === menuToRemove && menuToRemove.parentElement) {
+            menuToRemove.remove();
+            slashMenu = null;
+        }
+    }, 180);
+}
+
+function positionSlashMenu() {
+    if (!inputBox || !slashMenu) return;
+
+    const rect = inputBox.getBoundingClientRect();
+    const menuWidth = rect.width;
+
+    slashMenu.style.left = `${rect.left}px`;
+    slashMenu.style.width = `${menuWidth}px`;
+    slashMenu.style.top = "auto";
+    slashMenu.style.bottom = `${rect.height + 6}px`;
+}
+
+function selectSlashShortcut(shortcut) {
+    if (!input) initElements();
+    if (!input) return;
+
+    input.value = shortcut.value;
+    hideSlashMenu();
+    input.focus();
+
+    if (shortcut.sendOnSelect === false) {
+        return;
+    }
+
+    setTimeout(() => {
+        sendMessage();
+    }, 0);
+}
+
+function showSlashMenu() {
+    if (!inputBox) initElements();
+    if (!inputBox) return;
+
+    if (!slashMenu || !document.body.contains(slashMenu)) {
+        slashMenu = document.createElement("div");
+        slashMenu.className = "slash-menu";
+        slashMenu.style.position = "fixed";
+        slashMenu.style.zIndex = "50";
+        slashMenu.style.padding = "0 0 32px 0";
+        slashMenu.style.border = "none";
+        slashMenu.style.borderBottom = "1px solid rgba(255, 255, 255, 0.9)";
+        slashMenu.style.borderRadius = "0";
+        slashMenu.style.background = "linear-gradient(to bottom, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.22) 25%, rgba(0, 0, 0, 0.92) 78%, rgba(0, 0, 0, 1) 100%)";
+        slashMenu.style.boxShadow = "none";
+        slashMenu.style.backdropFilter = "none";
+
+        const label = document.createElement("div");
+        label.textContent = "Lil Shortcuts";
+        label.className = "slash-menu-label";
+        slashMenu.appendChild(label);
+
+        slashShortcuts.forEach(shortcut => {
+            const button = document.createElement("button");
+            button.type = "button";
+            button.textContent = shortcut.label;
+            button.className = "slash-menu-item";
+
+            button.addEventListener("click", () => selectSlashShortcut(shortcut));
+            slashMenu.appendChild(button);
+        });
+
+        document.body.appendChild(slashMenu);
+    }
+
+    positionSlashMenu();
+    requestAnimationFrame(() => {
+        if (!slashMenu) return;
+        slashMenu.classList.add("is-visible");
+        slashMenu.style.opacity = "1";
+        slashMenu.style.transform = "translateY(0)";
+        slashMenu.style.pointerEvents = "auto";
+    });
+}
+
+function updateSlashMenu() {
+    if (!input) initElements();
+    if (!input) return;
+
+    const rawValue = input.value || "";
+    const trimmedValue = rawValue.trim();
+
+    if (trimmedValue.startsWith("/")) {
+        showSlashMenu();
+    } else {
+        hideSlashMenu();
+    }
 }
 
 const NOTE_LINE_FORMAT_CLASS = {
@@ -779,6 +902,14 @@ function shouldEnterNoteMode(userText) {
     const rawText = String(userText || "").toLowerCase().trim();
 
     if (/^\-?notes?$/.test(rawText)) {
+        return true;
+    }
+
+    if (/^(write|make|start|create)\s+(a\s+)?new\s+notes?\??$/.test(rawText)) {
+        return true;
+    }
+
+    if (/^(write|make|start|create)\s+(a\s+)?note\??$/.test(rawText)) {
         return true;
     }
 
@@ -2392,10 +2523,28 @@ window.addEventListener('load', async () => {
 
     // Hide helper when user starts typing
     input.addEventListener('input', () => {
+        updateSlashMenu();
+
         if (input.value.length > 0 && chatContainer) {
             chatContainer.classList.remove('show-helper');
         }
+
+        if (!input.value.trim().startsWith("/") && slashMenu) {
+            hideSlashMenu();
+        }
     });
+
+    window.addEventListener("resize", () => {
+        if (slashMenu && slashMenu.classList.contains("is-visible")) {
+            positionSlashMenu();
+        }
+    });
+
+    window.addEventListener("scroll", () => {
+        if (slashMenu && slashMenu.classList.contains("is-visible")) {
+            positionSlashMenu();
+        }
+    }, true);
 
     // Track mouse position for custom cursor in demo reel
     const demoReel = document.querySelector('.demo-reel-container');
