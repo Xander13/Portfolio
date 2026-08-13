@@ -448,11 +448,16 @@ document.addEventListener("DOMContentLoaded", function () {
     let synthesis = window.speechSynthesis;
     let readableElements = [];
     let currentElementIndex = 0;
+    const bgAudioVolume = 0.3;
 
     // Background Audio
     const bgAudio = new Audio('audio/nature-music-vkroxstarsinger-226067.mp3');
     bgAudio.loop = true;
-    bgAudio.volume = 0.3; // 30% volume
+    bgAudio.volume = bgAudioVolume;
+
+    function setBgAudioVolume(nextVolume) {
+        bgAudio.volume = Math.max(0, Math.min(1, nextVolume));
+    }
 
     // Expose global API
     window.speechMode = {
@@ -501,8 +506,9 @@ document.addEventListener("DOMContentLoaded", function () {
             document.documentElement.style.setProperty('--active-color', theme.c1);
             document.documentElement.style.setProperty('--orange', theme.c1); // Fallback for existing vars
 
-            // Start audio with fade in
+            // Start audio quietly so it sits behind speech
             bgAudio.currentTime = 0;
+            setBgAudioVolume(bgAudioVolume);
             bgAudio.play().catch(e => console.log("Audio play failed:", e));
 
             // Start pulse loop for particle wave effect
@@ -527,6 +533,7 @@ document.addEventListener("DOMContentLoaded", function () {
         isSpeaking = false; // Reset speaking flag
         synthesis.cancel();
         bgAudio.pause();
+        setBgAudioVolume(bgAudioVolume);
         document.querySelectorAll('.word-highlight').forEach(el => el.classList.remove('word-highlight'));
         // Also remove element highlights
         readableElements.forEach(el => el.classList.remove('word-highlight'));
@@ -716,6 +723,7 @@ document.addEventListener("DOMContentLoaded", function () {
         utterance.onstart = () => {
             speechBtn.classList.add('speaking');
             scrollListenerActive = true; // Enable scroll listener after first utterance starts
+            setBgAudioVolume(bgAudioVolume);
             if (bgAudio.paused) bgAudio.play().catch(e => console.log("Audio play failed:", e));
         };
 
