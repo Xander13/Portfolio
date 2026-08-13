@@ -1847,7 +1847,7 @@ Impact: Proved how platforms can tap into major underserved markets without comp
         normalizedInput.includes("case studies")
     )) {
         return {
-            text: "My favorite personal project is the Duolingo ASL case study, where I combined UI design, accessibility strategy, and front-end coding to prove ASL can fit seamlessly inside Duolingo's strict design system. The work demonstrates a major untapped market in accessible learning and shows how inclusive design can expand platform growth without breaking product constraints.",
+            text: "Here are some projects Alex has worked on. They are case studies that showcase his thinking and design skills, with an intermix of engineering mindset.",
             extra: { projects: knowledge.projects }, // this is important
         };
     }
@@ -2636,7 +2636,7 @@ function appendPrompts(container) {
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
         { text: "🛠️ Skills", displayText: "What are Alex's skills?", query: "skills" },
         { text: "👨‍💻 Coding", displayText: "What is Alex's coding background?", query: "code" },
-        { text: "📍 Location", displayText: "What time zone is Alex In?", query: "Located" },
+        { text: "📍 Time Zone", displayText: "What time zone is Alex In?", query: "Located" },
         { text: "☀️ Weather", displayText: "What's the weather like today?", query: "weather" }
     ];
 
