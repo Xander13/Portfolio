@@ -323,14 +323,32 @@ function showSlashMenu() {
     });
 }
 
+function isBareSlashShortcutInput(value) {
+    if (value == null) return false;
+    return /^\/\s*$/.test(String(value));
+}
+
+function normalizeSlashCommandText(value) {
+    const text = String(value || "").trim();
+    if (!text.startsWith("/")) return text;
+    return text.replace(/^\/\s*/, "").trim();
+}
+
+function autoFormatSlashCommandInput(value) {
+    const text = String(value || "");
+    if (!text.startsWith("/")) return text;
+    if (text.startsWith("/ ")) return text;
+    if (text === "/") return text;
+    return "/ " + text.slice(1).trim();
+}
+
 function updateSlashMenu() {
     if (!input) initElements();
     if (!input) return;
 
     const rawValue = input.value || "";
-    const trimmedValue = rawValue.trim();
 
-    if (trimmedValue.startsWith("/")) {
+    if (isBareSlashShortcutInput(rawValue)) {
         showSlashMenu();
     } else {
         hideSlashMenu();
@@ -910,23 +928,23 @@ function enterNoteMode() {
 function shouldEnterNoteMode(userText) {
     const rawText = String(userText || "").toLowerCase().trim();
 
-    if (/^\-?notes?$/.test(rawText)) {
+    if (/^(?:\/\s*|\-)?notes?$/.test(rawText)) {
         return true;
     }
 
-    if (/^(write|make|start|create)\s+(a\s+)?new\s+notes?\??$/.test(rawText)) {
+    if (/^(?:\/\s*)?(write|make|start|create)\s+(a\s+)?new\s+notes?\??$/.test(rawText)) {
         return true;
     }
 
-    if (/^(write|make|start|create)\s+(a\s+)?note\??$/.test(rawText)) {
+    if (/^(?:\/\s*)?(write|make|start|create)\s+(a\s+)?note\??$/.test(rawText)) {
         return true;
     }
 
-    if (/(^|\s)\-notes?\b/.test(rawText)) {
+    if (/(?:^|\s)(?:\/\s*|\-)?notes?\b/.test(rawText)) {
         return true;
     }
 
-    if (/\blet'?s\s+write\s+some\s+\-?notes?\b/.test(rawText)) {
+    if (/\blet'?s\s+write\s+some\s+(?:\/\s*|\-)?notes?\b/.test(rawText)) {
         return true;
     }
 
@@ -1955,8 +1973,11 @@ async function sendMessage() {
     if (!input || !responseBox) initElements();
     if (!input || !responseBox) return;
 
-    const userText = input.value.trim();
-    if (!userText) return;
+    const rawUserText = input.value.trim();
+    if (!rawUserText) return;
+
+    const safeUserText = normalizeSlashCommandText(rawUserText);
+    const userText = safeUserText || rawUserText;
     const normalizedUserText = normalizeText(userText);
 
     if (shouldClearChat(userText)) {
@@ -1968,7 +1989,7 @@ async function sendMessage() {
         return;
     }
 
-    if (shouldEnterNoteMode(userText)) {
+    if (shouldEnterNoteMode(rawUserText)) {
         enterNoteMode();
         input.value = "";
         return;
@@ -2532,13 +2553,18 @@ window.addEventListener('load', async () => {
 
     // Hide helper when user starts typing
     input.addEventListener('input', () => {
+        const formattedInput = autoFormatSlashCommandInput(input.value);
+        if (formattedInput !== input.value) {
+            input.value = formattedInput;
+        }
+
         updateSlashMenu();
 
         if (input.value.length > 0 && chatContainer) {
             chatContainer.classList.remove('show-helper');
         }
 
-        if (!input.value.trim().startsWith("/") && slashMenu) {
+        if (!isBareSlashShortcutInput(input.value) && slashMenu) {
             hideSlashMenu();
         }
     });
@@ -2630,7 +2656,7 @@ function appendPrompts(container) {
     // Create clickable prompt links
     const prompts = [
         { text: "🎯 Target jobs", displayText: "What's Alex's dream job?", query: "dream job" },
-        { text: "💼 Role", displayText: "What's Alex's current role?", query: "role" },
+        { text: "💼 Curent job", displayText: "What's Alex's current role?", query: "role" },
         { text: "🎓 Education", displayText: "What's Alex's educational background?", query: "education" },
         { text: "👤 About", displayText: "Tell me about Alex", query: "background" },
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
@@ -2714,7 +2740,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 });
-
 
 // -------- Placeholder Animation --------
 function animatePlaceholder() {
