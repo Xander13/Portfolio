@@ -959,11 +959,10 @@ function shouldEnterNoteMode(userText) {
 // -------- Load Knowledge JSON --------
 async function loadKnowledge() {
     try {
-        const res = await fetch("js/knowledgeTree.json");
+        const res = await fetch("/api/knowledge");
         knowledge = await res.json();
-        console.log("Knowledge loaded:", knowledge);
     } catch (err) {
-        console.error("Failed to load knowledgeTree.json", err);
+        console.error("Failed to load knowledge data", err);
     }
 }
 
