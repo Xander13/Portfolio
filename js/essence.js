@@ -1633,7 +1633,7 @@ function processPlaceholders(text) {
     }
     if (text.includes("{{gameboy}}")){
         inlineLinks.push({
-            searchText: "gameboy",
+            searchText: "{{gameboy}}",
             href: knowledge.links?.gameboy || "https://en.wikipedia.org/wiki/Game_Boy",
             linkText: "Game Boy (1989)"
         });
@@ -1704,7 +1704,7 @@ const personalSynonyms = {
     resume: ["resume", "alex's resume", "CV", "cv"],
     coding: ["coding", "code", "programming", "development", "engineering", "cs", "computer science", "algorithm", "algorithms", "sort", "sorting"],
     Favcolor: ["What is Alex's favorite color", "fav color", "favorite Color"],
-    Favproduct: ["What Alex's favorite product", "fav product", "favorite product"]
+    Favproduct: ["What Alex's favorite product", "fav product", "favorite product", "fav toy", "fav inventions"]
 };
 
 
