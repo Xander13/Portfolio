@@ -1631,6 +1631,13 @@ function processPlaceholders(text) {
             linkText: fullPhrase
         });
     }
+    if (text.includes("{{gameboy}}")){
+        inlineLinks.push({
+            searchText: "gameboy",
+            href: knowledge.links?.gameboy || "https://en.wikipedia.org/wiki/Game_Boy",
+            linkText: "Game Boy (1989)"
+        });
+    }
     if (text.includes("{{jnj}}")) {
         const fullPhrase = "JnJ MedTech's";
         text = text.replace("{{jnj}}", fullPhrase);
