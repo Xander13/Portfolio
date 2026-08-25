@@ -1694,7 +1694,6 @@ const personalSynonyms = {
     deadlines: ["deadlines", "tight deadlines", "handle deadlines", "time pressure"],
     strength: ["strength", "strengths", "biggest strength", "what are you good at"],
     "successful project": ["successful project", "best project", "proudest project", "favorite project", "favourite project", "favorite personal project", "favorite case study", "favourite case study", "duolingo success"],
-    testimonies: ["testimonies", "recommendation", "what people say", "references", "feedback"],
     resume: ["resume", "alex's resume", "CV", "cv"],
     coding: ["coding", "code", "programming", "development", "engineering", "cs", "computer science", "algorithm", "algorithms", "sort", "sorting"],
     Favcolor: ["What is Alex's favorite color", "fav color", "favorite Color"],
@@ -1745,15 +1744,6 @@ async function findResponse(userInput) {
             sorting: true,
             instant: true
         }
-    }
-
-    if (matchedKeys.includes("Testimonies")) {
-        return {
-            text: knowledge.testimonies.text,
-            link: knowledge.testimonies.link,
-            inlineLink: true,
-            instant: true
-        };
     }
 
     if (matchedKeys.includes("linkedin")) {
@@ -2701,7 +2691,6 @@ function appendPrompts(container) {
         { text: "🎯 Target jobs", displayText: "What's Alex's dream job?", query: "dream job" },
         { text: "💼 Curent job", displayText: "What's Alex's current role?", query: "role" },
         { text: "🎓 Education", displayText: "What's Alex's educational background?", query: "education" },
-        { text: "✨ Testimony", displayText: "What people say about Alex?", query: "Testimony"},
         { text: "👤 About", displayText: "Tell me about Alex", query: "background" },
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
         { text: "🛠️ Skills", displayText: "What are Alex's skills?", query: "skills" },
