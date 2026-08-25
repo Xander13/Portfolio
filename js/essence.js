@@ -1703,8 +1703,8 @@ const personalSynonyms = {
     "successful project": ["successful project", "best project", "proudest project", "favorite project", "favourite project", "favorite personal project", "favorite case study", "favourite case study", "duolingo success"],
     resume: ["resume", "alex's resume", "CV", "cv"],
     coding: ["coding", "code", "programming", "development", "engineering", "cs", "computer science", "algorithm", "algorithms", "sort", "sorting"],
-    Favcolor: ["What is Alex's favorite color", "fav color", "favorite Color"],
-    Favproduct: ["What Alex's favorite product", "fav product", "favorite product", "fav toy", "fav inventions"]
+    favcolor: ["What is Alex's favorite color", "fav color", "favorite Color"],
+    favproduct: ["What Alex's favorite product", "fav product", "favorite product", "fav toy", "fav inventions"]
 };
 
 
@@ -1860,16 +1860,16 @@ Impact: Proved how platforms can tap into major underserved markets without comp
         };
     }
 
-    if (matchedKeys.includes("Favproduct")) {
+    if (matchedKeys.includes("favproduct")) {
         return {
-            text: knowledge.personal["Favproduct"],
+            text: knowledge.personal["favproduct"],
             instant: true
         };
     }
 
-    if (matchedKeys.includes("Favcolor")) {
+    if (matchedKeys.includes("favcolor")) {
         return {
-            text: knowledge.personal.Favcolor,
+            text: knowledge.personal.favcolor,
             instant: true
         }
     }
