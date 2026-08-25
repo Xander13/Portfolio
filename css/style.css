@@ -695,7 +695,7 @@ a {
     word-break: break-word;
 }
 
-.msgContent a{
+.msgContent a {
     text-decoration: underline !important;
 }
 
@@ -1458,6 +1458,38 @@ Slider effect
         flex: 0 0 65%;
         max-width: 750px;
     }
+
+    .aiMsg,
+    .userMsg {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .userMsg .msg-wrapper,
+    .aiMsg .msg-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    /* Staggered slide-in animations */
+    .label-col {
+        width: 100%;
+        position: relative;
+        animation: slideIn 0.6s ease forwards;
+    }
+
+    .msgContent {
+        padding-bottom: 64px;
+        width: 96%;
+        position: relative;
+        animation: slideIn 0.8s ease 0.15s forwards;
+        /* Delayed start */
+        opacity: 0;
+        /* Start hidden */
+        overflow-wrap: break-word;
+        word-break: break-word;
+    }
 }
 
 /* S screens → 1 full card */
@@ -1604,8 +1636,8 @@ Slider effect
 
     .aiMsg p,
     .userMsg p {
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 32px;
+        line-height: 42px;
         width: 100%;
     }
 
@@ -1626,13 +1658,15 @@ Slider effect
 
 
     .weather-confirmation-action {
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 32px;
+        line-height: 42px;
     }
 
     .IntroChat {
         text-wrap: balance;
         word-break: normal;
+        font-size: 32px !important;
+        line-height: 42px !important;
     }
 
     .nav-right,
@@ -1642,8 +1676,8 @@ Slider effect
 
     .aiMsg a,
     .userMsg a {
-        font-size: 24px;
-        line-height: 32px;
+        font-size: 32px;
+        line-height: 42px;
     }
 
     .send {

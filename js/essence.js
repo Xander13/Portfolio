@@ -2674,7 +2674,7 @@ function showWelcomeMessage() {
     p.id = "IntroChat";
     p.classList.add("IntroChat"); // Add class for CSS padding
 
-    const welcomeText = "👋 I'm Essence — Alex's portfolio assistant.<br>Ask me anything about his work, skills, or the weather.";
+    const welcomeText = "👋 I'm Essence — Alex's portfolio assistant. Ask me anything about his work, skills, or the weather.";
 
     wrapper.appendChild(p);
     card.appendChild(wrapper);
