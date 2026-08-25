@@ -24,7 +24,7 @@ function initElements() {
 let questionCount = 0;
 const wordSpeed = 4;
 let welcomeShown = false;
-const maxQuestions = 25; // No limit on questions
+const maxQuestions = 25;
 let isExpanded = false;
 let pendingWeatherConfirmation = false;
 let pendingTimerRestart = false;
@@ -115,7 +115,7 @@ async function getWeatherResponse() {
     } catch (error) {
         console.error("Unable to load NWS weather data", error);
         return {
-            text: "Hmm, I’m not sure about today’s weather right now. I hope it’s nice.",
+            text: "Hmm, I'm not sure about today's weather right now. I hope it's nice.",
             instant: true
         };
     }
@@ -1249,17 +1249,12 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             appendSortingVisualization(content);
         }
 
-        // Append Fourier Visualization if provided
-        if (extra.fourier) {
-            appendFourierVisualization(content);
-        }
-
         if (extra.noteMode) {
             appendNoteEditor(content);
         }
 
 
-        // ✅ Append standalone link if provided
+        // Append standalone link if provided
         if (extra?.link && extra.inlineLink) {
             const allPs = content.querySelectorAll("p");
             const lastP = allPs[allPs.length - 1] || p;
@@ -1764,8 +1759,6 @@ async function findResponse(userInput) {
 
     if (matchedKeys.includes("education")) {
         return {
-            // This ensures the text and link objects are passed 
-            // so your parser can inject the <a> tag into the {{{rit}}} placeholder
             text: knowledge.education.text,
             link: knowledge.education.link,
             inlineLink: true, 
@@ -1823,7 +1816,6 @@ Impact: Proved how platforms can tap into major underserved markets without comp
 
     // Priority checks for specific interview questions BEFORE general matching
     // This prevents "tell me about alex's strength" from matching "background"
-
     if (matchedKeys.includes("strengths")) {
         return {
             text: knowledge.personal["strengths"],
@@ -1907,7 +1899,7 @@ Impact: Proved how platforms can tap into major underserved markets without comp
     )) {
         return {
             text: "Here are some projects Alex has worked on. They are case studies that showcase his thinking and design skills, with an intermix of engineering mindset.",
-            extra: { projects: knowledge.projects }, // this is important
+            extra: { projects: knowledge.projects }
         };
     }
 
@@ -1947,8 +1939,8 @@ Impact: Proved how platforms can tap into major underserved markets without comp
                 images: cs.images,
                 videos: cs.videos,
                 link: cs.link,
-                color: cs.color, // Pass color from knowledge
-                caseStudy: cs // Pass full case study object
+                color: cs.color,
+                caseStudy: cs
             };
         }
     }
@@ -1975,7 +1967,7 @@ Impact: Proved how platforms can tap into major underserved markets without comp
         };
     }
 
-    return { text: "Hmm… I don’t have an answer for that." };
+    return { text: "Hmm… I don't have an answer for that." };
 }
 
 
@@ -1987,20 +1979,6 @@ function getDetroitTime() {
         minute: "2-digit",
         hour12: true
     });
-}
-
-
-// -------- Friendly Openers --------
-function getFriendlyOpener() {
-    const openers = [
-        "Absolutely,",
-        "Sure,",
-        "Of course,",
-        "I'm glad to help,",
-        "Definitely,",
-        "Happy to share,"
-    ];
-    return openers[Math.floor(Math.random() * openers.length)];
 }
 
 function shouldClearChat(userText) {
@@ -2079,7 +2057,7 @@ async function sendMessage() {
         pendingWeatherConfirmation = false;
         answerObj = normalizedUserText === "yes"
             ? await getWeatherResponse()
-            : { text: "Hmm, I’m not sure what the weather will be today. I hope it’s nice." };
+            : { text: "Hmm, I'm not sure what the weather will be today. I hope it's nice." };
     } else {
         answerObj = await findResponse(userText);
     }
@@ -2105,7 +2083,6 @@ async function sendMessage() {
         inlineLinks: answerObj.inlineLinks,
         worldClocks: answerObj.worldClocks,
         sorting: answerObj.sorting,
-        fourier: answerObj.fourier,
         weatherConfirmation: answerObj.weatherConfirmation,
         timer: answerObj.timer
     });
@@ -2212,16 +2189,15 @@ function appendProjectsGrid(projects, container, skipSpaceTop = false) {
     // Scroll to peek at projects (not all the way to bottom)
     setTimeout(() => {
         if (responseBox) {
-            // Scroll down just enough to show a peek (30vh)
             const currentScroll = responseBox.scrollTop;
-            const peekAmount = window.innerHeight * 0.3; // 30% of viewport height
+            const peekAmount = window.innerHeight * 0.3;
 
             responseBox.scrollTo({
                 top: currentScroll + peekAmount,
                 behavior: 'smooth'
             });
         }
-    }, 100); // Small delay to ensure DOM is updated
+    }, 100);
 }
 
 
@@ -2236,7 +2212,7 @@ function createProjectItem(project) {
 
     if (isComingSoon) {
         wrapper.style.cursor = "default";
-        wrapper.style.pointerEvents = "none"; // Disable interactions
+        wrapper.style.pointerEvents = "none";
     } else {
         wrapper.style.cursor = "pointer";
     }
@@ -2264,12 +2240,9 @@ function createProjectItem(project) {
                 appendMessage("ai", `Here is the full case study for ${project.title}:`, false, {
                     caseStudy: caseStudy
                 });
-                // Actually, simply setting window.location.href is better if user wants to jump pages.
-                // "When user click on them it will jump to that page."
                 if (caseStudy.link) {
                     // Trigger fade out
                     document.body.classList.remove('loaded');
-
                     // Wait for transition then navigate
                     setTimeout(() => {
                         window.location.href = caseStudy.link;
@@ -2672,7 +2645,7 @@ function showWelcomeMessage() {
 
     const p = document.createElement("p");
     p.id = "IntroChat";
-    p.classList.add("IntroChat"); // Add class for CSS padding
+    p.classList.add("IntroChat");
 
     const welcomeText = "👋 I'm Essence — Alex's portfolio assistant. Ask me anything about his work, skills, or the weather.";
 
@@ -2989,7 +2962,7 @@ function appendSortingVisualization(container) {
             btn1x.style.color = "var(--white)";
         }
     };
-    updateSpeedBtns(); // Init state
+    updateSpeedBtns();
 
     btnRow.appendChild(minusBtn);
     btnRow.appendChild(plusBtn);
@@ -3127,7 +3100,7 @@ async function runBubbleSort(container, data, maxN, theme, speedConfig = { multi
         for (let i = 0; i < n - 1; i++) {
             // Visualize comparison
             renderBars(container, data, maxN, theme, [i], [i + 1], speedConfig);
-            await new Promise(r => setTimeout(r, 100 * speedConfig.multiplier)); // Delay for comparison
+            await new Promise(r => setTimeout(r, 100 * speedConfig.multiplier));
 
             if (data[i].value > data[i + 1].value) {
                 // Swap
@@ -3139,7 +3112,7 @@ async function runBubbleSort(container, data, maxN, theme, speedConfig = { multi
 
                 // Visualize Swap (Active moving)
                 renderBars(container, data, maxN, theme, [i + 1], [i], speedConfig);
-                await new Promise(r => setTimeout(r, 100 * speedConfig.multiplier)); // Delay
+                await new Promise(r => setTimeout(r, 100 * speedConfig.multiplier));
             }
         }
         n--;
@@ -3162,7 +3135,7 @@ async function runCountingSort(container, data, maxN, theme, speedConfig = { mul
 
     // 2. Count occurrences
     const count = new Array(max + 1).fill(0);
-    const countMap = {}; // To store the original objects by value
+    const countMap = {};
 
     for (let i = 0; i < n; i++) {
         // Visualize Scanning
@@ -3259,15 +3232,4 @@ async function runQuickSort(container, data, maxN, theme, speedConfig = { multip
     await quickSortHelper(data, 0, data.length - 1);
     renderBars(container, data, maxN, theme, [], [], speedConfig);
     return Date.now() - startTime;
-}
-
-
-// -------- Fourier Visualization (Stub) --------
-function appendFourierVisualization(container) {
-    const wrapper = document.createElement("div");
-    wrapper.classList.add("fourier-wrapper");
-    wrapper.style.padding = "20px";
-    wrapper.style.textAlign = "center";
-    wrapper.innerHTML = "<p>Fourier Transform visualization coming soon...</p>";
-    container.appendChild(wrapper);
 }
