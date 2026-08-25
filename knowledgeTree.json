@@ -157,17 +157,17 @@
   "Skills": {
     "column1": [
       "Interaction Design",
+      "Design Engineering",
       "Feature Scoping",
       "Prototyping",
-      "Wireframing",
-      "Visual Design"
+      "Wireframing"
     ],
     "column2": [
       "HTML / CSS",
       "JavaScript",
       "Python",
       "SQL",
-      "Git"
+      "Basic C# / Java"
     ],
     "column3": [
       "Communication",
@@ -178,10 +178,10 @@
     ],
     "column4": [
       "GitHub / Vercel",
-      "Figma",
+      "Figma / Sketch",
       "Antigravity",
       "Chrome DevTools",
-      "LaTeX"
+      "LaTeX / MD"
     ]
   }
 }
