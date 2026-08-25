@@ -1697,7 +1697,7 @@ const personalSynonyms = {
     resume: ["resume", "alex's resume", "CV", "cv"],
     coding: ["coding", "code", "programming", "development", "engineering", "cs", "computer science", "algorithm", "algorithms", "sort", "sorting"],
     Favcolor: ["What is Alex's favorite color", "fav color", "favorite Color"],
-    Favproduct: ["What Alex's favorite product", "fav product", "favorite product"]
+    inventions: ["What Alex's favorite inventions", "fav inventions", "favorite inventions"]
 };
 
 
@@ -1853,9 +1853,9 @@ Impact: Proved how platforms can tap into major underserved markets without comp
         };
     }
 
-    if (matchedKeys.includes("Favproduct")) {
+    if (matchedKeys.includes("inventions")) {
         return {
-            text: knowledge.personal["Favproduct"],
+            text: knowledge.personal["inventions"],
             instant: true
         };
     }
