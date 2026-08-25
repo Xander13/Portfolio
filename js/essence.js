@@ -124,7 +124,7 @@ async function getWeatherResponse() {
 function getWeatherConfirmation() {
     pendingWeatherConfirmation = true;
     return {
-        text: "I can pull today's local forecast directly from weather.gov. Click or type <strong>Yes</strong> to continue. Your browser will ask for permission, and your location data is never saved.",
+        text: "I can pull today's local forecast directly from {{weatherSite}}. Click or type <strong>Yes</strong> to continue. Your browser will ask for permission, and your location data is never saved.",
         weatherConfirmation: true,
         instant: true
     };
@@ -214,12 +214,17 @@ const slashShortcuts = [
         value: "write a new note"
     },
     {
-        label: "Check weather",
+        label: "Check today's weather",
         value: "What's the weather like today?"
     },
     {
         label: "Set a timer to...",
         value: "Set a timer to ",
+        sendOnSelect: false
+    },
+    {
+        label: "Clear chat",
+        value: "Clear chat",
         sendOnSelect: false
     }
 ];
@@ -1578,6 +1583,21 @@ function processPlaceholders(text) {
     if (text.includes("{{time}}")) {
         text = text.replace("{{time}}", getDetroitTime());
     }
+    if (text.includes("{{sean}}")){
+        text = text.replace("{{sean}}", "Sean Klassen")
+        inlineLinks.push({
+            searchText: "Sean Klassen",
+            href: knowledge.links?.sean || "https://www.linkedin.com/in/klassen/",
+            lineText: "Sean Klassen"
+        })
+    }
+    if (text.includes("{{weatherSite}}")) {
+        text = text.replace("{{weatherSite}}", "weather.gov");
+        inlineLinks.push({
+            href: knowledge.links?.weatherSite || "https://www.weather.gov/",
+            linkText: "weather.gov"
+        });
+    }
     if (text.includes("{{leftfieldlab}}")) {
         text = text.replace("{{leftfieldlab}}", "Left Field Lab");
         inlineLinks.push({
@@ -1678,6 +1698,8 @@ const personalSynonyms = {
     testimonies: ["testimonies", "recommendation", "what people say", "references", "feedback"],
     resume: ["resume", "alex's resume", "CV", "cv"],
     coding: ["coding", "code", "programming", "development", "engineering", "cs", "computer science", "algorithm", "algorithms", "sort", "sorting"],
+    Favcolor: ["What is Alex's favorite color", "fav color", "favorite Color"],
+    Favproduct: ["What Alex's favorite product", "fav product", "favorite product"]
 };
 
 
@@ -1700,7 +1722,7 @@ async function findResponse(userInput) {
         });
         const formattedDetroitTime = detroitTime.replace(/^0/, "").replace(" ", "");
         return {
-            text: `It's currently ${formattedDetroitTime} in Detroit Metro Area (GMT-4). Here are a few other time zones I enjoy looking at!`,
+            text: `It's currently ${formattedDetroitTime} in Detroit Metro Area (GMT-4). Here are a few other time zones I enjoy looking at! ↓`,
             worldClocks: true // Flag to render world clocks
         };
     }
@@ -1724,6 +1746,15 @@ async function findResponse(userInput) {
             sorting: true,
             instant: true
         }
+    }
+
+    if (matchedKeys.includes("Testimonies")) {
+        return {
+            text: knowledge.testimonies.text,
+            link: knowledge.testimonies.link,
+            inlineLink: true,
+            instant: true
+        };
     }
 
     if (matchedKeys.includes("linkedin")) {
@@ -1831,6 +1862,20 @@ Impact: Proved how platforms can tap into major underserved markets without comp
             text: knowledge.personal["deadlines"],
             instant: true
         };
+    }
+
+    if (matchedKeys.includes("Favproduct")) {
+        return {
+            text: knowledge.personal["Favproduct"],
+            instant: true
+        };
+    }
+
+    if (matchedKeys.includes("Favcolor")) {
+        return {
+            text: knowledge.personal.Favcolor,
+            instant: true
+        }
     }
 
     if (matchedKeys.length > 0) {
@@ -2082,10 +2127,9 @@ function appendProjectsGrid(projects, container, skipSpaceTop = false) {
     projectWrapper.style.maxWidth = "100%";
     projectWrapper.style.display = "flex";
     projectWrapper.style.flexDirection = "column";
-    projectWrapper.style.gap = "10vh"; // Big gap for spacing
+    projectWrapper.style.gap = "10vh";
 
     let i = 0;
-    // Layout pattern: 0: Full(100), 1: Split(50/40), 2: Wide(80) ... repeat
     let patternIndex = 0;
 
     while (i < projects.length) {
@@ -2658,11 +2702,12 @@ function appendPrompts(container) {
         { text: "🎯 Target jobs", displayText: "What's Alex's dream job?", query: "dream job" },
         { text: "💼 Curent job", displayText: "What's Alex's current role?", query: "role" },
         { text: "🎓 Education", displayText: "What's Alex's educational background?", query: "education" },
+        { text: "✨ Testimony", displayText: "What people say about Alex?", query: "Testimony"},
         { text: "👤 About", displayText: "Tell me about Alex", query: "background" },
         { text: "🚀 Projects", displayText: "What projects has Alex worked on?", query: "projects" },
         { text: "🛠️ Skills", displayText: "What are Alex's skills?", query: "skills" },
         { text: "👨‍💻 Coding", displayText: "What is Alex's coding background?", query: "code" },
-        { text: "📍 Time Zone", displayText: "What time zone is Alex In?", query: "Located" },
+        { text: "📍 Time Zone", displayText: "What time zone is Alex In?", query: "located" },
         { text: "☀️ Weather", displayText: "What's the weather like today?", query: "weather" }
     ];
 

@@ -5,7 +5,8 @@
     "microsoft": "https://www.xbox.com/en-US/community/for-everyone/accessibility",
     "apple": "https://www.apple.com/diversity/",
     "jnj": "https://www.careers.jnj.com/en/",
-    "weatherBug": "https://www.weatherbug.com/"
+    "sean": "https://www.linkedin.com/in/klassen/", 
+    "weatherSite": "https://www.weather.gov/"
   },
   "projects": [
     {
@@ -30,7 +31,7 @@
     }
   ],
   "personal": {
-    "testimonies": "Alex is a remarkably talented designer and conceptual thinker. From his first day at Instrument, he jumped in and made our team better through diving right into the work creating unique concepts and thoughtfully sharing feedback with teammates. I especially appreciated his enthusiasm and positive attitude towards solving problems and collaborating. He would make a great addition to your team. I know I hope we get to work together again in the future.<br><br> – Sean Joseph Klassen, Instrument",
+    "Testimony": "Instrument: <br><br> Alex is a remarkably talented designer and conceptual thinker. <br> <br> From his first day at Instrument, he jumped in and made our team better through diving right into the work creating unique concepts and thoughtfully sharing feedback with teammates. I especially appreciated his enthusiasm and positive attitude towards solving problems and collaborating. <br> <br> He would make a great addition to your team. I know I hope we get to work together again in the future. - {{sean}}",
     "currentTime": "The local time is {{time}}",
     "background": "Alex Kauffman is a designer who graduated with a BFA from {{rit}}. After years of working in digital design, he is shifting his focus toward human factors engineering and human interface design, grounding his work in systems that amplify user cognition rather than automate it.<br><br>Outside of work, Alex spends his time riding dirt bikes, snowboarding, and traveling.",
     "what time is it": "The local time is {{time}}",
@@ -55,7 +56,9 @@
     "duolingo success": "The Duolingo ASL case study stands out as my favorite project for its technical and strategic challenge: integrating American Sign Language into a rigid, world-class design system. Combining UI design, accessibility strategy, and working front-end code, I built a functional proof-of-concept that shows how platforms can expand into underserved markets while maintaining complete design consistency.",
     "coding": "Alex thrives at the intersection of design and interface logic, translating human intent into responsive environments. Drawing inspiration from classic computing architecture and command-line interfaces, he values software that demands active participation and clear feedback over black-box automation.",
     "ai_thinking": "I believe AI has real value in science and engineering—especially in areas like protein modeling, vaccine development, and pattern discovery where speed and scale matter. <br><br> I’m far less convinced by generative AI as a surrogate for human reasoning. Technology should serve as a bicycle for the mind, not a replacement for it. Older paradigms like CLI systems excel because they keep the user actively thinking and researching. <br><br> AI should extend human cognition, surface patterns, and reduce friction—it is not the output. Humans define the intent, context, and meaning. AI is just a tool to amplify our thinking, not replace it. <br><br> In the end, the essence of computing depends on human agency.",
-    "weather": "Todays weather is {{weather}}"
+    "weather": "Todays weather is {{weather}}",
+    "Favcolor": "Dark Green (#06402B): <br><br> A rich, nature-inspired hue that brings an affluent layer to any space or product—striking the perfect antidote to overused millennial gray.",
+    "Favproduct": "The Product: <br><br> The original Game Boy (DMG) system. <br><br>The Core Insight: Pure engineering within strict constraints. Today's software often relies on massive RAM, GPUs, and bloated interfaces just to function. The Game Boy proves that when every byte and pixel matters, simplicity wins.<br><br>Why it matters to my work: It taught me that we don't need to over-engineer to create impact. With just two input buttons and a monochrome screen, it delivered deep engagement through pure systems thinking. I build with that same respect for performance, efficiency, and intentional design. <br><br> My second favorite product is the The Apollo Guidance Computer which uses the core rope memory, where software code was literally woven by hand using copper wires and tiny magnetic rings."
   },
   "resume_post": {
     "text": "Check out the Alex Kauffman's resume:",
@@ -68,8 +71,15 @@
     "text": "Todays weather looks like:",
     "apiUrl": "",
     "link": {
-      "href": "https://www.weatherbug.com/",
-      "text": "Weatherbug"
+      "href": "https://www.weather.gov/",
+      "text": "weather.gov"
+    }
+  },
+  "sean": {
+    "text": "Alex is a remarkably talented designer and conceptual thinker. From his first day at Instrument, he jumped in and made our team better through diving right into the work creating unique concepts and thoughtfully sharing feedback with teammates. I especially appreciated his enthusiasm and positive attitude towards solving problems and collaborating. He would make a great addition to your team. I know I hope we get to work together again in the future.<br><br> – Sean Joseph Klassen, Ex. Instrument : Creative Director, Product. <br><br> LinkedIn:",
+    "link": {
+      "href": "https://www.linkedin.com/in/klassen/",
+      "text": "Bio"
     }
   },
   "duolingo_post": {
@@ -142,13 +152,6 @@
       "description": "LinkedIn - 2 min read",
       "layout": "w-30",
       "link": "https://www.linkedin.com/feed/update/urn:li:activity:7304941151713669120/?originTrackingId=s9MANCPxTyirzbpju6EBeg%3D%3D"
-    },
-    {
-      "media": "img/ComingSoon.png",
-      "title": "Issue 3 - Pending",
-      "description": "Coming soon",
-      "layout": "w-30",
-      "isPending": true
     }
   ],
   "Skills": {
@@ -180,136 +183,5 @@
       "Chrome DevTools",
       "LaTeX"
     ]
-  },
-  "case studies": {
-    "Copilot": {
-      "title": "MS VSC Copilot",
-      "duration": "4 Weeks",
-      "projectType": "Case Study",
-      "link": "https://alex-kauffman.com/MSCopilot.html",
-      "description": "Bringing new ways for MS VSC to improve with Copilot.",
-      "content": [
-        {
-          "type": "video",
-          "files": [
-            "video/GithubSplash.mp4"
-          ]
-        }
-      ]
-    },
-    "Duolingo ASL": {
-      "title": "Duolingo ASL Accessibility Project",
-      "role": "Product Designer",
-      "duration": "4 Weeks",
-      "projectType": "Case Study",
-      "link": "https://alex-kauffman.com/duolingoasl.html",
-      "description": "Created a new business pipeline proposal integrating ASL features. Millions of deaf users face language access barriers...",
-      "content": [
-        {
-          "type": "video",
-          "files": [
-            "video/Duolingo_ASL_Lily.mp4"
-          ]
-        },
-        {
-          "type": "images",
-          "width": "w-100",
-          "files": [
-            "img/Duoling_Feature1.png"
-          ]
-        },
-        {
-          "type": "images",
-          "width": "w-50",
-          "files": [
-            "img/Duoling_Feature2.png",
-            "img/Duoling_Feature3.png"
-          ]
-        },
-        {
-          "type": "video",
-          "files": [
-            "video/Duoling_Feature4.mp4"
-          ]
-        }
-      ]
-    },
-    "Vigor Fitness": {
-      "title": "Vigor Fitness",
-      "role": "Product Designer",
-      "duration": "15 Weeks",
-      "projectType": "Case Study",
-      "description": "Reimagning fitness in a gamification way to avoid burnouts.",
-      "link": "https://alex-kauffman.com/vigor.html",
-      "content": [
-        {
-          "type": "video",
-          "width": "fullBleed",
-          "files": [
-            "video/VigorSplash.mp4"
-          ]
-        },
-        {
-          "wideTitle": "The challenge was to create a mobile fitness platform designed for phone screens with our own liberty."
-        },
-        {
-          "type": "text",
-          "layout": "split_view",
-          "intro_title": "Vigor Fitness",
-          "intro_paragraph": "Vigor helps busy Americans stay active by turning everyday movement into real progress. Through user research, I shaped a gamified system that transforms daily energy into meaningful action.<br><br>The experience blends mobile and Apple Watch tracking to capture the way people actually move — walking to work, taking the stairs, biking, gardening, and more. Research made one thing clear: most people don’t connect with traditional gyms. They feel uncomfortable, unsure of the equipment, or simply too busy. Vigor meets them where movement already happens."
-        },
-        {
-          "type": "images",
-          "width": "w-50",
-          "files": [
-            "img/Vigor_image13.png",
-            "img/Vigor_image10.png"
-          ]
-        },
-        {
-          "type": "images",
-          "width": "w-100",
-          "files": [
-            "img/Vigor_Widgets.png"
-          ]
-        },
-        {
-          "type": "images",
-          "width": "w-50",
-          "files": [
-            "img/Vigor_image12.png",
-            "img/Vigor_image13.png"
-          ]
-        },
-        {
-          "type": "images",
-          "width": "sixty-left",
-          "files": [
-            "img/Vigor_content_cards.png"
-          ]
-        },
-        {
-          "type": "images",
-          "width": "sixty-right",
-          "files": [
-            "img/Vigor_content_cards.png"
-          ]
-        }
-      ]
-    },
-    "Apple Live Captions": {
-      "title": "Apple Live Captions",
-      "chips": "Concept, HI Design, Accessibility",
-      "description": "Redesigned Apple's Live Captions to improve the accesbility ecosystem exploring what is accessible needs and inclusive needs for everyday users.",
-      "link": "https://alex-kauffman.com/applelivecpations.html",
-      "content": [
-        {
-          "type": "video",
-          "files": [
-            "video/Apple_LiveCC.mp4"
-          ]
-        }
-      ]
-    }
   }
 }

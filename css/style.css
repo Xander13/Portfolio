@@ -695,6 +695,10 @@ a {
     word-break: break-word;
 }
 
+.msgContent a{
+    text-decoration: underline !important;
+}
+
 @keyframes slideIn {
     from {
         top: 40px;
