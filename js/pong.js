@@ -7,7 +7,7 @@ const balls = [
 ];
 
 let width, height;
-let gridSize = 80;
+let gridSize = 40;
 let cols, rows;
 let matrix = [];
 let offsetX = 0;
@@ -32,7 +32,7 @@ function init() {
     height = canvas.height = window.innerHeight;
 
     // Determine target grid size based on screen
-    let targetGridSize = width < 768 ? 40 : 80;
+    let targetGridSize = width < 768 ? 40 : 40;
 
     // Calculate how many blocks fit, ensuring even numbers for perfect split
     cols = Math.floor(width / targetGridSize);
@@ -46,7 +46,7 @@ function init() {
 
     // Update ball sizes proportionally
     balls.forEach(b => {
-        b.size = width < 768 ? 40 : 60;
+        b.size = width < 768 ? 40 : 40;
     });
 
     // No offsets needed - blocks fill edge to edge
@@ -65,7 +65,7 @@ function init() {
     // Random Winner Bias
     const winner = balls[Math.floor(Math.random() * balls.length)];
     balls.forEach((ball) => {
-        ball.strength = (ball.id === winner.id) ? 1.06 : 0.96;
+        ball.strength = (ball.id === winner.id) ? 1 : 4;
 
         if (ball.id === 'ball-black') {
             ball.x = width * 0.5;
@@ -135,7 +135,7 @@ function moveBall(ball) {
             ball.dy += (Math.random() - 0.5) * 2;
 
             const speed = Math.sqrt(ball.dx * ball.dx + ball.dy * ball.dy);
-            const targetSpeed = width < 768 ? 6.5 : 8.5;
+            const targetSpeed = width < 768 ? 4 : 4;
             ball.dx = (ball.dx / speed) * targetSpeed;
             ball.dy = (ball.dy / speed) * targetSpeed;
         }

@@ -1960,6 +1960,7 @@ Slider effect
     left: 56px;
     right: 56px;
     z-index: 1000;
+    justify-content: end;
 }
 
 .error-page .big-text {
