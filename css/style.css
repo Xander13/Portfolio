@@ -4,9 +4,7 @@
 :root {
     /* Colors */
     --primary: #080808;
-    /* black background */
     --white: #f6f6f6;
-    /* white text */
     --gray: #A5A5A5;
     --dark-gray: #333333;
     --dark-gray-btn: #222222;
@@ -61,17 +59,13 @@ body.essence-mode {
     overflow: hidden;
 }
 
-/* B-Side Mobile Scroll Fixes */
 .bside-page {
-    /* Prevent Safari from bouncing the whole body */
     overscroll-behavior-y: none;
     -webkit-overflow-scrolling: touch;
 }
 
 .bside-page .autoScrollGallery {
-    /* Tell Safari we are handling the vertical pan */
     touch-action: pan-y;
-    /* Prevent unexpected horizontal shifts */
     overflow-x: hidden;
     width: 100%;
 }
@@ -89,7 +83,6 @@ body.essence-mode {
     padding-bottom: 16px;
 }
 
-/* Fade transitions for mode switching */
 .fade-out {
     opacity: 0;
     transition: opacity 0.5s ease-out;
@@ -105,6 +98,9 @@ body.essence-mode {
     overflow-y: hidden;
 }
 
+/* -------------------------------------------------
+   Speach Mode
+   ------------------------------------------------- */
 .modes {
     display: flex;
     align-items: center;
@@ -130,7 +126,6 @@ body.essence-mode {
     transition: background-color 0.3s, transform 0.3s;
 }
 
-/* Speech Mode Active States */
 .modes {
     cursor: pointer;
 }
@@ -160,7 +155,6 @@ body.essence-mode {
     }
 }
 
-/* Highlighted Word */
 .word-highlight {
     color: var(--active-color, var(--orange)) !important;
     background: var(--active-gradient);
@@ -254,7 +248,6 @@ a {
     justify-content: center;
 }
 
-/* stacked media */
 .imageFLip img,
 .imageFLip video {
     position: absolute;
@@ -363,7 +356,6 @@ a {
     padding-bottom: 56px;
     position: relative;
     z-index: 2;
-    /* Ensure text is above canvas */
 }
 
 .hero h1 {
@@ -374,7 +366,6 @@ a {
     max-width: 70%;
     text-wrap: balance;
     padding-top: 0;
-    /* Reset padding from previous h1 style */
 }
 
 .hero p {
@@ -389,7 +380,6 @@ a {
 /* -------------------------------------------------
    Project Hero section
    ------------------------------------------------- */
-
 #heroTop {
     padding-top: 40vh;
     text-wrap: balance;
@@ -449,7 +439,6 @@ a {
     opacity: 0.6;
 }
 
-/* Top Navigation */
 .topNav {
     position: fixed;
     padding-bottom: 16px;
@@ -482,11 +471,9 @@ a {
     transform: translateX(-50%);
     top: 50%;
     margin-top: -12px;
-    /* Adjust for text height */
     width: fit-content;
     height: auto;
     gap: 32px;
-    /* More space between text */
     z-index: 20;
 }
 
@@ -494,15 +481,12 @@ a {
     display: flex;
     align-items: center;
     gap: 32px;
-    /* Space between Resume and Speech */
 }
 
 .pill-background {
     display: none;
-    /* Hide the old pill */
 }
 
-/* New Sliding Underline */
 .nav-underline {
     position: absolute;
     bottom: -8px;
@@ -511,7 +495,6 @@ a {
     background-color: var(--white);
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 0;
-    /* JS will set this */
     pointer-events: none;
 }
 
@@ -519,16 +502,13 @@ a {
     position: relative;
     z-index: 1;
     padding: 0;
-    /* Remove padding */
     transition: opacity 0.3s;
     text-decoration: none;
     opacity: 0.5;
-    /* Default dimmed */
 }
 
 .nav-pill-link.active {
     opacity: 1;
-    /* Active bright */
 }
 
 .nav-pill-link:hover {
@@ -676,7 +656,6 @@ a {
     align-items: flex-start;
 }
 
-/* Staggered slide-in animations */
 .label-col {
     width: 20%;
     position: relative;
@@ -688,9 +667,7 @@ a {
     width: 80%;
     position: relative;
     animation: slideIn 0.8s ease 0.15s forwards;
-    /* Delayed start */
     opacity: 0;
-    /* Start hidden */
     overflow-wrap: break-word;
     word-break: break-word;
 }
@@ -711,7 +688,6 @@ a {
     }
 }
 
-/* Thinking indicator */
 .thinking-indicator {
     display: flex;
     align-items: center;
@@ -783,7 +759,6 @@ a {
     align-items: center;
 }
 
-/* Particle effect for User label */
 .userMsg h6::before {
     content: '';
     display: inline-block;
@@ -804,7 +779,6 @@ a {
     align-items: center;
 }
 
-/* Particle effect for AI label */
 .aiMsg h6::before,
 .dot::before {
     content: '';
@@ -858,7 +832,6 @@ a {
     bottom: 0;
     transition: bottom 0.5s ease;
 }
-
 
 .chat-card {
     margin-bottom: 32px;
@@ -934,12 +907,9 @@ a {
     bottom: 0;
     left: 48px;
     right: 48px;
-    /* Constrain right side */
     transform: none;
     padding: 0;
-    /* Remove padding if not needed, or keep internal padding */
     width: auto;
-    /* Let left/right control width */
     height: 56px;
     box-sizing: border-box;
     display: flex;
@@ -1004,7 +974,6 @@ a {
 .inputBox input[type="text"] {
     flex: 1;
     font-size: 32px;
-    /* Larger to match chat */
     color: white;
     background: transparent;
     border: none;
@@ -1020,12 +989,10 @@ a {
     margin-left: 12px;
     padding-right: 0;
     font-size: 24px;
-    /* Larger send button */
     color: white;
     cursor: pointer;
 }
 
-/* Prompt cards */
 .promptContainer {
     display: flex;
     gap: var(--spacing-sm);
@@ -1057,7 +1024,9 @@ a {
     margin-bottom: 8px;
 }
 
-/* Skills */
+/* -------------------------------------------------
+   Skills
+   ------------------------------------------------- */
 .skillsContainer {
     display: flex;
     justify-content: space-between;
@@ -1091,7 +1060,9 @@ a {
     margin-bottom: 196px;
 }
 
-/* Projects grid */
+/* -------------------------------------------------
+   Project Grid
+   ------------------------------------------------- */
 .content {
     padding-left: 56px;
     padding-right: 56px;
@@ -1148,9 +1119,9 @@ a {
     color: var(--hl-color);
 }
 
-/*
-Slider effect
-*/
+/* -------------------------------------------------
+   Slider effect
+   ------------------------------------------------- */
 .carousel {
     position: relative;
     width: 100%;
@@ -1165,9 +1136,7 @@ Slider effect
 
 .card {
     flex: 0 0 40%;
-    /* ~2.2 cards on big screens */
     max-width: 700px;
-    /* comfortable but not huge */
     padding: 32px;
     background: #141414;
     font-size: 1.1rem;
@@ -1293,8 +1262,9 @@ Slider effect
     display: block;
 }
 
-
-/* Media wrappers */
+/* -------------------------------------------------
+   Media Wrapper
+   ------------------------------------------------- */
 .mediaWrapper {
     display: flex;
     flex-wrap: wrap;
@@ -1313,7 +1283,9 @@ Slider effect
     display: block;
 }
 
-/* Articles layout (index) */
+/* -------------------------------------------------
+   Articles
+   ------------------------------------------------- */
 .articles .flexBox {
     align-items: start;
 }
@@ -1396,7 +1368,6 @@ Slider effect
 
 .separator-line {
     display: none;
-    /* Removed as requested */
     width: 100%;
     height: 2px;
     background-color: rgba(255, 255, 255, 0.2);
@@ -1434,7 +1405,9 @@ Slider effect
     font-size: 124px;
 }
 
-/* XL screens (desktop) → ~2–3 in view */
+/* -------------------------------------------------
+   Media styling 1600 screens
+   ------------------------------------------------- */
 @media (min-width: 1600px) {
     .card {
         flex: 0 0 33%;
@@ -1443,7 +1416,9 @@ Slider effect
     }
 }
 
-/* L screens (laptops) → 2 cards visible */
+/* -------------------------------------------------
+   Media styling 1100-1599 screens
+   ------------------------------------------------- */
 @media (min-width: 1100px) and (max-width: 1599px) {
     .card {
         flex: 0 0 45%;
@@ -1452,7 +1427,9 @@ Slider effect
     }
 }
 
-/* M screens → 1.5 cards visible */
+/* -------------------------------------------------
+   Media styling 800-1099 screens
+   ------------------------------------------------- */
 @media (min-width: 800px) and (max-width: 1099px) {
     .card {
         flex: 0 0 65%;
@@ -1472,7 +1449,6 @@ Slider effect
         align-items: flex-start;
     }
 
-    /* Staggered slide-in animations */
     .label-col {
         width: 100%;
         position: relative;
@@ -1484,15 +1460,15 @@ Slider effect
         width: 96%;
         position: relative;
         animation: slideIn 0.8s ease 0.15s forwards;
-        /* Delayed start */
         opacity: 0;
-        /* Start hidden */
         overflow-wrap: break-word;
         word-break: break-word;
     }
 }
 
-/* S screens → 1 full card */
+/* -------------------------------------------------
+   Media styling >799 screens
+   ------------------------------------------------- */
 @media (max-width: 799px) {
     .card {
         flex: 0 0 90%;
@@ -1501,7 +1477,9 @@ Slider effect
 }
 
 
-/* Mobile adjustments (≤930px) */
+/* -------------------------------------------------
+   Media styling >930 screens
+   ------------------------------------------------- */
 @media screen and (max-width: 930px) {
     .hero h2 {
         font-size: 24px;
@@ -1611,22 +1589,18 @@ Slider effect
         display: flex;
         flex-wrap: nowrap;
         gap: 4px;
-        /* Tighter gap for mobile */
     }
 
     .sort-btn {
         flex: 1;
         padding: 8px 0;
-        /* Remove side padding to fit text */
         font-size: 16px;
-        /* Match other interface buttons */
         text-align: center;
         white-space: nowrap;
     }
 
     .sort-btn.run-sort-btn {
         flex: 4;
-        /* Takes 50% of 8 total parts */
     }
 
     .w-05,
@@ -1781,7 +1755,6 @@ Slider effect
         justify-content: center;
     }
 
-    /* All width classes become full width on mobile */
     .w-100,
     .w-80,
     .w-70,
@@ -1796,7 +1769,6 @@ Slider effect
         padding-right: 0;
     }
 
-    /* Adjust content padding for mobile */
     .content {
         padding-left: 16px;
         padding-right: 16px;
@@ -1880,7 +1852,9 @@ Slider effect
     width: 0;
 }
 
-/* Case Study Specific Styles */
+/* -------------------------------------------------
+   Casestudy styling
+   ------------------------------------------------- */
 .duoBrid {
     width: 132px;
     height: auto;
@@ -1929,7 +1903,6 @@ Slider effect
     height: 60px;
     border-radius: 50%;
     z-index: 2000;
-    /* Higher than text */
     pointer-events: none;
     box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
 }
@@ -1954,6 +1927,9 @@ Slider effect
     border: none;
 }
 
+/* -------------------------------------------------
+   Error Page
+   ------------------------------------------------- */
 .error-page .errorMessage {
     position: fixed;
     bottom: 16px;
@@ -1982,8 +1958,6 @@ Slider effect
     user-select: text;
 }
 
-/* Removed anchor styles as text is now static */
-
 .error-page .err-content p {
     font-size: 18px;
     margin-bottom: 8px;
@@ -2000,7 +1974,6 @@ Slider effect
     pointer-events: auto;
     cursor: pointer;
 }
-
 
 /* -------------------------------------------------
    Sorting Visualization
@@ -2080,6 +2053,73 @@ Slider effect
     cursor: not-allowed;
 }
 
+.sort-bar {
+    width: 100%;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.1s ease;
+}
+
+.sort-bar.text-dark {
+    color: #000;
+}
+
+.sort-bar.text-light {
+    color: #fff;
+}
+
+.sort-bar.blue {
+    background: linear-gradient(0deg, #03001e 0%, #3f2b96 50%, #a8c0ff 100%);
+    border-top-left-radius: 100rem;
+    border-top-right-radius: 100rem;
+    color: black;
+}
+
+.sort-bar.green {
+    background: linear-gradient(0deg, #03001e 0%, #00b09b 50%, #96c93d 100%);
+    border-top-left-radius: 100rem;
+    border-top-right-radius: 100rem;
+    color: black;
+}
+
+.sort-bar {
+    position: relative;
+    display: block !important;
+    transition: all 0.1s ease;
+}
+
+.sort-bar-label {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    font-weight: bold;
+    color: white;
+    padding-bottom: 8px;
+}
+
+.sort-bar.red {
+    background: linear-gradient(0deg, #03001e 0%, #fc4a1a 50%, #f7b733 100%);
+    border-top-left-radius: 100rem;
+    border-top-right-radius: 100rem;
+    color: white;
+}
+
+.sort-bar.teal {
+    background: linear-gradient(0deg, #03001e 0%, #7303c0 50%, #ec38bc 100%);
+    border-top-left-radius: 100rem;
+    border-top-right-radius: 100rem;
+    color: black;
+}
+
+/* -------------------------------------------------
+   Note Modes
+   ------------------------------------------------- */
 .note-mode-panel {
     width: 100%;
     display: flex;
@@ -2405,6 +2445,9 @@ Slider effect
     font-weight: 700;
 }
 
+/* -------------------------------------------------
+   Timer Function
+   ------------------------------------------------- */
 .timer-container {
     display: flex;
     flex-direction: column;
@@ -2441,77 +2484,6 @@ Slider effect
     50% {
         opacity: 0;
     }
-}
-
-/* Sorting Bars */
-.sort-bar {
-    width: 100%;
-    color: white;
-    /* Default text color, overridden if bright */
-    font-size: 10px;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.1s ease;
-}
-
-.sort-bar.text-dark {
-    color: #000;
-}
-
-.sort-bar.text-light {
-    color: #fff;
-}
-
-/* Sorting Bar Gradients */
-.sort-bar.blue {
-    background: linear-gradient(0deg, #03001e 0%, #3f2b96 50%, #a8c0ff 100%);
-    border-top-left-radius: 100rem;
-    border-top-right-radius: 100rem;
-    color: black;
-}
-
-.sort-bar.green {
-    background: linear-gradient(0deg, #03001e 0%, #00b09b 50%, #96c93d 100%);
-    border-top-left-radius: 100rem;
-    border-top-right-radius: 100rem;
-    color: black;
-}
-
-.sort-bar {
-    position: relative;
-    /* Ensure no flex centering text inside */
-    display: block !important;
-    transition: all 0.1s ease;
-}
-
-.sort-bar-label {
-    position: absolute;
-    top: -20px;
-    /* Adjust 8px above the bar */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 12px;
-    font-weight: bold;
-    color: white;
-    /* Or variable based on theme */
-    padding-bottom: 8px;
-    /* Extra padding if needed */
-}
-
-.sort-bar.red {
-    background: linear-gradient(0deg, #03001e 0%, #fc4a1a 50%, #f7b733 100%);
-    border-top-left-radius: 100rem;
-    border-top-right-radius: 100rem;
-    color: white;
-}
-
-.sort-bar.teal {
-    background: linear-gradient(0deg, #03001e 0%, #7303c0 50%, #ec38bc 100%);
-    border-top-left-radius: 100rem;
-    border-top-right-radius: 100rem;
-    color: black;
 }
 
 /* -------------------------------------------------
@@ -2557,14 +2529,16 @@ Slider effect
     }
 }
 
-/* CSS Overlay for Essence Mode Padding Override */
+/* -------------------------------------------------
+   Override styling
+   ------------------------------------------------- */
 .essence-no-padding {
     padding-left: 0 !important;
     padding-right: 0 !important;
 }
 
 /* -------------------------------------------------
-   Footer & Maze Interaction
+   Footer
    ------------------------------------------------- */
 footer {
     width: 100%;
@@ -2575,15 +2549,6 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-}
-
-#fancyFooter {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: fit-content;
-    z-index: 1;
 }
 
 footer h1 {
