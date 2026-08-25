@@ -869,7 +869,6 @@ a {
     width: 100%;
     font-size: 56px;
     line-height: 72px;
-    margin-bottom: 32px;
 }
 
 .aiMsg p:last-child,
@@ -1617,7 +1616,8 @@ Slider effect
 
     .timer-display.timer-large {
         font-size: 48px;
-        line-height: 56px;
+        height: fit-content;
+        line-height: 104px !important;
     }
 
     .timer-controls {
@@ -2377,7 +2377,6 @@ Slider effect
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
-    margin-top: 24px;
 }
 
 .timer-display {
@@ -2400,7 +2399,7 @@ Slider effect
 .timer-controls {
     display: flex;
     gap: 10px;
-    margin-top: 16px;
+    margin-top: 32px;
 }
 
 @keyframes timerBlink {
