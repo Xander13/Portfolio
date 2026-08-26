@@ -196,8 +196,15 @@ async function getStockQuote(symbolConfig) {
     const result = data.chart?.result?.[0];
     const meta = result?.meta;
     const closes = result?.indicators?.quote?.[0]?.close?.filter(value => Number.isFinite(value)) || [];
+    const highs = result?.indicators?.quote?.[0]?.high?.filter(value => Number.isFinite(value)) || [];
+    const lows = result?.indicators?.quote?.[0]?.low?.filter(value => Number.isFinite(value)) || [];
+    const volumes = result?.indicators?.quote?.[0]?.volume?.filter(value => Number.isFinite(value)) || [];
     const price = Number(meta?.regularMarketPrice ?? closes.at(-1));
     const previousClose = Number(meta?.previousClose ?? closes.at(-2));
+    const high52w = Number(meta?.fiftyTwoWeekHigh || Math.max(...closes));
+    const low52w = Number(meta?.fiftyTwoWeekLow || Math.min(...closes));
+    const volume = volumes.at(-1) || 0;
+    const marketCap = Number(meta?.marketCap || 0);
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Yahoo response did not contain quote data.");
     return {
         symbol: symbolConfig.requestedSymbol,
@@ -205,6 +212,12 @@ async function getStockQuote(symbolConfig) {
         price,
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
+        high: highs.at(-1) || price,
+        low: lows.at(-1) || price,
+        high52w,
+        low52w,
+        volume,
+        marketCap,
         closes: closes.slice(-30)
     };
 }
@@ -218,8 +231,15 @@ async function getProxyStockQuote(symbolConfig) {
     const result = data.chart?.result?.[0];
     const meta = result?.meta;
     const closes = result?.indicators?.quote?.[0]?.close?.filter(value => Number.isFinite(value)) || [];
+    const highs = result?.indicators?.quote?.[0]?.high?.filter(value => Number.isFinite(value)) || [];
+    const lows = result?.indicators?.quote?.[0]?.low?.filter(value => Number.isFinite(value)) || [];
+    const volumes = result?.indicators?.quote?.[0]?.volume?.filter(value => Number.isFinite(value)) || [];
     const price = Number(meta?.regularMarketPrice ?? closes.at(-1));
     const previousClose = Number(meta?.previousClose ?? closes.at(-2));
+    const high52w = Number(meta?.fiftyTwoWeekHigh || Math.max(...closes));
+    const low52w = Number(meta?.fiftyTwoWeekLow || Math.min(...closes));
+    const volume = volumes.at(-1) || 0;
+    const marketCap = Number(meta?.marketCap || 0);
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Proxy Yahoo response did not contain quote data.");
     return {
         symbol: symbolConfig.requestedSymbol,
@@ -227,6 +247,12 @@ async function getProxyStockQuote(symbolConfig) {
         price,
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
+        high: highs.at(-1) || price,
+        low: lows.at(-1) || price,
+        high52w,
+        low52w,
+        volume,
+        marketCap,
         closes: closes.slice(-30),
         delayed: true
     };
@@ -1827,11 +1853,54 @@ function createStockChart(values) {
     const points = values.map((value, index) => {
         const x = (index / (values.length - 1)) * 240;
         const y = 64 - ((value - min) / spread) * 56;
-        return `${x.toFixed(1)},${y.toFixed(1)}`;
-    }).join(" ");
-    const line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
-    line.setAttribute("points", points);
+        return { x: x.toFixed(1), y: y.toFixed(1) };
+    });
+    
+    // Create smooth curve using quadratic Bézier curves
+    let pathData = `M ${points[0].x} ${points[0].y}`;
+    for (let i = 1; i < points.length; i++) {
+        const prev = points[i - 1];
+        const curr = points[i];
+        const next = points[i + 1];
+        const cpx = (parseFloat(curr.x) + parseFloat(prev.x)) / 2;
+        const cpy = (parseFloat(curr.y) + parseFloat(prev.y)) / 2;
+        pathData += ` Q ${cpx} ${cpy} ${curr.x} ${curr.y}`;
+    }
+    
+    // Create gradient
+    const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+    const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
+    gradient.setAttribute("id", `gradient-${Math.random().toString(36).substr(2, 9)}`);
+    gradient.setAttribute("x1", "0%");
+    gradient.setAttribute("y1", "0%");
+    gradient.setAttribute("x2", "0%");
+    gradient.setAttribute("y2", "100%");
+    const stop1 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    stop1.setAttribute("offset", "0%");
+    stop1.setAttribute("stop-color", "rgba(255, 255, 255, 0.3)");
+    const stop2 = document.createElementNS("http://www.w3.org/2000/svg", "stop");
+    stop2.setAttribute("offset", "100%");
+    stop2.setAttribute("stop-color", "rgba(255, 255, 255, 0)");
+    gradient.appendChild(stop1);
+    gradient.appendChild(stop2);
+    defs.appendChild(gradient);
+    chart.appendChild(defs);
+    
+    // Create area fill
+    const areaPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    areaPath.setAttribute("d", pathData + ` L ${points[points.length - 1].x} 72 L ${points[0].x} 72 Z`);
+    areaPath.setAttribute("fill", `url(#${gradient.getAttribute("id")})`);
+    areaPath.setAttribute("vector-effect", "non-scaling-stroke");
+    chart.appendChild(areaPath);
+    
+    // Create line
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    line.setAttribute("d", pathData);
     line.setAttribute("fill", "none");
+    line.setAttribute("stroke", "currentColor");
+    line.setAttribute("stroke-width", "2");
+    line.setAttribute("stroke-linecap", "round");
+    line.setAttribute("stroke-linejoin", "round");
     line.setAttribute("vector-effect", "non-scaling-stroke");
     chart.appendChild(line);
     return chart;
@@ -1885,7 +1954,28 @@ function appendStockPanel(stockTool, container) {
             } else {
                 const direction = quote.change >= 0 ? "▲" : "▼";
                 values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
-                values.innerHTML = `<span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small>`;
+                values.innerHTML = `<div class="stock-price-row"><span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small></div>`;
+                
+                // Add additional stock info
+                const infoRow = document.createElement("div");
+                infoRow.className = "stock-info-row";
+                let infoText = ``;
+                if (quote.high && quote.low) {
+                    infoText += `D: $${quote.low.toFixed(2)}–$${quote.high.toFixed(2)}`;
+                }
+                if (quote.high52w && quote.low52w && infoText) {
+                    infoText += ` | Y: $${quote.low52w.toFixed(2)}–$${quote.high52w.toFixed(2)}`;
+                }
+                if (quote.volume) {
+                    const volText = quote.volume > 1000000 ? (quote.volume / 1000000).toFixed(1) + "M" : (quote.volume / 1000).toFixed(0) + "K";
+                    if (infoText) infoText += ` | Vol: ${volText}`;
+                    else infoText = `Vol: ${volText}`;
+                }
+                if (infoText) {
+                    infoRow.innerHTML = `<small>${infoText}</small>`;
+                    values.appendChild(infoRow);
+                }
+                
                 card.appendChild(createStockChart(quote.closes));
             }
             const remove = document.createElement("button");

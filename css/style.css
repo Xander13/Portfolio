@@ -1099,6 +1099,25 @@ a {
     font-size: 14px;
 }
 
+.stock-price-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.stock-price-row span {
+    display: inline;
+}
+
+.stock-info-row {
+    margin-top: 8px;
+}
+
+.stock-info-row small {
+    font-size: 12px;
+    color: var(--gray);
+}
+
 .stock-up {
     color: #62d68b;
 }
