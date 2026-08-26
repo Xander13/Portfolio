@@ -224,7 +224,6 @@ async function getDelayedStockQuote(symbolConfig) {
         changePercent: ((price - previousClose) / previousClose) * 100,
         closes,
         volume,
-        marketCap: null,
         delayed: true
     };
 }
@@ -240,7 +239,6 @@ async function getStockQuote(symbolConfig) {
     const price = Number(meta?.regularMarketPrice ?? closes.at(-1));
     const previousClose = Number(meta?.previousClose ?? closes.at(-2));
     const volume = Number(meta?.regularMarketVolume ?? volumes.at(-1));
-    const marketCap = Number(meta?.marketCap);
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Yahoo response did not contain quote data.");
     return {
         symbol: symbolConfig.requestedSymbol,
@@ -249,8 +247,7 @@ async function getStockQuote(symbolConfig) {
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
         closes: closes.slice(-30),
-        volume,
-        marketCap
+        volume
     };
 }
 
@@ -1864,10 +1861,9 @@ function appendStockPanel(stockTool, container) {
                 values.textContent = quote.reason || "Quote unavailable";
             } else {
                 const direction = quote.change >= 0 ? "▲" : "▼";
-                const marketCapLabel = `Mkt Cap ${formatCompactValue(Number(quote.marketCap))}`;
                 const volumeLabel = `Vol ${formatCompactValue(Number(quote.volume))}`;
                 values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
-                values.innerHTML = `<span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small><small class="stock-card-meta">${marketCapLabel} • ${volumeLabel}</small>`;
+                values.innerHTML = `<span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small><small class="stock-card-meta">${volumeLabel}</small>`;
                 card.appendChild(createStockChart(quote.closes));
             }
             const remove = document.createElement("button");

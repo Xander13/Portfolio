@@ -1069,7 +1069,7 @@ a {
 .stock-chart {
     width: 240px;
     height: 72px;
-    margin-left: auto;
+    margin-left: 0;
     overflow: visible;
 }
 

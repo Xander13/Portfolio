@@ -51,6 +51,18 @@ function initImageFlip(container, interval = 1000) {
 
   let index = 0;
 
+  function safePlay(videoEl) {
+    if (!videoEl || videoEl.tagName !== "VIDEO") return;
+    const playPromise = videoEl.play();
+    if (playPromise && typeof playPromise.catch === "function") {
+      playPromise.catch((error) => {
+        // Browsers can pause background media for power saving; ignore this expected case.
+        if (error && error.name === "AbortError") return;
+        console.warn("Video play failed:", error);
+      });
+    }
+  }
+
   setInterval(() => {
     const current = elements[index];
     current.style.display = "none";
@@ -68,7 +80,7 @@ function initImageFlip(container, interval = 1000) {
 
     if (next.tagName === "VIDEO") {
       next.currentTime = 0; // ensure video starts from beginning
-      next.play();
+      safePlay(next);
     }
   }, interval);
 }
