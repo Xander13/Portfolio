@@ -1940,6 +1940,13 @@ function appendStockPanel(stockTool, container) {
         quotes.forEach(quote => {
             const card = document.createElement("article");
             card.className = "stock-card";
+            
+            // Create chart first
+            if (!quote.error) {
+                card.appendChild(createStockChart(quote.closes));
+            }
+            
+            // Create info section with symbol, name, and details
             const info = document.createElement("div");
             info.className = "stock-card-info";
             const symbol = document.createElement("strong");
@@ -1947,20 +1954,10 @@ function appendStockPanel(stockTool, container) {
             const name = document.createElement("span");
             name.textContent = quote.error ? "Quote unavailable" : quote.name;
             info.append(symbol, name);
-            const values = document.createElement("div");
-            values.className = "stock-card-values";
-            if (quote.error) {
-                values.textContent = quote.reason || "Quote unavailable";
-            } else {
-                const direction = quote.change >= 0 ? "▲" : "▼";
-                values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
-                values.innerHTML = `<div class="stock-price-row"><span>${direction} $${quote.price.toFixed(2)}</span> <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small></div>`;
-                
-                // Create details div for additional stock info
-                const details = document.createElement("div");
-                details.className = "stock-details";
+            
+            // Add details to info section
+            if (!quote.error) {
                 const detailLines = [];
-                
                 if (quote.high && quote.low) {
                     detailLines.push(`D: $${quote.low.toFixed(2)}–$${quote.high.toFixed(2)}`);
                 }
@@ -1971,14 +1968,29 @@ function appendStockPanel(stockTool, container) {
                     const volText = quote.volume > 1000000 ? (quote.volume / 1000000).toFixed(1) + "M" : (quote.volume / 1000).toFixed(0) + "K";
                     detailLines.push(`Vol: ${volText}`);
                 }
-                
                 if (detailLines.length > 0) {
+                    const details = document.createElement("div");
+                    details.className = "stock-details";
                     details.innerHTML = detailLines.map(line => `<small>${line}</small>`).join("");
+                    info.appendChild(details);
                 }
-                
-                card.appendChild(createStockChart(quote.closes));
-                card.appendChild(details);
             }
+            
+            card.appendChild(info);
+            
+            // Create values (price and change)
+            const values = document.createElement("div");
+            values.className = "stock-card-values";
+            if (quote.error) {
+                values.textContent = quote.reason || "Quote unavailable";
+            } else {
+                const direction = quote.change >= 0 ? "▲" : "▼";
+                values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
+                values.innerHTML = `<div class="stock-price-row"><span>${direction} $${quote.price.toFixed(2)}</span> <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small></div>`;
+            }
+            card.appendChild(values);
+            
+            // Create remove button
             const remove = document.createElement("button");
             remove.type = "button";
             remove.className = "stock-remove";

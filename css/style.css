@@ -1054,11 +1054,11 @@ a {
 }
 
 .stock-card {
+    display: flex;
+    flex-direction: column;
     position: relative;
     width: 100%;
-    min-height: 104px;
-    gap: 20px;
-    justify-content: space-between;
+    gap: 12px;
     border-top: 1px solid var(--dark-gray);
     padding: 16px 0;
 }
@@ -1066,9 +1066,7 @@ a {
 .stock-card-info {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    width: 20%;
-    min-width: 130px;
+    gap: 8px;
 }
 
 .stock-card-info strong {
@@ -1084,9 +1082,7 @@ a {
 }
 
 .stock-card-values {
-    width: 20%;
     font-size: 24px;
-    white-space: nowrap;
 }
 
 .stock-card-values span {
@@ -1138,6 +1134,12 @@ a {
     height: 72px;
     margin: 0;
     overflow: visible;
+}
+
+@media (max-width: 768px) {
+    .stock-chart {
+        width: 100%;
+    }
 }
 
 .stock-chart polyline {
