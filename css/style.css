@@ -1054,19 +1054,23 @@ a {
 }
 
 .stock-card {
-    display: flex;
-    flex-direction: column;
     position: relative;
     width: 100%;
-    gap: 12px;
+    min-height: 104px;
+    gap: 20px;
+    justify-content: space-between;
     border-top: 1px solid var(--dark-gray);
     padding: 16px 0;
+    display: flex;
+    align-items: center;
 }
 
 .stock-card-info {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 4px;
+    width: 20%;
+    min-width: 130px;
 }
 
 .stock-card-info strong {
@@ -1082,7 +1086,9 @@ a {
 }
 
 .stock-card-values {
+    width: 20%;
     font-size: 24px;
+    white-space: nowrap;
 }
 
 .stock-card-values span {
