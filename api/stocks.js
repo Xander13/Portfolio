@@ -5,7 +5,7 @@ module.exports = async function handler(req, res) {
   }
 
   const symbol = String(req.query?.symbol || '').toUpperCase();
-  if (!/^[A-Z][A-Z0-9.-]{0,9}$/.test(symbol)) {
+  if (!/^(?:\^[A-Z0-9.-]{1,10}|[A-Z][A-Z0-9.-]{0,9})$/.test(symbol)) {
     return res.status(400).json({ error: 'A valid stock symbol is required' });
   }
 

@@ -33,7 +33,7 @@ let noteMode = false;
 let activeNoteEditor = null;
 let activeNoteLine = null;
 let draggedNoteLine = null;
-const defaultStockSymbols = ["JNJ", "AAPL", "MSFT"];
+const defaultStockSymbols = ["JNJ", "AAPL", "FIG", "SP500", "DOW"];
 let stockSymbols = loadStockSymbols();
 
 
@@ -63,6 +63,46 @@ function parseStockSymbols(value) {
         .split(/[\s,]+/)
         .map(symbol => symbol.replace(/[^a-z0-9.=-]/gi, "").toUpperCase())
         .filter(symbol => /^[A-Z][A-Z0-9.-]{0,9}$/.test(symbol)))];
+}
+
+function resolveStockSymbol(symbol) {
+    const normalized = String(symbol || "").toUpperCase();
+    if (normalized === "SP500") {
+        return {
+            requestedSymbol: "SP500",
+            providerSymbol: "^GSPC",
+            delayedSymbol: "SPY",
+            preferredName: "S&P 500"
+        };
+    }
+    if (normalized === "DOW") {
+        return {
+            requestedSymbol: "DOW",
+            providerSymbol: "^DJI",
+            delayedSymbol: "DIA",
+            preferredName: "Dow Jones"
+        };
+    }
+    return {
+        requestedSymbol: normalized,
+        providerSymbol: normalized,
+        delayedSymbol: normalized,
+        preferredName: normalized
+    };
+}
+
+function buildStockSummary(quotes) {
+    const validQuotes = quotes.filter(quote => !quote.error && Number.isFinite(quote.changePercent));
+    if (validQuotes.length === 0) {
+        return "Summary: Market data is unavailable right now.";
+    }
+    const gainers = validQuotes.filter(quote => quote.changePercent >= 0).length;
+    const losers = validQuotes.length - gainers;
+    const averageMove = validQuotes.reduce((sum, quote) => sum + quote.changePercent, 0) / validQuotes.length;
+    const topGainer = [...validQuotes].sort((a, b) => b.changePercent - a.changePercent)[0];
+    const topLoser = [...validQuotes].sort((a, b) => a.changePercent - b.changePercent)[0];
+    const avgPrefix = averageMove >= 0 ? "+" : "";
+    return `Summary: ${gainers} up, ${losers} down. Avg move ${avgPrefix}${averageMove.toFixed(2)}%. Top: ${topGainer.symbol} ${topGainer.changePercent >= 0 ? "+" : ""}${topGainer.changePercent.toFixed(2)}%, ${topLoser.symbol} ${topLoser.changePercent >= 0 ? "+" : ""}${topLoser.changePercent.toFixed(2)}%.`;
 }
 
 function isBiblePrompt(normalizedInput) {
@@ -142,8 +182,8 @@ async function getBibleVerse() {
     }
 }
 
-async function getDelayedStockQuote(symbol) {
-    const response = await fetch(`https://stooq.com/q/d/l/?s=${encodeURIComponent(symbol.toLowerCase())}.us&i=d`);
+async function getDelayedStockQuote(symbolConfig) {
+    const response = await fetch(`https://stooq.com/q/d/l/?s=${encodeURIComponent(symbolConfig.delayedSymbol.toLowerCase())}.us&i=d`);
     if (!response.ok) throw new Error(`Delayed stock request failed with ${response.status}`);
     const rows = (await response.text()).trim().split("\n").slice(1).map(row => row.split(","));
     const closes = rows.map(row => Number(row[4])).filter(value => Number.isFinite(value)).slice(-30);
@@ -151,8 +191,8 @@ async function getDelayedStockQuote(symbol) {
     const previousClose = closes.at(-2);
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Delayed response did not contain quote data.");
     return {
-        symbol,
-        name: `${symbol} (delayed)`,
+        symbol: symbolConfig.requestedSymbol,
+        name: `${symbolConfig.preferredName} (delayed)`,
         price,
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
@@ -161,8 +201,8 @@ async function getDelayedStockQuote(symbol) {
     };
 }
 
-async function getStockQuote(symbol) {
-    const response = await fetch(`/api/stocks?symbol=${encodeURIComponent(symbol)}`);
+async function getStockQuote(symbolConfig) {
+    const response = await fetch(`/api/stocks?symbol=${encodeURIComponent(symbolConfig.providerSymbol)}`);
     if (!response.ok) throw new Error(`Yahoo request failed with ${response.status}`);
     const data = await response.json();
     const result = data.chart?.result?.[0];
@@ -172,8 +212,8 @@ async function getStockQuote(symbol) {
     const previousClose = Number(meta?.previousClose ?? closes.at(-2));
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Yahoo response did not contain quote data.");
     return {
-        symbol,
-        name: meta?.shortName || meta?.longName || symbol,
+        symbol: symbolConfig.requestedSymbol,
+        name: meta?.shortName || meta?.longName || symbolConfig.preferredName,
         price,
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
@@ -181,8 +221,8 @@ async function getStockQuote(symbol) {
     };
 }
 
-async function getProxyStockQuote(symbol) {
-    const yahooUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1mo&interval=1d&includePrePost=false`;
+async function getProxyStockQuote(symbolConfig) {
+    const yahooUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbolConfig.providerSymbol)}?range=1mo&interval=1d&includePrePost=false`;
     const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(yahooUrl)}`;
     const response = await fetch(proxyUrl);
     if (!response.ok) throw new Error(`Proxy Yahoo request failed with ${response.status}`);
@@ -194,8 +234,8 @@ async function getProxyStockQuote(symbol) {
     const previousClose = Number(meta?.previousClose ?? closes.at(-2));
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Proxy Yahoo response did not contain quote data.");
     return {
-        symbol,
-        name: meta?.shortName || meta?.longName || symbol,
+        symbol: symbolConfig.requestedSymbol,
+        name: meta?.shortName || meta?.longName || symbolConfig.preferredName,
         price,
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
@@ -206,24 +246,26 @@ async function getProxyStockQuote(symbol) {
 
 async function getStockWatchlist() {
     const quotes = await Promise.all(stockSymbols.map(async symbol => {
+        const resolvedSymbol = resolveStockSymbol(symbol);
         try {
-            return await getStockQuote(symbol);
+            return await getStockQuote(resolvedSymbol);
         } catch (error) {
-            console.error(`Unable to load quote for ${symbol}`, error);
+            console.error(`Unable to load quote for ${resolvedSymbol.requestedSymbol}`, error);
             try {
-                return await getProxyStockQuote(symbol);
+                return await getProxyStockQuote(resolvedSymbol);
             } catch (fallbackError) {
-                console.error(`Unable to load proxy quote for ${symbol}`, fallbackError);
+                console.error(`Unable to load proxy quote for ${resolvedSymbol.requestedSymbol}`, fallbackError);
                 try {
-                    return await getDelayedStockQuote(symbol);
+                    return await getDelayedStockQuote(resolvedSymbol);
                 } catch (delayedError) {
-                    console.error(`Unable to load delayed quote for ${symbol}`, delayedError);
-                    return { symbol, error: true, reason: "Stock API blocked or unavailable" };
+                    console.error(`Unable to load delayed quote for ${resolvedSymbol.requestedSymbol}`, delayedError);
+                    return { symbol: resolvedSymbol.requestedSymbol, error: true, reason: "Stock API blocked or unavailable" };
                 }
             }
         }
     }));
-    return { text: "Today's market view:", stockTool: { quotes }, instant: true };
+    const summary = buildStockSummary(quotes);
+    return { text: "Today's market view:", stockTool: { quotes, summary }, instant: true };
 }
 
 async function getWeatherLocation() {
@@ -1747,6 +1789,9 @@ function appendStockPanel(stockTool, container) {
     refresh.className = "stock-refresh";
     refresh.textContent = "Refresh";
     header.append(title, refresh);
+    const summary = document.createElement("p");
+    summary.className = "stock-summary";
+    summary.textContent = stockTool.summary || "Summary: Loading market snapshot...";
 
     const form = document.createElement("form");
     form.className = "stock-add-form";
@@ -1760,7 +1805,7 @@ function appendStockPanel(stockTool, container) {
     form.append(symbolInput, addButton);
     const list = document.createElement("div");
     list.className = "stock-list";
-    panel.append(header, list, form);
+    panel.append(header, summary, list, form);
     container.appendChild(panel);
 
     const renderQuotes = quotes => {
@@ -1806,6 +1851,7 @@ function appendStockPanel(stockTool, container) {
         refresh.textContent = "Loading...";
         const result = await getStockWatchlist();
         renderQuotes(result.stockTool.quotes);
+        summary.textContent = result.stockTool.summary || "Summary: Market snapshot unavailable.";
         refresh.disabled = false;
         refresh.textContent = "Refresh";
     };
