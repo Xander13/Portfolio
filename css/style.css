@@ -1053,6 +1053,11 @@ a {
     font-size: 20px;
 }
 
+.stock-card .svg{
+    width: 100% !important;
+    height: auto;
+}
+
 .stock-card {
     position: relative;
     width: 100%;
@@ -1064,10 +1069,6 @@ a {
     padding-bottom: 0;
     display: flex;
     align-items: center;
-}
-
-path{
-    width: 100%;
 }
 
 .stock-card-info {
