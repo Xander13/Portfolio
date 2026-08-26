@@ -152,7 +152,7 @@ async function getBibleVerse() {
         if (!verse?.text) throw new Error("Bible response did not contain the requested verse.");
         return {
             text: "Here is a scripture passage:",
-            bible: { quote: verse.text, reference: reference.label, source: "https://bible.helloao.org" },
+            bible: { quote: verse.text, reference: reference.label, source: "https://bible.helloao.org", img: "/img/olive.png" },
             instant: true
         };
     } catch (error) {
@@ -162,7 +162,8 @@ async function getBibleVerse() {
             bible: {
                 quote: reference.fallback,
                 reference: reference.label,
-                source: "https://bible.helloao.org"
+                source: "https://bible.helloao.org",
+                img: "/img/olive.png"
             },
             instant: true
         };
@@ -360,10 +361,13 @@ async function getWeatherResponse() {
 
 function getWeatherConfirmation() {
     pendingWeatherConfirmation = true;
+    let text = "I can pull today's local forecast directly from {{weatherSite}}. Click or type <strong>Yes</strong> to continue. Your browser will ask for permission, and your location data is never saved.";
+    const processed = processPlaceholders(text);
     return {
-        text: "I can pull today's local forecast directly from {{weatherSite}}. Click or type <strong>Yes</strong> to continue. Your browser will ask for permission, and your location data is never saved.",
+        text: processed.text,
         weatherConfirmation: true,
-        instant: true
+        instant: true,
+        inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined
     };
 }
 
@@ -1760,6 +1764,21 @@ function appendBiblePanel(bible, container) {
     const reference = document.createElement("cite");
     reference.textContent = `- ${bible.reference}`;
     panel.append(quote, reference);
+    
+    if (bible.img) {
+        const img = document.createElement("img");
+        img.src = bible.img;
+        img.alt = `Illustration for ${bible.reference}`;
+        img.className = "bible-image";
+        img.draggable = false;
+        img.style.width = "500px";
+        img.style.maxWidth = "100%";
+        img.style.height = "auto";
+        img.style.display = "block";
+        img.style.margin = "20px 0";
+        panel.insertBefore(img, quote);
+    }
+    
     container.appendChild(panel);
 }
 
@@ -2043,8 +2062,9 @@ function processPlaceholders(text) {
         });
     }
     if (text.includes("{{gameboy}}")){
+        text = text.replace("{{gameboy}}", "Game Boy (1989)");
         inlineLinks.push({
-            searchText: "{{gameboy}}",
+            searchText: "Game Boy (1989)",
             href: knowledge.links?.gameboy || "https://en.wikipedia.org/wiki/Game_Boy",
             linkText: "Game Boy (1989)"
         });

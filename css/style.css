@@ -912,6 +912,15 @@ a {
     text-decoration: none !important;
 }
 
+.bible-image {
+    width: 500px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 56px !important;
+    user-select: none;
+}
+
 .stock-panel {
     width: 100%;
     margin-top: 32px;
@@ -1933,6 +1942,10 @@ a {
     .bible-panel cite {
         font-size: 28px !important;
         line-height: 36px !important;
+    }
+
+    .bible-image {
+        width: 200px !important;
     }
 
     .stock-card {
