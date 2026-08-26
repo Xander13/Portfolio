@@ -1003,7 +1003,7 @@ a {
     width: 100%;
     min-height: 104px;
     gap: 20px;
-    justify-content: space-evenly;
+    justify-content: space-between;
     border-top: 1px solid var(--dark-gray);
     padding: 16px 0;
 }
