@@ -92,32 +92,7 @@ function resolveStockSymbol(symbol) {
 }
 
 function buildStockSummary(quotes) {
-    const validQuotes = quotes.filter(quote => !quote.error && Number.isFinite(quote.changePercent));
-    if (validQuotes.length === 0) {
-        return "Market data is limited right now as quote feeds are temporarily unavailable.";
-    }
-    const gainers = validQuotes.filter(quote => quote.changePercent >= 0).length;
-    const losers = validQuotes.length - gainers;
-    const averageMove = validQuotes.reduce((sum, quote) => sum + quote.changePercent, 0) / validQuotes.length;
-    const topGainer = [...validQuotes].sort((a, b) => b.changePercent - a.changePercent)[0];
-    const sp500 = validQuotes.find(quote => quote.symbol === "SP500");
-    const dow = validQuotes.find(quote => quote.symbol === "DOW");
-    const tone = averageMove > 0.2
-        ? "Wall Street pushed higher"
-        : averageMove < -0.2
-            ? "Wall Street pulled back"
-            : "Wall Street traded mixed";
-    const indexParts = [];
-    if (sp500) {
-        indexParts.push(`S&P 500 ${sp500.changePercent >= 0 ? "up" : "down"} ${Math.abs(sp500.changePercent).toFixed(2)}%`);
-    }
-    if (dow) {
-        indexParts.push(`Dow ${dow.changePercent >= 0 ? "up" : "down"} ${Math.abs(dow.changePercent).toFixed(2)}%`);
-    }
-    const breadthText = `${gainers} of ${validQuotes.length} symbols gained`;
-    const leaderText = `${topGainer.symbol} led movers ${topGainer.changePercent >= 0 ? "up" : "down"} ${Math.abs(topGainer.changePercent).toFixed(2)}%`;
-    const indexText = indexParts.length > 0 ? `, with ${indexParts.join(" and ")}` : "";
-    return `${tone}${indexText}; ${breadthText} while ${losers} declined, and ${leaderText}.`;
+    return "";
 }
 
 function formatCompactValue(value) {
@@ -1826,7 +1801,8 @@ function appendStockPanel(stockTool, container) {
     header.append(title, refresh);
     const summary = document.createElement("p");
     summary.className = "stock-summary";
-    summary.textContent = stockTool.summary || "Loading market snapshot...";
+    summary.textContent = stockTool.summary || "";
+    summary.hidden = !summary.textContent;
 
     const form = document.createElement("form");
     form.className = "stock-add-form";
@@ -1893,7 +1869,8 @@ function appendStockPanel(stockTool, container) {
         refresh.textContent = "Loading...";
         const result = await getStockWatchlist();
         renderQuotes(result.stockTool.quotes);
-        summary.textContent = result.stockTool.summary || "Market snapshot unavailable.";
+        summary.textContent = result.stockTool.summary || "";
+        summary.hidden = !summary.textContent;
         refresh.disabled = false;
         refresh.textContent = "Refresh";
     };

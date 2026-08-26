@@ -1011,8 +1011,9 @@ a {
     width: 100%;
     min-height: 104px;
     gap: 20px;
+    justify-content: space-evenly;
     border-top: 1px solid var(--dark-gray);
-    padding: 16px 72px 16px 0;
+    padding: 16px 0;
 }
 
 .stock-card-info {
@@ -1052,7 +1053,7 @@ a {
 }
 
 .stock-card-volume {
-    margin-left: auto;
+    margin-left: 0;
     color: var(--gray);
     font-size: 13px;
     letter-spacing: 0.02em;
@@ -1084,9 +1085,8 @@ a {
 }
 
 .stock-remove {
-    position: absolute;
-    top: 16px;
-    right: 0;
+    position: static;
+    align-self: center;
 }
 
 .essence-tooltip {
@@ -1877,7 +1877,7 @@ a {
     }
 
     .stock-remove {
-        right: 0;
+        align-self: flex-start;
     }
 
     .IntroChat {
