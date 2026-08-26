@@ -33,11 +33,197 @@ let noteMode = false;
 let activeNoteEditor = null;
 let activeNoteLine = null;
 let draggedNoteLine = null;
+const defaultStockSymbols = ["JNJ", "AAPL", "MSFT"];
+let stockSymbols = loadStockSymbols();
 
 
 // -------- Normalize Input --------
 function normalizeText(text) {
     return text.toLowerCase().replace(/[^\w\s]/gi, '').trim();
+}
+
+function loadStockSymbols() {
+    try {
+        const savedSymbols = JSON.parse(localStorage.getItem("essence-stock-symbols"));
+        if (Array.isArray(savedSymbols) && savedSymbols.length > 0) {
+            return savedSymbols.map(symbol => String(symbol).toUpperCase()).filter(Boolean);
+        }
+    } catch (error) {
+        console.warn("Unable to load saved stock symbols", error);
+    }
+    return [...defaultStockSymbols];
+}
+
+function saveStockSymbols() {
+    localStorage.setItem("essence-stock-symbols", JSON.stringify(stockSymbols));
+}
+
+function parseStockSymbols(value) {
+    return [...new Set(String(value)
+        .split(/[\s,]+/)
+        .map(symbol => symbol.replace(/[^a-z0-9.=-]/gi, "").toUpperCase())
+        .filter(symbol => /^[A-Z][A-Z0-9.-]{0,9}$/.test(symbol)))];
+}
+
+function isBiblePrompt(normalizedInput) {
+    return /\b(?:bible|scripture|verse|script)\b/.test(normalizedInput);
+}
+
+function isStockPrompt(normalizedInput) {
+    return /\b(?:stock|stocks|shares|market|watchlist|yahoo finance)\b/.test(normalizedInput);
+}
+
+const bibleReferences = [
+    {
+        book: "John",
+        chapter: 1,
+        verse: 12,
+        label: "John 1:12",
+        fallback: "But to all who did receive him, who believed in his name, he gave the right to become children of God,"
+    },
+    {
+        book: "Psalms",
+        chapter: 23,
+        verse: 1,
+        label: "Psalm 23:1",
+        fallback: "The Lord is my shepherd; I shall not want."
+    },
+    {
+        book: "Proverbs",
+        chapter: 3,
+        verse: 5,
+        label: "Proverbs 3:5",
+        fallback: "Trust in the Lord with all thine heart; and lean not unto thine own understanding."
+    },
+    {
+        book: "Philippians",
+        chapter: 4,
+        verse: 13,
+        label: "Philippians 4:13",
+        fallback: "I can do all things through Christ which strengtheneth me."
+    },
+    {
+        book: "Romans",
+        chapter: 8,
+        verse: 28,
+        label: "Romans 8:28",
+        fallback: "And we know that all things work together for good to them that love God,"
+    }
+];
+
+let lastBibleReference = null;
+
+async function getBibleVerse() {
+    const availableReferences = bibleReferences.filter(reference => reference !== lastBibleReference);
+    const reference = availableReferences[Math.floor(Math.random() * availableReferences.length)];
+    lastBibleReference = reference;
+    try {
+        const response = await fetch(`https://bible.helloao.org/api/ENGESV/${reference.book}/${reference.chapter}.json`);
+        if (!response.ok) throw new Error(`Bible request failed with ${response.status}`);
+        const data = await response.json();
+        const verse = data.verses?.find(item => Number(item.verse) === reference.verse);
+        if (!verse?.text) throw new Error("Bible response did not contain the requested verse.");
+        return {
+            text: "Here is a scripture passage:",
+            bible: { quote: verse.text, reference: reference.label, source: "https://bible.helloao.org" },
+            instant: true
+        };
+    } catch (error) {
+        console.error("Unable to load Bible verse", error);
+        return {
+            text: "Here is a scripture passage:",
+            bible: {
+                quote: reference.fallback,
+                reference: reference.label,
+                source: "https://bible.helloao.org"
+            },
+            instant: true
+        };
+    }
+}
+
+async function getDelayedStockQuote(symbol) {
+    const response = await fetch(`https://stooq.com/q/d/l/?s=${encodeURIComponent(symbol.toLowerCase())}.us&i=d`);
+    if (!response.ok) throw new Error(`Delayed stock request failed with ${response.status}`);
+    const rows = (await response.text()).trim().split("\n").slice(1).map(row => row.split(","));
+    const closes = rows.map(row => Number(row[4])).filter(value => Number.isFinite(value)).slice(-30);
+    const price = closes.at(-1);
+    const previousClose = closes.at(-2);
+    if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Delayed response did not contain quote data.");
+    return {
+        symbol,
+        name: `${symbol} (delayed)`,
+        price,
+        change: price - previousClose,
+        changePercent: ((price - previousClose) / previousClose) * 100,
+        closes,
+        delayed: true
+    };
+}
+
+async function getStockQuote(symbol) {
+    const response = await fetch(`/api/stocks?symbol=${encodeURIComponent(symbol)}`);
+    if (!response.ok) throw new Error(`Yahoo request failed with ${response.status}`);
+    const data = await response.json();
+    const result = data.chart?.result?.[0];
+    const meta = result?.meta;
+    const closes = result?.indicators?.quote?.[0]?.close?.filter(value => Number.isFinite(value)) || [];
+    const price = Number(meta?.regularMarketPrice ?? closes.at(-1));
+    const previousClose = Number(meta?.previousClose ?? closes.at(-2));
+    if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Yahoo response did not contain quote data.");
+    return {
+        symbol,
+        name: meta?.shortName || meta?.longName || symbol,
+        price,
+        change: price - previousClose,
+        changePercent: ((price - previousClose) / previousClose) * 100,
+        closes: closes.slice(-30)
+    };
+}
+
+async function getProxyStockQuote(symbol) {
+    const yahooUrl = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(symbol)}?range=1mo&interval=1d&includePrePost=false`;
+    const proxyUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(yahooUrl)}`;
+    const response = await fetch(proxyUrl);
+    if (!response.ok) throw new Error(`Proxy Yahoo request failed with ${response.status}`);
+    const data = await response.json();
+    const result = data.chart?.result?.[0];
+    const meta = result?.meta;
+    const closes = result?.indicators?.quote?.[0]?.close?.filter(value => Number.isFinite(value)) || [];
+    const price = Number(meta?.regularMarketPrice ?? closes.at(-1));
+    const previousClose = Number(meta?.previousClose ?? closes.at(-2));
+    if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Proxy Yahoo response did not contain quote data.");
+    return {
+        symbol,
+        name: meta?.shortName || meta?.longName || symbol,
+        price,
+        change: price - previousClose,
+        changePercent: ((price - previousClose) / previousClose) * 100,
+        closes: closes.slice(-30),
+        delayed: true
+    };
+}
+
+async function getStockWatchlist() {
+    const quotes = await Promise.all(stockSymbols.map(async symbol => {
+        try {
+            return await getStockQuote(symbol);
+        } catch (error) {
+            console.error(`Unable to load quote for ${symbol}`, error);
+            try {
+                return await getProxyStockQuote(symbol);
+            } catch (fallbackError) {
+                console.error(`Unable to load proxy quote for ${symbol}`, fallbackError);
+                try {
+                    return await getDelayedStockQuote(symbol);
+                } catch (delayedError) {
+                    console.error(`Unable to load delayed quote for ${symbol}`, delayedError);
+                    return { symbol, error: true, reason: "Stock API blocked or unavailable" };
+                }
+            }
+        }
+    }));
+    return { text: "Today's market view:", stockTool: { quotes }, instant: true };
 }
 
 async function getWeatherLocation() {
@@ -216,6 +402,14 @@ const slashShortcuts = [
     {
         label: "Check today's weather",
         value: "What's the weather like today?"
+    },
+    {
+        label: "Read a Bible verse",
+        value: "Show me a Bible verse"
+    },
+    {
+        label: "View stock watchlist",
+        value: "Show me stocks"
     },
     {
         label: "Set a timer to...",
@@ -1203,6 +1397,9 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             }, 1000);
         }
 
+        if (extra.bible) appendBiblePanel(extra.bible, content);
+        if (extra.stockTool) appendStockPanel(extra.stockTool, content);
+
         if (extra.weatherConfirmation) {
             const actions = document.createElement("div");
             actions.className = "weather-confirmation-actions";
@@ -1493,6 +1690,140 @@ function appendNoteEditor(container) {
     });
 }
 
+function appendBiblePanel(bible, container) {
+    const panel = document.createElement("blockquote");
+    panel.className = "bible-panel";
+    if (bible.source) {
+        const source = document.createElement("a");
+        source.className = "bible-source";
+        source.href = bible.source;
+        source.target = "_blank";
+        source.rel = "noreferrer";
+        source.textContent = "Source: bible.helloao.org";
+        panel.appendChild(source);
+    }
+    const quote = document.createElement("p");
+    quote.className = "bible-quote";
+    quote.textContent = `“${bible.quote}”`;
+    const reference = document.createElement("cite");
+    reference.textContent = `- ${bible.reference}`;
+    panel.append(quote, reference);
+    container.appendChild(panel);
+}
+
+function createStockChart(values) {
+    const chart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    chart.setAttribute("viewBox", "0 0 240 72");
+    chart.setAttribute("role", "img");
+    chart.setAttribute("aria-label", "One month stock price trend");
+    chart.classList.add("stock-chart");
+    if (values.length < 2) return chart;
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    const spread = max - min || 1;
+    const points = values.map((value, index) => {
+        const x = (index / (values.length - 1)) * 240;
+        const y = 64 - ((value - min) / spread) * 56;
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+    }).join(" ");
+    const line = document.createElementNS("http://www.w3.org/2000/svg", "polyline");
+    line.setAttribute("points", points);
+    line.setAttribute("fill", "none");
+    line.setAttribute("vector-effect", "non-scaling-stroke");
+    chart.appendChild(line);
+    return chart;
+}
+
+function appendStockPanel(stockTool, container) {
+    const panel = document.createElement("section");
+    panel.className = "stock-panel";
+    panel.setAttribute("aria-label", "Stock watchlist");
+    const header = document.createElement("div");
+    header.className = "stock-panel-header";
+    const title = document.createElement("h3");
+    title.textContent = "Yahoo stocks";
+    const refresh = document.createElement("button");
+    refresh.type = "button";
+    refresh.className = "stock-refresh";
+    refresh.textContent = "Refresh";
+    header.append(title, refresh);
+
+    const form = document.createElement("form");
+    form.className = "stock-add-form";
+    const symbolInput = document.createElement("input");
+    symbolInput.type = "text";
+    symbolInput.placeholder = "Add symbols: MSFT, TSLA";
+    symbolInput.setAttribute("aria-label", "Add stock symbols");
+    const addButton = document.createElement("button");
+    addButton.type = "submit";
+    addButton.textContent = "Add";
+    form.append(symbolInput, addButton);
+    const list = document.createElement("div");
+    list.className = "stock-list";
+    panel.append(header, list, form);
+    container.appendChild(panel);
+
+    const renderQuotes = quotes => {
+        list.innerHTML = "";
+        quotes.forEach(quote => {
+            const card = document.createElement("article");
+            card.className = "stock-card";
+            const info = document.createElement("div");
+            info.className = "stock-card-info";
+            const symbol = document.createElement("strong");
+            symbol.textContent = quote.symbol;
+            const name = document.createElement("span");
+            name.textContent = quote.error ? "Quote unavailable" : quote.name;
+            info.append(symbol, name);
+            const values = document.createElement("div");
+            values.className = "stock-card-values";
+            if (quote.error) {
+                values.textContent = quote.reason || "Quote unavailable";
+            } else {
+                const direction = quote.change >= 0 ? "▲" : "▼";
+                values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
+                values.innerHTML = `<span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small>`;
+                card.appendChild(createStockChart(quote.closes));
+            }
+            const remove = document.createElement("button");
+            remove.type = "button";
+            remove.className = "stock-remove";
+            remove.textContent = "Remove";
+            remove.setAttribute("aria-label", `Remove ${quote.symbol}`);
+            remove.addEventListener("click", () => {
+                stockSymbols = stockSymbols.filter(item => item !== quote.symbol);
+                if (stockSymbols.length === 0) stockSymbols = [...defaultStockSymbols];
+                saveStockSymbols();
+                refreshQuotes();
+            });
+            card.append(info, values, remove);
+            list.appendChild(card);
+        });
+    };
+
+    const refreshQuotes = async () => {
+        refresh.disabled = true;
+        refresh.textContent = "Loading...";
+        const result = await getStockWatchlist();
+        renderQuotes(result.stockTool.quotes);
+        refresh.disabled = false;
+        refresh.textContent = "Refresh";
+    };
+
+    form.addEventListener("submit", event => {
+        event.preventDefault();
+        const addedSymbols = parseStockSymbols(symbolInput.value);
+        if (addedSymbols.length > 0) {
+            stockSymbols = [...new Set([...stockSymbols, ...addedSymbols])];
+            saveStockSymbols();
+            symbolInput.value = "";
+            refreshQuotes();
+        }
+    });
+    refresh.addEventListener("click", refreshQuotes);
+    renderQuotes(stockTool.quotes);
+}
+
 
 // -------- Append Skills Grid --------
 function appendSkillsGrid(skills, container) {
@@ -1710,6 +2041,9 @@ async function findResponse(userInput) {
     if (isTimerPrompt(userInput)) {
         return getTimerResponse(userInput);
     }
+
+    if (isBiblePrompt(normalizedInput)) return getBibleVerse();
+    if (isStockPrompt(normalizedInput)) return getStockWatchlist();
 
     // --- TIME FIRST ---
     const timeQueries = ["time", "current time", "currenttime", "what time is it", "located"];
@@ -2084,7 +2418,9 @@ async function sendMessage() {
         worldClocks: answerObj.worldClocks,
         sorting: answerObj.sorting,
         weatherConfirmation: answerObj.weatherConfirmation,
-        timer: answerObj.timer
+        timer: answerObj.timer,
+        bible: answerObj.bible,
+        stockTool: answerObj.stockTool
     });
 
     input.value = "";

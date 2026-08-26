@@ -389,6 +389,7 @@ a {
     padding-top: 156px;
     font-size: 56px;
     line-height: 1.1;
+    text-wrap: balance;
 }
 
 .IntroChat a {
@@ -881,6 +882,191 @@ a {
 .weather-confirmation-action:hover,
 .weather-confirmation-action:focus-visible {
     opacity: 0.65;
+}
+
+.bible-panel {
+    margin: 32px 0 0;
+    padding: 0 0 0 56px;
+    text-wrap: balance;
+    border-left: 2px solid var(--dark-gray);
+}
+
+.bible-quote {
+    margin: 56px 0 56px;
+}
+
+.bible-panel cite {
+    display: block;
+    font-size: 40px;
+    line-height: 1.25;
+    font-style: normal;
+    color: var(--white);
+}
+
+.bible-panel .bible-source {
+    display: block;
+    color: var(--gray);
+    font-size: 22px;
+    line-height: 22px;
+    text-decoration: none !important;
+}
+
+.stock-panel {
+    width: 100%;
+    margin-top: 32px;
+}
+
+.stock-panel-header,
+.stock-add-form,
+.stock-card {
+    display: flex;
+    align-items: center;
+}
+
+.stock-panel-header {
+    justify-content: space-between;
+    gap: 16px;
+    border-bottom: 1px solid var(--dark-gray);
+    padding-bottom: 16px;
+}
+
+.stock-panel-header h3 {
+    margin: 0;
+    font-size: 28px;
+}
+
+.stock-add-form button {
+    border: 1px solid var(--gray);
+    padding: 8px 12px;
+    background: transparent;
+    color: var(--white);
+    font: inherit;
+    cursor: pointer;
+}
+
+.stock-add-form button:hover,
+.stock-add-form button:focus-visible,
+.stock-remove:hover,
+.stock-remove:focus-visible {
+    border-color: var(--white);
+}
+
+.stock-refresh,
+.stock-remove {
+    border: 0;
+    padding: 4px 0;
+    background: transparent;
+    color: var(--gray);
+    font: inherit;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.stock-refresh:hover,
+.stock-refresh:focus-visible,
+.stock-remove:hover,
+.stock-remove:focus-visible {
+    color: var(--white);
+}
+
+.stock-add-form {
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.stock-add-form input {
+    min-width: 0;
+    flex: 1;
+    border: 0;
+    border-bottom: 1px solid var(--dark-gray);
+    padding: 8px 0;
+    background: transparent;
+    color: var(--white);
+    font: inherit;
+    font-size: 18px;
+    outline: none;
+}
+
+.stock-add-form input:focus {
+    border-color: var(--white);
+}
+
+.stock-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.stock-card {
+    position: relative;
+    min-height: 104px;
+    gap: 20px;
+    border-top: 1px solid var(--dark-gray);
+    padding: 16px 72px 16px 0;
+}
+
+.stock-card-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 25%;
+    min-width: 130px;
+}
+
+.stock-card-info strong {
+    font-size: 24px;
+}
+
+.stock-card-info span {
+    overflow: hidden;
+    color: var(--gray);
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.stock-card-values {
+    width: 30%;
+    font-size: 24px;
+    white-space: nowrap;
+}
+
+.stock-card-values span {
+    font-size: 16px;
+}
+
+.stock-card-values small {
+    display: block;
+    color: inherit;
+    font-size: 14px;
+}
+
+.stock-up {
+    color: #62d68b;
+}
+
+.stock-down {
+    color: #ff706b;
+}
+
+.stock-chart {
+    width: 240px;
+    height: 72px;
+    margin-left: auto;
+    overflow: visible;
+}
+
+.stock-chart polyline {
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.stock-remove {
+    position: absolute;
+    top: 16px;
+    right: 0;
 }
 
 .essence-tooltip {
@@ -1634,6 +1820,36 @@ a {
     .weather-confirmation-action {
         font-size: 32px;
         line-height: 42px;
+    }
+
+    .bible-panel {
+        padding-left: 16px;
+    }
+
+    .bible-quote,
+    .bible-panel cite {
+        font-size: 28px !important;
+        line-height: 36px !important;
+    }
+
+    .stock-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .stock-card-info,
+    .stock-card-values {
+        width: calc(50% - 10px);
+    }
+
+    .stock-chart {
+        order: 3;
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .stock-remove {
+        right: 0;
     }
 
     .IntroChat {
