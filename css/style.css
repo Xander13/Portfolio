@@ -998,14 +998,6 @@ a {
     gap: 12px;
 }
 
-.stock-summary {
-    margin: 12px 0 4px;
-    color: var(--white);
-    font-size: 16px;
-    line-height: 1.5;
-    text-wrap: balance;
-}
-
 .stock-card {
     position: relative;
     width: 100%;
@@ -1050,15 +1042,6 @@ a {
     display: block;
     color: inherit;
     font-size: 14px;
-}
-
-.stock-card-volume {
-    margin-left: 0;
-    color: var(--gray);
-    font-size: 13px;
-    letter-spacing: 0.02em;
-    white-space: nowrap;
-    align-self: center;
 }
 
 .stock-up {
@@ -1861,13 +1844,6 @@ a {
     .stock-card-info,
     .stock-card-values {
         width: calc(50% - 10px);
-    }
-
-    .stock-card-volume {
-        width: 100%;
-        margin-left: 0;
-        margin-top: 4px;
-        align-self: flex-start;
     }
 
     .stock-chart {

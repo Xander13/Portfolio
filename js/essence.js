@@ -91,19 +91,6 @@ function resolveStockSymbol(symbol) {
     };
 }
 
-function buildStockSummary(quotes) {
-    return "";
-}
-
-function formatCompactValue(value) {
-    if (!Number.isFinite(value)) return "N/A";
-    return new Intl.NumberFormat("en-US", {
-        notation: "compact",
-        compactDisplay: "short",
-        maximumFractionDigits: 2
-    }).format(value);
-}
-
 function isBiblePrompt(normalizedInput) {
     return /\b(?:bible|scripture|verse|script)\b/.test(normalizedInput);
 }
@@ -186,10 +173,8 @@ async function getDelayedStockQuote(symbolConfig) {
     if (!response.ok) throw new Error(`Delayed stock request failed with ${response.status}`);
     const rows = (await response.text()).trim().split("\n").slice(1).map(row => row.split(","));
     const closes = rows.map(row => Number(row[4])).filter(value => Number.isFinite(value)).slice(-30);
-    const volumes = rows.map(row => Number(row[5])).filter(value => Number.isFinite(value)).slice(-30);
     const price = closes.at(-1);
     const previousClose = closes.at(-2);
-    const volume = volumes.at(-1);
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Delayed response did not contain quote data.");
     return {
         symbol: symbolConfig.requestedSymbol,
@@ -198,7 +183,6 @@ async function getDelayedStockQuote(symbolConfig) {
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
         closes,
-        volume,
         delayed: true
     };
 }
@@ -210,10 +194,8 @@ async function getStockQuote(symbolConfig) {
     const result = data.chart?.result?.[0];
     const meta = result?.meta;
     const closes = result?.indicators?.quote?.[0]?.close?.filter(value => Number.isFinite(value)) || [];
-    const volumes = result?.indicators?.quote?.[0]?.volume?.filter(value => Number.isFinite(value)) || [];
     const price = Number(meta?.regularMarketPrice ?? closes.at(-1));
     const previousClose = Number(meta?.previousClose ?? closes.at(-2));
-    const volume = Number(meta?.regularMarketVolume ?? volumes.at(-1));
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Yahoo response did not contain quote data.");
     return {
         symbol: symbolConfig.requestedSymbol,
@@ -221,8 +203,7 @@ async function getStockQuote(symbolConfig) {
         price,
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
-        closes: closes.slice(-30),
-        volume
+        closes: closes.slice(-30)
     };
 }
 
@@ -235,11 +216,8 @@ async function getProxyStockQuote(symbolConfig) {
     const result = data.chart?.result?.[0];
     const meta = result?.meta;
     const closes = result?.indicators?.quote?.[0]?.close?.filter(value => Number.isFinite(value)) || [];
-    const volumes = result?.indicators?.quote?.[0]?.volume?.filter(value => Number.isFinite(value)) || [];
     const price = Number(meta?.regularMarketPrice ?? closes.at(-1));
     const previousClose = Number(meta?.previousClose ?? closes.at(-2));
-    const volume = Number(meta?.regularMarketVolume ?? volumes.at(-1));
-    const marketCap = Number(meta?.marketCap);
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Proxy Yahoo response did not contain quote data.");
     return {
         symbol: symbolConfig.requestedSymbol,
@@ -248,8 +226,6 @@ async function getProxyStockQuote(symbolConfig) {
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
         closes: closes.slice(-30),
-        volume,
-        marketCap,
         delayed: true
     };
 }
@@ -274,8 +250,7 @@ async function getStockWatchlist() {
             }
         }
     }));
-    const summary = buildStockSummary(quotes);
-    return { text: "Today's market view:", stockTool: { quotes, summary }, instant: true };
+    return { text: "Today's market view:", stockTool: { quotes }, instant: true };
 }
 
 async function getWeatherLocation() {
@@ -1799,10 +1774,6 @@ function appendStockPanel(stockTool, container) {
     refresh.className = "stock-refresh";
     refresh.textContent = "Refresh";
     header.append(title, refresh);
-    const summary = document.createElement("p");
-    summary.className = "stock-summary";
-    summary.textContent = stockTool.summary || "";
-    summary.hidden = !summary.textContent;
 
     const form = document.createElement("form");
     form.className = "stock-add-form";
@@ -1816,7 +1787,7 @@ function appendStockPanel(stockTool, container) {
     form.append(symbolInput, addButton);
     const list = document.createElement("div");
     list.className = "stock-list";
-    panel.append(header, summary, list, form);
+    panel.append(header, list, form);
     container.appendChild(panel);
 
     const renderQuotes = quotes => {
@@ -1837,15 +1808,8 @@ function appendStockPanel(stockTool, container) {
                 values.textContent = quote.reason || "Quote unavailable";
             } else {
                 const direction = quote.change >= 0 ? "▲" : "▼";
-                const volumeLabel = `Vol ${formatCompactValue(Number(quote.volume))}`;
                 values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
                 values.innerHTML = `<span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small>`;
-
-                const volume = document.createElement("div");
-                volume.className = "stock-card-volume";
-                volume.textContent = volumeLabel;
-                card.appendChild(volume);
-
                 card.appendChild(createStockChart(quote.closes));
             }
             const remove = document.createElement("button");
@@ -1869,8 +1833,6 @@ function appendStockPanel(stockTool, container) {
         refresh.textContent = "Loading...";
         const result = await getStockWatchlist();
         renderQuotes(result.stockTool.quotes);
-        summary.textContent = result.stockTool.summary || "";
-        summary.hidden = !summary.textContent;
         refresh.disabled = false;
         refresh.textContent = "Refresh";
     };
