@@ -7,6 +7,7 @@
     --white: #f6f6f6;
     --gray: #A5A5A5;
     --dark-gray: #333333;
+    --primary-gray: #333333;
     --dark-gray-btn: #222222;
     --darker-gray-hover: #111111;
     --orange: #E85002;
@@ -998,6 +999,51 @@ a {
     gap: 12px;
 }
 
+.weather-forecast {
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.weather-forecast-row {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    gap: 32px;
+    width: calc(100% / 5);
+    padding: 12px 0;
+    padding-top: 32px;
+    padding-bottom: 32px;
+    border: 1px solid var(--primary-gray);
+    color: var(--white);
+}
+
+.weather-forecast-date {
+    width: 100%;
+    min-width: 100px;
+}
+
+.weather-forecast-icon {
+    width: 100%;
+    font-size: 56px;
+}
+
+.weather-forecast-condition {
+    flex: 1;
+    color: var(--gray);
+    text-wrap: balance;
+}
+
+.weather-forecast-temp {
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+}
+
 .stock-card {
     position: relative;
     width: 100%;
@@ -1012,7 +1058,7 @@ a {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    width: 25%;
+    width: 20%;
     min-width: 130px;
 }
 
@@ -1029,7 +1075,7 @@ a {
 }
 
 .stock-card-values {
-    width: 30%;
+    width: 20%;
     font-size: 24px;
     white-space: nowrap;
 }
@@ -1054,7 +1100,7 @@ a {
 
 .stock-chart {
     display: block;
-    width: 240px;
+    width: 40%;
     height: 72px;
     margin: 0;
     overflow: visible;
@@ -1678,6 +1724,55 @@ a {
         margin-top: 156px;
     }
 
+    .weather-forecast{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .weather-forecast-icon{
+        font-size: 32px;
+    }
+
+    .weather-forecast-row{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas:
+            "icon temp"
+            "date ."
+            "condition condition";
+        align-items: center;
+        row-gap: 8px;
+        column-gap: 12px;
+        width: 100%;
+        border: none;
+        border-bottom: 1px solid var(--dark-gray);
+    }
+
+    .weather-forecast-date{
+        grid-area: date;
+        width: 100%;
+        text-align: left;
+    }
+
+    .weather-forecast-condition{
+        grid-area: condition;
+        width: 100%;
+        text-align: left;
+    }
+
+    .weather-forecast-icon{
+        grid-area: icon;
+        width: 100%;
+        text-align: left;
+    }
+
+    .weather-forecast-temp{
+        grid-area: temp;
+        width: 100%;
+        font-size: 32px;
+        text-align: right;
+    }
+
     .stock-chart polyline{
         width: 100%;
     }
@@ -1848,17 +1943,19 @@ a {
 
     .stock-card-info,
     .stock-card-values {
-        width: calc(50% - 10px);
+        flex: 1 1 auto;
+        width: auto;
+    }
+
+    .stock-remove {
+        flex: 0 0 auto;
+        align-self: flex-start;
     }
 
     .stock-chart {
         order: 3;
         width: 100%;
         margin-left: 0;
-    }
-
-    .stock-remove {
-        align-self: flex-start;
     }
 
     .IntroChat {

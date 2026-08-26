@@ -33,6 +33,7 @@ let noteMode = false;
 let activeNoteEditor = null;
 let activeNoteLine = null;
 let draggedNoteLine = null;
+let isSendingMessage = false; // guards against duplicate fetches from double-fire input events
 const defaultStockSymbols = ["JNJ", "AAPL", "FIG", "SP500", "DOW"];
 let stockSymbols = loadStockSymbols();
 
@@ -294,6 +295,17 @@ function formatWeatherResponse(data, locationName) {
     return `Today in ${locationName}, it is ${condition.toLowerCase()} with temperatures around ${temperatureText}.${feelsLikeText} ${advice}`;
 }
 
+function weatherIconFor(shortForecast) {
+    const text = String(shortForecast || "").toLowerCase();
+    if (/thunder|storm/.test(text)) return "⛈️";
+    if (/snow|flurries|sleet/.test(text)) return "❄️";
+    if (/rain|shower|drizzle/.test(text)) return "🌧️";
+    if (/overcast|cloudy/.test(text)) return "☁️";
+    if (/partly|mostly (cloudy|sunny)/.test(text)) return "⛅";
+    if (/clear|sunny/.test(text)) return "☀️";
+    return "⛅";
+}
+
 async function getWeatherResponse() {
     try {
         const location = await getWeatherLocation();
@@ -309,7 +321,8 @@ async function getWeatherResponse() {
         if (!forecastResponse.ok) throw new Error(`NWS forecast request failed with ${forecastResponse.status}`);
 
         const forecast = await forecastResponse.json();
-        const period = forecast.properties?.periods?.[0];
+        const periods = forecast.properties?.periods || [];
+        const period = periods[0];
         if (!period) throw new Error("NWS did not return a forecast period.");
         const precipitationChance = period.probabilityOfPrecipitation?.value;
         const precipitationText = precipitationChance === null || precipitationChance === undefined
@@ -321,8 +334,19 @@ async function getWeatherResponse() {
                 ? "A warm layer would be a good idea."
                 : "A light layer should do nicely today.";
 
+        const forecastDays = periods
+            .filter(item => item.isDaytime)
+            .slice(0, 5)
+            .map(item => ({
+                date: new Date(item.startTime).toLocaleDateString("en-US", { weekday: "short", month: "short", day: "numeric" }),
+                temperature: `${item.temperature}°${item.temperatureUnit}`,
+                condition: item.shortForecast,
+                icon: weatherIconFor(item.shortForecast)
+            }));
+
         return {
             text: `Today in ${location.name}, expect ${period.shortForecast.toLowerCase()} with a high around ${period.temperature}°${period.temperatureUnit}.${precipitationText} ${advice}`,
+            weatherForecast: forecastDays.length > 0 ? forecastDays : undefined,
             instant: true
         };
     } catch (error) {
@@ -1426,6 +1450,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
 
         if (extra.bible) appendBiblePanel(extra.bible, content);
         if (extra.stockTool) appendStockPanel(extra.stockTool, content);
+        if (extra.weatherForecast) appendWeatherForecastPanel(extra.weatherForecast, content);
 
         if (extra.weatherConfirmation) {
             const actions = document.createElement("div");
@@ -1735,6 +1760,38 @@ function appendBiblePanel(bible, container) {
     const reference = document.createElement("cite");
     reference.textContent = `- ${bible.reference}`;
     panel.append(quote, reference);
+    container.appendChild(panel);
+}
+
+function appendWeatherForecastPanel(days, container) {
+    const panel = document.createElement("div");
+    panel.className = "weather-forecast";
+    panel.setAttribute("aria-label", "5-day forecast");
+
+    days.forEach(day => {
+        const row = document.createElement("div");
+        row.className = "weather-forecast-row";
+
+        const date = document.createElement("span");
+        date.className = "weather-forecast-date";
+        date.textContent = day.date;
+
+        const icon = document.createElement("span");
+        icon.className = "weather-forecast-icon";
+        icon.textContent = day.icon;
+
+        const condition = document.createElement("span");
+        condition.className = "weather-forecast-condition";
+        condition.textContent = day.condition;
+
+        const temperature = document.createElement("span");
+        temperature.className = "weather-forecast-temp";
+        temperature.textContent = day.temperature;
+
+        row.append(date, icon, condition, temperature);
+        panel.appendChild(row);
+    });
+
     container.appendChild(panel);
 }
 
@@ -2351,48 +2408,52 @@ function shouldClearChat(userText) {
 
 // -------- Send Message --------
 async function sendMessage() {
+    if (isSendingMessage) return;
     if (!input || !responseBox) initElements();
     if (!input || !responseBox) return;
 
     const rawUserText = input.value.trim();
     if (!rawUserText) return;
 
-    const safeUserText = normalizeSlashCommandText(rawUserText);
-    const userText = safeUserText || rawUserText;
-    const normalizedUserText = normalizeText(userText);
+    isSendingMessage = true;
 
-    if (shouldClearChat(userText)) {
-        responseBox.innerHTML = "";
-        questionCount = 0;
-        welcomeShown = false;
-        input.value = "";
-        showWelcomeMessage();
-        return;
-    }
+    try {
+        const safeUserText = normalizeSlashCommandText(rawUserText);
+        const userText = safeUserText || rawUserText;
+        const normalizedUserText = normalizeText(userText);
 
-    if (shouldEnterNoteMode(rawUserText)) {
-        enterNoteMode();
-        input.value = "";
-        return;
-    }
-
-    // 1. Show user message immediately
-    appendMessage("user", userText);
-    questionCount++;
-
-    if (questionCount > maxQuestions) {
-        const limitMsg = "Wow, you really like to inquire about me! 😉 Why not have a meeting? Contact Alex on <a href='https://www.linkedin.com/in/alex-kauffman' target='_blank'>LinkedIn</a>.";
-        appendMessage("ai", limitMsg);
-
-        // Trigger scatter effect
-        if (typeof window.scatterParticles === "function") {
-            window.scatterParticles();
+        if (shouldClearChat(userText)) {
+            responseBox.innerHTML = "";
+            questionCount = 0;
+            welcomeShown = false;
+            input.value = "";
+            showWelcomeMessage();
+            return;
         }
 
-        input.disabled = true;
-        input.placeholder = "Limit reached.";
-        return;
-    }
+        if (shouldEnterNoteMode(rawUserText)) {
+            enterNoteMode();
+            input.value = "";
+            return;
+        }
+
+        // 1. Show user message immediately
+        appendMessage("user", userText);
+        questionCount++;
+
+        if (questionCount > maxQuestions) {
+            const limitMsg = "Wow, you really like to inquire about me! 😉 Why not have a meeting? Contact Alex on <a href='https://www.linkedin.com/in/alex-kauffman' target='_blank'>LinkedIn</a>.";
+            appendMessage("ai", limitMsg);
+
+            // Trigger scatter effect
+            if (typeof window.scatterParticles === "function") {
+                window.scatterParticles();
+            }
+
+            input.disabled = true;
+            input.placeholder = "Limit reached.";
+            return;
+        }
 
     // 2. Show thinking indicator
     const thinkingIndicator = document.createElement("div");
@@ -2448,10 +2509,14 @@ async function sendMessage() {
         weatherConfirmation: answerObj.weatherConfirmation,
         timer: answerObj.timer,
         bible: answerObj.bible,
-        stockTool: answerObj.stockTool
+        stockTool: answerObj.stockTool,
+        weatherForecast: answerObj.weatherForecast
     });
 
     input.value = "";
+    } finally {
+        isSendingMessage = false;
+    }
 }
 
 
@@ -2905,6 +2970,7 @@ window.addEventListener('load', async () => {
     if (input) input.addEventListener("keydown", e => {
         if (e.key === "Enter") {
             e.preventDefault();
+            if (e.repeat) return; // ignore held-key auto-repeat firing sendMessage multiple times
             sendMessage();
         }
     });
