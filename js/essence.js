@@ -94,15 +94,39 @@ function resolveStockSymbol(symbol) {
 function buildStockSummary(quotes) {
     const validQuotes = quotes.filter(quote => !quote.error && Number.isFinite(quote.changePercent));
     if (validQuotes.length === 0) {
-        return "Summary: Market data is unavailable right now.";
+        return "Market data is limited right now as quote feeds are temporarily unavailable.";
     }
     const gainers = validQuotes.filter(quote => quote.changePercent >= 0).length;
     const losers = validQuotes.length - gainers;
     const averageMove = validQuotes.reduce((sum, quote) => sum + quote.changePercent, 0) / validQuotes.length;
     const topGainer = [...validQuotes].sort((a, b) => b.changePercent - a.changePercent)[0];
-    const topLoser = [...validQuotes].sort((a, b) => a.changePercent - b.changePercent)[0];
-    const avgPrefix = averageMove >= 0 ? "+" : "";
-    return `Summary: ${gainers} up, ${losers} down. Avg move ${avgPrefix}${averageMove.toFixed(2)}%. Top: ${topGainer.symbol} ${topGainer.changePercent >= 0 ? "+" : ""}${topGainer.changePercent.toFixed(2)}%, ${topLoser.symbol} ${topLoser.changePercent >= 0 ? "+" : ""}${topLoser.changePercent.toFixed(2)}%.`;
+    const sp500 = validQuotes.find(quote => quote.symbol === "SP500");
+    const dow = validQuotes.find(quote => quote.symbol === "DOW");
+    const tone = averageMove > 0.2
+        ? "Wall Street pushed higher"
+        : averageMove < -0.2
+            ? "Wall Street pulled back"
+            : "Wall Street traded mixed";
+    const indexParts = [];
+    if (sp500) {
+        indexParts.push(`S&P 500 ${sp500.changePercent >= 0 ? "up" : "down"} ${Math.abs(sp500.changePercent).toFixed(2)}%`);
+    }
+    if (dow) {
+        indexParts.push(`Dow ${dow.changePercent >= 0 ? "up" : "down"} ${Math.abs(dow.changePercent).toFixed(2)}%`);
+    }
+    const breadthText = `${gainers} of ${validQuotes.length} symbols gained`;
+    const leaderText = `${topGainer.symbol} led movers ${topGainer.changePercent >= 0 ? "up" : "down"} ${Math.abs(topGainer.changePercent).toFixed(2)}%`;
+    const indexText = indexParts.length > 0 ? `, with ${indexParts.join(" and ")}` : "";
+    return `${tone}${indexText}; ${breadthText} while ${losers} declined, and ${leaderText}.`;
+}
+
+function formatCompactValue(value) {
+    if (!Number.isFinite(value)) return "N/A";
+    return new Intl.NumberFormat("en-US", {
+        notation: "compact",
+        compactDisplay: "short",
+        maximumFractionDigits: 2
+    }).format(value);
 }
 
 function isBiblePrompt(normalizedInput) {
@@ -187,8 +211,10 @@ async function getDelayedStockQuote(symbolConfig) {
     if (!response.ok) throw new Error(`Delayed stock request failed with ${response.status}`);
     const rows = (await response.text()).trim().split("\n").slice(1).map(row => row.split(","));
     const closes = rows.map(row => Number(row[4])).filter(value => Number.isFinite(value)).slice(-30);
+    const volumes = rows.map(row => Number(row[5])).filter(value => Number.isFinite(value)).slice(-30);
     const price = closes.at(-1);
     const previousClose = closes.at(-2);
+    const volume = volumes.at(-1);
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Delayed response did not contain quote data.");
     return {
         symbol: symbolConfig.requestedSymbol,
@@ -197,6 +223,8 @@ async function getDelayedStockQuote(symbolConfig) {
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
         closes,
+        volume,
+        marketCap: null,
         delayed: true
     };
 }
@@ -208,8 +236,11 @@ async function getStockQuote(symbolConfig) {
     const result = data.chart?.result?.[0];
     const meta = result?.meta;
     const closes = result?.indicators?.quote?.[0]?.close?.filter(value => Number.isFinite(value)) || [];
+    const volumes = result?.indicators?.quote?.[0]?.volume?.filter(value => Number.isFinite(value)) || [];
     const price = Number(meta?.regularMarketPrice ?? closes.at(-1));
     const previousClose = Number(meta?.previousClose ?? closes.at(-2));
+    const volume = Number(meta?.regularMarketVolume ?? volumes.at(-1));
+    const marketCap = Number(meta?.marketCap);
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Yahoo response did not contain quote data.");
     return {
         symbol: symbolConfig.requestedSymbol,
@@ -217,7 +248,9 @@ async function getStockQuote(symbolConfig) {
         price,
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
-        closes: closes.slice(-30)
+        closes: closes.slice(-30),
+        volume,
+        marketCap
     };
 }
 
@@ -230,8 +263,11 @@ async function getProxyStockQuote(symbolConfig) {
     const result = data.chart?.result?.[0];
     const meta = result?.meta;
     const closes = result?.indicators?.quote?.[0]?.close?.filter(value => Number.isFinite(value)) || [];
+    const volumes = result?.indicators?.quote?.[0]?.volume?.filter(value => Number.isFinite(value)) || [];
     const price = Number(meta?.regularMarketPrice ?? closes.at(-1));
     const previousClose = Number(meta?.previousClose ?? closes.at(-2));
+    const volume = Number(meta?.regularMarketVolume ?? volumes.at(-1));
+    const marketCap = Number(meta?.marketCap);
     if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Proxy Yahoo response did not contain quote data.");
     return {
         symbol: symbolConfig.requestedSymbol,
@@ -240,6 +276,8 @@ async function getProxyStockQuote(symbolConfig) {
         change: price - previousClose,
         changePercent: ((price - previousClose) / previousClose) * 100,
         closes: closes.slice(-30),
+        volume,
+        marketCap,
         delayed: true
     };
 }
@@ -1791,7 +1829,7 @@ function appendStockPanel(stockTool, container) {
     header.append(title, refresh);
     const summary = document.createElement("p");
     summary.className = "stock-summary";
-    summary.textContent = stockTool.summary || "Summary: Loading market snapshot...";
+    summary.textContent = stockTool.summary || "Loading market snapshot...";
 
     const form = document.createElement("form");
     form.className = "stock-add-form";
@@ -1826,8 +1864,10 @@ function appendStockPanel(stockTool, container) {
                 values.textContent = quote.reason || "Quote unavailable";
             } else {
                 const direction = quote.change >= 0 ? "▲" : "▼";
+                const marketCapLabel = `Mkt Cap ${formatCompactValue(Number(quote.marketCap))}`;
+                const volumeLabel = `Vol ${formatCompactValue(Number(quote.volume))}`;
                 values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
-                values.innerHTML = `<span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small>`;
+                values.innerHTML = `<span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small><small class="stock-card-meta">${marketCapLabel} • ${volumeLabel}</small>`;
                 card.appendChild(createStockChart(quote.closes));
             }
             const remove = document.createElement("button");
@@ -1851,7 +1891,7 @@ function appendStockPanel(stockTool, container) {
         refresh.textContent = "Loading...";
         const result = await getStockWatchlist();
         renderQuotes(result.stockTool.quotes);
-        summary.textContent = result.stockTool.summary || "Summary: Market snapshot unavailable.";
+        summary.textContent = result.stockTool.summary || "Market snapshot unavailable.";
         refresh.disabled = false;
         refresh.textContent = "Refresh";
     };
