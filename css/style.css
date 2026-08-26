@@ -1106,17 +1106,22 @@ a {
 }
 
 .stock-price-row span {
-    display: inline;
+    display: block;
+}
+
+.stock-details small {
+    display: block;
 }
 
 .stock-details {
     width: auto;
-    white-space: nowrap;
 }
 
 .stock-details small {
     font-size: 12px;
     color: var(--gray);
+    display: block;
+    white-space: nowrap;
 }
 
 .stock-up {

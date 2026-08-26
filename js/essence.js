@@ -1954,25 +1954,26 @@ function appendStockPanel(stockTool, container) {
             } else {
                 const direction = quote.change >= 0 ? "▲" : "▼";
                 values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
-                values.innerHTML = `<div class="stock-price-row"><span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small></div>`;
+                values.innerHTML = `<div class="stock-price-row"><span>${direction} $${quote.price.toFixed(2)}</span> <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small></div>`;
                 
                 // Create details div for additional stock info
                 const details = document.createElement("div");
                 details.className = "stock-details";
-                let infoText = ``;
+                const detailLines = [];
+                
                 if (quote.high && quote.low) {
-                    infoText += `D: $${quote.low.toFixed(2)}–$${quote.high.toFixed(2)}`;
+                    detailLines.push(`D: $${quote.low.toFixed(2)}–$${quote.high.toFixed(2)}`);
                 }
-                if (quote.high52w && quote.low52w && infoText) {
-                    infoText += ` | Y: $${quote.low52w.toFixed(2)}–$${quote.high52w.toFixed(2)}`;
+                if (quote.high52w && quote.low52w) {
+                    detailLines.push(`Y: $${quote.low52w.toFixed(2)}–$${quote.high52w.toFixed(2)}`);
                 }
                 if (quote.volume) {
                     const volText = quote.volume > 1000000 ? (quote.volume / 1000000).toFixed(1) + "M" : (quote.volume / 1000).toFixed(0) + "K";
-                    if (infoText) infoText += ` | Vol: ${volText}`;
-                    else infoText = `Vol: ${volText}`;
+                    detailLines.push(`Vol: ${volText}`);
                 }
-                if (infoText) {
-                    details.innerHTML = `<small>${infoText}</small>`;
+                
+                if (detailLines.length > 0) {
+                    details.innerHTML = detailLines.map(line => `<small>${line}</small>`).join("");
                 }
                 
                 card.appendChild(createStockChart(quote.closes));
