@@ -1863,7 +1863,13 @@ function appendStockPanel(stockTool, container) {
                 const direction = quote.change >= 0 ? "▲" : "▼";
                 const volumeLabel = `Vol ${formatCompactValue(Number(quote.volume))}`;
                 values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
-                values.innerHTML = `<span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small><small class="stock-card-meta">${volumeLabel}</small>`;
+                values.innerHTML = `<span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small>`;
+
+                const volume = document.createElement("div");
+                volume.className = "stock-card-volume";
+                volume.textContent = volumeLabel;
+                card.appendChild(volume);
+
                 card.appendChild(createStockChart(quote.closes));
             }
             const remove = document.createElement("button");
@@ -1999,8 +2005,9 @@ function processPlaceholders(text) {
         })
     }
     if (text.includes("{{weatherSite}}")) {
-        text = text.replace("{{weatherSite}}", "weather.gov");
+        text = text.replaceAll("{{weatherSite}}", "weather.gov");
         inlineLinks.push({
+            searchText: "weather.gov",
             href: knowledge.links?.weatherSite || "https://www.weather.gov/",
             linkText: "weather.gov"
         });
