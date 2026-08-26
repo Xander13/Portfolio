@@ -1070,6 +1070,7 @@ a {
 .stock-remove {
     position: static;
     align-self: center;
+    text-wrap: nowrap;
 }
 
 .essence-tooltip {
@@ -1675,6 +1676,10 @@ a {
         max-width: 100%;
         position: relative;
         margin-top: 156px;
+    }
+
+    .stock-chart polyline{
+        width: 100%;
     }
 
     .hero {
