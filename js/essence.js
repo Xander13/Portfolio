@@ -1940,6 +1940,13 @@ function appendStockPanel(stockTool, container) {
         quotes.forEach(quote => {
             const card = document.createElement("article");
             card.className = "stock-card";
+            
+            // Append chart first
+            if (!quote.error) {
+                card.appendChild(createStockChart(quote.closes));
+            }
+            
+            // Append company info (symbol and name)
             const info = document.createElement("div");
             info.className = "stock-card-info";
             const symbol = document.createElement("strong");
@@ -1947,16 +1954,10 @@ function appendStockPanel(stockTool, container) {
             const name = document.createElement("span");
             name.textContent = quote.error ? "Quote unavailable" : quote.name;
             info.append(symbol, name);
-            const values = document.createElement("div");
-            values.className = "stock-card-values";
-            if (quote.error) {
-                values.textContent = quote.reason || "Quote unavailable";
-            } else {
-                const direction = quote.change >= 0 ? "▲" : "▼";
-                values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
-                values.innerHTML = `<div class="stock-price-row"><span>${direction} $${quote.price.toFixed(2)}</span> <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small></div>`;
-                
-                // Create details div for additional stock info
+            card.appendChild(info);
+            
+            // Append details (D, Y, Vol)
+            if (!quote.error) {
                 const details = document.createElement("div");
                 details.className = "stock-details";
                 const detailLines = [];
@@ -1975,10 +1976,22 @@ function appendStockPanel(stockTool, container) {
                 if (detailLines.length > 0) {
                     details.innerHTML = detailLines.map(line => `<small>${line}</small>`).join("");
                 }
-                
-                card.appendChild(createStockChart(quote.closes));
                 card.appendChild(details);
             }
+            
+            // Append values (price and change)
+            const values = document.createElement("div");
+            values.className = "stock-card-values";
+            if (quote.error) {
+                values.textContent = quote.reason || "Quote unavailable";
+            } else {
+                const direction = quote.change >= 0 ? "▲" : "▼";
+                values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
+                values.innerHTML = `<div class="stock-price-row"><span>${direction} $${quote.price.toFixed(2)}</span> <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small></div>`;
+            }
+            card.appendChild(values);
+            
+            // Append remove button
             const remove = document.createElement("button");
             remove.type = "button";
             remove.className = "stock-remove";
@@ -1990,7 +2003,7 @@ function appendStockPanel(stockTool, container) {
                 saveStockSymbols();
                 refreshQuotes();
             });
-            card.append(info, values, remove);
+            card.appendChild(remove);
             list.appendChild(card);
         });
     };
