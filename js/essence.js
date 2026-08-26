@@ -1956,9 +1956,9 @@ function appendStockPanel(stockTool, container) {
                 values.classList.add(quote.change >= 0 ? "stock-up" : "stock-down");
                 values.innerHTML = `<div class="stock-price-row"><span>${direction}</span> $${quote.price.toFixed(2)} <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small></div>`;
                 
-                // Add additional stock info
-                const infoRow = document.createElement("div");
-                infoRow.className = "stock-info-row";
+                // Create details div for additional stock info
+                const details = document.createElement("div");
+                details.className = "stock-details";
                 let infoText = ``;
                 if (quote.high && quote.low) {
                     infoText += `D: $${quote.low.toFixed(2)}–$${quote.high.toFixed(2)}`;
@@ -1972,11 +1972,11 @@ function appendStockPanel(stockTool, container) {
                     else infoText = `Vol: ${volText}`;
                 }
                 if (infoText) {
-                    infoRow.innerHTML = `<small>${infoText}</small>`;
-                    values.appendChild(infoRow);
+                    details.innerHTML = `<small>${infoText}</small>`;
                 }
                 
                 card.appendChild(createStockChart(quote.closes));
+                card.appendChild(details);
             }
             const remove = document.createElement("button");
             remove.type = "button";
