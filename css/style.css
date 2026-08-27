@@ -1150,7 +1150,45 @@ a {
 
 @media (max-width: 768px) {
     .stock-chart {
-        width: 100%;
+        display: none;
+    }
+    
+    .stock-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        gap: 12px;
+        min-height: auto;
+        align-items: start;
+    }
+    
+    .stock-card-info {
+        grid-column: 1;
+        grid-row: 1;
+        width: auto;
+        min-width: auto;
+    }
+    
+    .stock-details {
+        grid-column: 2;
+        grid-row: 1;
+        text-align: right;
+    }
+    
+    .stock-card-values {
+        grid-column: 1;
+        grid-row: 2;
+        width: auto;
+        font-size: 20px;
+        white-space: normal;
+        word-break: break-word;
+    }
+    
+    .stock-remove {
+        grid-column: 2;
+        grid-row: 2;
+        justify-self: end;
+        align-self: end;
     }
 }
 
