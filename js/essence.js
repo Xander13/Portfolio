@@ -34,7 +34,7 @@ let activeNoteEditor = null;
 let activeNoteLine = null;
 let draggedNoteLine = null;
 let isSendingMessage = false; // guards against duplicate fetches from double-fire input events
-const defaultStockSymbols = ["JNJ", "AAPL", "FIG", "SP500", "DOW"];
+const defaultStockSymbols = ["JNJ", "AAPL", "FIG", "SP500", "DOW", "NVDA"];
 let stockSymbols = loadStockSymbols();
 
 
@@ -278,7 +278,7 @@ async function getStockWatchlist() {
             }
         }
     }));
-    return { text: "Pulling from [Yahoo Stocks](https://finance.yahoo.com). Here are some watchlist from big tech and other stocks: Add Nvidia as well.", stockTool: { quotes }, instant: true };
+    return { text: "Pulling from {{Yahoo Stocks}}. Here are some watchlist from big tech and other stocks: Add Nvidia as well.", stockTool: { quotes }, instant: true };
 }
 
 async function getWeatherLocation() {
@@ -2180,6 +2180,15 @@ function processPlaceholders(text) {
         inlineLinks.push({
             searchText: fullPhrase,
             href: knowledge.links?.jnj || "https://www.careers.jnj.com/en/",
+            linkText: fullPhrase
+        });
+    }
+    if (text.includes("{{Yahoo Stocks}}")) {
+        const fullPhrase = "Yahoo Stocks";
+        text = text.replace("{{Yahoo Stocks}}", fullPhrase);
+        inlineLinks.push({
+            searchText: fullPhrase,
+            href: "https://finance.yahoo.com",
             linkText: fullPhrase
         });
     }
