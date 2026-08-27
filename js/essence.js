@@ -1559,8 +1559,16 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
                 }
             });
         } else {
-            // Normal mode: Split by <br><br> and animate paragraphs sequentially
-            const paragraphs = processedMsg.split(/<br\s*\/?>\s*<br\s*\/?>/i);
+            // Normal mode: Split by <br><br>, <br/><br/>, or \n\n and animate paragraphs sequentially
+            let paragraphs = processedMsg
+                .split(/(?:<br\s*\/?>\s*){2,}|\n\n+/i)
+                .map(p => p.trim())
+                .filter(p => p.length > 0);
+
+            // If no paragraph breaks found, treat entire message as one paragraph
+            if (paragraphs.length === 0) {
+                paragraphs = [processedMsg];
+            }
 
             // Remove the default <p> since we'll create multiple
             p.remove();
@@ -1568,7 +1576,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             const paragraphElements = [];
             paragraphs.forEach((paragraphText, index) => {
                 const paragraphElement = document.createElement("p");
-                paragraphElement.innerHTML = paragraphText.trim();
+                paragraphElement.innerHTML = paragraphText;
                 paragraphElement.style.position = "relative";
                 paragraphElement.style.animation = `slideIn 0.8s ease ${index * 0.3}s forwards`;
                 paragraphElement.style.opacity = "0"; // Start hidden
