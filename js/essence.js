@@ -278,7 +278,7 @@ async function getStockWatchlist() {
             }
         }
     }));
-    const messageText = "Pulling from {{Yahoo Stocks}}. Here are some watchlist from big tech and other stocks: Add Nvidia as well.";
+    const messageText = "Pulling live data from {{Yahoo Stocks}}. Here are watchlists for big tech and other major stocks:";
     const processed = processPlaceholders(messageText);
     return { text: processed.text, inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined, stockTool: { quotes }, instant: true };
 }
@@ -2186,7 +2186,7 @@ function processPlaceholders(text) {
         });
     }
     if (text.includes("{{Yahoo Stocks}}")) {
-        const fullPhrase = "Yahoo Stocks";
+        const fullPhrase = "Yahoo Finance";
         text = text.replace("{{Yahoo Stocks}}", fullPhrase);
         inlineLinks.push({
             searchText: fullPhrase,
