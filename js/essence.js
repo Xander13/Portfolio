@@ -278,7 +278,7 @@ async function getStockWatchlist() {
             }
         }
     }));
-    return { text: "Today's market view:", stockTool: { quotes }, instant: true };
+    return { text: "Pulling from [Yahoo Stocks](https://finance.yahoo.com). Here are some watchlist from big tech and other stocks: Add Nvidia as well.", stockTool: { quotes }, instant: true };
 }
 
 async function getWeatherLocation() {
