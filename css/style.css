@@ -674,6 +674,14 @@ a {
     word-break: break-word;
 }
 
+.msgContent p {
+    margin-bottom: 20px;
+}
+
+.msgContent p:last-child {
+    margin-bottom: 0;
+}
+
 .msgContent a {
     text-decoration: underline !important;
 }
@@ -923,10 +931,10 @@ a {
 }
 
 .gbImg {
-    width: 160px;
+    width: 300px;
     max-width: 100%;
     border-left: 1px solid var(--dark-gray);
-    padding-left: 56px;
+    padding-left: 32px;
     display: block;
     margin-top: 56px;
     margin-bottom: 56px;
