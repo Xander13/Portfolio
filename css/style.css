@@ -898,7 +898,7 @@ a {
 }
 
 .bible-quote .sort-btn{
-    margin-top: 32px;
+    margin-top: 32px !important;
 }
 
 .bible-panel cite {
