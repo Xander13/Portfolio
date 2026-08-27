@@ -1816,20 +1816,8 @@ function appendBiblePanel(bible, container) {
     
     // Add "Get another verse" button
     const button = document.createElement("button");
+    button.className = "sort-btn";
     button.textContent = "Get another verse";
-    button.style.border = "1px solid var(--gray)";
-    button.style.padding = "8px 12px";
-    button.style.background = "transparent";
-    button.style.color = "var(--white)";
-    button.style.font = "inherit";
-    button.style.cursor = "pointer";
-    button.style.transition = "border-color 0.2s";
-    button.addEventListener("mouseover", () => {
-        button.style.borderColor = "var(--white)";
-    });
-    button.addEventListener("mouseout", () => {
-        button.style.borderColor = "var(--gray)";
-    });
     button.addEventListener("click", async () => {
         button.disabled = true;
         button.textContent = "Loading...";
@@ -1849,6 +1837,18 @@ function appendBiblePanel(bible, container) {
                 
                 newQuoteSection.append(newQuote, newReference);
                 panel.appendChild(newQuoteSection);
+                
+                // Add separator line below new quote
+                const newSeparator = document.createElement("div");
+                newSeparator.style.borderBottom = "1px solid var(--dark-gray)";
+                newSeparator.style.marginTop = "24px";
+                newSeparator.style.marginBottom = "24px";
+                panel.appendChild(newSeparator);
+                
+                // Reset button and move it below the new quote
+                button.textContent = "Get another verse";
+                button.disabled = false;
+                panel.appendChild(button);
             }
         } catch (error) {
             console.error("Error loading another verse", error);

@@ -894,6 +894,7 @@ a {
 
 .bible-quote {
     margin: 56px 0 56px;
+    text-wrap: balance;
 }
 
 .bible-panel cite {
@@ -2030,6 +2031,7 @@ a {
     .bible-panel cite {
         font-size: 28px !important;
         line-height: 36px !important;
+        text-wrap: balance;
     }
 
     .bible-image {
