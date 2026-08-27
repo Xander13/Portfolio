@@ -100,74 +100,55 @@ function isStockPrompt(normalizedInput) {
     return /\b(?:stock|stocks|shares|market|watchlist|yahoo finance)\b/.test(normalizedInput);
 }
 
-const bibleReferences = [
-    {
-        book: "John",
-        chapter: 1,
-        verse: 12,
-        label: "John 1:12",
-        fallback: "But to all who did receive him, who believed in his name, he gave the right to become children of God,"
-    },
-    {
-        book: "Psalms",
-        chapter: 23,
-        verse: 1,
-        label: "Psalm 23:1",
-        fallback: "The Lord is my shepherd; I shall not want."
-    },
-    {
-        book: "Proverbs",
-        chapter: 3,
-        verse: 5,
-        label: "Proverbs 3:5",
-        fallback: "Trust in the Lord with all thine heart; and lean not unto thine own understanding."
-    },
-    {
-        book: "Philippians",
-        chapter: 4,
-        verse: 13,
-        label: "Philippians 4:13",
-        fallback: "I can do all things through Christ which strengtheneth me."
-    },
-    {
-        book: "Romans",
-        chapter: 8,
-        verse: 28,
-        label: "Romans 8:28",
-        fallback: "And we know that all things work together for good to them that love God,"
-    }
-];
+let allBibleQuotes = [];
+let usedBibleQuotes = [];
 
-let lastBibleReference = null;
+async function loadBibleQuotes() {
+    try {
+        const response = await fetch('/quotes.json');
+        if (!response.ok) throw new Error(`Failed to load quotes: ${response.status}`);
+        allBibleQuotes = await response.json();
+    } catch (error) {
+        console.error("Unable to load Bible quotes", error);
+        allBibleQuotes = [];
+    }
+}
 
 async function getBibleVerse() {
-    const availableReferences = bibleReferences.filter(reference => reference !== lastBibleReference);
-    const reference = availableReferences[Math.floor(Math.random() * availableReferences.length)];
-    lastBibleReference = reference;
-    try {
-        const response = await fetch(`https://bible.helloao.org/api/ENGESV/${reference.book}/${reference.chapter}.json`);
-        if (!response.ok) throw new Error(`Bible request failed with ${response.status}`);
-        const data = await response.json();
-        const verse = data.verses?.find(item => Number(item.verse) === reference.verse);
-        if (!verse?.text) throw new Error("Bible response did not contain the requested verse.");
-        return {
-            text: "Here is a scripture passage:",
-            bible: { quote: verse.text, reference: reference.label, source: "https://bible.helloao.org", img: "/img/olive.png" },
-            instant: true
-        };
-    } catch (error) {
-        console.error("Unable to load Bible verse", error);
+    if (allBibleQuotes.length === 0) {
+        await loadBibleQuotes();
+    }
+    
+    if (allBibleQuotes.length === 0) {
         return {
             text: "Here is a scripture passage:",
             bible: {
-                quote: reference.fallback,
-                reference: reference.label,
-                source: "https://bible.helloao.org",
+                quote: "Unable to load Bible verses.",
+                reference: "Error",
+                source: "",
                 img: "/img/olive.png"
             },
             instant: true
         };
     }
+    
+    // Get available quotes that haven't been used yet
+    let availableQuotes = allBibleQuotes.filter(q => !usedBibleQuotes.includes(q.label));
+    
+    // If all quotes have been used, reset the list
+    if (availableQuotes.length === 0) {
+        usedBibleQuotes = [];
+        availableQuotes = allBibleQuotes;
+    }
+    
+    const verse = availableQuotes[Math.floor(Math.random() * availableQuotes.length)];
+    usedBibleQuotes.push(verse.label);
+    
+    return {
+        text: "Here is a scripture passage:",
+        bible: { quote: verse.quote, reference: verse.label, source: "", img: "/img/olive.png" },
+        instant: true
+    };
 }
 
 async function getDelayedStockQuote(symbolConfig) {
@@ -1815,7 +1796,7 @@ function appendBiblePanel(bible, container) {
     // Add "Get another verse" button
     const button = document.createElement("button");
     button.className = "sort-btn";
-    button.style.marginTop = "16px";
+    button.style.marginTop = "32px";
     button.textContent = "Get another verse";
     button.addEventListener("click", async () => {
         button.disabled = true;
@@ -3160,7 +3141,7 @@ window.addEventListener('load', async () => {
         }
     });
 
-    await Promise.all([knowledgePromise]);
+    await Promise.all([knowledgePromise, loadBibleQuotes()]);
 
     // V2: Show helper and expand on input focus/click
     input.addEventListener('focus', () => {
