@@ -1809,9 +1809,7 @@ function appendBiblePanel(bible, container) {
     
     // Add separator line
     const separator = document.createElement("div");
-    separator.style.borderBottom = "1px solid var(--dark-gray)";
-    separator.style.marginTop = "24px";
-    separator.style.marginBottom = "24px";
+    separator.className = "bible-separator";
     panel.appendChild(separator);
     
     // Add "Get another verse" button
@@ -1840,9 +1838,7 @@ function appendBiblePanel(bible, container) {
                 
                 // Add separator line below new quote
                 const newSeparator = document.createElement("div");
-                newSeparator.style.borderBottom = "1px solid var(--dark-gray)";
-                newSeparator.style.marginTop = "24px";
-                newSeparator.style.marginBottom = "24px";
+                newSeparator.className = "bible-separator";
                 panel.appendChild(newSeparator);
                 
                 // Reset button and move it below the new quote

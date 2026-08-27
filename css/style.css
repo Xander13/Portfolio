@@ -922,6 +922,12 @@ a {
     user-select: none;
 }
 
+.bible-separator {
+    border-bottom: 1px solid var(--dark-gray);
+    margin-top: 56px;
+    margin-bottom: 0px;
+}
+
 .stock-panel {
     width: 100%;
     margin-top: 32px;
