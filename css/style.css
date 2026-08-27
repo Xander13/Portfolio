@@ -897,10 +897,6 @@ a {
     text-wrap: balance;
 }
 
-.bible-separator:last-child{
-    margin-bottom: 32px !important;
-}
-
 .bible-panel cite {
     display: block;
     font-size: 40px;

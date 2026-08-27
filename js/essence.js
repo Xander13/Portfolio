@@ -1815,6 +1815,7 @@ function appendBiblePanel(bible, container) {
     // Add "Get another verse" button
     const button = document.createElement("button");
     button.className = "sort-btn";
+    button.style.marginTop = "16px";
     button.textContent = "Get another verse";
     button.addEventListener("click", async () => {
         button.disabled = true;
