@@ -898,7 +898,7 @@ a {
 }
 
 .bible-separator:last-child{
-    padding-bottom: 32px;
+    margin-bottom: 32px !important;
 }
 
 .bible-panel cite {
