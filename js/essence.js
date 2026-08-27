@@ -278,7 +278,9 @@ async function getStockWatchlist() {
             }
         }
     }));
-    return { text: "Pulling from {{Yahoo Stocks}}. Here are some watchlist from big tech and other stocks: Add Nvidia as well.", stockTool: { quotes }, instant: true };
+    const messageText = "Pulling from {{Yahoo Stocks}}. Here are some watchlist from big tech and other stocks: Add Nvidia as well.";
+    const processed = processPlaceholders(messageText);
+    return { text: processed.text, inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined, stockTool: { quotes }, instant: true };
 }
 
 async function getWeatherLocation() {
