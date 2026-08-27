@@ -1145,10 +1145,6 @@ a {
 }
 
 @media (max-width: 768px) {
-    .stock-chart {
-        display: none;
-    }
-    
     .stock-card {
         display: grid;
         grid-template-columns: 1fr 1fr;
