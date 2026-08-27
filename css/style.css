@@ -897,6 +897,10 @@ a {
     text-wrap: balance;
 }
 
+.bible-quote .sort-btn{
+    margin-top: 32px;
+}
+
 .bible-panel cite {
     display: block;
     font-size: 40px;
