@@ -261,7 +261,7 @@ async function getStockWatchlist() {
     }));
     const messageText = "Pulling live data from {{Yahoo Stocks}}. Here are watchlists for big tech and other major stocks:";
     const processed = processPlaceholders(messageText);
-    return { text: processed.text, inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined, stockTool: { quotes }, instant: true };
+    return { text: processed.text, inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined, images: processed.images.length > 0 ? processed.images : undefined, stockTool: { quotes }, instant: true };
 }
 
 async function getWeatherLocation() {
@@ -376,7 +376,8 @@ function getWeatherConfirmation() {
         text: processed.text,
         weatherConfirmation: true,
         instant: true,
-        inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined
+        inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined,
+        images: processed.images.length > 0 ? processed.images : undefined
     };
 }
 
@@ -1705,10 +1706,16 @@ function appendExtraContent(wrapper, extra = {}) {
 
     // Collect images
     if (extra.images) {
-        extra.images.forEach(src => {
+        extra.images.forEach(imgData => {
             const img = document.createElement("img");
-            img.src = src;
-            img.style.width = "100%";
+            // Handle both string paths and objects with src/width properties
+            if (typeof imgData === 'string') {
+                img.src = imgData;
+                img.style.width = "100%";
+            } else {
+                img.src = imgData.src;
+                img.style.width = imgData.width || "100%";
+            }
             media.push({ el: img, type: "image" });
         });
     }
@@ -2153,6 +2160,7 @@ function appendSkillsGrid(skills, container) {
 // -------- Build Personal Paragraph --------
 function processPlaceholders(text) {
     let inlineLinks = [];
+    let images = [];
     if (text.includes("{{time}}")) {
         text = text.replace("{{time}}", getDetroitTime());
     }
@@ -2213,6 +2221,8 @@ function processPlaceholders(text) {
             href: knowledge.links?.gameboy || "https://en.wikipedia.org/wiki/Game_Boy",
             linkText: "Game Boy (1989)"
         });
+        // Add Game Boy image with specific width
+        images.push({ src: "/img/gb.png", width: "300px" });
     }
     if (text.includes("{{jnj}}")) {
         const fullPhrase = "JnJ MedTech's";
@@ -2232,7 +2242,7 @@ function processPlaceholders(text) {
             linkText: fullPhrase
         });
     }
-    return { text, inlineLinks };
+    return { text, inlineLinks, images };
 }
 
 function buildParagraph(matchedKeys) {
@@ -2248,7 +2258,8 @@ function buildParagraph(matchedKeys) {
             return {
                 text: processed.text,
                 color: key === "background" ? knowledge.personal.color : undefined,
-                inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined
+                inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined,
+                images: processed.images.length > 0 ? processed.images : undefined
             };
         }
     }
@@ -2261,7 +2272,8 @@ function buildParagraph(matchedKeys) {
         return {
             text: processed.text,
             color: undefined,
-            inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined
+            inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined,
+            images: processed.images.length > 0 ? processed.images : undefined
         };
     }
 
