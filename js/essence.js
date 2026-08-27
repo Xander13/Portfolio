@@ -1824,6 +1824,7 @@ function appendBiblePanel(bible, container) {
             if (newVerse.bible) {
                 // Create new quote section without image
                 const newQuoteSection = document.createElement("div");
+                newQuoteSection.className = "bible-quote-new";
                 newQuoteSection.style.marginTop = "24px";
                 
                 const newQuote = document.createElement("p");
