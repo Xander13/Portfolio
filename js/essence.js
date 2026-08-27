@@ -1807,6 +1807,57 @@ function appendBiblePanel(bible, container) {
         panel.insertBefore(img, quote);
     }
     
+    // Add separator line
+    const separator = document.createElement("div");
+    separator.style.borderBottom = "1px solid var(--dark-gray)";
+    separator.style.marginTop = "24px";
+    separator.style.marginBottom = "24px";
+    panel.appendChild(separator);
+    
+    // Add "Get another verse" button
+    const button = document.createElement("button");
+    button.textContent = "Get another verse";
+    button.style.border = "1px solid var(--gray)";
+    button.style.padding = "8px 12px";
+    button.style.background = "transparent";
+    button.style.color = "var(--white)";
+    button.style.font = "inherit";
+    button.style.cursor = "pointer";
+    button.style.transition = "border-color 0.2s";
+    button.addEventListener("mouseover", () => {
+        button.style.borderColor = "var(--white)";
+    });
+    button.addEventListener("mouseout", () => {
+        button.style.borderColor = "var(--gray)";
+    });
+    button.addEventListener("click", async () => {
+        button.disabled = true;
+        button.textContent = "Loading...";
+        try {
+            const newVerse = await getBibleVerse();
+            if (newVerse.bible) {
+                // Create new quote section without image
+                const newQuoteSection = document.createElement("div");
+                newQuoteSection.style.marginTop = "24px";
+                
+                const newQuote = document.createElement("p");
+                newQuote.className = "bible-quote";
+                newQuote.textContent = `"${newVerse.bible.quote}"`;
+                
+                const newReference = document.createElement("cite");
+                newReference.textContent = `- ${newVerse.bible.reference}`;
+                
+                newQuoteSection.append(newQuote, newReference);
+                panel.appendChild(newQuoteSection);
+            }
+        } catch (error) {
+            console.error("Error loading another verse", error);
+            button.textContent = "Try again";
+            button.disabled = false;
+        }
+    });
+    panel.appendChild(button);
+    
     container.appendChild(panel);
 }
 
