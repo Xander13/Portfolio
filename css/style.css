@@ -1142,7 +1142,7 @@ a {
 
 .stock-chart {
     display: block;
-    width: fit-content;
+    width: 100%;
     height: 72px;
     margin: 0;
     overflow: visible;

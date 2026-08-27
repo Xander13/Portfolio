@@ -1843,6 +1843,7 @@ function appendWeatherForecastPanel(days, container) {
 function createStockChart(values) {
     const chart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     chart.setAttribute("viewBox", "0 0 240 72");
+    chart.setAttribute("preserveAspectRatio", "none");
     chart.setAttribute("role", "img");
     chart.setAttribute("aria-label", "One month stock price trend");
     chart.classList.add("stock-chart");
