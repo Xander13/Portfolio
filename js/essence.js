@@ -2221,8 +2221,6 @@ function processPlaceholders(text) {
             href: knowledge.links?.gameboy || "https://en.wikipedia.org/wiki/Game_Boy",
             linkText: "Game Boy (1989)"
         });
-        // Add Game Boy image with specific width
-        images.push({ src: "/img/gb.png", width: "300px" });
     }
     if (text.includes("{{jnj}}")) {
         const fullPhrase = "JnJ MedTech's";
@@ -2458,8 +2456,10 @@ Impact: Proved how platforms can tap into major underserved markets without comp
     }
 
     if (matchedKeys.includes("favproduct")) {
+        const processed = processPlaceholders(knowledge.personal["favproduct"]);
         return {
-            text: knowledge.personal["favproduct"],
+            text: processed.text,
+            inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined,
             instant: true
         };
     }
