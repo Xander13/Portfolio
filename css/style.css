@@ -1053,11 +1053,6 @@ a {
     font-size: 20px;
 }
 
-.stock-card .svg{
-    width: 100% !important;
-    height: auto;
-}
-
 .stock-card {
     position: relative;
     width: 100%;
@@ -1143,6 +1138,7 @@ a {
 .stock-chart {
     display: block;
     width: 100%;
+    max-width: 50%;
     height: 72px;
     margin: 0;
     overflow: visible;
