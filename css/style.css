@@ -720,7 +720,6 @@ a {
     display: block;
     color: white;
     font-size: 24px;
-    padding-right: 16px;
 }
 
 /* .aiMsg p sets a 72px line-height "strut" that a child span's line-height can't override */
