@@ -122,6 +122,7 @@ async function getWebSearchResults(rawInput) {
         if (!response.ok) throw new Error(data.error || `Search request failed with ${response.status}`);
 
         if (!data.results || data.results.length === 0) {
+            if (data.debug) console.warn("Web search debug info:", data.debug);
             return { text: `No results found for "${query}".`, instant: true };
         }
 

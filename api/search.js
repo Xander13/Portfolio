@@ -73,8 +73,10 @@ module.exports = async function handler(req, res) {
     }
 
     if (results.length === 0) {
-      // DuckDuckGo occasionally serves a bot-check page instead of results; log for diagnosis
-      console.error('Web search returned zero results', { query, status: response.status, htmlLength: html.length, htmlPreview: html.slice(0, 300) });
+      // DuckDuckGo occasionally serves a bot-check page instead of results; surface a preview for diagnosis
+      const debugInfo = { status: response.status, htmlLength: html.length, htmlPreview: html.slice(0, 500) };
+      console.error('Web search returned zero results', { query, ...debugInfo });
+      return res.status(200).json({ query, results, debug: debugInfo });
     }
 
     return res.status(200).json({ query, results });
