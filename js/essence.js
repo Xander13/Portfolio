@@ -100,6 +100,39 @@ function isStockPrompt(normalizedInput) {
     return /\b(?:stock|stocks|shares|market|watchlist|yahoo finance)\b/.test(normalizedInput);
 }
 
+function isWebSearchPrompt(rawInput) {
+    return /^-[dD]:\s*.+$/.test(String(rawInput || "").trim());
+}
+
+async function getWebSearchResults(rawInput) {
+    const query = rawInput.trim().replace(/^-[dD]:\s*/, "");
+    try {
+        const response = await fetch("/api/search", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ input: rawInput.trim() })
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || `Search request failed with ${response.status}`);
+
+        if (!data.results || data.results.length === 0) {
+            return { text: `No results found for "${query}".`, instant: true };
+        }
+
+        const resultText = data.results
+            .map(result => `<a href="${result.url}" target="_blank" rel="noreferrer">${result.title}</a><br>${result.snippet}`)
+            .join("<br><br>");
+
+        return {
+            text: `Here are the top results for "${query}":<br><br>${resultText}`,
+            instant: true
+        };
+    } catch (error) {
+        console.error("Unable to complete web search", error);
+        return { text: `Sorry, I couldn't complete that search for "${query}".`, instant: true };
+    }
+}
+
 let allBibleQuotes = [];
 let usedBibleQuotes = [];
 
@@ -2306,6 +2339,10 @@ const personalSynonyms = {
 // -------- Find Response --------
 async function findResponse(userInput) {
     const normalizedInput = normalizeText(userInput);
+
+    if (isWebSearchPrompt(userInput)) {
+        return getWebSearchResults(userInput);
+    }
 
     if (isTimerPrompt(userInput)) {
         return getTimerResponse(userInput);
