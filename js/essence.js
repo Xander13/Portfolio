@@ -104,29 +104,54 @@ function isWebSearchPrompt(rawInput) {
     return /^-[dD]:\s*.+$/.test(String(rawInput || "").trim());
 }
 
+// Flatten DuckDuckGo's nested RelatedTopics/Topics category structure into a flat list
+function flattenRelatedTopics(topics) {
+    return topics.reduce((acc, item) => {
+        if (item.Topics) return acc.concat(flattenRelatedTopics(item.Topics));
+        if (item.Text && item.FirstURL) acc.push(item);
+        return acc;
+    }, []);
+}
+
 async function getWebSearchResults(rawInput) {
     const query = rawInput.trim().replace(/^-[dD]:\s*/, "");
     try {
-        const response = await fetch("/api/search", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ input: rawInput.trim() })
-        });
+        // Client-side call to DuckDuckGo's Instant Answer API avoids the datacenter-IP
+        // blocking that Vercel's serverless functions hit when scraping DuckDuckGo directly.
+        const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_html=1&skip_disambig=1`;
+        const response = await fetch(url);
+        if (!response.ok) throw new Error(`Search request failed with ${response.status}`);
+        const data = await response.json();
 
-        const contentType = response.headers.get("content-type") || "";
-        if (!contentType.includes("application/json")) {
-            throw new Error("Search API is unavailable (this feature requires running through Vercel, not a static file server).");
+        const results = [];
+
+        if (data.AbstractText) {
+            results.push({
+                title: data.Heading || query,
+                url: data.AbstractURL || "",
+                snippet: data.AbstractText
+            });
         }
 
-        const data = await response.json();
-        if (!response.ok) throw new Error(data.error || `Search request failed with ${response.status}`);
+        if (Array.isArray(data.RelatedTopics)) {
+            flattenRelatedTopics(data.RelatedTopics).forEach(topic => {
+                if (results.length >= 5) return;
+                const [title, ...rest] = topic.Text.split(" - ");
+                results.push({
+                    title: (title || topic.Text).trim(),
+                    url: topic.FirstURL,
+                    snippet: rest.join(" - ").trim() || topic.Text
+                });
+            });
+        }
 
-        if (!data.results || data.results.length === 0) {
-            if (data.debug) console.warn("Web search debug info:", data.debug);
+        const trimmedResults = results.slice(0, 5);
+
+        if (trimmedResults.length === 0) {
             return { text: `No results found for "${query}".`, instant: true };
         }
 
-        const resultText = data.results
+        const resultText = trimmedResults
             .map(result => `<span class="search-url">${result.url}</span><br><a href="${result.url}" target="_blank" rel="noreferrer" class="search-title">${result.title}</a><br><span class="search-snippet">${result.snippet}</span>`)
             .join("<br><br>");
 
