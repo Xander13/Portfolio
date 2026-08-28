@@ -19,6 +19,14 @@ module.exports = async function handler(req, res) {
   const query = match[1].trim();
   const url = `https://html.duckduckgo.com/html/?q=${encodeURIComponent(query)}`;
 
+  // Decode the common HTML entities DuckDuckGo leaves in titles/snippets
+  const decodeEntities = str => str
+    .replace(/&amp;/g, '&')
+    .replace(/&#x27;|&#39;/g, "'")
+    .replace(/&quot;/g, '"')
+    .replace(/&lt;/g, '<')
+    .replace(/&gt;/g, '>');
+
   try {
     const response = await fetch(url, {
       method: 'GET',
@@ -41,12 +49,12 @@ module.exports = async function handler(req, res) {
 
       // Extract URL and Title from the result link
       const linkMatch = block.match(/class="result__a"[^>]*href="([^"]+)"[^>]*>(.*?)<\/a>/);
-      // Extract Snippet
-      const snippetMatch = block.match(/class="result__snippet"[^>]*>(.*?)<\/span>/);
+      // Extract Snippet (DuckDuckGo renders this as an <a>, not a <span>)
+      const snippetMatch = block.match(/class="result__snippet"[^>]*>(.*?)<\/a>/);
 
       if (linkMatch) {
-        // Clean up HTML entities or tags from title and snippet
-        const title = linkMatch[2].replace(/<\/?[^>]+(>|$)/g, '').trim();
+        // Clean up tags and decode entities from title and snippet
+        const title = decodeEntities(linkMatch[2].replace(/<\/?[^>]+(>|$)/g, '').trim());
         const rawUrl = linkMatch[1];
 
         // DuckDuckGo wraps outbound links, extract the actual target URL if needed
@@ -57,7 +65,7 @@ module.exports = async function handler(req, res) {
         }
 
         const snippet = snippetMatch
-          ? snippetMatch[1].replace(/<\/?[^>]+(>|$)/g, '').trim()
+          ? decodeEntities(snippetMatch[1].replace(/<\/?[^>]+(>|$)/g, '').trim())
           : '';
 
         results.push({ title, url: cleanUrl, snippet });

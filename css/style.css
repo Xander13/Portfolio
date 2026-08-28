@@ -686,6 +686,18 @@ a {
     text-decoration: underline !important;
 }
 
+/*Search Mode*/
+.search-url {
+    color: gray;
+    font-size: 14px;
+    word-break: break-all;
+}
+
+.search-snippet {
+    color: gray;
+    font-size: 24px;
+}
+
 @keyframes slideIn {
     from {
         top: 40px;

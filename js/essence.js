@@ -126,7 +126,7 @@ async function getWebSearchResults(rawInput) {
         }
 
         const resultText = data.results
-            .map(result => `<a href="${result.url}" target="_blank" rel="noreferrer">${result.title}</a><br>${result.snippet}`)
+            .map(result => `<span class="search-url">${result.url}</span><br><a href="${result.url}" target="_blank" rel="noreferrer" class="search-title">${result.title}</a><br><span class="search-snippet">${result.snippet}</span>`)
             .join("<br><br>");
 
         return {
