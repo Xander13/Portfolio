@@ -699,9 +699,7 @@ a {
 }
 
 .search-thumbnail{
-    padding-top: 56px;
-    margin-bottom: 56px;
-    filter: grayscale(1);
+    padding-bottom: 56px;
 }
 
 .search-result-line{
@@ -714,6 +712,7 @@ a {
     font-size: 56px;
     line-height: 64px;
     padding-top: 12px;
+    margin-bottom: 56px;
 }
 
 .search-snippet {
