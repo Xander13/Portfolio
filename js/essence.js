@@ -225,25 +225,6 @@ async function getBibleVerse() {
     };
 }
 
-async function getDelayedStockQuote(symbolConfig) {
-    const response = await fetch(`https://stooq.com/q/d/l/?s=${encodeURIComponent(symbolConfig.delayedSymbol.toLowerCase())}.us&i=d`);
-    if (!response.ok) throw new Error(`Delayed stock request failed with ${response.status}`);
-    const rows = (await response.text()).trim().split("\n").slice(1).map(row => row.split(","));
-    const closes = rows.map(row => Number(row[4])).filter(value => Number.isFinite(value)).slice(-30);
-    const price = closes.at(-1);
-    const previousClose = closes.at(-2);
-    if (!Number.isFinite(price) || !Number.isFinite(previousClose)) throw new Error("Delayed response did not contain quote data.");
-    return {
-        symbol: symbolConfig.requestedSymbol,
-        name: `${symbolConfig.preferredName} (delayed)`,
-        price,
-        change: price - previousClose,
-        changePercent: ((price - previousClose) / previousClose) * 100,
-        closes,
-        delayed: true
-    };
-}
-
 async function getStockQuote(symbolConfig) {
     const response = await fetch(`/api/stocks?symbol=${encodeURIComponent(symbolConfig.providerSymbol)}`);
     if (!response.ok) throw new Error(`Yahoo request failed with ${response.status}`);
@@ -324,12 +305,7 @@ async function getStockWatchlist() {
                 return await getProxyStockQuote(resolvedSymbol);
             } catch (fallbackError) {
                 console.error(`Unable to load proxy quote for ${resolvedSymbol.requestedSymbol}`, fallbackError);
-                try {
-                    return await getDelayedStockQuote(resolvedSymbol);
-                } catch (delayedError) {
-                    console.error(`Unable to load delayed quote for ${resolvedSymbol.requestedSymbol}`, delayedError);
-                    return { symbol: resolvedSymbol.requestedSymbol, error: true, reason: "Stock API blocked or unavailable" };
-                }
+                return { symbol: resolvedSymbol.requestedSymbol, error: true, reason: "Stock API blocked or unavailable" };
             }
         }
     }));
