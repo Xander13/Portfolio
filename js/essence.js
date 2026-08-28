@@ -117,55 +117,59 @@ function flattenRelatedTopics(topics) {
 async function getWebSearchResults(rawInput) {
     const query = rawInput.trim().replace(/^-[dD]:\s*/, "");
     try {
-        // Client-side call to DuckDuckGo's Instant Answer API avoids the datacenter-IP
-        // blocking that Vercel's serverless functions hit when scraping DuckDuckGo directly.
-        const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_html=1&skip_disambig=1`;
+        const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_html=1&skip_disambig=1&kp=1`;
         const response = await fetch(url);
         if (!response.ok) throw new Error(`Search request failed with ${response.status}`);
         const data = await response.json();
 
         const results = [];
+        const imageUrl = data.Image ? (data.Image.startsWith('http') ? data.Image : `https://duckduckgo.com${data.Image}`) : null;
 
         if (data.AbstractText) {
             results.push({
                 title: data.Heading || query,
-                url: data.AbstractURL || "",
-                snippet: data.AbstractText
+                image: imageUrl,
+                snippet: data.AbstractText,
+                url: data.AbstractURL || ""
             });
         }
 
-        if (Array.isArray(data.RelatedTopics)) {
-            flattenRelatedTopics(data.RelatedTopics).forEach(topic => {
-                if (results.length >= 3) return;
-
-                // RelatedTopics.Text is usually "Term Description" with no delimiter,
-                // so pull the real title from the URL slug and strip it off the front of the text.
-                const slugTitle = decodeURIComponent(topic.FirstURL.split("/").pop() || "").replace(/_/g, " ").trim();
-                const escapedSlug = slugTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-                const description = slugTitle
-                    ? topic.Text.replace(new RegExp(`^${escapedSlug}\\s*`, "i"), "").trim()
-                    : topic.Text;
-
+        if (results.length === 0 && data.RelatedTopics && data.RelatedTopics.length > 0) {
+            const flatTopics = flattenRelatedTopics(data.RelatedTopics);
+            if (flatTopics.length > 0) {
+                const topic = flatTopics[0];
+                const topicIcon = topic.Icon?.URL ? `https://duckduckgo.com${topic.Icon.URL}` : null;
                 results.push({
-                    title: slugTitle || topic.Text,
-                    url: topic.FirstURL,
-                    snippet: description || topic.Text
+                    title: topic.Text.split(' - ')[0] || query,
+                    image: topicIcon,
+                    snippet: topic.Text,
+                    url: topic.FirstURL || ""
                 });
-            });
+            }
         }
 
-        const trimmedResults = results.slice(0, 3);
+        const trimmedResults = results.slice(0, 1);
 
         if (trimmedResults.length === 0) {
             return { text: `No results found for "${query}".`, instant: true };
         }
 
         const resultText = trimmedResults
-            .map(result => `<a href="${result.url}" target="_blank" rel="noreferrer" class="search-title">${result.title}</a><span class="search-url">${result.url}</span><span class="search-snippet">${result.snippet}</span><span class="bible-separator"></span>`)
+            .map(result => {
+                const imgTag = result.image ? `<img src="${result.image}" alt="${result.title}" class="search-thumbnail" />` : "";
+                
+                // Ordered: Title -> Image -> Copy (Snippet) -> URL
+                return `
+                    <a href="${result.url}" target="_blank" rel="noreferrer" class="search-title">${result.title}</a>
+                    ${imgTag}
+                    <span class="search-snippet">${result.snippet}</span>
+                    <span class="search-url">${result.url}</span>
+                `.trim();
+            })
             .join("<br><br>");
 
         return {
-            text: `Here are the top results for "${query}" from DuckDuckGo. No search are stored any database.<br><br>${resultText}`,
+            text: `Here's a results for "${query}" from DuckDuckGo.<br><br>${resultText}`,
             instant: true
         };
     } catch (error) {
@@ -174,6 +178,8 @@ async function getWebSearchResults(rawInput) {
     }
 }
 
+
+/*Bible Quotes */
 let allBibleQuotes = [];
 let usedBibleQuotes = [];
 
@@ -192,7 +198,7 @@ async function getBibleVerse() {
     if (allBibleQuotes.length === 0) {
         await loadBibleQuotes();
     }
-    
+
     if (allBibleQuotes.length === 0) {
         return {
             text: "Here is a scripture passage:",
@@ -205,19 +211,19 @@ async function getBibleVerse() {
             instant: true
         };
     }
-    
+
     // Get available quotes that haven't been used yet
     let availableQuotes = allBibleQuotes.filter(q => !usedBibleQuotes.includes(q.label));
-    
+
     // If all quotes have been used, reset the list
     if (availableQuotes.length === 0) {
         usedBibleQuotes = [];
         availableQuotes = allBibleQuotes;
     }
-    
+
     const verse = availableQuotes[Math.floor(Math.random() * availableQuotes.length)];
     usedBibleQuotes.push(verse.label);
-    
+
     return {
         text: "Here is a scripture passage:",
         bible: { quote: verse.quote, reference: verse.label, source: "", img: "/img/olive.png" },
@@ -1857,7 +1863,7 @@ function appendBiblePanel(bible, container) {
     const reference = document.createElement("cite");
     reference.textContent = `- ${bible.reference}`;
     panel.append(quote, reference);
-    
+
     if (bible.img) {
         const img = document.createElement("img");
         img.src = bible.img;
@@ -1871,12 +1877,12 @@ function appendBiblePanel(bible, container) {
         img.style.margin = "20px 0";
         panel.insertBefore(img, quote);
     }
-    
+
     // Add separator line
     const separator = document.createElement("div");
     separator.className = "bible-separator";
     panel.appendChild(separator);
-    
+
     // Add "Get another verse" button
     const button = document.createElement("button");
     button.className = "sort-btn";
@@ -1892,22 +1898,22 @@ function appendBiblePanel(bible, container) {
                 const newQuoteSection = document.createElement("div");
                 newQuoteSection.className = "bible-quote-new";
                 newQuoteSection.style.marginTop = "24px";
-                
+
                 const newQuote = document.createElement("p");
                 newQuote.className = "bible-quote";
                 newQuote.textContent = `"${newVerse.bible.quote}"`;
-                
+
                 const newReference = document.createElement("cite");
                 newReference.textContent = `- ${newVerse.bible.reference}`;
-                
+
                 newQuoteSection.append(newQuote, newReference);
                 panel.appendChild(newQuoteSection);
-                
+
                 // Add separator line below new quote
                 const newSeparator = document.createElement("div");
                 newSeparator.className = "bible-separator";
                 panel.appendChild(newSeparator);
-                
+
                 // Reset button and move it below the new quote
                 button.textContent = "Get another verse";
                 button.disabled = false;
@@ -1920,7 +1926,7 @@ function appendBiblePanel(bible, container) {
         }
     });
     panel.appendChild(button);
-    
+
     container.appendChild(panel);
 }
 
@@ -1972,7 +1978,7 @@ function createStockChart(values) {
         const y = 64 - ((value - min) / spread) * 56;
         return { x: x.toFixed(1), y: y.toFixed(1) };
     });
-    
+
     // Create smooth curve using quadratic Bézier curves
     let pathData = `M ${points[0].x} ${points[0].y}`;
     for (let i = 1; i < points.length; i++) {
@@ -1983,7 +1989,7 @@ function createStockChart(values) {
         const cpy = (parseFloat(curr.y) + parseFloat(prev.y)) / 2;
         pathData += ` Q ${cpx} ${cpy} ${curr.x} ${curr.y}`;
     }
-    
+
     // Create gradient
     const defs = document.createElementNS("http://www.w3.org/2000/svg", "defs");
     const gradient = document.createElementNS("http://www.w3.org/2000/svg", "linearGradient");
@@ -2002,14 +2008,14 @@ function createStockChart(values) {
     gradient.appendChild(stop2);
     defs.appendChild(gradient);
     chart.appendChild(defs);
-    
+
     // Create area fill
     const areaPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
     areaPath.setAttribute("d", pathData + ` L ${points[points.length - 1].x} 72 L ${points[0].x} 72 Z`);
     areaPath.setAttribute("fill", `url(#${gradient.getAttribute("id")})`);
     areaPath.setAttribute("vector-effect", "non-scaling-stroke");
     chart.appendChild(areaPath);
-    
+
     // Create line
     const line = document.createElementNS("http://www.w3.org/2000/svg", "path");
     line.setAttribute("d", pathData);
@@ -2057,12 +2063,12 @@ function appendStockPanel(stockTool, container) {
         quotes.forEach(quote => {
             const card = document.createElement("article");
             card.className = "stock-card";
-            
+
             // Append chart first
             if (!quote.error) {
                 card.appendChild(createStockChart(quote.closes));
             }
-            
+
             // Append company info (symbol and name)
             const info = document.createElement("div");
             info.className = "stock-card-info";
@@ -2072,13 +2078,13 @@ function appendStockPanel(stockTool, container) {
             name.textContent = quote.error ? "Quote unavailable" : quote.name;
             info.append(symbol, name);
             card.appendChild(info);
-            
+
             // Append details (D, Y, Vol)
             if (!quote.error) {
                 const details = document.createElement("div");
                 details.className = "stock-details";
                 const detailLines = [];
-                
+
                 if (quote.high && quote.low) {
                     detailLines.push(`D: $${quote.low.toFixed(2)}–$${quote.high.toFixed(2)}`);
                 }
@@ -2089,13 +2095,13 @@ function appendStockPanel(stockTool, container) {
                     const volText = quote.volume > 1000000 ? (quote.volume / 1000000).toFixed(1) + "M" : (quote.volume / 1000).toFixed(0) + "K";
                     detailLines.push(`Vol: ${volText}`);
                 }
-                
+
                 if (detailLines.length > 0) {
                     details.innerHTML = detailLines.map(line => `<small>${line}</small>`).join("");
                 }
                 card.appendChild(details);
             }
-            
+
             // Append values (price and change)
             const values = document.createElement("div");
             values.className = "stock-card-values";
@@ -2107,7 +2113,7 @@ function appendStockPanel(stockTool, container) {
                 values.innerHTML = `<div class="stock-price-row"><span>${direction} $${quote.price.toFixed(2)}</span> <small>${quote.change >= 0 ? "+" : ""}${quote.change.toFixed(2)} (${quote.changePercent.toFixed(2)}%)</small></div>`;
             }
             card.appendChild(values);
-            
+
             // Append remove button
             const remove = document.createElement("button");
             remove.type = "button";
@@ -2233,7 +2239,7 @@ function processPlaceholders(text) {
     if (text.includes("{{time}}")) {
         text = text.replace("{{time}}", getDetroitTime());
     }
-    if (text.includes("{{sean}}")){
+    if (text.includes("{{sean}}")) {
         text = text.replace("{{sean}}", "Sean Klassen")
         inlineLinks.push({
             searchText: "Sean Klassen",
@@ -2283,7 +2289,7 @@ function processPlaceholders(text) {
             linkText: fullPhrase
         });
     }
-    if (text.includes("{{gameboy}}")){
+    if (text.includes("{{gameboy}}")) {
         text = text.replace("{{gameboy}}", "Game Boy (1989)");
         inlineLinks.push({
             searchText: "Game Boy (1989)",
@@ -2437,7 +2443,7 @@ async function findResponse(userInput) {
         return {
             text: knowledge.education.text,
             link: knowledge.education.link,
-            inlineLink: true, 
+            inlineLink: true,
             instant: true
         };
     }
@@ -2714,68 +2720,68 @@ async function sendMessage() {
             return;
         }
 
-    // 2. Show thinking indicator
-    const thinkingIndicator = document.createElement("div");
-    thinkingIndicator.classList.add("thinking-indicator");
-    thinkingIndicator.innerHTML = `
+        // 2. Show thinking indicator
+        const thinkingIndicator = document.createElement("div");
+        thinkingIndicator.classList.add("thinking-indicator");
+        thinkingIndicator.innerHTML = `
         <div class="dot-pulse"></div>
         <div class="dot-pulse"></div>
         <div class="dot-pulse"></div>
     `;
-    responseBox.appendChild(thinkingIndicator);
+        responseBox.appendChild(thinkingIndicator);
 
-    // Scroll to show thinking indicator
-    responseBox.scrollTo({
-        top: responseBox.scrollHeight,
-        behavior: 'smooth'
-    });
+        // Scroll to show thinking indicator
+        responseBox.scrollTo({
+            top: responseBox.scrollHeight,
+            behavior: 'smooth'
+        });
 
-    // 3. Get response (with artificial thinking delay)
-    let answerObj;
-    if (pendingTimerRestart && normalizedUserText === "yes") {
-        pendingTimerRestart = false;
-        answerObj = { text: "How long should I set the next timer for?" };
-    } else if (pendingWeatherConfirmation && (normalizedUserText === "yes" || normalizedUserText === "no")) {
-        pendingWeatherConfirmation = false;
-        answerObj = normalizedUserText === "yes"
-            ? await getWeatherResponse()
-            : { text: "Hmm, I'm not sure what the weather will be today. I hope it's nice." };
-    } else if (pendingWebSearch) {
-        pendingWebSearch = false;
-        answerObj = await getWebSearchResults(userText);
-    } else {
-        answerObj = await findResponse(userText);
-    }
+        // 3. Get response (with artificial thinking delay)
+        let answerObj;
+        if (pendingTimerRestart && normalizedUserText === "yes") {
+            pendingTimerRestart = false;
+            answerObj = { text: "How long should I set the next timer for?" };
+        } else if (pendingWeatherConfirmation && (normalizedUserText === "yes" || normalizedUserText === "no")) {
+            pendingWeatherConfirmation = false;
+            answerObj = normalizedUserText === "yes"
+                ? await getWeatherResponse()
+                : { text: "Hmm, I'm not sure what the weather will be today. I hope it's nice." };
+        } else if (pendingWebSearch) {
+            pendingWebSearch = false;
+            answerObj = await getWebSearchResults(userText);
+        } else {
+            answerObj = await findResponse(userText);
+        }
 
-    // Add artificial delay for "thinking" feel (800ms - 1500ms random)
-    const thinkingDelay = 800 + Math.random() * 700;
-    await new Promise(resolve => setTimeout(resolve, thinkingDelay));
+        // Add artificial delay for "thinking" feel (800ms - 1500ms random)
+        const thinkingDelay = 800 + Math.random() * 700;
+        await new Promise(resolve => setTimeout(resolve, thinkingDelay));
 
-    // 4. Remove thinking indicator
-    thinkingIndicator.remove();
+        // 4. Remove thinking indicator
+        thinkingIndicator.remove();
 
-    // 5. Show AI response
-    appendMessage("ai", answerObj.text, true, {
-        skills: answerObj.skills,
-        images: answerObj.images,
-        videos: answerObj.videos,
-        link: answerObj.link,
-        projects: answerObj.extra ? answerObj.extra.projects : undefined,
-        articles: answerObj.extra ? answerObj.extra.articles : undefined,
-        inlineLink: answerObj.inlineLink,
-        color: answerObj.color,
-        caseStudy: answerObj.caseStudy,
-        inlineLinks: answerObj.inlineLinks,
-        worldClocks: answerObj.worldClocks,
-        sorting: answerObj.sorting,
-        weatherConfirmation: answerObj.weatherConfirmation,
-        timer: answerObj.timer,
-        bible: answerObj.bible,
-        stockTool: answerObj.stockTool,
-        weatherForecast: answerObj.weatherForecast
-    });
+        // 5. Show AI response
+        appendMessage("ai", answerObj.text, true, {
+            skills: answerObj.skills,
+            images: answerObj.images,
+            videos: answerObj.videos,
+            link: answerObj.link,
+            projects: answerObj.extra ? answerObj.extra.projects : undefined,
+            articles: answerObj.extra ? answerObj.extra.articles : undefined,
+            inlineLink: answerObj.inlineLink,
+            color: answerObj.color,
+            caseStudy: answerObj.caseStudy,
+            inlineLinks: answerObj.inlineLinks,
+            worldClocks: answerObj.worldClocks,
+            sorting: answerObj.sorting,
+            weatherConfirmation: answerObj.weatherConfirmation,
+            timer: answerObj.timer,
+            bible: answerObj.bible,
+            stockTool: answerObj.stockTool,
+            weatherForecast: answerObj.weatherForecast
+        });
 
-    input.value = "";
+        input.value = "";
     } finally {
         isSendingMessage = false;
     }

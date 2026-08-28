@@ -695,8 +695,13 @@ a {
     text-overflow: ellipsis;
     color: gray;
     font-size: 14px;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding-top: 32px;
+}
+
+.search-thumbnail{
+    padding-top: 56px;
+    margin-bottom: 56px;
+    filter: grayscale(1);
 }
 
 .search-result-line{
@@ -707,6 +712,7 @@ a {
 .search-title{
     display: block;
     font-size: 56px;
+    line-height: 64px;
     padding-top: 12px;
 }
 
@@ -1899,7 +1905,6 @@ a {
 
     .search-snippet{
         font-size: 18px;
-
     }
 
     .stock-chart {
