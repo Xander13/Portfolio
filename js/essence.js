@@ -28,6 +28,7 @@ const maxQuestions = 25;
 let isExpanded = false;
 let pendingWeatherConfirmation = false;
 let pendingTimerRestart = false;
+let pendingWebSearch = false;
 let activeTimer = null;
 let noteMode = false;
 let activeNoteEditor = null;
@@ -135,28 +136,36 @@ async function getWebSearchResults(rawInput) {
 
         if (Array.isArray(data.RelatedTopics)) {
             flattenRelatedTopics(data.RelatedTopics).forEach(topic => {
-                if (results.length >= 5) return;
-                const [title, ...rest] = topic.Text.split(" - ");
+                if (results.length >= 3) return;
+
+                // RelatedTopics.Text is usually "Term Description" with no delimiter,
+                // so pull the real title from the URL slug and strip it off the front of the text.
+                const slugTitle = decodeURIComponent(topic.FirstURL.split("/").pop() || "").replace(/_/g, " ").trim();
+                const escapedSlug = slugTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                const description = slugTitle
+                    ? topic.Text.replace(new RegExp(`^${escapedSlug}\\s*`, "i"), "").trim()
+                    : topic.Text;
+
                 results.push({
-                    title: (title || topic.Text).trim(),
+                    title: slugTitle || topic.Text,
                     url: topic.FirstURL,
-                    snippet: rest.join(" - ").trim() || topic.Text
+                    snippet: description || topic.Text
                 });
             });
         }
 
-        const trimmedResults = results.slice(0, 5);
+        const trimmedResults = results.slice(0, 3);
 
         if (trimmedResults.length === 0) {
             return { text: `No results found for "${query}".`, instant: true };
         }
 
         const resultText = trimmedResults
-            .map(result => `<span class="search-url">${result.url}</span><br><a href="${result.url}" target="_blank" rel="noreferrer" class="search-title">${result.title}</a><br><span class="search-snippet">${result.snippet}</span>`)
+            .map(result => `<a href="${result.url}" target="_blank" rel="noreferrer" class="search-title">${result.title}</a><span class="search-url">${result.url}</span><span class="search-snippet">${result.snippet}</span><span class="bible-separator"></span>`)
             .join("<br><br>");
 
         return {
-            text: `Here are the top results for "${query}":<br><br>${resultText}`,
+            text: `Here are the top results for "${query}" from DuckDuckGo. No search are stored any database.<br><br>${resultText}`,
             instant: true
         };
     } catch (error) {
@@ -547,6 +556,11 @@ const slashShortcuts = [
         sendOnSelect: false
     },
     {
+        label: "Search with DuckDuckGo",
+        value: "",
+        action: "webSearchPrompt"
+    },
+    {
         label: "Clear chat",
         value: "Clear chat",
         sendOnSelect: false
@@ -592,8 +606,17 @@ function selectSlashShortcut(shortcut) {
     if (!input) initElements();
     if (!input) return;
 
-    input.value = shortcut.value;
     hideSlashMenu();
+
+    if (shortcut.action === "webSearchPrompt") {
+        input.value = "";
+        input.focus();
+        pendingWebSearch = true;
+        appendMessage("ai", "What do you want to search?", true, { instant: true });
+        return;
+    }
+
+    input.value = shortcut.value;
     input.focus();
 
     if (shortcut.sendOnSelect === false) {
@@ -1646,6 +1669,11 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
                 paragraphElement.style.position = "relative";
                 paragraphElement.style.animation = `slideIn 0.8s ease ${index * 0.3}s forwards`;
                 paragraphElement.style.opacity = "0"; // Start hidden
+
+                // Search results use their own compact type scale, not the large chat paragraph size
+                if (paragraphText.includes("search-snippet")) {
+                    paragraphElement.classList.add("search-result-line");
+                }
 
                 content.appendChild(paragraphElement);
                 paragraphElements.push(paragraphElement);
@@ -2736,6 +2764,9 @@ async function sendMessage() {
         answerObj = normalizedUserText === "yes"
             ? await getWeatherResponse()
             : { text: "Hmm, I'm not sure what the weather will be today. I hope it's nice." };
+    } else if (pendingWebSearch) {
+        pendingWebSearch = false;
+        answerObj = await getWebSearchResults(userText);
     } else {
         answerObj = await findResponse(userText);
     }
