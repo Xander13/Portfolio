@@ -112,6 +112,12 @@ async function getWebSearchResults(rawInput) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ input: rawInput.trim() })
         });
+
+        const contentType = response.headers.get("content-type") || "";
+        if (!contentType.includes("application/json")) {
+            throw new Error("Search API is unavailable (this feature requires running through Vercel, not a static file server).");
+        }
+
         const data = await response.json();
         if (!response.ok) throw new Error(data.error || `Search request failed with ${response.status}`);
 

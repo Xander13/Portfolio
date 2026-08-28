@@ -1,5 +1,3 @@
-const cheerio = require('cheerio');
-
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
@@ -32,27 +30,43 @@ module.exports = async function handler(req, res) {
       }
     });
 
-    const htmlText = await response.text();
-    const $ = cheerio.load(htmlText);
+    const html = await response.text();
     const results = [];
 
-    $('.result').each((i, el) => {
-      if (results.length >= 5) return false;
-      const titleElem = $(el).find('.result__a').first();
-      const snippetElem = $(el).find('.result__snippet').first();
+    // Split the raw HTML into result blocks using DuckDuckGo's class structure
+    const blocks = html.split('class="result ');
 
-      if (titleElem.length && titleElem.attr('href')) {
-        results.push({
-          title: titleElem.text().trim(),
-          url: titleElem.attr('href'),
-          snippet: snippetElem.text().trim()
-        });
+    for (let i = 1; i < blocks.length && results.length < 5; i++) {
+      const block = blocks[i];
+
+      // Extract URL and Title from the result link
+      const linkMatch = block.match(/class="result__a"[^>]*href="([^"]+)"[^>]*>(.*?)<\/a>/);
+      // Extract Snippet
+      const snippetMatch = block.match(/class="result__snippet"[^>]*>(.*?)<\/span>/);
+
+      if (linkMatch) {
+        // Clean up HTML entities or tags from title and snippet
+        const title = linkMatch[2].replace(/<\/?[^>]+(>|$)/g, '').trim();
+        const rawUrl = linkMatch[1];
+
+        // DuckDuckGo wraps outbound links, extract the actual target URL if needed
+        let cleanUrl = rawUrl;
+        if (rawUrl.includes('uddg=')) {
+          const urlParam = new URLSearchParams(rawUrl.split('?')[1]);
+          cleanUrl = decodeURIComponent(urlParam.get('uddg') || rawUrl);
+        }
+
+        const snippet = snippetMatch
+          ? snippetMatch[1].replace(/<\/?[^>]+(>|$)/g, '').trim()
+          : '';
+
+        results.push({ title, url: cleanUrl, snippet });
       }
-    });
+    }
 
     if (results.length === 0) {
       // DuckDuckGo occasionally serves a bot-check page instead of results; log for diagnosis
-      console.error('Web search returned zero results', { query, status: response.status, htmlLength: htmlText.length, htmlPreview: htmlText.slice(0, 300) });
+      console.error('Web search returned zero results', { query, status: response.status, htmlLength: html.length, htmlPreview: html.slice(0, 300) });
     }
 
     return res.status(200).json({ query, results });
