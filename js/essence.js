@@ -94,7 +94,7 @@ function resolveStockSymbol(symbol) {
 }
 
 function isBiblePrompt(normalizedInput) {
-    return /\b(?:bible|scripture|verse|script)\b/.test(normalizedInput);
+    return /\b(?:quotes?|inspire me|inspiration)\b/.test(normalizedInput);
 }
 
 function isStockPrompt(normalizedInput) {
@@ -102,7 +102,7 @@ function isStockPrompt(normalizedInput) {
 }
 
 function isWebSearchPrompt(rawInput) {
-    return /^-[dD]:\s*.+$/.test(String(rawInput || "").trim());
+    return /^search:\s*.+$/i.test(String(rawInput || "").trim());
 }
 
 // Flatten DuckDuckGo's nested RelatedTopics/Topics category structure into a flat list
@@ -115,9 +115,9 @@ function flattenRelatedTopics(topics) {
 }
 
 async function getWebSearchResults(rawInput) {
-    const query = rawInput.trim().replace(/^-[dD]:\s*/, "");
+    const query = rawInput.trim().replace(/^search:\s*/i, "");
     try {
-        const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_html=1&skip_disambig=1&kp=1`;
+        const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_html=1&skip_disambig=1&kp=-1`;
         const response = await fetch(url);
         if (!response.ok) throw new Error(`Search request failed with ${response.status}`);
         const data = await response.json();
@@ -157,7 +157,7 @@ async function getWebSearchResults(rawInput) {
         const resultText = trimmedResults
             .map(result => {
                 const imgTag = result.image ? `<img src="${result.image}" alt="${result.title}" class="search-thumbnail" />` : "";
-                
+
                 // Ordered: Title -> Image -> Copy (Snippet) -> URL
                 return `
                     <a href="${result.url}" target="_blank" rel="noreferrer" class="search-title">${result.title}</a>
@@ -194,6 +194,11 @@ async function loadBibleQuotes() {
     }
 }
 
+const quoteImages = ["/img/olive.png", "/img/plato.png"];
+function getRandomQuoteImage() {
+    return quoteImages[Math.floor(Math.random() * quoteImages.length)];
+}
+
 async function getBibleVerse() {
     if (allBibleQuotes.length === 0) {
         await loadBibleQuotes();
@@ -201,12 +206,12 @@ async function getBibleVerse() {
 
     if (allBibleQuotes.length === 0) {
         return {
-            text: "Here is a scripture passage:",
+            text: "Here is a Quote:",
             bible: {
-                quote: "Unable to load Bible verses.",
+                quote: "Unable to load a Quote.",
                 reference: "Error",
                 source: "",
-                img: "/img/olive.png"
+                img: getRandomQuoteImage()
             },
             instant: true
         };
@@ -225,8 +230,8 @@ async function getBibleVerse() {
     usedBibleQuotes.push(verse.label);
 
     return {
-        text: "Here is a scripture passage:",
-        bible: { quote: verse.quote, reference: verse.label, source: "", img: "/img/olive.png" },
+        text: "Here is a Quote:",
+        bible: { quote: verse.quote, reference: verse.label, source: "", img: getRandomQuoteImage() },
         instant: true
     };
 }
@@ -363,12 +368,18 @@ function formatWeatherResponse(data, locationName) {
 
 function weatherIconFor(shortForecast) {
     const text = String(shortForecast || "").toLowerCase();
-    if (/thunder|storm/.test(text)) return "⛈️";
-    if (/snow|flurries|sleet/.test(text)) return "❄️";
-    if (/rain|shower|drizzle/.test(text)) return "🌧️";
-    if (/overcast|cloudy/.test(text)) return "☁️";
-    if (/partly|mostly (cloudy|sunny)/.test(text)) return "⛅";
-    if (/clear|sunny/.test(text)) return "☀️";
+    if (/hurricane|tropical storm|cyclone|typhoon/.test(text)) return "🌀";
+    if (/tornado|twister|funnel cloud/.test(text)) return "🌪️";
+    if (/thunder|storm|lightning|squall/.test(text)) return "⛈️";
+    if (/snow|flurries|sleet|blizzard|freezing rain/.test(text)) return "❄️";
+    if (/rain|shower|drizzle|precipitation/.test(text)) return "🌧️";
+    if (/wind|gust|breezy/.test(text)) return "💨";
+    if (/fog|mist|haze|smoke/.test(text)) return "🌫️";
+    if (/hot|heat|sweltering/.test(text)) return "🌡️";
+    if (/cold|freezing|frost/.test(text)) return "🥶";
+    if (/overcast|gloomy/.test(text)) return "☁️";
+    if (/partly|mostly (cloudy|sunny)|scattered clouds/.test(text)) return "⛅";
+    if (/clear|sunny|fair/.test(text)) return "☀️";
     return "⛅";
 }
 
@@ -525,8 +536,8 @@ const slashShortcuts = [
         value: "What's the weather like today?"
     },
     {
-        label: "Read a Bible verse",
-        value: "Show me a Bible verse"
+        label: "Give me a quote",
+        value: "Give me a quote"
     },
     {
         label: "View stock watchlist",
@@ -538,7 +549,7 @@ const slashShortcuts = [
         sendOnSelect: false
     },
     {
-        label: "Search with DuckDuckGo",
+        label: "Search with DDG",
         value: "",
         action: "webSearchPrompt"
     },
@@ -618,7 +629,7 @@ function showSlashMenu() {
         slashMenu = document.createElement("div");
         slashMenu.className = "slash-menu";
         slashMenu.style.position = "fixed";
-        slashMenu.style.height = "100vh";
+        slashMenu.style.height = "200vh";
         slashMenu.style.overflow = "hidden";
         slashMenu.style.zIndex = "50";
         slashMenu.style.border = "none";
@@ -1445,7 +1456,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
     msgWrapper.appendChild(labelCol);
 
     const label = document.createElement("h6");
-    label.textContent = sender === "user" ? "You:" : "Alex's essence:";
+    label.textContent = sender === "user" ? "You:" : "Alex's Echo:";
     labelCol.appendChild(label);
 
     const content = document.createElement("div");
@@ -1532,7 +1543,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
             }, 1000);
         }
 
-        if (extra.bible) appendBiblePanel(extra.bible, content);
+        if (extra.bible) appendQuotePanel(extra.bible, content);
         if (extra.stockTool) appendStockPanel(extra.stockTool, content);
         if (extra.weatherForecast) appendWeatherForecastPanel(extra.weatherForecast, content);
 
@@ -1845,30 +1856,21 @@ function appendNoteEditor(container) {
     });
 }
 
-function appendBiblePanel(bible, container) {
+function appendQuotePanel(verse, container) {
     const panel = document.createElement("blockquote");
-    panel.className = "bible-panel";
-    if (bible.source) {
-        const source = document.createElement("a");
-        source.className = "bible-source";
-        source.href = bible.source;
-        source.target = "_blank";
-        source.rel = "noreferrer";
-        source.textContent = "Source: bible.helloao.org";
-        panel.appendChild(source);
-    }
+    panel.className = "quote-panel";
     const quote = document.createElement("p");
-    quote.className = "bible-quote";
-    quote.textContent = `“${bible.quote}”`;
+    quote.className = "quote";
+    quote.textContent = `“${verse.quote}”`;
     const reference = document.createElement("cite");
-    reference.textContent = `- ${bible.reference}`;
+    reference.textContent = `- ${verse.reference}`;
     panel.append(quote, reference);
 
-    if (bible.img) {
+    if (verse.img) {
         const img = document.createElement("img");
-        img.src = bible.img;
-        img.alt = `Illustration for ${bible.reference}`;
-        img.className = "bible-image";
+        img.src = verse.img;
+        img.alt = `Illustration for ${verse.reference}`;
+        img.className = "quote-image";
         img.draggable = false;
         img.style.width = "500px";
         img.style.maxWidth = "100%";
@@ -1880,7 +1882,7 @@ function appendBiblePanel(bible, container) {
 
     // Add separator line
     const separator = document.createElement("div");
-    separator.className = "bible-separator";
+    separator.className = "quote-separator";
     panel.appendChild(separator);
 
     // Add "Get another verse" button
@@ -1896,11 +1898,11 @@ function appendBiblePanel(bible, container) {
             if (newVerse.bible) {
                 // Create new quote section without image
                 const newQuoteSection = document.createElement("div");
-                newQuoteSection.className = "bible-quote-new";
+                newQuoteSection.className = "quote-new";
                 newQuoteSection.style.marginTop = "24px";
 
                 const newQuote = document.createElement("p");
-                newQuote.className = "bible-quote";
+                newQuote.className = "quote";
                 newQuote.textContent = `"${newVerse.bible.quote}"`;
 
                 const newReference = document.createElement("cite");
@@ -1911,7 +1913,7 @@ function appendBiblePanel(bible, container) {
 
                 // Add separator line below new quote
                 const newSeparator = document.createElement("div");
-                newSeparator.className = "bible-separator";
+                newSeparator.className = "quote-separator";
                 panel.appendChild(newSeparator);
 
                 // Reset button and move it below the new quote
@@ -2404,7 +2406,7 @@ async function findResponse(userInput) {
         });
         const formattedDetroitTime = detroitTime.replace(/^0/, "").replace(" ", "");
         return {
-            text: `It's currently ${formattedDetroitTime} in Detroit Metro Area (GMT-4). Here are a few other time zones I enjoy looking at! ↓`,
+            text: `It's currently ${formattedDetroitTime} in Detroit Metro Area (GMT-4). Here are a few other time zones I enjoy looking at!`,
             worldClocks: true // Flag to render world clocks
         };
     }
@@ -3321,7 +3323,6 @@ window.addEventListener('load', async () => {
     }
 });
 
-
 // -------- Welcome Message --------
 function showWelcomeMessage() {
     if (!responseBox) initElements();
@@ -3345,8 +3346,7 @@ function showWelcomeMessage() {
     p.id = "IntroChat";
     p.classList.add("IntroChat");
 
-    const welcomeText = "👋 I'm Essence — Alex's portfolio assistant. Ask me anything about his work, skills, or the weather.";
-
+    const welcomeText = "Hi, I'm Echo, Alex's portfolio interactive shell. Ask me about his design work, technical skills, or check your local weather.";
     wrapper.appendChild(p);
     card.appendChild(wrapper);
     responseBox.appendChild(card);
@@ -3359,6 +3359,7 @@ function showWelcomeMessage() {
         appendPrompts(wrapper);
     });
 }
+
 
 
 function appendPrompts(container) {
@@ -3391,8 +3392,8 @@ function appendPrompts(container) {
         link.textContent = prompt.text;
         link.style.cursor = "pointer";
         link.style.padding = "12px 20px";
-        link.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-        link.style.border = "1px solid rgba(255, 255, 255, 0.2)";
+        link.style.backgroundColor = "black";
+        link.style.border = "1px solid var(--dark-gray)";
         link.style.borderRadius = "100rem";
         link.style.fontSize = "16px";
         link.style.color = "var(--white)";
@@ -3407,8 +3408,8 @@ function appendPrompts(container) {
         });
 
         link.addEventListener("mouseleave", () => {
-            link.style.backgroundColor = "rgba(255, 255, 255, 0.1)";
-            link.style.borderColor = "rgba(255, 255, 255, 0.2)";
+            link.style.backgroundColor = "black";
+            link.style.border = "1px solid var(--dark-gray)";
             link.style.transform = "translateY(0)";
         });
 

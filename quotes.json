@@ -1,177 +1,1059 @@
 [
   {
-    "book": "Philippians",
-    "chapter": 4,
-    "verse": 13,
-    "label": "Philippians 4:13",
-    "quote": "I can do all things through Christ which strengtheneth me."
-  },
-  {
-    "book": "John",
-    "chapter": 3,
-    "verse": 16,
-    "label": "John 3:16",
-    "quote": "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."
-  },
-  {
-    "book": "Jeremiah",
-    "chapter": 29,
-    "verse": 11,
-    "label": "Jeremiah 29:11",
-    "quote": "For I know the thoughts that I think toward you, saith the Lord, thoughts of peace, and not of evil, to give you an expected end."
-  },
-  {
-    "book": "Romans",
-    "chapter": 8,
-    "verse": 28,
-    "label": "Romans 8:28",
-    "quote": "And we know that all things work together for good to them that love God, to them who are the called according to his purpose."
-  },
-  {
-    "book": "Proverbs",
-    "chapter": 3,
-    "verse": 5,
-    "label": "Proverbs 3:5",
-    "quote": "Trust in the Lord with all thine heart; and lean not unto thine own understanding."
-  },
-  {
-    "book": "Psalm",
-    "chapter": 23,
+    "book": "Marcus Aurelius",
+    "chapter": 2,
     "verse": 1,
-    "label": "Psalm 23:1",
-    "quote": "The Lord is my shepherd; I shall not want."
+    "label": "Meditations 2.1",
+    "quote": "When you wake up in the morning, tell yourself: The people I deal with today will be meddling, ungrateful, arrogant, dishonest, jealous, and surly."
   },
   {
-    "book": "Isaiah",
-    "chapter": 41,
-    "verse": 10,
-    "label": "Isaiah 41:10",
-    "quote": "Fear thou not; for I am with thee: be not dismayed; for I am thy God: I will strengthen thee; yea, I will help thee; yea, I will uphold thee with the right hand of my righteousness."
+    "book": "Seneca",
+    "chapter": 2,
+    "verse": 3,
+    "label": "Letters from a Stoic 2.3",
+    "quote": "Echium-like, you are wandering from place to place, and the only way to put a stop to this rambling is to begin to limit your desires."
   },
   {
-    "book": "Matthew",
-    "chapter": 6,
-    "verse": 33,
-    "label": "Matthew 6:33",
-    "quote": "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you."
+    "book": "Epictetus",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Enchiridion 1.1",
+    "quote": "Some things are in our control and others not. Things in our control are opinion, pursuit, desire, aversion, and, in a word, whatever are our own actions."
   },
   {
-    "book": "Joshua",
+    "book": "Aristotle",
     "chapter": 1,
     "verse": 9,
-    "label": "Joshua 1:9",
-    "quote": "Have not I commanded thee? Be strong and of a good courage; be not afraid, neither be thou dismayed: for the Lord thy God is with thee whithersoever thou goest."
+    "label": "Nicomachean Ethics 1.9",
+    "quote": "We are what we repeatedly do. Excellence, then, is not an act, but a habit."
   },
   {
-    "book": "Psalm",
-    "chapter": 46,
-    "verse": 1,
-    "label": "Psalm 46:1",
-    "quote": "God is our refuge and strength, a very present help in trouble."
-  },
-  {
-    "book": "Romans",
-    "chapter": 12,
-    "verse": 2,
-    "label": "Romans 12:2",
-    "quote": "And be not conformed to this world: but be ye transformed by the renewing of your mind, that ye may prove what is that good, and acceptable, and perfect, will of God."
-  },
-  {
-    "book": "2 Timothy",
-    "chapter": 1,
-    "verse": 7,
-    "label": "2 Timothy 1:7",
-    "quote": "For God hath not given us the spirit of fear; but of power, and of love, and of a sound mind."
-  },
-  {
-    "book": "Hebrews",
-    "chapter": 11,
-    "verse": 1,
-    "label": "Hebrews 11:1",
-    "quote": "Now faith is the substance of things hoped for, the evidence of things not seen."
-  },
-  {
-    "book": "Psalm",
-    "chapter": 119,
-    "verse": 105,
-    "label": "Psalm 119:105",
-    "quote": "Thy word is a lamp unto my feet, and a light unto my path."
-  },
-  {
-    "book": "Matthew",
-    "chapter": 11,
-    "verse": 28,
-    "label": "Matthew 11:28",
-    "quote": "Come unto me, all ye that labour and are heavy laden, and I will give you rest."
-  },
-  {
-    "book": "1 Corinthians",
-    "chapter": 13,
-    "verse": 4,
-    "label": "1 Corinthians 13:4",
-    "quote": "Charity suffereth long, and is kind; charity envieth not; charity vaunteth not itself, is not puffed up."
-  },
-  {
-    "book": "Galatians",
+    "book": "Plato",
     "chapter": 5,
-    "verse": 22,
-    "label": "Galatians 5:22",
-    "quote": "But the fruit of the Spirit is love, joy, peace, longsuffering, gentleness, goodness, faith."
+    "verse": 47,
+    "label": "Republic 5.473d",
+    "quote": "The unexamined life is not worth living for a human being."
   },
   {
-    "book": "Ephesians",
-    "chapter": 2,
-    "verse": 8,
-    "label": "Ephesians 2:8",
-    "quote": "For by grace are ye saved through faith; and that not of yourselves: it is the gift of God."
+    "book": "Socrates",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Apology 1",
+    "quote": "I know that I know nothing."
   },
   {
-    "book": "Philippians",
+    "book": "René Descartes",
     "chapter": 4,
-    "verse": 6,
-    "label": "Philippians 4:6",
-    "quote": "Be careful for nothing; but in every thing by prayer and supplication with thanksgiving let your requests be made known unto God."
+    "verse": 1,
+    "label": "Discourse on the Method 4",
+    "quote": "I think, therefore I am."
   },
   {
-    "book": "Colossians",
+    "book": "Friedrich Nietzsche",
     "chapter": 3,
-    "verse": 23,
-    "label": "Colossians 3:23",
-    "quote": "And whatsoever ye do, do it heartily, as to the Lord, and not unto men."
+    "verse": 12,
+    "label": "Twilight of the Idols 3.12",
+    "quote": "He who has a why to live for can bear almost any how."
   },
   {
-    "book": "1 John",
+    "book": "Albert Camus",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Myth of Sisyphus 1",
+    "quote": "In the depth of winter, I finally learned that within me there lay an invincible summer."
+  },
+  {
+    "book": "Jean-Paul Sartre",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Existentialism is a Humanism 1",
+    "quote": "Man is condemned to be free; because once thrown into the world, he is responsible for everything he does."
+  },
+  {
+    "book": "Immanuel Kant",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Critique of Practical Reason 1",
+    "quote": "Two things fill the mind with ever new and increasing admiration and awe... the starry heavens above me and the moral law within me."
+  },
+  {
+    "book": "Baruch Spinoza",
     "chapter": 4,
-    "verse": 19,
-    "label": "1 John 4:19",
-    "quote": "We love him, because he first loved us."
+    "verse": 1,
+    "label": "Ethics 4",
+    "quote": "Peace is not an absence of war, it is a virtue, a state of mind, a disposition for confidence, benevolence, and justice."
   },
   {
-    "book": "Psalm",
-    "chapter": 37,
-    "verse": 4,
-    "label": "Psalm 37:4",
-    "quote": "Delight thyself also in the Lord: and he shall give thee the desires of thine heart."
+    "book": "Confucius",
+    "chapter": 2,
+    "verse": 15,
+    "label": "Analects 2.15",
+    "quote": "By three methods we may learn wisdom: First, by reflection, which is noblest; Second, by imitation, which is easiest; and third, by experience, which is the bitterest."
   },
   {
-    "book": "Proverbs",
-    "chapter": 16,
+    "book": "Lao Tzu",
+    "chapter": 33,
+    "verse": 1,
+    "label": "Tao Te Ching 33",
+    "quote": "He who knows others is wise; he who knows himself is enlightened."
+  },
+  {
+    "book": "Sun Tzu",
+    "chapter": 3,
+    "verse": 18,
+    "label": "The Art of War 3.18",
+    "quote": "If you know the enemy and know yourself, you need not fear the result of a hundred battles."
+  },
+  {
+    "book": "Buddha",
+    "chapter": 1,
     "verse": 3,
-    "label": "Proverbs 16:3",
-    "quote": "Commit thy works unto the Lord, and thy thoughts shall be established."
+    "label": "Dhammapada 1.3",
+    "quote": "Peace comes from within. Do not seek it without."
   },
   {
-    "book": "Isaiah",
-    "chapter": 40,
-    "verse": 31,
-    "label": "Isaiah 40:31",
-    "quote": "But they that wait upon the Lord shall renew their strength; they shall mount up with wings as eagles; they shall run, and not be weary; and they shall walk, and not faint."
+    "book": "Rumi",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Masnavi 1",
+    "quote": "The wound is the place where the Light enters you."
   },
   {
-    "book": "Romans",
+    "book": "Marcus Aurelius",
+    "chapter": 4,
+    "verse": 3,
+    "label": "Meditations 4.3",
+    "quote": "People look for retreats for themselves, in the country, by the coast, or in the hills... There is nowhere that a person can find a more peaceful and trouble-free retreat than in his own mind."
+  },
+  {
+    "book": "Seneca",
+    "chapter": 5,
+    "verse": 2,
+    "label": "Letters from a Stoic 5.2",
+    "quote": "As is a tale, so is life: not how long it is, but how good it is, is what matters."
+  },
+  {
+    "book": "Epictetus",
+    "chapter": 5,
+    "verse": 8,
+    "label": "Discourses 5.8",
+    "quote": "First say to yourself what you would be; and then do what you have to do."
+  },
+  {
+    "book": "Abraham Lincoln",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Gettysburg Address 1",
+    "quote": "Government of the people, by the people, for the people, shall not perish from the earth."
+  },
+  {
+    "book": "Winston Churchill",
+    "chapter": 1,
+    "verse": 1,
+    "label": "House of Commons Speech 1",
+    "quote": "Success is not final, failure is not fatal: it is the courage to continue that counts."
+  },
+  {
+    "book": "Nelson Mandela",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Speech in Johannesburg 1",
+    "quote": "It always seems impossible until it's done."
+  },
+  {
+    "book": "Mahatma Gandhi",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Young India 1",
+    "quote": "Be the change that you wish to see in the world."
+  },
+  {
+    "book": "Martin Luther King Jr.",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Strength to Love 1",
+    "quote": "Darkness cannot drive out darkness: only light can do that. Hate cannot drive out hate: only love can do that."
+  },
+  {
+    "book": "Albert Einstein",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Out of My Later Years 1",
+    "quote": "Imagination is more important than knowledge. For knowledge is limited, whereas imagination embraces the entire world."
+  },
+  {
+    "book": "Marie Curie",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Autobiography 1",
+    "quote": "Nothing in life is to be feared, it is only to be understood. Now is the time to understand more, so that we may fear less."
+  },
+  {
+    "book": "Leonardo da Vinci",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Notebooks 1",
+    "quote": "Simplicity is the ultimate sophistication."
+  },
+  {
+    "book": "Nikola Tesla",
+    "chapter": 1,
+    "verse": 1,
+    "label": "My Inventions 1",
+    "quote": "The present is theirs; the future, for which I really worked, is mine."
+  },
+  {
+    "book": "Charles Darwin",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Descent of Man 1",
+    "quote": "A man who dares to waste one hour of time has not discovered the value of life."
+  },
+  {
+    "book": "Ralph Waldo Emerson",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Self-Reliance 1",
+    "quote": "To be yourself in a world that is constantly trying to make you something else is the greatest accomplishment."
+  },
+  {
+    "book": "Henry David Thoreau",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Walden 2",
+    "quote": "Go confidently in the direction of your dreams! Live the life you've imagined."
+  },
+  {
+    "book": "Mark Twain",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Notebook 1",
+    "quote": "Twenty years from now you will be more disappointed by the things that you didn't do than by the ones you did do."
+  },
+  {
+    "book": "Oscar Wilde",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Picture of Dorian Gray 1",
+    "quote": "Be yourself; everyone else is already taken."
+  },
+  {
+    "book": "Jane Austen",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Pride and Prejudice 1",
+    "quote": "There is a stubbornness about me that never can bear to be frightened at the will of others. My courage always rises with every attempt to intimidate me."
+  },
+  {
+    "book": "William Shakespeare",
+    "chapter": 2,
+    "verse": 7,
+    "label": "As You Like It 2.7",
+    "quote": "All the world's a stage, and all the men and women merely players."
+  },
+  {
+    "book": "Friedrich Nietzsche",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Thus Spoke Zarathustra 1",
+    "quote": "One must still have chaos in oneself to give birth to a dancing star."
+  },
+  {
+    "book": "Arthur Schopenhauer",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Studies in Pessimism 1",
+    "quote": "Every truth passes through three stages before it is recognized. In the first it is ridiculed, in the second it is opposed, in the third it is regarded as self-evident."
+  },
+  {
+    "book": "Voltaire",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Candide 1",
+    "quote": "Let us cultivate our garden."
+  },
+  {
+    "book": "Jean-Jacques Rousseau",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Social Contract 1",
+    "quote": "Man is born free, and everywhere he is in chains."
+  },
+  {
+    "book": "Blaise Pascal",
+    "chapter": 7,
+    "verse": 2,
+    "label": "Pensées 7.2",
+    "quote": "All humanity's problems stem from a man's inability to sit quietly in a room alone."
+  },
+  {
+    "book": "Desiderius Erasmus",
+    "chapter": 1,
+    "verse": 1,
+    "label": "In Praise of Folly 1",
+    "quote": "The greatest part of our happiness depends on our dispositions, not our circumstances."
+  },
+  {
+    "book": "Niccolò Machiavelli",
     "chapter": 15,
-    "verse": 13,
-    "label": "Romans 15:13",
-    "quote": "Now the God of hope fill you with all joy and peace in believing, that ye may abound in hope, through the power of the Holy Ghost."
+    "verse": 1,
+    "label": "The Prince 15",
+    "quote": "It is better to be feared than loved, if you cannot be both."
+  },
+  {
+    "book": "Thomas Hobbes",
+    "chapter": 13,
+    "verse": 9,
+    "label": "Leviathan 13.9",
+    "quote": "Life of man, solitary, poor, nasty, brutish, and short."
+  },
+  {
+    "book": "John Locke",
+    "chapter": 2,
+    "verse": 5,
+    "label": "Second Treatise of Government 2.5",
+    "quote": "Being all equal and independent, no one ought to harm another in his life, health, liberty, or possessions."
+  },
+  {
+    "book": "David Hume",
+    "chapter": 1,
+    "verse": 1,
+    "label": "A Treatise of Human Nature 1",
+    "quote": "Reason is, and ought only to be the slave of the passions."
+  },
+  {
+    "book": "Adam Smith",
+    "chapter": 4,
+    "verse": 2,
+    "label": "The Wealth of Nations 4.2",
+    "quote": "It is not from the benevolence of the butcher, the brewer, or the baker that we expect our dinner, but from their regard to their own interest."
+  },
+  {
+    "book": "Karl Marx",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Communist Manifesto 1",
+    "quote": "The philosophers have only interpreted the world, in various ways; the point is to change it."
+  },
+  {
+    "book": "Søren Kierkegaard",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Journals 1",
+    "quote": "Life can only be understood backwards; but it must be lived forwards."
+  },
+  {
+    "book": "Sigmund Freud",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Interpretation of Dreams 1",
+    "quote": "Out of your vulnerabilities will come your strength."
+  },
+  {
+    "book": "Carl Jung",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Archetypes and the Collective Unconscious 1",
+    "quote": "Until you make the unconscious conscious, it will direct your life and you will call it fate."
+  },
+  {
+    "book": "Hannah Arendt",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Human Condition 1",
+    "quote": "The sad truth is that most evil is done by people who never make up their minds to be good or evil."
+  },
+  {
+    "book": "Simone de Beauvoir",
+    "chapter": 2,
+    "verse": 3,
+    "label": "The Second Sex 2.3",
+    "quote": "One is not born, but rather becomes, a woman."
+  },
+  {
+    "book": "Michel Foucault",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Discipline and Punish 1",
+    "quote": "Power is everywhere; not because it embraces everything, but because it comes from everywhere."
+  },
+  {
+    "book": "Jean Baudrillard",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Simulacra and Simulation 1",
+    "quote": "Simulation is no longer that of a territory, a referential being, or a substance. It is the generation by models of a real without origin or reality."
+  },
+  {
+    "book": "Noam Chomsky",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Manufacturing Consent 1",
+    "quote": "Smart people learn from everything and everyone, average people from their experiences, stupid people already have all the answers."
+  },
+  {
+    "book": "Seneca",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Letters from a Stoic 1.1",
+    "quote": "We suffer more often in imagination than in reality."
+  },
+  {
+    "book": "Marcus Aurelius",
+    "chapter": 5,
+    "verse": 16,
+    "label": "Meditations 5.16",
+    "quote": "The impediment to action advances action. What stands in the way becomes the way."
+  },
+  {
+    "book": "Epictetus",
+    "chapter": 4,
+    "verse": 1,
+    "label": "Enchiridion 4",
+    "quote": "Men are disturbed not by things, but by the view which they take of them."
+  },
+  {
+    "book": "Seneca",
+    "chapter": 3,
+    "verse": 4,
+    "label": "On the Shortness of Life 3.4",
+    "quote": "It is not that we have a short time to live, but that we waste a lot of it."
+  },
+  {
+    "book": "Plutarch",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Moralia 1",
+    "quote": "The mind is not a vessel to be filled, but a fire to be kindled."
+  },
+  {
+    "book": "Cicero",
+    "chapter": 1,
+    "verse": 1,
+    "label": "De Oratore 1",
+    "quote": "A room without books is like a body without a soul."
+  },
+  {
+    "book": "Julius Caesar",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Gallic Wars 1",
+    "quote": "Veni, vidi, vici."
+  },
+  {
+    "book": "Cleopatra",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Historical Accounts 1",
+    "quote": "I will not be triumphed over."
+  },
+  {
+    "book": "Alexander the Great",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Historical Biographies 1",
+    "quote": "There are no more worlds to conquer."
+  },
+  {
+    "book": "Leonidas",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Plutarch's Sayings of Spartans 1",
+    "quote": "Come and take them."
+  },
+  {
+    "book": "Pericles",
+    "chapter": 2,
+    "verse": 43,
+    "label": "Funeral Oration 2.43",
+    "quote": "What you leave behind is not what is engraved in stone monuments, but what is woven into the lives of others."
+  },
+  {
+    "book": "Demosthenes",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Philippics 1",
+    "quote": "Small opportunities are often the beginning of great enterprises."
+  },
+  {
+    "book": "Aesop",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Fables 1",
+    "quote": "No act of kindness, no matter how small, is ever wasted."
+  },
+  {
+    "book": "Homer",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Odyssey 1",
+    "quote": "A man who has been through bitter experiences and traveled far enjoys even his sufferings after a time."
+  },
+  {
+    "book": "Virgil",
+    "chapter": 2,
+    "verse": 313,
+    "label": "Aeneid 2.313",
+    "quote": "Fortune favors the brave."
+  },
+  {
+    "book": "Ovid",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Metamorphoses 1",
+    "quote": "Daring is the first condition of success."
+  },
+  {
+    "book": "Horace",
+    "chapter": 1,
+    "verse": 11,
+    "label": "Odes 1.11",
+    "quote": "Seize the day, put very little trust in tomorrow."
+  },
+  {
+    "book": "Seneca",
+    "chapter": 13,
+    "verse": 1,
+    "label": "Letters from a Stoic 13.1",
+    "quote": "True happiness is to enjoy the present, without anxious dependence upon the future."
+  },
+  {
+    "book": "Marcus Aurelius",
+    "chapter": 8,
+    "verse": 26,
+    "label": "Meditations 8.26",
+    "quote": "Waste no more time arguing about what a good person should be. Be one."
+  },
+  {
+    "book": "Epictetus",
+    "chapter": 1,
+    "verse": 12,
+    "label": "Discourses 1.12",
+    "quote": "He who is not a good servant will not be a good master."
+  },
+  {
+    "book": "Michel de Montaigne",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Essays 1",
+    "quote": "The great and glorious masterpiece of man is to live appropriately."
+  },
+  {
+    "book": "Francis Bacon",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Essays 1",
+    "quote": "Knowledge is power."
+  },
+  {
+    "book": "Galileo Galilei",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Trial Records 1",
+    "quote": "And yet it moves."
+  },
+  {
+    "book": "Isaac Newton",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Letter to Robert Hooke 1",
+    "quote": "If I have seen further it is by standing on the shoulders of giants."
+  },
+  {
+    "book": "Benjamin Franklin",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Poor Richard's Almanack 1",
+    "quote": "An investment in knowledge pays the best interest."
+  },
+  {
+    "book": "Thomas Jefferson",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Letter to William Short 1",
+    "quote": "Honesty is the first chapter in the book of wisdom."
+  },
+  {
+    "book": "George Washington",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Farewell Address 1",
+    "quote": "Associate with men of good quality if you esteem your own reputation; for it is better to be alone than in bad company."
+  },
+  {
+    "book": "Napoleon Bonaparte",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Military Maxims 1",
+    "quote": "Impossible is a word to be found only in the dictionary of fools."
+  },
+  {
+    "book": "Ludwig Wittgenstein",
+    "chapter": 7,
+    "verse": 1,
+    "label": "Tractatus Logico-Philosophicus 7",
+    "quote": "Whereof one cannot speak, thereof one must be silent."
+  },
+  {
+    "book": "Martin Heidegger",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Being and Time 1",
+    "quote": "The most thought-provoking thing in our thought-provoking time is that we are still not thinking."
+  },
+  {
+    "book": "Jean-Paul Sartre",
+    "chapter": 1,
+    "verse": 2,
+    "label": "No Exit 1",
+    "quote": "Hell is other people."
+  },
+  {
+    "book": "Simone Weil",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Gravity and Grace 1",
+    "quote": "Attention is the rarest and purest form of generosity."
+  },
+  {
+    "book": "Albert Camus",
+    "chapter": 1,
+    "verse": 2,
+    "label": "Notebooks 1",
+    "quote": "Real generosity toward the future lies in giving all to the present."
+  },
+  {
+    "book": "Antoine de Saint-Exupéry",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Little Prince 1",
+    "quote": "It is only with the heart that one can see rightly; what is essential is invisible to the eye."
+  },
+  {
+    "book": "Pablo Picasso",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Interviews 1",
+    "quote": "Everything you can imagine is real."
+  },
+  {
+    "book": "Vincent van Gogh",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Letters to Theo 1",
+    "quote": "I would rather die of passion than of boredom."
+  },
+  {
+    "book": "Frida Kahlo",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Diary 1",
+    "quote": "Feet, what do I need you for if I have wings to fly?"
+  },
+  {
+    "book": "Maya Angelou",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Interviews 1",
+    "quote": "I've learned that people will forget what you said, people will forget what you did, but people will never forget how you made them feel."
+  },
+  {
+    "book": "T. S. Eliot",
+    "chapter": 4,
+    "verse": 1,
+    "label": "Four Quartets 4",
+    "quote": "We shall not cease from exploration, and the end of all our exploring will be to arrive where we started and know the place for the first time."
+  },
+  {
+    "book": "George Orwell",
+    "chapter": 1,
+    "verse": 1,
+    "label": "1984 1",
+    "quote": "Who controls the past controls the future. Who controls the present controls the past."
+  },
+  {
+    "book": "Ray Bradbury",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Zen in the Art of Writing 1",
+    "quote": "Jump off the cliff and build your wings on the way down."
+  },
+  {
+    "book": "J. R. R. Tolkien",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Fellowship of the Ring 1",
+    "quote": "All that is gold does not glitter, not all those who wander are lost."
+  },
+  {
+    "book": "C. S. Lewis",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Weight of Glory 1",
+    "quote": "You are never too old to set another goal or to dream a new dream."
+  },
+  {
+    "book": "Seneca",
+    "chapter": 6,
+    "verse": 5,
+    "label": "Letters from a Stoic 6.5",
+    "quote": "If a man knows not to which port he sails, no wind is favorable."
+  },
+  {
+    "book": "Marcus Aurelius",
+    "chapter": 2,
+    "verse": 5,
+    "label": "Meditations 2.5",
+    "quote": "Retire into yourself. The rational principle which rules has this nature, that it is content with itself when it does what is just."
+  },
+  {
+    "book": "Epictetus",
+    "chapter": 2,
+    "verse": 5,
+    "label": "Discourses 2.5",
+    "quote": "Difficulties are things that show what people are."
+  },
+  {
+    "book": "Marcus Aurelius",
+    "chapter": 7,
+    "verse": 9,
+    "label": "Meditations 7.9",
+    "quote": "Time is a river, a violent current of events, glimpsed once and already carried past us."
+  },
+  {
+    "book": "Seneca",
+    "chapter": 4,
+    "verse": 1,
+    "label": "Letters from a Stoic 4.1",
+    "quote": "If you would be wealthy, do not think of increasing your goods, but of diminishing your desires."
+  },
+  {
+    "book": "Plato",
+    "chapter": 3,
+    "verse": 10,
+    "label": "Laws 3",
+    "quote": "Courage is knowing what not to fear."
+  },
+  {
+    "book": "Aristotle",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Nicomachean Ethics 2.1",
+    "quote": "At his best, man is the noblest of all animals; separated from law and justice he is the worst."
+  },
+  {
+    "book": "Socrates",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Plato's Crito 2",
+    "quote": "Let us reflect in what way we can best act, not what the many will say of us."
+  },
+  {
+    "book": "Confucius",
+    "chapter": 4,
+    "verse": 17,
+    "label": "Analects 4.17",
+    "quote": "When you see a worthy person, think of equaling them; when you see a worthless person, examine your own heart."
+  },
+  {
+    "book": "Lao Tzu",
+    "chapter": 8,
+    "verse": 1,
+    "label": "Tao Te Ching 8",
+    "quote": "The highest goodness is like water, which benefits all things and does not contend."
+  },
+  {
+    "book": "Sun Tzu",
+    "chapter": 1,
+    "verse": 3,
+    "label": "The Art of War 1.3",
+    "quote": "All warfare is based on deception."
+  },
+  {
+    "book": "Buddha",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Dhammapada 1.1",
+    "quote": "What we think, we become."
+  },
+  {
+    "book": "Rumi",
+    "chapter": 2,
+    "verse": 4,
+    "label": "Mathnawi 2",
+    "quote": "Set your life on fire. Seek those who fan your flames."
+  },
+  {
+    "book": "Cicero",
+    "chapter": 2,
+    "verse": 1,
+    "label": "De Amicitia 2",
+    "quote": "A friend is, as it were, a second self."
+  },
+  {
+    "book": "Seneca",
+    "chapter": 7,
+    "verse": 3,
+    "label": "Letters from a Stoic 7.3",
+    "quote": "Associate with those who will make a better man of you. Welcome those whom you yourselves can improve."
+  },
+  {
+    "book": "Marcus Aurelius",
+    "chapter": 6,
+    "verse": 2,
+    "label": "Meditations 6.2",
+    "quote": "Do not despise death, but be well content with it, since this too is one of those things which nature wills."
+  },
+  {
+    "book": "Epictetus",
+    "chapter": 3,
+    "verse": 24,
+    "label": "Discourses 3.24",
+    "quote": "Freedom is secured not by the fulfilling of men's desires, but by the removal of desire."
+  },
+  {
+    "book": "Voltaire",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Letter to Le Riche 2",
+    "quote": "Judge a man by his questions rather than by his answers."
+  },
+  {
+    "book": "Jean-Jacques Rousseau",
+    "chapter": 3,
+    "verse": 1,
+    "label": "Emile 3",
+    "quote": "Patience is bitter, but its fruit is sweet."
+  },
+  {
+    "book": "Immanuel Kant",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Groundwork of the Metaphysics of Morals 2",
+    "quote": "Act only according to that maxim whereby you can at the same time will that it should become a universal law."
+  },
+  {
+    "book": "Friedrich Nietzsche",
+    "chapter": 4,
+    "verse": 1,
+    "label": "Beyond Good and Evil 4",
+    "quote": "He who fights with monsters might take care lest he thereby become a monster."
+  },
+  {
+    "book": "Arthur Schopenhauer",
+    "chapter": 2,
+    "verse": 1,
+    "label": "The World as Will and Representation 2",
+    "quote": "Talent hits a target no one else can hit; Genius hits a target no one else can see."
+  },
+  {
+    "book": "René Descartes",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Passions of the Soul 1",
+    "quote": "The greatest minds are capable of the greatest vices as well as of the greatest virtues."
+  },
+  {
+    "book": "Baruch Spinoza",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Tractatus Theologico-Politicus 1",
+    "quote": "If you want the present to be different, past study. Or stutter."
+  },
+  {
+    "book": "Thomas Hobbes",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Elements of Law 1",
+    "quote": "Prudence is experience, which equal time equalizes to all men in those things they apply themselves unto."
+  },
+  {
+    "book": "John Locke",
+    "chapter": 1,
+    "verse": 1,
+    "label": "An Essay Concerning Human Understanding 1",
+    "quote": "No man's knowledge here can go beyond his experience."
+  },
+  {
+    "book": "David Hume",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Enquiries Concerning Human Understanding 2",
+    "quote": "Custom, then, is the great guide of human life."
+  },
+  {
+    "book": "Adam Smith",
+    "chapter": 1,
+    "verse": 1,
+    "label": "The Theory of Moral Sentiments 1",
+    "quote": "How selfish soever man may be supposed, there are evidently some principles in his nature, which interest him in the fortune of others."
+  },
+  {
+    "book": "Karl Marx",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Capital 2",
+    "quote": "Capital is dead labour, which, vampire-like, lives only by sucking living labour."
+  },
+  {
+    "book": "Søren Kierkegaard",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Either/Or 2",
+    "quote": "People say that forgetfulness is a remedy for suffering. I have never found it to be so."
+  },
+  {
+    "book": "Sigmund Freud",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Civilization and Its Discontents 2",
+    "quote": "Most people do not really want freedom, because freedom involves responsibility, and most people are frightened of responsibility."
+  },
+  {
+    "book": "Carl Jung",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Memories, Dreams, Reflections 2",
+    "quote": "Who looks outside, dreams; who looks inside, awakes."
+  },
+  {
+    "book": "Hannah Arendt",
+    "chapter": 2,
+    "verse": 1,
+    "label": "On Revolution 2",
+    "quote": "The most radical revolutionary will become a conservative the day after the revolution."
+  },
+  {
+    "book": "Simone de Beauvoir",
+    "chapter": 1,
+    "verse": 1,
+    "label": "Ethics of Ambiguity 1",
+    "quote": "To be free is not to have the power to do anything you like, it is to be able to surpass the given toward an open future."
+  },
+  {
+    "book": "Michel Foucault",
+    "chapter": 2,
+    "verse": 1,
+    "label": "The Order of Things 2",
+    "quote": "Curiosity is a vice that has been stigmatized in turn by Christianity, by philosophy, and even by a certain conception of science."
+  },
+  {
+    "book": "Noam Chomsky",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Understanding Power 2",
+    "quote": "Optimism is a strategy for making a better future, because unless you believe that the future can be better, you are unlikely to step up and take responsibility for making it so."
+  },
+  {
+    "book": "Marcus Aurelius",
+    "chapter": 9,
+    "verse": 1,
+    "label": "Meditations 9.1",
+    "quote": "He who does injustice does himself a wrong. He who does wrong acts unjustly by making himself evil."
+  },
+  {
+    "book": "Seneca",
+    "chapter": 8,
+    "verse": 1,
+    "label": "Letters from a Stoic 8.1",
+    "quote": "A man is as wretched as he has convinced himself he is."
+  },
+  {
+    "book": "Epictetus",
+    "chapter": 2,
+    "verse": 2,
+    "label": "Enchiridion 2",
+    "quote": "Remember that following desire promises the attainment of that which you desire; and directing aversion promises the avoidance of that to which you are averse."
+  },
+  {
+    "book": "Plutarch",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Lives 2",
+    "quote": "To know how to hide one's ability is the great skill."
+  },
+  {
+    "book": "Cicero",
+    "chapter": 3,
+    "verse": 1,
+    "label": "De Officiis 3",
+    "quote": "Not to know what happened before you were born is to be a child forever."
+  },
+  {
+    "book": "Aesop",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Fables 2",
+    "quote": "Appearances are often deceptive."
+  },
+  {
+    "book": "Homer",
+    "chapter": 2,
+    "verse": 1,
+    "label": "The Iliad 2",
+    "quote": "Like leaves on trees the race of man is found, now green in youth, now withering on the ground."
+  },
+  {
+    "book": "Virgil",
+    "chapter": 1,
+    "verse": 3,
+    "label": "Aeneid 1.3",
+    "quote": "Mind moves matter."
+  },
+  {
+    "book": "Ovid",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Ars Amatoria 2",
+    "quote": "Excellence requires patience."
+  },
+  {
+    "book": "Horace",
+    "chapter": 2,
+    "verse": 2,
+    "label": "Epistles 2",
+    "quote": "Dare to be wise."
+  },
+  {
+    "book": "Michel de Montaigne",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Essays 2",
+    "quote": "The most certain sign of wisdom is cheerfulness."
+  },
+  {
+    "book": "Francis Bacon",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Novum Organum 2",
+    "quote": "Truth is the daughter of time, not of authority."
+  },
+  {
+    "book": "Galileo Galilei",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Dialogue Concerning the Two Chief World Systems 2",
+    "quote": "All truths are easy to understand once they are discovered; the point is to discover them."
+  },
+  {
+    "book": "Isaac Newton",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Principia Mathematica 2",
+    "quote": "We build too many walls and not enough bridges."
+  },
+  {
+    "book": "Benjamin Franklin",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Autobiography 2",
+    "quote": "Either write something worth reading or do something worth writing."
+  },
+  {
+    "book": "Thomas Jefferson",
+    "chapter": 2,
+    "verse": 1,
+    "label": "Autobiography 2",
+    "quote": "I like the dreams of the future better than the history of the past."
   }
 ]
