@@ -165,14 +165,14 @@ body.essence-mode {
     opacity: 1 !important;
     transition: all 0.2s ease;
     display: inline;
-        color: black;
+    color: black;
 }
 
-.word-highlight::before{
+.word-highlight::before {
     content: '';
     position: absolute;
-    top: -6px; 
-    bottom: -6px; 
+    top: -6px;
+    bottom: -6px;
     left: -12px;
     right: -12px;
     background-color: white;
@@ -485,19 +485,52 @@ a {
 }
 
 @keyframes essenceEyeLook {
-    0%, 100% { transform: translate(0, 0); }
-    15% { transform: translate(-4px, 0); }
-    30% { transform: translate(4px, 0); }
-    45% { transform: translate(0, -3px); }
-    60% { transform: translate(0, 3px); }
-    75% { transform: translate(-3px, -2px); }
-    90% { transform: translate(3px, 2px); }
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    15% {
+        transform: translate(-4px, 0);
+    }
+
+    30% {
+        transform: translate(4px, 0);
+    }
+
+    45% {
+        transform: translate(0, -3px);
+    }
+
+    60% {
+        transform: translate(0, 3px);
+    }
+
+    75% {
+        transform: translate(-3px, -2px);
+    }
+
+    90% {
+        transform: translate(3px, 2px);
+    }
 }
 
 @keyframes essenceEyeBlink {
-    0%, 92%, 100% { height: 20px; }
-    94% { height: 2px; }
-    96% { height: 20px; }
+
+    0%,
+    92%,
+    100% {
+        height: 20px;
+    }
+
+    94% {
+        height: 2px;
+    }
+
+    96% {
+        height: 20px;
+    }
 }
 
 .IntroChat a {
@@ -805,17 +838,17 @@ a {
     padding-top: 32px;
 }
 
-.search-thumbnail{
+.search-thumbnail {
     padding-bottom: 56px;
     filter: grayscale(1);
 }
 
-.search-result-line{
+.search-result-line {
     border-left: 1px solid var(--primary-gray);
     padding-left: 56px;
 }
 
-.search-title{
+.search-title {
     display: block;
     font-size: 56px;
     line-height: 64px;
@@ -1098,6 +1131,7 @@ a {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -1336,21 +1370,21 @@ a {
         min-height: auto;
         align-items: start;
     }
-    
+
     .stock-card-info {
         grid-column: 1;
         grid-row: 1;
         width: auto;
         min-width: auto;
     }
-    
+
     .stock-details {
         grid-column: 2;
         grid-row: 1;
         text-align: right;
         width: auto;
     }
-    
+
     .stock-card-values {
         grid-column: 1;
         grid-row: 2;
@@ -1359,14 +1393,14 @@ a {
         white-space: normal;
         word-break: break-word;
     }
-    
+
     .stock-remove {
         grid-column: 2;
         grid-row: 2;
         justify-self: end;
         align-self: end;
     }
-    
+
     .stock-chart {
         grid-column: 1 / -1;
         grid-row: 3;
@@ -1573,6 +1607,75 @@ a {
 .content {
     padding-left: 56px;
     padding-right: 56px;
+}
+
+.privacy-content {
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    text-wrap: pretty;
+}
+
+.privacy-content h1,
+.privacy-content h2 {
+    text-align: left;
+}
+
+.privacy-content h1 {
+    font-size: 32px;
+}
+
+.privacy-content h2 {
+    max-width: 28em;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.privacy-content h1[id] {
+    scroll-margin-top: 120px;
+}
+
+.privacy-tabs {
+    position: fixed;
+    right: 48px;
+    bottom: 24px;
+    z-index: 10;
+    display: grid;
+    gap: 4px;
+}
+
+.privacy-tabs a {
+    display: flex;
+    gap: 10px;
+    width: fit-content;
+    color: rgba(246, 246, 246, 0.6);
+    font-size: 13px;
+    line-height: 1.25;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.privacy-tabs a span {
+    color: var(--white);
+    font-variant-numeric: tabular-nums;
+}
+
+.privacy-tabs a:hover,
+.privacy-tabs a:focus-visible {
+    color: var(--white);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+    .privacy-content {
+        width: auto;
+        margin-left: 0;
+    }
+
+    .privacy-tabs {
+        display: none;
+    }
 }
 
 .projects-grid {
@@ -1995,12 +2098,12 @@ a {
         margin-top: 156px;
     }
 
-    .search-result-line{
+    .search-result-line {
         padding-left: 16px;
         line-height: 24px !important;
     }
 
-    .search-snippet{
+    .search-snippet {
         font-size: 18px;
     }
 
@@ -2013,16 +2116,16 @@ a {
         margin-top: 12px;
     }
 
-    .weather-forecast{
+    .weather-forecast {
         flex-direction: column;
         width: 100%;
     }
 
-    .weather-forecast-icon{
+    .weather-forecast-icon {
         font-size: 32px;
     }
 
-    .weather-forecast-row{
+    .weather-forecast-row {
         display: grid;
         grid-template-columns: 1fr 1fr;
         grid-template-areas:
@@ -2037,32 +2140,32 @@ a {
         border-bottom: 1px solid var(--dark-gray);
     }
 
-    .weather-forecast-date{
+    .weather-forecast-date {
         grid-area: date;
         width: 100%;
         text-align: left;
     }
 
-    .weather-forecast-condition{
+    .weather-forecast-condition {
         grid-area: condition;
         width: 100%;
         text-align: left;
     }
 
-    .weather-forecast-icon{
+    .weather-forecast-icon {
         grid-area: icon;
         width: 100%;
         text-align: left;
     }
 
-    .weather-forecast-temp{
+    .weather-forecast-temp {
         grid-area: temp;
         width: 100%;
         font-size: 32px;
         text-align: right;
     }
 
-    .stock-chart polyline{
+    .stock-chart polyline {
         width: 100%;
     }
 
@@ -2744,9 +2847,20 @@ a {
     margin-top: 48px;
     margin-bottom: 16px;
     border-radius: 6px;
+}
+
+.note-mode-editor,
+.note-mode-actions {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translateY(12px);
+}
+
+.note-mode-panel.is-visible .note-mode-editor {
     animation: notePanelSlideIn 0.45s ease forwards;
+}
+
+.note-mode-panel.is-visible .note-mode-actions {
+    animation: notePanelSlideIn 0.45s ease 0.16s forwards;
 }
 
 @keyframes notePanelSlideIn {
@@ -2778,56 +2892,11 @@ a {
     flex-direction: column;
     gap: 6px;
     overflow-y: auto;
-    margin-left: 56px;
-    background-color: rgb(17, 17, 17);
-    border: 1px solid var(--primary-gray);
+    background-color: rgb(16, 16, 16);
 }
 
-.note-mode-panel{
-    border-left: 2px solid var(--primary-gray);
+.note-mode-panel {
     border-radius: 0;
-}
-
-.note-mode-actions{
-    margin-left: 56px;
-}
-
-.note-editor-layout {
-    display: flex;
-    align-items: stretch;
-    min-height: 280px;
-    gap: 0;
-}
-
-.note-editor-layout .note-mode-editor {
-    width: auto;
-    flex: 1;
-    min-width: 0;
-}
-
-.note-line-numbers {
-    box-sizing: border-box;
-    width: 32px;
-    min-height: 280px;
-    flex: 0 0 32px;
-    padding: 16px 0;
-    color: var(--white);
-    background-color: rgb(17, 17, 17);
-    border: 1px solid var(--primary-gray);
-    border-left: 0;
-    font-size: 12px;
-    line-height: 1.6;
-    text-align: center;
-    user-select: none;
-}
-
-.note-line-numbers span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    box-sizing: border-box;
-    padding: 4px 0;
 }
 
 .note-line {
@@ -2839,6 +2908,63 @@ a {
     position: relative;
     padding: 2px 0 2px 28px;
     border-radius: 2px;
+}
+
+.note-line[data-columns="2"] {
+    display: grid;
+    grid-template-columns: minmax(0, var(--note-left-column, 1fr)) 10px minmax(0, var(--note-right-column, 1fr));
+    align-items: stretch;
+    padding-right: 0;
+    white-space: normal;
+}
+
+.note-line[data-columns="2"][data-column-split="20"] {
+    --note-left-column: 20fr;
+    --note-right-column: 80fr;
+}
+
+.note-line[data-columns="2"][data-column-split="50"] {
+    --note-left-column: 50fr;
+    --note-right-column: 50fr;
+}
+
+.note-line[data-columns="2"][data-column-split="60"] {
+    --note-left-column: 60fr;
+    --note-right-column: 40fr;
+}
+
+.note-column-cell {
+    min-width: 0;
+    min-height: 1.6em;
+    padding: 0 10px;
+    outline: none;
+    white-space: pre-wrap;
+    word-break: break-word;
+    cursor: text;
+}
+
+.note-column-divider {
+    position: relative;
+    cursor: col-resize;
+    touch-action: none;
+    outline: none;
+}
+
+.note-column-divider::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    left: 50%;
+    width: 1px;
+    background: rgba(255, 255, 255, 0.48);
+    transform: translateX(-50%);
+}
+
+.note-column-divider:hover::before,
+.note-column-divider:focus-visible::before {
+    width: 2px;
+    background: var(--white);
 }
 
 .note-line-heading {
@@ -2992,6 +3118,10 @@ a {
     position: relative;
 }
 
+.note-column-dropdown {
+    position: relative;
+}
+
 .note-fontsize-list {
     list-style: none;
     margin: 8px 0 0;
@@ -3008,7 +3138,8 @@ a {
     z-index: 120;
 }
 
-.note-alignment-list {
+.note-alignment-list,
+.note-column-list {
     list-style: none;
     margin: 8px 0 0;
     padding: 4px 0;
@@ -3042,13 +3173,15 @@ a {
     }
 
     .note-fontsize-dropdown,
-    .note-alignment-dropdown {
-        width: calc((100% - 8px) / 2);
-        flex: 0 0 calc((100% - 8px) / 2);
+    .note-alignment-dropdown,
+    .note-column-dropdown {
+        width: calc((100% - 16px) / 3);
+        flex: 0 0 calc((100% - 16px) / 3);
     }
 
     .note-fontsize-toggle,
-    .note-alignment-toggle {
+    .note-alignment-toggle,
+    .note-column-toggle {
         width: 100%;
     }
 
@@ -3063,7 +3196,8 @@ a {
     }
 
     .note-fontsize-list,
-    .note-alignment-list {
+    .note-alignment-list,
+    .note-column-list {
         top: auto;
         bottom: calc(100% + 8px);
         margin: 0;
@@ -3078,6 +3212,9 @@ a {
 .note-alignment-dropdown.is-open .note-alignment-list {
     display: block;
 }
+.note-column-dropdown.is-open .note-column-list {
+    display: block;
+}
 
 .note-fontsize-option {
     width: 100%;
@@ -3090,7 +3227,9 @@ a {
     cursor: pointer;
 }
 
-.note-alignment-option {
+.note-fontsize-option,
+.note-alignment-option,
+.note-column-option {
     width: 100%;
     background: transparent;
     border: none;
@@ -3101,11 +3240,9 @@ a {
     cursor: pointer;
 }
 
-.note-fontsize-option:hover {
-    font-weight: 700;
-}
-
-.note-alignment-option:hover {
+.note-fontsize-option:hover,
+.note-alignment-option:hover,
+.note-column-option:hover {
     font-weight: 700;
 }
 

@@ -788,6 +788,12 @@ function applyMarkdownShortcutFormatting(line, { moveCaret = true } = {}) {
 }
 
 function serializeNoteLineForMarkdown(line) {
+    if (line.dataset.columns === "2") {
+        return Array.from(line.querySelectorAll(".note-column-cell"))
+            .map(cell => cell.innerText.replace(/\u00a0/g, " ").trim())
+            .join("\t");
+    }
+
     const text = line.innerText.replace(/\u00a0/g, " ").trim();
     if (!text) return "";
 
@@ -803,6 +809,90 @@ function serializeNoteLineForMarkdown(line) {
         default:
             return text;
     }
+}
+
+function setNoteLineColumns(line, columnCount) {
+    if (!line || line.dataset.noteFormat === "divider") return;
+
+    if (columnCount === 1) {
+        if (line.dataset.columns === "2") {
+            const columnText = Array.from(line.querySelectorAll(".note-column-cell"))
+                .map(cell => cell.innerText.replace(/\u00a0/g, " ").trim())
+                .filter(Boolean)
+                .join("\n");
+            line.replaceChildren(document.createTextNode(columnText));
+        }
+        delete line.dataset.columns;
+        delete line.dataset.columnSplit;
+        line.contentEditable = "true";
+        focusCaretAtEnd(line);
+        return;
+    }
+
+    if (line.dataset.columns !== "2") {
+        const existingText = line.innerText.replace(/\u00a0/g, " ");
+        const leftColumn = document.createElement("div");
+        leftColumn.className = "note-column-cell";
+        leftColumn.contentEditable = "true";
+        leftColumn.spellcheck = false;
+        leftColumn.textContent = existingText;
+
+        const divider = document.createElement("div");
+        divider.className = "note-column-divider";
+        divider.setAttribute("role", "separator");
+        divider.setAttribute("aria-label", "Column divider");
+        divider.tabIndex = 0;
+
+        const rightColumn = document.createElement("div");
+        rightColumn.className = "note-column-cell";
+        rightColumn.contentEditable = "true";
+        rightColumn.spellcheck = false;
+
+        line.replaceChildren(leftColumn, divider, rightColumn);
+        line.contentEditable = "false";
+        line.dataset.columns = "2";
+        line.dataset.columnSplit = "50";
+    }
+
+    const snapDivider = clientX => {
+        const bounds = line.getBoundingClientRect();
+        const percent = ((clientX - bounds.left) / bounds.width) * 100;
+        const nearest = [20, 50, 60].reduce((closest, snapPoint) => (
+            Math.abs(snapPoint - percent) < Math.abs(closest - percent) ? snapPoint : closest
+        ));
+        line.dataset.columnSplit = String(nearest);
+    };
+
+    const divider = line.querySelector(".note-column-divider");
+    divider.onpointerdown = event => {
+        event.preventDefault();
+        event.stopPropagation();
+        divider.setPointerCapture(event.pointerId);
+        snapDivider(event.clientX);
+        const moveDivider = moveEvent => snapDivider(moveEvent.clientX);
+        const stopMovingDivider = upEvent => {
+            divider.releasePointerCapture(upEvent.pointerId);
+            divider.removeEventListener("pointermove", moveDivider);
+            divider.removeEventListener("pointerup", stopMovingDivider);
+        };
+        divider.addEventListener("pointermove", moveDivider);
+        divider.addEventListener("pointerup", stopMovingDivider);
+    };
+    divider.onkeydown = event => {
+        const snapPoints = [10, 20, 30, 50];
+        const currentIndex = snapPoints.indexOf(Number(line.dataset.columnSplit));
+        if (event.key === "ArrowLeft" && currentIndex > 0) {
+            line.dataset.columnSplit = String(snapPoints[currentIndex - 1]);
+            event.preventDefault();
+        }
+        if (event.key === "ArrowRight" && currentIndex < snapPoints.length - 1) {
+            line.dataset.columnSplit = String(snapPoints[currentIndex + 1]);
+            event.preventDefault();
+        }
+    };
+
+    const firstColumn = line.querySelector(".note-column-cell");
+    firstColumn?.focus();
 }
 
 function createNoteLine(text = "") {
@@ -829,10 +919,13 @@ function createNoteLine(text = "") {
     };
 
     line.addEventListener("focus", focusLine);
+    line.addEventListener("focusin", focusLine);
     line.addEventListener("mousedown", focusLine);
     line.addEventListener("click", focusLine);
     line.addEventListener("input", () => {
-        applyMarkdownShortcutFormatting(line);
+        if (line.dataset.columns !== "2") {
+            applyMarkdownShortcutFormatting(line);
+        }
         activeNoteLine = line;
     });
 
@@ -1095,33 +1188,6 @@ function createNotePanel() {
     editor.className = "note-mode-editor";
     editor.setAttribute("role", "group");
 
-    const editorLayout = document.createElement("div");
-    editorLayout.className = "note-editor-layout";
-
-    const lineNumbers = document.createElement("div");
-    lineNumbers.className = "note-line-numbers";
-    lineNumbers.setAttribute("aria-hidden", "true");
-
-    const updateLineNumbers = () => {
-        const lines = Array.from(editor.querySelectorAll(".note-line"));
-        lineNumbers.replaceChildren(...Array.from(lines, (line, index) => {
-            const number = document.createElement("span");
-            number.textContent = index + 1;
-            const nextLine = lines[index + 1];
-            number.style.height = `${nextLine
-                ? nextLine.offsetTop - line.offsetTop
-                : line.offsetHeight}px`;
-            const lineHeight = Number.parseFloat(getComputedStyle(line).lineHeight);
-            if (line.offsetHeight > lineHeight + 4) {
-                number.classList.add("is-multiline");
-            }
-            return number;
-        }));
-    };
-
-    new MutationObserver(updateLineNumbers).observe(editor, { childList: true });
-    new ResizeObserver(updateLineNumbers).observe(editor);
-
     const toolbar = document.createElement("div");
     toolbar.className = "note-mode-actions";
 
@@ -1203,8 +1269,40 @@ function createNotePanel() {
     alignmentDropdown.appendChild(alignmentToggle);
     alignmentDropdown.appendChild(alignmentList);
 
+    const columnDropdown = document.createElement("div");
+    columnDropdown.className = "note-column-dropdown";
+
+    const columnToggle = createActionButton("Columns", () => {
+        columnDropdown.classList.toggle("is-open");
+    });
+    columnToggle.classList.add("note-column-toggle");
+
+    const columnList = document.createElement("ul");
+    columnList.className = "note-column-list";
+
+    const createColumnItem = (label, columnCount) => {
+        const item = document.createElement("li");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "note-column-option";
+        button.textContent = label;
+        button.addEventListener("click", () => {
+            const line = getActiveNoteLine() || ensureNoteEditorLine();
+            setNoteLineColumns(line, columnCount);
+            columnDropdown.classList.remove("is-open");
+        });
+        item.appendChild(button);
+        return item;
+    };
+
+    columnList.appendChild(createColumnItem("1", 1));
+    columnList.appendChild(createColumnItem("2", 2));
+    columnDropdown.appendChild(columnToggle);
+    columnDropdown.appendChild(columnList);
+
     leftActions.appendChild(fontSizeDropdown);
     leftActions.appendChild(alignmentDropdown);
+    leftActions.appendChild(columnDropdown);
 
     const clearButton = document.createElement("button");
     clearButton.type = "button";
@@ -1254,9 +1352,6 @@ function createNotePanel() {
     const startLines = Array.from({ length: 6 }, () => createNoteLine());
     const startLine = startLines[0];
     editor.append(...startLines);
-    editorLayout.appendChild(editor);
-    editorLayout.appendChild(lineNumbers);
-    requestAnimationFrame(updateLineNumbers);
 
     rightActions.appendChild(clearButton);
     rightActions.appendChild(saveButton);
@@ -1265,7 +1360,7 @@ function createNotePanel() {
     toolbar.appendChild(leftActions);
     toolbar.appendChild(rightActions);
 
-    panel.appendChild(editorLayout);
+    panel.appendChild(editor);
     panel.appendChild(toolbar);
     panel.appendChild(importInput);
 
@@ -1881,9 +1976,10 @@ function appendExtraContent(wrapper, extra = {}) {
 function appendNoteEditor(container) {
     const panel = createNotePanel();
     container.appendChild(panel);
-    requestAnimationFrame(() => {
-        activeNoteLine?.focus();
-    });
+    setTimeout(() => {
+        panel.classList.add("is-visible");
+        setTimeout(() => activeNoteLine?.focus(), 300);
+    }, 800);
 }
 
 function appendQuotePanel(verse, container) {
