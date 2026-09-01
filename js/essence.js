@@ -2011,11 +2011,11 @@ function appendQuotePanel(verse, container) {
     separator.className = "quote-separator";
     panel.appendChild(separator);
 
-    // Add "Get another verse" button
+    // Add "Get another quote button
     const button = document.createElement("button");
     button.className = "sort-btn";
     button.style.marginTop = "32px";
-    button.textContent = "Get another verse";
+    button.textContent = "Get another Quote";
     button.addEventListener("click", async () => {
         button.disabled = true;
         button.textContent = "Loading...";
