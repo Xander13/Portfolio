@@ -179,7 +179,7 @@ async function getWebSearchResults(rawInput) {
 }
 
 
-/*Bible Quotes */
+/*Quotes */
 let allBibleQuotes = [];
 let usedBibleQuotes = [];
 
@@ -1041,10 +1041,10 @@ function clearNoteEditor() {
     if (!activeNoteEditor) return;
 
     activeNoteEditor.innerHTML = "";
-    const line = createNoteLine();
-    activeNoteEditor.appendChild(line);
-    activeNoteLine = line;
-    line.focus();
+    const lines = Array.from({ length: 6 }, () => createNoteLine());
+    activeNoteEditor.append(...lines);
+    activeNoteLine = lines[0];
+    activeNoteLine.focus();
 }
 
 function importNoteText(text) {
@@ -1058,8 +1058,7 @@ function importNoteText(text) {
     }
 
     lines.forEach(lineText => {
-        const line = createNoteLine(lineText);
-        activeNoteEditor.appendChild(line);
+        activeNoteEditor.appendChild(createNoteLine(lineText));
     });
 
     activeNoteLine = activeNoteEditor.querySelector(".note-line:last-child");
@@ -1095,6 +1094,33 @@ function createNotePanel() {
     const editor = document.createElement("div");
     editor.className = "note-mode-editor";
     editor.setAttribute("role", "group");
+
+    const editorLayout = document.createElement("div");
+    editorLayout.className = "note-editor-layout";
+
+    const lineNumbers = document.createElement("div");
+    lineNumbers.className = "note-line-numbers";
+    lineNumbers.setAttribute("aria-hidden", "true");
+
+    const updateLineNumbers = () => {
+        const lines = Array.from(editor.querySelectorAll(".note-line"));
+        lineNumbers.replaceChildren(...Array.from(lines, (line, index) => {
+            const number = document.createElement("span");
+            number.textContent = index + 1;
+            const nextLine = lines[index + 1];
+            number.style.height = `${nextLine
+                ? nextLine.offsetTop - line.offsetTop
+                : line.offsetHeight}px`;
+            const lineHeight = Number.parseFloat(getComputedStyle(line).lineHeight);
+            if (line.offsetHeight > lineHeight + 4) {
+                number.classList.add("is-multiline");
+            }
+            return number;
+        }));
+    };
+
+    new MutationObserver(updateLineNumbers).observe(editor, { childList: true });
+    new ResizeObserver(updateLineNumbers).observe(editor);
 
     const toolbar = document.createElement("div");
     toolbar.className = "note-mode-actions";
@@ -1225,8 +1251,12 @@ function createNotePanel() {
         downloadTextFile(noteContent, formatNoteFilename());
     });
 
-    const startLine = createNoteLine();
-    editor.appendChild(startLine);
+    const startLines = Array.from({ length: 6 }, () => createNoteLine());
+    const startLine = startLines[0];
+    editor.append(...startLines);
+    editorLayout.appendChild(editor);
+    editorLayout.appendChild(lineNumbers);
+    requestAnimationFrame(updateLineNumbers);
 
     rightActions.appendChild(clearButton);
     rightActions.appendChild(saveButton);
@@ -1235,7 +1265,7 @@ function createNotePanel() {
     toolbar.appendChild(leftActions);
     toolbar.appendChild(rightActions);
 
-    panel.appendChild(editor);
+    panel.appendChild(editorLayout);
     panel.appendChild(toolbar);
     panel.appendChild(importInput);
 
@@ -2481,7 +2511,7 @@ Execution: Combined UI design, accessibility strategy, and front-end code to bui
 <br><br>
 Impact: Proved how platforms can tap into major underserved markets without compromising core design constraints, with high social interaction on <a href="https://www.linkedin.com/feed/update/urn:li:activity:7264858607559598080/" target="_blank" style="color: white; text-decoration: underline;">LinkedIn</a>.
 <br><br>
-<a href="http://127.0.0.1:5519/duolingoasl.html" style="color: white; text-decoration: underline;">See Duolingo Case Study</a>`,
+<a href="https://www.alex-kauffman.com/duolingoasl.html" style="color: white; text-decoration: underline;">See Duolingo Case Study</a>`,
             inlineLink: true,
             instant: true
         };

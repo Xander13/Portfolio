@@ -2766,7 +2766,7 @@ a {
     min-height: 280px;
     padding: 16px 0;
     border: none;
-    border-radius: 4px;
+    border-radius: 0;
     color: var(--white);
     font: inherit;
     line-height: 1.6;
@@ -2778,8 +2778,56 @@ a {
     flex-direction: column;
     gap: 6px;
     overflow-y: auto;
-    background-color: #0c0c0c;
-    border: 1px solid rgb(35, 35, 35);
+    margin-left: 56px;
+    background-color: rgb(17, 17, 17);
+    border: 1px solid var(--primary-gray);
+}
+
+.note-mode-panel{
+    border-left: 2px solid var(--primary-gray);
+    border-radius: 0;
+}
+
+.note-mode-actions{
+    margin-left: 56px;
+}
+
+.note-editor-layout {
+    display: flex;
+    align-items: stretch;
+    min-height: 280px;
+    gap: 0;
+}
+
+.note-editor-layout .note-mode-editor {
+    width: auto;
+    flex: 1;
+    min-width: 0;
+}
+
+.note-line-numbers {
+    box-sizing: border-box;
+    width: 32px;
+    min-height: 280px;
+    flex: 0 0 32px;
+    padding: 16px 0;
+    color: var(--white);
+    background-color: rgb(17, 17, 17);
+    border: 1px solid var(--primary-gray);
+    border-left: 0;
+    font-size: 12px;
+    line-height: 1.6;
+    text-align: center;
+    user-select: none;
+}
+
+.note-line-numbers span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-sizing: border-box;
+    padding: 4px 0;
 }
 
 .note-line {
@@ -2915,7 +2963,7 @@ a {
     gap: 10px;
     align-items: center;
     flex-wrap: wrap;
-    padding: 16px 0;
+    padding: 16px 0 0 0;
     position: relative;
     z-index: 20;
 }
