@@ -492,20 +492,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.body.classList.toggle('reading-mode', isSpeechActive);
 
         if (isSpeechActive) {
-            // Pick a random theme matching world clocks / sorting graphs
-            const themes = [
-                { name: "Detroit", c1: "#a8c0ff", c2: "#3f2b96" },
-                { name: "Romania", c1: "#00b09b", c2: "#96c93d" },
-                { name: "Tokyo", c1: "#fc4a1a", c2: "#f7b733" },
-                { name: "London", c1: "#7303c0", c2: "#ec38bc" }
-            ];
-            const theme = themes[Math.floor(Math.random() * themes.length)];
-
-            // Set CSS variables for the gradient and primary color
-            document.documentElement.style.setProperty('--active-gradient', `linear-gradient(135deg, ${theme.c1} 0%, ${theme.c2} 100%)`);
-            document.documentElement.style.setProperty('--active-color', theme.c1);
-            document.documentElement.style.setProperty('--orange', theme.c1); // Fallback for existing vars
-
             // Start audio quietly so it sits behind speech
             bgAudio.currentTime = 0;
             setBgAudioVolume(bgAudioVolume);
@@ -545,26 +531,24 @@ document.addEventListener("DOMContentLoaded", function () {
         console.log("Starting speech mode...");
 
         // Find all readable text blocks
-        const selectors = 'h1, h2, h3, p, .mdTxt, .lgTxt, .smTxt, .xSmTxt, li';
+        const selectors = 'h1, h2, h3, h4, p, .mdTxt, .lgTxt, .smTxt, .xSmTxt, li';
         readableElements = Array.from(document.querySelectorAll(selectors)).filter(el => {
             // Basic visibility check and exclude nav/UI
             return el.offsetParent !== null && !el.closest('.nav') && !el.closest('.modes') && !el.closest('.topNav');
         });
 
-        // Sort by data-read-order, then by vertical position
+        // Preserve document order by default; authors can override individual elements.
+        readableElements.forEach((el, index) => {
+            if (!el.hasAttribute('data-read-order')) {
+                el.dataset.readOrder = String((index + 1) * 10);
+            }
+        });
+
+        // Sort by explicit or generated data-read-order.
         readableElements.sort((a, b) => {
             const orderA = parseInt(a.getAttribute('data-read-order'));
             const orderB = parseInt(b.getAttribute('data-read-order'));
-
-            if (!isNaN(orderA) && !isNaN(orderB)) {
-                return orderA - orderB;
-            }
-            if (!isNaN(orderA)) return -1; // A comes first
-            if (!isNaN(orderB)) return 1;  // B comes first
-
-            const rectA = a.getBoundingClientRect();
-            const rectB = b.getBoundingClientRect();
-            return rectA.top - rectB.top;
+            return orderA - orderB;
         });
 
         // Find first element currently in viewport

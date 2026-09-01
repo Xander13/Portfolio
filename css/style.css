@@ -133,7 +133,7 @@ body.essence-mode {
 }
 
 .modes.active .modeIcon {
-    background: var(--orange);
+    background: red;
 }
 
 @keyframes speaking-wave {
@@ -166,6 +166,7 @@ body.essence-mode {
     transition: all 0.2s ease;
     display: inline;
     color: black;
+    z-index: 0;
 }
 
 .word-highlight::before {
@@ -398,6 +399,14 @@ a {
 #heroTop {
     padding-top: 40vh;
     text-wrap: balance;
+}
+
+.project h2{
+    padding-bottom: 16px;
+}
+
+.project h4{
+    color: gray;
 }
 
 .IntroChat {
