@@ -2043,12 +2043,12 @@ function appendQuotePanel(verse, container) {
                 panel.appendChild(newSeparator);
 
                 // Reset button and move it below the new quote
-                button.textContent = "Get another verse";
+                button.textContent = "Get another Quote";
                 button.disabled = false;
                 panel.appendChild(button);
             }
         } catch (error) {
-            console.error("Error loading another verse", error);
+            console.error("Error loading another Quote", error);
             button.textContent = "Try again";
             button.disabled = false;
         }
