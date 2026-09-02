@@ -109,7 +109,7 @@ function isWebSearchPrompt(rawInput) {
 }
 
 function isPalModeCommand(rawInput) {
-    return /^-pal\s*$/i.test(String(rawInput || "").trim());
+    return /^-smart\s*$/i.test(String(rawInput || "").trim());
 }
 
 function isExitPalModeCommand(rawInput) {
@@ -2882,11 +2882,11 @@ async function sendMessage() {
             try {
                 await connectToOllama();
                 palModeActive = true;
-                appendMessage("ai", "Pal mode is active using phi3 latest models. <br><br>Type -exit to return to Echo.");
+                appendMessage("ai", "Smart mode is active using phi3 latest models. <br><br>Type -exit to return to Echo.");
             } catch (error) {
                 palModeActive = false;
                 palModel = null;
-                appendMessage("ai", "Pal could not connect to Ollama. Start Ollama locally, install a model, then try -Pal again.");
+                appendMessage("ai", "Smart mode could not connect to Ollama. Start Ollama locally, install a model, then try -smart again.");
             } finally {
                 thinkingIndicator.remove();
             }
@@ -2898,7 +2898,7 @@ async function sendMessage() {
             appendMessage("user", rawUserText);
             palModeActive = false;
             palModel = null;
-            appendMessage("ai", "Pal mode is off. Echo's static responses are active again.");
+            appendMessage("ai", "Smart mode is off. Echo's static responses are active again.");
             input.value = "";
             return;
         }
