@@ -1421,7 +1421,7 @@ function shouldEnterNoteMode(userText) {
 // -------- Load Knowledge JSON --------
 async function loadKnowledge() {
     try {
-        const res = await fetch("/api/knowledge");
+        const res = await fetch("/knowledgeTree.json");
         if (!res.ok) throw new Error(`Knowledge request failed with ${res.status}`);
 
         const nextKnowledge = await res.json();
