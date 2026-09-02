@@ -2255,6 +2255,11 @@ a {
         font-size: 24px;
     }
 
+    .lgTxt {
+        font-size: 64px;
+        line-height: 1.1;
+    }
+
     h3 {
         font-size: 18px;
     }
@@ -2299,6 +2304,21 @@ a {
     .essence-project-grid.project,
     .project .flexBox {
         gap: 56px !important;
+    }
+
+    .case-study .flexBox:has(> .w-50 > img, > .w-50 > video) {
+        gap: 16px !important;
+    }
+
+    .case-study br:has(+ br + img),
+    .case-study br:has(+ img),
+    .case-study br:has(+ br + video),
+    .case-study br:has(+ video),
+    .case-study img + br,
+    .case-study img + br + br,
+    .case-study video + br,
+    .case-study video + br + br {
+        display: none;
     }
 
     .btn-row {
