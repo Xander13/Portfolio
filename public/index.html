@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Kauffman Portfolio</title>
+    <meta http-equiv="Content-Security-Policy"
+        content="script-src 'self' https://cdn.jsdelivr.net https://vercel.live 'unsafe-eval' 'unsafe-inline'; script-src-elem 'self' https://cdn.jsdelivr.net https://vercel.live 'unsafe-inline';">
+    <meta name="author" content="Alex Kauffman">
+    <meta name="description"
+        content="Alex Kauffman is a product designer focused on accessibility for teams who give a damn.">
+    <meta name="theme-color" content="var(--light)" media="(prefers-color-scheme: dark)">
+    <meta name="theme-color" content="var(--dark)" media="(prefers-color-scheme: light)">
+    <meta name="robots" content="index,follow"><!-- All Search Engines -->
+    <meta name="googlebot" content="index,follow"><!-- Google Specific -->
+    <meta name="google" content="nositelinkssearchbox">
+    <meta name="generator" content="program">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="icon" type="image/x-icon" href="img/aklogo.svg">
+    <!-- Apple Icon Set -->
+    <link rel="apple-touch-icon" href="img/AlexIconApp.png">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="A.K Design">
+    <meta name="apple-mobile-web-app-status-bar-style" content="var(--dark)">
+    <!-- Facebook Open Graph -->
+    <meta property="og:image" content="img/AlexKauffmanOG.png" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:alt" content="Alex Kauffman's Thumbnail cover." />
+    <meta property="og:title" content="Alex Kauffman Portfolio" />
+    <meta property="og:site_name" content="Alex Kauffman Portfolio">
+    <meta property="og:description"
+        content="Alex Kauffman is a product designer focused on accessibility for teams who give a damn." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alex-kauffman.com/" />
+    <!-- Twitter Card -->
+    <meta property="twitter:image" content="img/AlexKauffmanOG.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:image:alt" content="Alex Kauffman's Thumbnail cover." />
+    <meta name="twitter:creator" content="@akooof13" />
+    <meta name="twitter:description"
+        content="Alex Kauffman is a product designer focused on accessibility for teams who give a damn.">
+    <meta property="twitter:title" content="Alex Kauffman Portfolio">
+    <link rel="stylesheet" href="css/cssReset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&display=swap"
+        rel="stylesheet">
+    <!-- Preload critical CSS for LCP -->
+    <link rel="preload" as="style" href="css/style.css">
+</head>
+
+<body>
+    <nav class="topNav" aria-label="Main Navigation">
+        <a href="https://alex-kauffman.com/" class="nav-brand">
+            <h6>Alex Kauffman</h6>
+        </a>
+
+        <div class="nav-center">
+            <div class="nav-underline"></div>
+            <a class="nav-pill-link" href="#" data-mode="essence">
+                <h6><span class="nav-text">Echo</span></h6>
+            </a>
+            <a class="active nav-pill-link" href="#" data-mode="work">
+                <h6><span class="nav-text">Work</span></h6>
+            </a>
+            <a class="nav-pill-link" href="pdf/Alex_Kauffman_Resume.pdf" target="_blank">
+                <h6><span class="nav-text">Resume</span></h6>
+            </a>
+        </div>
+        <div class="nav-right">
+            <div class="modes">
+                <div class="flexBox">
+                    <div class="modeIcon"></div>
+                    <div class="speachMode">Speech Mode</div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!-- AI Chat Mode Elements (hidden by default) -->
+    <div class="responseBox" aria-live="polite" style="display: none;"></div>
+    <!-- Gallery removed -->
+    <div class="inputBox" style="display: none;">
+        <label for="llmTxt" class="sr-only" style="display:none;">Ask Alex</label>
+        <input class="txtBox" autocomplete="off" name="no-autofill" type="text" id="llmTxt" placeholder="Ask Alex...">
+        <div class="send" role="button" tabindex="0">Send</div>
+    </div>
+
+    <!-- Portfolio Content (shown by default) -->
+    <main class="content" style="display: block;">
+        <header class="hero">
+            <p class="mdTxt">Inquire Alex portfolio with Echo</p>
+            <h1>Alex Kauffman is a builder creating accessible systems for teams who give a damn.</h1>
+        </header>
+        <section class="project" style="width: 100%; max-width: 100%; display: flex; flex-direction: column; gap: 20vh;"
+            aria-label="Selected Work">
+            <div class="w-100">
+                <a href="MSCopilot.html" class="fade-link">
+                    <video width="100%" src="video/GithubSplash.mp4" preload="metadata" nocontrol loop muted autoplay
+                        playsinline aria-label="Microsoft VSCode Copilot project preview"></video>
+                    <h2>Microsoft VS Code: Copilot</h2>
+                    <h4>Product Design, Concept, Rapid Prototyping, AI</h4>
+                </a>
+            </div>
+            <div class="flexBox" style="align-items: start;">
+                <div class="w-50">
+                    <a href="duolingoasl.html" class="fade-link">
+                        <video src="video/Duolingo_ASL_Lily.mp4" preload="metadata" playsinline autoplay loop nocontrols
+                            muted width="100%" aria-label="Duolingo ASL project demonstration"></video>
+                        <h2>Duolingo ASL</h2>
+                        <h4>Product Design, Python, Concept, Motion</h4>
+                    </a>
+                </div>
+                <div class="w-05"></div>
+                <div class="w-40">
+                    <a href="applelivecaptions.html" class="fade-link">
+                        <video src="video/Apple_LiveCC.mp4" preload="metadata" playsinline autoplay loop nocontrols
+                            muted width="100%" aria-label="Apple Live Captions project demonstration"></video>
+                        <h2>Apple Live Captions</h2>
+                        <h4>Human Interface Design, Concept, Accessibility, Systems Design, AI</h4>
+                    </a>
+                </div>
+                <div class="w-05"></div>
+            </div>
+            <div class="flexBox">
+                <div class="w-20"></div>
+                <div class="w-80">
+                    <a href="vigor.html" class="fade-link">
+                        <video src="video/VigorSplash.mp4" preload="metadata" nocontrol loop muted autoplay playsinline
+                            aria-label="Vigor Fitness App project demonstration"></video>
+                        <h2>Vigor Fitness App</h2>
+                        <h4>Product Design, Concept, Research, Brand, Gamification</h4>
+                    </a>
+                </div>
+            </div>
+            <div class="flexBox" style="align-items: start;">
+                <div class="w-80">
+                    <a href="bside.html" class="fade-link">
+                        <div class="imageFLip"></div>
+                        <h2>Artifacts</h2>
+                        <h4>Product Design, Motion, Websites, Illustrations</h4>
+                    </a>
+                </div>
+                <div class="w-20"></div>
+            </div>
+        </section>
+        <div class="lgMargin"></div>
+        <section class="articles" aria-label="Writing and Experiments">
+            <h1>Experiments and writing that explore new directions in systems, tools, and product
+                design.</h1>
+            <div class="smMargin"></div>
+            <div class="flexBox">
+                <article class="w-40">
+                    <a href="https://www.linkedin.com/feed/update/urn:li:activity:7264858607559598080/" target="_blank">
+                        <div class="clipping">
+                            <video src="video/Duolingo_ASL_Lily.mp4" preload="none" playsinline autoplay loop muted
+                                nocontrols aria-label="Duolingo ASL post video"></video>
+                        </div>
+                        <br>
+                        <h3>8K+ likes on LinkedIn — showing how deeply society values accessibility,
+                            ASL, and non-verbal language learning.
+                        </h3>
+                        <h4 class="gray" style="padding-top: 16px;">LinkedIn - 1 min read</h4>
+                    </a>
+                </article>
+                <article class="w-40">
+                    <a href="https://adage.com/article/opinion/deaf-creatives-6-ways-agencies-can-create-accessible-and-inclusive-environments/2522961?adobe_mc=MCMID%3D22128181547166230403502586588145476682%7CMCORGID%3D138FFF2554E6E7220A4C98C6%2540AdobeOrg%7CTS%3D1698070984&CSAuthResp=1%3A%3A2522705%3A150997699%3A24%3Asuccess%3A76E11B8BCD571CDE39D6D8656FF6A8DA"
+                        target="_blank">
+                        <div class="clipping">
+                            <img draggable="false" src="img/DeafArticle_ADAGE.png" loading="lazy"
+                                alt="Abstract image of hearin aids with a fist hand fighting back for hearing world"
+                                style="user-select: none;" width="100%">
+                        </div>
+                        <br>
+                        <h3>DEAF CREATIVES—6 WAYS AGENCIES CAN CREATE ACCESSIBLE AND INCLUSIVE
+                            ENVIRONMENTS</h3>
+                        <h4 style="padding-top: 16px;">AdAge - 3 min read</h4>
+                    </a>
+                </article>
+                <article class="w-40">
+                    <a href="https://byhook.com/activity/ad-age-deaf-in-design" target="blank">
+                        <div class="clipping">
+                            <img draggable="false" src="img/Deaf_Creative_Alex.png" loading="lazy"
+                                alt="Picture of Config Figma confrence doing a workshop with Ricki and Miggie"
+                                style="user-select: none;" width="100%">
+                        </div>
+                        <br>
+                        <h3>Hook Agency highlights six key insights from Alex Kauffman's article
+                            published in AdAge.
+                        </h3>
+                        <h4 style="padding-top: 16px;">Hook Article - 1 min read</h4>
+                    </a>
+                </article>
+                <article class="w-40">
+                    <a href="https://www.linkedin.com/posts/alex-kauffman_new-figma-features-from-config2023-activity-7079514392333074433-I4WV?utm_source=share&utm_medium=member_desktop"
+                        target="blank">
+                        <div class="clipping">
+                            <img draggable="false" src="img/ConFig2023.png" loading="lazy"
+                                alt="Picture of Config Figma confrence doing a workshop with Ricki and Miggie"
+                                style="user-select: none;" width="100%">
+                        </div>
+                        <br>
+                        <h3>Utilizing Figma's variable feature for displaying ads to help reduce
+                            production time.
+                        </h3>
+                        <h4 style="padding-top: 16px;">LinkedIn - 1 min read</h4>
+                    </a>
+                </article>
+            </div>
+        </section>
+        <section class="articles" aria-label="Philosophy">
+            <div class="mdMargin"></div>
+            <div class="mdMargin"></div>
+            <h1>After years in fast-paced agencies, I build for product teams that value systems over asset delivery. I
+                ship visuals, accessibility, and front-end code with a focus on clarity, interaction, and long-term
+                thinking.
+            </h1>
+            <div class="mdMargin"></div>
+            <div class="skillsets" id="about">
+                <div class="flexBox" style="gap: 16px;">
+                    <section class="w-50" aria-labelledby="about-heading">
+                        <h2 id="about-heading">Bio</h2>
+                        <br>
+                        <div class="hr"></div>
+                        <br>
+                        <p class="w-90">Alex Kauffman is a designer and builder focused on clarity, interaction, and
+                            systems thinking. With a BFA in New Media Design from RIT, he applies creative direction and
+                            structured logic toward tools that prioritize long-term utility over simple asset delivery.
+                        </p>
+                        <br>
+                        <p class="w-90">
+                            His focus centers on building accessible, impact-driven systems. He is drawn to challenges
+                            that make everyday interactions more inclusive, from human-machine hardware interfaces to
+                            complex operational workflows.
+                            <br>
+                            <br>
+                        <p class="w-90">
+                            Outside of work, Alex spends his time riding dirt bikes, snowboarding, and traveling.</p>
+                    </section>
+                    <section class="w-50" aria-label="Skills and Education">
+                        <div class="flexBox" style="gap: 16px;">
+                            <div class="w-50">
+                                <h2 class="gray about-section-heading">Skills</h2>
+                                <br>
+                                <div class="hr"></div>
+                                <br>
+                                <ul class="no-bullets">
+                                    <li>Interactive Systems</li>
+                                    <li>Feature Scoping</li>
+                                    <li>Prototyping & Wireframing</li>
+                                    <li>UI/UX Engineering</li>
+                                    <li>Accessibility Design</li>
+                                </ul>
+                                <br>
+                                <ul class="no-bullets">
+                                    <li>Python, SQL</li>
+                                    <li>HTML/CSS</li>
+                                    <li>JavaScript</li>
+                                    <li>Git / GitHub</li>
+                                    <li>Responsive Design</li>
+                                </ul>
+                                <br>
+                                <ul class="no-bullets">
+                                    <li>Agile Workflow</li>
+                                    <li>Design System Architecture</li>
+                                    <li>Cross-Functional Leadership</li>
+                                    <li>Systems Thinking</li>
+                                </ul>
+                            </div>
+                            <div class="w-50">
+                                <h2 class="gray about-section-heading">Education</h2>
+                                <br>
+                                <div class="hr"></div>
+                                <br>
+                                <h3>Rochester Institute of Technology</h3>
+                                <br>
+                                <br>
+                                <p>Bachelor of Fine Arts, <br> <a
+                                        style="text-decoration: underline; text-underline-offset: 8px;"
+                                        href="https://www.rit.edu/study/new-media-design-bfa" target="_blank">New
+                                        Media
+                                        Design</a></p>
+                                <br>
+                                <br>
+                                <p>GPA: 3.69/4 - Magna Cum Laude</p>
+                                <br>
+                                <br>
+                                <br>
+                                <h2 class="gray">Interests</h2>
+                                <br>
+                                <div class="hr"></div>
+                                <br>
+                                <ul class="no-bullets">
+                                    <li>Human Factors & Ergonomics</li>
+                                    <li>Structural Design Systems</li>
+                                    <li>Hardware Logic</li>
+                                    <li>Aerospace</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+            <div class="mdMargin"></div>
+            <div class="flexBox" style="align-items: end; justify-content: space-between;">
+                <p style="padding-bottom: 0;">&copy; 2026 | <a href="privacy.html">Privacy</a></p>
+                <p>Made by Alex Kauffman</p>
+            </div>
+            <br>
+        </section>
+    </main>
+    <script src="js/modeToggle.js" defer></script>
+    <script type="module" src="js/app.js" defer></script>
+    <script src="js/projectScripts.js" defer></script>
+    <script src="js/echo.js" defer></script>
+    <script src="js/global.js" defer></script>
+    <script src="js/worldClocks.js" defer></script>
+</body>
+
+</html>
