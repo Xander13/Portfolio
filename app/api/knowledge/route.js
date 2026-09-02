@@ -3,7 +3,7 @@ import path from "node:path";
 
 export async function GET() {
     try {
-        const filePath = path.join(process.cwd(), "public", "knowledgeTree.json");
+        const filePath = path.join(process.cwd(), "data", "knowledgeTree.json");
         const fileData = await readFile(filePath, "utf8");
         return Response.json(JSON.parse(fileData));
     } catch {

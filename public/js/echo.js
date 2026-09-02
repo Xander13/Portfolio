@@ -124,11 +124,10 @@ async function getWebSearchResults(rawInput) {
 
         const results = [];
         const imageUrl = data.Image ? (data.Image.startsWith('http') ? data.Image : `https://duckduckgo.com${data.Image}`) : null;
-
         if (data.AbstractText) {
             results.push({
                 title: data.Heading || query,
-                image: imageUrl,
+            image: imageUrl,
                 snippet: data.AbstractText,
                 url: data.AbstractURL || ""
             });
@@ -157,8 +156,6 @@ async function getWebSearchResults(rawInput) {
         const resultText = trimmedResults
             .map(result => {
                 const imgTag = result.image ? `<img src="${result.image}" alt="${result.title}" class="search-thumbnail" />` : "";
-
-                // Ordered: Title -> Image -> Copy (Snippet) -> URL
                 return `
                     <a href="${result.url}" target="_blank" rel="noreferrer" class="search-title">${result.title}</a>
                     ${imgTag}
