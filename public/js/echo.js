@@ -37,6 +37,7 @@ let draggedNoteLine = null;
 let isSendingMessage = false; // guards against duplicate fetches from double-fire input events
 let palModeActive = false;
 let palModel = null;
+const palModelName = "phi3";
 const defaultStockSymbols = ["JNJ", "AAPL", "FIG", "SP500", "DOW", "NVDA"];
 let stockSymbols = loadStockSymbols();
 
@@ -120,8 +121,8 @@ async function connectToOllama() {
     if (!response.ok) throw new Error(`Ollama request failed with ${response.status}`);
 
     const data = await response.json();
-    const model = data.models?.[0]?.name;
-    if (!model) throw new Error("No Ollama models are installed");
+    const model = data.models?.find(({ name }) => name === palModelName || name.startsWith(`${palModelName}:`))?.name;
+    if (!model) throw new Error("The phi3 Ollama model is not installed");
 
     palModel = model;
 }
@@ -2868,14 +2869,26 @@ async function sendMessage() {
 
         if (isPalModeCommand(rawUserText)) {
             appendMessage("user", rawUserText);
+            const thinkingIndicator = document.createElement("div");
+            thinkingIndicator.classList.add("thinking-indicator");
+            thinkingIndicator.innerHTML = `
+                <div class="dot-pulse"></div>
+                <div class="dot-pulse"></div>
+                <div class="dot-pulse"></div>
+            `;
+            responseBox.appendChild(thinkingIndicator);
+            responseBox.scrollTo({ top: responseBox.scrollHeight, behavior: "smooth" });
+
             try {
                 await connectToOllama();
                 palModeActive = true;
-                appendMessage("ai", `Pal mode is active using ${escapeHtml(palModel)}. Type -exit to return to Echo.`);
+                appendMessage("ai", "Pal mode is active using phi3 latest models. <br><br>Type -exit to return to Echo.");
             } catch (error) {
                 palModeActive = false;
                 palModel = null;
                 appendMessage("ai", "Pal could not connect to Ollama. Start Ollama locally, install a model, then try -Pal again.");
+            } finally {
+                thinkingIndicator.remove();
             }
             input.value = "";
             return;
