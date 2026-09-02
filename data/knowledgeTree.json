@@ -13,21 +13,25 @@
     {
       "media": "video/GithubSplash.mp4",
       "title": "Microsoft VSC Copilot",
+      "link": "MSCopilot.html",
       "layout": "sixty"
     },
     {
       "media": "video/Duolingo_ASL_Lily.mp4",
       "title": "Duolingo ASL",
+      "link": "duolingoasl.html",
       "layout": "forty"
     },
     {
       "media": "video/Apple_LiveCC.mp4",
       "title": "Apple Live Captions",
+      "link": "applelivecaptions.html",
       "layout": "forty"
     },
     {
       "media": "video/VigorSplash.mp4",
       "title": "Vigor Fitness",
+      "link": "vigor.html",
       "layout": "sixty"
     }
   ],

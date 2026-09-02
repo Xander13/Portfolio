@@ -78,7 +78,7 @@ body.essence-mode {
     margin-bottom: 64px;
     gap: 32px;
     padding-right: 64px;
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 .boxes h2 {
@@ -188,41 +188,49 @@ body.essence-mode {
 h1 {
     font-size: 56px;
     line-height: 1.2;
+    text-wrap: pretty
 }
 
 h2 {
     font-size: 32px;
     line-height: 1.3;
+    text-wrap: pretty
 }
 
 h3 {
     font-size: 24px;
     line-height: 1.4;
+    text-wrap: pretty
 }
 
 h4 {
     font-size: 18px;
     line-height: 1.5;
+    text-wrap: pretty
 }
 
 h5 {
     font-size: 14px;
     line-height: 1.5;
+    text-wrap: pretty
 }
 
 h6 {
     font-size: 18px;
     line-height: 1.4;
+    text-wrap: pretty
 }
 
 p {
     font-size: 24px;
     line-height: 1.6;
+    text-wrap: pretty
 }
 
 a {
     text-decoration: none;
     color: var(--white);
+    text-wrap: pretty
 }
 
 /* -------------------------------------------------
@@ -380,7 +388,7 @@ a {
     line-height: 2.8vw;
     bottom: 56px;
     max-width: 70%;
-    text-wrap: balance;
+    text-wrap: pretty;
     padding-top: 0;
 }
 
@@ -390,7 +398,7 @@ a {
     bottom: 56px;
     font-size: 18px;
     width: fit-content;
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 /* -------------------------------------------------
@@ -398,20 +406,18 @@ a {
    ------------------------------------------------- */
 #heroTop {
     padding-top: 40vh;
-    text-wrap: balance;
 }
 
 .case-study-title {
-    max-width: 960px;
     font-size: 56px;
     line-height: 1.08;
 }
 
-.project h2{
+.project h2 {
     padding-bottom: 16px;
 }
 
-.project h4{
+.project h4 {
     color: gray;
 }
 
@@ -1033,7 +1039,7 @@ a {
     padding: 16px;
     font-size: 18px;
     transition: bottom 0.5s ease;
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 .clipping:hover .captions {
@@ -1094,13 +1100,13 @@ a {
 .quote-panel {
     margin: 32px 0 0;
     padding: 0 0 0 56px;
-    text-wrap: balance;
+    text-wrap: pretty;
     border-left: 2px solid var(--dark-gray);
 }
 
 .quote {
     margin: 56px 0 56px;
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 .quote-panel cite {
@@ -1276,7 +1282,7 @@ a {
 .weather-forecast-condition {
     flex: 1;
     color: var(--gray);
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 .weather-forecast-temp {
@@ -1436,7 +1442,7 @@ a {
 .stock-remove {
     position: static;
     align-self: center;
-    text-wrap: nowrap;
+    text-wrap: pretty;
 }
 
 .essence-tooltip {
@@ -1449,12 +1455,12 @@ a {
     background-color: var(--primary);
     padding: 12px;
     border: 1px solid var(--white);
-    text-wrap: balance;
+    text-wrap: pretty;
     width: auto;
 }
 
 .essence-tooltip p {
-    text-wrap: balance;
+    text-wrap: pretty;
     width: 400px;
 }
 
@@ -1605,7 +1611,7 @@ a {
 
 .skillsets .w-80 {
     padding-right: 96px;
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 .spaceTop {
@@ -1717,7 +1723,7 @@ a {
 }
 
 .moreWorks h1 {
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 .project h3 {
@@ -1775,11 +1781,11 @@ a {
 
 .card h4 {
     padding-top: 0px !important;
-    text-wrap: balance !important;
+    text-wrap: pretty !important;
 }
 
 .card h3 {
-    text-wrap: balance !important;
+    text-wrap: pretty !important;
     padding-top: 0 !important;
 }
 
@@ -1916,7 +1922,7 @@ a {
 }
 
 .articles h1 {
-    text-wrap: balance;
+    text-wrap: pretty;
     padding-bottom: 56px;
 }
 
@@ -1946,7 +1952,7 @@ a {
     line-height: 64px;
     padding-top: 124px;
     padding-bottom: 124px;
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 .case-study-body {
@@ -1973,7 +1979,7 @@ a {
     margin-bottom: 24px;
     font-weight: 600;
     text-transform: uppercase;
-    text-wrap: balance;
+    text-wrap: pretty;
     padding-bottom: 56px;
 }
 
@@ -2017,7 +2023,7 @@ a {
     font-size: 32px;
     text-align: center;
     padding: 32px;
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 .pwdSpace a {
@@ -2349,7 +2355,7 @@ a {
     .quote-panel cite {
         font-size: 28px !important;
         line-height: 36px !important;
-        text-wrap: balance;
+        text-wrap: pretty;
     }
 
     .quote-image {
@@ -2380,7 +2386,7 @@ a {
     }
 
     .IntroChat {
-        text-wrap: balance;
+        text-wrap: pretty;
         word-break: normal;
         max-width: 100%;
         font-size: 32px !important;
@@ -3245,6 +3251,7 @@ a {
 .note-alignment-dropdown.is-open .note-alignment-list {
     display: block;
 }
+
 .note-column-dropdown.is-open .note-column-list {
     display: block;
 }
@@ -3348,7 +3355,7 @@ a {
         left: 16px;
         right: 16px;
         z-index: 1000;
-        text-wrap: balance;
+        text-wrap: pretty;
         pointer-events: none;
     }
 }

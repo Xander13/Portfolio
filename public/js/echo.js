@@ -1422,9 +1422,17 @@ function shouldEnterNoteMode(userText) {
 async function loadKnowledge() {
     try {
         const res = await fetch("/api/knowledge");
-        knowledge = await res.json();
+        if (!res.ok) throw new Error(`Knowledge request failed with ${res.status}`);
+
+        const nextKnowledge = await res.json();
+        if (!nextKnowledge || typeof nextKnowledge !== "object" || !nextKnowledge.personal) {
+            throw new Error("Knowledge data is incomplete");
+        }
+
+        knowledge = nextKnowledge;
     } catch (err) {
         console.error("Failed to load knowledge data", err);
+        knowledge = {};
     }
 }
 
@@ -2444,18 +2452,20 @@ function processPlaceholders(text) {
 }
 
 function buildParagraph(matchedKeys) {
+    const personal = knowledge.personal || {};
+
     // Prioritize specific keys to avoid duplication
     const priority = ["background", "dream job", "philosophy", "name"];
 
     // Find the highest priority match
     for (const key of priority) {
-        if (matchedKeys.includes(key) && knowledge.personal[key]) {
-            let originalText = knowledge.personal[key];
+        if (matchedKeys.includes(key) && personal[key]) {
+            let originalText = personal[key];
             const processed = processPlaceholders(originalText);
 
             return {
                 text: processed.text,
-                color: key === "background" ? knowledge.personal.color : undefined,
+                color: key === "background" ? personal.color : undefined,
                 inlineLinks: processed.inlineLinks.length > 0 ? processed.inlineLinks : undefined,
                 images: processed.images.length > 0 ? processed.images : undefined
             };
@@ -2463,8 +2473,8 @@ function buildParagraph(matchedKeys) {
     }
 
     // Fallback: if no priority match, use the first matched key
-    if (matchedKeys.length > 0 && knowledge.personal[matchedKeys[0]]) {
-        let originalText = knowledge.personal[matchedKeys[0]];
+    if (matchedKeys.length > 0 && personal[matchedKeys[0]]) {
+        let originalText = personal[matchedKeys[0]];
         const processed = processPlaceholders(originalText);
 
         return {
@@ -3016,7 +3026,7 @@ function appendProjectsGrid(projects, container, skipSpaceTop = false) {
 // -------- Create individual project item --------
 function createProjectItem(project) {
     const wrapper = document.createElement("a");
-    wrapper.href = "#";
+    wrapper.href = project.link || "#";
     wrapper.classList.add("fade-link");
 
     // Check if project is "Coming Soon"
@@ -3027,43 +3037,6 @@ function createProjectItem(project) {
         wrapper.style.pointerEvents = "none";
     } else {
         wrapper.style.cursor = "pointer";
-    }
-
-    // Add click listener to load case study
-    // Add click listener to load case study directly inline
-    if (!isComingSoon) {
-        wrapper.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            // Find case study by title from knowledge tree
-            let caseStudy = knowledge["case studies"][project.title];
-
-            if (!caseStudy) {
-                // Fallback search
-                const key = Object.keys(knowledge["case studies"]).find(k =>
-                    k.toLowerCase().includes(project.title.toLowerCase()) ||
-                    project.title.toLowerCase().includes(k.toLowerCase())
-                );
-                if (key) caseStudy = knowledge["case studies"][key];
-            }
-
-            if (caseStudy) {
-                // Create a new AI message container for the case study
-                appendMessage("ai", `Here is the full case study for ${project.title}:`, false, {
-                    caseStudy: caseStudy
-                });
-                if (caseStudy.link) {
-                    // Trigger fade out
-                    document.body.classList.remove('loaded');
-                    // Wait for transition then navigate
-                    setTimeout(() => {
-                        window.location.href = caseStudy.link;
-                    }, 500);
-                }
-            } else {
-                console.log("No case study link found for:", project.title);
-            }
-        });
     }
 
     // MEDIA first

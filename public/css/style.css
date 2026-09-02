@@ -188,16 +188,19 @@ body.essence-mode {
 h1 {
     font-size: 56px;
     line-height: 1.2;
+    text-wrap: pretty;
 }
 
 h2 {
     font-size: 32px;
     line-height: 1.3;
+    text-wrap: pretty;
 }
 
 h3 {
     font-size: 24px;
     line-height: 1.4;
+    text-wrap: pretty;
 }
 
 h4 {
@@ -380,7 +383,7 @@ a {
     line-height: 2.8vw;
     bottom: 56px;
     max-width: 70%;
-    text-wrap: balance;
+    text-wrap: pretty;
     padding-top: 0;
 }
 
@@ -398,13 +401,18 @@ a {
    ------------------------------------------------- */
 #heroTop {
     padding-top: 40vh;
-    text-wrap: balance;
+    text-wrap: pretty;
 }
 
 .case-study-title {
     max-width: 960px;
     font-size: 56px;
     line-height: 1.08;
+}
+
+.microsoft-case-study-title {
+    max-width: 1200px;
+    text-wrap: pretty;
 }
 
 .project h2{
@@ -831,6 +839,10 @@ a {
 
 .msgContent p {
     margin-bottom: 20px;
+}
+
+.aiMsg .msgContent p {
+    text-wrap: pretty;
 }
 
 .msgContent p:last-child {
