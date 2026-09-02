@@ -117,7 +117,7 @@ function isExitPalModeCommand(rawInput) {
 }
 
 async function connectToOllama() {
-    const response = await fetch("http://100.67.114.75:11434/api/tags");
+    const response = await fetch("http://127.0.0.1:11434/api/tags");
     if (!response.ok) throw new Error(`Ollama request failed with ${response.status}`);
 
     const data = await response.json();
@@ -132,7 +132,7 @@ async function getOllamaResponse(userText) {
     const timeout = setTimeout(() => controller.abort(), 60000);
 
     try {
-        const response = await fetch("http://100.67.114.75:11434/api/chat", {
+        const response = await fetch("http://127.0.0.1:11434/api/chat", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             signal: controller.signal,
