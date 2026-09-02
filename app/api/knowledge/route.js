@@ -1,11 +1,8 @@
-import { readFile } from "node:fs/promises";
-import path from "node:path";
+import knowledge from "../../../data/knowledgeTree.json";
 
-export async function GET() {
+export function GET() {
     try {
-        const filePath = path.join(process.cwd(), "data", "knowledgeTree.json");
-        const fileData = await readFile(filePath, "utf8");
-        return Response.json(JSON.parse(fileData));
+        return Response.json(knowledge);
     } catch {
         return Response.json({ error: "Failed to load knowledge data" }, { status: 500 });
     }
