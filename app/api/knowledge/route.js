@@ -1,4 +1,4 @@
-import knowledge from "../../../data/knowledgeTree.json";
+import knowledge from "../../../api/knowledgeTree.json";
 
 export function GET() {
     try {
