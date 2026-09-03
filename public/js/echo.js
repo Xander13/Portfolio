@@ -2882,11 +2882,11 @@ async function sendMessage() {
             try {
                 await connectToOllama();
                 palModeActive = true;
-                appendMessage("ai", "Smart mode is active using phi3 latest models. <br><br>Type -exit to return to Echo.");
+                appendMessage("ai", "Echo is now in smart mode using phi3 — powered by your local machine. <br><br>Type -exit to return to Echo's normal mode. <br><br> Conversation erases when you leave with -exit.");
             } catch (error) {
                 palModeActive = false;
                 palModel = null;
-                appendMessage("ai", "Smart mode could not connect to Ollama. Start Ollama locally, install a model, then try -smart again.");
+                appendMessage("ai", "Echo's smart mode could not connect to Ollama. Start Ollama locally, install a model, then try Echo's -smart mode again.");
             } finally {
                 thinkingIndicator.remove();
             }
@@ -2898,7 +2898,7 @@ async function sendMessage() {
             appendMessage("user", rawUserText);
             palModeActive = false;
             palModel = null;
-            appendMessage("ai", "Smart mode is off. Echo's static responses are active again.");
+            appendMessage("ai", "Echo's smart mode is off. Echo's normal responses are active again.");
             input.value = "";
             return;
         }
