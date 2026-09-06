@@ -936,6 +936,25 @@ a {
     animation-delay: 0.4s;
 }
 
+.smart-mode-dots {
+    display: inline-block;
+    width: 1em;
+    overflow: hidden;
+    white-space: nowrap;
+    vertical-align: bottom;
+    animation: smartModeDots 1.4s steps(4, end) infinite;
+}
+
+@keyframes smartModeDots {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
 @keyframes dotPulse {
 
     0%,

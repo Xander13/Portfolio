@@ -35,9 +35,6 @@ let activeNoteEditor = null;
 let activeNoteLine = null;
 let draggedNoteLine = null;
 let isSendingMessage = false; // guards against duplicate fetches from double-fire input events
-let palModeActive = false;
-let palModel = null;
-const palModelName = "phi3";
 const defaultStockSymbols = ["JNJ", "AAPL", "FIG", "SP500", "DOW", "NVDA"];
 let stockSymbols = loadStockSymbols();
 
@@ -110,54 +107,6 @@ function isWebSearchPrompt(rawInput) {
 
 function isPalModeCommand(rawInput) {
     return /^-smart\s*$/i.test(String(rawInput || "").trim());
-}
-
-function isExitPalModeCommand(rawInput) {
-    return /^-exit\s*$/i.test(String(rawInput || "").trim());
-}
-
-async function connectToOllama() {
-    const response = await fetch("http://127.0.0.1:11434/api/tags");
-    if (!response.ok) throw new Error(`Ollama request failed with ${response.status}`);
-
-    const data = await response.json();
-    const model = data.models?.find(({ name }) => name === palModelName || name.startsWith(`${palModelName}:`))?.name;
-    if (!model) throw new Error("The phi3 Ollama model is not installed");
-
-    palModel = model;
-}
-
-async function getOllamaResponse(userText) {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 60000);
-
-    try {
-        const response = await fetch("http://127.0.0.1:11434/api/chat", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            signal: controller.signal,
-            body: JSON.stringify({
-                model: palModel,
-                stream: false,
-                messages: [{
-                    role: "system",
-                    content: "You are Pal, a concise, helpful assistant inside Alex Kauffman's portfolio. Use plain text and do not use HTML."
-                }, {
-                    role: "user",
-                    content: userText
-                }]
-            })
-        });
-
-        if (!response.ok) throw new Error(`Ollama request failed with ${response.status}`);
-        const data = await response.json();
-        const message = data.message?.content?.trim();
-        if (!message) throw new Error("Ollama returned an empty response");
-
-        return { text: escapeHtml(message), instant: true };
-    } finally {
-        clearTimeout(timeout);
-    }
 }
 
 // Flatten DuckDuckGo's nested RelatedTopics/Topics category structure into a flat list
@@ -2869,36 +2818,7 @@ async function sendMessage() {
 
         if (isPalModeCommand(rawUserText)) {
             appendMessage("user", rawUserText);
-            const thinkingIndicator = document.createElement("div");
-            thinkingIndicator.classList.add("thinking-indicator");
-            thinkingIndicator.innerHTML = `
-                <div class="dot-pulse"></div>
-                <div class="dot-pulse"></div>
-                <div class="dot-pulse"></div>
-            `;
-            responseBox.appendChild(thinkingIndicator);
-            responseBox.scrollTo({ top: responseBox.scrollHeight, behavior: "smooth" });
-
-            try {
-                await connectToOllama();
-                palModeActive = true;
-                appendMessage("ai", "Echo is now in smart mode using phi3 — powered by your local machine. <br><br>Type -exit to return to Echo's normal mode. <br><br> Conversation erases when you leave with -exit.");
-            } catch (error) {
-                palModeActive = false;
-                palModel = null;
-                appendMessage("ai", "Echo's smart mode could not connect to Ollama. Start Ollama locally, install a model, then try Echo's -smart mode again.");
-            } finally {
-                thinkingIndicator.remove();
-            }
-            input.value = "";
-            return;
-        }
-
-        if (isExitPalModeCommand(rawUserText)) {
-            appendMessage("user", rawUserText);
-            palModeActive = false;
-            palModel = null;
-            appendMessage("ai", "Echo's smart mode is off. Echo's normal responses are active again.");
+            appendMessage("ai", "<span class=\"smart-mode-notice\">Smart mode will be added soon<span class=\"smart-mode-dots\" aria-hidden=\"true\">...</span></span><br><br>For now just enjoy Echo normal response.", true);
             input.value = "";
             return;
         }
@@ -2965,17 +2885,6 @@ async function sendMessage() {
         } else if (pendingWebSearch) {
             pendingWebSearch = false;
             answerObj = await getWebSearchResults(userText);
-        } else if (palModeActive) {
-            try {
-                answerObj = await getOllamaResponse(userText);
-            } catch (error) {
-                palModeActive = false;
-                palModel = null;
-                answerObj = {
-                    text: "Pal lost its Ollama connection, so Echo's static responses are active again.",
-                    instant: true
-                };
-            }
         } else {
             answerObj = await findResponse(userText);
         }
