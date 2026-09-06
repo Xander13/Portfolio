@@ -1,5 +1,12 @@
-import { redirect } from "next/navigation";
+"use client";
+
+import { Analytics } from "@vercel/analytics/next";
+import { useEffect } from "react";
 
 export default function HomePage() {
-    redirect("/index.html");
+    useEffect(() => {
+        window.location.replace("/index.html");
+    }, []);
+
+    return <Analytics />;
 }
