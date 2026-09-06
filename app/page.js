@@ -1,6 +1,5 @@
 "use client";
 
-import { Analytics } from "@vercel/analytics/next";
 import { useEffect } from "react";
 
 export default function HomePage() {
@@ -8,5 +7,5 @@ export default function HomePage() {
         window.location.replace("/index.html");
     }, []);
 
-    return <Analytics />;
+    return null;
 }
