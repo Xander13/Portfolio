@@ -403,7 +403,7 @@
             `;
         }
 
-        fetch("../viralZon.json")
+        fetch("/viralZon.json")
             .then((response) => response.json())
             .then((viruses) => {
                 const sortedViruses = viruses

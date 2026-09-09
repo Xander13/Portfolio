@@ -1,0 +1,352 @@
+[
+    {
+        "year": "1796",
+        "virus": "Variola virus (Smallpox)",
+        "family": "Poxviridae",
+        "transmission_mode": "Airborne (droplets) / Direct physical touch",
+        "milestone": "Edward Jenner developed the smallpox vaccine using cowpox pus, leading to its eventual global eradication in 1980."
+    },
+    {
+        "year": "1885",
+        "virus": "Rabies virus",
+        "family": "Rhabdoviridae",
+        "transmission_mode": "Zoonotic (Animal bite / Saliva)",
+        "milestone": "Louis Pasteur successfully administered the first rabies vaccine to a human patient bitten by a rabid dog."
+    },
+    {
+        "year": "1898",
+        "virus": "Tobacco mosaic virus (TMV)",
+        "family": "Virgaviridae",
+        "transmission_mode": "Plant contact / Contaminated soil or tools",
+        "milestone": "Martinus Beijerinck demonstrated that the infectious agent causing tobacco mosaic disease was a contagious liquid filtrate—coining the modern concept of a virus."
+    },
+    {
+        "year": "1901",
+        "virus": "Yellow fever virus",
+        "family": "Flaviviridae",
+        "transmission_mode": "Vector-borne (Mosquito bite - Aedes/Haemagogus)",
+        "milestone": "Walter Reed and his team proved that yellow fever is transmitted by mosquitoes, marking the first human virus discovered."
+    },
+    {
+        "year": "1906",
+        "virus": "Dengue virus",
+        "family": "Flaviviridae",
+        "transmission_mode": "Vector-borne (Mosquito bite - Aedes)",
+        "milestone": "Confirmed to be transmitted by mosquitoes, paving the way for arbovirology."
+    },
+    {
+        "year": "1909",
+        "virus": "Poliovirus",
+        "family": "Picornaviridae",
+        "transmission_mode": "Fecal-oral / Water and foodborne",
+        "milestone": "Karl Landsteiner and Erwin Popper identified poliovirus as the causative agent of poliomyelitis."
+    },
+    {
+        "year": "1911",
+        "virus": "Rous sarcoma virus (RSV)",
+        "family": "Retroviridae",
+        "transmission_mode": "Vertical / Direct animal transfer (oncogenic)",
+        "milestone": "Peyton Rous discovered the first tumor-causing virus in chickens, later earning a Nobel Prize."
+    },
+    {
+        "year": "1918",
+        "virus": "Influenza A virus (1918 H1N1 Pandemic)",
+        "family": "Orthomyxoviridae",
+        "transmission_mode": "Airborne (Respiratory droplets)",
+        "milestone": "Caused the catastrophic 'Spanish Flu' pandemic, resulting in tens of millions of deaths worldwide."
+    },
+    {
+        "year": "1933",
+        "virus": "Influenza A virus (Isolation)",
+        "family": "Orthomyxoviridae",
+        "transmission_mode": "Airborne (Respiratory droplets)",
+        "milestone": "W. Smith, C.H. Andrewes, and P. Laidlaw successfully isolated the first human influenza virus."
+    },
+    {
+        "year": "1937",
+        "virus": "West Nile virus",
+        "family": "Flaviviridae",
+        "transmission_mode": "Vector-borne (Mosquito bite - Culex)",
+        "milestone": "First isolated from a woman in the West Nile district of Uganda."
+    },
+    {
+        "year": "1943",
+        "virus": "Bunyamwera virus",
+        "family": "Peribunyaviridae",
+        "transmission_mode": "Vector-borne (Mosquito bite)",
+        "milestone": "Isolated from mosquitoes in Uganda, serving as the prototype for the massive Bunyaviridae family."
+    },
+    {
+        "year": "1953",
+        "virus": "Adenovirus",
+        "family": "Adenoviridae",
+        "transmission_mode": "Respiratory droplets / Fecal-oral / Direct contact",
+        "milestone": "Discovered in adenoid tissue cultures by Wallace Rowe and colleagues."
+    },
+    {
+        "year": "1954",
+        "virus": "Measles virus",
+        "family": "Paramyxoviridae",
+        "transmission_mode": "Airborne (Highly contagious respiratory droplets)",
+        "milestone": "Thomas Peebles and John Enders isolated the live measles virus from a student named David Edmonston."
+    },
+    {
+        "year": "1957",
+        "virus": "Influenza A virus (1957 H2N2 Pandemic)",
+        "family": "Orthomyxoviridae",
+        "transmission_mode": "Airborne (Respiratory droplets)",
+        "milestone": "Sparked the 'Asian Flu' pandemic originating in East Asia."
+    },
+    {
+        "year": "1962",
+        "virus": "Rubella virus",
+        "family": "Matonaviridae",
+        "transmission_mode": "Airborne (Respiratory droplets) / Vertical (Congenital)",
+        "milestone": "Isolated independently by Paul Parkman and Thomas Weller, leading to congenital rubella syndrome insights."
+    },
+    {
+        "year": "1964",
+        "virus": "Epstein-Barr virus (EBV / HHV-4)",
+        "family": "Herpesviridae",
+        "transmission_mode": "Direct contact (Saliva / 'Kissing disease')",
+        "milestone": "Anthony Epstein, Yvonne Barr, and Bert Achong discovered the first human tumor virus linked to Burkitt lymphoma."
+    },
+    {
+        "year": "1965",
+        "virus": "Hepatitis B virus",
+        "family": "Hepadnaviridae",
+        "transmission_mode": "Blood-borne / Sexual / Perinatal",
+        "milestone": "Baruch Blumberg discovered the 'Australia antigen,' leading to the identification and blood tests for Hepatitis B."
+    },
+    {
+        "year": "1967",
+        "virus": "Marburg virus",
+        "family": "Filoviridae",
+        "transmission_mode": "Direct contact (Bodily fluids / Contaminated surfaces)",
+        "milestone": "First recognized during outbreaks among laboratory workers in Marburg and Frankfurt, Germany, exposed to African green monkeys."
+    },
+    {
+        "year": "1968",
+        "virus": "Influenza A virus (1968 H3N2 Pandemic)",
+        "family": "Orthomyxoviridae",
+        "transmission_mode": "Airborne (Respiratory droplets)",
+        "milestone": "Caused the 'Hong Kong Flu' pandemic."
+    },
+    {
+        "year": "1970",
+        "virus": "Lassa mammarenavirus",
+        "family": "Arenaviridae",
+        "transmission_mode": "Zoonotic (Rodent urine/droppings contact / Food contamination)",
+        "milestone": "Identified after an outbreak among missionary nurses in Lassa, Nigeria."
+    },
+    {
+        "year": "1971",
+        "virus": "BK polyomavirus",
+        "family": "Polyomaviridae",
+        "transmission_mode": "Respiratory secretions / Urine / Contact",
+        "milestone": "Isolated from the urine of a kidney transplant patient, designated by his initials B.K."
+    },
+    {
+        "year": "1972",
+        "virus": "Norovirus (Norwalk virus)",
+        "family": "Caliciviridae",
+        "transmission_mode": "Fecal-oral / Contaminated food and water / Surface contact",
+        "milestone": "Visualized via immune electron microscopy following an acute gastroenteritis outbreak in Norwalk, Ohio."
+    },
+    {
+        "year": "1973",
+        "virus": "Rotavirus",
+        "family": "Reoviridae",
+        "transmission_mode": "Fecal-oral / Contaminated surfaces",
+        "milestone": "Discovered via electron microscopy in duodenal biopsies of children with severe diarrhea."
+    },
+    {
+        "year": "1975",
+        "virus": "Parvovirus B19",
+        "family": "Parvoviridae",
+        "transmission_mode": "Respiratory droplets / Blood-borne / Vertical",
+        "milestone": "Discovered accidentally by Yvonne Cossart while screening blood bank donors for Hepatitis B."
+    },
+    {
+        "year": "1976",
+        "virus": "Ebola virus",
+        "family": "Filoviridae",
+        "transmission_mode": "Direct contact (Infected bodily fluids, blood, or tissue)",
+        "milestone": "Identified near the Ebola River in Zaire (now DRC) during simultaneous severe hemorrhagic fever outbreaks."
+    },
+    {
+        "year": "1977",
+        "virus": "Hantaan virus",
+        "family": "Hantaviridae",
+        "transmission_mode": "Zoonotic (Inhaled rodent excreta/droppings)",
+        "milestone": "Isolated by Ho-Wang Lee from striped field mice, explaining Korean hemorrhagic fever."
+    },
+    {
+        "year": "1980",
+        "virus": "Human T-lymphotropic virus 1 (HTLV-1)",
+        "family": "Retroviridae",
+        "transmission_mode": "Blood-borne / Sexual / Breastfeeding (Vertical)",
+        "milestone": "Discovered by Bernard Poiesz and Robert Gallo as the first human retrovirus linked to adult T-cell leukemia."
+    },
+    {
+        "year": "1983",
+        "virus": "Human immunodeficiency virus (HIV-1)",
+        "family": "Retroviridae",
+        "transmission_mode": "Sexual contact / Blood-borne / Perinatal",
+        "milestone": "Isolated by Luc Montagnier's team at the Pasteur Institute (and later Robert Gallo) as the cause of AIDS."
+    },
+    {
+        "year": "1988",
+        "virus": "Hepatitis C virus",
+        "family": "Flaviviridae",
+        "transmission_mode": "Blood-borne (primarily shared needles, blood products)",
+        "milestone": "Cloned and identified by Michael Choo, Harvey Alter, and Charles Rice after being historically known as 'non-A, non-B hepatitis'."
+    },
+    {
+        "year": "1989",
+        "virus": "Hepatitis E virus",
+        "family": "Hepeviridae",
+        "transmission_mode": "Fecal-oral (Contaminated water supplies)",
+        "milestone": "Identified through immune electron microscopy during a waterborne hepatitis outbreak in India."
+    },
+    {
+        "year": "1993",
+        "virus": "Sin Nombre orthohantavirus",
+        "family": "Hantaviridae",
+        "transmission_mode": "Zoonotic (Inhaled aerosolized deer mouse urine/droppings)",
+        "milestone": "Isolated following a mysterious outbreak of severe respiratory illness (HCPS) in the Four Corners region of the USA."
+    },
+    {
+        "year": "1994",
+        "virus": "Hendra virus",
+        "family": "Paramyxoviridae",
+        "transmission_mode": "Zoonotic (Horse-to-human via infected bodily fluids)",
+        "milestone": "Discovered after an outbreak of severe respiratory disease in horses and humans in Hendra, Brisbane, Australia."
+    },
+    {
+        "year": "1995",
+        "virus": "Andes virus",
+        "family": "Hantaviridae",
+        "transmission_mode": "Zoonotic / Direct human-to-human respiratory transmission",
+        "milestone": "Identified in South America, later proving to be the only hantavirus capable of human-to-human transmission."
+    },
+    {
+        "year": "1997",
+        "virus": "Avian Influenza A (H5N1)",
+        "family": "Orthomyxoviridae",
+        "transmission_mode": "Zoonotic (Direct contact with infected birds or contaminated environments)",
+        "milestone": "First documented severe human infections from H5N1 avian influenza during an outbreak in Hong Kong."
+    },
+    {
+        "year": "1998",
+        "virus": "Nipah virus",
+        "family": "Paramyxoviridae",
+        "transmission_mode": "Zoonotic (Pig-to-human contact / Contaminated date palm sap)",
+        "milestone": "Emerging zoonotic virus identified during an outbreak of encephalitis and respiratory illness among pig farmers in Malaysia."
+    },
+    {
+        "year": "1999",
+        "virus": "West Nile virus (North America)",
+        "family": "Flaviviridae",
+        "transmission_mode": "Vector-borne (Mosquito bite)",
+        "milestone": "Sudden emergence in New York City, marking the virus's first introduction to the Western Hemisphere."
+    },
+    {
+        "year": "2002",
+        "virus": "SARS-CoV-1",
+        "family": "Coronaviridae",
+        "transmission_mode": "Airborne (Respiratory droplets / Close contact)",
+        "milestone": "Emerged in Guangdong, China, sparking a global Severe Acute Respiratory Syndrome outbreak."
+    },
+    {
+        "year": "2009",
+        "virus": "Influenza A (H1N1/09 Pandemic)",
+        "family": "Orthomyxoviridae",
+        "transmission_mode": "Airborne (Respiratory droplets)",
+        "milestone": "A novel swine-origin reassortant influenza virus triggered the first 21st-century global flu pandemic."
+    },
+    {
+        "year": "2012",
+        "virus": "Middle East Respiratory Syndrome Coronavirus (MERS-CoV)",
+        "family": "Coronaviridae",
+        "transmission_mode": "Zoonotic (Camel contact) / Close respiratory contact",
+        "milestone": "Identified in Saudi Arabia, causing severe respiratory illness with camels acting as the primary animal reservoir."
+    },
+    {
+        "year": "2013",
+        "virus": "Avian Influenza A (H7N9)",
+        "family": "Orthomyxoviridae",
+        "transmission_mode": "Zoonotic (Live poultry market exposure)",
+        "milestone": "Emerged in China, causing significant human cases associated with exposure to live poultry markets."
+    },
+    {
+        "year": "2015",
+        "virus": "Zika virus",
+        "family": "Flaviviridae",
+        "transmission_mode": "Vector-borne (Mosquito bite - Aedes) / Sexual / Vertical",
+        "milestone": "Triggered a major public health emergency across Latin America due to its association with microcephaly in newborns."
+    },
+    {
+        "year": "2018",
+        "virus": "Kivu Ebola virus",
+        "family": "Filoviridae",
+        "transmission_mode": "Direct contact (Infected bodily fluids)",
+        "milestone": "The second-largest Ebola outbreak in history began in the conflict-affected eastern region of the Democratic Republic of the Congo."
+    },
+    {
+        "year": "2019",
+        "virus": "SARS-CoV-2",
+        "family": "Coronaviridae",
+        "transmission_mode": "Airborne (Aerosols / Respiratory droplets)",
+        "milestone": "Emergence of the novel coronavirus in Wuhan, China, leading to the global COVID-19 pandemic."
+    },
+    {
+        "year": "2020",
+        "virus": "SARS-CoV-2 Variants (Alpha, Beta)",
+        "family": "Coronaviridae",
+        "transmission_mode": "Airborne (Enhanced aerosol transmission)",
+        "milestone": "Accelerated viral evolution tracking through global genomic surveillance yielded key variants of concern."
+    },
+    {
+        "year": "2021",
+        "virus": "SARS-CoV-2 Omicron variant",
+        "family": "Coronaviridae",
+        "transmission_mode": "Airborne (Highly efficient aerosol transmission)",
+        "milestone": "Discovered in late 2021, driving massive global waves of infection due to high immune evasion and transmission."
+    },
+    {
+        "year": "2022",
+        "virus": "Mpox virus (Clade IIb)",
+        "family": "Poxviridae",
+        "transmission_mode": "Direct physical touch (Skin-to-skin / Sexual contact)",
+        "milestone": "Unprecedented multi-country outbreak of mpox spread primarily via sexual networks outside of endemic African regions."
+    },
+    {
+        "year": "2023",
+        "virus": "Highly Pathogenic Avian Influenza H5N1",
+        "family": "Orthomyxoviridae",
+        "transmission_mode": "Zoonotic (Animal contact / Ingestion of unpasteurized infected dairy)",
+        "milestone": "Massive global epizootic expanded rapidly into marine mammals, wild birds, and commercial dairy cattle herds."
+    },
+    {
+        "year": "2024",
+        "virus": "Oropouche virus",
+        "family": "Peribunyaviridae",
+        "transmission_mode": "Vector-borne (Biting midges - Culicoides / Mosquitoes)",
+        "milestone": "Spread beyond traditional Amazonian basins, causing widespread outbreaks and rare vertical transmission cases in the Americas."
+    },
+    {
+        "year": "2025",
+        "virus": "Mpox virus (Clade I expansion)",
+        "family": "Poxviridae",
+        "transmission_mode": "Direct physical touch / Household and sexual contact",
+        "milestone": "Intensified international public health focus on clade I mpox strains spreading across Central and East Africa and travelers abroad."
+    },
+    {
+        "year": "2026",
+        "virus": "Next-Gen Pan-Respiratory Pathogen Surveillance",
+        "family": "Various",
+        "transmission_mode": "Multi-mode global tracking (Airborne, Zoonotic, Vector)",
+        "milestone": "Global health networks fully integrated real-time AI genomic tracking to monitor animal-to-human spillover hot spots."
+    }
+]
