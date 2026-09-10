@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>MeetUp</title>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<style>
+		html,
+		body,
+		main,
+		#map {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+		}
+
+		.bubbleSvg {
+			overflow: visible;
+			pointer-events: none;
+		}
+
+		.bubblePane {
+			filter: url("#soap-bubble-merge");
+		}
+
+		body {
+			background: #111;
+			overflow: hidden;
+		}
+
+		.leaflet-tile-pane {
+			filter: grayscale(1);
+		}
+
+		.locationPanel {
+			position: fixed;
+			left: 24px;
+			bottom: 24px;
+			z-index: 1000;
+			display: flex;
+			flex-direction: column;
+			border-radius: 12px;
+			gap: 12px;
+			width: min(320px, calc(100vw - 48px));
+			padding: 16px;
+			box-sizing: border-box;
+			background: rgba(17, 17, 17, 0.7);
+			background: blur(12px);
+			border: 1px solid white;
+			color: white;
+			font-family: sans-serif;
+			backdrop-filter: blur(8px);
+		}
+
+		.locationPanel h1 {
+			margin: 0;
+			font-size: 18px;
+			font-weight: 400;
+		}
+
+		.locationPanel input {
+			box-sizing: border-box;
+			width: 100%;
+			padding: 10px;
+			border: none;
+			border-bottom: 1px solid white;
+			font: inherit;
+		}
+
+		.locationPanel button{
+			border: none;
+			padding: 10px;
+			width: 100%;
+			border-radius: 100rem;
+		}
+
+		.locationPanel input:focus {
+			outline: 2px solid white;
+			outline-offset: 2px;
+		}
+
+		.locationPanel input {
+			background: transparent;
+			color: white;
+		}
+
+		.locationPanel input::placeholder {
+			color: rgba(255, 255, 255, 0.6);
+		}
+
+		.locationPanel button {
+			background: white;
+			color: #111;
+			cursor: pointer;
+		}
+
+		.locationPanel .secondaryButton {
+			background: transparent;
+			color: white;
+		}
+
+		.locationPanel .secondaryButton.active {
+			background: white;
+			color: #111;
+		}
+
+		.locationStatus {
+			min-height: 16px;
+			margin: 0;
+			font-size: 12px;
+		}
+
+		.locationRows {
+			display: flex;
+			flex-direction: column;
+			gap: 10px;
+		}
+
+		.locationRow {
+			position: relative;
+		}
+
+		.locationRow input {
+			padding-right: 32px;
+		}
+
+		.locationRow .clearButton {
+			position: absolute;
+			right: 4px;
+			top: 50%;
+			transform: translateY(-50%);
+			width: 24px;
+			height: 24px;
+			display: none;
+			align-items: center;
+			justify-content: center;
+			border: none;
+			background: transparent;
+			color: rgba(255, 255, 255, 0.6);
+			font-size: 16px;
+			line-height: 1;
+			cursor: pointer;
+			padding: 0;
+		}
+
+		.locationRow:hover .clearButton,
+		.locationRow .clearButton:focus {
+			display: flex;
+		}
+
+		.locationRow .clearButton:hover {
+			color: white;
+		}
+
+		.addAddressButton {
+			border: 1px dashed rgba(255, 255, 255, 0.5) !important;
+		}
+
+		.currentLocationRow {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 8px;
+			padding: 8px 12px;
+			border: 1px dashed rgba(255, 255, 255, 0.4);
+			border-radius: 8px;
+			font-size: 13px;
+		}
+
+		.currentLocationRow.active {
+			border-style: solid;
+			border-color: #2d8cff;
+		}
+
+		.currentLocationRow button {
+			width: auto;
+			padding: 6px 12px;
+			font-size: 12px;
+		}
+
+		.confirmOverlay {
+			position: fixed;
+			inset: 0;
+			z-index: 3000;
+			display: grid;
+			place-items: center;
+			padding: 24px;
+			box-sizing: border-box;
+			background: rgba(0, 0, 0, 0.6);
+		}
+
+		.confirmOverlay[hidden] {
+			display: none;
+		}
+
+		.confirmBox {
+			width: min(280px, 100%);
+			padding: 20px;
+			box-sizing: border-box;
+			background: rgb(17, 17, 17);
+			border: 1px solid white;
+			border-radius: 12px;
+			color: white;
+			font-family: sans-serif;
+			display: grid;
+			gap: 12px;
+			text-align: center;
+		}
+
+		.confirmBox p {
+			margin: 0;
+		}
+
+		.confirmActions {
+			display: flex;
+			gap: 8px;
+		}
+
+		.confirmActions button {
+			flex: 1;
+			padding: 8px;
+			border-radius: 999px;
+			border: 1px solid white;
+			font: inherit;
+			cursor: pointer;
+		}
+
+		.confirmActions .confirmYes {
+			background: white;
+			color: #111;
+		}
+
+		.confirmActions .confirmNo {
+			background: transparent;
+			color: white;
+		}
+
+		.mapPin {
+			position: absolute;
+			width: 22px;
+			height: 22px;
+			border: 2px solid white;
+			border-radius: 50% 50% 50% 0;
+			background: var(--pin-color);
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.35);
+			transform: rotate(-45deg);
+		}
+
+		.mapPin::after {
+			position: absolute;
+			inset: 6px;
+			border-radius: 50%;
+			background: white;
+			content: "";
+		}
+
+		.mapPin--user { --pin-color: #2d8cff; }
+		.mapPin--restaurant { --pin-color: #e34d4d; }
+		.mapPin--activity { --pin-color: #e6b422; }
+		.mapPin--park { --pin-color: #3ca55c; }
+		.mapPin--location { --pin-color: #555; }
+
+		.leaflet-control-zoom,
+		.leaflet-control-attribution {
+			filter: grayscale(1);
+		}
+
+	</style>
+</head>
+
+
+<body>
+	<svg aria-hidden="true" style="position: absolute; width: 0; height: 0;">
+		<filter id="soap-bubble-merge" x="-50%" y="-50%" width="200%" height="200%">
+			<feGaussianBlur in="SourceGraphic" stdDeviation="25" result="blur" />
+			<feColorMatrix in="blur" mode="matrix" values="
+					1 0 0 0 0
+					0 1 0 0 0
+					0 0 1 0 0
+					0 0 0 35 -15" result="goo" />
+			<feComposite in="SourceGraphic" in2="goo" operator="atop" />
+		</filter>
+	</svg>
+	<main>
+		<div id="map" aria-label="MeetUp map"></div>
+	</main>
+	<form class="locationPanel" id="locationForm">
+		<h1>Set locations</h1>
+		<div class="currentLocationRow" id="currentLocationRow">
+			<span>Your current location</span>
+			<button type="button" id="currentLocationButton">Add</button>
+		</div>
+		<div class="locationRows" id="locationRows"></div>
+		<button class="secondaryButton addAddressButton" id="addAddressButton" type="button">+ Add another address</button>
+		<button type="submit">Show halfway points</button>
+		<p class="locationStatus" id="locationStatus" role="status"></p>
+	</form>
+	<div class="confirmOverlay" id="confirmOverlay" hidden>
+		<div class="confirmBox">
+			<p>Use your current location as a meetup point?</p>
+			<div class="confirmActions">
+				<button type="button" class="confirmYes" id="confirmYesButton">Yes</button>
+				<button type="button" class="confirmNo" id="confirmNoButton">No</button>
+			</div>
+		</div>
+	</div>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script>
+		const defaultLocation = [40.7128, -74.0060];
+
+		const map = L.map("map").setView(defaultLocation, 13);
+		let currentLocation;
+		let currentLocationMarker;
+		const locationForm = document.querySelector("#locationForm");
+		const locationStatus = document.querySelector("#locationStatus");
+		const locationRowsContainer = document.querySelector("#locationRows");
+		const addAddressButton = document.querySelector("#addAddressButton");
+		const currentLocationRow = document.querySelector("#currentLocationRow");
+		const currentLocationButton = document.querySelector("#currentLocationButton");
+		const confirmOverlay = document.querySelector("#confirmOverlay");
+		const confirmYesButton = document.querySelector("#confirmYesButton");
+		const confirmNoButton = document.querySelector("#confirmNoButton");
+		let holdTimer;
+		let holdLocation;
+		let midpointLayers = [];
+		let bubbleAnimationId;
+		let activityMarkers = [];
+		let activitySearchId = 0;
+
+		L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+			maxZoom: 19,
+			attribution: "&copy; OpenStreetMap contributors"
+		}).addTo(map);
+
+		function createLocationRow(placeholder) {
+			const row = document.createElement("div");
+			row.className = "locationRow";
+			row.innerHTML = `
+				<input type="text" placeholder="${placeholder}" autocomplete="street-address" />
+				<button type="button" class="clearButton" aria-label="Clear location">&times;</button>
+			`;
+			const input = row.querySelector("input");
+			const clearButton = row.querySelector(".clearButton");
+
+			function invalidateRow() {
+				row._location = null;
+				if (row._marker) {
+					map.removeLayer(row._marker);
+					row._marker = null;
+				}
+			}
+
+			input.addEventListener("input", invalidateRow);
+			clearButton.addEventListener("click", () => {
+				input.value = "";
+				invalidateRow();
+				input.focus();
+			});
+
+			return row;
+		}
+
+		function addAddressRow() {
+			const row = createLocationRow("Additional address");
+			locationRowsContainer.appendChild(row);
+			return row;
+		}
+
+		function getLocationRows() {
+			return Array.from(locationRowsContainer.querySelectorAll(".locationRow"));
+		}
+
+		["First address", "Second address"].forEach((placeholder) => {
+			locationRowsContainer.appendChild(createLocationRow(placeholder));
+		});
+
+		addAddressButton.addEventListener("click", () => {
+			const row = addAddressRow();
+			row.querySelector("input").focus();
+		});
+
+		function setCurrentLocationActive(active) {
+			currentLocationRow.classList.toggle("active", active);
+			currentLocationButton.textContent = active ? "Remove" : "Add";
+		}
+
+		function requestCurrentLocation() {
+			if (!("geolocation" in navigator)) {
+				locationStatus.textContent = "Geolocation is not available in this browser.";
+				return;
+			}
+			locationStatus.textContent = "Locating you...";
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					currentLocation = [position.coords.latitude, position.coords.longitude];
+					if (currentLocationMarker) map.removeLayer(currentLocationMarker);
+					currentLocationMarker = L.marker(currentLocation, { icon: pinIcon("user") })
+						.addTo(map)
+						.bindPopup("Your location")
+						.openPopup();
+					map.setView(currentLocation, 15);
+					setCurrentLocationActive(true);
+					locationStatus.textContent = "Current location added.";
+				},
+				() => {
+					locationStatus.textContent = "Could not get your current location.";
+				}
+			);
+		}
+
+		function removeCurrentLocation() {
+			currentLocation = undefined;
+			if (currentLocationMarker) {
+				map.removeLayer(currentLocationMarker);
+				currentLocationMarker = undefined;
+			}
+			setCurrentLocationActive(false);
+			locationStatus.textContent = "Current location removed.";
+		}
+
+		currentLocationButton.addEventListener("click", () => {
+			if (currentLocation) {
+				removeCurrentLocation();
+			} else {
+				confirmOverlay.hidden = false;
+			}
+		});
+
+		confirmYesButton.addEventListener("click", () => {
+			confirmOverlay.hidden = true;
+			requestCurrentLocation();
+		});
+
+		confirmNoButton.addEventListener("click", () => {
+			confirmOverlay.hidden = true;
+		});
+
+		function pinIcon(type) {
+			return L.divIcon({
+				className: "",
+				html: `<span class="mapPin mapPin--${type}"></span>`,
+				iconSize: [26, 26],
+				iconAnchor: [13, 26],
+				popupAnchor: [0, -26]
+			});
+		}
+
+		async function findLocation(address) {
+			const params = new URLSearchParams({
+				q: address,
+				format: "jsonv2",
+				limit: "1"
+			});
+			const response = await fetch(`https://nominatim.openstreetmap.org/search?${params}`);
+			const results = await response.json();
+			if (!results.length) throw new Error(`Could not find: ${address}`);
+			return [Number(results[0].lat), Number(results[0].lon)];
+		}
+
+		async function reverseLocation(location) {
+			const params = new URLSearchParams({
+				lat: location[0],
+				lon: location[1],
+				format: "jsonv2"
+			});
+			const response = await fetch(`https://nominatim.openstreetmap.org/reverse?${params}`);
+			const result = await response.json();
+			return result.display_name || `${location[0].toFixed(5)}, ${location[1].toFixed(5)}`;
+		}
+
+		function offsetLocation(location, east, north) {
+			const metersPerDegree = 111320;
+			const latitude = location[0] + north / metersPerDegree;
+			const longitude = location[1] + east / (metersPerDegree * Math.cos(location[0] * Math.PI / 180));
+			return [latitude, longitude];
+		}
+
+		function bubblePoints(center, radius, contactAngle, phase, deformation) {
+			const points = [];
+			const pointCount = 200;
+
+			for (let index = 0; index < pointCount; index++) {
+				const angle = (index / pointCount) * Math.PI * 2;
+				const contactStrength = Math.max(0, Math.cos(angle - contactAngle));
+				const organicEdge = 1
+					+ Math.sin(angle * 3 + phase) * 0.025
+					+ Math.sin(angle * 5 - phase) * 0.015;
+				const foldedEdge = organicEdge * (1 - deformation * 0.18 * contactStrength ** 2);
+				const distance = radius * foldedEdge;
+				points.push(offsetLocation(
+					center,
+					Math.cos(angle) * distance,
+					Math.sin(angle) * distance
+				));
+			}
+
+			return points;
+		}
+
+		function localPoint(origin, location) {
+			return {
+				x: (location[1] - origin[1]) * 111320 * Math.cos(origin[0] * Math.PI / 180),
+				y: (location[0] - origin[0]) * 111320
+			};
+		}
+
+		function createSoftBody(center, radius, phase) {
+			const points = [];
+			const nodeCount = 200;
+			for (let index = 0; index < nodeCount; index++) {
+				const angle = (index / nodeCount) * Math.PI * 2;
+				const x = center.x + Math.cos(angle) * radius;
+				const y = center.y + Math.sin(angle) * radius;
+				points.push({
+					x,
+					y,
+					ox: x,
+					oy: y,
+					vx: 0,
+					vy: 0,
+					phase
+				});
+			}
+			return { center, points, radius };
+		}
+
+		function softBodyPath(body, origin) {
+			const screenPoints = body.points.map((point) => {
+				const location = offsetLocation(origin, point.x, point.y);
+				return map.latLngToLayerPoint(location);
+			});
+			let pathData = "";
+			for (let index = 0; index < screenPoints.length; index++) {
+				const current = screenPoints[index];
+				const next = screenPoints[(index + 1) % screenPoints.length];
+				const midpoint = L.point(
+					(current.x + next.x) / 2,
+					(current.y + next.y) / 2
+				);
+				pathData += index === 0
+					? `M ${midpoint.x} ${midpoint.y}`
+					: ` Q ${current.x} ${current.y}, ${midpoint.x} ${midpoint.y}`;
+			}
+			return `${pathData} Z`;
+		}
+
+		function getContactDirections(centers) {
+			return centers.map((center, bodyIndex) => centers
+				.filter((_, index) => index !== bodyIndex)
+				.map((otherCenter) => {
+					const x = otherCenter.x - center.x;
+					const y = otherCenter.y - center.y;
+					const distance = Math.max(Math.hypot(x, y), 0.001);
+					return { x: x / distance, y: y / distance };
+				}));
+		}
+
+		function distanceBetween(first, second) {
+			const latitudeDistance = (second[0] - first[0]) * 111320;
+			const longitudeDistance = (second[1] - first[1])
+				* 111320 * Math.cos(first[0] * Math.PI / 180);
+			return Math.hypot(latitudeDistance, longitudeDistance);
+		}
+
+		function escapeHtml(value) {
+			return String(value).replace(/[&<>"']/g, (character) => ({
+				"&": "&amp;",
+				"<": "&lt;",
+				">": "&gt;",
+				"\"": "&quot;",
+				"'": "&#39;"
+			}[character]));
+		}
+
+		async function loadActivities(location, searchRadius) {
+			const cappedRadius = Math.min(searchRadius, 10000); // Reduced to 10km for faster response times
+
+			// Split into two focused queries to prevent server timeouts
+			const foodQuery = `[out:json];nwr[amenity~"(restaurant|cafe|fast_food|cinema|bowling_alley)"](around:${Math.round(cappedRadius)},${location[0]},${location[1]});out center tags;`;
+			const leisureQuery = `[out:json];nwr[leisure~"(park|mall|entertainment_centre)"](around:${Math.round(cappedRadius)},${location[0]},${location[1]});out center tags;`;
+
+			const fetchQuery = async (query) => {
+				const response = await fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`);
+				if (!response.ok) return [];
+				const data = await response.json();
+				return data.elements || [];
+			};
+
+			// Run both queries in parallel, tolerating minor network blips
+			const [foodElements, leisureElements] = await Promise.all([
+				fetchQuery(foodQuery),
+				fetchQuery(leisureQuery)
+			]);
+
+			const combinedElements = [...foodElements, ...leisureElements];
+			if (!combinedElements.length) throw new Error("No activity places found in this area.");
+
+			// Deduplicate elements by ID just in case
+			const uniqueElements = Array.from(
+				new Map(combinedElements.map(item => [item.id, item])).values()
+			);
+
+			return uniqueElements
+				.filter((element) => element.lat || element.center)
+				.map((element) => {
+					const itemLocation = [
+						element.lat ?? element.center.lat,
+						element.lon ?? element.center.lon
+					];
+
+					const amenity = element.tags?.amenity;
+					const leisure = element.tags?.leisure;
+
+					let category = "Spot";
+					if (amenity === "cinema") category = "Movie Theater";
+					else if (amenity === "bowling_alley") category = "Bowling Alley";
+					else if (leisure === "mall") category = "Shopping Mall";
+					else if (leisure === "park") category = "Park";
+					else if (amenity === "cafe") category = "Cafe";
+					else if (amenity === "fast_food") category = "Fast Food";
+					else if (amenity === "restaurant") category = "Restaurant";
+
+					return {
+						name: element.tags?.name || "Unnamed venue",
+						location: itemLocation,
+						distance: distanceBetween(location, itemLocation),
+						category: category,
+						details: element.tags?.cuisine || element.tags?.brand || ""
+					};
+				})
+				.sort((first, second) => first.distance - second.distance);
+		}
+
+		function clearActivityMarkers() {
+			activitySearchId++;
+			activityMarkers.forEach((marker) => map.removeLayer(marker));
+			activityMarkers = [];
+		}
+
+		function showActivityMarkers(location, searchRadius, areas, areaRadius) {
+			const searchId = activitySearchId;
+			loadActivities(location, searchRadius)
+				.then((activities) => {
+					if (searchId !== activitySearchId) return;
+
+					const sharedActivities = activities
+						.filter((activity) => areas.every((area) =>
+							distanceBetween(area, activity.location) <= areaRadius * 1.25
+						))
+						.slice(0, 10); // Strictly capped at 10 items max
+
+					activityMarkers = sharedActivities.map((activity) => {
+						const distance = activity.distance < 1000
+							? `${Math.round(activity.distance)} m`
+							: `${(activity.distance / 1000).toFixed(1)} km`;
+
+						const subtext = activity.details
+							? `<br><small>${escapeHtml(activity.category)} (${escapeHtml(activity.details)}) · ${distance}</small>`
+							: `<br><small>${escapeHtml(activity.category)} · ${distance}</small>`;
+						const pinType = activity.category === "Park"
+							? "park"
+							: ["Restaurant", "Cafe", "Fast Food"].includes(activity.category)
+								? "restaurant"
+								: "activity";
+
+						return L.marker(activity.location, { icon: pinIcon(pinType) })
+							.addTo(map)
+							.bindTooltip(escapeHtml(activity.name))
+							.bindPopup(`<strong>${escapeHtml(activity.name)}</strong>${subtext}`);
+					});
+
+					if (activityMarkers.length) {
+						activityMarkers[0].openPopup();
+						locationStatus.textContent = `Found ${activityMarkers.length} activity place(s) in the shared area.`;
+					} else {
+						locationStatus.textContent = "No activities found inside the shared area.";
+					}
+				})
+				.catch((err) => {
+					console.error("Activity load error:", err);
+					if (searchId === activitySearchId) {
+						locationStatus.textContent = "Activity places could not be loaded right now.";
+					}
+				});
+		}
+
+		function showMidpoint(locations) {
+			if (bubbleAnimationId) cancelAnimationFrame(bubbleAnimationId);
+			clearActivityMarkers();
+			midpointLayers.forEach((layer) => layer.remove());
+			if (!map.getPane("bubblePane")) {
+				map.createPane("bubblePane");
+				map.getPane("bubblePane").style.zIndex = 450;
+			}
+
+			const origin = locations[0];
+			const centers = locations.map((location) => localPoint(origin, location));
+
+			// Compute distances
+			let maxDist = 0;
+			for (let i = 0; i < centers.length; i++) {
+				for (let j = i + 1; j < centers.length; j++) {
+					const d = Math.hypot(centers[i].x - centers[j].x, centers[i].y - centers[j].y);
+					if (d > maxDist) maxDist = d;
+				}
+			}
+
+			// Cap the default radius so a distant GPS or pin doesn't swallow the whole state
+			const defaultRadius = Math.min(Math.max(maxDist * 0.55, 1200), 25000);
+			const bodyRadii = centers.map(() => defaultRadius);
+
+			const bodies = centers.map((center, index) => createSoftBody(center, 0, index * 1.7));
+			const bubbles = bodies.map(() => L.polygon([], {
+				color: "#2d8cff",
+				weight: 2,
+				fillColor: "#2d8cff",
+				fillOpacity: 0.18,
+				lineJoin: "round",
+				pane: "bubblePane"
+			}).addTo(map));
+			midpointLayers = bubbles;
+			map.fitBounds(locations, {
+				paddingTopLeft: [360, 100],
+				paddingBottomRight: [100, 320]
+			});
+
+			const animationStart = performance.now();
+			const animationDuration = 1200;
+
+			function updateSoftBodies(now) {
+				const progress = Math.min((now - animationStart) / animationDuration, 1);
+				const eased = 1 - Math.pow(1 - progress, 3); // Smooth ease-out
+
+				bodies.forEach((body, bodyIndex) => {
+					const C_i = body.center;
+					const R_i = bodyRadii[bodyIndex] * eased;
+
+					body.points.forEach((point, index) => {
+						const angle = (index / body.points.length) * Math.PI * 2;
+						const cosA = Math.cos(angle);
+						const sinA = Math.sin(angle);
+
+						// Default target position on the outer circle
+						let targetRadius = R_i;
+
+						// Check intersection with all other soap bubble centers to flatten shared walls
+						centers.forEach((C_j, j) => {
+							if (bodyIndex === j) return;
+
+							const dx = C_j.x - C_i.x;
+							const dy = C_j.y - C_i.y;
+							const D = Math.hypot(dx, dy);
+							if (D === 0) return;
+
+							const dirX = dx / D;
+							const dirY = dy / D;
+
+							// Dot product of vertex ray and direction to neighbor center
+							const dot = cosA * dirX + sinA * dirY;
+
+							// If vertex faces the neighboring bubble, calculate the flat intersection wall plane
+							if (dot > 0.05) {
+								const R_j = bodyRadii[j] * eased;
+								// Distance from C_i to the flat chord/wall along the center-to-center axis
+								const h = (R_i * R_i - R_j * R_j + D * D) / (2 * D);
+
+								// Max allowable radius along this ray to stay behind the flat wall
+								const maxRayLen = h / dot;
+								if (maxRayLen < targetRadius) {
+									targetRadius = Math.max(maxRayLen, D * 0.1); // Clamp to prevent collapsing inside out
+								}
+							}
+						});
+
+						// Set rest position (ox, oy) based on bubble geometry clamp
+						point.ox = C_i.x + cosA * targetRadius;
+						point.oy = C_i.y + sinA * targetRadius;
+
+						// Spring force pulling current vertex toward its target position
+						point.vx += (point.ox - point.x) * 0.18;
+						point.vy += (point.oy - point.y) * 0.18;
+					});
+
+					// Structural spring forces between adjacent nodes to maintain smooth perimeter curve
+					const nodeCount = body.points.length;
+					const edgeRestLength = (2 * Math.PI * R_i) / nodeCount;
+
+					body.points.forEach((point, idx) => {
+						const nextPoint = body.points[(idx + 1) % nodeCount];
+						const edx = nextPoint.x - point.x;
+						const edy = nextPoint.y - point.y;
+						const dist = Math.max(Math.hypot(edx, edy), 0.001);
+						const springForce = (dist - edgeRestLength) * 0.12;
+
+						const fx = (edx / dist) * springForce;
+						const fy = (edy / dist) * springForce;
+
+						point.vx += fx;
+						point.vy += fy;
+						nextPoint.vx -= fx;
+						nextPoint.vy -= fy;
+					});
+				});
+
+				// Update positions with damping
+				bodies.forEach((body, bodyIndex) => {
+					body.points.forEach((point) => {
+						point.vx *= 0.75; // Damping for liquid/viscous feel
+						point.vy *= 0.75;
+						point.x += point.vx;
+						point.y += point.vy;
+					});
+
+					const geographicPoints = body.points.map((point) =>
+						offsetLocation(origin, point.x, point.y)
+					);
+					bubbles[bodyIndex].setLatLngs(geographicPoints);
+				});
+
+				if (progress < 1) {
+					bubbleAnimationId = requestAnimationFrame(updateSoftBodies);
+				} else {
+					const sharedLocation = locations.reduce((sum, location) => [
+						sum[0] + location[0] / locations.length,
+						sum[1] + location[1] / locations.length
+					], [0, 0]);
+
+					const activityRadius = Math.min(defaultRadius, 15000);
+					showActivityMarkers(sharedLocation, activityRadius, locations, defaultRadius * 0.95);
+					locationStatus.textContent = centers.length > 2
+						? `${centers.length} soap bubbles merged. Pins show restaurants inside the shared area.`
+						: "Two soap bubbles merged around the shared midpoint.";
+				}
+			}
+
+			bubbleAnimationId = requestAnimationFrame(updateSoftBodies);
+		}
+
+		function cancelHold() {
+			clearTimeout(holdTimer);
+			holdTimer = undefined;
+			holdLocation = undefined;
+		}
+
+		function findEmptyRow() {
+			return getLocationRows().find((row) => !row.querySelector("input").value.trim());
+		}
+
+		async function dropPin(location) {
+			const row = findEmptyRow() || addAddressRow();
+			const input = row.querySelector("input");
+			locationStatus.textContent = "Saving pin...";
+
+			try {
+				const address = await reverseLocation(location);
+				input.value = address;
+				row._location = location;
+				if (row._marker) map.removeLayer(row._marker);
+				row._marker = L.marker(location, { icon: pinIcon("location") })
+					.addTo(map)
+					.bindPopup(address)
+					.openPopup();
+				locationStatus.textContent = "Pin saved.";
+			} catch {
+				locationStatus.textContent = "Could not read that location.";
+			}
+		}
+
+		function startHold(event) {
+			if (event.originalEvent?.target.closest(".locationPanel")) return;
+			holdLocation = event.latlng;
+			holdTimer = setTimeout(() => {
+				const location = [holdLocation.lat, holdLocation.lng];
+				map.dragging.disable();
+				dropPin(location);
+			}, 1000);
+		}
+
+		function endHold() {
+			cancelHold();
+			map.dragging.enable();
+		}
+
+		map.on("mousedown touchstart", startHold);
+		map.on("mouseup touchend touchcancel dragstart", endHold);
+
+		locationForm.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			locationStatus.textContent = "Finding locations...";
+
+			try {
+				const resolvedLocations = [];
+				if (currentLocation) resolvedLocations.push(currentLocation);
+
+				for (const row of getLocationRows()) {
+					const input = row.querySelector("input");
+					const address = input.value.trim();
+					if (!address) continue;
+
+					const location = row._location || await findLocation(address);
+					row._location = location;
+					if (row._marker) map.removeLayer(row._marker);
+					row._marker = L.marker(location, { icon: pinIcon("location") })
+						.addTo(map)
+						.bindPopup(address);
+					resolvedLocations.push(location);
+				}
+
+				if (resolvedLocations.length < 2) {
+					throw new Error("Add at least 2 locations to find a meetup spot.");
+				}
+
+				map.fitBounds(resolvedLocations, {
+					paddingTopLeft: [340, 80],
+					paddingBottomRight: [80, 300]
+				});
+				showMidpoint(resolvedLocations);
+				locationStatus.textContent = "Midpoint collision area found.";
+			} catch (error) {
+				locationStatus.textContent = error.message;
+			}
+		});
+	</script>
+</body>
+
+</html>
