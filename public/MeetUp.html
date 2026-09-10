@@ -31,10 +31,6 @@
 			overflow: hidden;
 		}
 
-		.leaflet-tile-pane {
-			filter: grayscale(1);
-		}
-
 		.locationPanel {
 			position: fixed;
 			left: 24px;
@@ -47,7 +43,7 @@
 			width: min(320px, calc(100vw - 48px));
 			padding: 16px;
 			box-sizing: border-box;
-			background: rgba(17, 17, 17, 0.7);
+			background: rgba(17, 17, 17);
 			background: blur(12px);
 			border: 1px solid white;
 			color: white;
@@ -70,7 +66,7 @@
 			font: inherit;
 		}
 
-		.locationPanel button{
+		.locationPanel button {
 			border: none;
 			padding: 10px;
 			width: 100%;
@@ -257,17 +253,59 @@
 			content: "";
 		}
 
-		.mapPin--user { --pin-color: #2d8cff; }
-		.mapPin--restaurant { --pin-color: #e34d4d; }
-		.mapPin--activity { --pin-color: #e6b422; }
-		.mapPin--park { --pin-color: #3ca55c; }
-		.mapPin--location { --pin-color: #555; }
+		.mapPin--user {
+			--pin-color: #2d8cff;
+		}
+
+		.mapPin--restaurant {
+			--pin-color: #e34d4d;
+		}
+
+		.mapPin--activity {
+			--pin-color: #e6b422;
+		}
+
+		.mapPin--park {
+			--pin-color: #3ca55c;
+		}
+
+		.mapPin--location {
+			--pin-color: #555;
+		}
 
 		.leaflet-control-zoom,
 		.leaflet-control-attribution {
 			filter: grayscale(1);
 		}
 
+		.logo {
+			position: fixed;
+			z-index: 222222;
+			right: 24px;
+			top: 24px;
+			border-radius: 12px;
+			border: 1px solid white;
+			overflow: hidden;
+			background-color: black;
+			box-sizing: border-box;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.leaflet-control-zoom {
+			border: none !important;
+		}
+
+		.logo img {
+			margin: 8px;
+			height: 48px;
+			width: 48px;
+		}
+
+		.dark-mode-map{
+			filter: grayscale(1);
+		}
 	</style>
 </head>
 
@@ -287,6 +325,9 @@
 	<main>
 		<div id="map" aria-label="MeetUp map"></div>
 	</main>
+	<div class="logo">
+		<img src="img/MeetUp.svg" alt="MeetUp Logo">
+	</div>
 	<form class="locationPanel" id="locationForm">
 		<h1>Set locations</h1>
 		<div class="currentLocationRow" id="currentLocationRow">
@@ -294,7 +335,8 @@
 			<button type="button" id="currentLocationButton">Add</button>
 		</div>
 		<div class="locationRows" id="locationRows"></div>
-		<button class="secondaryButton addAddressButton" id="addAddressButton" type="button">+ Add another address</button>
+		<button class="secondaryButton addAddressButton" id="addAddressButton" type="button">+ Add another
+			address</button>
 		<button type="submit">Show halfway points</button>
 		<p class="locationStatus" id="locationStatus" role="status"></p>
 	</form>
@@ -333,7 +375,8 @@
 
 		L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
 			maxZoom: 19,
-			attribution: "&copy; OpenStreetMap contributors"
+			attribution: "&copy; OpenStreetMap contributors",
+			className: "dark-mode-map"
 		}).addTo(map);
 
 		function createLocationRow(placeholder) {
