@@ -103,6 +103,10 @@
 
         currentMode = mode;
 
+        if (typeof window !== 'undefined' && window.va) {
+            window.va('event', { name: 'mode_switch', data: { mode: mode } });
+        }
+
         const contentDiv = document.querySelector('.content');
         const responseBox = document.querySelector('.responseBox');
         const modesDiv = document.querySelector('.modes');
