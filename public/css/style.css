@@ -116,11 +116,16 @@ body.essence-mode {
     display: flex;
     align-items: center;
     cursor: pointer;
+    user-select: none;
 }
 
 .speachMode {
     color: white;
     font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .modes .flexBox {
@@ -130,19 +135,17 @@ body.essence-mode {
 }
 
 .modeIcon {
-    width: 32px;
+    width: 12px;
     height: 12px;
-    border-radius: 100rem;
-    background-color: rgba(255, 255, 255, 0.319);
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.modes {
-    cursor: pointer;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.35);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    flex-shrink: 0;
 }
 
 .modes.active .modeIcon {
-    background: red;
+    background: #ff3b30;
+    box-shadow: 0 0 8px rgba(255, 59, 48, 0.6);
 }
 
 @keyframes speaking-wave {

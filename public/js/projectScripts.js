@@ -431,15 +431,24 @@ document.addEventListener("DOMContentLoaded", function () {
     let synthesis = window.speechSynthesis;
     let readableElements = [];
     let currentElementIndex = 0;
-    const bgAudioVolume = 0.3;
+    const bgAudioVolume = 0.15;
 
-    // Background Audio
-    const bgAudio = new Audio('audio/nature-music-vkroxstarsinger-226067.mp3');
-    bgAudio.loop = true;
-    bgAudio.volume = bgAudioVolume;
+    // Background Audio (lazy-loaded so it does not download on page load)
+    let bgAudio = null;
+
+    function getBgAudio() {
+        if (!bgAudio) {
+            bgAudio = new Audio('audio/nature-music-vkroxstarsinger-226067.mp3');
+            bgAudio.loop = true;
+            bgAudio.volume = bgAudioVolume;
+        }
+        return bgAudio;
+    }
 
     function setBgAudioVolume(nextVolume) {
-        bgAudio.volume = Math.max(0, Math.min(1, nextVolume));
+        if (bgAudio) {
+            bgAudio.volume = Math.max(0, Math.min(1, nextVolume));
+        }
     }
 
     // Expose global API
@@ -476,17 +485,42 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (isSpeechActive) {
             // Start audio quietly so it sits behind speech
-            bgAudio.currentTime = 0;
+            const audio = getBgAudio();
+            audio.currentTime = 0;
             setBgAudioVolume(bgAudioVolume);
-            bgAudio.play().catch(e => console.log("Audio play failed:", e));
+            audio.play().catch(e => console.log("Audio play failed:", e));
 
             // Start pulse loop for particle wave effect
             if (typeof window.startPulseLoop === 'function') {
                 window.startPulseLoop();
             }
 
-            // Wait a moment for transition
-            setTimeout(startSpeech, 300);
+            // Speak activation announcement first
+            synthesis.cancel();
+            const activationUtterance = new SpeechSynthesisUtterance("Echo Speech Activated");
+            const voices = synthesis.getVoices();
+            if (voices.length > 0) {
+                const preferredVoice = voices.find(v =>
+                    v.name === 'David' ||
+                    v.name === 'Daniel' ||
+                    v.name.includes('Google') && v.name.includes('Male') ||
+                    v.name.includes('Male')
+                );
+                if (preferredVoice) activationUtterance.voice = preferredVoice;
+            }
+
+            activationUtterance.onend = () => {
+                if (isSpeechActive) {
+                    setTimeout(startSpeech, 200);
+                }
+            };
+            activationUtterance.onerror = () => {
+                if (isSpeechActive) {
+                    setTimeout(startSpeech, 200);
+                }
+            };
+
+            synthesis.speak(activationUtterance);
         } else {
             stopSpeech();
 
@@ -501,8 +535,10 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollListenerActive = false; // Disable scroll listener
         isSpeaking = false; // Reset speaking flag
         synthesis.cancel();
-        bgAudio.pause();
-        setBgAudioVolume(bgAudioVolume);
+        if (bgAudio) {
+            bgAudio.pause();
+            setBgAudioVolume(bgAudioVolume);
+        }
         document.querySelectorAll('.word-highlight').forEach(el => el.classList.remove('word-highlight'));
         // Also remove element highlights
         readableElements.forEach(el => el.classList.remove('word-highlight'));
