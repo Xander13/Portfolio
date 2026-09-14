@@ -862,6 +862,44 @@ a {
     text-decoration: underline !important;
 }
 
+.gemini-heading,
+.gemini-list-item,
+.gemini-code-block {
+    display: block;
+}
+
+.gemini-heading {
+    margin-top: 12px;
+    margin-bottom: 8px;
+    font-size: 1.05em;
+    font-weight: 600;
+}
+
+.gemini-list-item {
+    padding-left: 16px;
+}
+
+.gemini-code-block,
+.msgContent code {
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+.gemini-code-block {
+    padding: 12px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.gemini-usage-note {
+    display: block;
+    margin-top: 12px;
+    font-size: 18px;
+    line-height: 1.4;
+    color: var(--gray);
+}
+
 /*Search Mode*/
 .search-url {
     display: block;

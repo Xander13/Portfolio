@@ -129,7 +129,7 @@ async function getGeminiResponse(prompt) {
             throw new Error(`Gemini endpoint returned ${response.status} instead of JSON`);
         }
         if (!response.ok) throw new Error(data.error || "Gemini request failed");
-        return { text: data.text };
+        return { text: data.text, markdown: true };
     } catch (error) {
         console.error("Gemini request failed", error);
         return { text: "Gemini is unavailable right now. Type -exit to return to Echo normal." };
@@ -552,6 +552,36 @@ function escapeHtml(text) {
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#39;");
+}
+
+function formatGeminiMarkdown(text) {
+    let formatted = escapeHtml(String(text).replace(/\r\n/g, "\n"));
+    const codeBlocks = [];
+
+    formatted = formatted.replace(/```(?:[a-zA-Z0-9_-]+)?\n?([\s\S]*?)```/g, (_, code) => {
+        const token = `@@GEMINI_CODE_${codeBlocks.length}@@`;
+        codeBlocks.push(`<code class="gemini-code-block">${code.trim()}</code>`);
+        return token;
+    });
+
+    formatted = formatted
+        .replace(/^(#{1,6})\s+(.+)$/gm, '<strong class="gemini-heading">$2</strong>')
+        .replace(/^[-*+]\s+(.+)$/gm, '<span class="gemini-list-item">&bull; $1</span>')
+        .replace(/^\d+\.\s+(.+)$/gm, '<span class="gemini-list-item">$&</span>')
+        .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+        .replace(/`([^`\n]+)`/g, '<code>$1</code>')
+        .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/__([^_\n]+)__/g, '<strong>$1</strong>')
+        .replace(/\*([^*\n]+)\*/g, '<em>$1</em>')
+        .replace(/_([^_\n]+)_/g, '<em>$1</em>')
+        .replace(/\n{2,}/g, '<br><br>')
+        .replace(/\n/g, '<br>');
+
+    codeBlocks.forEach((code, index) => {
+        formatted = formatted.replace(`@@GEMINI_CODE_${index}@@`, code);
+    });
+
+    return formatted;
 }
 
 const slashShortcuts = [
@@ -1582,6 +1612,9 @@ const bgColorObserver = new IntersectionObserver((entries) => {
 function appendMessage(sender, msg, animated = false, extra = {}, callback = null) {
     // Pre-process inline links into the message string if they exist
     let processedMsg = msg;
+    if (extra?.markdown) {
+        processedMsg = formatGeminiMarkdown(processedMsg);
+    }
     if (extra?.inlineLinks && Array.isArray(extra.inlineLinks)) {
         extra.inlineLinks.forEach(linkInfo => {
             const escaped = linkInfo.searchText.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -1632,6 +1665,13 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
     content.appendChild(p);
 
     function appendExtras() {
+        if (Number.isInteger(extra.geminiResponsesRemaining)) {
+            const usageNote = document.createElement("small");
+            usageNote.className = "gemini-usage-note";
+            usageNote.textContent = `Gemini responses remaining: ${extra.geminiResponsesRemaining} (Echo limit)`;
+            content.appendChild(usageNote);
+        }
+
         appendExtraContent(content, extra);
 
         if (extra.timer) {
@@ -2927,6 +2967,7 @@ async function sendMessage() {
             answerObj = await getWebSearchResults(userText);
         } else if (geminiMode) {
             answerObj = await getGeminiResponse(userText);
+            answerObj.geminiResponsesRemaining = Math.max(0, maxQuestions - questionCount);
         } else {
             answerObj = await findResponse(userText);
         }
@@ -2956,7 +2997,9 @@ async function sendMessage() {
             timer: answerObj.timer,
             bible: answerObj.bible,
             stockTool: answerObj.stockTool,
-            weatherForecast: answerObj.weatherForecast
+            weatherForecast: answerObj.weatherForecast,
+            markdown: answerObj.markdown,
+            geminiResponsesRemaining: answerObj.geminiResponsesRemaining
         });
 
         input.value = "";
