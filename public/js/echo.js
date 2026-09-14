@@ -125,7 +125,7 @@ function warmUpGemini() {
 
 async function getGeminiResponse(prompt) {
     try {
-        const response = await fetch("app/api/gemini/route.js", {
+        const response = await fetch("/api/gemini", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ input: prompt })
