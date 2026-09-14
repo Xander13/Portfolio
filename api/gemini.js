@@ -1,3 +1,11 @@
+// Loaded once per warm container instead of per-request to avoid repeated import cost.
+const { GoogleGenAI } = require('@google/genai');
+let cachedClient = null;
+function getClient(apiKey) {
+  if (!cachedClient) cachedClient = new GoogleGenAI({ apiKey });
+  return cachedClient;
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', ['POST']);
@@ -5,15 +13,13 @@ module.exports = async function handler(req, res) {
   }
 
   let prompt = '';
+  let isWarmup = false;
   try {
     const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
     prompt = String(body.input || '').trim();
+    isWarmup = Boolean(body.warmup);
   } catch {
     return res.status(400).json({ error: 'Invalid request' });
-  }
-
-  if (!prompt) {
-    return res.status(400).json({ error: 'A prompt is required' });
   }
 
   const apiKey = process.env.GEMINI_API_KEY;
@@ -21,9 +27,18 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Gemini API key is not configured on Vercel.' });
   }
 
+  // Warmup pings pre-initialize the client/container without calling the model, cutting first-message latency.
+  if (isWarmup) {
+    getClient(apiKey);
+    return res.status(200).json({ warmed: true });
+  }
+
+  if (!prompt) {
+    return res.status(400).json({ error: 'A prompt is required' });
+  }
+
   try {
-    const { GoogleGenAI } = await import('@google/genai');
-    const ai = new GoogleGenAI({ apiKey });
+    const ai = getClient(apiKey);
     const interaction = await ai.interactions.create({
       model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
       input: prompt

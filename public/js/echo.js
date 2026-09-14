@@ -114,6 +114,15 @@ function isGeminiExitCommand(rawInput) {
     return /^-exit\s*$/i.test(String(rawInput || "").trim());
 }
 
+// Fired the instant -smart is activated so the serverless container/client is warm before the user's first real message.
+function warmUpGemini() {
+    fetch("/api/gemini", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ warmup: true })
+    }).catch(() => { /* best-effort warmup, ignore failures */ });
+}
+
 async function getGeminiResponse(prompt) {
     try {
         const response = await fetch("/api/gemini", {
@@ -2927,6 +2936,7 @@ async function sendMessage() {
         if (isPalModeCommand(rawUserText)) {
             appendMessage("user", rawUserText);
             geminiMode = true;
+            warmUpGemini();
             appendMessage("ai", "Here is a Gemini-powered response. Enjoy the chat.", true);
             input.value = "";
             return;
