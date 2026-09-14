@@ -3008,9 +3008,11 @@ async function sendMessage() {
             answerObj = await findResponse(userText);
         }
 
-        // Add artificial delay for "thinking" feel (800ms - 1500ms random)
-        const thinkingDelay = 800 + Math.random() * 700;
-        await new Promise(resolve => setTimeout(resolve, thinkingDelay));
+        // Keep normal Echo responses paced, but show Gemini as soon as it returns.
+        if (!geminiMode) {
+            const thinkingDelay = 800 + Math.random() * 700;
+            await new Promise(resolve => setTimeout(resolve, thinkingDelay));
+        }
 
         // 4. Remove thinking indicator
         thinkingIndicator.remove();
