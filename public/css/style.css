@@ -918,16 +918,12 @@ a {
 }
 
 .thinking-indicator {
-    position: sticky;
-    bottom: 0;
-    z-index: 3;
     display: flex;
     align-items: center;
     gap: 8px;
     width: 80%;
     margin-left: 20%;
     padding: 12px 0 20px;
-    background: var(--primary);
     opacity: 0.6;
 }
 
@@ -1580,6 +1576,10 @@ a {
     background: transparent;
     border: none;
     outline: none;
+}
+
+.inputBox input[type="text"].is-sending {
+    color: var(--dark-gray);
 }
 
 .inputBox ::placeholder {

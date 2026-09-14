@@ -555,7 +555,7 @@ function escapeHtml(text) {
 }
 
 function formatGeminiResponse(text) {
-    return escapeHtml(String(text)
+    const cleanText = String(text)
         .replace(/\r\n/g, "\n")
         .replace(/^#{1,6}\s+/gm, "")
         .replace(/^([-*+])\s+/gm, "• ")
@@ -567,9 +567,11 @@ function formatGeminiResponse(text) {
         .replace(/__([^_\n]+)__/g, "$1")
         .replace(/\*([^*\n]+)\*/g, "$1")
         .replace(/_([^_\n]+)_/g, "$1")
-        .replace(/`([^`\n]+)`/g, "$1")
+        .replace(/`([^`\n]+)`/g, "$1");
+
+    return escapeHtml(cleanText)
         .replace(/\n{2,}/g, "<br><br>")
-        .replace(/\n/g, "<br>"));
+        .replace(/\n/g, "<br>");
 }
 
 const slashShortcuts = [
@@ -2862,6 +2864,7 @@ async function sendMessage() {
     if (!rawUserText) return;
 
     isSendingMessage = true;
+    input.classList.add("is-sending");
 
     try {
         const safeUserText = normalizeSlashCommandText(rawUserText);
@@ -2984,6 +2987,7 @@ async function sendMessage() {
         input.value = "";
     } finally {
         isSendingMessage = false;
+        input.classList.remove("is-sending");
     }
 }
 
