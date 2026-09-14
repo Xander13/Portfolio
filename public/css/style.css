@@ -1447,6 +1447,10 @@ a {
 }
 
 @media (max-width: 768px) {
+    .thinking-indicator {
+        margin-left: 0%;
+    }
+    
     .stock-card {
         display: grid;
         grid-template-columns: 1fr 1fr;
