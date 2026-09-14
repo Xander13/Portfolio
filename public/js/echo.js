@@ -554,34 +554,22 @@ function escapeHtml(text) {
         .replace(/'/g, "&#39;");
 }
 
-function formatGeminiMarkdown(text) {
-    let formatted = escapeHtml(String(text).replace(/\r\n/g, "\n"));
-    const codeBlocks = [];
-
-    formatted = formatted.replace(/```(?:[a-zA-Z0-9_-]+)?\n?([\s\S]*?)```/g, (_, code) => {
-        const token = `@@GEMINI_CODE_${codeBlocks.length}@@`;
-        codeBlocks.push(`<code class="gemini-code-block">${code.trim()}</code>`);
-        return token;
-    });
-
-    formatted = formatted
-        .replace(/^(#{1,6})\s+(.+)$/gm, '<strong class="gemini-heading">$2</strong>')
-        .replace(/^[-*+]\s+(.+)$/gm, '<span class="gemini-list-item">&bull; $1</span>')
-        .replace(/^\d+\.\s+(.+)$/gm, '<span class="gemini-list-item">$&</span>')
-        .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
-        .replace(/`([^`\n]+)`/g, '<code>$1</code>')
-        .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
-        .replace(/__([^_\n]+)__/g, '<strong>$1</strong>')
-        .replace(/\*([^*\n]+)\*/g, '<em>$1</em>')
-        .replace(/_([^_\n]+)_/g, '<em>$1</em>')
-        .replace(/\n{2,}/g, '<br><br>')
-        .replace(/\n/g, '<br>');
-
-    codeBlocks.forEach((code, index) => {
-        formatted = formatted.replace(`@@GEMINI_CODE_${index}@@`, code);
-    });
-
-    return formatted;
+function formatGeminiResponse(text) {
+    return escapeHtml(String(text)
+        .replace(/\r\n/g, "\n")
+        .replace(/^#{1,6}\s+/gm, "")
+        .replace(/^([-*+])\s+/gm, "• ")
+        .replace(/^\d+\.\s+/gm, "")
+        .replace(/```(?:[a-zA-Z0-9_-]+)?\n?/g, "")
+        .replace(/```/g, "")
+        .replace(/\[([^\]]+)\]\(https?:\/\/[^)\s]+\)/g, "$1")
+        .replace(/\*\*([^*\n]+)\*\*/g, "$1")
+        .replace(/__([^_\n]+)__/g, "$1")
+        .replace(/\*([^*\n]+)\*/g, "$1")
+        .replace(/_([^_\n]+)_/g, "$1")
+        .replace(/`([^`\n]+)`/g, "$1")
+        .replace(/\n{2,}/g, "<br><br>")
+        .replace(/\n/g, "<br>"));
 }
 
 const slashShortcuts = [
@@ -1613,7 +1601,7 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
     // Pre-process inline links into the message string if they exist
     let processedMsg = msg;
     if (extra?.markdown) {
-        processedMsg = formatGeminiMarkdown(processedMsg);
+        processedMsg = formatGeminiResponse(processedMsg);
     }
     if (extra?.inlineLinks && Array.isArray(extra.inlineLinks)) {
         extra.inlineLinks.forEach(linkInfo => {
@@ -1665,13 +1653,6 @@ function appendMessage(sender, msg, animated = false, extra = {}, callback = nul
     content.appendChild(p);
 
     function appendExtras() {
-        if (Number.isInteger(extra.geminiResponsesRemaining)) {
-            const usageNote = document.createElement("small");
-            usageNote.className = "gemini-usage-note";
-            usageNote.textContent = `Gemini responses remaining: ${extra.geminiResponsesRemaining} (Echo limit)`;
-            content.appendChild(usageNote);
-        }
-
         appendExtraContent(content, extra);
 
         if (extra.timer) {
@@ -2920,9 +2901,9 @@ async function sendMessage() {
 
         // 1. Show user message immediately
         appendMessage("user", userText);
-        questionCount++;
+        if (!geminiMode) questionCount++;
 
-        if (questionCount > maxQuestions) {
+        if (!geminiMode && questionCount > maxQuestions) {
             const limitMsg = "Wow, you really like to inquire about me! 😉 Why not have a meeting? Contact Alex on <a href='https://www.linkedin.com/in/alex-kauffman' target='_blank'>LinkedIn</a>.";
             appendMessage("ai", limitMsg);
 
@@ -2967,7 +2948,6 @@ async function sendMessage() {
             answerObj = await getWebSearchResults(userText);
         } else if (geminiMode) {
             answerObj = await getGeminiResponse(userText);
-            answerObj.geminiResponsesRemaining = Math.max(0, maxQuestions - questionCount);
         } else {
             answerObj = await findResponse(userText);
         }
@@ -2998,8 +2978,7 @@ async function sendMessage() {
             bible: answerObj.bible,
             stockTool: answerObj.stockTool,
             weatherForecast: answerObj.weatherForecast,
-            markdown: answerObj.markdown,
-            geminiResponsesRemaining: answerObj.geminiResponsesRemaining
+            markdown: answerObj.markdown
         });
 
         input.value = "";
