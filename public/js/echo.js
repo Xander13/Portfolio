@@ -121,7 +121,13 @@ async function getGeminiResponse(prompt) {
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ input: prompt })
         });
-        const data = await response.json();
+        const responseBody = await response.text();
+        let data;
+        try {
+            data = JSON.parse(responseBody);
+        } catch {
+            throw new Error(`Gemini endpoint returned ${response.status} instead of JSON`);
+        }
         if (!response.ok) throw new Error(data.error || "Gemini request failed");
         return { text: data.text };
     } catch (error) {
