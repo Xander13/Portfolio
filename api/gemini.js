@@ -40,8 +40,8 @@ module.exports = async function handler(req, res) {
   try {
     const ai = getClient(apiKey);
     const interaction = await ai.interactions.create({
-      model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
-      input: prompt
+      model: process.env.GEMINI_MODEL || 'gemini-3.8-flash',
+      input: `${prompt}\n\n(Keep your answer brief: a couple of short sentences, or a tight list. No long paragraphs unless explicitly asked.)`
     });
 
     return res.status(200).json({

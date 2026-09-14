@@ -31,7 +31,7 @@ export async function POST(request) {
         const ai = getClient(apiKey);
         const interaction = await ai.interactions.create({
             model: process.env.GEMINI_MODEL || "gemini-2.5-flash",
-            input: prompt
+            input: `${prompt}\n\n(Keep your answer brief: a couple of short sentences, or a tight list. No long paragraphs unless explicitly asked.)`
         });
 
         return Response.json({ text: interaction.output_text || "Gemini did not return a response." });
