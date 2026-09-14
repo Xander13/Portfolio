@@ -555,23 +555,76 @@ function escapeHtml(text) {
 }
 
 function formatGeminiResponse(text) {
-    const cleanText = String(text)
-        .replace(/\r\n/g, "\n")
-        .replace(/^#{1,6}\s+/gm, "")
-        .replace(/^([-*+])\s+/gm, "• ")
-        .replace(/^\d+\.\s+/gm, "")
-        .replace(/```(?:[a-zA-Z0-9_-]+)?\n?/g, "")
-        .replace(/```/g, "")
-        .replace(/\[([^\]]+)\]\(https?:\/\/[^)\s]+\)/g, "$1")
-        .replace(/\*\*([^*\n]+)\*\*/g, "$1")
-        .replace(/__([^_\n]+)__/g, "$1")
-        .replace(/\*([^*\n]+)\*/g, "$1")
-        .replace(/_([^_\n]+)_/g, "$1")
-        .replace(/`([^`\n]+)`/g, "$1");
+    const lines = String(text).replace(/\r\n/g, "\n").split("\n");
+    const renderedLines = [];
+    let inCodeBlock = false;
+    let codeLines = [];
 
-    return escapeHtml(cleanText)
-        .replace(/\n{2,}/g, "<br><br>")
-        .replace(/\n/g, "<br>");
+    const formatInlineMarkdown = line => escapeHtml(line)
+        .replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+        .replace(/`([^`\n]+)`/g, "<code>$1</code>")
+        .replace(/\*\*([^*\n]+)\*\*/g, "<strong>$1</strong>")
+        .replace(/__([^_\n]+)__/g, "<strong>$1</strong>")
+        .replace(/\*([^*\n]+)\*/g, "<em>$1</em>")
+        .replace(/_([^_\n]+)_/g, "<em>$1</em>");
+
+    const renderTable = tableLines => {
+        const rows = tableLines
+            .filter(line => !/^\s*\|?\s*:?-+:?\s*(\|\s*:?-+:?\s*)+\|?\s*$/.test(line))
+            .map(line => line.trim().replace(/^\|/, "").replace(/\|$/, "").split("|").map(cell => cell.trim()));
+        if (rows.length === 0) return "";
+
+        const header = rows[0].map(cell => `<th>${formatInlineMarkdown(cell)}</th>`).join("");
+        const body = rows.slice(1).map(row => `<tr>${row.map(cell => `<td>${formatInlineMarkdown(cell)}</td>`).join("")}</tr>`).join("");
+        return `<table class="gemini-table"><thead><tr>${header}</tr></thead><tbody>${body}</tbody></table>`;
+    };
+
+    for (let index = 0; index < lines.length; index++) {
+        const line = lines[index];
+        if (/^\s*```/.test(line)) {
+            if (inCodeBlock) {
+                renderedLines.push(`<pre class="gemini-code-block"><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`);
+                codeLines = [];
+            }
+            inCodeBlock = !inCodeBlock;
+            continue;
+        }
+        if (inCodeBlock) {
+            codeLines.push(line);
+            continue;
+        }
+
+        if (/^\s*\|.*\|\s*$/.test(line) && /^\s*\|.*\|\s*$/.test(lines[index + 1] || "")) {
+            const tableLines = [];
+            while (/^\s*\|.*\|\s*$/.test(lines[index] || "")) {
+                tableLines.push(lines[index++]);
+            }
+            index--;
+            renderedLines.push(renderTable(tableLines));
+            continue;
+        }
+
+        const heading = line.match(/^\s*#{1,6}\s+(.+)$/);
+        if (heading) {
+            renderedLines.push(formatInlineMarkdown(heading[1]));
+        } else if (/^\s*([-*_])(?:\s*\1){2,}\s*$/.test(line)) {
+            renderedLines.push("<hr>");
+        } else if (/^\s*[-*+]\s+/.test(line)) {
+            renderedLines.push(`&bull; ${formatInlineMarkdown(line.replace(/^\s*[-*+]\s+/, ""))}`);
+        } else if (/^\s*\d+\.\s+/.test(line)) {
+            renderedLines.push(formatInlineMarkdown(line));
+        } else if (/^\s*>\s?/.test(line)) {
+            renderedLines.push(`<blockquote>${formatInlineMarkdown(line.replace(/^\s*>\s?/, ""))}</blockquote>`);
+        } else {
+            renderedLines.push(formatInlineMarkdown(line));
+        }
+    }
+
+    if (inCodeBlock) {
+        renderedLines.push(`<pre class="gemini-code-block"><code>${escapeHtml(codeLines.join("\n"))}</code></pre>`);
+    }
+
+    return renderedLines.join("\n").replace(/\n{2,}/g, "<br><br>").replace(/\n/g, "<br>");
 }
 
 const slashShortcuts = [

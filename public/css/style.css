@@ -923,7 +923,7 @@ a {
     gap: 8px;
     width: 80%;
     margin-left: 20%;
-    padding: 12px 0 20px;
+    padding: 12px 0 76px;
     opacity: 0.6;
 }
 
@@ -945,6 +945,34 @@ a {
 
 .thinking-indicator .dot-pulse:nth-child(3) {
     animation-delay: 0.4s;
+}
+
+.msgContent .gemini-code-block {
+    display: block;
+    padding: 12px;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.msgContent .gemini-table {
+    width: 100%;
+    margin: 16px 0;
+    border-collapse: collapse;
+}
+
+.msgContent .gemini-table th,
+.msgContent .gemini-table td {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    text-align: left;
+}
+
+.msgContent blockquote {
+    margin: 12px 0;
+    padding-left: 16px;
+    border-left: 2px solid var(--gray);
+    color: var(--gray);
 }
 
 .smart-mode-dots {
