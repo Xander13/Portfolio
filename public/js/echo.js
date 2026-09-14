@@ -31,6 +31,7 @@ let pendingTimerRestart = false;
 let pendingWebSearch = false;
 let activeTimer = null;
 let noteMode = false;
+let geminiMode = false;
 let activeNoteEditor = null;
 let activeNoteLine = null;
 let draggedNoteLine = null;
@@ -107,6 +108,26 @@ function isWebSearchPrompt(rawInput) {
 
 function isPalModeCommand(rawInput) {
     return /^-smart\s*$/i.test(String(rawInput || "").trim());
+}
+
+function isGeminiExitCommand(rawInput) {
+    return /^-exit\s*$/i.test(String(rawInput || "").trim());
+}
+
+async function getGeminiResponse(prompt) {
+    try {
+        const response = await fetch("/api/gemini", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ input: prompt })
+        });
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Gemini request failed");
+        return { text: data.text };
+    } catch (error) {
+        console.error("Gemini request failed", error);
+        return { text: "Gemini is unavailable right now. Type -exit to return to Echo normal." };
+    }
 }
 
 // Flatten DuckDuckGo's nested RelatedTopics/Topics category structure into a flat list
@@ -553,6 +574,10 @@ const slashShortcuts = [
         label: "Search with DDG",
         value: "",
         action: "webSearchPrompt"
+    },
+    {
+        label: "Use Gemini 3.8 Flash",
+        value: "-smart"
     },
     {
         label: "Clear chat",
@@ -2818,7 +2843,16 @@ async function sendMessage() {
 
         if (isPalModeCommand(rawUserText)) {
             appendMessage("user", rawUserText);
-            appendMessage("ai", "<span class=\"smart-mode-notice\">Smart mode will be added soon<span class=\"smart-mode-dots\" aria-hidden=\"true\">...</span></span><br><br>For now just enjoy Echo normal response.", true);
+            geminiMode = true;
+            appendMessage("ai", "Here is a Gemini-powered response. You are using Gemini 3.8 Flash. Enjoy the chat.", true);
+            input.value = "";
+            return;
+        }
+
+        if (isGeminiExitCommand(rawUserText)) {
+            appendMessage("user", rawUserText);
+            geminiMode = false;
+            appendMessage("ai", "Gemini mode ended. Echo normal is resumed.", true);
             input.value = "";
             return;
         }
@@ -2885,6 +2919,8 @@ async function sendMessage() {
         } else if (pendingWebSearch) {
             pendingWebSearch = false;
             answerObj = await getWebSearchResults(userText);
+        } else if (geminiMode) {
+            answerObj = await getGeminiResponse(userText);
         } else {
             answerObj = await findResponse(userText);
         }

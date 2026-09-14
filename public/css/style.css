@@ -41,6 +41,11 @@ html {
     background-color: var(--primary);
 }
 
+html.privacy-page {
+    scroll-behavior: auto;
+    overscroll-behavior: auto;
+}
+
 body {
     font-family: "Bricolage Grotesque", sans-serif;
     background-color: var(--primary);
@@ -49,6 +54,10 @@ body {
     transition: background-color 0.5s, color 0.5s, opacity 0.5s ease-in-out;
     position: relative;
     opacity: 0;
+}
+
+body.privacy-page {
+    overscroll-behavior: auto;
 }
 
 body.loaded {

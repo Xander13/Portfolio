@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="privacy-page">
 
 <head>
     <meta charset="utf-8">
@@ -52,7 +52,7 @@
         rel="stylesheet">
 </head>
 
-<body>
+<body class="privacy-page">
     <nav class="topNav" aria-label="Main Navigation">
         <a href="index.html" class="nav-brand">
             <h6>Alex Kauffman</h6>
@@ -126,13 +126,22 @@
         <br>
         <h1 id="echo">2. Interactive Assistant ("Echo")</h1>
         <br>
-        <h2>Echo is an assistant-like interaction that calls public APIs from selected parts of the site. It does not
-            store personal data or sensitive information. It echoes information users want to access, including
-            search, weather, stock quotes, and other live lookups.</h2>
+        <h2>Echo is a portfolio interface with two modes: Echo Normal and Echo Smart. Echo Normal uses structured JSON
+            responses based on the questions recruiters, designers, and engineers commonly ask about Alex Kauffman's
+            work, experience, and projects. It is a focused way to explore information already presented on this site.
+        </h2>
         <br>
-        <h2>Echo is not an artificial intelligence model, automated bot, or machine learning agent. It is a front-end
-            interface that processes structured JSON queries to simulate interactive responses locally in your
-            browser. No messages, prompts, inputs, or outputs are collected, transmitted, or stored on any server.</h2>
+        <h2>Echo can also retrieve live information when you ask for it. Weather requests can use your local
+            geolocation after you give permission, and stock requests pull current market data. These requests are
+            made for the current interaction and are not stored on Alex Kauffman's server or in a database owned by
+            this site.</h2>
+        <br>
+        <h2>Echo Smart uses Google's Gemini model when you want a deeper response. Your prompt is sent to Google's Gemini
+            API through this site's server for that request. Gemini is used here to demonstrate what Echo can do, not
+            to create a personal profile or store personal information. This is a personal development project and is
+            not intended for professional use. Echo is Alex Kauffman's interface and an enabler of Alex's voice in
+            the digital space. It brings together tools such as JSON, Yahoo Finance, weather services, and Google's
+            Gemini model to make Echo more interactive.</h2>
         <br>
         <br>
         <br>
@@ -155,12 +164,13 @@
         <br>
         <h1 id="sources">4. Third-Party Data Sources</h1>
         <br>
-        <h2>Echo includes optional features (such as web search, stock quotes, and weather lookups) that
-            send your query directly from your browser to public third-party APIs to retrieve live
-            information.</h2>
+        <h2>Echo includes optional features (such as web search, stock quotes, weather lookups, and Gemini mode) that
+            send your query to third-party services to retrieve live information or generate a response. Gemini prompts
+            are sent through this site's server to Google's Gemini API.</h2>
         <br>
-        <h2>Client-Side Only: <br> <br>These requests happen directly between your browser and the
-            relevant third-party service. This site's servers never see, process, or relay them.</h2>
+        <h2>How Requests Work: <br> <br>Web search, stock, and weather requests generally happen directly between
+            your browser and the relevant third-party service. Gemini prompts are processed by this site's server only
+            to forward them to Google's Gemini API. This site does not intentionally store the prompts or responses.</h2>
         <br>
         <br>
         <h2>No Data Retention: <br> <br>None of these queries or their results are logged, stored, or
