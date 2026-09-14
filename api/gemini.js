@@ -16,11 +16,16 @@ module.exports = async function handler(req, res) {
     return res.status(400).json({ error: 'A prompt is required' });
   }
 
+  const apiKey = process.env.GEMINI_API_KEY;
+  if (!apiKey) {
+    return res.status(500).json({ error: 'Gemini API key is not configured on Vercel.' });
+  }
+
   try {
     const { GoogleGenAI } = await import('@google/genai');
-    const ai = new GoogleGenAI({});
+    const ai = new GoogleGenAI({ apiKey });
     const interaction = await ai.interactions.create({
-      model: 'gemini-3.8-flash',
+      model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
       input: prompt
     });
 
@@ -29,6 +34,12 @@ module.exports = async function handler(req, res) {
     });
   } catch (error) {
     console.error('Gemini request failed', error);
-    return res.status(502).json({ error: 'Gemini is unavailable right now.' });
+    const errorMessage = String(error?.message || '');
+    const isModelError = /model|not found|unsupported|invalid/i.test(errorMessage);
+    return res.status(502).json({
+      error: isModelError
+        ? 'The configured Gemini model is unavailable. Set GEMINI_MODEL to a model enabled for your API key.'
+        : 'Gemini is unavailable right now. Check the Vercel API key and deployment logs.'
+    });
   }
 };

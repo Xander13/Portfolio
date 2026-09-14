@@ -2927,7 +2927,7 @@ async function sendMessage() {
         if (isPalModeCommand(rawUserText)) {
             appendMessage("user", rawUserText);
             geminiMode = true;
-            appendMessage("ai", "Here is a Gemini-powered response. You are using Gemini 3.8 Flash. Enjoy the chat.", true);
+            appendMessage("ai", "Here is a Gemini-powered response. Enjoy the chat.", true);
             input.value = "";
             return;
         }
