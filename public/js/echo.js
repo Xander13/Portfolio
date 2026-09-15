@@ -674,6 +674,7 @@ const slashShortcuts = [
     }
 ];
 
+
 function hideSlashMenu() {
     if (!slashMenu) return;
     slashMenu.classList.remove("is-visible");
