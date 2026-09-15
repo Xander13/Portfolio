@@ -29,12 +29,12 @@ export async function POST(request) {
         }
 
         const ai = getClient(apiKey);
-        const interaction = await ai.interactions.create({
+        const response = await ai.models.generateContent({
             model: process.env.GEMINI_MODEL || "gemini-3.8-flash",
-            input: `${prompt}\n\n(Keep your answer brief: a couple of short sentences, or a tight list. No long paragraphs unless explicitly asked.)`
+            contents: `${prompt}\n\n(Keep your answer brief: a couple of short sentences, or a tight list. No long paragraphs unless explicitly asked.)`
         });
 
-        return Response.json({ text: interaction.output_text || "Gemini did not return a response." });
+        return Response.json({ text: response.text || "Gemini did not return a response." });
     } catch (error) {
         console.error("Gemini request failed", error);
         const errorMessage = String(error?.message || "");
