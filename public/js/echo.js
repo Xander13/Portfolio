@@ -696,11 +696,14 @@ function positionSlashMenu() {
 
     const rect = inputBox.getBoundingClientRect();
     const menuWidth = rect.width;
+    // Anchor to the box's top edge (the inputRow border line), not its full height,
+    // since inputBox now also contains the disclaimer text below the row.
+    const bottomOffset = window.innerHeight - rect.top + 6;
 
     slashMenu.style.left = `${rect.left}px`;
     slashMenu.style.width = `${menuWidth}px`;
     slashMenu.style.top = "auto";
-    slashMenu.style.bottom = `${rect.height + 6}px`;
+    slashMenu.style.bottom = `${bottomOffset}px`;
 }
 
 function applySlashMenuLayout() {

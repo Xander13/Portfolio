@@ -427,11 +427,11 @@ a {
     text-wrap: pretty;
 }
 
-.project h2{
+.project h2 {
     padding-bottom: 16px;
 }
 
-.project h4{
+.project h4 {
     color: gray;
 }
 
@@ -723,7 +723,7 @@ a {
 .menu {
     position: fixed;
     inset: 0;
-    padding: 48px;
+    padding: 56px;
     z-index: 88888800;
     transform: translateY(-100%);
     transition: transform 1s ease;
@@ -742,7 +742,7 @@ a {
     background: var(--white);
     position: fixed;
     top: 40px;
-    right: 48px;
+    right: 56px;
     z-index: 88888801;
     cursor: pointer;
 }
@@ -751,7 +751,7 @@ a {
     display: flex;
     flex-direction: column;
     position: absolute;
-    left: 48px;
+    left: 56px;
     top: 120px;
 }
 
@@ -807,12 +807,13 @@ a {
 .responseBox {
     position: fixed;
     top: 0px;
-    left: 48px;
-    right: 48px;
+    left: 56px;
+    right: 56px;
     margin: 0;
     padding: 0;
     overflow-y: auto;
-    height: calc(100% - 56px);
+    bottom: 100px;
+    height: auto;
     width: auto;
     max-width: none;
     z-index: 2;
@@ -1539,18 +1540,26 @@ a {
 
 .inputBox {
     position: fixed;
-    bottom: 0;
+    bottom: 16px;
     left: 48px;
     right: 48px;
     transform: none;
     padding: 0;
     width: auto;
-    height: 56px;
+    height: auto;
     box-sizing: border-box;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     background-color: var(--primary);
     z-index: 10;
+}
+
+.inputRow {
+    display: flex;
+    align-items: center;
+    min-height: 72px;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .slash-menu {
@@ -2313,6 +2322,11 @@ a {
         bottom: 0;
     }
 
+    .inputDisclaimer {
+        display: none;
+        opacity: 0;
+    }
+
     .locked-page {
         overflow: hidden !important;
     }
@@ -2385,10 +2399,10 @@ a {
     .case-study br:has(+ img),
     .case-study br:has(+ br + video),
     .case-study br:has(+ video),
-    .case-study img + br,
-    .case-study img + br + br,
-    .case-study video + br,
-    .case-study video + br + br {
+    .case-study img+br,
+    .case-study img+br+br,
+    .case-study video+br,
+    .case-study video+br+br {
         display: none;
     }
 
@@ -2526,13 +2540,13 @@ a {
 
     .responseBox {
         z-index: 1;
-        height: calc(100% - 56px);
+        height: calc(100% - 92px);
         top: 64px;
         left: 0;
         right: 0;
         padding-left: 16px;
         padding-right: 16px;
-        padding-bottom: 120px;
+        padding-bottom: 92px;
         width: 100%;
         position: fixed;
     }
@@ -3348,6 +3362,7 @@ a {
 .note-alignment-dropdown.is-open .note-alignment-list {
     display: block;
 }
+
 .note-column-dropdown.is-open .note-column-list {
     display: block;
 }
